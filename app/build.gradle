@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
     }
     buildTypes {
         release {
