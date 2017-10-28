@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) $today.year-$today.year Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2017 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,16 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package de.rampro.activitydiary;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+package de.rampro.activitydiary.model;
 
-public class MainActivity extends AppCompatActivity {
+/*
+ * Each activity in the diary is model by this DiaryActivity
+ */
+public class DiaryActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    /* TODO: add icon */
+
+    private String name;
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
