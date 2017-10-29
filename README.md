@@ -3,12 +3,14 @@ ActivityDiary is a diray for any kind of activities - organize your tasks in agi
 
 In the long term many functions shall be implemented, see https://github.com/ramack/ActivityDiary/wiki for the ideas.
 
-# License
+# License and Copyright
 Activity Dairy is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+Copyright notices in this project are mostly given with a reference to the year in form of xxxx-yyyy as a short cut with the meaning, that there is a contribution in every year in the given range.
 
 # Authors
 This app is under development by Raphael Mack [@ramack](https://github.com/ramack).
