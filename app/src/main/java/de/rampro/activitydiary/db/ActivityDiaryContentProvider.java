@@ -27,7 +27,6 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -65,7 +64,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary", diary);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary/#", diary_ID);
 
-        /* TODO: add expected next activities, which could include
+        /* TODO: add expected next activities?, which could include
          *  - child activities
          *  - recent activities
          *  - likely activites -> even the auto-set activities could be handled via this one...

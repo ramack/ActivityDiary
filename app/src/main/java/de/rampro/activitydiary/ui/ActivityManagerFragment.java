@@ -51,7 +51,6 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
 
         @Override
         public void bindView(View view, Context context, Cursor cursor){
-//        public View getView(int position, View view, ViewGroup parent) {
             String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
             int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
 
@@ -65,16 +64,6 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
                 actName.setTextColor(context.getResources().getColor(R.color.activityTextColorLight));
             }
 
-/* TODO: chose font color
-        double a = 1 - ( 0.299 * color.R + 0.587 * color.G + 0.114 * color.B)/255;
-        if (a < 0.5)
-            black font
-        else
-            white font
-        */
-//            if()
-//            actName.setTextColor();
-
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
     /* TODO fill image here */
         }
@@ -86,13 +75,6 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // For the cursor adapter, specify which columns go into which views
-        String[] fromColumns = {ActivityDiaryContract.DiaryActivity.NAME};
-        int[] toViews = {android.R.id.text1}; // The TextView in simple_list_item_1
-
-        /* TODO: replace text1 and simple_list_item_1 by custom... */
-        // Create an empty adapter we will use to display the loaded data.
-        // We pass null for the cursor, then update it in onLoadFinished()
 
         mActivitiyListAdapter = new DiaryActivityAdapter();
         setListAdapter(mActivitiyListAdapter);
@@ -131,4 +113,7 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
         Log.e(TAG, "clicked...");
 
     }
+
+    /* TODO: implement swipe for parent / child navigation */
+    /* TODO: add number of child activities in view */
 }
