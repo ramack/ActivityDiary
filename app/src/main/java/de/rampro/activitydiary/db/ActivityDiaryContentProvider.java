@@ -20,10 +20,12 @@
 package de.rampro.activitydiary.db;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -31,6 +33,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 /*
  * Why a new Content Provider for Diary Activites?
@@ -40,26 +43,27 @@ import android.text.TextUtils;
  *
  * */
 public class ActivityDiaryContentProvider extends ContentProvider {
-    private static final String AUTHORITY = "de.rampro.activitydiary";
 
-    public static final int activities = 1;
-    public static final int activities_ID = 2;
-    public static final int conditions = 3;
-    public static final int conditions_ID = 4;
-    public static final int diary = 5;
-    public static final int diary_ID = 6;
+    private static final int activities = 1;
+    private static final int activities_ID = 2;
+    private static final int conditions = 3;
+    private static final int conditions_ID = 4;
+    private static final int diary = 5;
+    private static final int diary_ID = 6;
+    private static final String TAG = ActivityDiaryContentProvider.class.getName();
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
-        sUriMatcher.addURI(AUTHORITY, "activities", activities);
-        sUriMatcher.addURI(AUTHORITY, "activities/#", activities_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath(), activities);
+/* TODO */
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "activities/#", activities_ID);
 
-        sUriMatcher.addURI(AUTHORITY, "conditions", conditions);
-        sUriMatcher.addURI(AUTHORITY, "conditions/#", conditions_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions/#", conditions_ID);
 
-        sUriMatcher.addURI(AUTHORITY, "diary", diary);
-        sUriMatcher.addURI(AUTHORITY, "diary/#", diary_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary", diary);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary/#", diary_ID);
 
         /* TODO: add expected next activities, which could include
          *  - child activities
@@ -74,8 +78,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         mOpenHelper = new LocalDBHelper(getContext());
-
-        return true;
+        return true; /* successfully loaded */
     }
 
     @Nullable
@@ -92,7 +95,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case activities_ID:
             case conditions_ID:
             case diary_ID:
-                selection = selection + "_ID = " + uri.getLastPathSegment();
+                selection = selection + "_id = " + uri.getLastPathSegment(); /* TODO: check isn't this prone to SQL injection? */
             default:
                 /* empty */
         }
@@ -106,12 +109,14 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             default:
                 /* empty */
         }
-        if (TextUtils.isEmpty(sortOrder)) sortOrder = "_ID ASC";
+        if (TextUtils.isEmpty(sortOrder)) sortOrder = "_id ASC";
 
         Cursor c = qBuilder.query(mOpenHelper.getReadableDatabase(),
+/*TODO: check why this doesn't work
                 projection,
                 selection,
-                selectionArgs,
+                selectionArgs,*/
+                projection, selection, selectionArgs,
                 null,
                 null,
                 sortOrder);
@@ -123,14 +128,56 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return "vnd.android.cursor.dir/vnd.de.rampro.activitydiary." + uri.getLastPathSegment();
+        switch (sUriMatcher.match(uri)) {
+            case activities:
+                return ActivityDiaryContract.DiaryActivity.CONTENT_TYPE;
+            case activities_ID:
+                return ActivityDiaryContract.DiaryActivity.CONTENT_ITEM_TYPE;
+            default:
+                Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
+                return "";
+        }
     }
 
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        /* TODO implement creation or conditions, activities and diary entries */
-        return null;
+        String table;
+        Uri resultUri;
+
+        switch(sUriMatcher.match(uri)) {
+            case activities:
+                table = LocalDBHelper.ACTIVITY_DB_TABLE;
+                resultUri = ActivityDiaryContract.DiaryActivity.CONTENT_URI;
+                break;
+            case conditions:
+                table = LocalDBHelper.CONDITION_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
+//                break;
+            case diary:
+                table = LocalDBHelper.DIARY_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
+//                break;
+            default:
+                throw new IllegalArgumentException(
+                        "Unsupported URI for insertion: " + uri);
+        }
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+
+        long id = db.insert(table,
+                            null,
+                            values);
+        if(id > 0) {
+            resultUri = ContentUris.withAppendedId(resultUri, id);
+            getContext().
+                    getContentResolver().
+                    notifyChange(resultUri, null);
+
+            return resultUri;
+        }else {
+            throw new SQLException(
+                    "Problem while inserting into uri: " + uri);
+        }
     }
 
     /**
@@ -157,6 +204,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         /* TODO: implement deletion of activities and all others  */
+/*notify        getContext().
+                getContentResolver().
+                notifyChange(resultUri, null);
+*/
         return 0;
     }
 
@@ -181,6 +232,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         /* TODO: implement update of activities and all others  */
+/*notify        getContext().
+                getContentResolver().
+                notifyChange(resultUri, null);
+*/
         return 0;
     }
 }

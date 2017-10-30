@@ -28,7 +28,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
     public static final String ACTIVITY_DB_TABLE = "activity";
     public static final String ACTIVITY_ALIAS_DB_TABLE = "activity_alias";
     public static final String CONDITION_DB_TABLE = "condition";
-    public static final String CONDITIONS_DB_TABLE = "conditions";
+    public static final String CONDITIONS_DB_TABLE = "conditions_map";
     public static final String DIARY_DB_TABLE = "diary";
 
     LocalDBHelper(Context context) {
@@ -42,44 +42,45 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_DB_TABLE +
                 "(" +
-                " _ID INTEGER PRIMARY KEY ASC, " +
-                " NAME TEXT NOT NULL UNIQUE," +
-                " PARENT INTEGER " +
+                " _id INTEGER PRIMARY KEY ASC, " +
+                " name TEXT NOT NULL UNIQUE," +
+                " color TEXT," +
+                " parent INTEGER " +
                 ");");
 
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_ALIAS_DB_TABLE +
                 "(" +
-                " ACT_ID INTEGER NOT NULL, " +
-                " NAME TEXT NOT NULL UNIQUE," +
-                " FOREIGN KEY(ACT_ID) REFERENCES activity(_ID) " +
+                " act_id INTEGER NOT NULL, " +
+                " name TEXT NOT NULL UNIQUE," +
+                " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
                 ");");
 
         db.execSQL("CREATE TABLE " +
                 CONDITION_DB_TABLE +
                 "(" +
-                " _ID INTEGER PRIMARY KEY ASC, " +
-                " NAME TEXT NOT NULL UNIQUE, " +
-                " TYPE TEXT, " +
-                " PARAMETER TEXT " +
+                " _id INTEGER PRIMARY KEY ASC, " +
+                " name TEXT NOT NULL UNIQUE, " +
+                " type TEXT, " +
+                " parameter TEXT " +
                 ");");
 
         db.execSQL("CREATE TABLE " +
                 CONDITIONS_DB_TABLE +
                 "(" +
-                " ACT_ID INTEGER NOT NULL, " +
-                " COND_ID INTEGER NOT NULL, " +
-                " FOREIGN KEY(ACT_ID) REFERENCES activity(_ID), " +
-                " FOREIGN KEY(COND_ID) REFERENCES condition(_ID) " +
+                " act_id INTEGER NOT NULL, " +
+                " cond_id INTEGER NOT NULL, " +
+                " FOREIGN KEY(act_id) REFERENCES activity(_id), " +
+                " FOREIGN KEY(cond_id) REFERENCES condition(_id) " +
                 ");");
         /* TODO: add table diary DIARY_DB_TABLE */
 
         /* TODO: remove dummy entry */
         db.execSQL("INSERT INTO " +
                 ACTIVITY_DB_TABLE +
-                "(NAME)" +
+                "(name, color)" +
                 " VALUES " +
-                " ('Gardening'), ('Sleeping');");
+                " ('Gardening', '#007410'), ('Sleeping', '#ef6c00');");
     }
 
     @Override

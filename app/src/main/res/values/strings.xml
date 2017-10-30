@@ -12,4 +12,8 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
+    <!-- -->
+    <string name="activity_image_description">Picture for Activity</string>
+
+
 </resources>

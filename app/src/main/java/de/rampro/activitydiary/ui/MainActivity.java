@@ -32,7 +32,7 @@ import android.widget.Toast;
 import de.rampro.activitydiary.R;
 
 /*
- * MainActivity to show the current activity and allow switching of it
+ * MainActivity to show most of the UI, based on switching the fragements
  *
  * */
 public class MainActivity extends AppCompatActivity {
