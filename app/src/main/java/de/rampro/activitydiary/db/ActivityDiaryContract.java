@@ -59,7 +59,7 @@ public class ActivityDiaryContract {
          * in the items table.
          */
         public static final String[] PROJECTION_ALL =
-                {_ID, NAME, PARENT};
+                {_ID, NAME, COLOR, PARENT};
 
         /**
          * The default sort order for
@@ -81,6 +81,11 @@ public class ActivityDiaryContract {
          * <P>Type: TEXT</P>
          */
         public static final String NAME = "name";
+        /**
+         * The color for the Activity
+         * <P>Type: TEXT</P>
+         */
+        public static final String COLOR = "color";
         /**
          * The if of the parent Activity
          * <P>Type: INT</P>

@@ -105,18 +105,27 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* intended fall through */
             case activities:
                 qBuilder.setTables(LocalDBHelper.ACTIVITY_DB_TABLE);
+                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                break;
+            case conditions_ID:
+                /* intended fall through */
+            case conditions:
+                qBuilder.setTables(LocalDBHelper.CONDITION_DB_TABLE);
+/* TODO                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
+            case diary_ID:
+                /* intended fall through */
+            case diary:
+                qBuilder.setTables(LocalDBHelper.DIARY_DB_TABLE);
+/* TODO                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT; */
                 break;
             default:
                 /* empty */
         }
-        if (TextUtils.isEmpty(sortOrder)) sortOrder = "_id ASC";
 
         Cursor c = qBuilder.query(mOpenHelper.getReadableDatabase(),
-/*TODO: check why this doesn't work
                 projection,
                 selection,
-                selectionArgs,*/
-                projection, selection, selectionArgs,
+                selectionArgs,
                 null,
                 null,
                 sortOrder);

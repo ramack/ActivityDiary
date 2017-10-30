@@ -21,16 +21,19 @@ package de.rampro.activitydiary.ui;
 
 import android.app.ListFragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.RelativeLayout;
+import android.widget.ResourceCursorAdapter;
+import android.widget.TextView;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
@@ -40,7 +43,44 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
 
     private static final String[] PROJECTION = ActivityDiaryContract.DiaryActivity.PROJECTION_ALL; // TODO use new String[] {ActivityDiaryContract.DiaryActivity.NAME};
 
-    private SimpleCursorAdapter mActivitiyListAdapter;
+    private class DiaryActivityAdapter extends ResourceCursorAdapter {
+
+        public DiaryActivityAdapter() {
+            super(ActivityManagerFragment.this.getActivity(), R.layout.activity_row, null, 0);
+        }
+
+        @Override
+        public void bindView(View view, Context context, Cursor cursor){
+//        public View getView(int position, View view, ViewGroup parent) {
+            String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+            int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
+
+            TextView actName = (TextView) view.findViewById(R.id.activity_name);
+            actName.setText(name);
+            RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.background);
+            bgrd.setBackgroundColor(color);
+            if(ColorUtils.calculateLuminance(color) > 0.5){
+                actName.setTextColor(context.getResources().getColor(R.color.activityTextColorDark));
+            }else{
+                actName.setTextColor(context.getResources().getColor(R.color.activityTextColorLight));
+            }
+
+/* TODO: chose font color
+        double a = 1 - ( 0.299 * color.R + 0.587 * color.G + 0.114 * color.B)/255;
+        if (a < 0.5)
+            black font
+        else
+            white font
+        */
+//            if()
+//            actName.setTextColor();
+
+            ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
+    /* TODO fill image here */
+        }
+    }
+
+    private DiaryActivityAdapter mActivitiyListAdapter;
 
 /* TODO: set title based on fragment */
     @Override
@@ -53,17 +93,8 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
         /* TODO: replace text1 and simple_list_item_1 by custom... */
         // Create an empty adapter we will use to display the loaded data.
         // We pass null for the cursor, then update it in onLoadFinished()
-/* TODO: chose font color
-        double a = 1 - ( 0.299 * color.R + 0.587 * color.G + 0.114 * color.B)/255;
-        if (a < 0.5)
-            black font
-        else
-            white font
-        */
 
-        mActivitiyListAdapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_list_item_1, null,
-                fromColumns, toViews, 0);
+        mActivitiyListAdapter = new DiaryActivityAdapter();
         setListAdapter(mActivitiyListAdapter);
 
         // Prepare the loader.  Either re-connect with an existing one,
@@ -100,24 +131,4 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
         Log.e(TAG, "clicked...");
 
     }
-
-    public View onCreateView2(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.activity_manager_fragment, container, false);
-
-        // For the cursor adapter, specify which columns go into which views
-        String[] fromColumns = {ActivityDiaryContract.DiaryActivity.NAME};
-        int[] toViews = {android.R.id.text1}; // The TextView in simple_list_item_1
-
-        /* TODO: reoplace text1 and simple_list_item_1 by custom... */
-        // Create an empty adapter we will use to display the loaded data.
-        // We pass null for the cursor, then update it in onLoadFinished()
-        mActivitiyListAdapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_list_item_1, null,
-                fromColumns, toViews, 0);
-        setListAdapter(mActivitiyListAdapter);
-
-        return fragmentView;
-    }
-
 }

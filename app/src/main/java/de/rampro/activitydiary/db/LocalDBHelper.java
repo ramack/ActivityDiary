@@ -22,6 +22,7 @@ package de.rampro.activitydiary.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
 
 
 public class LocalDBHelper extends SQLiteOpenHelper {
@@ -44,7 +45,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 "(" +
                 " _id INTEGER PRIMARY KEY ASC, " +
                 " name TEXT NOT NULL UNIQUE," +
-                " color TEXT," +
+                " color INTEGER," +
                 " parent INTEGER " +
                 ");");
 
@@ -80,7 +81,8 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ACTIVITY_DB_TABLE +
                 "(name, color)" +
                 " VALUES " +
-                " ('Gardening', '#007410'), ('Sleeping', '#ef6c00');");
+                " ('Gardening', '" + Color.parseColor("#007410") + "')," +
+                " ('Sleeping', '" + Color.parseColor("#fffcf0") + "');");
     }
 
     @Override
