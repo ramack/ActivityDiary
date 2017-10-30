@@ -18,6 +18,8 @@
  */
 package de.rampro.activitydiary.ui;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mNavigationView;
+
+    FragmentManager fragmentManager;
 
 @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +66,37 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.content_fragment, new ActivityManagerFragment());
+        fragmentTransaction.commit();
+
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 boolean highlight = true;
+                FragmentTransaction fragmentTransaction;
                 switch (menuItem.getItemId()) {
                     /* TODO: implement all those ... */
                     case R.id.nav_main:
                         break;
                     case R.id.nav_add_activity:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left_animation, R.anim.slide_out_right_animation);
+                        fragmentTransaction.replace(R.id.content_fragment, new ActivityEditorFragment()); /* TODO: do not create them anew always */
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                         highlight = false;
-                    case R.id.nav_diary:
+                        break;
                     case R.id.nav_activity_manager:
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left_animation, R.anim.slide_out_right_animation);
+                        fragmentTransaction.replace(R.id.content_fragment, new ActivityManagerFragment()); /* TODO: do not create them anew always */
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.nav_diary:
                     case R.id.nav_settings:
                     case R.id.nav_about:
                         Toast.makeText(MainActivity.this, menuItem.getTitle() + " is not yet implemented :-(", Toast.LENGTH_LONG).show();

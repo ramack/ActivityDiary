@@ -23,13 +23,19 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <fragment android:name="de.rampro.activitydiary.ui.ActivityManagerFragment"
+        <FrameLayout
             android:id="@+id/content_fragment"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize" />
-
+<!--        <fragment android:name="de.rampro.activitydiary.ui.ActivityManagerFragment"
+            android:id="@+id/content_fragment"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize" />
+-->
     </RelativeLayout>
     <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView

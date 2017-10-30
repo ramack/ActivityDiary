@@ -12,8 +12,11 @@
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
+    <string name="desc_activity_name">Activity Title</string>
+
     <!-- -->
     <string name="activity_image_description">Picture for Activity</string>
+
 
 
 </resources>
