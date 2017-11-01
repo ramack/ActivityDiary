@@ -94,6 +94,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case activities_ID:
             case conditions_ID:
             case diary_ID:
+                if(selection != null) {
+                    selection = selection + " AND ";
+                }else{
+                    selection = "";
+                }
                 selection = selection + "_id = " + uri.getLastPathSegment(); /* TODO: check isn't this prone to SQL injection? */
             default:
                 /* empty */
@@ -238,7 +243,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      * @return the number of rows affected.
      */
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int update(@NonNull Uri uri, @NonNull ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         /* TODO: implement update of activities and all others  */
 /*notify        getContext().
                 getContentResolver().

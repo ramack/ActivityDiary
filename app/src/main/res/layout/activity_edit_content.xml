@@ -24,26 +24,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/edit_activity_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
     <TextView
-        android:id="@+id/edit_activity_name"
+        android:id="@+id/select_activity_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/desc_activity_name" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_activity_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/desc_activity_hint"
         android:inputType="textCapWords|textAutoCorrect"
-        android:maxLines="1"
-        android:text="Activity" />
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/edit_activity_color_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desc_activity_color" />
+
+    <ImageView
+        android:id="@+id/edit_activity_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="50dp"
+        android:minWidth="50dp" />
     <!-- TODO: add color picker e. g. from https://github.com/jaredrummler/ColorPicker to select the activity color -->
     <!-- TODO: edit conditions here -->
 

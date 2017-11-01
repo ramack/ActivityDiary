@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.EditActivity"
+            android:label="@string/activity_title_edit_new" />
+        <activity android:name=".ui.ManageActivity"
+            android:label="@string/activity_title_manage_activities" />
         <provider
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="de.rampro.activitydiary"

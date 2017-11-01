@@ -19,34 +19,48 @@
 
 package de.rampro.activitydiary.ui;
 
-import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Context;
-import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.CursorLoader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
+
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 
-public class ActivityManagerFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor>{
-    private static final String TAG = ActivityManagerFragment.class.getName();
+/*
+ * MainActivity to show most of the UI, based on switching the fragements
+ *
+ * */
+public class ManageActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    private static final String TAG = ManageActivity.class.getName();
+    private static final String[] PROJECTION = new String[] {
+            ActivityDiaryContract.DiaryActivity.NAME,
+            ActivityDiaryContract.DiaryActivity.COLOR
+    };
 
-    private static final String[] PROJECTION = ActivityDiaryContract.DiaryActivity.PROJECTION_ALL; // TODO use new String[] {ActivityDiaryContract.DiaryActivity.NAME};
-
+    private ListAdapter mAdapter;
+    private ListView mList;
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
 
         public DiaryActivityAdapter() {
-            super(ActivityManagerFragment.this.getActivity(), R.layout.activity_row, null, 0);
+            super(ManageActivity.this, R.layout.activity_row, null, 0);
         }
 
         @Override
@@ -71,24 +85,37 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
 
     private DiaryActivityAdapter mActivitiyListAdapter;
 
-/* TODO: set title based on fragment */
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        View contentView = inflater.inflate(R.layout.activity_manage_content, null, false);
+
+        setContent(contentView);
+        mList = (ListView)findViewById(R.id.manage_activity_list);
         mActivitiyListAdapter = new DiaryActivityAdapter();
-        setListAdapter(mActivitiyListAdapter);
+        mList.setAdapter(mActivitiyListAdapter);
+
+        mList.setOnItemClickListener(mOnClickListener);
 
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
         getLoaderManager().initLoader(0, null, this);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle your other action bar items...
+
+        return super.onOptionsItemSelected(item);
     }
 
     // Called when a new Loader needs to be created
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
-        return new CursorLoader(getActivity(), ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+        return new CursorLoader(this, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 PROJECTION, null, null, null);
     }
 
@@ -107,13 +134,19 @@ public class ActivityManagerFragment extends ListFragment implements LoaderManag
         mActivitiyListAdapter.swapCursor(null);
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        // TODO implement some logic
-        Log.e(TAG, "clicked...");
-
-    }
+    private AdapterView.OnItemClickListener mOnClickListener = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+        {
+            Cursor c = (Cursor)parent.getItemAtPosition(position);
+            Uri uri = Uri.withAppendedPath(ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                    c.getString(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
+            Intent i = new Intent(ManageActivity.this, EditActivity.class);
+            i.setData(uri);
+            startActivity(i);
+        }
+    };
 
     /* TODO: implement swipe for parent / child navigation */
     /* TODO: add number of child activities in view */
+
 }

@@ -13,10 +13,16 @@
     <string name="drawer_close">Close Navigation</string>
 
     <string name="desc_activity_name">Activity Title</string>
+    <string name="desc_activity_color">Activity Color</string>
+    <string name="desc_activity_hint">Activity</string>
+    <string name="desc_activity_select">What are you doing?</string>
 
     <!-- -->
     <string name="activity_image_description">Picture for Activity</string>
 
-
+    <!-- titles -->
+    <string name="activity_title_edit">Edit </string>
+    <string name="activity_title_edit_new">New Activity</string>
+    <string name="activity_title_manage_activities">Manage Activities</string>
 
 </resources>
