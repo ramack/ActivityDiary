@@ -19,18 +19,24 @@
 package de.rampro.activitydiary.ui;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
@@ -42,6 +48,9 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 public class EditActivity extends BaseActivity {
     @Nullable
     Uri currentObject; /* null is for creating a new object */
+    EditText activityName;
+    ImageView activityColorImg;
+    int activityColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,9 @@ public class EditActivity extends BaseActivity {
         View contentView = inflater.inflate(R.layout.activity_edit_content, null, false);
 
         setContent(contentView);
+        activityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
+        activityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
+
         if(currentObject != null) {
             ContentResolver resolver = getContentResolver();
             String[] projection = new String[]{
@@ -68,22 +80,56 @@ public class EditActivity extends BaseActivity {
                             null);
             if (cursor.moveToFirst() && cursor.getCount() == 1) {
                 /* now update the list */
-                EditText e = (EditText) contentView.findViewById(R.id.edit_activity_name);
-                e.setText(cursor.getString(1));
+                activityName.setText(cursor.getString(1));
                 ActionBar ab = getSupportActionBar();
                 ab.setTitle(cursor.getString(1));
-                ImageView col = (ImageView) contentView.findViewById(R.id.edit_activity_color);
-                col.setBackgroundColor(cursor.getInt(2));
+                activityColorImg.setBackgroundColor(cursor.getInt(2));
+                activityColor = cursor.getInt(2);
             } else {
                 currentObject = null;
             }
+        }else{
+            activityColor = getResources().getColor(R.color.colorPrimary);
         }
-
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+        mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle your other action bar items...
+        ContentResolver resolver = getContentResolver();
 
+        switch(item.getItemId()){
+            case R.id.action_edit_delete:
+                Toast.makeText(this, item.getTitle() + " is not yet implemented :-(", Toast.LENGTH_LONG).show();
+                if(currentObject != null){
+                    resolver.delete(currentObject, null, null);
+                }
+                finish();
+                break;
+            case R.id.action_edit_done:
+                ContentValues values = new ContentValues();
+                values.put(ActivityDiaryContract.DiaryActivity.NAME, activityName.getText().toString());
+                values.put(ActivityDiaryContract.DiaryActivity.COLOR, activityColor);
+
+                if(currentObject == null) {
+                    resolver.insert(ActivityDiaryContract.DiaryActivity.CONTENT_URI, values);
+                }else {
+                    long noUpdated = resolver.update(currentObject, values, null, null);
+                }
+                finish();
+                break;
+            case android.R.id.home:
+                finish();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -21,12 +21,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group
         android:id="@+id/nav_group_features"
-        android:checkableBehavior="none">
-        setNavigationItemSelectedListener
+        android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_main"
             android:icon="@mipmap/ic_launcher"
-            android:title="@string/nav_main" />
+            android:title="@string/nav_main"
+            android:checked="true"/>
         <item
             android:id="@+id/nav_diary"
             android:icon="@mipmap/ic_launcher"

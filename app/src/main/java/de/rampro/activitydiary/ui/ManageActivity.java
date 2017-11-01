@@ -30,6 +30,8 @@ import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -51,6 +53,7 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 public class ManageActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = ManageActivity.class.getName();
     private static final String[] PROJECTION = new String[] {
+            ActivityDiaryContract.DiaryActivity._ID,
             ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.COLOR
     };
@@ -102,12 +105,29 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
         getLoaderManager().initLoader(0, null, this);
-
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+        mNavigationView.getMenu().findItem(R.id.nav_activity_manager).setChecked(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.manage_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle your other action bar items...
-
+        switch(item.getItemId()) {
+            case R.id.action_add_activity:
+                Intent intentaddact = new Intent(ManageActivity.this, EditActivity.class);
+                startActivity(intentaddact);
+                break;
+            case android.R.id.home:
+                finish();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -25,4 +25,7 @@
     <string name="activity_title_edit_new">New Activity</string>
     <string name="activity_title_manage_activities">Manage Activities</string>
 
+    <!-- actions -->
+    <string name="action_delete">Delete Activity</string>
+    <string name="action_store">Save</string>
 </resources>

@@ -70,7 +70,6 @@ public class BaseActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 boolean highlight = true;
-                FragmentTransaction fragmentTransaction;
                 switch (menuItem.getItemId()) {
                     case R.id.nav_main:
                         Intent intentabout = new Intent(BaseActivity.this, MainActivity.class);
@@ -78,10 +77,7 @@ public class BaseActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_add_activity:
                         Intent intentaddact = new Intent(BaseActivity.this, EditActivity.class);
-                        Bundle b = new Bundle();
-                        intentaddact.setData(null);
                         startActivity(intentaddact);
-                        highlight = false;
                         break;
                     case R.id.nav_activity_manager:
                         Intent intentmanage = new Intent(BaseActivity.this, ManageActivity.class);

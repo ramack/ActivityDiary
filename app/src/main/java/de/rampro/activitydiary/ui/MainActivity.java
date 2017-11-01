@@ -42,6 +42,8 @@ public class MainActivity extends BaseActivity {
 
         setContent(contentView);
 
+    /* TODO: add a search box in the toolbar
+    * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
 
     @Override
