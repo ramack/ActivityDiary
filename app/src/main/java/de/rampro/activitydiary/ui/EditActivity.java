@@ -23,11 +23,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,9 +46,9 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 public class EditActivity extends BaseActivity {
     @Nullable
     Uri currentObject; /* null is for creating a new object */
-    EditText activityName;
-    ImageView activityColorImg;
-    int activityColor;
+    EditText mActivityName;
+    ImageView mActivityColorImg;
+    int mActivityColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +60,8 @@ public class EditActivity extends BaseActivity {
         View contentView = inflater.inflate(R.layout.activity_edit_content, null, false);
 
         setContent(contentView);
-        activityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
-        activityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
+        mActivityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
+        mActivityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
 
         if(currentObject != null) {
             ContentResolver resolver = getContentResolver();
@@ -80,19 +78,25 @@ public class EditActivity extends BaseActivity {
                             null);
             if (cursor.moveToFirst() && cursor.getCount() == 1) {
                 /* now update the list */
-                activityName.setText(cursor.getString(1));
+                mActivityName.setText(cursor.getString(1));
                 ActionBar ab = getSupportActionBar();
                 ab.setTitle(cursor.getString(1));
-                activityColorImg.setBackgroundColor(cursor.getInt(2));
-                activityColor = cursor.getInt(2);
+                mActivityColorImg.setBackgroundColor(cursor.getInt(2));
+                mActivityColor = cursor.getInt(2);
             } else {
                 currentObject = null;
             }
         }else{
-            activityColor = getResources().getColor(R.color.colorPrimary);
+            mActivityColor = getResources().getColor(R.color.colorPrimary);
         }
         mDrawerToggle.setDrawerIndicatorEnabled(false);
         mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        mActivityName.requestFocus();
     }
 
     @Override
@@ -116,8 +120,8 @@ public class EditActivity extends BaseActivity {
                 break;
             case R.id.action_edit_done:
                 ContentValues values = new ContentValues();
-                values.put(ActivityDiaryContract.DiaryActivity.NAME, activityName.getText().toString());
-                values.put(ActivityDiaryContract.DiaryActivity.COLOR, activityColor);
+                values.put(ActivityDiaryContract.DiaryActivity.NAME, mActivityName.getText().toString());
+                values.put(ActivityDiaryContract.DiaryActivity.COLOR, mActivityColor);
 
                 if(currentObject == null) {
                     resolver.insert(ActivityDiaryContract.DiaryActivity.CONTENT_URI, values);

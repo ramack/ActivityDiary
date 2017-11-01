@@ -99,7 +99,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 }else{
                     selection = "";
                 }
-                selection = selection + "_id = " + uri.getLastPathSegment(); /* TODO: check isn't this prone to SQL injection? */
+                selection = selection + "_id=" + uri.getLastPathSegment();
             default:
                 /* empty */
         }
@@ -216,12 +216,48 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      */
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        /* TODO: implement deletion of activities and all others  */
-/*notify        getContext().
-                getContentResolver().
-                notifyChange(resultUri, null);
-*/
-        return 0;
+        String table;
+        ContentValues values = new ContentValues();
+        switch(sUriMatcher.match(uri)) {
+            case activities_ID:
+                table = LocalDBHelper.ACTIVITY_DB_TABLE;
+                break;
+            case conditions_ID:
+                table = LocalDBHelper.CONDITION_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
+//                values.put(ActivityDiaryContract.DiaryActivity.ACT_ID, "NULL");
+//                break;
+            case diary_ID:
+                table = LocalDBHelper.DIARY_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
+//                break;
+            default:
+                throw new IllegalArgumentException(
+                        "Unsupported URI for deletion: " + uri);
+        }
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        if(selection != null) {
+            selection = selection + " AND ";
+        }else{
+            selection = "";
+        }
+        selection = selection + "_id=" + uri.getLastPathSegment();
+        values.put(ActivityDiaryContract.DiaryActivity._DELETED, "1");
+
+        int upds = db.update(table,
+                values,
+                selection,
+                selectionArgs);
+        if(upds > 0) {
+            getContext().
+                    getContentResolver().
+                    notifyChange(uri, null);
+
+        }else {
+            throw new SQLException(
+                    "Problem while deleting uri: " + uri);
+        }
+        return upds;
     }
 
     /**
@@ -244,11 +280,45 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      */
     @Override
     public int update(@NonNull Uri uri, @NonNull ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        /* TODO: implement update of activities and all others  */
-/*notify        getContext().
-                getContentResolver().
-                notifyChange(resultUri, null);
-*/
-        return 0;
+        String table;
+        switch(sUriMatcher.match(uri)) {
+            case activities_ID:
+                table = LocalDBHelper.ACTIVITY_DB_TABLE;
+                break;
+            case conditions_ID:
+                table = LocalDBHelper.CONDITION_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
+//                values.put(ActivityDiaryContract.DiaryActivity.ACT_ID, "NULL");
+//                break;
+            case diary_ID:
+                table = LocalDBHelper.DIARY_DB_TABLE;
+// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
+//                break;
+            default:
+                throw new IllegalArgumentException(
+                        "Unsupported URI for insertion: " + uri);
+        }
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        if(selection != null) {
+            selection = selection + " AND ";
+        }else{
+            selection = "";
+        }
+        selection = selection + "_id=" + uri.getLastPathSegment();
+
+        int upds = db.update(table,
+                values,
+                selection,
+                selectionArgs);
+        if(upds > 0) {
+            getContext().
+                    getContentResolver().
+                    notifyChange(uri, null);
+
+        }else {
+            throw new SQLException(
+                    "Problem while updating uri: " + uri);
+        }
+        return upds;
     }
 }

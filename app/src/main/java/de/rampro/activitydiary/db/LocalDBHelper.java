@@ -44,6 +44,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ACTIVITY_DB_TABLE +
                 "(" +
                 " _id INTEGER PRIMARY KEY ASC, " +
+                " _deleted INTEGER DEFAULT 0," +
                 " name TEXT NOT NULL UNIQUE," +
                 " color INTEGER," +
                 " parent INTEGER " +
@@ -52,6 +53,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_ALIAS_DB_TABLE +
                 "(" +
+                " _deleted INTEGER DEFAULT 0," +
                 " act_id INTEGER NOT NULL, " +
                 " name TEXT NOT NULL UNIQUE," +
                 " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
@@ -61,6 +63,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 CONDITION_DB_TABLE +
                 "(" +
                 " _id INTEGER PRIMARY KEY ASC, " +
+                " _deleted INTEGER DEFAULT 0," +
                 " name TEXT NOT NULL UNIQUE, " +
                 " type TEXT, " +
                 " parameter TEXT " +
@@ -69,6 +72,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " +
                 CONDITIONS_DB_TABLE +
                 "(" +
+                " _deleted INTEGER DEFAULT 0," +
                 " act_id INTEGER NOT NULL, " +
                 " cond_id INTEGER NOT NULL, " +
                 " FOREIGN KEY(act_id) REFERENCES activity(_id), " +

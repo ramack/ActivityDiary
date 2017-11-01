@@ -28,7 +28,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,7 +35,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ResourceCursorAdapter;
@@ -57,8 +55,8 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
             ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.COLOR
     };
+    private static final String SELECTION = ActivityDiaryContract.DiaryActivity._DELETED + "=0";
 
-    private ListAdapter mAdapter;
     private ListView mList;
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
 
@@ -136,7 +134,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
         return new CursorLoader(this, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                PROJECTION, null, null, null);
+                PROJECTION, SELECTION, null, null);
     }
 
     // Called when a previously created loader has finished loading

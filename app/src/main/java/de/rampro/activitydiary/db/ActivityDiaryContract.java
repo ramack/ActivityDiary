@@ -77,6 +77,11 @@ public class ActivityDiaryContract {
          */
         public static final String _ID = "_id";
         /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
+        /**
          * The name for the Activity
          * <P>Type: TEXT</P>
          */
@@ -91,6 +96,7 @@ public class ActivityDiaryContract {
          * <P>Type: INT</P>
          */
         public static final String PARENT = "parent";
+
         /* TODO: add iamge, required and activation conditions */
     }
 
