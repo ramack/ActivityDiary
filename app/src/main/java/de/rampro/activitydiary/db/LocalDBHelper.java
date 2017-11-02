@@ -80,13 +80,19 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
         /* TODO: add table diary DIARY_DB_TABLE */
 
-        /* TODO: remove dummy entry */
         db.execSQL("INSERT INTO " +
                 ACTIVITY_DB_TABLE +
                 "(name, color)" +
                 " VALUES " +
-                " ('Gardening', '" + Color.parseColor("#007410") + "')," +
-                " ('Sleeping', '" + Color.parseColor("#fffcf0") + "');");
+                " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
+                " ('Woodworking', '" + Color.parseColor("#5D4037") + "')," +
+                " ('Officework', '" + Color.parseColor("#00796B") + "')," +
+                " ('Swimming', '" + Color.parseColor("#0288D1") + "')," +
+                " ('Relaxing', '" + Color.parseColor("#FFA000") + "')," +
+                " ('Cooking', '" + Color.parseColor("#AFB42B") + "')," +
+                " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "')," +
+                " ('Cinema', '" + Color.parseColor("#C2185B") + "')," +
+                " ('Sleeping', '" + Color.parseColor("#303F9F") + "');");
     }
 
     @Override

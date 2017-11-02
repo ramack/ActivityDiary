@@ -72,8 +72,12 @@ public class BaseActivity extends AppCompatActivity {
                 boolean highlight = true;
                 switch (menuItem.getItemId()) {
                     case R.id.nav_main:
-                        Intent intentabout = new Intent(BaseActivity.this, MainActivity.class);
-                        startActivity(intentabout);
+                        if(!menuItem.isChecked()) {
+                            // start activity only if it is not currently checked
+                            Intent intentmain = new Intent(BaseActivity.this, MainActivity.class);
+                            intentmain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intentmain);
+                        }
                         break;
                     case R.id.nav_add_activity:
                         Intent intentaddact = new Intent(BaseActivity.this, EditActivity.class);

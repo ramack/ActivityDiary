@@ -37,10 +37,7 @@
         android:ems="10"
         android:hint="@string/desc_activity_hint"
         android:inputType="textCapWords|textAutoCorrect"
-        android:maxLines="1"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:focusedByDefault="true"/>
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/edit_activity_color_label"

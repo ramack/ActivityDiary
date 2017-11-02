@@ -71,7 +71,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);
             actName.setText(name);
-            RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.background);
+            RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.activity_background);
             bgrd.setBackgroundColor(color);
             if(ColorUtils.calculateLuminance(color) > 0.5){
                 actName.setTextColor(context.getResources().getColor(R.color.activityTextColorDark));
