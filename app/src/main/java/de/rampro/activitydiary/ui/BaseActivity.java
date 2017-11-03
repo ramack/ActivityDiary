@@ -18,8 +18,6 @@
  */
 package de.rampro.activitydiary.ui;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;

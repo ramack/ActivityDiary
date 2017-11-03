@@ -20,7 +20,6 @@ package de.rampro.activitydiary.ui;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -28,25 +27,19 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.rampro.activitydiary.R;
-import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.ActivityHelper;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
  *
  * */
-public class MainActivity extends BaseActivity implements View.OnClickListener, SelectRecyclerViewAdapter.SelectListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener, SelectRecyclerViewAdapter.SelectListener, ActivityHelper.DataChangedListener {
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
 
-    private DiaryActivity currentActivity = null;
-    List<DiaryActivity> gaggeredList;
     SelectRecyclerViewAdapter rcAdapter;
 
     @Override
@@ -78,24 +71,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         selector.setOnClickListener(this);
 
         mNavigationView.getMenu().findItem(R.id.nav_main).setChecked(true);
-
-        /* TODO: populate from ContentProvider */
-        gaggeredList = new ArrayList<DiaryActivity>();
-        gaggeredList.add(new DiaryActivity(1,"Gardening", Color.parseColor("#388E3C")));
-        gaggeredList.add(new DiaryActivity(2,"Woodworking", Color.parseColor("#5D4037")));
-        gaggeredList.add(new DiaryActivity(3,"Officework", Color.parseColor("#00796B")));
-        gaggeredList.add(new DiaryActivity(4,"Swimming", Color.parseColor("#0288D1")));
-        gaggeredList.add(new DiaryActivity(5,"Relaxing", Color.parseColor("#FFA000")));
-        gaggeredList.add(new DiaryActivity(6,"Cooking", Color.parseColor("#AFB42B")));
-        gaggeredList.add(new DiaryActivity(7,"Cleaning", Color.parseColor("#CFD8DC")));
-        gaggeredList.add(new DiaryActivity(8,"Cinema", Color.parseColor("#C2185B")));
-        gaggeredList.add(new DiaryActivity(9,"Sleeping", Color.parseColor("#303F9F")));
-
-        rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, gaggeredList);
+        rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
         recyclerView.setAdapter(rcAdapter);
 
     /* TODO: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
+    }
+    @Override
+    public void onResume() {
+        ActivityHelper.helper.registerDataChangeListener(this);
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        ActivityHelper.helper.unregisterDataChangeListener(this);
+
+        super.onPause();
     }
 
     @Override
@@ -112,8 +103,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onItemClick(int adapterPosition) {
-        currentActivity = gaggeredList.get(adapterPosition);
-        ((TextView)findViewById(R.id.activity_name)).setText(currentActivity.getName());
-        findViewById(R.id.activity_background).setBackgroundColor(currentActivity.getColor());
+        ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.activities.get(adapterPosition));
+/* TODO: move to a listener which listens on the change of the current activity in ActivityHelper */
+        ((TextView)findViewById(R.id.activity_name)).setText(ActivityHelper.helper.getCurrentActivity().getName());
+        findViewById(R.id.activity_background).setBackgroundColor(ActivityHelper.helper.getCurrentActivity().getColor());
+    }
+
+    /**
+     * Called when the data has changed.
+     */
+    @Override
+    public void onActivityDataChanged() {
+        /* TODO: this could be done more fine grained here... */
+        rcAdapter.notifyDataSetChanged();
     }
 }

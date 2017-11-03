@@ -26,6 +26,7 @@ import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
 import android.view.LayoutInflater;
@@ -68,16 +69,26 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         public void bindView(View view, Context context, Cursor cursor){
             String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
             int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
+            int textColor = 0;
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);
             actName.setText(name);
             RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.activity_background);
             bgrd.setBackgroundColor(color);
             if(ColorUtils.calculateLuminance(color) > 0.5){
-                actName.setTextColor(context.getResources().getColor(R.color.activityTextColorDark));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    textColor = context.getResources().getColor(R.color.activityTextColorDark, null);
+                }else{
+                    textColor = context.getResources().getColor(R.color.activityTextColorDark);
+                }
             }else{
-                actName.setTextColor(context.getResources().getColor(R.color.activityTextColorLight));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    textColor = context.getResources().getColor(R.color.activityTextColorLight, null);
+                }else{
+                    textColor = context.getResources().getColor(R.color.activityTextColorLight);
+                }
             }
+            actName.setTextColor(textColor);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
     /* TODO fill image here */

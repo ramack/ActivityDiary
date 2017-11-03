@@ -17,26 +17,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.model;
+package de.rampro.activitydiary;
 
-public class DiaryActivity {
-    private String mName;
-    private int mId;
-    private int mColor;
+import android.app.Application;
+import android.content.Context;
 
-    public DiaryActivity(int id, String name, int color){
-        mId = id;
-        mName = name;
-        mColor = color;
+public class ActivityDiaryApplication extends Application {
+
+    private static Context context;
+
+    public void onCreate() {
+        super.onCreate();
+        ActivityDiaryApplication.context = getApplicationContext();
     }
 
-    public String getName(){
-        return mName;
+    public static Context getAppContext() {
+        return ActivityDiaryApplication.context;
     }
-
-    public int getColor(){
-        return mColor;
-    }
-
-    public int getId() { return mId;}
 }

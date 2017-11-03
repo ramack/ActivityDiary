@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -38,6 +39,8 @@ import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.ActivityHelper;
+import de.rampro.activitydiary.model.DiaryActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -87,7 +90,11 @@ public class EditActivity extends BaseActivity {
                 currentObject = null;
             }
         }else{
-            mActivityColor = getResources().getColor(R.color.colorPrimary);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mActivityColor = getResources().getColor(R.color.colorPrimary,null);
+            }else{
+                mActivityColor = getResources().getColor(R.color.colorPrimary);
+            }
         }
         mDrawerToggle.setDrawerIndicatorEnabled(false);
         mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
@@ -125,7 +132,9 @@ public class EditActivity extends BaseActivity {
 
                 if(currentObject == null) {
                     resolver.insert(ActivityDiaryContract.DiaryActivity.CONTENT_URI, values);
+                    ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor));
                 }else {
+                    /* TODO: update DiaryActivity here */
                     long noUpdated = resolver.update(currentObject, values, null, null);
                 }
                 finish();
