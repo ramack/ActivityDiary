@@ -119,7 +119,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* intended fall through */
             case diary:
                 qBuilder.setTables(LocalDBHelper.DIARY_DB_TABLE);
-/* TODO                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT; */
+                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
                 break;
             default:
                 /* empty */
@@ -168,8 +168,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 //                break;
             case diary:
                 table = LocalDBHelper.DIARY_DB_TABLE;
-// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
-//                break;
+                resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
+                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for insertion: " + uri);
@@ -223,13 +223,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case conditions_ID:
                 table = LocalDBHelper.CONDITION_DB_TABLE;
-// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
-//                values.put(ActivityDiaryContract.DiaryActivity.ACT_ID, "NULL");
-//                break;
+                break;
             case diary_ID:
                 table = LocalDBHelper.DIARY_DB_TABLE;
-// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
-//                break;
+                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for deletion: " + uri);
@@ -286,13 +283,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case conditions_ID:
                 table = LocalDBHelper.CONDITION_DB_TABLE;
-// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
-//                values.put(ActivityDiaryContract.DiaryActivity.ACT_ID, "NULL");
-//                break;
+                break;
             case diary_ID:
                 table = LocalDBHelper.DIARY_DB_TABLE;
-// TODO               resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
-//                break;
+                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for insertion: " + uri);

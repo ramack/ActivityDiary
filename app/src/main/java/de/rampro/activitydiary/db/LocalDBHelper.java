@@ -78,7 +78,17 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY(act_id) REFERENCES activity(_id), " +
                 " FOREIGN KEY(cond_id) REFERENCES condition(_id) " +
                 ");");
-        /* TODO: add table diary DIARY_DB_TABLE */
+
+        db.execSQL("CREATE TABLE " +
+                DIARY_DB_TABLE +
+                "(" +
+                ActivityDiaryContract.Diary._ID + " INTEGER PRIMARY KEY ASC, " +
+                ActivityDiaryContract.Diary._DELETED + " INTEGER DEFAULT 0," +
+                ActivityDiaryContract.Diary.ACT_ID + " INTEGER NOT NULL, " +
+                ActivityDiaryContract.Diary.START + " INTEGER NOT NULL, " +
+                ActivityDiaryContract.Diary.END + " INTEGER, " +
+                " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
+                ");");
 
         db.execSQL("INSERT INTO " +
                 ACTIVITY_DB_TABLE +

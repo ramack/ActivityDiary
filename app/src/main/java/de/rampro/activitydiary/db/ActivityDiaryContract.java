@@ -26,9 +26,7 @@ import android.net.Uri;
 public class ActivityDiaryContract {
 
     /* no instance of this class is allowed */
-    private ActivityDiaryContract(){
-
-    }
+    private ActivityDiaryContract(){}
 
     public static final String AUTHORITY = "de.rampro.activitydiary";
     public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
@@ -100,10 +98,77 @@ public class ActivityDiaryContract {
         /* TODO: add iamge, required and activation conditions */
     }
 
+    /* DiaryActivities are the main action that can be logged in the Diary */
+    public final static class Diary implements DiaryColumns{
+        /**
+         * This utility class cannot be instantiated
+         */
+        private Diary() {}
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diary");
+
+        /**
+         * The mime type of a directory of this entry.
+         */
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary";
+        /**
+         * The mime type of a single entry.
+         */
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diaryentry";
+        /**
+         * A projection of all columns
+         * in the items table.
+         */
+        public static final String[] PROJECTION_ALL =
+                {_ID, ACT_ID, START, END};
+
+        /**
+         * The default sort order for the diary is time...
+         */
+        public static final String SORT_ORDER_DEFAULT =
+                START + ", " + END;
+    }
+
+    /* The columns in the Diary */
+    protected interface DiaryColumns {
+        /**
+         * The id (primary key) for the Diary (entry)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _ID = "_id";
+        /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
+        /**
+         * The ID for the related Activity
+         * <P>Type: TEXT</P>
+         */
+        public static final String ACT_ID = "act_id";
+        /**
+         * The start time of the diary entry in milli seconds since epoch.
+         * <P>Type: INT</P>
+         */
+        public static final String START = "start";
+        /**
+         * The end time of the diary entry in milli seconds since epoch.
+         * <P>Type: INT</P>
+         */
+        public static final String END = "end";
+
+        /* TODO: add note entry */
+        /* TODO: add location */
+    }
+
     /**
      * Combines all columns returned by table queries.
      */
-    protected interface DataColumnsWithJoins extends DiaryActivityColumns {
+    protected interface DataColumnsWithJoins extends DiaryActivityColumns, DiaryColumns {
     }
 
 

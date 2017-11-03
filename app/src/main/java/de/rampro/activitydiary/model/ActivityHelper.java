@@ -23,6 +23,7 @@ import android.content.AsyncQueryHandler;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -98,9 +99,14 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public void setCurrentActivity(DiaryActivity activity){
+        /* update the current diary entry to "finish" it */
+
+        /* create a new diary entry */
+
         /* TODO: create listener class and notify the listeners here... */
         currentActivity = activity;
         /* TODO insert into Diary here... */
+
     }
 
     public void insertActivity(DiaryActivity act){
