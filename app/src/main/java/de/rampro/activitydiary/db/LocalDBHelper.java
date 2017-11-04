@@ -86,7 +86,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ActivityDiaryContract.Diary._DELETED + " INTEGER DEFAULT 0," +
                 ActivityDiaryContract.Diary.ACT_ID + " INTEGER NOT NULL, " +
                 ActivityDiaryContract.Diary.START + " INTEGER NOT NULL, " +
-                ActivityDiaryContract.Diary.END + " INTEGER, " +
+                ActivityDiaryContract.Diary.END + " INTEGER DEFAULT NULL, " +
                 " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
                 ");");
 

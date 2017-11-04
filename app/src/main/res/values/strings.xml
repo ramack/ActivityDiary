@@ -23,6 +23,7 @@
     <string name="activity_title_edit">Edit </string>
     <string name="activity_title_edit_new">New Activity</string>
     <string name="activity_title_manage_activities">Manage Activities</string>
+    <string name="activity_title_history">Diary</string>
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
 
     <!-- actions -->

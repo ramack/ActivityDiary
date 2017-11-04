@@ -86,6 +86,9 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(intentmanage);
                         break;
                     case R.id.nav_diary:
+                        Intent intentdiary = new Intent(BaseActivity.this, HistoryActivity.class);
+                        startActivity(intentdiary);
+                        break;
                     case R.id.nav_settings:
                     case R.id.nav_about:
                     /* TODO: implement all those ... */

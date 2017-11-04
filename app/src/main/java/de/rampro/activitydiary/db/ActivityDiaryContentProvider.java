@@ -277,27 +277,34 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @NonNull ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         String table;
+        boolean isID = false;
         switch(sUriMatcher.match(uri)) {
             case activities_ID:
+                isID = true;
                 table = LocalDBHelper.ACTIVITY_DB_TABLE;
                 break;
             case conditions_ID:
+                isID = true;
                 table = LocalDBHelper.CONDITION_DB_TABLE;
                 break;
             case diary_ID:
+                isID = true;
+            case diary:
                 table = LocalDBHelper.DIARY_DB_TABLE;
                 break;
             default:
                 throw new IllegalArgumentException(
-                        "Unsupported URI for insertion: " + uri);
+                        "Unsupported URI for update: " + uri);
         }
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        if(selection != null) {
-            selection = selection + " AND ";
-        }else{
-            selection = "";
+        if(isID) {
+            if (selection != null) {
+                selection = selection + " AND ";
+            } else {
+                selection = "";
+            }
+            selection = selection + "_id=" + uri.getLastPathSegment();
         }
-        selection = selection + "_id=" + uri.getLastPathSegment();
 
         int upds = db.update(table,
                 values,
@@ -308,7 +315,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     getContentResolver().
                     notifyChange(uri, null);
 
-        }else {
+        }else if(isID) {
             throw new SQLException(
                     "Problem while updating uri: " + uri);
         }

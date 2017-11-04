@@ -20,7 +20,10 @@
 package de.rampro.activitydiary.model;
 
 import android.content.AsyncQueryHandler;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +37,8 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
  */
 public class ActivityHelper extends AsyncQueryHandler{
     private static final int QUERY_ALL_ACTIVITIES = 0;
+    private static final int UPDATE_CLOSE_ACTIVITY = 1;
+    private static final int INSERT_NEW_ACTIVITY = 2;
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
             ActivityDiaryContract.DiaryActivity.NAME,
@@ -99,17 +104,41 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public void setCurrentActivity(DiaryActivity activity){
-        /* update the current diary entry to "finish" it */
+        /* update the current diary entry to "finish" it
+         * in theory there should be only one entry with end = NULL in the diray table
+         * but who knows? -> Let's update all. */
+        ContentValues values = new ContentValues();
+        values.put(ActivityDiaryContract.Diary.END, System.currentTimeMillis());
 
-        /* create a new diary entry */
+        startUpdate(UPDATE_CLOSE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
-        /* TODO: create listener class and notify the listeners here... */
         currentActivity = activity;
-        /* TODO insert into Diary here... */
-
+        /* TODO: create listener class and notify the listeners here... */
     }
 
-    public void insertActivity(DiaryActivity act){
+    @Override
+    protected void onUpdateComplete(int token, Object cookie, int result) {
+        if(token == UPDATE_CLOSE_ACTIVITY) {
+            /* create a new diary entry */
+            ContentValues values = new ContentValues();
+            ;
+            values.put(ActivityDiaryContract.Diary.ACT_ID, currentActivity.getId());
+            values.put(ActivityDiaryContract.Diary.START, System.currentTimeMillis());
+
+            startInsert(INSERT_NEW_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                    values);
+        }
+    }
+
+    @Override
+    protected void onInsertComplete(int token, Object cookie, Uri uri) {
+        if(token == INSERT_NEW_ACTIVITY){
+            Toast.makeText(ActivityDiaryApplication.getAppContext(), "inserted diary entry " + uri.toString(), Toast.LENGTH_LONG);
+        }
+    }
+
+        public void insertActivity(DiaryActivity act){
         activities.add(act);
         /* TODO: insert into ContentProvider and update id afterwards */
         mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged()) ;
