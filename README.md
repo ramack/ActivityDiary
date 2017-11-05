@@ -16,6 +16,6 @@ Copyright notices in this project are mostly given with a reference to the year 
 This app is under development by Raphael Mack [@ramack](https://github.com/ramack).
 
 # Status
-It is not yet doing anything useful, but feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
+Alpha-1 is out, which is far from being usable productively but you can get a first impression of the idea, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
 
 Stay tuned.

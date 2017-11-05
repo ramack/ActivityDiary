@@ -1,5 +1,32 @@
 apply plugin: 'com.android.application'
 
+if (project.file('../ActivityDiarySigning.properties').exists()) {
+    apply plugin: 'com.github.triplet.play'
+
+    Properties props = new Properties()
+    props.load(new FileInputStream(file('../ActivityDiarySigning.properties')))
+
+    android {
+        signingConfigs {
+            gplayRelease {
+                storeFile file("~/.android_keystore")
+                storePassword props['keystore.password']
+                keyAlias 'key0'
+                keyPassword  props['key.password']
+            }
+        }
+        playAccountConfigs {
+            defaultAccountConfig {
+                serviceAccountEmail = 'gplay-ramack@api-5226730847504381805-103625.iam.gserviceaccount.com'
+                pk12File = file('../gplay-developer-9607db552238.p12')
+            }
+        }        
+    }
+    play {
+        uploadImages = true
+    }
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
@@ -7,18 +34,28 @@ android {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 2
-        versionName "0.2-alpha1"
+        versionCode 3
+        versionName "0.3-alpha2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         jackOptions {
             enabled true
+        }
+        if (project.file('../ActivityDiarySigning.properties').exists()) {
+            playAccountConfig = playAccountConfigs.defaultAccountConfig
         }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        gplayRelease {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (project.file('../ActivityDiarySigning.properties').exists()) {
+                signingConfig signingConfigs.gplayRelease
+            }
         }
     }
     compileOptions {
@@ -32,7 +69,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     //    compile 'com.android.support:appcompat-v7:26.+'
+
     //    compile 'com.android.support:design:25.0.0'
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
