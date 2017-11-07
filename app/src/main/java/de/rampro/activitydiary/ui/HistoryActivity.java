@@ -104,7 +104,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         /* todo change menu */
-        inflater.inflate(R.menu.manage_menu, menu);
+/*        inflater.inflate(R.menu.manage_menu, menu);*/
         return true;
     }
 
