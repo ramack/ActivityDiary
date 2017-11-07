@@ -89,8 +89,11 @@ public class BaseActivity extends AppCompatActivity {
                         Intent intentdiary = new Intent(BaseActivity.this, HistoryActivity.class);
                         startActivity(intentdiary);
                         break;
-                    case R.id.nav_settings:
                     case R.id.nav_about:
+                        Intent intentabout = new Intent(BaseActivity.this, AboutActivity.class);
+                        startActivity(intentabout);
+                        break;
+                    case R.id.nav_settings:
                     /* TODO: implement all those ... */
                     default:
                         Toast.makeText(BaseActivity.this, menuItem.getTitle() + " is not yet implemented :-(", Toast.LENGTH_LONG).show();
@@ -121,8 +124,9 @@ public class BaseActivity extends AppCompatActivity {
         // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
+        }else if(item.getItemId() == android.R.id.home){
+            finish();
         }
-        // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
     }

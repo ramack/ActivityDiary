@@ -113,9 +113,9 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
 
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
+    /* TODO: refactor to use the ActivityHelper instead of directly a Loader */
         getLoaderManager().initLoader(0, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
-        mNavigationView.getMenu().findItem(R.id.nav_activity_manager).setChecked(true);
     }
 
     @Override
@@ -178,4 +178,9 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
     /* TODO: implement swipe for parent / child navigation */
     /* TODO: add number of child activities in view */
 
+    @Override
+    public void onResume(){
+        mNavigationView.getMenu().findItem(R.id.nav_activity_manager).setChecked(true);
+        super.onResume();
+    }
 }

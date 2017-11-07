@@ -70,18 +70,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         View selector = contentView.findViewById(R.id.activity_background);
         selector.setOnClickListener(this);
 
-        mNavigationView.getMenu().findItem(R.id.nav_main).setChecked(true);
+        getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
+
         rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
         recyclerView.setAdapter(rcAdapter);
 
     /* TODO: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
+
     @Override
     public void onResume() {
+        mNavigationView.getMenu().findItem(R.id.nav_main).setChecked(true);
         ActivityHelper.helper.registerDataChangeListener(this);
         super.onResume();
     }
+
     @Override
     public void onPause() {
         ActivityHelper.helper.unregisterDataChangeListener(this);
@@ -117,4 +121,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         /* TODO: this could be done more fine grained here... */
         rcAdapter.notifyDataSetChanged();
     }
+
 }

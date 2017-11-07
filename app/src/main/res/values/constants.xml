@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ActivityDiary
+  ~
+  ~ Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <!-- constants for transitions, mainly here to keep an overview of all transitions -->
+    <string name="logo_transition_name" translatable="false">logo</string>
+    <string name="current_activity_transition" translatable="false">current_activity_trans</string>
+
+</resources>

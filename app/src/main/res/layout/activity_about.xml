@@ -20,37 +20,40 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="8dp"
-        android:layout_marginBottom="16dp">
-    <include layout="@layout/activity_row"
-        android:layout_height="?android:attr/listPreferredItemHeight"
-        android:layout_width="match_parent"
-        android:transitionName="@string/current_activity_transition"/>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/select_recycler"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:fitsSystemWindows="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <!-- TODO: add a FAB for new activity -->
-    <!-- TODO: add options on current activity:
-               - create sub-activity (maybe slide left)
-               - edit conditions (long press?)
-               - add note (FAB?)
-               - go back to previous activity (in list of possible next acts)
-               -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:transitionName="@string/logo_transition_name" />
+
+            <TextView
+                android:id="@+id/aboutTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/about_text"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

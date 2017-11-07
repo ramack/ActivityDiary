@@ -98,7 +98,6 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
         // or start a new one.
         getLoaderManager().initLoader(0, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
-        mNavigationView.getMenu().findItem(R.id.nav_diary).setChecked(true);
     }
 
     @Override
@@ -157,5 +156,11 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
 
     /* TODO: implement swipe for parent / child navigation */
     /* TODO: add number of child activities in view */
+
+    @Override
+    public void onResume(){
+        mNavigationView.getMenu().findItem(R.id.nav_diary).setChecked(true);
+        super.onResume();
+    }
 
 }

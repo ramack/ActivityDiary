@@ -67,6 +67,7 @@ public class EditActivity extends BaseActivity {
         mActivityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
 
         if(currentObject != null) {
+    /* TODO: refactor to use the ActivityHelper instead of directly a Loader */
             ContentResolver resolver = getContentResolver();
             String[] projection = new String[]{
                     ActivityDiaryContract.DiaryActivity._ID,
@@ -97,11 +98,13 @@ public class EditActivity extends BaseActivity {
             }
         }
         mDrawerToggle.setDrawerIndicatorEnabled(false);
-        mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
     }
 
     @Override
     public void onResume(){
+        if(currentObject == null) {
+            mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
+        }
         super.onResume();
         mActivityName.requestFocus();
     }
@@ -145,4 +148,5 @@ public class EditActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

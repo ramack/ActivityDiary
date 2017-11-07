@@ -23,6 +23,8 @@
             android:label="@string/activity_title_manage_activities" />
         <activity android:name=".ui.HistoryActivity"
             android:label="@string/activity_title_history" />
+        <activity android:name=".ui.AboutActivity"
+            android:label="@string/activity_title_about" />
         <provider
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="de.rampro.activitydiary"
