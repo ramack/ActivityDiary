@@ -26,7 +26,6 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -39,7 +38,11 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final int QUERY_ALL_ACTIVITIES = 0;
     private static final int UPDATE_CLOSE_ACTIVITY = 1;
     private static final int INSERT_NEW_ACTIVITY = 2;
-    private static final String[] PROJECTION = new String[] {
+    private static final int QUERY_CURRENT_ACTIVITY = 3;
+    private static final String[] DIARY_PROJ = new String[] {
+            ActivityDiaryContract.Diary.ACT_ID
+    };
+    private static final String[] ACTIVITIES_PROJ = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
             ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.COLOR
@@ -54,9 +57,13 @@ public class ActivityHelper extends AsyncQueryHandler{
     public interface DataChangedListener{
         /**
          * Called when the data has changed.
-         *
          */
         void onActivityDataChanged();
+
+        /**
+         * Called on change of the current activity.
+         */
+        void onActivityChange();
     }
     private List<DataChangedListener> mDataChangeListeners;
 
@@ -75,8 +82,11 @@ public class ActivityHelper extends AsyncQueryHandler{
         activities = new ArrayList<DiaryActivity>();
 
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                PROJECTION, SELECTION, null,
+                ACTIVITIES_PROJ, SELECTION, null,
                 null);
+        startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL", null,
+                ActivityDiaryContract.Diary.START + " DESC");
     }
 
     @Override
@@ -92,7 +102,12 @@ public class ActivityHelper extends AsyncQueryHandler{
                             cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR))));
                     cursor.moveToNext();
                 }
-                mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged()) ;
+                mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+            }else if(token == QUERY_CURRENT_ACTIVITY){
+                if(currentActivity == null) {
+                    currentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
+                    mDataChangeListeners.forEach(listener -> listener.onActivityChange()) ;
+                }
             }
         } else if (cursor != null) {
             cursor.close();
@@ -114,7 +129,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
         currentActivity = activity;
-        /* TODO: create listener class and notify the listeners here... */
+        mDataChangeListeners.forEach(listener -> listener.onActivityChange()) ;
     }
 
     @Override
@@ -138,9 +153,19 @@ public class ActivityHelper extends AsyncQueryHandler{
         }
     }
 
-        public void insertActivity(DiaryActivity act){
+    public void insertActivity(DiaryActivity act){
         activities.add(act);
         /* TODO: insert into ContentProvider and update id afterwards */
         mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged()) ;
+    }
+
+    public DiaryActivity activityWithId(int id){
+        /* TODO improve performance by storing the DiaryActivities in a map or Hashtable instead of a list */
+        for (DiaryActivity a:activities) {
+            if(a.getId() == id){
+                return a;
+            }
+        }
+        return null;
     }
 }

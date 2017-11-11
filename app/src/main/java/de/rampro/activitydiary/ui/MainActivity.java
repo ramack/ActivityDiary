@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.model.ActivityHelper;
+import de.rampro.activitydiary.model.DiaryActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -75,6 +76,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
         recyclerView.setAdapter(rcAdapter);
 
+        onActivityChange();
     /* TODO: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
@@ -108,9 +110,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onItemClick(int adapterPosition) {
         ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.activities.get(adapterPosition));
-/* TODO: move to a listener which listens on the change of the current activity in ActivityHelper */
-        ((TextView)findViewById(R.id.activity_name)).setText(ActivityHelper.helper.getCurrentActivity().getName());
-        findViewById(R.id.activity_background).setBackgroundColor(ActivityHelper.helper.getCurrentActivity().getColor());
+    }
+
+    public void onActivityChange(){
+        DiaryActivity act = ActivityHelper.helper.getCurrentActivity();
+        if(act != null) {
+    /* TODO: move to a listener which listens on the change of the current activity in ActivityHelper */
+            ((TextView) findViewById(R.id.activity_name)).setText(act.getName());
+            findViewById(R.id.activity_background).setBackgroundColor(act.getColor());
+        }else{
+            /* This should be really seldom, actually only at very first start or if something went wrong.
+             * In those cases we keep the default text from the xml. */
+        }
     }
 
     /**
