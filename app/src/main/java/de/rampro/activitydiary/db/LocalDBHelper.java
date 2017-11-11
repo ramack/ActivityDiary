@@ -43,11 +43,11 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_DB_TABLE +
                 "(" +
-                " _id INTEGER PRIMARY KEY ASC, " +
-                " _deleted INTEGER DEFAULT 0," +
-                " name TEXT NOT NULL UNIQUE," +
-                " color INTEGER," +
-                " parent INTEGER " +
+                ActivityDiaryContract.DiaryActivity._ID + " INTEGER PRIMARY KEY ASC, " +
+                ActivityDiaryContract.DiaryActivity._DELETED + " INTEGER DEFAULT 0," +
+                ActivityDiaryContract.DiaryActivity.NAME + " TEXT NOT NULL UNIQUE," +
+                ActivityDiaryContract.DiaryActivity.COLOR + " INTEGER," +
+                ActivityDiaryContract.DiaryActivity.PARENT + " INTEGER " +
                 ");");
 
         db.execSQL("CREATE TABLE " +
@@ -82,8 +82,8 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " +
                 DIARY_DB_TABLE +
                 "(" +
-                ActivityDiaryContract.Diary._ID + " INTEGER PRIMARY KEY ASC, " +
-                ActivityDiaryContract.Diary._DELETED + " INTEGER DEFAULT 0," +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0," +
                 ActivityDiaryContract.Diary.ACT_ID + " INTEGER NOT NULL, " +
                 ActivityDiaryContract.Diary.START + " INTEGER NOT NULL, " +
                 ActivityDiaryContract.Diary.END + " INTEGER DEFAULT NULL, " +

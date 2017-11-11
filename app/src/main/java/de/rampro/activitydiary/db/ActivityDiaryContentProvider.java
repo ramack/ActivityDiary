@@ -118,7 +118,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_ID:
                 /* intended fall through */
             case diary:
-                qBuilder.setTables(LocalDBHelper.DIARY_DB_TABLE);
+                qBuilder.setTables(LocalDBHelper.DIARY_DB_TABLE + " INNER JOIN " +
+                        LocalDBHelper.ACTIVITY_DB_TABLE + " ON " +
+                        LocalDBHelper.DIARY_DB_TABLE + "." + ActivityDiaryContract.Diary.ACT_ID + " = " +
+                        LocalDBHelper.ACTIVITY_DB_TABLE + "." + ActivityDiaryContract.DiaryActivity._ID
+                );
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
                 break;
             default:

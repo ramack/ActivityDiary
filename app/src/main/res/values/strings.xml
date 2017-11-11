@@ -48,4 +48,8 @@
     <!-- actions -->
     <string name="action_delete">Delete Activity</string>
     <string name="action_store">Save</string>
+
+    <!-- history -->
+    <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
+
 </resources>

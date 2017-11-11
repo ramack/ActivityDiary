@@ -118,6 +118,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     /* TODO: move to a listener which listens on the change of the current activity in ActivityHelper */
             ((TextView) findViewById(R.id.activity_name)).setText(act.getName());
             findViewById(R.id.activity_background).setBackgroundColor(act.getColor());
+            /* TODO: set also text color */
         }else{
             /* This should be really seldom, actually only at very first start or if something went wrong.
              * In those cases we keep the default text from the xml. */

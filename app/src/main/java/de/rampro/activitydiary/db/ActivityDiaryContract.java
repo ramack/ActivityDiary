@@ -67,18 +67,8 @@ public class ActivityDiaryContract {
                 NAME + " ASC";
     }
 
-    /* The columns in a DiaryActivity */
-    protected interface DiaryActivityColumns {
-        /**
-         * The id (primary key) for the Activity
-         * <P>Type: INTEGER</P>
-         */
-        public static final String _ID = "_id";
-        /**
-         * Deleted state (0 is alive, 1 is deleted)
-         * <P>Type: INTEGER</P>
-         */
-        public static final String _DELETED = "_deleted";
+    /* The columns in a DiaryActivity which are joinable */
+    protected interface DiaryActivityJoinableColumns {
         /**
          * The name for the Activity
          * <P>Type: TEXT</P>
@@ -95,11 +85,25 @@ public class ActivityDiaryContract {
          */
         public static final String PARENT = "parent";
 
-        /* TODO: add iamge, required and activation conditions */
+        /* TODO: add image, required and activation conditions */
+    }
+
+    /* The columns in a DiaryActivity */
+    protected interface DiaryActivityColumns extends DiaryActivityJoinableColumns{
+        /**
+         * The id (primary key) for the Activity
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _ID = "_id";
+        /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
     }
 
     /* DiaryActivities are the main action that can be logged in the Diary */
-    public final static class Diary implements DiaryColumns{
+    public final static class Diary implements DiaryColumns, DiaryActivityJoinableColumns{
         /**
          * This utility class cannot be instantiated
          */
@@ -124,13 +128,13 @@ public class ActivityDiaryContract {
          * in the items table.
          */
         public static final String[] PROJECTION_ALL =
-                {_ID, ACT_ID, START, END};
+                {_ID, _DELETED, ACT_ID, NAME, COLOR, START, END};
 
         /**
          * The default sort order for the diary is time...
          */
         public static final String SORT_ORDER_DEFAULT =
-                START + ", " + END;
+                START + " DESC, " + END + " DESC";
     }
 
     /* The columns in the Diary */
@@ -139,12 +143,12 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Diary (entry)
          * <P>Type: INTEGER</P>
          */
-        public static final String _ID = "_id";
+        public static final String _ID = LocalDBHelper.DIARY_DB_TABLE + "._id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
          */
-        public static final String _DELETED = "_deleted";
+        public static final String _DELETED = LocalDBHelper.DIARY_DB_TABLE + "._deleted";
         /**
          * The ID for the related Activity
          * <P>Type: TEXT</P>
@@ -163,12 +167,6 @@ public class ActivityDiaryContract {
 
         /* TODO: add note entry */
         /* TODO: add location */
-    }
-
-    /**
-     * Combines all columns returned by table queries.
-     */
-    protected interface DataColumnsWithJoins extends DiaryActivityColumns, DiaryColumns {
     }
 
 

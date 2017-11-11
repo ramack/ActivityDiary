@@ -26,6 +26,7 @@ import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,6 +43,7 @@ import java.util.Date;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 
 
 /*
@@ -54,7 +56,9 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
-            ActivityDiaryContract.Diary.END
+            ActivityDiaryContract.Diary.END,
+            ActivityDiaryContract.DiaryActivity.NAME,
+            ActivityDiaryContract.DiaryActivity.COLOR
     };
     private static final String SELECTION = ActivityDiaryContract.Diary._DELETED + "=0";
 
@@ -62,18 +66,37 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
 
         public DiaryActivityAdapter() {
-            super(HistoryActivity.this, R.layout.activity_row, null, 0);
+            super(HistoryActivity.this, R.layout.activity_history_entry, null, 0);
         }
 
         @Override
         public void bindView(View view, Context context, Cursor cursor){
-            long start = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START));
-            long end = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.END));
+            Date start = new Date(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+            Date end;
+            String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+            int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
+
+            int endIdx = cursor.getColumnIndex(ActivityDiaryContract.Diary.END);
+            if(cursor.isNull(endIdx)) {
+                end = null;
+            }else {
+                end = new Date(cursor.getLong(endIdx));
+            }
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);
-            actName.setText(new Date(start).toString() + " - " + new Date(end).toString());
+            actName.setText(name);
+
+            TextView startLabel = (TextView) view.findViewById(R.id.start_label);
+            startLabel.setText(DateFormat.format(getString(R.string.default_datetime_format), start));
+
+            TextView durationLabel = (TextView) view.findViewById(R.id.duration_label);
+            durationLabel.setText(FuzzyTimeSpanFormatter.format(start, end));
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
+            /* TODO set picture */
+
+            view.findViewById(R.id.activity_background).setBackgroundColor(color);
+            /* TODO: adjust also text color */
         }
     }
 
@@ -84,11 +107,10 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        /* TODO: change to different XML resource */
-        View contentView = inflater.inflate(R.layout.activity_manage_content, null, false);
+        View contentView = inflater.inflate(R.layout.activity_history, null, false);
 
         setContent(contentView);
-        mList = (ListView)findViewById(R.id.manage_activity_list);
+        mList = (ListView)findViewById(R.id.history_list);
         mActivitiyListAdapter = new DiaryActivityAdapter();
         mList.setAdapter(mActivitiyListAdapter);
 
@@ -96,6 +118,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
 
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
+        // and yes, for performance reasons it is good to do it the relational way and not with an OO design
         getLoaderManager().initLoader(0, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }
@@ -104,6 +127,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         /* todo change menu */
+        /* TODO: ADD a search */
 /*        inflater.inflate(R.menu.manage_menu, menu);*/
         return true;
     }
@@ -153,9 +177,6 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             /* TODO */
         }
     };
-
-    /* TODO: implement swipe for parent / child navigation */
-    /* TODO: add number of child activities in view */
 
     @Override
     public void onResume(){
