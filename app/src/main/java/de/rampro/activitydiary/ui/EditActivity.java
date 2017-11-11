@@ -39,7 +39,7 @@ import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
-import de.rampro.activitydiary.model.ActivityHelper;
+import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 /*

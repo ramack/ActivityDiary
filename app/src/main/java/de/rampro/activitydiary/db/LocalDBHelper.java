@@ -33,7 +33,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
     public static final String DIARY_DB_TABLE = "diary";
 
     LocalDBHelper(Context context) {
-        super(context, "de.rampro.activitydiary", null, 1);
+        super(context, ActivityDiaryContract.AUTHORITY, null, 1);
     }
 
     @Override

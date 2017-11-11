@@ -27,7 +27,7 @@
             android:label="@string/activity_title_about" />
         <provider
             android:name=".db.ActivityDiaryContentProvider"
-            android:authorities="de.rampro.activitydiary"
+            android:authorities="${applicationId}.provider"
             android:multiprocess="true"
             android:exported="true"
             android:grantUriPermissions="true"

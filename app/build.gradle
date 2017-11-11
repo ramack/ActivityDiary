@@ -35,7 +35,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 3
-        versionName "0.3-alpha2"
+        versionName "0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         jackOptions {
@@ -46,12 +46,16 @@ android {
         }
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         gplayRelease {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (project.file('../ActivityDiarySigning.properties').exists()) {
                 signingConfig signingConfigs.gplayRelease

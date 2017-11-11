@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.model;
+package de.rampro.activitydiary.helpers;
 
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
@@ -30,6 +30,7 @@ import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.DiaryActivity;
 
 /**
  * provide a smooth interface to an OO abstraction of the data for our diary.
@@ -122,14 +123,16 @@ public class ActivityHelper extends AsyncQueryHandler{
         /* update the current diary entry to "finish" it
          * in theory there should be only one entry with end = NULL in the diray table
          * but who knows? -> Let's update all. */
-        ContentValues values = new ContentValues();
-        values.put(ActivityDiaryContract.Diary.END, System.currentTimeMillis());
+        if(currentActivity != activity) {
+            ContentValues values = new ContentValues();
+            values.put(ActivityDiaryContract.Diary.END, System.currentTimeMillis());
 
-        startUpdate(UPDATE_CLOSE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
-                values, ActivityDiaryContract.Diary.END + " is NULL", null);
+            startUpdate(UPDATE_CLOSE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                    values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
-        currentActivity = activity;
-        mDataChangeListeners.forEach(listener -> listener.onActivityChange()) ;
+            currentActivity = activity;
+            mDataChangeListeners.forEach(listener -> listener.onActivityChange());
+        }
     }
 
     @Override

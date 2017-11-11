@@ -22,13 +22,15 @@ package de.rampro.activitydiary.db;
 import android.content.ContentResolver;
 import android.net.Uri;
 
+import de.rampro.activitydiary.BuildConfig;
+
 /* TODO: @SuppressWarnings("unused") */
 public class ActivityDiaryContract {
 
     /* no instance of this class is allowed */
     private ActivityDiaryContract(){}
 
-    public static final String AUTHORITY = "de.rampro.activitydiary";
+    public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".provider";
     public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
 
     /* DiaryActivities are the main action that can be logged in the Diary */
