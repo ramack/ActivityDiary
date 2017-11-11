@@ -44,9 +44,10 @@ public class AboutActivity extends BaseActivity {
         TextView aboutText = (TextView)findViewById(R.id.aboutTextView);
 
         String appName = getResources().getString(R.string.app_name);
+        String contributors = getResources().getString(R.string.contributors);
         String versionName = BuildConfig.VERSION_NAME;
 
-        String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName);
+        String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors);
         aboutText.setText(Html.fromHtml(mergedAboutText));
         aboutText.setMovementMethod(LinkMovementMethod.getInstance());
 

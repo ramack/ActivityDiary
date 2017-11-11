@@ -1,5 +1,5 @@
 # Functionality
-ActivityDiary is a diray for any kind of activities - organize your tasks in agile way with this android app and get reminded.
+ActivityDiary is a diary for any kind of activities - track and organize your tasks in agile way with this android app and get reminded.
 
 In the long term many functions shall be implemented, see https://github.com/ramack/ActivityDiary/wiki for the ideas.
 
