@@ -77,7 +77,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         recyclerView.setAdapter(rcAdapter);
 
         onActivityChange();
-    /* TODO: add a search box in the toolbar to filter / fuzzy search
+    /* TODO #25: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
 
@@ -115,10 +115,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onActivityChange(){
         DiaryActivity act = ActivityHelper.helper.getCurrentActivity();
         if(act != null) {
-    /* TODO: move to a listener which listens on the change of the current activity in ActivityHelper */
             ((TextView) findViewById(R.id.activity_name)).setText(act.getName());
             findViewById(R.id.activity_background).setBackgroundColor(act.getColor());
-            /* TODO: set also text color */
+            /* TODO #34: set also text color */
         }else{
             /* This should be really seldom, actually only at very first start or if something went wrong.
              * In those cases we keep the default text from the xml. */

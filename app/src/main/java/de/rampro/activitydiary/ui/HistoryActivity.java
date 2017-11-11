@@ -93,10 +93,10 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             durationLabel.setText(FuzzyTimeSpanFormatter.format(start, end));
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
-            /* TODO set picture */
+            /* TODO #33: set picture */
 
             view.findViewById(R.id.activity_background).setBackgroundColor(color);
-            /* TODO: adjust also text color */
+            /* TODO #34: adjust also text color */
         }
     }
 
@@ -127,7 +127,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         /* todo change menu */
-        /* TODO: ADD a search */
+        /* TODO #25: ADD a search */
 /*        inflater.inflate(R.menu.manage_menu, menu);*/
         return true;
     }

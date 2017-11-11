@@ -54,20 +54,14 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
     static {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath(), activities);
-/* TODO */
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "activities/#", activities_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath() + "/#", activities_ID);
 
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath(), diary);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath() + "/#", diary_ID);
+
+        /* TODO #18 */
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions/#", conditions_ID);
-
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary", diary);
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "diary/#", diary_ID);
-
-        /* TODO: add expected next activities?, which could include
-         *  - child activities
-         *  - recent activities
-         *  - likely activites -> even the auto-set activities could be handled via this one...
-         *  */
 
     }
 

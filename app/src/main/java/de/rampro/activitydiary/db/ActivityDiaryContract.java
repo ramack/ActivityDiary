@@ -87,7 +87,7 @@ public class ActivityDiaryContract {
          */
         public static final String PARENT = "parent";
 
-        /* TODO: add image, required and activation conditions */
+        /* TODO #25: add image, required and activation conditions */
     }
 
     /* The columns in a DiaryActivity */

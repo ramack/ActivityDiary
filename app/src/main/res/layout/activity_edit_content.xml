@@ -55,7 +55,7 @@
         android:minHeight="50dp"
         android:minWidth="50dp"
         android:transitionName="@string/logo_transition_name"/>
-    <!-- TODO: add color picker e. g. from https://github.com/jaredrummler/ColorPicker to select the activity color -->
+    <!-- TODO #30: add color picker e. g. from https://github.com/jaredrummler/ColorPicker to select the activity color -->
     <!-- TODO: edit conditions here -->
 
 </LinearLayout>

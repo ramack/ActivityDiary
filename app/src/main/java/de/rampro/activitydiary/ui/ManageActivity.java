@@ -91,7 +91,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
             actName.setTextColor(textColor);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
-    /* TODO fill image here */
+    /* TODO #33 fill image here */
         }
     }
 
@@ -175,8 +175,8 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         }
     };
 
-    /* TODO: implement swipe for parent / child navigation */
-    /* TODO: add number of child activities in view */
+    /* TODO #24: implement swipe for parent / child navigation */
+    /* TODO #24: add number of child activities in view */
 
     @Override
     public void onResume(){

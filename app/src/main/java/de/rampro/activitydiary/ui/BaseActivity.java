@@ -94,7 +94,7 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(intentabout);
                         break;
                     case R.id.nav_settings:
-                    /* TODO: implement all those ... */
+                    /* TODO #11: implement all those ... */
                     default:
                         Toast.makeText(BaseActivity.this, menuItem.getTitle() + " is not yet implemented :-(", Toast.LENGTH_LONG).show();
                         break;

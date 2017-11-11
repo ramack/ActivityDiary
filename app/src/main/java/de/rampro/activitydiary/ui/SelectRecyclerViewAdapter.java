@@ -51,9 +51,9 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
     public void onBindViewHolder(SelectViewHolders holder, int position) {
         DiaryActivity act = mActivityList.get(position);
         holder.mName.setText(act.getName());
-// TODO:        holder.mSymbol.setImageResource(act.getPhoto());
+// TODO #33:        holder.mSymbol.setImageResource(act.getPhoto());
         holder.mBackground.setBackgroundColor(act.getColor());
-        // TODO: set the width based on the likelyhood
+        // TODO #31: set the width based on the likelyhood
     }
 
     @Override
