@@ -25,6 +25,8 @@
             android:label="@string/activity_title_history" />
         <activity android:name=".ui.AboutActivity"
             android:label="@string/activity_title_about" />
+        <activity android:name=".ui.SettingsActivity"
+            android:label="@string/activity_title_settings"/>
         <provider
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="${applicationId}.provider"

@@ -23,6 +23,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.v7.preference.PreferenceManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -158,8 +159,14 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public void insertActivity(DiaryActivity act){
         activities.add(act);
-        /* TODO: insert into ContentProvider and update id afterwards */
-        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged()) ;
+        /* TODO: insert into ContentProvider and update id afterwards
+         *       -> ensure that setCurrentActivity will work */
+        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean("pref_auto_select_new", true)){
+            setCurrentActivity(act);
+        }
     }
 
     public DiaryActivity activityWithId(int id){

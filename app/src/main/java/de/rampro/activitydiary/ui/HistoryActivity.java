@@ -24,8 +24,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,6 +43,7 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
@@ -88,6 +91,13 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
 
             TextView startLabel = (TextView) view.findViewById(R.id.start_label);
             startLabel.setText(DateFormat.format(getString(R.string.default_datetime_format), start));
+
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
+            String formatString = sharedPref.getString("pref_datetimeFormat",
+                    getResources().getString(R.string.default_datetime_format));
+/* TODO: register listener on preference change to redraw the date time formatting */
+
+            startLabel.setText(DateFormat.format(formatString, start));
 
             TextView durationLabel = (TextView) view.findViewById(R.id.duration_label);
             durationLabel.setText(FuzzyTimeSpanFormatter.format(start, end));

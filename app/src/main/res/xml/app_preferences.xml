@@ -17,7 +17,38 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_view_category">
 
-</PreferenceScreen>
+        <android.support.v7.preference.EditTextPreference
+            android:key="pref_datetimeFormat"
+            android:title="@string/setting_datetime_format"
+            android:summary="@string/setting_datetime_format_summary"
+            android:dialogMessage="@string/setting_datetime_format_description"
+            android:defaultValue="@string/default_datetime_format" />
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_behavior_category"
+        >
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:key="pref_auto_select_new"
+            android:title="@string/setting_auto_select_new"
+            android:summary="@string/setting_auto_select_new_summary_active"
+            android:defaultValue="true"/>
+
+<!--
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="key1"
+            android:title="Switch Preference"
+            android:summary="Switch Summary"
+            android:defaultValue="true" />
+
+
+-->
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>
