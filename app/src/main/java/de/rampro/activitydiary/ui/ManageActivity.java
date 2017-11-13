@@ -167,10 +167,8 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         public void onItemClick(AdapterView<?> parent, View v, int position, long id)
         {
             Cursor c = (Cursor)parent.getItemAtPosition(position);
-            Uri uri = Uri.withAppendedPath(ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                    c.getString(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
             Intent i = new Intent(ManageActivity.this, EditActivity.class);
-            i.setData(uri);
+            i.putExtra("activityID", c.getInt(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
             startActivity(i);
         }
     };

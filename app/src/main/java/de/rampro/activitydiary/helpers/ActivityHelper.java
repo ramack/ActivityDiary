@@ -17,9 +17,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.db;
+package de.rampro.activitydiary.helpers;
 
 import android.content.AsyncQueryHandler;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 /**
@@ -153,10 +155,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 startInsert(INSERT_NEW_DIARY_ENTRY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                         values);
             }
-        }else if(token == UPDATE_DELETE_ACTIVITY) {
-            mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
         }
-
     }
 
     @Override
@@ -178,8 +177,14 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public void updateActivity(DiaryActivity act) {
-        startUpdate(UPDATE_ACTIVITY, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                contentFor(act), ActivityDiaryContract.Diary._ID + " = " + act.getId(), null);
+        startUpdate(UPDATE_ACTIVITY,
+                null,
+                ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, act.getId()),
+                contentFor(act),
+                null,
+                null);
+
+        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
     }
 
     /* inserts a new activity and sets it as the current one if configured in the preferences */
@@ -200,7 +205,8 @@ public class ActivityHelper extends AsyncQueryHandler{
 
         startUpdate(UPDATE_DELETE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                 values, ActivityDiaryContract.DiaryActivity._ID + " = " + act.getId(), null);
-
+        activities.remove(act);
+        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
     }
 
     public DiaryActivity activityWithId(int id){

@@ -33,10 +33,13 @@ public class DiaryActivity {
     public String getName(){
         return mName;
     }
+    public void setName(String name){ mName = name;}
 
     public int getColor(){
         return mColor;
     }
+    public void setColor(int color){ mColor = color;}
 
     public int getId() { return mId;}
+    public void setId(int id) { mId = id;}
 }

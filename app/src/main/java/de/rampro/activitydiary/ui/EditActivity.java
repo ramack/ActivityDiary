@@ -18,12 +18,8 @@
  */
 package de.rampro.activitydiary.ui;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,12 +29,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
-import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -48,7 +44,8 @@ import de.rampro.activitydiary.model.DiaryActivity;
  * */
 public class EditActivity extends BaseActivity {
     @Nullable
-    Uri currentObject; /* null is for creating a new object */
+    DiaryActivity currentActivity; /* null is for creating a new object */
+
     EditText mActivityName;
     ImageView mActivityColorImg;
     int mActivityColor;
@@ -58,7 +55,12 @@ public class EditActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
-        currentObject = i.getData();
+        int actId = i.getIntExtra("activityID", -1);
+        if(actId == -1) {
+            currentActivity = null;
+        }else {
+            currentActivity = ActivityHelper.helper.activityWithId(actId);
+        }
 
         View contentView = inflater.inflate(R.layout.activity_edit_content, null, false);
 
@@ -66,31 +68,14 @@ public class EditActivity extends BaseActivity {
         mActivityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
         mActivityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
 
-        if(currentObject != null) {
-    /* TODO: refactor to use the ActivityHelper instead of directly a Loader */
-            ContentResolver resolver = getContentResolver();
-            String[] projection = new String[]{
-                    ActivityDiaryContract.DiaryActivity._ID,
-                    ActivityDiaryContract.DiaryActivity.NAME,
-                    ActivityDiaryContract.DiaryActivity.COLOR
-            };
-            Cursor cursor =
-                    resolver.query(currentObject,
-                            projection,
-                            null,
-                            null,
-                            null);
-            if (cursor.moveToFirst() && cursor.getCount() == 1) {
-                /* now update the list */
-                mActivityName.setText(cursor.getString(1));
-                ActionBar ab = getSupportActionBar();
-                ab.setTitle(cursor.getString(1));
-                mActivityColorImg.setBackgroundColor(cursor.getInt(2));
-                mActivityColor = cursor.getInt(2);
-            } else {
-                currentObject = null;
-            }
-        }else{
+        if(currentActivity != null) {
+            mActivityName.setText(currentActivity.getName());
+            ActionBar ab = getSupportActionBar();
+            ab.setTitle(currentActivity.getName());
+            mActivityColorImg.setBackgroundColor(currentActivity.getColor());
+            mActivityColor = currentActivity.getColor();
+        } else {
+            currentActivity = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mActivityColor = getResources().getColor(R.color.colorPrimary,null);
             }else{
@@ -102,11 +87,10 @@ public class EditActivity extends BaseActivity {
 
     @Override
     public void onResume(){
-        if(currentObject == null) {
+        if(currentActivity == null) {
             mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
         }
         super.onResume();
-        mActivityName.requestFocus();
     }
 
     @Override
@@ -118,27 +102,20 @@ public class EditActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        ContentResolver resolver = getContentResolver();
-
         switch(item.getItemId()){
             case R.id.action_edit_delete:
-                Toast.makeText(this, item.getTitle() + " is not yet implemented :-(", Toast.LENGTH_LONG).show();
-                if(currentObject != null){
-                    resolver.delete(currentObject, null, null);
+                if(currentActivity != null){
+                    ActivityHelper.helper.deleteActivity(currentActivity);
                 }
                 finish();
                 break;
             case R.id.action_edit_done:
-                ContentValues values = new ContentValues();
-                values.put(ActivityDiaryContract.DiaryActivity.NAME, mActivityName.getText().toString());
-                values.put(ActivityDiaryContract.DiaryActivity.COLOR, mActivityColor);
-
-                if(currentObject == null) {
-                    resolver.insert(ActivityDiaryContract.DiaryActivity.CONTENT_URI, values);
+                if(currentActivity == null) {
                     ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor));
                 }else {
-                    /* TODO: update DiaryActivity here */
-                    long noUpdated = resolver.update(currentObject, values, null, null);
+                    currentActivity.setName(mActivityName.getText().toString());
+                    currentActivity.setColor(mActivityColor);
+                    ActivityHelper.helper.updateActivity(currentActivity);
                 }
                 finish();
                 break;
