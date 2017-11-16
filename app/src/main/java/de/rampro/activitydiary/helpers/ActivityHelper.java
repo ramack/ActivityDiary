@@ -26,9 +26,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.PreferenceManager;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -48,7 +48,9 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final int QUERY_CURRENT_ACTIVITY = 6;
 
     private static final String[] DIARY_PROJ = new String[] {
-            ActivityDiaryContract.Diary.ACT_ID
+            ActivityDiaryContract.Diary.ACT_ID,
+            ActivityDiaryContract.Diary.START,
+            ActivityDiaryContract.Diary._ID
     };
     private static final String[] ACTIVITIES_PROJ = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
@@ -60,6 +62,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     public static final ActivityHelper helper = new ActivityHelper();
     public List<DiaryActivity> activities;
     private DiaryActivity currentActivity = null;
+    private Date currentActivityStartTime;
+    private Uri mCurrentDiaryUri;
 
     /* TODO: this could be done more fine grained here... (I. e. not refresh everything on just an insert or delete) */
     public interface DataChangedListener{
@@ -71,7 +75,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         /**
          * Called on change of the current activity.
          */
-        void onActivityChange();
+        void onActivityChanged();
     }
     private List<DataChangedListener> mDataChangeListeners;
 
@@ -95,6 +99,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                 DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL", null,
                 ActivityDiaryContract.Diary.START + " DESC");
+        currentActivityStartTime = new Date();
     }
 
     @Override
@@ -114,7 +119,11 @@ public class ActivityHelper extends AsyncQueryHandler{
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(currentActivity == null) {
                     currentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
-                    mDataChangeListeners.forEach(listener -> listener.onActivityChange()) ;
+                    currentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+
+                    mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
+                                        Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
+                    mDataChangeListeners.forEach(listener -> listener.onActivityChanged()) ;
                 }
             }
         } else if (cursor != null) {
@@ -125,6 +134,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     public DiaryActivity getCurrentActivity(){
         return currentActivity;
     }
+    public Date getCurrentActivityStartTime() { return currentActivityStartTime;}
 
     public void setCurrentActivity(@Nullable DiaryActivity activity){
         /* update the current diary entry to "finish" it
@@ -138,7 +148,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                     values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
             currentActivity = activity;
-            mDataChangeListeners.forEach(listener -> listener.onActivityChange());
+            currentActivityStartTime.setTime(System.currentTimeMillis());
         }
     }
 
@@ -161,8 +171,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     @Override
     protected void onInsertComplete(int token, Object cookie, Uri uri) {
         if(token == INSERT_NEW_DIARY_ENTRY){
-// TODO
-            Toast.makeText(ActivityDiaryApplication.getAppContext(), "inserted diary entry " + uri.toString(), Toast.LENGTH_LONG);
+            mCurrentDiaryUri = uri;
+            mDataChangeListeners.forEach(listener -> listener.onActivityChanged());
         }else if(token == INSERT_NEW_ACTIVITY){
 
             DiaryActivity act = (DiaryActivity)cookie;
@@ -225,4 +235,9 @@ public class ActivityHelper extends AsyncQueryHandler{
         result.put(ActivityDiaryContract.DiaryActivity.COLOR, act.getColor());
         return result;
     }
+
+    public Uri getCurrentDiaryUri(){
+        return mCurrentDiaryUri;
+    }
+
 }

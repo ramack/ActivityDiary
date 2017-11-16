@@ -17,35 +17,85 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- TODO: this layout is only nice in portrait mode -> add landscape view where the header is horizontally split -->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="8dp"
-        android:layout_marginBottom="16dp">
-    <include layout="@layout/activity_row"
-        android:layout_height="?android:attr/listPreferredItemHeight"
-        android:layout_width="match_parent"
-        android:transitionName="@string/current_activity_transition"/>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/select_recycler"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/header_area"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/colorGreyBackground"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardCornerRadius="8dp"
+                >
+                <include layout="@layout/activity_row"
+                    android:layout_height="?android:attr/listPreferredItemHeight"
+                    android:layout_width="match_parent"
+                    android:transitionName="@string/current_activity_transition"/>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/duration_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Duration: ?h"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="--"
+                android:textSize="16sp" />
+            <!-- TODO: fill useful content in the Activity header area -->
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/select_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_note"
+        app:fabSize="normal"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        app:layout_anchor="@id/header_area"
+        app:layout_anchorGravity="bottom|right|end"
+        />
 
 
-    <!-- TODO: add a FAB for new activity -->
+    <!-- TODO: add a FAB functions:
+               - new activity
+               - add note
+               - add picture
+               -->
     <!-- TODO: add options on current activity:
                - create sub-activity (maybe slide left)
                - edit conditions (long press?)
@@ -53,4 +103,4 @@
                - go back to previous activity (in list of possible next acts)
                -->
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -48,7 +48,7 @@ public class AboutActivity extends BaseActivity {
         String versionName = BuildConfig.VERSION_NAME;
 
         String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors);
-        aboutText.setText(Html.fromHtml(mergedAboutText));
+        aboutText.setText(Html.fromHtml(mergedAboutText, Html.FROM_HTML_MODE_LEGACY));
         aboutText.setMovementMethod(LinkMovementMethod.getInstance());
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);

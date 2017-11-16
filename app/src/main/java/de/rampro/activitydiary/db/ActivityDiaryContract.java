@@ -130,7 +130,7 @@ public class ActivityDiaryContract {
          * in the items table.
          */
         public static final String[] PROJECTION_ALL =
-                {_ID, _DELETED, ACT_ID, NAME, COLOR, START, END};
+                {_ID, _DELETED, ACT_ID, NAME, COLOR, START, END, NOTE};
 
         /**
          * The default sort order for the diary is time...
@@ -166,10 +166,11 @@ public class ActivityDiaryContract {
          * <P>Type: INT</P>
          */
         public static final String END = "end";
-
-        /* TODO: add note entry */
-        /* TODO: add location */
+        /**
+         * The note attached to the diary entry. Could be NULL;
+         * <P>Type: TEXT</P>
+         */
+        public static final String NOTE = "note";
     }
-
 
 }

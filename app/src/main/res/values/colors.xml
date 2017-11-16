@@ -3,6 +3,7 @@
     <color name="colorPrimary">#ef6c00</color>
     <color name="colorPrimaryDark">#c53d00</color>
     <color name="colorAccent">#dda400</color>
+    <color name="colorGreyBackground">#e0e0e0</color>
     <color name="activityTextColorDark">#202020</color>
     <color name="activityTextColorLight">#fefeee</color>
 </resources>

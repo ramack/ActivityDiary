@@ -39,8 +39,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
-
-
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -50,8 +48,7 @@ import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 
 
 /*
- * Show this history in the Diary.
- *
+ * Show the history of the Diary.
  * */
 public class HistoryActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = ManageActivity.class.getName();
@@ -60,6 +57,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
             ActivityDiaryContract.Diary.END,
+            ActivityDiaryContract.Diary.NOTE,
             ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.COLOR
     };
@@ -100,13 +98,25 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             startLabel.setText(DateFormat.format(formatString, start));
 
             TextView durationLabel = (TextView) view.findViewById(R.id.duration_label);
-            durationLabel.setText(FuzzyTimeSpanFormatter.format(start, end));
+            String duration = getResources().getString(R.string.duration_description);
+            duration += " ";
+            duration += FuzzyTimeSpanFormatter.format(start, end);
+            durationLabel.setText(duration);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
             /* TODO #33: set picture */
 
             view.findViewById(R.id.activity_background).setBackgroundColor(color);
             /* TODO #34: adjust also text color */
+            String noteStr = "";
+            if(!cursor.isNull(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE))){
+                /* TODO: show, that a note is attached */
+                noteStr = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
+                ((TextView)view.findViewById(R.id.note)).setText(noteStr);
+                ((TextView) view.findViewById(R.id.note)).setVisibility(View.VISIBLE);
+            }else {
+                ((TextView) view.findViewById(R.id.note)).setVisibility(View.GONE);
+            }
         }
     }
 
@@ -117,7 +127,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View contentView = inflater.inflate(R.layout.activity_history, null, false);
+        View contentView = inflater.inflate(R.layout.activity_history_content, null, false);
 
         setContent(contentView);
         mList = (ListView)findViewById(R.id.history_list);
@@ -184,7 +194,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
         public void onItemClick(AdapterView<?> parent, View v, int position, long id)
         {
             Cursor c = (Cursor)parent.getItemAtPosition(position);
-            /* TODO */
+            /* TODO: filter history to show only entries of the clicked activity */
         }
     };
 

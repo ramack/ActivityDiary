@@ -23,9 +23,6 @@
     android:id="@+id/activity_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="4dp"
-    android:paddingBottom="4dp"
-    android:paddingTop="4dp"
     android:background="@color/colorPrimary"
     >
 
@@ -33,7 +30,8 @@
         android:id="@+id/activity_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="4dp"
         android:contentDescription="@string/activity_image_description"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
