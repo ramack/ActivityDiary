@@ -2,7 +2,7 @@ Activity Diary allows to record a diary for for your activities. You can categor
 
 This app is currently under development and not yet feature complete. Do not use in a productive environment and expect your data to be lost on version upgrade. Please be patient or contribute on https://github.com/ramack/ActivityDiary and submit bug reports, feature requests and pull requests!
 
-Activity Dairy is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
