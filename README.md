@@ -3,6 +3,9 @@ ActivityDiary is a diary for any kind of activities - track and organize your ta
 
 In the long term many functions shall be implemented, see https://github.com/ramack/ActivityDiary/wiki for the ideas and design decisions.
 
+Currently you can select the your current activity, record notes and browse your history:
+![Alt text](/app/src/main/play/en-US/listing/phoneScreenshots/Screenshot_SelectActivity.png?raw=true "Select Activity")
+
 # License and Copyright
 Activity Dairy is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -16,6 +19,6 @@ Copyright notices in this project are mostly given with a reference to the year 
 This app is under development by Raphael Mack [@ramack](https://github.com/ramack).
 
 # Status
-Alpha-1 is out, which is far from being usable productively but you can get a first impression of the idea, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
+Next test version is out, which is still not really usable productively but you can get a first impression of the idea, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
 
-Stay tuned.
+Stay tuned and start contributing!
