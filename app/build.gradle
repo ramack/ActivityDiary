@@ -9,7 +9,7 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
     android {
         signingConfigs {
             gplayRelease {
-                storeFile file("~/.android_keystore")
+                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore")
                 storePassword props['keystore.password']
                 keyAlias 'key0'
                 keyPassword  props['key.password']
