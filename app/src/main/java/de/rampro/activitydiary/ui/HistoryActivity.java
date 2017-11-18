@@ -51,7 +51,6 @@ import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
  * Show the history of the Diary.
  * */
 public class HistoryActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    private static final String TAG = ManageActivity.class.getName();
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.ACT_ID,

@@ -18,10 +18,13 @@
  */
 package de.rampro.activitydiary.ui;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -32,6 +35,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
+import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
+
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
@@ -40,13 +46,16 @@ import de.rampro.activitydiary.model.DiaryActivity;
  * MainActivity to show most of the UI, based on switching the fragements
  *
  * */
-public class EditActivity extends BaseActivity {
+public class EditActivity extends BaseActivity //implements
+//        colorDialog.ColorSelectedListener
+{
     @Nullable
     DiaryActivity currentActivity; /* null is for creating a new object */
 
     EditText mActivityName;
     ImageView mActivityColorImg;
     int mActivityColor;
+    ColorPicker mCp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,11 @@ public class EditActivity extends BaseActivity {
         setContent(contentView);
         mActivityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
         mActivityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
+        mActivityColorImg.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mCp.show();
+            }
+        });
 
         if(currentActivity != null) {
             mActivityName.setText(currentActivity.getName());
@@ -77,10 +91,23 @@ public class EditActivity extends BaseActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mActivityColor = getResources().getColor(R.color.colorPrimary,null);
             }else{
-                mActivityColor = getResources().getColor(R.color.colorPrimary);
+                @SuppressWarnings("deprecation")
+                Resources res= getResources();
+                mActivityColor = res.getColor(R.color.colorPrimary);
             }
         }
         mDrawerToggle.setDrawerIndicatorEnabled(false);
+        mCp = new ColorPicker(EditActivity.this);
+        mCp.setColor(mActivityColor);
+        mCp.setCallback(new ColorPickerCallback() {
+            @Override
+            public void onColorChosen(@ColorInt int color) {
+                mActivityColor = color;
+                mActivityColorImg.setBackgroundColor(mActivityColor);
+                mCp.hide();
+            }
+        });
+
     }
 
     @Override
@@ -122,6 +149,13 @@ public class EditActivity extends BaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+//    @Override
+    public void onColorSelection(DialogFragment dialogFragment, int color) {
+
+        // Set the picker's dialog color
+//        colorDialog.setPickerColor(EditActivity.this, 0, color);
     }
 
 }

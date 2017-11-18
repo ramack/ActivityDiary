@@ -18,6 +18,7 @@
 
     <string name="contributors" translatable="false"><![CDATA[
         <p>Raphael Mack (<a href="https://www.raphael-mack.de">www.raphael-mack.de</a>)</p>
+        <p>Simone Pessotto (<a href="https://github.com/Pes8/android-material-color-picker-dialog">library android-material-color-picker-dialog</a>)</p>
         ]]>
     </string>
 

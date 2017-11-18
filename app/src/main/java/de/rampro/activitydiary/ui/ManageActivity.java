@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,7 +50,6 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
  *
  * */
 public class ManageActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    private static final String TAG = ManageActivity.class.getName();
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
             ActivityDiaryContract.DiaryActivity.NAME,
@@ -78,13 +78,17 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textColor = context.getResources().getColor(R.color.activityTextColorDark, null);
                 }else{
-                    textColor = context.getResources().getColor(R.color.activityTextColorDark);
+                    @SuppressWarnings("deprecation")
+                    Resources res= context.getResources();
+                    textColor = res.getColor(R.color.activityTextColorDark);
                 }
             }else{
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textColor = context.getResources().getColor(R.color.activityTextColorLight, null);
                 }else{
-                    textColor = context.getResources().getColor(R.color.activityTextColorLight);
+                    @SuppressWarnings("deprecation")
+                    Resources res= context.getResources();
+                    textColor = res.getColor(R.color.activityTextColorLight);
                 }
             }
             actName.setTextColor(textColor);
