@@ -115,7 +115,9 @@ public class ActivityHelper extends AsyncQueryHandler{
                             cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR))));
                     cursor.moveToNext();
                 }
-                mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+                for(DataChangedListener listener : mDataChangeListeners) {
+                    listener.onActivityDataChanged();
+                }
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(currentActivity == null) {
                     currentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
@@ -123,7 +125,9 @@ public class ActivityHelper extends AsyncQueryHandler{
 
                     mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
                                         Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
-                    mDataChangeListeners.forEach(listener -> listener.onActivityChanged()) ;
+                    for(DataChangedListener listener : mDataChangeListeners) {
+                        listener.onActivityChanged();
+                    }
                 }
             }
         } else if (cursor != null) {
@@ -172,12 +176,17 @@ public class ActivityHelper extends AsyncQueryHandler{
     protected void onInsertComplete(int token, Object cookie, Uri uri) {
         if(token == INSERT_NEW_DIARY_ENTRY){
             mCurrentDiaryUri = uri;
-            mDataChangeListeners.forEach(listener -> listener.onActivityChanged());
+            for(DataChangedListener listener : mDataChangeListeners) {
+                listener.onActivityChanged();
+            }
+
         }else if(token == INSERT_NEW_ACTIVITY){
 
             DiaryActivity act = (DiaryActivity)cookie;
             act.setId(Integer.parseInt(uri.getLastPathSegment()));
-            mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+            for(DataChangedListener listener : mDataChangeListeners) {
+                listener.onActivityDataChanged();
+            }
             if(PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                     .getBoolean("pref_auto_select_new", true)){
@@ -194,7 +203,9 @@ public class ActivityHelper extends AsyncQueryHandler{
                 null,
                 null);
 
-        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+        for(DataChangedListener listener : mDataChangeListeners) {
+            listener.onActivityDataChanged();
+        }
     }
 
     /* inserts a new activity and sets it as the current one if configured in the preferences */
@@ -216,7 +227,9 @@ public class ActivityHelper extends AsyncQueryHandler{
         startUpdate(UPDATE_DELETE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                 values, ActivityDiaryContract.DiaryActivity._ID + " = " + act.getId(), null);
         activities.remove(act);
-        mDataChangeListeners.forEach(listener -> listener.onActivityDataChanged());
+        for(DataChangedListener listener : mDataChangeListeners) {
+            listener.onActivityDataChanged();
+        }
     }
 
     public DiaryActivity activityWithId(int id){
