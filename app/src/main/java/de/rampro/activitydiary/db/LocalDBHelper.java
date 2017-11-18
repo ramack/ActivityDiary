@@ -33,12 +33,12 @@ public class LocalDBHelper extends SQLiteOpenHelper {
     public static final String DIARY_DB_TABLE = "diary";
 
     LocalDBHelper(Context context) {
-        super(context, ActivityDiaryContract.AUTHORITY, null, 1);
+        super(context, ActivityDiaryContract.AUTHORITY, null, CURRENT_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        /* version 1 */
+        /* version 2 */
         /* TODO: should we add a constraint to forbid name reuse accross tables (even no alias to an existing name) */
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_DB_TABLE +
@@ -49,7 +49,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ActivityDiaryContract.DiaryActivity.COLOR + " INTEGER," +
                 ActivityDiaryContract.DiaryActivity.PARENT + " INTEGER " +
                 ");");
-
+/* TODO #20 do in a dedicated method, to allow an upgrade path of the DB
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_ALIAS_DB_TABLE +
                 "(" +
@@ -58,7 +58,8 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " name TEXT NOT NULL UNIQUE," +
                 " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
                 ");");
-
+ */
+/*
         db.execSQL("CREATE TABLE " +
                 CONDITION_DB_TABLE +
                 "(" +
@@ -78,7 +79,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY(act_id) REFERENCES activity(_id), " +
                 " FOREIGN KEY(cond_id) REFERENCES condition(_id) " +
                 ");");
-
+*/
         db.execSQL("CREATE TABLE " +
                 DIARY_DB_TABLE +
                 "(" +
@@ -106,6 +107,8 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " ('Sleeping', '" + Color.parseColor("#303F9F") + "');");
     }
 
+    public static final int CURRENT_VERSION = 2;
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         /**
@@ -115,13 +118,21 @@ public class LocalDBHelper extends SQLiteOpenHelper {
          * you can use ALTER TABLE to rename the old table, then create the new table and then
          * populate the new table with the contents of the old table.
          */
-        if(newVersion > 1){
-            /* upgrade from 1 to 2 */
+        if(oldVersion == 1){
+            /* upgrade from 1 to current */
+            /* still alpha, so just delete and restart */
+            db.execSQL("DROP TABLE " + ACTIVITY_DB_TABLE);
+            db.execSQL("DROP TABLE " + ACTIVITY_ALIAS_DB_TABLE);
+            db.execSQL("DROP TABLE " + CONDITION_DB_TABLE);
+            db.execSQL("DROP TABLE " + CONDITIONS_DB_TABLE);
+            db.execSQL("DROP TABLE " + DIARY_DB_TABLE);
+            onCreate(db);
+            oldVersion = CURRENT_VERSION;
         }
-        if(newVersion > 2){
+        if(oldVersion == 2){
             /* upgrade from 2 to 3 */
         }
-        if(newVersion > 1){
+        if(newVersion > 2){
             throw new RuntimeException("Database upgrade to version " + newVersion + " nyi.");
         }
     }

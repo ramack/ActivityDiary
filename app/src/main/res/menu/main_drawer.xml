@@ -34,7 +34,7 @@
             android:title="@string/nav_diary" />
         <item
             android:id="@+id/nav_add_activity"
-            android:icon="@drawable/ic_add_activity"
+            android:icon="@drawable/ic_nav_add_activity"
             android:title="@string/nav_add_activity" />
         <item
             android:id="@+id/nav_activity_manager"

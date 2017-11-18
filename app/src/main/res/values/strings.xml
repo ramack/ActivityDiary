@@ -66,6 +66,7 @@
     <!-- actions -->
     <string name="action_delete">Delete Activity</string>
     <string name="action_store">Save</string>
+    <string name="action_filter">Filter</string>
 
     <!-- main view -->
     <string name="duration_description">Duration:</string>

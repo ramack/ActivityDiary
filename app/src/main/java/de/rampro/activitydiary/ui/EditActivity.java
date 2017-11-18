@@ -149,12 +149,4 @@ public class EditActivity extends BaseActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
-//    @Override
-    public void onColorSelection(DialogFragment dialogFragment, int color) {
-
-        // Set the picker's dialog color
-//        colorDialog.setPickerColor(EditActivity.this, 0, color);
-    }
-
 }

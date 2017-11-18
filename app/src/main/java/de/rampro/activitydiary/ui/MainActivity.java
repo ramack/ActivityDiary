@@ -22,6 +22,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -183,13 +186,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle your other action bar items...
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View view){
         Toast.makeText(this, "You clicked on the current activity! Boom!", Toast.LENGTH_SHORT).show();
     }
@@ -229,6 +225,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onActivityDataChanged() {
         /* TODO: this could be done more fine grained here... */
         rcAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_add_activity:
+                startActivity(new Intent(this, EditActivity.class));
+                break;
+            case R.id.action_filter:
+                /* TODO #25 filter -> open text box in actionbar to type a name, which filters using levenshtein distance */
+                Toast.makeText(this, "filtering not yet implemented.", Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
