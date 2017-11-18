@@ -43,11 +43,10 @@ import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 /*
- * MainActivity to show most of the UI, based on switching the fragements
+ * EditActivity to add and modify activities
  *
  * */
-public class EditActivity extends BaseActivity //implements
-//        colorDialog.ColorSelectedListener
+public class EditActivity extends BaseActivity
 {
     @Nullable
     DiaryActivity currentActivity; /* null is for creating a new object */
