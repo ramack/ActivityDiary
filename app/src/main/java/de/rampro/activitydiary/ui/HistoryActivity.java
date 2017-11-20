@@ -45,6 +45,8 @@ import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -95,10 +97,53 @@ public class HistoryActivity extends BaseActivity implements
             int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
 
             int endIdx = cursor.getColumnIndex(ActivityDiaryContract.Diary.END);
+            boolean showHeader = false;
+            String header = "";
+
             if(cursor.isNull(endIdx)) {
                 end = null;
             }else {
                 end = new Date(cursor.getLong(endIdx));
+            }
+
+            Calendar startCal = Calendar.getInstance();
+            startCal.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+
+            if(cursor.isFirst()){
+                showHeader = true;
+            }else {
+                cursor.moveToPrevious();
+                Calendar clast = Calendar.getInstance();
+                clast.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+                cursor.moveToNext();
+
+                if(clast.get(Calendar.DATE) != startCal.get(Calendar.DATE)) {
+                    showHeader = true;
+                }
+            }
+            if(showHeader){
+                Calendar now = Calendar.getInstance();
+                if(now.get(Calendar.DATE) == startCal.get(Calendar.DATE)){
+                    header = getResources().getString(R.string.today);
+                }else if(now.get(Calendar.DATE) - startCal.get(Calendar.DATE) == 1){
+                    header = getResources().getString(R.string.yesterday);
+                }else if(now.get(Calendar.WEEK_OF_YEAR) - startCal.get(Calendar.WEEK_OF_YEAR) == 0){
+                    SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
+                    header = formatter.format(start);
+                }else if(now.get(Calendar.WEEK_OF_YEAR) - startCal.get(Calendar.WEEK_OF_YEAR) == 1){
+                    header = getResources().getString(R.string.lastWeek);
+                }else{
+                    SimpleDateFormat formatter = new SimpleDateFormat("MMMMM yyyy");
+                    header = formatter.format(start);
+                }
+            }
+
+            TextView headerView = (TextView) view.findViewById(R.id.separator);
+            if(showHeader) {
+                headerView.setVisibility(View.VISIBLE);
+                headerView.setText(header);
+            }else{
+                headerView.setVisibility(View.GONE);
             }
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);

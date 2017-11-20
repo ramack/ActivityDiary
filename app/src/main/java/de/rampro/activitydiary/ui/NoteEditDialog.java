@@ -25,7 +25,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -34,7 +33,6 @@ import android.widget.EditText;
 import de.rampro.activitydiary.R;
 
 public class NoteEditDialog extends DialogFragment {
-    private static final String TAG = "NoteEditDialog";
     private String note;
     private EditText input;
     NoteEditDialogListener mListener;

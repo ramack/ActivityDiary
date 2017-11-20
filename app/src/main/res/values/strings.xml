@@ -78,4 +78,9 @@
     <!-- history -->
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
 
+    <!-- relative dates -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="lastWeek">Last Week</string>
+
 </resources>

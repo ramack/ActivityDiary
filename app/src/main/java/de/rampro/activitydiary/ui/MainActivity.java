@@ -209,10 +209,10 @@ public class MainActivity extends BaseActivity implements
             case R.id.action_add_activity:
                 startActivity(new Intent(this, EditActivity.class));
                 break;
-            case R.id.action_filter:
+//            case R.id.action_filter:
                 /* TODO #25 filter -> open text box in actionbar to type a name, which filters using levenshtein distance */
-                Toast.makeText(this, "filtering not yet implemented.", Toast.LENGTH_LONG).show();
-                break;
+//                Toast.makeText(this, "filtering not yet implemented.", Toast.LENGTH_LONG).show();
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
