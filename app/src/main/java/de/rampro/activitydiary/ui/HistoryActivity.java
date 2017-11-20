@@ -20,13 +20,17 @@
 package de.rampro.activitydiary.ui;
 
 import android.app.LoaderManager;
+import android.content.AsyncQueryHandler;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -39,6 +43,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -50,7 +56,9 @@ import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 /*
  * Show the history of the Diary.
  * */
-public class HistoryActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class HistoryActivity extends BaseActivity implements
+        LoaderManager.LoaderCallbacks<Cursor>,
+        NoteEditDialog.NoteEditDialogListener {
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.ACT_ID,
@@ -63,6 +71,16 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     private static final String SELECTION = ActivityDiaryContract.Diary._DELETED + "=0";
 
     private ListView mList;
+
+    private class QHandler extends AsyncQueryHandler {
+        /* Access only allowed via ActivityHelper.helper singleton */
+        private QHandler(){
+            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        }
+    }
+
+    private QHandler mQHandler = new QHandler();
+
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
 
         public DiaryActivityAdapter() {
@@ -105,17 +123,18 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
             /* TODO #33: set picture */
 
-            view.findViewById(R.id.activity_background).setBackgroundColor(color);
+            View act = view.findViewById(R.id.activity_background);
+            act.setBackgroundColor(color);
             /* TODO #34: adjust also text color */
             String noteStr = "";
             if(!cursor.isNull(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE))){
                 /* TODO: show, that a note is attached */
                 noteStr = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
-                ((TextView)view.findViewById(R.id.note)).setText(noteStr);
-                ((TextView) view.findViewById(R.id.note)).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.note).setVisibility(View.VISIBLE);
             }else {
-                ((TextView) view.findViewById(R.id.note)).setVisibility(View.GONE);
+                view.findViewById(R.id.note).setVisibility(View.GONE);
             }
+            ((TextView)view.findViewById(R.id.note)).setText(noteStr);
         }
     }
 
@@ -124,6 +143,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* TODO: store restore state esp. lastItemLongClickPosition */
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View contentView = inflater.inflate(R.layout.activity_history_content, null, false);
@@ -135,6 +155,7 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
 
         mList.setOnItemClickListener(mOnClickListener);
 
+        mList.setOnItemLongClickListener(mOnLongClickListener);
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
         // and yes, for performance reasons it is good to do it the relational way and not with an OO design
@@ -194,8 +215,37 @@ public class HistoryActivity extends BaseActivity implements LoaderManager.Loade
         {
             Cursor c = (Cursor)parent.getItemAtPosition(position);
             /* TODO: filter history to show only entries of the clicked activity */
+            Toast.makeText(HistoryActivity.this, "changing the activity in the history is not yet supported", Toast.LENGTH_LONG).show();
+
         }
     };
+    private AdapterView.OnItemLongClickListener mOnLongClickListener = new AdapterView.OnItemLongClickListener() {
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+        {
+            NoteEditDialog dialog = new NoteEditDialog();
+            dialog.setText(((TextView)view.findViewById(R.id.note)).getText().toString());
+            dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
+            lastItemLongClickPosition = position;
+            return true;
+        }
+    };
+
+    private int lastItemLongClickPosition;
+    @Override
+    public void onNoteEditPositiveClock(String str, DialogFragment dialog) {
+        /* update note */
+        Cursor c = (Cursor)mList.getItemAtPosition(lastItemLongClickPosition);
+
+        ContentValues values = new ContentValues();
+            values.put(ActivityDiaryContract.Diary.NOTE, str);
+
+            mQHandler.startUpdate(0,
+                    null,
+                    Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
+                            c.getString(c.getColumnIndex(ActivityDiaryContract.Diary._ID))),
+                    values,
+                    null, null);
+    }
 
     @Override
     public void onResume(){

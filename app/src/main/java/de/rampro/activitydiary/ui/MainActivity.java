@@ -21,23 +21,20 @@ package de.rampro.activitydiary.ui;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +51,12 @@ import de.rampro.activitydiary.model.DiaryActivity;
  * MainActivity to show most of the UI, based on switching the fragements
  *
  * */
-public class MainActivity extends BaseActivity implements View.OnClickListener, SelectRecyclerViewAdapter.SelectListener, ActivityHelper.DataChangedListener {
+public class MainActivity extends BaseActivity implements
+        View.OnClickListener,
+        SelectRecyclerViewAdapter.SelectListener,
+        ActivityHelper.DataChangedListener,
+        NoteEditDialog.NoteEditDialogListener {
+
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
     private TextView durationLabel;
     private TextView mNoteTextView;
@@ -72,7 +74,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     private QHandler mQHandler = new QHandler();
-    String m_Text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,49 +106,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
         recyclerView.setAdapter(rcAdapter);
 
+        durationLabel = (TextView) contentView.findViewById(R.id.duration_label);
+        mNoteTextView =  (TextView) contentView.findViewById(R.id.note);
+
         FloatingActionButton floatingActionButton =
                 (FloatingActionButton) findViewById(R.id.floating_action_button);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the click.
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle(R.string.dialog_title_note);
-
-// Set up the input
-                final EditText input = new EditText(MainActivity.this);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                input.setSingleLine(false);
-                input.setMinLines(4);
-                input.setText(m_Text);
-                builder.setView(input);
-
-// Set up the buttons
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        m_Text = input.getText().toString();
-                        ContentValues values = new ContentValues();
-                        values.put(ActivityDiaryContract.Diary.NOTE, m_Text);
-
-                        mQHandler.startUpdate(0,
-                                null,
-                                mCurrentDiaryUri,
-                                values,
-                                null, null);
-                        mNoteTextView.setText(m_Text);
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
+                // Handle the click on the FAB
+                NoteEditDialog dialog = new NoteEditDialog();
+                dialog.setText(mNoteTextView.getText().toString());
+                dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
             }
         });
 
@@ -160,9 +131,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
 
         });
-
-        durationLabel = (TextView) contentView.findViewById(R.id.duration_label);
-        mNoteTextView =  (TextView) contentView.findViewById(R.id.note);
 
         onActivityChanged();
         floatingActionButton.show();
@@ -197,9 +165,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
-        if(mCurrentActivity != newAct) {
-            mNoteTextView.setText("--");
-        }
         mCurrentActivity = newAct;
         if(mCurrentActivity != null) {
             mCurrentDiaryUri = ActivityHelper.helper.getCurrentDiaryUri();
@@ -211,6 +176,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             duration += " ";
             duration += FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date());
             durationLabel.setText(duration);
+            mNoteTextView.setText(ActivityHelper.helper.getCurrentNote());
+            /* TODO: move note and starttime from ActivityHelper to here
+             * register a listener to get updates directly from the ContentProvider */
+
         }else{
             /* This should be really seldom, actually only at very first start or if something went wrong.
              * In those cases we keep the default text from the xml. */
@@ -246,6 +215,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onNoteEditPositiveClock(String str, DialogFragment dialog) {
+        ContentValues values = new ContentValues();
+        values.put(ActivityDiaryContract.Diary.NOTE, str);
+
+        mQHandler.startUpdate(0,
+                null,
+                mCurrentDiaryUri,
+                values,
+                null, null);
+        mNoteTextView.setText(str);
     }
 
 }

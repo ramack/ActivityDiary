@@ -68,6 +68,10 @@
     <string name="action_store">Save</string>
     <string name="action_filter">Filter</string>
 
+    <!-- dialog -->
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
     <!-- main view -->
     <string name="duration_description">Duration:</string>
 

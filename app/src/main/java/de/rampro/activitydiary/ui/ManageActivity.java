@@ -103,6 +103,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /* TODO: save and restore state */
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View contentView = inflater.inflate(R.layout.activity_manage_content, null, false);

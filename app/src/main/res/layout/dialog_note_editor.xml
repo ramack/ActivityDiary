@@ -18,19 +18,16 @@
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/history_list"
+    <EditText
+        android:id="@+id/noteText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="0sp"
-        android:divider="@android:color/transparent"
-        android:background="@color/colorGreyBackground"
-        />
-</LinearLayout>
+        android:ems="10"
+        android:inputType="textMultiLine|textAutoCorrect"
+        android:lines="4" />
+
+</ScrollView>

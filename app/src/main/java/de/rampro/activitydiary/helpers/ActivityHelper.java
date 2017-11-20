@@ -50,7 +50,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
-            ActivityDiaryContract.Diary._ID
+            ActivityDiaryContract.Diary._ID,
+            ActivityDiaryContract.Diary.NOTE
     };
     private static final String[] ACTIVITIES_PROJ = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
@@ -61,9 +62,10 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public static final ActivityHelper helper = new ActivityHelper();
     public List<DiaryActivity> activities;
-    private DiaryActivity currentActivity = null;
-    private Date currentActivityStartTime;
+    private DiaryActivity mCurrentActivity = null;
+    private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
+    private String mCurrentNote;
 
     /* TODO: this could be done more fine grained here... (I. e. not refresh everything on just an insert or delete) */
     public interface DataChangedListener{
@@ -99,7 +101,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                 DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL", null,
                 ActivityDiaryContract.Diary.START + " DESC");
-        currentActivityStartTime = new Date();
+        mCurrentActivityStartTime = new Date();
     }
 
     @Override
@@ -119,10 +121,10 @@ public class ActivityHelper extends AsyncQueryHandler{
                     listener.onActivityDataChanged();
                 }
             }else if(token == QUERY_CURRENT_ACTIVITY){
-                if(currentActivity == null) {
-                    currentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
-                    currentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
-
+                if(mCurrentActivity == null) {
+                    mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
+                    mCurrentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+                    mCurrentNote = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
                     mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
                                         Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
                     for(DataChangedListener listener : mDataChangeListeners) {
@@ -136,34 +138,36 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public DiaryActivity getCurrentActivity(){
-        return currentActivity;
+        return mCurrentActivity;
     }
-    public Date getCurrentActivityStartTime() { return currentActivityStartTime;}
+    public Date getCurrentActivityStartTime() { return mCurrentActivityStartTime;}
+    public String getCurrentNote() { return mCurrentNote;}
 
     public void setCurrentActivity(@Nullable DiaryActivity activity){
         /* update the current diary entry to "finish" it
          * in theory there should be only one entry with end = NULL in the diray table
          * but who knows? -> Let's update all. */
-        if(currentActivity != activity) {
+        if(mCurrentActivity != activity) {
             ContentValues values = new ContentValues();
             values.put(ActivityDiaryContract.Diary.END, System.currentTimeMillis());
 
             startUpdate(UPDATE_CLOSE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                     values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
-            currentActivity = activity;
-            currentActivityStartTime.setTime(System.currentTimeMillis());
+            mCurrentActivity = activity;
+            mCurrentActivityStartTime.setTime(System.currentTimeMillis());
+            mCurrentNote = "";
         }
     }
 
     @Override
     protected void onUpdateComplete(int token, Object cookie, int result) {
         if(token == UPDATE_CLOSE_ACTIVITY) {
-            if(currentActivity != null) {
+            if(mCurrentActivity != null) {
                 /* create a new diary entry */
                 ContentValues values = new ContentValues();
 
-                values.put(ActivityDiaryContract.Diary.ACT_ID, currentActivity.getId());
+                values.put(ActivityDiaryContract.Diary.ACT_ID, mCurrentActivity.getId());
                 values.put(ActivityDiaryContract.Diary.START, System.currentTimeMillis());
 
                 startInsert(INSERT_NEW_DIARY_ENTRY, null, ActivityDiaryContract.Diary.CONTENT_URI,
@@ -218,7 +222,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public void deleteActivity(DiaryActivity act) {
-        if(act == currentActivity){
+        if(act == mCurrentActivity){
             setCurrentActivity(null);
         }
         ContentValues values = new ContentValues();
