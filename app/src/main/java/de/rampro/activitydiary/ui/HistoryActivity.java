@@ -214,7 +214,7 @@ public class HistoryActivity extends BaseActivity implements
         public void onItemClick(AdapterView<?> parent, View v, int position, long id)
         {
             Cursor c = (Cursor)parent.getItemAtPosition(position);
-            /* TODO: filter history to show only entries of the clicked activity */
+            /* TODO: #25 filter history to show only entries of the clicked activity */
             Toast.makeText(HistoryActivity.this, "changing the activity in the history is not yet supported", Toast.LENGTH_LONG).show();
 
         }
