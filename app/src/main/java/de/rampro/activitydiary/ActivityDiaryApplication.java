@@ -21,7 +21,30 @@ package de.rampro.activitydiary;
 
 import android.app.Application;
 import android.content.Context;
+import org.acra.*;
+import org.acra.annotation.*;
 
+@ReportsCrashes(mailTo = "activity-diary@rampro.de",
+        mode = ReportingInteractionMode.DIALOG,
+        customReportContent = { ReportField.APP_VERSION_CODE,
+                ReportField.APP_VERSION_NAME,
+                ReportField.USER_COMMENT,
+                ReportField.ANDROID_VERSION,
+                ReportField.BRAND,
+                ReportField.PHONE_MODEL,
+                ReportField.CUSTOM_DATA,
+                ReportField.STACK_TRACE,
+                ReportField.BUILD,
+                ReportField.BUILD_CONFIG,
+                ReportField.CRASH_CONFIGURATION,
+                ReportField.DISPLAY,
+                ReportField.SHARED_PREFERENCES
+        },
+        alsoReportToAndroidFramework = true,
+        resDialogText = R.string.crash_dialog_text,
+        resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. When defined, adds a user text field input with this text resource as a label
+        resDialogOkToast = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
+)
 public class ActivityDiaryApplication extends Application {
 
     private static Context context;
@@ -29,6 +52,13 @@ public class ActivityDiaryApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ActivityDiaryApplication.context = getApplicationContext();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+
+        ACRA.init(this);
     }
 
     public static Context getAppContext() {

@@ -81,6 +81,7 @@ dependencies {
     compile "com.android.support:preference-v7:${supportLibVersion}"
     compile "com.android.support:preference-v14:${supportLibVersion}"
     compile 'com.pes.materialcolorpicker:library:1.2.2'
+    compile 'ch.acra:acra:4.9.2'
 
     testCompile 'junit:junit:4.12'
 }

@@ -186,7 +186,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             return resultUri;
         }else {
             throw new SQLException(
-                    "Problem while inserting into uri: " + uri);
+                    "Problem while inserting into uri: " + uri + " values " + values.toString());
         }
     }
 

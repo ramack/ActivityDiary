@@ -51,6 +51,9 @@
     <string name="setting_auto_select_new">Select New Activities</string>
     <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one.</string>
     <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity.</string>
+    <string name="setting_enable_acra">Crash Reporting</string>
+    <string name="setting_acra_enabled">Send reports on crashes</string>
+    <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
 
     <!-- titles -->
     <string name="activity_title_edit">Edit</string>
@@ -83,4 +86,10 @@
     <string name="yesterday">Yesterday</string>
     <string name="lastWeek">Last Week</string>
 
+    <!-- ACRA crash reporting -->
+    <string name="crash_dialog_text">An unexpected error occurred forcing the
+    application to stop. Please help us fix this by sending us error data,
+    all you have to do is click OK.</string>
+    <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+    <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
 </resources>
