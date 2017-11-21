@@ -174,7 +174,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         }
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
-        long id = db.insert(table,
+        long id = db.insertOrThrow(table,
                             null,
                             values);
         if(id > 0) {

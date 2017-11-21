@@ -29,6 +29,7 @@ import org.acra.annotation.*;
         customReportContent = { ReportField.APP_VERSION_CODE,
                 ReportField.APP_VERSION_NAME,
                 ReportField.USER_COMMENT,
+                ReportField.SHARED_PREFERENCES,
                 ReportField.ANDROID_VERSION,
                 ReportField.BRAND,
                 ReportField.PHONE_MODEL,
@@ -37,8 +38,7 @@ import org.acra.annotation.*;
                 ReportField.BUILD,
                 ReportField.BUILD_CONFIG,
                 ReportField.CRASH_CONFIGURATION,
-                ReportField.DISPLAY,
-                ReportField.SHARED_PREFERENCES
+                ReportField.DISPLAY
         },
         alsoReportToAndroidFramework = true,
         resDialogText = R.string.crash_dialog_text,
