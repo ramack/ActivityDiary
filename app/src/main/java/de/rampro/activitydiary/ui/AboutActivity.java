@@ -21,6 +21,7 @@ package de.rampro.activitydiary.ui;
 
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -48,7 +49,12 @@ public class AboutActivity extends BaseActivity {
         String versionName = BuildConfig.VERSION_NAME;
 
         String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors);
-        aboutText.setText(Html.fromHtml(mergedAboutText, Html.FROM_HTML_MODE_LEGACY));
+        if (Build.VERSION.SDK_INT >= 24) {
+            aboutText.setText(Html.fromHtml(mergedAboutText, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            aboutText.setText(Html.fromHtml(mergedAboutText));
+        }
+
         aboutText.setMovementMethod(LinkMovementMethod.getInstance());
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);

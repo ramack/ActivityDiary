@@ -56,14 +56,14 @@ import de.rampro.activitydiary.model.DiaryActivity;
 public class EditActivity extends BaseActivity
 {
     @Nullable
-    DiaryActivity currentActivity; /* null is for creating a new object */
+    private DiaryActivity currentActivity; /* null is for creating a new object */
 
     private final int QUERY_NAMES = 1;
-    EditText mActivityName;
-    TextInputLayout mActivityNameTIL;
-    ImageView mActivityColorImg;
-    int mActivityColor;
-    ColorPicker mCp;
+    private EditText mActivityName;
+    private TextInputLayout mActivityNameTIL;
+    private ImageView mActivityColorImg;
+    private int mActivityColor;
+    private ColorPicker mCp;
 
     private class QHandler extends AsyncQueryHandler {
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -186,7 +186,7 @@ public class EditActivity extends BaseActivity
                 break;
             case R.id.action_edit_done:
                 CharSequence error = mActivityNameTIL.getError();
-                if(error.length() > 0)
+                if(error != null && error.length() > 0)
                 {
                     Toast.makeText(EditActivity.this,
                             error,
