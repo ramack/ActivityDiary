@@ -1,1 +1,4 @@
-- fix crashes (hopefully)
+- support editing notes from history
+- cleanup history view
+- added ACRA crash reporting
+- fix some crashed
