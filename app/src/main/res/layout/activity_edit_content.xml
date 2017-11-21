@@ -22,22 +22,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/select_activity_label"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_activity_name_til"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/desc_activity_name" />
+        app:errorEnabled="true"
+        >
 
-    <EditText
-        android:id="@+id/edit_activity_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/desc_activity_hint"
-        android:inputType="textCapWords|textAutoCorrect"
-        android:maxLines="1" />
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_activity_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/desc_activity_hint"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/edit_activity_color_label"

@@ -20,9 +20,9 @@
 <!-- TODO: this layout is only nice in portrait mode -> add landscape view where the header is horizontally split -->
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,18 +36,18 @@
             android:background="@color/colorGreyBackground"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardUseCompatPadding="true"
                 card_view:cardCornerRadius="8dp"
-                >
-                <include layout="@layout/activity_row"
-                    android:layout_height="?android:attr/listPreferredItemHeight"
+                card_view:cardUseCompatPadding="true">
+
+                <include
+                    layout="@layout/activity_row"
                     android:layout_width="match_parent"
-                    android:transitionName="@string/current_activity_transition"/>
+                    android:layout_height="?android:attr/listPreferredItemHeight"
+                    android:transitionName="@string/current_activity_transition" />
 
             </android.support.v7.widget.CardView>
 
@@ -58,6 +58,7 @@
                 android:layout_marginLeft="8dp"
                 android:text="Duration: ?h"
                 android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/note"
                 android:layout_width="wrap_content"
@@ -73,8 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
-            android:scrollbars="horizontal"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal"
+            android:scrollbars="horizontal" />
 
     </LinearLayout>
 
@@ -82,14 +83,13 @@
         android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_note"
-        app:fabSize="normal"
         android:layout_margin="16dp"
         android:clickable="true"
-        app:layout_anchor="@id/header_area"
-        app:layout_anchorGravity="bottom|right|end"
+        android:src="@drawable/ic_add_note"
         android:transitionName="NoteEditDialogFragment"
-        />
+        app:fabSize="normal"
+        app:layout_anchor="@id/header_area"
+        app:layout_anchorGravity="bottom|right|end" />
 
 
     <!-- TODO: add a FAB functions:
