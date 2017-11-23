@@ -29,6 +29,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,7 +53,7 @@ import de.rampro.activitydiary.model.DiaryActivity;
  *
  * */
 public class MainActivity extends BaseActivity implements
-        View.OnClickListener,
+        View.OnLongClickListener,
         SelectRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
         NoteEditDialog.NoteEditDialogListener {
@@ -86,20 +87,20 @@ public class MainActivity extends BaseActivity implements
         setContent(contentView);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.select_recycler);
 
-        int rows;
-        Configuration configuration = getResources().getConfiguration();
+        View selector = contentView.findViewById(R.id.activity_background);
+        selector.setOnLongClickListener(this);
 
+        int rows;
+
+        Configuration configuration = getResources().getConfiguration();
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, value, true);
+
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        rows = (int)Math.floor(configuration.screenHeightDp / value.getDimension(metrics)) - 1;
-
+        rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
         gaggeredGridLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(gaggeredGridLayoutManager);
-
-        View selector = contentView.findViewById(R.id.activity_background);
-        selector.setOnClickListener(this);
 
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
 
@@ -154,8 +155,13 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    public void onClick(View view){
-        Toast.makeText(this, "You clicked on the current activity! Boom!", Toast.LENGTH_SHORT).show();
+    public boolean onLongClick(View view){
+        Intent i = new Intent(MainActivity.this, EditActivity.class);
+        if(mCurrentActivity != null) {
+            i.putExtra("activityID", mCurrentActivity.getId());
+        }
+        startActivity(i);
+        return true;
     }
 
     @Override
