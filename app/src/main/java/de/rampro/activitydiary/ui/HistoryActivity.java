@@ -54,7 +54,6 @@ import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 
-
 /*
  * Show the history of the Diary.
  * */
@@ -62,7 +61,7 @@ public class HistoryActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
         NoteEditDialog.NoteEditDialogListener {
     private static final String[] PROJECTION = new String[] {
-            ActivityDiaryContract.Diary._ID,
+            ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
             ActivityDiaryContract.Diary.END,
@@ -70,7 +69,7 @@ public class HistoryActivity extends BaseActivity implements
             ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.COLOR
     };
-    private static final String SELECTION = ActivityDiaryContract.Diary._DELETED + "=0";
+    private static final String SELECTION = ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0";
 
     private ListView mList;
 

@@ -98,27 +98,26 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         }
 
         switch (sUriMatcher.match(uri)) {
-            case activities_ID:
-                /* intended fall through */
+            case activities_ID: /* intended fall through */
             case activities:
-                qBuilder.setTables(LocalDBHelper.ACTIVITY_DB_TABLE);
+                qBuilder.setTables(ActivityDiaryContract.DiaryActivity.TABLE_NAME);
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                break;
+            case diary_ID: /* intended fall through */
+            case diary:
+                /* rewrite projection, to prefix with tables */
+                qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " INNER JOIN " +
+                        ActivityDiaryContract.DiaryActivity.TABLE_NAME + " ON " +
+                        ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " +
+                        ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                );
+                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
                 break;
             case conditions_ID:
                 /* intended fall through */
             case conditions:
-                qBuilder.setTables(LocalDBHelper.CONDITION_DB_TABLE);
+//                qBuilder.setTables(ActivityDiaryContract.Condition.TABLE_NAME);
 /* TODO                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
-            case diary_ID:
-                /* intended fall through */
-            case diary:
-                qBuilder.setTables(LocalDBHelper.DIARY_DB_TABLE + " INNER JOIN " +
-                        LocalDBHelper.ACTIVITY_DB_TABLE + " ON " +
-                        LocalDBHelper.DIARY_DB_TABLE + "." + ActivityDiaryContract.Diary.ACT_ID + " = " +
-                        LocalDBHelper.ACTIVITY_DB_TABLE + "." + ActivityDiaryContract.DiaryActivity._ID
-                );
-                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
-                break;
             default:
                 /* empty */
         }
@@ -157,15 +156,15 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         switch(sUriMatcher.match(uri)) {
             case activities:
-                table = LocalDBHelper.ACTIVITY_DB_TABLE;
+                table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiaryActivity.CONTENT_URI;
                 break;
             case conditions:
-                table = LocalDBHelper.CONDITION_DB_TABLE;
+//                table = ActivityDiaryContract.Condition.TABLE_NAME;
 // TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
 //                break;
             case diary:
-                table = LocalDBHelper.DIARY_DB_TABLE;
+                table = ActivityDiaryContract.Diary.TABLE_NAME;
                 resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
                 break;
             default:
@@ -217,14 +216,14 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         ContentValues values = new ContentValues();
         switch(sUriMatcher.match(uri)) {
             case activities_ID:
-                table = LocalDBHelper.ACTIVITY_DB_TABLE;
-                break;
-            case conditions_ID:
-                table = LocalDBHelper.CONDITION_DB_TABLE;
+                table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 break;
             case diary_ID:
-                table = LocalDBHelper.DIARY_DB_TABLE;
+                table = ActivityDiaryContract.Diary.TABLE_NAME;
                 break;
+            case conditions_ID:
+//                table = ActivityDiaryContract.Condition.TABLE_NAME;
+//                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for deletion: " + uri);
@@ -279,17 +278,17 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         switch(sUriMatcher.match(uri)) {
             case activities_ID:
                 isID = true;
-                table = LocalDBHelper.ACTIVITY_DB_TABLE;
-                break;
-            case conditions_ID:
-                isID = true;
-                table = LocalDBHelper.CONDITION_DB_TABLE;
+                table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 break;
             case diary_ID:
                 isID = true;
             case diary:
-                table = LocalDBHelper.DIARY_DB_TABLE;
+                table = ActivityDiaryContract.Diary.TABLE_NAME;
                 break;
+            case conditions_ID:
+                isID = true;
+//                table = ActivityDiaryContract.Condition.TABLE_NAME;
+//                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for update: " + uri);

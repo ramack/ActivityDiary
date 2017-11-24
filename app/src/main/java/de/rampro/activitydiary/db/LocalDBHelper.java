@@ -26,11 +26,6 @@ import android.graphics.Color;
 
 
 public class LocalDBHelper extends SQLiteOpenHelper {
-    public static final String ACTIVITY_DB_TABLE = "activity";
-    public static final String ACTIVITY_ALIAS_DB_TABLE = "activity_alias";
-    public static final String CONDITION_DB_TABLE = "condition";
-    public static final String CONDITIONS_DB_TABLE = "conditions_map";
-    public static final String DIARY_DB_TABLE = "diary";
 
     LocalDBHelper(Context context) {
         super(context, ActivityDiaryContract.AUTHORITY, null, CURRENT_VERSION);
@@ -41,7 +36,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         /* version 2 */
         /* TODO: should we add a constraint to forbid name reuse accross tables (even no alias to an existing name) */
         db.execSQL("CREATE TABLE " +
-                ACTIVITY_DB_TABLE +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
                 "(" +
                 ActivityDiaryContract.DiaryActivity._ID + " INTEGER PRIMARY KEY ASC, " +
                 ActivityDiaryContract.DiaryActivity._DELETED + " INTEGER DEFAULT 0," +
@@ -81,7 +76,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
 */
         db.execSQL("CREATE TABLE " +
-                DIARY_DB_TABLE +
+                ActivityDiaryContract.Diary.TABLE_NAME +
                 "(" +
                 "_id INTEGER PRIMARY KEY ASC, " +
                 "_deleted INTEGER DEFAULT 0," +
@@ -93,7 +88,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
 
         db.execSQL("INSERT INTO " +
-                ACTIVITY_DB_TABLE +
+                ActivityDiaryContract.Diary.TABLE_NAME +
                 "(name, color)" +
                 " VALUES " +
                 " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
@@ -121,11 +116,12 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         if(oldVersion == 1){
             /* upgrade from 1 to current */
             /* still alpha, so just delete and restart */
-            db.execSQL("DROP TABLE " + ACTIVITY_DB_TABLE);
-            db.execSQL("DROP TABLE " + ACTIVITY_ALIAS_DB_TABLE);
-            db.execSQL("DROP TABLE " + CONDITION_DB_TABLE);
-            db.execSQL("DROP TABLE " + CONDITIONS_DB_TABLE);
-            db.execSQL("DROP TABLE " + DIARY_DB_TABLE);
+            /* do not use synmbolic names here, because in case of later rename the old names shall be dropped */
+            db.execSQL("DROP TABLE activity");
+            db.execSQL("DROP TABLE activity_alias");
+            db.execSQL("DROP TABLE condition");
+            db.execSQL("DROP TABLE conditions_map");
+            db.execSQL("DROP TABLE diary");
             onCreate(db);
             oldVersion = CURRENT_VERSION;
         }

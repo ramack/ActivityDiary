@@ -21,6 +21,7 @@
         <p>Simone Pessotto (<a href="https://github.com/Pes8/android-material-color-picker-dialog">library android-material-color-picker-dialog</a>)</p>
         ]]>
     </string>
+    <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so&#8230;</string>
 
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Select Activity</string>
@@ -54,6 +55,11 @@
     <string name="setting_acra_enabled">Send reports on crashes</string>
     <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
 
+    <string name="setting_storage_folder">Picture Storage Folder</string>
+    <string name="setting_storage_folder_summary">Store activity photos in ActivityDiary</string>
+    <string name="setting_storage_folder_description">Directory to store the activity photos</string>
+    <string name="default_storage_folder">ActivityDiary</string>
+
     <!-- titles -->
     <string name="activity_title_edit">Edit</string>
     <string name="activity_title_edit_new">New Activity</string>
@@ -76,6 +82,7 @@
 
     <!-- main view -->
     <string name="duration_description">Duration:</string>
+    <string name="camera_error">Something went wrong here. Could not store image.</string>
 
     <!-- edit view -->
     <string name="error_name_already_used">Activity with name %1$s already exists.</string>

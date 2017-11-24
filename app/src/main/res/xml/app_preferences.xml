@@ -49,11 +49,20 @@
 
 
 -->
+        <android.support.v7.preference.EditTextPreference
+            android:key="pref_storageFolder"
+            android:title="@string/setting_storage_folder"
+            android:summary="@string/setting_storage_folder_summary"
+            android:dialogMessage="@string/setting_storage_folder_description"
+            android:defaultValue="@string/default_storage_folder" />
+
+
         <CheckBoxPreference android:key="acra.enable"
             android:title="@string/setting_enable_acra"
             android:summaryOn="@string/setting_acra_enabled"
             android:summaryOff="@string/setting_acra_disabled"
             android:defaultValue="true"/>
+
 
     </android.support.v7.preference.PreferenceCategory>
 

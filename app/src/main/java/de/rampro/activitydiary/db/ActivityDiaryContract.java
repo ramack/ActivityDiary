@@ -43,6 +43,11 @@ public class ActivityDiaryContract {
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "activities");
 
         /**
+         * The name of the database table, to be used for joining queries as column prefix.
+         */
+        public static final String TABLE_NAME = "activity";
+
+        /**
          * The mime type of a directory of this entry.
          */
         public static final String CONTENT_TYPE =
@@ -114,6 +119,11 @@ public class ActivityDiaryContract {
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diary");
 
         /**
+         * The name of the database table, to be used for joining queries as column prefix.
+         */
+        public static final String TABLE_NAME = "diary";
+
+        /**
          * The mime type of a directory of this entry.
          */
         public static final String CONTENT_TYPE =
@@ -145,12 +155,12 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Diary (entry)
          * <P>Type: INTEGER</P>
          */
-        public static final String _ID = LocalDBHelper.DIARY_DB_TABLE + "._id";
+        public static final String _ID = "_id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
          */
-        public static final String _DELETED = LocalDBHelper.DIARY_DB_TABLE + "._deleted";
+        public static final String _DELETED = "_deleted";
         /**
          * The ID for the related Activity
          * <P>Type: TEXT</P>

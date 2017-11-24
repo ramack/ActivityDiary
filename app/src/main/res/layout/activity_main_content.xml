@@ -66,6 +66,11 @@
                 android:layout_marginLeft="8dp"
                 android:text="--"
                 android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <!-- TODO: fill useful content in the Activity header area -->
         </LinearLayout>
 
@@ -80,7 +85,7 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_action_button"
+        android:id="@+id/fab_edit_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -89,8 +94,23 @@
         android:transitionName="NoteEditDialogFragment"
         app:fabSize="normal"
         app:layout_anchor="@id/header_area"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end"
+        app:pressedTranslationZ="12dp"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_attach_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
+        android:clickable="true"
+        android:src="@drawable/ic_add_image"
+        app:fabSize="normal"
+        app:layout_anchor="@id/header_area"
+        app:layout_anchorGravity="bottom|right|end"
+        android:visibility="visible"
+        />
 
     <!-- TODO: add a FAB functions:
                - new activity

@@ -50,7 +50,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
-            ActivityDiaryContract.Diary._ID,
+            ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.NOTE
     };
     private static final String[] ACTIVITIES_PROJ = new String[] {

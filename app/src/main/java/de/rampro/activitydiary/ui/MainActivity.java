@@ -18,15 +18,22 @@
  */
 package de.rampro.activitydiary.ui;
 
+import android.Manifest;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.media.ExifInterface;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -36,9 +43,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -46,6 +59,7 @@ import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
+import de.rampro.activitydiary.helpers.ImageHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 /*
@@ -57,10 +71,15 @@ public class MainActivity extends BaseActivity implements
         SelectRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
         NoteEditDialog.NoteEditDialogListener {
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
 
     private StaggeredGridLayoutManager gaggeredGridLayoutManager;
     private TextView durationLabel;
     private TextView mNoteTextView;
+    private ImageView mImageView;
+    private String mCurrentPhotoPath;
 
     SelectRecyclerViewAdapter rcAdapter;
 
@@ -109,11 +128,12 @@ public class MainActivity extends BaseActivity implements
 
         durationLabel = (TextView) contentView.findViewById(R.id.duration_label);
         mNoteTextView =  (TextView) contentView.findViewById(R.id.note);
+        mImageView = (ImageView) contentView.findViewById(R.id.image);
 
-        FloatingActionButton floatingActionButton =
-                (FloatingActionButton) findViewById(R.id.floating_action_button);
+        FloatingActionButton fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
+        FloatingActionButton fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        fabNoteEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle the click on the FAB
@@ -123,20 +143,90 @@ public class MainActivity extends BaseActivity implements
             }
         });
 
-        floatingActionButton.setOnLongClickListener(new View.OnLongClickListener() {
+        fabAttachPicture.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                // Handle the click.
-                Toast.makeText(MainActivity.this, "You long-clicked the FAB! You really expect some feature here? -> Tell me what, please...", Toast.LENGTH_SHORT).show();
-                return true;
-            }
+            public void onClick(View v) {
+                // Handle the click on the FAB
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    File photoFile = null;
+                    try {
+                        photoFile = createImageFile();
+                    } catch (IOException ex) {
+                        // Error occurred while creating the File
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
+                    }
+                    // Continue only if the File was successfully created
+                    if (photoFile != null) {
+                        // Save a file: path for use with ACTION_VIEW intents
+                        mCurrentPhotoPath = photoFile.getAbsolutePath();
+
+                        Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
+                                "com.example.android.fileprovider",
+                                photoFile);
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                    }
+
+                }
+
+            }
         });
 
         onActivityChanged();
-        floatingActionButton.show();
+        fabNoteEdit.show();
+        PackageManager pm = getPackageManager();
+
+        if(pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            fabAttachPicture.show();
+        }else{
+            fabAttachPicture.hide();
+        }
+
+
     /* TODO #25: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "IMG_";
+        if(mCurrentActivity != null){
+            imageFileName += mCurrentActivity.getName();
+            imageFileName += "_";
+        }
+
+        imageFileName += timeStamp;
+        File storageDir = ImageHelper.helper.imageStorageDirectory();
+        int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if(permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                Toast.makeText(this,R.string.perm_write_external_storage_xplain, Toast.LENGTH_LONG).show();
+            }
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            storageDir = null;
+        }
+
+        if(storageDir != null){
+            File image = File.createTempFile(
+                    imageFileName,
+                    ".jpg",
+                    storageDir
+            );
+
+            return image;
+        }else{
+            return null;
+        }
+
     }
 
     @Override
@@ -234,6 +324,32 @@ public class MainActivity extends BaseActivity implements
                 values,
                 null, null);
         mNoteTextView.setText(str);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            if(mCurrentPhotoPath != null) {
+
+                Picasso.with(this).load(new File(mCurrentPhotoPath))
+                        .resize(100,100)
+                        .centerCrop()
+                        .into(mImageView);
+                try {
+                    ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
+                    if(mCurrentActivity != null) {
+                        /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
+                        /* would be great to use ICPT keywords instead of EXIF UserComment, but
+                         * at time of writing (2017-11-24) it is hard to find a library able to write ICPT
+                         * to JPEG for android. */
+                        exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, mCurrentActivity.getName());
+                        exifInterface.saveAttributes();
+                    }
+                }catch (IOException e){
+                    Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed");
+                }
+            }
+        }
     }
 
 }
