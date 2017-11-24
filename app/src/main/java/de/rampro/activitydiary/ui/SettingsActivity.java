@@ -37,9 +37,11 @@ import de.rampro.activitydiary.R;
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_PREF_DATE_FORMAT = "pref_datetimeFormat";
     public static final String KEY_PREF_AUTO_SELECT = "pref_auto_select_new";
+    public static final String KEY_PREF_STORAGE_FOLDER = "pref_storageFolder";
 
     private Preference dateformatPref;
     private Preference autoSelectPref;
+    private Preference storageFolderPref;
     private PreferenceManager mPreferenceManager;
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
@@ -50,7 +52,18 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             dateformatPref.setSummary(DateFormat.format(sharedPreferences.getString(key, def), new Date()));
         }else if(key.equals(KEY_PREF_AUTO_SELECT)){
             updateAutoSelectSummary();
+        }else if(key.equals(KEY_PREF_STORAGE_FOLDER)){
+            /* TODO: we could ask here whether we shall move the pictures... */
+            updateStorageFolderSummary();
         }
+    }
+
+    private void updateStorageFolderSummary() {
+        String dir = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_STORAGE_FOLDER, "ActivityDiary");
+
+        storageFolderPref.setSummary(getResources().getString(R.string.setting_storage_folder_summary, dir));
     }
 
     private void updateAutoSelectSummary() {
@@ -62,7 +75,6 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             autoSelectPref.setSummary(getResources().getString(R.string.setting_auto_select_new_summary_inactive));
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +99,10 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 , new Date()));
 
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
+        storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
+
         updateAutoSelectSummary();
+        updateStorageFolderSummary();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

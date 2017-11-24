@@ -56,7 +56,7 @@
     <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
 
     <string name="setting_storage_folder">Picture Storage Folder</string>
-    <string name="setting_storage_folder_summary">Store activity photos in ActivityDiary</string>
+    <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
     <string name="setting_storage_folder_description">Directory to store the activity photos</string>
     <string name="default_storage_folder">ActivityDiary</string>
 
