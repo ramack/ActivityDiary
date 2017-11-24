@@ -3,7 +3,7 @@ ActivityDiary is a diary for any kind of activities - track and organize your ta
 
 In the long term many functions shall be implemented, see https://github.com/ramack/ActivityDiary/wiki for the ideas and design decisions.
 
-Currently you can select the your current activity, record notes and browse your history:
+Currently you can select the your current activity, attach notes and pictures and browse your history:
 ![Alt text](/app/src/main/play/en-US/listing/phoneScreenshots/Screenshot_SelectActivity.png?raw=true "Select Activity")
 
 # License and Copyright
@@ -15,11 +15,53 @@ You should have received a copy of the GNU General Public License along with thi
 
 Copyright notices in this project are mostly given with a reference to the year in form of xxxx-yyyy as a short cut with the meaning, that there is a contribution in every year in the given range.
 
-# Authors
-This app is under development by Raphael Mack [@ramack](https://github.com/ramack).
+# Authors and Contribution
+This app is currently under development by Raphael Mack [@ramack](https://github.com/ramack).
+Any form of contribution is warmly welcome and I am happy to read tickets with suggestions or bug reports or even better pull requests with fixes or new features. For code contributions it would be good to have a ticket describing the changes as a place for discussion before starting to work on it. I so far work directly in the master branch as long as I am alone; For pull requests it might be worth working on a dedicated feature branch. It is good practice to use descriptive commit messages and reference tickets using #xxx, which is even suggested for TODO comments in the code. Small commits are fine and there is no need to squash multiple changes into one commit.
+
+By submitting a pull request on github the submitter certifies the following:
+`Developer Certificate of Origin
+Version 1.1
+
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+1 Letterman Drive
+Suite D4700
+San Francisco, CA, 94129
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+
+
+Developer's Certificate of Origin 1.1
+
+By making a contribution to this project, I certify that:
+
+(a) The contribution was created in whole or in part by me and I
+    have the right to submit it under the open source license
+    indicated in the file; or
+
+(b) The contribution is based upon previous work that, to the best
+    of my knowledge, is covered under an appropriate open source
+    license and I have the right under that license to submit that
+    work with modifications, whether created in whole or in part
+    by me, under the same open source license (unless I am
+    permitted to submit under a different license), as indicated
+    in the file; or
+
+(c) The contribution was provided directly to me by some other
+    person who certified (a), (b) or (c) and I have not modified
+    it.
+
+(d) I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including all
+    personal information I submit with it, including my sign-off) is
+    maintained indefinitely and may be redistributed consistent with
+    this project or the open source license(s) involved.`
+
+So to say submission of a pull request is considered as the act of signing this certificate. This is also why each contributor shall setup his/her development environment such that the full name and a valid email address is part of the commit meta data. Modified files shall contain an updated copyright notice to include all authors.
 
 # Status
-Next test version is out, which is still not really usable productively but you can get a first impression of the idea, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
+Next test version is out, and with this we enter beta phase, as a basic set of features is implemented which makes this app usable. Anyhow, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
 
 Stay tuned and start contributing!
 
