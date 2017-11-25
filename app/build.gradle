@@ -80,10 +80,11 @@ dependencies {
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:preference-v7:${supportLibVersion}"
     compile "com.android.support:preference-v14:${supportLibVersion}"
+    compile "com.android.support:exifinterface:${supportLibVersion}"
     compile 'com.pes.materialcolorpicker:library:1.2.2'
     compile 'ch.acra:acra:4.9.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile "com.android.support:exifinterface:${supportLibVersion}"
+    // Don't forget to add attribution in strings.xml/libraries if you add something here
 
     testCompile 'junit:junit:4.12'
 }

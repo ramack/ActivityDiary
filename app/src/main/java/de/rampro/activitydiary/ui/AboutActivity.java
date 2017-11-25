@@ -46,9 +46,10 @@ public class AboutActivity extends BaseActivity {
 
         String appName = getResources().getString(R.string.app_name);
         String contributors = getResources().getString(R.string.contributors);
+        String libraries = getResources().getString(R.string.libraries);
         String versionName = BuildConfig.VERSION_NAME;
 
-        String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors);
+        String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors, libraries);
         if (Build.VERSION.SDK_INT >= 24) {
             aboutText.setText(Html.fromHtml(mergedAboutText, Html.FROM_HTML_MODE_LEGACY));
         } else {

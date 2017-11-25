@@ -13,6 +13,9 @@
         <h1>Contributors</h1>
         %3$s
         <p>We are looking forward to mention your name in this list, too.</p>
+        <h1>Libraries</h1>
+        The following libraries are used by this application and licensed under the named licenses.
+        %4$s
         ]]>
     </string>
 
@@ -21,6 +24,13 @@
         <p>Simone Pessotto (<a href="https://github.com/Pes8/android-material-color-picker-dialog">library android-material-color-picker-dialog</a>)</p>
         ]]>
     </string>
+    <string name="libraries" translatable="false"><![CDATA[
+        <p><a href="https://github.com/Pes8/android-material-color-picker-dialog">Android Material Color Picker Dialog</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p><a href="https://github.com/ACRA/acra">ACRA - Application Crash Reports for Android</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p>appcompat, cardview, recyclerview, design, preference, exifinterface, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        ]]></string>
     <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so&#8230;</string>
 
     <!-- Navigation Drawer Menu -->
