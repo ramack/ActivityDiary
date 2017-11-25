@@ -33,17 +33,96 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        /* version 2 */
-        /* TODO: should we add a constraint to forbid name reuse accross tables (even no alias to an existing name) */
+        createTablesForVersion(db, CURRENT_VERSION);
+
+        /* now fill some sample data */
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.Diary.TABLE_NAME +
+                "(name, color)" +
+                " VALUES " +
+                " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
+                " ('Woodworking', '" + Color.parseColor("#5D4037") + "')," +
+                " ('Officework', '" + Color.parseColor("#00796B") + "')," +
+                " ('Swimming', '" + Color.parseColor("#0288D1") + "')," +
+                " ('Relaxing', '" + Color.parseColor("#FFA000") + "')," +
+                " ('Cooking', '" + Color.parseColor("#AFB42B") + "')," +
+                " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "')," +
+                " ('Cinema', '" + Color.parseColor("#C2185B") + "')," +
+                " ('Sleeping', '" + Color.parseColor("#303F9F") + "');");
+    }
+
+    public static final int CURRENT_VERSION = 3;
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        /**
+         * The SQLite ALTER TABLE documentation can be found
+         * <a href="http://sqlite.org/lang_altertable.html">here</a>. If you add new columns
+         * you can use ALTER TABLE to insert them into a live table. If you rename or remove columns
+         * you can use ALTER TABLE to rename the old table, then create the new table and then
+         * populate the new table with the contents of the old table.
+         */
+        if(oldVersion == 1){
+            /* upgrade from 1 to current */
+            /* still alpha, so just delete and restart */
+            /* do not use synmbolic names here, because in case of later rename the old names shall be dropped */
+            db.execSQL("DROP TABLE activity");
+            db.execSQL("DROP TABLE activity_alias");
+            db.execSQL("DROP TABLE condition");
+            db.execSQL("DROP TABLE conditions_map");
+            db.execSQL("DROP TABLE diary");
+            onCreate(db);
+            oldVersion = CURRENT_VERSION;
+        }
+        if(oldVersion == 2){
+            /* upgrade from 2 to 3 */
+            createDiaryImageTable(db);
+        }
+        if(newVersion > 3){
+            throw new RuntimeException("Database upgrade to version " + newVersion + " nyi.");
+        }
+    }
+
+    private void createDiaryImageTable(SQLiteDatabase db){
         db.execSQL("CREATE TABLE " +
-                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "diary_image " +
                 "(" +
-                ActivityDiaryContract.DiaryActivity._ID + " INTEGER PRIMARY KEY ASC, " +
-                ActivityDiaryContract.DiaryActivity._DELETED + " INTEGER DEFAULT 0," +
-                ActivityDiaryContract.DiaryActivity.NAME + " TEXT NOT NULL UNIQUE," +
-                ActivityDiaryContract.DiaryActivity.COLOR + " INTEGER," +
-                ActivityDiaryContract.DiaryActivity.PARENT + " INTEGER " +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0, " +
+                "diary_id INTEGER NOT NULL, " +
+                "uri TEXT NOT NULL, " +
+                " FOREIGN KEY(diary_id) REFERENCES diary(_id)" +
                 ");");
+    }
+
+    private void createTablesForVersion(SQLiteDatabase db, int version){
+        db.execSQL("CREATE TABLE " +
+                "activity " +
+                "(" +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0, " +
+                "name TEXT NOT NULL UNIQUE," +
+                "color INTEGER," +
+                "parent INTEGER " +
+                ");");
+
+        db.execSQL("CREATE TABLE " +
+                "diary" +
+                "(" +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0," +
+                "act_id INTEGER NOT NULL, " +
+                "start INTEGER NOT NULL, " +
+                "'end' INTEGER DEFAULT NULL, " +
+                "note TEXT, " +
+                " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
+                ");");
+
+        if (version >= 3){
+            createDiaryImageTable(db);
+        }
+
+        if (version >= 4){
 /* TODO #20 do in a dedicated method, to allow an upgrade path of the DB
         db.execSQL("CREATE TABLE " +
                 ACTIVITY_ALIAS_DB_TABLE +
@@ -75,61 +154,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY(cond_id) REFERENCES condition(_id) " +
                 ");");
 */
-        db.execSQL("CREATE TABLE " +
-                ActivityDiaryContract.Diary.TABLE_NAME +
-                "(" +
-                "_id INTEGER PRIMARY KEY ASC, " +
-                "_deleted INTEGER DEFAULT 0," +
-                ActivityDiaryContract.Diary.ACT_ID + " INTEGER NOT NULL, " +
-                ActivityDiaryContract.Diary.START + " INTEGER NOT NULL, " +
-                ActivityDiaryContract.Diary.END + " INTEGER DEFAULT NULL, " +
-                ActivityDiaryContract.Diary.NOTE + " TEXT, " +
-                " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
-                ");");
 
-        db.execSQL("INSERT INTO " +
-                ActivityDiaryContract.Diary.TABLE_NAME +
-                "(name, color)" +
-                " VALUES " +
-                " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
-                " ('Woodworking', '" + Color.parseColor("#5D4037") + "')," +
-                " ('Officework', '" + Color.parseColor("#00796B") + "')," +
-                " ('Swimming', '" + Color.parseColor("#0288D1") + "')," +
-                " ('Relaxing', '" + Color.parseColor("#FFA000") + "')," +
-                " ('Cooking', '" + Color.parseColor("#AFB42B") + "')," +
-                " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "')," +
-                " ('Cinema', '" + Color.parseColor("#C2185B") + "')," +
-                " ('Sleeping', '" + Color.parseColor("#303F9F") + "');");
-    }
-
-    public static final int CURRENT_VERSION = 2;
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        /**
-         * The SQLite ALTER TABLE documentation can be found
-         * <a href="http://sqlite.org/lang_altertable.html">here</a>. If you add new columns
-         * you can use ALTER TABLE to insert them into a live table. If you rename or remove columns
-         * you can use ALTER TABLE to rename the old table, then create the new table and then
-         * populate the new table with the contents of the old table.
-         */
-        if(oldVersion == 1){
-            /* upgrade from 1 to current */
-            /* still alpha, so just delete and restart */
-            /* do not use synmbolic names here, because in case of later rename the old names shall be dropped */
-            db.execSQL("DROP TABLE activity");
-            db.execSQL("DROP TABLE activity_alias");
-            db.execSQL("DROP TABLE condition");
-            db.execSQL("DROP TABLE conditions_map");
-            db.execSQL("DROP TABLE diary");
-            onCreate(db);
-            oldVersion = CURRENT_VERSION;
-        }
-        if(oldVersion == 2){
-            /* upgrade from 2 to 3 */
-        }
-        if(newVersion > 2){
-            throw new RuntimeException("Database upgrade to version " + newVersion + " nyi.");
         }
     }
 }

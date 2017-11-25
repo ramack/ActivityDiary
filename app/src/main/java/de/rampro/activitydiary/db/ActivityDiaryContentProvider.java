@@ -48,6 +48,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     private static final int conditions_ID = 4;
     private static final int diary = 5;
     private static final int diary_ID = 6;
+    private static final int diary_image = 7;
+    private static final int diary_image_ID = 8;
     private static final String TAG = ActivityDiaryContentProvider.class.getName();
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -58,6 +60,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath(), diary);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath() + "/#", diary_ID);
+
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath(), diary_image);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath() + "/#", diary_image_ID);
 
         /* TODO #18 */
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
@@ -87,6 +92,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case activities_ID:
             case conditions_ID:
             case diary_ID:
+            case diary_image_ID:
                 if(selection != null) {
                     selection = selection + " AND ";
                 }else{
@@ -102,6 +108,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case activities:
                 qBuilder.setTables(ActivityDiaryContract.DiaryActivity.TABLE_NAME);
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                break;
+            case diary_image_ID:
+            case diary_image:
+                qBuilder.setTables(ActivityDiaryContract.DiaryImage.TABLE_NAME);
+                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT;
                 break;
             case diary_ID: /* intended fall through */
             case diary:
@@ -142,6 +153,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 return ActivityDiaryContract.DiaryActivity.CONTENT_TYPE;
             case activities_ID:
                 return ActivityDiaryContract.DiaryActivity.CONTENT_ITEM_TYPE;
+            case diary:
+                return ActivityDiaryContract.Diary.CONTENT_TYPE;
+                        // TODO: add other types
             default:
                 Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
                 return "";
@@ -159,14 +173,18 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiaryActivity.CONTENT_URI;
                 break;
-            case conditions:
-//                table = ActivityDiaryContract.Condition.TABLE_NAME;
-// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
-//                break;
             case diary:
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
                 resultUri = ActivityDiaryContract.Diary.CONTENT_URI;
                 break;
+            case diary_image:
+                table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
+                resultUri = ActivityDiaryContract.DiaryImage.CONTENT_URI;
+                break;
+            case conditions:
+//                table = ActivityDiaryContract.Condition.TABLE_NAME;
+// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
+//                break;
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for insertion: " + uri);
@@ -220,6 +238,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case diary_ID:
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
+                break;
+            case diary_image:
+                table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
                 break;
             case conditions_ID:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
@@ -284,6 +305,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 isID = true;
             case diary:
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
+                break;
+            case diary_image:
+                table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
                 break;
             case conditions_ID:
                 isID = true;

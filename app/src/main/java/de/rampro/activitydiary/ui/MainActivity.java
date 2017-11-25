@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,8 +33,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.media.ExifInterface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -67,21 +71,30 @@ import de.rampro.activitydiary.model.DiaryActivity;
  *
  * */
 public class MainActivity extends BaseActivity implements
+        LoaderManager.LoaderCallbacks<Cursor>,
         View.OnLongClickListener,
         SelectRecyclerViewAdapter.SelectListener,
+        DetailRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
-        NoteEditDialog.NoteEditDialogListener {
+        NoteEditDialog.NoteEditDialogListener
+        {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
 
-    private StaggeredGridLayoutManager gaggeredGridLayoutManager;
+    private static final String[] PROJECTION_IMG = new String[] {
+            ActivityDiaryContract.DiaryImage.URI
+    };
+
+    private StaggeredGridLayoutManager selectorLayoutManager, detailLayoutManager;
     private TextView durationLabel;
     private TextView mNoteTextView;
     private ImageView mImageView;
     private String mCurrentPhotoPath;
 
     SelectRecyclerViewAdapter rcAdapter;
+
+    DetailRecyclerViewAdapter detailAdapter;
 
     DiaryActivity mCurrentActivity;
     Uri mCurrentDiaryUri;
@@ -96,8 +109,21 @@ public class MainActivity extends BaseActivity implements
     private QHandler mQHandler = new QHandler();
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("currentPhotoPath", mCurrentPhotoPath);
+
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // recovering the instance state
+        if (savedInstanceState != null) {
+            mCurrentPhotoPath = savedInstanceState.getString("currentPhotoPath");
+        }
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -118,8 +144,8 @@ public class MainActivity extends BaseActivity implements
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
-        gaggeredGridLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(gaggeredGridLayoutManager);
+        selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(selectorLayoutManager);
 
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
 
@@ -183,6 +209,13 @@ public class MainActivity extends BaseActivity implements
         }else{
             fabAttachPicture.hide();
         }
+
+        RecyclerView detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
+        detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+        detailRecyclerView.setLayoutManager(detailLayoutManager);
+
+        detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this, this, null);
+        detailRecyclerView.setAdapter(detailAdapter);
 
 
     /* TODO #25: add a search box in the toolbar to filter / fuzzy search
@@ -281,6 +314,7 @@ public class MainActivity extends BaseActivity implements
              * In those cases we keep the default text from the xml. */
             mCurrentDiaryUri = null;
         }
+        getSupportLoaderManager().restartLoader(0, null, this);
     }
 
     /**
@@ -330,6 +364,18 @@ public class MainActivity extends BaseActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if(mCurrentPhotoPath != null) {
+                Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
+                        "com.example.android.fileprovider",
+                        new File(mCurrentPhotoPath));
+
+                ContentValues values = new ContentValues();
+                values.put(ActivityDiaryContract.DiaryImage.URI, photoURI.toString());
+                values.put(ActivityDiaryContract.DiaryImage.DIARY_ID, mCurrentDiaryUri.getLastPathSegment());
+
+                mQHandler.startInsert(0,
+                        null,
+                        ActivityDiaryContract.DiaryImage.CONTENT_URI,
+                        values);
 
                 Picasso.with(this).load(new File(mCurrentPhotoPath))
                         .resize(100,100)
@@ -351,5 +397,33 @@ public class MainActivity extends BaseActivity implements
             }
         }
     }
+
+    // Called when a new Loader needs to be created
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        // Now create and return a CursorLoader that will take care of
+        // creating a Cursor for the data being displayed.
+        return new CursorLoader(this, ActivityDiaryContract.DiaryImage.CONTENT_URI,
+                PROJECTION_IMG,
+                ActivityDiaryContract.DiaryImage.TABLE_NAME + "." + ActivityDiaryContract.DiaryImage.DIARY_ID + "=?",
+                mCurrentDiaryUri == null ? new String[]{"0"}:new String[]{mCurrentDiaryUri.getLastPathSegment()},
+                null);
+    }
+
+    // Called when a previously created loader has finished loading
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        // Swap the new cursor in.  (The framework will take care of closing the
+        // old cursor once we return.)
+        detailAdapter.swapCursor(data);
+    }
+
+    // Called when a previously created loader is reset, making the data unavailable
+    public void onLoaderReset(Loader<Cursor> loader) {
+        // This is called when the last Cursor provided to onLoadFinished()
+        // above is about to be closed.  We need to make sure we are no
+        // longer using it.
+        detailAdapter.swapCursor(null);
+    }
+
 
 }

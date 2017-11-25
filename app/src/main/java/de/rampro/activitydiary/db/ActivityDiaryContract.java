@@ -87,7 +87,7 @@ public class ActivityDiaryContract {
          */
         public static final String COLOR = "color";
         /**
-         * The if of the parent Activity
+         * The id of the parent Activity
          * <P>Type: INT</P>
          */
         public static final String PARENT = "parent";
@@ -109,7 +109,7 @@ public class ActivityDiaryContract {
         public static final String _DELETED = "_deleted";
     }
 
-    /* DiaryActivities are the main action that can be logged in the Diary */
+    /* Diary stores the history of the activities. */
     public final static class Diary implements DiaryColumns, DiaryActivityJoinableColumns{
         /**
          * This utility class cannot be instantiated
@@ -136,8 +136,7 @@ public class ActivityDiaryContract {
                 ContentResolver.CURSOR_DIR_BASE_TYPE +
                         "/vnd.de.rampro.activitydiary_diaryentry";
         /**
-         * A projection of all columns
-         * in the items table.
+         * A projection of all columns in the diary table, including some joined colums from DiaryActivity.
          */
         public static final String[] PROJECTION_ALL =
                 {_ID, _DELETED, ACT_ID, NAME, COLOR, START, END, NOTE};
@@ -181,6 +180,67 @@ public class ActivityDiaryContract {
          * <P>Type: TEXT</P>
          */
         public static final String NOTE = "note";
+    }
+
+    /* DiaryImage attachments for diary entries*/
+    public final static class DiaryImage {
+        /**
+         * This utility class cannot be instantiated
+         */
+        private DiaryImage() {}
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diaryImage");
+
+        /**
+         * The name of the database table, to be used for joining queries as column prefix.
+         */
+        public static final String TABLE_NAME = "diary_image";
+
+        /**
+         * The mime type of a directory of this entry.
+         */
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary_images";
+        /**
+         * The mime type of a single entry.
+         */
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary_image";
+
+        /**
+         * The id (primary key) for the image
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _ID = "_id";
+        /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
+        /**
+         * The ID for the related Diary entry
+         * <P>Type: TEXT</P>
+         */
+        public static final String DIARY_ID = "diary_id";
+        /**
+         * The uri of the image.
+         * <P>Type: STRING</P>
+         */
+        public static final String URI = "uri";
+
+        /**
+         * A projection of all columns in the diary table, including some joined colums from DiaryActivity.
+         */
+        public static final String[] PROJECTION_ALL =
+                {_ID, _DELETED, DIARY_ID, URI};
+
+        /**
+         * The default sort order for the diary images.
+         */
+        public static final String SORT_ORDER_DEFAULT = "";
+
     }
 
 }
