@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.generic;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -32,6 +32,8 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.ui.history.HistoryActivity;
+import de.rampro.activitydiary.ui.main.MainActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements

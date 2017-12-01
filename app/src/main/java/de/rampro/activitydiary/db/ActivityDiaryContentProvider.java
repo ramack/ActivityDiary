@@ -128,7 +128,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* intended fall through */
             case conditions:
 //                qBuilder.setTables(ActivityDiaryContract.Condition.TABLE_NAME);
-/* TODO                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
+/* TODO #18               if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
             default:
                 /* empty */
         }
@@ -155,7 +155,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 return ActivityDiaryContract.DiaryActivity.CONTENT_ITEM_TYPE;
             case diary:
                 return ActivityDiaryContract.Diary.CONTENT_TYPE;
-                        // TODO: add other types
+            // TODO #18: add other types
             default:
                 Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
                 return "";
@@ -183,7 +183,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case conditions:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
-// TODO               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
+// TODO #18               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
 //                break;
             default:
                 throw new IllegalArgumentException(

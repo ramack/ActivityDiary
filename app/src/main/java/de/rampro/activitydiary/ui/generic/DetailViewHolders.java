@@ -17,8 +17,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.generic;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,24 +27,22 @@ import android.widget.TextView;
 
 import de.rampro.activitydiary.R;
 
-class SelectViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+class DetailViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView mName;
-    public ImageView mSymbol;
-    public View mBackground;
-    private SelectRecyclerViewAdapter.SelectListener mListener;
+    @NonNull public TextView mTextView;
+    @NonNull public ImageView mSymbol;
+    @NonNull private DetailRecyclerViewAdapter.SelectListener mListener;
 
-    public SelectViewHolders(SelectRecyclerViewAdapter.SelectListener listener, View itemView) {
+    public DetailViewHolders(@NonNull DetailRecyclerViewAdapter.SelectListener listener, @NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        mName = (TextView) itemView.findViewById(R.id.activity_name);
-        mSymbol = (ImageView) itemView.findViewById(R.id.activity_image);
-        mBackground = (View) itemView.findViewById(R.id.activity_background);
+        mTextView = (TextView) itemView.findViewById(R.id.detailText);
+        mSymbol = (ImageView) itemView.findViewById(R.id.picture);
         mListener = listener;
     }
 
     @Override
     public void onClick(View view) {
-        mListener.onItemClick(getAdapterPosition());
+        mListener.onDetailItemClick(getAdapterPosition());
     }
 }

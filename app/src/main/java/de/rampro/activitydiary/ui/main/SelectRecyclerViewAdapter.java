@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.main;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

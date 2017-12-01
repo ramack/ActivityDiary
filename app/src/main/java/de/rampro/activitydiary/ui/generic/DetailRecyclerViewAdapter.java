@@ -17,37 +17,57 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.generic;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.ImageHelper;
 
 public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHolders>{
+    private static final String TAG = DetailRecyclerViewAdapter.class.getName();
+
+    private static int lastAdapterId = 0;
+
     private SelectListener mSelectListener;
     private Cursor mCursor;
     private Context mContext;
-    private DataSetObserver mDataSetObserver;
+    private DataSetObserver mDataObserver;
     private int uriRowIdx = 0;
+    private int mAdapterId;
 
     public DetailRecyclerViewAdapter(Context context, SelectListener selectListener, Cursor details){
+        mAdapterId = lastAdapterId;
+        lastAdapterId++;
         mCursor = details;
         mSelectListener = selectListener;
         mContext = context;
-// TODO see https://medium.com/@emuneee/cursors-recyclerviews-and-itemanimators-b3f08cfbd370
-//        mDataSetObserver = new NotifyingDataSetObserver();
+        mDataObserver = new DataSetObserver(){
+            public void onChanged() {
+                /* notify about the data change */
+                notifyDataSetChanged();
+            }
+
+            public void onInvalidated() {
+                /* notify about the data change */
+                notifyDataSetChanged();
+            }
+        };
         if (mCursor != null) {
-            mCursor.registerDataSetObserver(mDataSetObserver);
+            mCursor.registerDataSetObserver(mDataObserver);
             uriRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage.URI);
         }
     }
@@ -66,15 +86,18 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         if (!mCursor.moveToPosition(position)) {
             throw new IllegalStateException("couldn't move cursor to position " + position);
         }
-        Picasso.with(mContext).load(Uri.parse(mCursor.getString(uriRowIdx)))
-                .resize(170,170)
-                .centerCrop()
-                .into(holder.mSymbol);
-        ;
-    }
+        String s = mCursor.getString(uriRowIdx);
+        Uri i = Uri.parse(s);
 
-    public Cursor getCursor() {
-        return mCursor;
+        try {
+            Picasso.with(mContext).load(i)
+                    .rotate(ImageHelper.getFileExifRotation(i))
+                    .resize(500, 500)
+                    .centerInside()
+                    .into(holder.mSymbol);
+        }catch (IOException e){
+            Log.e(TAG, "reading image failed", e);
+        }
     }
 
     @Override
@@ -86,7 +109,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
     }
 
     public interface SelectListener{
-        void onItemClick(int adapterPosition);
+        void onDetailItemClick(int adapterPosition);
     }
 
     public Cursor swapCursor(Cursor newCursor) {
@@ -94,13 +117,13 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             return null;
         }
         final Cursor oldCursor = mCursor;
-        if (oldCursor != null && mDataSetObserver != null) {
-            oldCursor.unregisterDataSetObserver(mDataSetObserver);
+        if (oldCursor != null && mDataObserver != null) {
+            oldCursor.unregisterDataSetObserver(mDataObserver);
         }
         mCursor = newCursor;
         if (mCursor != null) {
-            if (mDataSetObserver != null) {
-                mCursor.registerDataSetObserver(mDataSetObserver);
+            if (mDataObserver != null) {
+                mCursor.registerDataSetObserver(mDataObserver);
             }
             uriRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage.URI);
             notifyDataSetChanged();
@@ -109,6 +132,10 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             notifyDataSetChanged();
         }
         return oldCursor;
+    }
+
+    public int getAdapterId(){
+        return mAdapterId;
     }
 
 }

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.settings;
 
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.generic;
 
 
 import android.content.Context;
@@ -33,6 +33,7 @@ import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.ui.settings.SettingsFragment;
 
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_PREF_DATE_FORMAT = "pref_datetimeFormat";

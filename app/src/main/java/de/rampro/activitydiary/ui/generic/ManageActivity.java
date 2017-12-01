@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.generic;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -117,7 +117,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
 
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
-    /* TODO: refactor to use the ActivityHelper instead of directly a Loader */
+    /* TODO: refactor to use the ActivityHelper instead of directly a Loader; 2017-12-02, RMk: not sure whether we should do this... */
         getLoaderManager().initLoader(0, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

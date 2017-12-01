@@ -22,21 +22,23 @@ package de.rampro.activitydiary.helpers;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
+import android.support.media.ExifInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 
 public class ImageHelper {
     public static final String TAG = "ImageHelper";
-    public static final ImageHelper helper = new ImageHelper();
 
-    public File imageStorageDirectory(){
+    public static File imageStorageDirectory(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
         File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                 sharedPreferences.getString("pref_storageFolder", "ActivityDiary"));
@@ -57,4 +59,25 @@ public class ImageHelper {
 
         return root;
     }
+
+    /* return the rotation of the image at uri from the exif data
+     *
+     * do better not call this for a network uri, as this would probably mean to fetch it twice
+     * */
+    public static int getFileExifRotation(Uri uri) throws IOException {
+        InputStream inputStream = ActivityDiaryApplication.getAppContext().getContentResolver().openInputStream(uri);
+        ExifInterface exifInterface = new ExifInterface(inputStream);
+        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return 90;
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return 180;
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return 270;
+            default:
+                return 0;
+        }
+    }
+
 }

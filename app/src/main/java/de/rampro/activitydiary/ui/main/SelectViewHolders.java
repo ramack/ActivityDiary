@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.main;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,17 +26,19 @@ import android.widget.TextView;
 
 import de.rampro.activitydiary.R;
 
-class DetailViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+class SelectViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView mTextView;
+    public TextView mName;
     public ImageView mSymbol;
-    private DetailRecyclerViewAdapter.SelectListener mListener;
+    public View mBackground;
+    private SelectRecyclerViewAdapter.SelectListener mListener;
 
-    public DetailViewHolders(DetailRecyclerViewAdapter.SelectListener listener, View itemView) {
+    public SelectViewHolders(SelectRecyclerViewAdapter.SelectListener listener, View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        mTextView = (TextView) itemView.findViewById(R.id.detailText);
-        mSymbol = (ImageView) itemView.findViewById(R.id.picture);
+        mName = (TextView) itemView.findViewById(R.id.activity_name);
+        mSymbol = (ImageView) itemView.findViewById(R.id.activity_image);
+        mBackground = (View) itemView.findViewById(R.id.activity_background);
         mListener = listener;
     }
 

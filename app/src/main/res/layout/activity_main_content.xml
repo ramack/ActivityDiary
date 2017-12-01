@@ -51,38 +51,51 @@
 
             </android.support.v7.widget.CardView>
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/detail_recycler"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:scrollbars="horizontal" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/duration_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Duration: ?h"
-                android:textSize="16sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/note"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:text="--"
-                android:textSize="16sp" />
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-            <!-- TODO: fill useful content in the Activity header area -->
+                        <TextView
+                            android:id="@+id/duration_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:text="Duration: ?h"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginStart="8dp"
+                            android:text="--"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/detail_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:minWidth="500dp"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="horizontal"/>
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
@@ -123,11 +136,6 @@
         android:visibility="visible"
         />
 
-    <!-- TODO: add a FAB functions:
-               - new activity
-               - add note
-               - add picture
-               -->
     <!-- TODO: add options on current activity:
                - create sub-activity (maybe slide left)
                - edit conditions (long press?)

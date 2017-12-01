@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017-2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.main;
 
 import android.Manifest;
 import android.content.AsyncQueryHandler;
@@ -47,11 +47,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,6 +62,9 @@ import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 import de.rampro.activitydiary.helpers.ImageHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
+import de.rampro.activitydiary.ui.generic.BaseActivity;
+import de.rampro.activitydiary.ui.generic.EditActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -86,18 +86,17 @@ public class MainActivity extends BaseActivity implements
             ActivityDiaryContract.DiaryImage.URI
     };
 
-    private StaggeredGridLayoutManager selectorLayoutManager, detailLayoutManager;
     private TextView durationLabel;
     private TextView mNoteTextView;
-    private ImageView mImageView;
     private String mCurrentPhotoPath;
 
-    SelectRecyclerViewAdapter rcAdapter;
+    private SelectRecyclerViewAdapter rcAdapter;
+    private RecyclerView detailRecyclerView;
 
-    DetailRecyclerViewAdapter detailAdapter;
+    private DetailRecyclerViewAdapter detailAdapter;
 
-    DiaryActivity mCurrentActivity;
-    Uri mCurrentDiaryUri;
+    private DiaryActivity mCurrentActivity;
+    private Uri mCurrentDiaryUri;
 
     private class QHandler extends AsyncQueryHandler{
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -144,7 +143,7 @@ public class MainActivity extends BaseActivity implements
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
-        selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
+        StaggeredGridLayoutManager selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(selectorLayoutManager);
 
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
@@ -154,7 +153,6 @@ public class MainActivity extends BaseActivity implements
 
         durationLabel = (TextView) contentView.findViewById(R.id.duration_label);
         mNoteTextView =  (TextView) contentView.findViewById(R.id.note);
-        mImageView = (ImageView) contentView.findViewById(R.id.image);
 
         FloatingActionButton fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
         FloatingActionButton fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
@@ -189,7 +187,7 @@ public class MainActivity extends BaseActivity implements
                         mCurrentPhotoPath = photoFile.getAbsolutePath();
 
                         Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                                "com.example.android.fileprovider",
+                                "de.rampro.activitydiary.fileprovider",
                                 photoFile);
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -210,18 +208,19 @@ public class MainActivity extends BaseActivity implements
             fabAttachPicture.hide();
         }
 
-        RecyclerView detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
-        detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+        detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
+        StaggeredGridLayoutManager detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
+
+        detailLayoutManager.setAutoMeasureEnabled(true);
         detailRecyclerView.setLayoutManager(detailLayoutManager);
 
-        detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this, this, null);
+        detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this,
+                this, null);
         detailRecyclerView.setAdapter(detailAdapter);
-
 
     /* TODO #25: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
-
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -232,7 +231,7 @@ public class MainActivity extends BaseActivity implements
         }
 
         imageFileName += timeStamp;
-        File storageDir = ImageHelper.helper.imageStorageDirectory();
+        File storageDir = ImageHelper.imageStorageDirectory();
         int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -290,6 +289,12 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onItemClick(int adapterPosition) {
         ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.activities.get(adapterPosition));
+    }
+
+    @Override
+    public void onDetailItemClick(int adapterPosition) {
+        Toast.makeText(this, "picture " + Integer.toString(adapterPosition) + " clicked", Toast.LENGTH_LONG).show();
+        ((RecyclerView)findViewById(R.id.detail_recycler)).scrollToPosition(3);
     }
 
     public void onActivityChanged(){
@@ -365,7 +370,7 @@ public class MainActivity extends BaseActivity implements
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if(mCurrentPhotoPath != null) {
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                        "com.example.android.fileprovider",
+                        "de.rampro.activitydiary.fileprovider",
                         new File(mCurrentPhotoPath));
 
                 ContentValues values = new ContentValues();
@@ -377,10 +382,6 @@ public class MainActivity extends BaseActivity implements
                         ActivityDiaryContract.DiaryImage.CONTENT_URI,
                         values);
 
-                Picasso.with(this).load(new File(mCurrentPhotoPath))
-                        .resize(100,100)
-                        .centerCrop()
-                        .into(mImageView);
                 try {
                     ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
                     if(mCurrentActivity != null) {
@@ -415,6 +416,11 @@ public class MainActivity extends BaseActivity implements
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
         detailAdapter.swapCursor(data);
+
+        // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
+        // it is neither clean nor generic, feel free to propose an improvement
+        detailRecyclerView.setMinimumWidth((int)(data.getCount() * 3.3 * detailRecyclerView.getHeight()));
+
     }
 
     // Called when a previously created loader is reset, making the data unavailable

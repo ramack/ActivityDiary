@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui;
+package de.rampro.activitydiary.ui.main;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -35,7 +35,8 @@ import de.rampro.activitydiary.R;
 public class NoteEditDialog extends DialogFragment {
     private String note;
     private EditText input;
-    NoteEditDialogListener mListener;
+    private NoteEditDialogListener mListener;
+    private long mDiaryId;
 
     public interface NoteEditDialogListener {
         void onNoteEditPositiveClock(String str, DialogFragment dialog);
@@ -96,6 +97,14 @@ public class NoteEditDialog extends DialogFragment {
             input.setText(text);
         }
         note = text;
+    }
+
+    public void setDiaryId(long diaryId){
+        mDiaryId = diaryId;
+    }
+
+    public long getDiaryId(){
+        return mDiaryId;
     }
 
     @Override

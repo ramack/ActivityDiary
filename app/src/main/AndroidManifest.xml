@@ -10,24 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".ActivityDiaryApplication">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.EditActivity"
+        <activity android:name=".ui.generic.EditActivity"
             android:label="@string/activity_title_edit_new"
             android:windowSoftInputMode="stateVisible"
             />
-        <activity android:name=".ui.ManageActivity"
+        <activity android:name=".ui.generic.ManageActivity"
             android:label="@string/activity_title_manage_activities" />
-        <activity android:name=".ui.HistoryActivity"
+        <activity android:name=".ui.history.HistoryActivity"
             android:label="@string/activity_title_history" />
-        <activity android:name=".ui.AboutActivity"
+        <activity android:name=".ui.generic.AboutActivity"
             android:label="@string/activity_title_about" />
-        <activity android:name=".ui.SettingsActivity"
+        <activity android:name=".ui.generic.SettingsActivity"
             android:label="@string/activity_title_settings"/>
         <provider
             android:name=".db.ActivityDiaryContentProvider"
@@ -42,7 +42,7 @@
             />
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.android.fileprovider"
+            android:authorities="de.rampro.activitydiary.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
