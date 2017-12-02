@@ -24,6 +24,7 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
     }
     play {
         uploadImages = true
+        untrackOld = true
         track = 'beta'
     }
 }
