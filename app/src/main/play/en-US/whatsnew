@@ -1,4 +1,5 @@
-- support editing notes from history
-- cleanup history view
-- added ACRA crash reporting
-- fix some crashed
+- support to attach photos to activity diary entries
+- better coloring of the activity names
+- allow editing the activites directly in the main view
+- some delayed updates of the UI are done directly now
+- fix some more crashes
