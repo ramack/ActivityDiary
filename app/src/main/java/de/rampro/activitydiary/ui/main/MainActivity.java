@@ -56,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
@@ -187,7 +188,7 @@ public class MainActivity extends BaseActivity implements
                         mCurrentPhotoPath = photoFile.getAbsolutePath();
 
                         Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                                "de.rampro.activitydiary.fileprovider",
+                                BuildConfig.APPLICATION_ID + ".fileprovider",
                                 photoFile);
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -375,7 +376,7 @@ public class MainActivity extends BaseActivity implements
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if(mCurrentPhotoPath != null) {
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                        "de.rampro.activitydiary.fileprovider",
+                        BuildConfig.APPLICATION_ID + ".fileprovider",
                         new File(mCurrentPhotoPath));
 
                 ContentValues values = new ContentValues();
