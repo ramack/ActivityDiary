@@ -90,9 +90,8 @@ Stay tuned and start contributing!
 > SOFTWARE.
 
 [ACRA - Application Crash Reports for Android](https://github.com/ACRA/acra),
-[Picasso](http://square.github.io/picasso/) and
-[appcompat, cardview, recyclerview, design, preference, exifinterface]
-are
+[Picasso](http://square.github.io/picasso/),
+appcompat, cardview, recyclerview, design, preference and exifinterface are
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
 > You may obtain a copy of the License at
