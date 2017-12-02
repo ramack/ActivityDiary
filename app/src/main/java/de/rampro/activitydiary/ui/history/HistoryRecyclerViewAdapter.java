@@ -41,6 +41,7 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryViewHolders> implements DetailRecyclerViewAdapter.SelectListener {
@@ -112,6 +113,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         int color = mCursor.getInt(colorRowIdx);
 
         holder.mBackground.setBackgroundColor(color);
+        holder.mName.setTextColor(GraphicsHelper.textColorOnBackground(color));
 
         holder.setDiaryEntryID(mCursor.getInt(idRowIdx));
 
@@ -184,8 +186,6 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         holder.mDurationLabel.setText(duration);
 
         /* TODO #33: set activity picture (icon + main pciture if available) */
-
-        /* TODO #34: adjust also text color */
 
         holder.mDetailAdapter = new DetailRecyclerViewAdapter(mContext, this, null);
 

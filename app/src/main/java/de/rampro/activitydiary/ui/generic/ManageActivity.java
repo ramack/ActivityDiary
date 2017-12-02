@@ -24,11 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.graphics.ColorUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +41,7 @@ import android.widget.TextView;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -74,24 +72,7 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
             actName.setText(name);
             RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.activity_background);
             bgrd.setBackgroundColor(color);
-            if(ColorUtils.calculateLuminance(color) > 0.5){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    textColor = context.getResources().getColor(R.color.activityTextColorDark, null);
-                }else{
-                    @SuppressWarnings("deprecation")
-                    Resources res= context.getResources();
-                    textColor = res.getColor(R.color.activityTextColorDark);
-                }
-            }else{
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    textColor = context.getResources().getColor(R.color.activityTextColorLight, null);
-                }else{
-                    @SuppressWarnings("deprecation")
-                    Resources res= context.getResources();
-                    textColor = res.getColor(R.color.activityTextColorLight);
-                }
-            }
-            actName.setTextColor(textColor);
+            actName.setTextColor(GraphicsHelper.textColorOnBackground(color));
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
     /* TODO #33 fill image here */

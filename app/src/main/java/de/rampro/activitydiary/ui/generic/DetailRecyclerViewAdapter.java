@@ -35,7 +35,7 @@ import java.io.IOException;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
-import de.rampro.activitydiary.helpers.ImageHelper;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 
 public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHolders>{
     private static final String TAG = DetailRecyclerViewAdapter.class.getName();
@@ -91,7 +91,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
 
         try {
             Picasso.with(mContext).load(i)
-                    .rotate(ImageHelper.getFileExifRotation(i))
+                    .rotate(GraphicsHelper.getFileExifRotation(i))
                     .resize(500, 500)
                     .centerInside()
                     .into(holder.mSymbol);

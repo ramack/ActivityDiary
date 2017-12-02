@@ -20,12 +20,16 @@
 package de.rampro.activitydiary.helpers;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.support.media.ExifInterface;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 
@@ -34,9 +38,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.R;
 
-public class ImageHelper {
-    public static final String TAG = "ImageHelper";
+public class GraphicsHelper {
+    public static final String TAG = "GraphicsHelper";
 
     public static File imageStorageDirectory(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
@@ -80,4 +85,29 @@ public class ImageHelper {
         }
     }
 
+    /*
+     * Calculate a font color with high contrast to the given background color
+     */
+    public static int textColorOnBackground(int color){
+        int textColor = 0;
+        Context context = ActivityDiaryApplication.getAppContext();
+        if(ColorUtils.calculateLuminance(color) > 0.3){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                textColor = context.getResources().getColor(R.color.activityTextColorDark, null);
+            }else{
+                @SuppressWarnings("deprecation")
+                Resources res= context.getResources();
+                textColor = res.getColor(R.color.activityTextColorDark);
+            }
+        }else{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                textColor = context.getResources().getColor(R.color.activityTextColorLight, null);
+            }else{
+                @SuppressWarnings("deprecation")
+                Resources res= context.getResources();
+                textColor = res.getColor(R.color.activityTextColorLight);
+            }
+        }
+        return textColor;
+    }
 }

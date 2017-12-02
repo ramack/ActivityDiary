@@ -28,6 +28,7 @@ import java.util.List;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHolders>{
@@ -54,6 +55,8 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
         holder.mName.setText(act.getName());
 // TODO #33:        holder.mSymbol.setImageResource(act.getPhoto());
         holder.mBackground.setBackgroundColor(act.getColor());
+        holder.mName.setTextColor(GraphicsHelper.textColorOnBackground(act.getColor()));
+
         // TODO #31: set the width based on the likelyhood
     }
 

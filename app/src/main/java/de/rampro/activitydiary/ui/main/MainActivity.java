@@ -61,7 +61,7 @@ import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
-import de.rampro.activitydiary.helpers.ImageHelper;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
@@ -232,7 +232,7 @@ public class MainActivity extends BaseActivity implements
         }
 
         imageFileName += timeStamp;
-        File storageDir = ImageHelper.imageStorageDirectory();
+        File storageDir = GraphicsHelper.imageStorageDirectory();
         int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -303,10 +303,11 @@ public class MainActivity extends BaseActivity implements
         mCurrentActivity = newAct;
         if(mCurrentActivity != null) {
             mCurrentDiaryUri = ActivityHelper.helper.getCurrentDiaryUri();
-
-            ((TextView) findViewById(R.id.activity_name)).setText(mCurrentActivity.getName());
+            TextView aName = (TextView) findViewById(R.id.activity_name);
+            aName.setText(mCurrentActivity.getName());
             findViewById(R.id.activity_background).setBackgroundColor(mCurrentActivity.getColor());
-            /* TODO #34: set also text color */
+            aName.setTextColor(GraphicsHelper.textColorOnBackground(mCurrentActivity.getColor()));
+
             String duration = getResources().getString(R.string.duration_description);
             duration += " ";
             duration += FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date());
