@@ -84,7 +84,7 @@ dependencies {
     compile 'com.pes.materialcolorpicker:library:1.2.2'
     compile 'ch.acra:acra:4.9.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    // Don't forget to add attribution in strings.xml/libraries if you add something here
+    // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
     testCompile 'junit:junit:4.12'
 }
