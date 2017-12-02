@@ -73,12 +73,11 @@ import de.rampro.activitydiary.ui.generic.EditActivity;
  * */
 public class MainActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
-        View.OnLongClickListener,
         SelectRecyclerViewAdapter.SelectListener,
         DetailRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
-        NoteEditDialog.NoteEditDialogListener
-        {
+        NoteEditDialog.NoteEditDialogListener,
+        View.OnLongClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
@@ -279,10 +278,20 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean onLongClick(View view){
+    public boolean onLongClick(View view) {
         Intent i = new Intent(MainActivity.this, EditActivity.class);
         if(mCurrentActivity != null) {
             i.putExtra("activityID", mCurrentActivity.getId());
+        }
+        startActivity(i);
+        return true;
+    }
+
+    @Override
+    public boolean onItemLongClick(int adapterPosition){
+        Intent i = new Intent(MainActivity.this, EditActivity.class);
+        if(mCurrentActivity != null) {
+            i.putExtra("activityID", rcAdapter.item(adapterPosition).getId());
         }
         startActivity(i);
         return true;
@@ -335,7 +344,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onActivityDataChanged(DiaryActivity activity){
-        rcAdapter.notifyItemChanged(rcAdapter.idFor(activity));
+        rcAdapter.notifyItemChanged(rcAdapter.positionOf(activity));
     }
 
     @Override

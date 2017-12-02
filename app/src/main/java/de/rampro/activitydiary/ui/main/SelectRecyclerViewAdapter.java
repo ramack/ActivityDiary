@@ -27,7 +27,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import de.rampro.activitydiary.R;
-import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -67,9 +66,14 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
 
     public interface SelectListener{
         void onItemClick(int adapterPosition);
+        boolean onItemLongClick(int adapterPosition);
     }
 
-    public int idFor(DiaryActivity activity){
+    public int positionOf(DiaryActivity activity){
         return mActivityList.indexOf(activity);
+    }
+
+    public DiaryActivity item(int id){
+        return mActivityList.get(id);
     }
 }
