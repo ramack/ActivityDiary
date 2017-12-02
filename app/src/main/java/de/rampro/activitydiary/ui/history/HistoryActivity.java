@@ -214,6 +214,7 @@ public class HistoryActivity extends BaseActivity implements
     public void onResume(){
         mNavigationView.getMenu().findItem(R.id.nav_diary).setChecked(true);
         super.onResume();
+        historyAdapter.notifyDataSetChanged(); /* redraw the complete recyclerview to take care of e.g. date format changes in teh preferences etc. #36 */
     }
 
     public void addDetailAdapter(long diaryEntryId, DetailRecyclerViewAdapter adapter) {
