@@ -37,12 +37,12 @@
             android:grantUriPermissions="true"
             android:label="ActivityDiaryProvider"
             android:icon="@mipmap/ic_launcher"
-            android:readPermission="de.rampro.activitydiary.READ"
-            android:writePermission="de.rampro.activitydiary.WRITE"
+            android:readPermission="${applicationId}.READ"
+            android:writePermission="${applicationId}.WRITE"
             />
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="de.rampro.activitydiary.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

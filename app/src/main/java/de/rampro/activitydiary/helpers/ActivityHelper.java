@@ -23,6 +23,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.PreferenceManager;
@@ -62,17 +63,24 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public static final ActivityHelper helper = new ActivityHelper();
     public List<DiaryActivity> activities;
+    private Cursor mActivityCurser;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
     private String mCurrentNote;
+    private DataSetObserver mDataObserver;
 
     /* TODO: this could be done more fine grained here... (I. e. not refresh everything on just an insert or delete) */
     public interface DataChangedListener{
         /**
-         * Called when the data has changed.
+         * Called when the data has changed and no further specification is possible.
          */
         void onActivityDataChanged();
+
+        /**
+         * Called when the data of one activity was changed.
+         */
+        void onActivityDataChanged(DiaryActivity activity);
 
         /**
          * Called on change of the current activity.
@@ -102,6 +110,22 @@ public class ActivityHelper extends AsyncQueryHandler{
                 DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL", null,
                 ActivityDiaryContract.Diary.START + " DESC");
         mCurrentActivityStartTime = new Date();
+        mDataObserver = new DataSetObserver(){
+            public void onChanged() {
+                /* notify about the data change */
+                for(DataChangedListener listener : mDataChangeListeners) {
+                    listener.onActivityDataChanged();
+                }
+            }
+
+            public void onInvalidated() {
+                /* re-read the complete data */
+                startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                        ACTIVITIES_PROJ, SELECTION, null,
+                        null);
+            }
+        };
+
     }
 
     @Override
@@ -120,6 +144,8 @@ public class ActivityHelper extends AsyncQueryHandler{
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
                 }
+                cursor.registerDataSetObserver(mDataObserver);
+                mActivityCurser = cursor;
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(mCurrentActivity == null) {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
@@ -173,6 +199,10 @@ public class ActivityHelper extends AsyncQueryHandler{
                 startInsert(INSERT_NEW_DIARY_ENTRY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                         values);
             }
+        }else if(token == UPDATE_ACTIVITY){
+            for(DataChangedListener listener : mDataChangeListeners) {
+                listener.onActivityDataChanged((DiaryActivity)cookie);
+            }
         }
     }
 
@@ -201,7 +231,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public void updateActivity(DiaryActivity act) {
         startUpdate(UPDATE_ACTIVITY,
-                null,
+                act,
                 ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, act.getId()),
                 contentFor(act),
                 null,

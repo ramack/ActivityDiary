@@ -267,6 +267,7 @@ public class MainActivity extends BaseActivity implements
         ActivityHelper.helper.registerDataChangeListener(this);
         super.onResume();
         onActivityChanged(); // refresh mainly the duration_label
+        rcAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
     }
 
     @Override
@@ -293,8 +294,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onDetailItemClick(int adapterPosition) {
-        Toast.makeText(this, "picture " + Integer.toString(adapterPosition) + " clicked", Toast.LENGTH_LONG).show();
-        ((RecyclerView)findViewById(R.id.detail_recycler)).scrollToPosition(3);
+        Toast.makeText(this, "picture " + Integer.toString(adapterPosition) + " clicked -> please create a ticket and tell what you expect to be done here", Toast.LENGTH_LONG).show();
     }
 
     public void onActivityChanged(){
@@ -329,6 +329,11 @@ public class MainActivity extends BaseActivity implements
     public void onActivityDataChanged() {
         /* TODO: this could be done more fine grained here... */
         rcAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onActivityDataChanged(DiaryActivity activity){
+        rcAdapter.notifyItemChanged(rcAdapter.idFor(activity));
     }
 
     @Override
