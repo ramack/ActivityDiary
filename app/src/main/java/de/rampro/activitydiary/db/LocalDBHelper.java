@@ -37,7 +37,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
         /* now fill some sample data */
         db.execSQL("INSERT INTO " +
-                ActivityDiaryContract.Diary.TABLE_NAME +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
                 "(name, color)" +
                 " VALUES " +
                 " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
