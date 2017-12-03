@@ -55,6 +55,8 @@ public class BaseActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
 
+        // TODO: #1 add a header to navigation view with
+        // mNavigationView.addHeaderView(ImageView);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,

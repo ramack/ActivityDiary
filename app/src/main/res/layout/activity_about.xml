@@ -34,17 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="8dp"
             >
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="40dp"
-                android:src="@mipmap/ic_launcher_round"
-                android:transitionName="@string/logo_transition_name" />
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/activity_diary_logo"/>
 
             <TextView
                 android:id="@+id/aboutTextView"
@@ -52,7 +49,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/about_text"
-                android:textAppearance="@android:style/TextAppearance.Medium" />
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:layout_margin="8dp"
+                />
 
         </LinearLayout>
 
