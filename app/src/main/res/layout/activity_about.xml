@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="12dp"
-                android:src="@drawable/activity_diary_logo"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/activity_diary_logo" />
 
             <TextView
                 android:id="@+id/aboutTextView"

@@ -25,12 +25,12 @@
 
         <item
             android:id="@+id/nav_main"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_nav_select"
             android:title="@string/nav_main"
             android:checked="true"/>
         <item
             android:id="@+id/nav_diary"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_nav_history"
             android:title="@string/nav_diary" />
         <item
             android:id="@+id/nav_add_activity"

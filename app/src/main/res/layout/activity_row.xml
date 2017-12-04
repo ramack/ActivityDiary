@@ -23,8 +23,7 @@
     android:id="@+id/activity_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    >
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/activity_image"
@@ -33,7 +32,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="0dp"
         android:contentDescription="@string/activity_image_description" />
-<!-- TODO: decide whether we want an icon here or not, set layout_margin back to 4dp if so
+    <!-- TODO: decide whether we want an icon here or not, set layout_margin back to 4dp if so
        app:srcCompat="@mipmap/ic_launcher_round" /> -->
 
     <TextView
@@ -43,7 +42,6 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/activity_image"
         android:layout_weight="1"
-        android:minHeight="192dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/activity_title_no_selected_act"
