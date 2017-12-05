@@ -59,6 +59,9 @@ public class EditActivity extends BaseActivity
     private DiaryActivity currentActivity; /* null is for creating a new object */
 
     private final int QUERY_NAMES = 1;
+    private final String COLOR_KEY = "COLOR";
+    private final String NAME_KEY = "NAME";
+
     private EditText mActivityName;
     private TextInputLayout mActivityNameTIL;
     private ImageView mActivityColorImg;
@@ -130,23 +133,29 @@ public class EditActivity extends BaseActivity
             }
         });
 
-        if(currentActivity != null) {
-            mActivityName.setText(currentActivity.getName());
-            ActionBar ab = getSupportActionBar();
-            ab.setTitle(currentActivity.getName());
-            mActivityColorImg.setBackgroundColor(currentActivity.getColor());
-            mActivityColor = currentActivity.getColor();
-        } else {
-            currentActivity = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mActivityColor = getResources().getColor(R.color.colorPrimary,null);
-            }else{
-                @SuppressWarnings("deprecation")
-                Resources res= getResources();
-                mActivityColor = res.getColor(R.color.colorPrimary);
+        if(savedInstanceState != null) {
+            String name = savedInstanceState.getString(NAME_KEY);
+            mActivityColor = savedInstanceState.getInt(COLOR_KEY);
+            mActivityName.setText(name);
+            getSupportActionBar().setTitle(name);
+            checkConstraints();
+        }else{
+            if (currentActivity != null) {
+                mActivityName.setText(currentActivity.getName());
+                getSupportActionBar().setTitle(currentActivity.getName());
+                mActivityColor = currentActivity.getColor();
+            } else {
+                currentActivity = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    mActivityColor = getResources().getColor(R.color.colorPrimary, null);
+                } else {
+                    @SuppressWarnings("deprecation")
+                    Resources res = getResources();
+                    mActivityColor = res.getColor(R.color.colorPrimary);
+                }
             }
         }
-        mDrawerToggle.setDrawerIndicatorEnabled(false);
+        mActivityColorImg.setBackgroundColor(mActivityColor);
         mCp = new ColorPicker(EditActivity.this);
         mCp.setColor(mActivityColor);
         mCp.setCallback(new ColorPickerCallback() {
@@ -157,6 +166,7 @@ public class EditActivity extends BaseActivity
                 mCp.hide();
             }
         });
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
 
     }
 
@@ -166,6 +176,14 @@ public class EditActivity extends BaseActivity
             mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
         }
         super.onResume();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString(NAME_KEY, mActivityName.getText().toString());
+        outState.putInt(COLOR_KEY, mActivityColor);
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState);
     }
 
     @Override
