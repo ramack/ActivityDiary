@@ -15,9 +15,9 @@
    version="1.1"
    inkscape:version="0.48.5 r10040"
    sodipodi:docname="ic_launcher.svg"
-   inkscape:export-filename="/home/r/ActivityDiary/artwork/ic_launcher.png"
-   inkscape:export-xdpi="72"
-   inkscape:export-ydpi="72">
+   inkscape:export-filename="/home/r/ActivityDiary/app/src/main/play/en-US/listing/icon/activity_diary_icon.png"
+   inkscape:export-xdpi="720"
+   inkscape:export-ydpi="720">
   <defs
      id="defs3011" />
   <sodipodi:namedview
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4"
-     inkscape:cx="45.154822"
+     inkscape:cx="45.654822"
      inkscape:cy="-2.9014842"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -107,7 +107,7 @@
        inkscape:export-ydpi="72">
       <path
          transform="matrix(0.8,0,0,0.8,7,6.3)"
-         d="m 55,19 a 10,10 0 1 1 -20,0 10,10 0 1 1 20,0 z"
+         d="M 55,19 C 55,24.522847 50.522847,29 45,29 39.477153,29 35,24.522847 35,19 35,13.477153 39.477153,9 45,9 c 5.522847,0 10,4.477153 10,10 z"
          sodipodi:ry="10"
          sodipodi:rx="10"
          sodipodi:cy="19"
@@ -140,7 +140,7 @@
            sodipodi:cy="19.5"
            sodipodi:rx="0.5"
            sodipodi:ry="0.5"
-           d="m 50.5,19.5 a 0.5,0.5 0 1 1 -1,0 0.5,0.5 0 1 1 1,0 z"
+           d="m 50.5,19.5 c 0,0.276142 -0.223858,0.5 -0.5,0.5 -0.276142,0 -0.5,-0.223858 -0.5,-0.5 0,-0.276142 0.223858,-0.5 0.5,-0.5 0.276142,0 0.5,0.223858 0.5,0.5 z"
            transform="translate(0,-0.5)" />
       </g>
     </g>

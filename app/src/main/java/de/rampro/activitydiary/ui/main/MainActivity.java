@@ -379,6 +379,7 @@ public class MainActivity extends BaseActivity implements
                 values,
                 null, null);
         mNoteTextView.setText(str);
+        ActivityHelper.helper.setCurrentNote(str);
     }
 
     @Override

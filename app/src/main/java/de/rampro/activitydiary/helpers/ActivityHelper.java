@@ -153,6 +153,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                     mCurrentNote = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
                     mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
                                         Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
+
                     for(DataChangedListener listener : mDataChangeListeners) {
                         listener.onActivityChanged();
                     }
@@ -168,6 +169,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
     public Date getCurrentActivityStartTime() { return mCurrentActivityStartTime;}
     public String getCurrentNote() { return mCurrentNote;}
+    public void setCurrentNote(String str) { mCurrentNote = str;}
 
     public void setCurrentActivity(@Nullable DiaryActivity activity){
         /* update the current diary entry to "finish" it
