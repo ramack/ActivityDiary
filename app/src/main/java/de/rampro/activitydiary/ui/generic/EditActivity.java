@@ -167,7 +167,7 @@ public class EditActivity extends BaseActivity
             }
         });
         mDrawerToggle.setDrawerIndicatorEnabled(false);
-
+        checkConstraints();
     }
 
     @Override
