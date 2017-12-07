@@ -85,14 +85,14 @@ public class HistoryActivity extends BaseActivity implements
         return true;
     }
 
-    private class QHandler extends AsyncQueryHandler {
+    protected class QHandler extends AsyncQueryHandler {
         /* Access only allowed via ActivityHelper.helper singleton */
         private QHandler(){
             super(ActivityDiaryApplication.getAppContext().getContentResolver());
         }
     }
 
-    private QHandler mQHandler = new QHandler();
+    protected QHandler mQHandler = new QHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +160,8 @@ public class HistoryActivity extends BaseActivity implements
                     ActivityDiaryContract.DiaryImage.CONTENT_URI,
                     new String[] {ActivityDiaryContract.DiaryImage._ID,
                             ActivityDiaryContract.DiaryImage.URI},
-                    ActivityDiaryContract.DiaryImage.DIARY_ID + "=?",
+                    ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
+                            + ActivityDiaryContract.DiaryImage._DELETED + "=0",
                     new String[] {Long.toString(args.getLong("DiaryID"))},
                     null);
         }

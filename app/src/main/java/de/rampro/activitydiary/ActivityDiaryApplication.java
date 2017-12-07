@@ -40,6 +40,7 @@ import org.acra.annotation.*;
                 ReportField.CRASH_CONFIGURATION,
                 ReportField.DISPLAY
         },
+        buildConfigClass = de.rampro.activitydiary.BuildConfig.class,
         alsoReportToAndroidFramework = true,
         resDialogText = R.string.crash_dialog_text,
         resDialogCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. When defined, adds a user text field input with this text resource as a label

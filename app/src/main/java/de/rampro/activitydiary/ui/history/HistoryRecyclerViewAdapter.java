@@ -19,9 +19,12 @@
 
 package de.rampro.activitydiary.ui.history;
 
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -59,6 +62,34 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
     @Override
     public void onDetailItemClick(int adapterPosition) {
         Toast.makeText(mContext, "history picture " + Integer.toString(adapterPosition) +  " clicked", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onDetailItemLongClick(int adapterPosition) {
+        //TODO: generalize the DetailView to include this code also
+        //      such that it is not duplicated between MainActivity and HistoryRecyclerViewAdapter
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+                .setTitle(R.string.dlg_delete_image_title)
+                .setMessage(R.string.dlg_delete_image_text)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ContentValues values = new ContentValues();
+                        values.put(ActivityDiaryContract.DiaryImage._DELETED, 1);
+
+                        mContext.mQHandler.startUpdate(0,
+                                null,
+                                ActivityDiaryContract.DiaryImage.CONTENT_URI,
+                                values,
+                                ActivityDiaryContract.DiaryImage._ID + "=?",
+                                new String[]{Long.toString(mViewHolders.get(adapterPosition).mDetailAdapter.getDiaryImageIdAt(adapterPosition))}
+                        );
+
+                    }})
+                .setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
+        return true;
     }
 
     public interface SelectListener{

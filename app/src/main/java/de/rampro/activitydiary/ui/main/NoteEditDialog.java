@@ -62,13 +62,13 @@ public class NoteEditDialog extends DialogFragment {
         input.setSelection(input.getText().length());
         builder.setView(dlgView)
                 // Add action buttons
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         mListener.onNoteEditPositiveClock(input.getText().toString(), NoteEditDialog.this);
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.dlg_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }

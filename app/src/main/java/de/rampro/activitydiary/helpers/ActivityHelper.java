@@ -63,7 +63,6 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public static final ActivityHelper helper = new ActivityHelper();
     public List<DiaryActivity> activities;
-    private Cursor mActivityCurser;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
@@ -145,7 +144,6 @@ public class ActivityHelper extends AsyncQueryHandler{
                     listener.onActivityDataChanged();
                 }
                 cursor.registerDataSetObserver(mDataObserver);
-                mActivityCurser = cursor;
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(mCurrentActivity == null) {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));

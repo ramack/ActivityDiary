@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
@@ -46,7 +47,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
     private Cursor mCursor;
     private Context mContext;
     private DataSetObserver mDataObserver;
-    private int uriRowIdx = 0;
+    private int uriRowIdx = 0, idRowIdx = 0;
     private int mAdapterId;
 
     public DetailRecyclerViewAdapter(Context context, SelectListener selectListener, Cursor details){
@@ -69,6 +70,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         if (mCursor != null) {
             mCursor.registerDataSetObserver(mDataObserver);
             uriRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage.URI);
+            idRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage._ID);
         }
     }
 
@@ -110,6 +112,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
 
     public interface SelectListener{
         void onDetailItemClick(int adapterPosition);
+        boolean onDetailItemLongClick(int adapterPosition);
     }
 
     public Cursor swapCursor(Cursor newCursor) {
@@ -126,9 +129,11 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
                 mCursor.registerDataSetObserver(mDataObserver);
             }
             uriRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage.URI);
+            idRowIdx = mCursor.getColumnIndex(ActivityDiaryContract.DiaryImage._ID);
             notifyDataSetChanged();
         } else {
             uriRowIdx = -1;
+            idRowIdx = -1;
             notifyDataSetChanged();
         }
         return oldCursor;
@@ -138,4 +143,12 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         return mAdapterId;
     }
 
+    public long getDiaryImageIdAt(int position){
+        int pos = mCursor.getPosition();
+        long result;
+        mCursor.moveToPosition(position);
+        result = mCursor.getLong(idRowIdx);
+        mCursor.moveToPosition(pos);
+        return result;
+    }
 }

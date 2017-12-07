@@ -22,9 +22,9 @@ import android.Manifest;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,6 +38,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -83,7 +84,8 @@ public class MainActivity extends BaseActivity implements
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
 
     private static final String[] PROJECTION_IMG = new String[] {
-            ActivityDiaryContract.DiaryImage.URI
+            ActivityDiaryContract.DiaryImage.URI,
+            ActivityDiaryContract.DiaryImage._ID
     };
 
     private TextView durationLabel;
@@ -136,7 +138,6 @@ public class MainActivity extends BaseActivity implements
 
         int rows;
 
-        Configuration configuration = getResources().getConfiguration();
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, value, true);
 
@@ -307,6 +308,34 @@ public class MainActivity extends BaseActivity implements
         Toast.makeText(this, "picture " + Integer.toString(adapterPosition) + " clicked -> please create a ticket and tell what you expect to be done here", Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public boolean onDetailItemLongClick(int adapterPosition) {
+        //TODO: generalize the DetailView to include this code also
+        //      such that it is not duplicated between MainActivity and HistoryRecyclerViewAdapter
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(R.string.dlg_delete_image_title)
+                .setMessage(R.string.dlg_delete_image_text)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ContentValues values = new ContentValues();
+                        values.put(ActivityDiaryContract.DiaryImage._DELETED, 1);
+
+                        mQHandler.startUpdate(0,
+                                null,
+                                ActivityDiaryContract.DiaryImage.CONTENT_URI,
+                                values,
+                                ActivityDiaryContract.DiaryImage._ID + "=?",
+                                new String[]{Long.toString(detailAdapter.getDiaryImageIdAt(adapterPosition))}
+                                );
+
+                    }})
+                .setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
+        return true;
+    }
+
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
         mCurrentActivity = newAct;
@@ -400,6 +429,7 @@ public class MainActivity extends BaseActivity implements
                         values);
 
                 try {
+                    // TODO: store exif comment only if enabled in settings
                     ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
                     if(mCurrentActivity != null) {
                         /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
@@ -423,9 +453,10 @@ public class MainActivity extends BaseActivity implements
         // creating a Cursor for the data being displayed.
         return new CursorLoader(this, ActivityDiaryContract.DiaryImage.CONTENT_URI,
                 PROJECTION_IMG,
-                ActivityDiaryContract.DiaryImage.TABLE_NAME + "." + ActivityDiaryContract.DiaryImage.DIARY_ID + "=?",
+                ActivityDiaryContract.DiaryImage.TABLE_NAME + "." + ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
+                 + ActivityDiaryContract.DiaryImage._DELETED + "=0",
                 mCurrentDiaryUri == null ? new String[]{"0"}:new String[]{mCurrentDiaryUri.getLastPathSegment()},
-                null);
+                ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT);
     }
 
     // Called when a previously created loader has finished loading
