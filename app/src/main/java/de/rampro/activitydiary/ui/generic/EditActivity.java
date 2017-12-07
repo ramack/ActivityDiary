@@ -21,14 +21,12 @@ package de.rampro.activitydiary.ui.generic;
 import android.content.AsyncQueryHandler;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -149,9 +147,7 @@ public class EditActivity extends BaseActivity
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     mActivityColor = getResources().getColor(R.color.colorPrimary, null);
                 } else {
-                    @SuppressWarnings("deprecation")
-                    Resources res = getResources();
-                    mActivityColor = res.getColor(R.color.colorPrimary);
+                    mActivityColor = getResources().getColor(R.color.colorPrimary);
                 }
             }
         }
