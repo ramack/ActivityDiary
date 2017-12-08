@@ -1,6 +1,5 @@
-Activity Diary allows to record a diary for for your activities. You can categorize them and get a reminder for recurrent actions.
-
-This app is currently under development and not yet feature complete. Do not use in a productive environment and expect your data to be lost on version upgrade. Please be patient or contribute on https://github.com/ramack/ActivityDiary and submit bug reports, feature requests and pull requests!
+Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
+The functions to categorize activites and get a reminder for recurrent actions are planned.
 
 Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

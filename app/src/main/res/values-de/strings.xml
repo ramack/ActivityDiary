@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ActivityDiary
+  ~
+  ~ Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Activity Diary</string>
+    <string name="about_text"><![CDATA[
+        <h1>%1$s</h1>
+        <br />Version <b>%2$s</b></p>
+        <p>Ein Tagebuch für alle möglichen Aktivitäten um deine Aufgaben agil zu organisieren und dich an wiederkehrende zu erinnern.</p>
+        <h1>Lizenz</h1>
+        <p>%1$s ist Freie Software: Es ist dir gestattet diese weitergzugeben und/oder zu verändern solange die Anforderungen der <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a> in Version 3 oder einer späteren Version, welche durch die Free Software Foundation veröffentlicht wird, eingehalten werden.</p>
+        <p>Dieses Programm wurde in der Hoffnung nützlich zu sein veröffentlicht, die Autoren und Bereitsteller übernehmen jedoche KEINERLEI GEWÄHRLEISTUNG oder GARANTIE dafür für einen bestimmten Zweck verwendet werden zu können. Für Details sei auf die GNU General Public License im Volltext verwiesen.</p>
+        <h1>Kontakt</h1>
+        <p>Fehler oder Verbesserungsvorschläge bitte ein <a href="https://github.com/ramack/ActivityDiary/issues">Ticket</a> anlegen, nach Möglichtkeit in Englischer Sprache.</p>
+        <p>Der Quellcode steht auf <a href="https://github.com/ramack/ActivityDiary">Github</a> bereit.</p>
+        <h1>Mitwirkende</h1>
+        %3$s
+        <p>Es würde uns freuen auch deinen Namen bald hier auflisten zu können.</p>
+        <h1>Bibliotheken</h1>
+        Folgende Bibliotheken werden von diesem Programm verwendet welche unter den angegebenen Lizenzen veröffentlicht wurden:
+        %4$s
+        ]]>
+    </string>
+    <string name="perm_write_external_storage_xplain">Fotos abzuspeichern benötigt die entsprechende Berechtigung &#8230;</string>
+    <string name="nav_main">Aktivität wählen</string>
+    <string name="nav_diary">Tagebuch</string>
+    <string name="nav_add_activity">Aktivität hinzufügen</string>
+    <string name="nav_activity_manager">Aktivitäten bearbeiten</string>
+    <string name="nav_settings">Einstellungen</string>
+    <string name="nav_about">Über</string>
+    <string name="desc_activity_color">Aktivitätsfarbe</string>
+    <string name="desc_activity_hint">Aktivitätstitel</string>
+    <string name="desc_activity_select">Wähle aktuelle Aktivität...</string>
+    <string name="activity_image_description">Aktivitätsbild</string>
+    <string name="drawer_open">Navigation öffnen</string>
+    <string name="drawer_close">Navigation schließen</string>
+    <string name="setting_view_category">Anzeige</string>
+    <string name="setting_behavior_category">Verhalten</string>
+    <string name="setting_datetime_format">Datumsformat</string>
+    <string name="setting_datetime_format_summary">\@string/default_datetime_format</string>
+    <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
+    <string name="setting_auto_select_new">Neue Aktivitäten aktivieren</string>
+    <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt.</string>
+    <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität.</string>
+    <string name="setting_enable_acra">Fehlerberichte</string>
+    <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden.</string>
+    <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt.</string>
+    <string name="setting_storage_folder">Ablageort für Bilder</string>
+    <string name="setting_storage_folder_summary">Fotos im Verzeichnis %1$s ablegen.</string>
+    <string name="setting_storage_folder_description">Verzeichnis für die Ablage von Fotos.</string>
+    <string name="default_storage_folder">ActivityDiary</string>
+    <string name="activity_title_edit">Bearbeiten</string>
+    <string name="activity_title_edit_new">Neue Aktivität</string>
+    <string name="activity_title_manage_activities">Aktivitäten organisieren</string>
+    <string name="activity_title_history">Tagebuch</string>
+    <string name="activity_subtitle_main">Was machst du gerade?</string>
+    <string name="activity_title_about">Über</string>
+    <string name="activity_title_settings">Einstellungen</string>
+    <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
+    <string name="dialog_title_note">Notiz</string>
+    <string name="action_delete">Aktivität löschen</string>
+    <string name="action_store">Speichern</string>
+    <string name="action_filter">Filter</string>
+    <string name="dlg_ok">Ok</string>
+    <string name="dlg_cancel">Abbrechen</string>
+    <string name="dlg_delete_image_title">Löschen bestätigen</string>
+    <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
+    <string name="duration_description">Dauer:</string>
+    <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
+    <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s.</string>
+    <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
+    <string name="today">Heute</string>
+    <string name="yesterday">Gestern</string>
+    <string name="lastWeek">Letzte Woche</string>
+    <string name="crash_dialog_text">Ein unerwarteter Fehler führter zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickts. Alles was du dafür tun musst ist auf OK zu klicken.</string>
+    <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
+    <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
+
+</resources>

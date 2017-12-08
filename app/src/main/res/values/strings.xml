@@ -30,7 +30,7 @@
         <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p>appcompat, cardview, recyclerview, design, preference, exifinterface, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         ]]></string>
-    <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so&#8230;</string>
+    <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
 
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Select Activity</string>
@@ -108,9 +108,7 @@
     <string name="lastWeek">Last Week</string>
 
     <!-- ACRA crash reporting -->
-    <string name="crash_dialog_text">An unexpected error occurred forcing the
-    application to stop. Please help us fix this by sending us error data,
-    all you have to do is click OK.</string>
+    <string name="crash_dialog_text">An unexpected error occurred forcing the application to stop. Please help us fix this by sending us error data, all you have to do is click OK.</string>
     <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
     <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
 </resources>
