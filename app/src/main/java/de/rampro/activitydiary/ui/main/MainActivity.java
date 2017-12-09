@@ -178,6 +178,8 @@ public class MainActivity extends BaseActivity implements
                     File photoFile = null;
                     try {
                         photoFile = createImageFile();
+                        Log.i(TAG, "create file for image capture " + photoFile.getAbsolutePath());
+
                     } catch (IOException ex) {
                         // Error occurred while creating the File
                         Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
@@ -222,6 +224,7 @@ public class MainActivity extends BaseActivity implements
     /* TODO #25: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
     }
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -254,7 +257,6 @@ public class MainActivity extends BaseActivity implements
                     ".jpg",
                     storageDir
             );
-
             return image;
         }else{
             return null;

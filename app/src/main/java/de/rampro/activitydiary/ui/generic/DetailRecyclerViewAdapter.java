@@ -33,7 +33,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
-import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
