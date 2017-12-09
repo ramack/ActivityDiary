@@ -87,17 +87,22 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         if (!mCursor.moveToPosition(position)) {
             throw new IllegalStateException("couldn't move cursor to position " + position);
         }
-        String s = mCursor.getString(uriRowIdx);
-        Uri i = Uri.parse(s);
+        String s;
+        if(uriRowIdx >= 0) {
+            s = mCursor.getString(uriRowIdx);
+            Uri i = Uri.parse(s);
 
-        try {
-            Picasso.with(mContext).load(i)
-                    .rotate(GraphicsHelper.getFileExifRotation(i))
-                    .resize(500, 500)
-                    .centerInside()
-                    .into(holder.mSymbol);
-        }catch (IOException e){
-            Log.e(TAG, "reading image failed", e);
+            try {
+                Picasso.with(mContext).load(i)
+                        .rotate(GraphicsHelper.getFileExifRotation(i))
+                        .resize(500, 500)
+                        .centerInside()
+                        .into(holder.mSymbol);
+            } catch (IOException e) {
+                Log.e(TAG, "reading image failed", e);
+            }
+        }else{
+            Log.e(TAG, "onBindViewHolder: uriRowIdx = " + Integer.toString(uriRowIdx));
         }
     }
 
@@ -143,6 +148,15 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
     }
 
     public long getDiaryImageIdAt(int position){
+        if(idRowIdx <= 0){
+            throw new IllegalStateException("idRowIdx not valid");
+        }
+        if(position <= 0){
+            throw new IllegalArgumentException("position too small");
+        }
+        if(position >= mCursor.getCount()){
+            throw new IllegalArgumentException("position too small");
+        }
         int pos = mCursor.getPosition();
         long result;
         mCursor.moveToPosition(position);
