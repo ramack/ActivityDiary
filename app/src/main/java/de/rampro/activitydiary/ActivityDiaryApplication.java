@@ -21,8 +21,12 @@ package de.rampro.activitydiary;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Color;
+
 import org.acra.*;
 import org.acra.annotation.*;
+
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 
 @ReportsCrashes(mailTo = "activity-diary@rampro.de",
         mode = ReportingInteractionMode.DIALOG,
@@ -53,6 +57,13 @@ public class ActivityDiaryApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ActivityDiaryApplication.context = getApplicationContext();
+
+        /* now do some init stuff */
+        String colors[] = context.getResources().getStringArray(R.array.activityColorPalette);
+
+        for (int i = 0; i < colors.length; i++) {
+            GraphicsHelper.activityColorPalette.add(Color.parseColor(colors[i]));
+        }
     }
 
     @Override

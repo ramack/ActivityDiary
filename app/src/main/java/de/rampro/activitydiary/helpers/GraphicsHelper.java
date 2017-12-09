@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -36,12 +37,18 @@ import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.model.DiaryActivity;
 
 public class GraphicsHelper {
     public static final String TAG = "GraphicsHelper";
+
+    /* list if recommended colors for new activites, populated from resources on startup */
+    public static ArrayList<Integer> activityColorPalette = new ArrayList<Integer>(19);
 
     public static File imageStorageDirectory(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
@@ -109,5 +116,47 @@ public class GraphicsHelper {
             }
         }
         return textColor;
+    }
+
+    // function to calculate the color to be set for next newly created activity
+    public static int prepareColorForNextActivity(){
+        int result = activityColorPalette.get(0);
+        List<DiaryActivity> acts = ActivityHelper.helper.activities;
+        double maxDistance = 0;
+
+        // check for each color in the palette the average distance to what is already configured
+        for(int c : activityColorPalette){
+            double dist = 0;
+            for(DiaryActivity a:acts){
+                dist += Math.log(1 + (double)colorDistance(c, a.getColor()));
+            }
+
+            if(dist > maxDistance){
+                // this one is better than the last
+                result = c;
+                maxDistance = dist;
+            }
+        }
+
+        return result;
+    }
+
+    /* some function estimating perceptional color difference
+     * see https://en.wikipedia.org/wiki/Color_difference for details
+     */
+    public static int colorDistance(int ci1, int ci2) {
+        int r1 = Color.red(ci1);
+        int r2 = Color.red(ci2);
+        int g1 = Color.green(ci1);
+        int g2 = Color.green(ci2);
+        int b1 = Color.blue(ci1);
+        int b2 = Color.blue(ci2);
+
+        double f = Math.sqrt(2.0 * (r1-r2)*(r1-r2)
+                           + 4.0 * (g1-g2)*(g1-g2)
+                           + 3.0 * (b1-b2)*(b1-b2)
+                           + (r1 + r2) / 2.0 * ((r1-r2)*(r1-r2) - (b1-b2)*(b1-b2)) / 256.0
+                           );
+        return (int)f;
     }
 }

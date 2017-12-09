@@ -45,6 +45,7 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
 /*
@@ -144,11 +145,7 @@ public class EditActivity extends BaseActivity
                 mActivityColor = currentActivity.getColor();
             } else {
                 currentActivity = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    mActivityColor = getResources().getColor(R.color.colorPrimary, null);
-                } else {
-                    mActivityColor = getResources().getColor(R.color.colorPrimary);
-                }
+                mActivityColor = GraphicsHelper.prepareColorForNextActivity();
             }
         }
         mActivityColorImg.setBackgroundColor(mActivityColor);

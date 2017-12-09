@@ -6,4 +6,24 @@
     <color name="colorGreyBackground">#e0e0e0</color>
     <color name="activityTextColorDark">#202020</color>
     <color name="activityTextColorLight">#fefeee</color>
+    <string-array name="activityColorPalette">
+        <item>#d32f2f</item>
+        <item>#c2185b</item>
+        <item>#7b1fa2</item>
+        <item>#512da8</item>
+        <item>#303f9f</item>
+        <item>#1976d2</item>
+        <item>#0288d1</item>
+        <item>#0097a7</item>
+        <item>#00796b</item>
+        <item>#388e3c</item>
+        <item>#afb42b</item>
+        <item>#fbc02d</item>
+        <item>#ffa000</item>
+        <item>#f57c00</item>
+        <item>#e64a19</item>
+        <item>#5d4037</item>
+        <item>#616161</item>
+        <item>#455a64</item>
+    </string-array>
 </resources>

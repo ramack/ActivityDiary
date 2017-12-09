@@ -40,15 +40,15 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ActivityDiaryContract.DiaryActivity.TABLE_NAME +
                 "(name, color)" +
                 " VALUES " +
-                " ('Gardening', '" + Color.parseColor("#388E3C") + "')," +
-                " ('Woodworking', '" + Color.parseColor("#5D4037") + "')," +
-                " ('Officework', '" + Color.parseColor("#00796B") + "')," +
-                " ('Swimming', '" + Color.parseColor("#0288D1") + "')," +
-                " ('Relaxing', '" + Color.parseColor("#FFA000") + "')," +
-                " ('Cooking', '" + Color.parseColor("#AFB42B") + "')," +
+                " ('Gardening', '" + Color.parseColor("#388e3c") + "')," +
+                " ('Woodworking', '" + Color.parseColor("#5d4037") + "')," +
+                " ('Officework', '" + Color.parseColor("#00796b") + "')," +
+                " ('Swimming', '" + Color.parseColor("#0288d1") + "')," +
+                " ('Relaxing', '" + Color.parseColor("#fbc02d") + "')," +
+                " ('Cooking', '" + Color.parseColor("#e64a19") + "')," +
                 " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "')," +
-                " ('Cinema', '" + Color.parseColor("#C2185B") + "')," +
-                " ('Sleeping', '" + Color.parseColor("#303F9F") + "');");
+                " ('Cinema', '" + Color.parseColor("#c2185b") + "')," +
+                " ('Sleeping', '" + Color.parseColor("#303f9f") + "');");
     }
 
     public static final int CURRENT_VERSION = 3;
