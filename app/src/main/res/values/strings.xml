@@ -95,6 +95,7 @@
     <!-- main view -->
     <string name="duration_description">Duration:</string>
     <string name="camera_error">Something went wrong here. Could not store image.</string>
+    <string name="no_active_activity_error">To perform this action it is necessary to select an activity first.</string>
 
     <!-- edit view -->
     <string name="error_name_already_used">Activity with name %1$s already exists.</string>

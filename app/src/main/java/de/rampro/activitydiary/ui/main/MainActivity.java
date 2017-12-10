@@ -162,9 +162,13 @@ public class MainActivity extends BaseActivity implements
             @Override
             public void onClick(View v) {
                 // Handle the click on the FAB
-                NoteEditDialog dialog = new NoteEditDialog();
-                dialog.setText(mNoteTextView.getText().toString());
-                dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
+                if(mCurrentActivity != null) {
+                    NoteEditDialog dialog = new NoteEditDialog();
+                    dialog.setText(mNoteTextView.getText().toString());
+                    dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
+                }else{
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -172,32 +176,35 @@ public class MainActivity extends BaseActivity implements
             @Override
             public void onClick(View v) {
                 // Handle the click on the FAB
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(mCurrentActivity != null) {
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                        Log.i(TAG, "create file for image capture " + photoFile.getAbsolutePath());
+                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                        File photoFile = null;
+                        try {
+                            photoFile = createImageFile();
+                            Log.i(TAG, "create file for image capture " + photoFile == null ? "" : photoFile.getAbsolutePath());
 
-                    } catch (IOException ex) {
-                        // Error occurred while creating the File
-                        Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
+                        } catch (IOException ex) {
+                            // Error occurred while creating the File
+                            Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
+                        }
+                        // Continue only if the File was successfully created
+                        if (photoFile != null) {
+                            // Save a file: path for use with ACTION_VIEW intents
+                            mCurrentPhotoPath = photoFile.getAbsolutePath();
+
+                            Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
+                                    BuildConfig.APPLICATION_ID + ".fileprovider",
+                                    photoFile);
+                            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                        }
+
                     }
-                    // Continue only if the File was successfully created
-                    if (photoFile != null) {
-                        // Save a file: path for use with ACTION_VIEW intents
-                        mCurrentPhotoPath = photoFile.getAbsolutePath();
-
-                        Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                                BuildConfig.APPLICATION_ID + ".fileprovider",
-                                photoFile);
-                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                    }
-
+                }else{
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
