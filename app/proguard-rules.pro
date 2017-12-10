@@ -35,3 +35,6 @@
 
 # Don't warn about removed methods from AppCompat
 -dontwarn android.support.v4.app.NotificationCompat*
+
+#we do not want to obfuscate at all, just the optimization of proguard is of interest
+-dontobfuscate
