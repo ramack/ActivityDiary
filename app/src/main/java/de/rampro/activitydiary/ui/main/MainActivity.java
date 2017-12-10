@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements
                         File photoFile = null;
                         try {
                             photoFile = createImageFile();
-                            Log.i(TAG, "create file for image capture " + photoFile == null ? "" : photoFile.getAbsolutePath());
+                            Log.i(TAG, "create file for image capture " + (photoFile == null ? "" : photoFile.getAbsolutePath()));
 
                         } catch (IOException ex) {
                             // Error occurred while creating the File
@@ -470,10 +470,11 @@ public class MainActivity extends BaseActivity implements
 
     // Called when a previously created loader has finished loading
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Swap the new cursor in.  (The framework will take care of closing the
-        // old cursor once we return.)
-        detailAdapter.swapCursor(data);
-
+        // Swap the new cursor in
+        Cursor oldCur = detailAdapter.swapCursor(data);
+        if(oldCur != null && !oldCur.isClosed()){
+            oldCur.close();
+        }
         // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
         // it is neither clean nor generic, feel free to propose an improvement
         detailRecyclerView.setMinimumWidth((int)(data.getCount() * 3.3 * detailRecyclerView.getHeight()));
@@ -485,7 +486,11 @@ public class MainActivity extends BaseActivity implements
         // This is called when the last Cursor provided to onLoadFinished()
         // above is about to be closed.  We need to make sure we are no
         // longer using it.
-        detailAdapter.swapCursor(null);
+        Cursor oldCur = detailAdapter.swapCursor(null);
+        if(oldCur != null && !oldCur.isClosed()){
+            oldCur.close();
+        }
+
     }
 
 

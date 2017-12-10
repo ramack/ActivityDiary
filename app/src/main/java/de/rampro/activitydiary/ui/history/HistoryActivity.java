@@ -175,7 +175,10 @@ public class HistoryActivity extends BaseActivity implements
         if(i == LOADER_ID_HISTORY) {
             historyAdapter.swapCursor(data);
         }else{
-            detailAdapters[i].swapCursor(data);
+            Cursor oldCur = detailAdapters[i].swapCursor(data);
+            if(oldCur != null && !oldCur.isClosed()){
+                oldCur.close();
+            }
         }
 
     }
@@ -189,7 +192,10 @@ public class HistoryActivity extends BaseActivity implements
         if(i == LOADER_ID_HISTORY) {
             historyAdapter.swapCursor(null);
         }else{
-            detailAdapters[i].swapCursor(null);
+            Cursor oldCur = detailAdapters[i].swapCursor(null);
+            if(oldCur != null && !oldCur.isClosed()){
+                oldCur.close();
+            }
         }
 
     }
