@@ -1,2 +1,2 @@
-- erste Version die öffentlich verfügbar ist
-- deutsche Übersetzung
+- besserer Farbvorschlag beim Erstellen einer neuen Aktivität
+- behoben: Absturz bei Aktionen ohne vorher eine Aktivität ausgewählt zu haben

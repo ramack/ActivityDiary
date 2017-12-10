@@ -1,3 +1,2 @@
-- first public release
-- allow deletion of pictures by long-press
-- show pictures in history
+- new color suggestions on creation of a new activity
+- fix crashes on actions while no activity selected
