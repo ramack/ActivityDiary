@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
 public class GraphicsHelperUnitTest {
     @Test
     public void colorDistance_equalColor() throws Exception {
-        assertEquals(0, GraphicsHelper.colorDistance(0,0));
+        assertEquals(97, GraphicsHelper.colorDistance(0,0));
         assertEquals(0, GraphicsHelper.colorDistance(Color.BLUE,Color.BLUE));
         assertEquals(0, GraphicsHelper.colorDistance(Color.BLACK,Color.BLACK));
         assertEquals(0, GraphicsHelper.colorDistance(0xffffffff, 0xffffffff));

@@ -1,3 +1,6 @@
+# ActivityDiary
+![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
+
 # Functionality
 ActivityDiary is a diary for any kind of activities - track and organize your tasks in agile way with this android app and get reminded.
 
