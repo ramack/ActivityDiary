@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.rampro.activitydiary">
 
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!-- for photo storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,10 +58,5 @@
         </provider>
 
     </application>
-    <uses-feature android:name="android.hardware.camera"
-        android:required="false" />
-
-    <!-- for photo storage -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

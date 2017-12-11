@@ -86,7 +86,7 @@
     <string name="action_filter">Filter</string>
 
     <!-- dialog -->
-    <string name="dlg_ok">Ok</string>
+    <string name="dlg_ok">OK</string>
     <string name="dlg_cancel">Cancel</string>
 
     <string name="dlg_delete_image_title">Confirm Deletion</string>

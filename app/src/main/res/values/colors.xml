@@ -6,7 +6,7 @@
     <color name="colorGreyBackground">#e0e0e0</color>
     <color name="activityTextColorDark">#202020</color>
     <color name="activityTextColorLight">#fefeee</color>
-    <string-array name="activityColorPalette">
+    <string-array name="activityColorPalette" translatable="false">
         <item>#d32f2f</item>
         <item>#c2185b</item>
         <item>#7b1fa2</item>

@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -145,12 +144,12 @@ public class GraphicsHelper {
      * see https://en.wikipedia.org/wiki/Color_difference for details
      */
     public static int colorDistance(int ci1, int ci2) {
-        int r1 = Color.red(ci1);
-        int r2 = Color.red(ci2);
-        int g1 = Color.green(ci1);
-        int g2 = Color.green(ci2);
-        int b1 = Color.blue(ci1);
-        int b2 = Color.blue(ci2);
+        int r1 = (ci1 >> 16) & 0xFF;
+        int r2 = (ci2 >> 16) & 0xFF;
+        int g1 = (ci1 >> 8) & 0xFF;
+        int g2 = (ci2 >> 8) & 0xFF;
+        int b1 = (ci1 >> 0) & 0xFF;
+        int b2 = (ci2 >> 0) & 0xFF;
 
         double f = Math.sqrt(2.0 * (r1-r2)*(r1-r2)
                            + 4.0 * (g1-g2)*(g1-g2)
