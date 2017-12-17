@@ -131,9 +131,11 @@ public class MainActivity extends BaseActivity implements
         View contentView = inflater.inflate(R.layout.activity_main_content, null, false);
 
         setContent(contentView);
+// TODO: check whether there is some way to use instead of inflating with root null...
+//        setContentView(R.layout.activity_main_content);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.select_recycler);
 
-        View selector = contentView.findViewById(R.id.activity_background);
+        View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
 
         int rows;
@@ -152,8 +154,8 @@ public class MainActivity extends BaseActivity implements
         rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
         recyclerView.setAdapter(rcAdapter);
 
-        durationLabel = (TextView) contentView.findViewById(R.id.duration_label);
-        mNoteTextView =  (TextView) contentView.findViewById(R.id.note);
+        durationLabel = findViewById(R.id.duration_label);
+        mNoteTextView = findViewById(R.id.note);
 
         FloatingActionButton fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
         FloatingActionButton fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
@@ -208,7 +210,6 @@ public class MainActivity extends BaseActivity implements
             }
         });
 
-        onActivityChanged();
         fabNoteEdit.show();
         PackageManager pm = getPackageManager();
 
@@ -228,8 +229,10 @@ public class MainActivity extends BaseActivity implements
                 this, null);
         detailRecyclerView.setAdapter(detailAdapter);
 
+        onActivityChanged(); /* do this at the very end to ensure that no Loader finishes its data loading before */
     /* TODO #25: add a search box in the toolbar to filter / fuzzy search
     * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
+    /* TODO #25 see also https://developer.android.com/guide/components/loaders.html for example how to filter */
     }
 
     private File createImageFile() throws IOException {
@@ -471,10 +474,8 @@ public class MainActivity extends BaseActivity implements
     // Called when a previously created loader has finished loading
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Swap the new cursor in
-        Cursor oldCur = detailAdapter.swapCursor(data);
-        if(oldCur != null && !oldCur.isClosed()){
-            oldCur.close();
-        }
+        detailAdapter.swapCursor(data);
+
         // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
         // it is neither clean nor generic, feel free to propose an improvement
         detailRecyclerView.setMinimumWidth((int)(data.getCount() * 3.3 * detailRecyclerView.getHeight()));
@@ -486,11 +487,7 @@ public class MainActivity extends BaseActivity implements
         // This is called when the last Cursor provided to onLoadFinished()
         // above is about to be closed.  We need to make sure we are no
         // longer using it.
-        Cursor oldCur = detailAdapter.swapCursor(null);
-        if(oldCur != null && !oldCur.isClosed()){
-            oldCur.close();
-        }
-
+        detailAdapter.swapCursor(null);
     }
 
 
