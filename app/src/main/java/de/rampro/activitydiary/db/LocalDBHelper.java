@@ -38,16 +38,48 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         /* now fill some sample data */
         db.execSQL("INSERT INTO " +
                 ActivityDiaryContract.DiaryActivity.TABLE_NAME +
-                "(name, color)" +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
                 " VALUES " +
-                " ('Gardening', '" + Color.parseColor("#388e3c") + "')," +
-                " ('Woodworking', '" + Color.parseColor("#5d4037") + "')," +
-                " ('Officework', '" + Color.parseColor("#00796b") + "')," +
-                " ('Swimming', '" + Color.parseColor("#0288d1") + "')," +
-                " ('Relaxing', '" + Color.parseColor("#fbc02d") + "')," +
-                " ('Cooking', '" + Color.parseColor("#e64a19") + "')," +
-                " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "')," +
-                " ('Cinema', '" + Color.parseColor("#c2185b") + "')," +
+                " ('Gardening', '" + Color.parseColor("#388e3c") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Woodworking', '" + Color.parseColor("#5d4037") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Officework', '" + Color.parseColor("#00796b") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Swimming', '" + Color.parseColor("#0288d1") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Relaxing', '" + Color.parseColor("#fbc02d") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Cooking', '" + Color.parseColor("#e64a19") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Cleaning', '" + Color.parseColor("#CFD8DC") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
+                " ('Cinema', '" + Color.parseColor("#c2185b") + "');");
+        db.execSQL("INSERT INTO " +
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME +
+                "(" + ActivityDiaryContract.DiaryActivity.NAME + "," + ActivityDiaryContract.DiaryActivity.COLOR + ")" +
+                " VALUES " +
                 " ('Sleeping', '" + Color.parseColor("#303f9f") + "');");
     }
 
