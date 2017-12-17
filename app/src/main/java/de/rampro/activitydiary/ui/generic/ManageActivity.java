@@ -99,7 +99,8 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
     /* TODO: refactor to use the ActivityHelper instead of directly a Loader; 2017-12-02, RMk: not sure whether we should do this... */
-        getLoaderManager().initLoader(0, null, this);
+    /* TODO: add a clear way to ensure loader ID uniqueness */
+        getLoaderManager().initLoader(-2, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }
 
