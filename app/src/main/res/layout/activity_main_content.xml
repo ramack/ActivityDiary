@@ -70,6 +70,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
                             android:text="Duration: ?h"
                             android:textSize="16sp" />
 
@@ -114,6 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_add_note"
         android:transitionName="NoteEditDialogFragment"
         app:fabSize="normal"
