@@ -20,6 +20,12 @@
 # debugging stack traces.
 -keepattributes SourceFile,LineNumberTable
 
+-keepattributes InnerClasses,EnclosingMethod
+
+-keepattributes Signature
+
+-keep public class * extends java.lang.Exception
+
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
@@ -34,7 +40,11 @@
 -keep class org.acra.** { *; }
 
 # Don't warn about removed methods from AppCompat
--dontwarn android.support.v4.app.NotificationCompat*
+-keep android.support.v4.app.NotificationCompat*
+
+-keep public class android.support.v7.widget.GridLayoutManager {
+    public protected *;
+}
 
 #we do not want to obfuscate at all, just the optimization of proguard is of interest
 -dontobfuscate
