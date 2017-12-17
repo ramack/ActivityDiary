@@ -64,9 +64,7 @@ By making a contribution to this project, I certify that:
 So to say submission of a pull request is considered as the act of signing this certificate. This is also why each contributor shall setup his/her development environment such that the full name and a valid email address is part of the commit meta data. Modified files shall contain an updated copyright notice to include all authors.
 
 # Status
-Next test version is out, and with this we enter beta phase, as a basic set of features is implemented which makes this app usable. Anyhow, feel free to contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
-
-Stay tuned and start contributing!
+ActivityDiary is usable for the most basic functions and therefore released for public use. The number of available languages is still very limited and it would be great if you could support translating this app. The number of active testers is very small and therefore testing is limited to some trying during development and a bit automated testing. Please contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
 
 # Used Libraries and their licenses
 [android-material-color-picker-dialog](https://github.com/Pes8/android-material-color-picker-dialog) from Simone Pessotto:
