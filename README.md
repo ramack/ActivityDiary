@@ -66,6 +66,8 @@ So to say submission of a pull request is considered as the act of signing this 
 # Status
 ActivityDiary is usable for the most basic functions and therefore released for public use. The number of available languages is still very limited and it would be great if you could support translating this app. The number of active testers is very small and therefore testing is limited to some trying during development and a bit automated testing. Please contribute code, ideas and issues on https://github.com/ramack/ActivityDiary
 
+For latest test status on master see [Travis-CI](https://travis-ci.org/ramack/ActivityDiary)
+
 # Used Libraries and their licenses
 [android-material-color-picker-dialog](https://github.com/Pes8/android-material-color-picker-dialog) from Simone Pessotto:
 > The MIT License (MIT)
