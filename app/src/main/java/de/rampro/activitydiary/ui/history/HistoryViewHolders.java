@@ -77,12 +77,19 @@ class HistoryViewHolders extends RecyclerView.ViewHolder implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        mListener.onItemClick(this, getAdapterPosition(), mDiaryEntryId);
+        final int position = getAdapterPosition();
+        if(position != RecyclerView.NO_POSITION) {
+            mListener.onItemClick(this, position, mDiaryEntryId);
+        }
     }
 
     @Override
     public boolean onLongClick(View view) {
-        return mListener.onItemLongClick(this, getAdapterPosition(), mDiaryEntryId);
+        final int position = getAdapterPosition();
+        if(position != RecyclerView.NO_POSITION) {
+            return mListener.onItemLongClick(this, position, mDiaryEntryId);
+        }
+        return false;
     }
 
 }

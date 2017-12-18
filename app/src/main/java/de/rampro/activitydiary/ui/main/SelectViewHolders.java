@@ -45,9 +45,18 @@ class SelectViewHolders extends RecyclerView.ViewHolder implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        mListener.onItemClick(getAdapterPosition());
+        final int position = getAdapterPosition();
+        if(position != RecyclerView.NO_POSITION) {
+            mListener.onItemClick(position);
+        }
     }
 
     @Override
-    public boolean onLongClick(View v) { return mListener.onItemLongClick(getAdapterPosition()); }
+    public boolean onLongClick(View v) {
+        final int position = getAdapterPosition();
+        if(position != RecyclerView.NO_POSITION) {
+            return mListener.onItemLongClick(position);
+        }
+        return false;
+    }
 }
