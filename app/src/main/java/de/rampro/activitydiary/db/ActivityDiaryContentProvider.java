@@ -56,7 +56,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
     static {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath().replaceAll("^/+", ""), activities);
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath().replaceAll("^/+", "") + "#", activities_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryActivity.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", activities_ID);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath().replaceAll("^/+", ""), diary);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_ID);
