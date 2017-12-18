@@ -81,8 +81,8 @@ public class EditActivity extends BaseActivity
                 else{
                     mActivityNameTIL.setError("");
                 }
+                cursor.close();
             }
-            cursor.close();
         }
 
     }

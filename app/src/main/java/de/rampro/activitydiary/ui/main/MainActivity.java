@@ -478,8 +478,9 @@ public class MainActivity extends BaseActivity implements
 
         // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
         // it is neither clean nor generic, feel free to propose an improvement
-        detailRecyclerView.setMinimumWidth((int)(data.getCount() * 3.3 * detailRecyclerView.getHeight()));
-
+        if(data != null) {
+            detailRecyclerView.setMinimumWidth((int) (data.getCount() * 3.3 * detailRecyclerView.getHeight()));
+        }
     }
 
     // Called when a previously created loader is reset, making the data unavailable
