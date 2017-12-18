@@ -26,6 +26,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -39,15 +40,19 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -220,9 +225,7 @@ public class MainActivity extends BaseActivity implements
         }
 
         detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
-        StaggeredGridLayoutManager detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL);
-
-        detailLayoutManager.setAutoMeasureEnabled(true);
+        LinearLayoutManager detailLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         detailRecyclerView.setLayoutManager(detailLayoutManager);
 
         detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this,
@@ -476,10 +479,28 @@ public class MainActivity extends BaseActivity implements
         // Swap the new cursor in
         detailAdapter.swapCursor(data);
 
-        // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
-        // it is neither clean nor generic, feel free to propose an improvement
         if(data != null) {
-            detailRecyclerView.setMinimumWidth((int) (data.getCount() * 3.3 * detailRecyclerView.getHeight()));
+        }
+        if(data == null || data.getCount() == 0){
+            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
+            p.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+            mNoteTextView.setLayoutParams(p);
+        }else {
+            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+
+            p.width = size.x * 67 / 100;
+            mNoteTextView.setLayoutParams(p);
+
+            // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
+            // it is neither clean nor generic, feel free to propose an improvement
+            // and yes, even using a RecyclerView in this case seems strange... is it really necessary? Wouldn't even the Cursor thigns get simpler with a list...
+            LinearLayout.LayoutParams rp = (LinearLayout.LayoutParams)detailRecyclerView.getLayoutParams();
+            rp.width = (int)(data.getCount() * 2.2 * detailRecyclerView.getHeight());
+
+            detailRecyclerView.setLayoutParams(rp);
         }
     }
 

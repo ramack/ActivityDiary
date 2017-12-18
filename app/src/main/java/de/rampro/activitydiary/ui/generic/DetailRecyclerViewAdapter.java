@@ -151,11 +151,11 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         if(idRowIdx <= 0){
             throw new IllegalStateException("idRowIdx not valid");
         }
-        if(position <= 0){
-            throw new IllegalArgumentException("position too small");
+        if(position < 0){
+            throw new IllegalArgumentException("position (" + Integer.toString(position) + ") too small");
         }
         if(position >= mCursor.getCount()){
-            throw new IllegalArgumentException("position too small");
+            throw new IllegalArgumentException("position (" + Integer.toString(position) + ") too small");
         }
         int pos = mCursor.getPosition();
         long result;
