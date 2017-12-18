@@ -20,4 +20,5 @@
 
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path name="public_images" path="Pictures" />
+    <files-path name="private_images" path="/" />
 </paths>

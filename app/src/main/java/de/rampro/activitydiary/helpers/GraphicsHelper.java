@@ -49,22 +49,39 @@ public class GraphicsHelper {
     /* list if recommended colors for new activites, populated from resources on startup */
     public static ArrayList<Integer> activityColorPalette = new ArrayList<Integer>(19);
 
+    /* Checks if external storage is available for read and write */
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
     public static File imageStorageDirectory(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
-        File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+        File directory;
+
+        if(isExternalStorageWritable()) {
+            directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        }else {
+            directory = ActivityDiaryApplication.getAppContext().getFilesDir();
+        }
+
+        File root = new File(directory,
                 sharedPreferences.getString("pref_storageFolder", "ActivityDiary"));
 
         int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            if(!root.exists()){
-                if( !root.mkdirs() ) {
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            if (!root.exists()) {
+                if (!root.mkdirs()) {
                     Log.e(TAG, "failed to create directory");
                     throw new RuntimeException("failed to create directory " + root.toString());
                 }
             }
-        }else{
+        } else {
             /* no permission, return null */
         }
 
