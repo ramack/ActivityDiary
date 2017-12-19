@@ -29,6 +29,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
@@ -55,8 +56,9 @@ public class BaseActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
 
-        // TODO: #1 add a header to navigation view with
-        // mNavigationView.addHeaderView(ImageView);
+//        View logoView = getLayoutInflater().inflate(R.layout.drawer_header, mNavigationView, false);
+
+//        mNavigationView.addHeaderView(logoView);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,

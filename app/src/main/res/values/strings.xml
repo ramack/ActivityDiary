@@ -47,6 +47,7 @@
 
     <!-- -->
     <string name="activity_image_description">Picture for Activity</string>
+    <string name="contentDesc_logo">Logo of ActivityDiary</string>
     <string name="drawer_open">Open Navigation</string>
     <string name="drawer_close">Close Navigation</string>
 
