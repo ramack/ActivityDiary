@@ -43,7 +43,7 @@
 
     <string name="desc_activity_color">Activity Color</string>
     <string name="desc_activity_hint">Activity Title</string>
-    <string name="desc_activity_select">Choose current activity...</string>
+    <string name="desc_activity_select">Choose current activity&#8230;</string>
 
     <!-- -->
     <string name="activity_image_description">Picture for Activity</string>

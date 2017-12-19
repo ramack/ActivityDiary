@@ -47,7 +47,7 @@
     <string name="nav_about">Über</string>
     <string name="desc_activity_color">Aktivitätsfarbe</string>
     <string name="desc_activity_hint">Aktivitätstitel</string>
-    <string name="desc_activity_select">Wähle aktuelle Aktivität...</string>
+    <string name="desc_activity_select">Wähle aktuelle Aktivität&#8230;</string>
     <string name="activity_image_description">Aktivitätsbild</string>
     <string name="drawer_open">Navigation öffnen</string>
     <string name="drawer_close">Navigation schließen</string>
@@ -93,5 +93,6 @@
     <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
     <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
     <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden.</string>
+    <string name="contentDesc_logo">ActivityDiary Logo</string>
 
 </resources>

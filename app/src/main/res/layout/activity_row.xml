@@ -45,7 +45,6 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/activity_image"
         android:layout_toEndOf="@+id/activity_image"
-        android:layout_weight="1"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/activity_title_no_selected_act"

@@ -21,7 +21,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    >
 
     <fragment android:name="de.rampro.activitydiary.ui.settings.SettingsFragment"
         android:id="@+id/settings_fragment"
