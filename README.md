@@ -96,7 +96,7 @@ For latest test status on master see [Travis-CI](https://travis-ci.org/ramack/Ac
 
 [Picasso](http://square.github.io/picasso/),
 
-appcompat, cardview, recyclerview, design, preference and exifinterface are
+appcompat, cardview, constraint-layout, recyclerview, design, preference and exifinterface are
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
 > You may obtain a copy of the License at

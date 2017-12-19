@@ -86,6 +86,7 @@ dependencies {
     implementation 'com.pes.materialcolorpicker:library:1.2.2'
     implementation 'ch.acra:acra:4.9.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
 
