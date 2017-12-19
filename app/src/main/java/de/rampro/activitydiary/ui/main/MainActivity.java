@@ -225,9 +225,86 @@ public class MainActivity extends BaseActivity implements
         }
 
         detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
-        LinearLayoutManager detailLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        detailRecyclerView.setLayoutManager(detailLayoutManager);
+        LinearLayoutManager detailLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
 
+            @Override
+            public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state,
+                                  int widthSpec, int heightSpec) {
+                final int widthMode = View.MeasureSpec.getMode(widthSpec);
+                final int heightMode = View.MeasureSpec.getMode(heightSpec);
+                final int widthSize = View.MeasureSpec.getSize(widthSpec);
+                final int heightSize = View.MeasureSpec.getSize(heightSpec);
+                int width = 0;
+                int height = 0;
+                int[] mMeasuredDimension = new int[2];
+                for (int i = 0; i < getItemCount(); i++) {
+                    if(i < state.getItemCount()) {
+                        if (getOrientation() == HORIZONTAL) {
+
+                            measureScrapChild(recycler, i,
+                                    View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
+                                    heightSpec,
+                                    mMeasuredDimension);
+
+                            width = width + mMeasuredDimension[0];
+                            if (i == 0) {
+                                height = mMeasuredDimension[1];
+                            }
+                        } else {
+                            measureScrapChild(recycler, i,
+                                    widthSpec,
+                                    View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
+                                    mMeasuredDimension);
+                            height = height + mMeasuredDimension[1];
+                            if (i == 0) {
+                                width = mMeasuredDimension[0];
+                            }
+                        }
+                    }
+                }
+
+                if (height < heightSize || width < widthSize) {
+
+                    switch (widthMode) {
+                        case View.MeasureSpec.EXACTLY:
+                            width = widthSize;
+                        case View.MeasureSpec.AT_MOST:
+                        case View.MeasureSpec.UNSPECIFIED:
+                    }
+
+                    switch (heightMode) {
+                        case View.MeasureSpec.EXACTLY:
+                            height = heightSize;
+                        case View.MeasureSpec.AT_MOST:
+                        case View.MeasureSpec.UNSPECIFIED:
+                    }
+
+                    setMeasuredDimension(width, height);
+                } else {
+                    setMeasuredDimension((width > widthSize)?width:widthSize, (height > heightSize)?height:heightSize);
+                }
+            }
+
+            private void measureScrapChild(RecyclerView.Recycler recycler, int position, int widthSpec,
+                                           int heightSpec, int[] measuredDimension) {
+                View view = recycler.getViewForPosition(position);
+                recycler.bindViewToPosition(view, position);
+                if (view != null) {
+                    RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) view.getLayoutParams();
+                    int childWidthSpec = ViewGroup.getChildMeasureSpec(widthSpec,
+                            getPaddingLeft() + getPaddingRight(), p.width);
+                    int childHeightSpec = ViewGroup.getChildMeasureSpec(heightSpec,
+                            getPaddingTop() + getPaddingBottom(), p.height);
+                    view.measure(childWidthSpec, childHeightSpec);
+                    measuredDimension[0] = view.getMeasuredWidth() + p.leftMargin + p.rightMargin;
+                    measuredDimension[1] = view.getMeasuredHeight() + p.bottomMargin + p.topMargin;
+                    recycler.recycleView(view);
+                }
+            }
+        };
+        detailLayoutManager.setAutoMeasureEnabled(false);
+        detailRecyclerView.setLayoutManager(detailLayoutManager);
+//        detailRecyclerView.setNestedScrollingEnabled(true);
         detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this,
                 this, null);
         detailRecyclerView.setAdapter(detailAdapter);
@@ -493,14 +570,6 @@ public class MainActivity extends BaseActivity implements
 
             p.width = size.x * 67 / 100;
             mNoteTextView.setLayoutParams(p);
-
-            // this is a hack, as I failed to make the RecyclerView scroll correctly inside the HorizontalScrollView
-            // it is neither clean nor generic, feel free to propose an improvement
-            // and yes, even using a RecyclerView in this case seems strange... is it really necessary? Wouldn't even the Cursor thigns get simpler with a list...
-            LinearLayout.LayoutParams rp = (LinearLayout.LayoutParams)detailRecyclerView.getLayoutParams();
-            rp.width = (int)(data.getCount() * 2.2 * detailRecyclerView.getHeight());
-
-            detailRecyclerView.setLayoutParams(rp);
         }
     }
 

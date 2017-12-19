@@ -59,6 +59,8 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             public void onChanged() {
                 /* notify about the data change */
                 notifyDataSetChanged();
+
+                // TODO: remove #56
             }
 
             public void onInvalidated() {
