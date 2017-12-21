@@ -401,7 +401,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean onDetailItemLongClick(int adapterPosition) {
+    public boolean onDetailItemLongClick(final int adapterPosition) {
         //TODO: generalize the DetailView to include this code also
         //      such that it is not duplicated between MainActivity and HistoryRecyclerViewAdapter
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
