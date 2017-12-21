@@ -39,7 +39,9 @@
             android:title="@string/setting_auto_select_new"
             android:summary="@string/setting_auto_select_new_summary_active"
             android:defaultValue="true"/>
-        <CheckBoxPreference android:key="acra.enable"
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="acra.enable"
             android:title="@string/setting_enable_acra"
             android:summaryOn="@string/setting_acra_enabled"
             android:summaryOff="@string/setting_acra_disabled"
