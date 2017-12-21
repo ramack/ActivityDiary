@@ -29,12 +29,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.ui.history.HistoryActivity;
 import de.rampro.activitydiary.ui.main.MainActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements

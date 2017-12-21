@@ -46,6 +46,7 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryViewHolders> implements DetailRecyclerViewAdapter.SelectListener {
     private Cursor mCursor;
@@ -196,7 +197,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         holder.mName.setText(name);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
-        String formatString = sharedPref.getString("pref_datetimeFormat",
+        String formatString = sharedPref.getString(SettingsActivity.KEY_PREF_DATE_FORMAT,
                 mContext.getResources().getString(R.string.default_datetime_format));
 /* TODO: #36 register listener on preference change to redraw the date time formatting */
 

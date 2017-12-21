@@ -40,6 +40,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -72,6 +73,7 @@ import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.EditActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -520,21 +522,24 @@ public class MainActivity extends BaseActivity implements
                         ActivityDiaryContract.DiaryImage.CONTENT_URI,
                         values);
 
-                try {
-                    // TODO: store exif comment only if enabled in settings
-                    ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
-                    if(mCurrentActivity != null) {
-                        /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
-                        /* would be great to use IPTC keywords instead of EXIF UserComment, but
-                         * at time of writing (2017-11-24) it is hard to find a library able to write IPTC
-                         * to JPEG for android.
-                         * pixymeta-android or apache/commons-imaging could be interesting for this.
-                         * */
-                        exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, mCurrentActivity.getName());
-                        exifInterface.saveAttributes();
+                if(PreferenceManager
+                        .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                        .getBoolean(SettingsActivity.KEY_PREF_TAG_IMAGES, true)) {
+                    try {
+                        ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
+                        if (mCurrentActivity != null) {
+                            /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
+                            /* would be great to use IPTC keywords instead of EXIF UserComment, but
+                             * at time of writing (2017-11-24) it is hard to find a library able to write IPTC
+                             * to JPEG for android.
+                             * pixymeta-android or apache/commons-imaging could be interesting for this.
+                             * */
+                            exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, mCurrentActivity.getName());
+                            exifInterface.saveAttributes();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed");
                     }
-                }catch (IOException e){
-                    Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed");
                 }
             }
         }

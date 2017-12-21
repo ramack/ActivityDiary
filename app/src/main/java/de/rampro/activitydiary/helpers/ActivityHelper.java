@@ -35,6 +35,7 @@ import java.util.List;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /**
  * provide a smooth interface to an OO abstraction of the data for our diary.
@@ -223,7 +224,7 @@ public class ActivityHelper extends AsyncQueryHandler{
             }
             if(PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                    .getBoolean("pref_auto_select_new", true)){
+                    .getBoolean(SettingsActivity.KEY_PREF_AUTO_SELECT, true)){
                 setCurrentActivity(act);
             }
         }

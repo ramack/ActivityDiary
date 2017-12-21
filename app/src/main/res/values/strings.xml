@@ -54,6 +54,7 @@
     <!-- settings -->
     <string name="setting_view_category">View</string>
     <string name="setting_behavior_category">Behavior</string>
+    <string name="setting_images_category">Images</string>
 
     <string name="setting_datetime_format">Date Format</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
@@ -69,6 +70,10 @@
     <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
     <string name="setting_storage_folder_description">Directory to store the activity photos</string>
     <string name="default_storage_folder">ActivityDiary</string>
+
+    <string name="setting_tag_images">Metadata</string>
+    <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images.</string>
+    <string name="setting_tag_no">Do not touch EXIF tags of new images.</string>
 
     <!-- titles -->
     <string name="activity_title_edit">Edit</string>

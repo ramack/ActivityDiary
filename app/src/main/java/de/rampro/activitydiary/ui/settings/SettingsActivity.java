@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.ui.generic;
+package de.rampro.activitydiary.ui.settings;
 
 
 import android.content.Context;
@@ -33,16 +33,20 @@ import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.settings.SettingsFragment;
 
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_PREF_DATE_FORMAT = "pref_datetimeFormat";
     public static final String KEY_PREF_AUTO_SELECT = "pref_auto_select_new";
     public static final String KEY_PREF_STORAGE_FOLDER = "pref_storageFolder";
+    public static final String KEY_PREF_TAG_IMAGES = "pref_tag_images";
 
     private Preference dateformatPref;
     private Preference autoSelectPref;
     private Preference storageFolderPref;
+    private Preference tagImagesPref;
+
     private PreferenceManager mPreferenceManager;
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
@@ -53,9 +57,21 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             dateformatPref.setSummary(DateFormat.format(sharedPreferences.getString(key, def), new Date()));
         }else if(key.equals(KEY_PREF_AUTO_SELECT)){
             updateAutoSelectSummary();
-        }else if(key.equals(KEY_PREF_STORAGE_FOLDER)){
+        }else if(key.equals(KEY_PREF_STORAGE_FOLDER)) {
             /* TODO: we could ask here whether we shall move the pictures... */
             updateStorageFolderSummary();
+        }else if(key.equals(KEY_PREF_TAG_IMAGES)) {
+            updateTagImageSummary();
+        }
+    }
+
+    private void updateTagImageSummary() {
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean(KEY_PREF_TAG_IMAGES, true)){
+            tagImagesPref.setSummary(getResources().getString(R.string.setting_tag_yes));
+        }else{
+            tagImagesPref.setSummary(getResources().getString(R.string.setting_tag_no));
         }
     }
 
@@ -101,9 +117,11 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
 
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
+        tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
 
         updateAutoSelectSummary();
         updateStorageFolderSummary();
+        updateTagImageSummary();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

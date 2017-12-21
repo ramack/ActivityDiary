@@ -53,6 +53,8 @@
     <string name="drawer_close">Navigation schließen</string>
     <string name="setting_view_category">Anzeige</string>
     <string name="setting_behavior_category">Verhalten</string>
+    <string name="setting_images_category">Fotos</string>
+
     <string name="setting_datetime_format">Datumsformat</string>
     <string name="setting_datetime_format_summary">\@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
@@ -94,5 +96,8 @@
     <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
     <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden.</string>
     <string name="contentDesc_logo">ActivityDiary Logo</string>
+    <string name="setting_tag_yes">Für neue Fotos die laufende Aktivität in das EXIF-Attribut UserComment schreiben.</string>
+    <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern.</string>
+    <string name="setting_tag_images">Metadaten</string>
 
 </resources>

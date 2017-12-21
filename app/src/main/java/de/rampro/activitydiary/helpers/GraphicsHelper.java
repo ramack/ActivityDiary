@@ -42,6 +42,7 @@ import java.util.List;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 public class GraphicsHelper {
     public static final String TAG = "GraphicsHelper";
@@ -69,7 +70,7 @@ public class GraphicsHelper {
         }
 
         File root = new File(directory,
-                sharedPreferences.getString("pref_storageFolder", "ActivityDiary"));
+                sharedPreferences.getString(SettingsActivity.KEY_PREF_STORAGE_FOLDER, "ActivityDiary"));
 
         int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);

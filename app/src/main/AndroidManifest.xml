@@ -35,7 +35,7 @@
             android:label="@string/activity_title_history" />
         <activity android:name=".ui.generic.AboutActivity"
             android:label="@string/activity_title_about" />
-        <activity android:name=".ui.generic.SettingsActivity"
+        <activity android:name=".ui.settings.SettingsActivity"
             android:label="@string/activity_title_settings"/>
         <provider
             android:name=".db.ActivityDiaryContentProvider"

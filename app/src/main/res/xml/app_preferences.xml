@@ -34,21 +34,22 @@
         android:title="@string/setting_behavior_category"
         >
 
-        <android.support.v7.preference.CheckBoxPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="pref_auto_select_new"
             android:title="@string/setting_auto_select_new"
             android:summary="@string/setting_auto_select_new_summary_active"
             android:defaultValue="true"/>
+        <CheckBoxPreference android:key="acra.enable"
+            android:title="@string/setting_enable_acra"
+            android:summaryOn="@string/setting_acra_enabled"
+            android:summaryOff="@string/setting_acra_disabled"
+            android:defaultValue="true"/>
 
-<!--
-        <android.support.v7.preference.SwitchPreferenceCompat
-            android:key="key1"
-            android:title="Switch Preference"
-            android:summary="Switch Summary"
-            android:defaultValue="true" />
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_images_category"
+        >
 
-
--->
         <android.support.v7.preference.EditTextPreference
             android:key="pref_storageFolder"
             android:title="@string/setting_storage_folder"
@@ -56,13 +57,11 @@
             android:dialogMessage="@string/setting_storage_folder_description"
             android:defaultValue="@string/default_storage_folder" />
 
-
-        <CheckBoxPreference android:key="acra.enable"
-            android:title="@string/setting_enable_acra"
-            android:summaryOn="@string/setting_acra_enabled"
-            android:summaryOff="@string/setting_acra_disabled"
-            android:defaultValue="true"/>
-
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="pref_tag_images"
+            android:title="@string/setting_tag_images"
+            android:summary="@string/setting_tag_yes"
+            android:defaultValue="true" />
 
     </android.support.v7.preference.PreferenceCategory>
 
