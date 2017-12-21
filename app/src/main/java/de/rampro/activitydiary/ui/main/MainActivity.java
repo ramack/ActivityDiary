@@ -525,9 +525,11 @@ public class MainActivity extends BaseActivity implements
                     ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
                     if(mCurrentActivity != null) {
                         /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
-                        /* would be great to use ICPT keywords instead of EXIF UserComment, but
-                         * at time of writing (2017-11-24) it is hard to find a library able to write ICPT
-                         * to JPEG for android. */
+                        /* would be great to use IPTC keywords instead of EXIF UserComment, but
+                         * at time of writing (2017-11-24) it is hard to find a library able to write IPTC
+                         * to JPEG for android.
+                         * pixymeta-android or apache/commons-imaging could be interesting for this.
+                         * */
                         exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, mCurrentActivity.getName());
                         exifInterface.saveAttributes();
                     }
