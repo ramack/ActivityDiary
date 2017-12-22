@@ -90,10 +90,9 @@ dependencies {
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
     androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation 'org.robolectric:robolectric:3.6.1'
-//    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:3.6.1'
