@@ -20,32 +20,54 @@
 package de.rampro.activitydiary.ui.settings;
 
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
+import java.util.Set;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
-import de.rampro.activitydiary.ui.settings.SettingsFragment;
 
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+    private static final String TAG = SettingsActivity.class.getName();
+
     public static final String KEY_PREF_DATE_FORMAT = "pref_datetimeFormat";
     public static final String KEY_PREF_AUTO_SELECT = "pref_auto_select_new";
     public static final String KEY_PREF_STORAGE_FOLDER = "pref_storageFolder";
     public static final String KEY_PREF_TAG_IMAGES = "pref_tag_images";
+    public static final String KEY_PREF_DB_EXPORT = "pref_db_export";
+    public static final String KEY_PREF_DB_IMPORT = "pref_db_import";
+
+    public static final int ACTIVITIY_RESULT_EXPORT = 17;
+    public static final int ACTIVITIY_RESULT_IMPORT = 18;
 
     private Preference dateformatPref;
     private Preference autoSelectPref;
     private Preference storageFolderPref;
     private Preference tagImagesPref;
+    private Preference exportPref;
+    private Preference importPref;
 
     private PreferenceManager mPreferenceManager;
 
@@ -119,6 +141,41 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
 
+        exportPref =  mPreferenceManager.findPreference(KEY_PREF_DB_EXPORT);
+        exportPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                /* export database */
+                if (Build.VERSION.SDK_INT >= 19) {
+                    Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+                    intent.setType("application/x-sqlite3");
+                    intent.putExtra(Intent.EXTRA_TITLE, getResources().getString(R.string.db_export_name_suggestion) + ".sqlite3");
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+                    startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.db_export_selection)), ACTIVITIY_RESULT_EXPORT);
+                }else{
+                    Toast.makeText(SettingsActivity.this, getResources().getString(R.string.unsupported_on_api_level, 19), Toast.LENGTH_SHORT).show();
+                }
+
+                return true;
+            }
+        });
+        importPref =  mPreferenceManager.findPreference(KEY_PREF_DB_IMPORT);
+        importPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                /* import database */
+                if (Build.VERSION.SDK_INT >= 19) {
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("application/x-sqlite3");
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                    startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.db_import_selection)), ACTIVITIY_RESULT_IMPORT);
+                }else{
+                    Toast.makeText(SettingsActivity.this, getResources().getString(R.string.unsupported_on_api_level, 19), Toast.LENGTH_SHORT).show();
+                }
+
+                return true;
+            }
+        });
+
         updateAutoSelectSummary();
         updateStorageFolderSummary();
         updateTagImageSummary();
@@ -142,4 +199,55 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ACTIVITIY_RESULT_IMPORT && resultCode == RESULT_OK) {
+            Uri selectedfile = data.getData(); //The uri with the location of the file
+            // import
+            File db = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY);
+            try {
+                String s = getResources().getString(R.string.db_import_success, data.getData().toString());
+                InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                OutputStream outputStream = new FileOutputStream(db);
+                byte[] buff = new byte[4048];
+                int len;
+                while ((len = inputStream.read(buff)) > 0 ){
+                    outputStream.write(buff,0,len);
+                    outputStream.flush();
+                }
+                outputStream.close();
+                inputStream.close();
+                Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
+            }catch (Exception e){
+                Log.e(TAG,"error on database impport: "+e.getMessage());
+                String s = getResources().getString(R.string.db_import_error, data.getData().toString());
+                Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
+            }
+
+        }
+        if(requestCode == ACTIVITIY_RESULT_EXPORT && resultCode == RESULT_OK) {
+
+            // export
+            File db = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY);
+            try {
+                String s = getResources().getString(R.string.db_export_success, data.getData().toString());
+                InputStream inputStream = new FileInputStream(db);
+                OutputStream outputStream = getContentResolver().openOutputStream(data.getData());
+                byte[] buff = new byte[4048];
+                int len;
+                while ((len = inputStream.read(buff)) > 0 ){
+                    outputStream.write(buff,0,len);
+                    outputStream.flush();
+                }
+                outputStream.close();
+                inputStream.close();
+                Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
+            }catch (Exception e){
+                Log.e(TAG,"error on database export: "+e.getMessage());
+                String s = getResources().getString(R.string.db_export_error, data.getData().toString());
+                Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }
