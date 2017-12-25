@@ -32,6 +32,7 @@
         ]]></string>
     <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
 
+    <string name="unsupported_on_api_level">This feature is not supported on your Android Version. Minimum API level %1$d required.</string>
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Select Activity</string>
     <string name="nav_diary">Diary</string>
@@ -55,6 +56,7 @@
     <string name="setting_view_category">View</string>
     <string name="setting_behavior_category">Behavior</string>
     <string name="setting_images_category">Images</string>
+    <string name="setting_backup_category">Backup</string>
 
     <string name="setting_datetime_format">Date Format</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
@@ -74,6 +76,18 @@
     <string name="setting_tag_images">Metadata</string>
     <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images.</string>
     <string name="setting_tag_no">Do not touch EXIF tags of new images.</string>
+
+    <string name="setting_export">Export Database</string>
+    <string name="setting_import">Import Database</string>
+    <string name="setting_export_summary">Store a copy of the current database in a file for backup.</string>
+    <string name="setting_import_summary">Restore a backup file to current database.</string>
+    <string name="db_export_error">Failed to export database to %1$s.</string>
+    <string name="db_export_success">Exported database to %1$s.</string>
+    <string name="db_export_name_suggestion">ActivityDiary_Export</string>
+    <string name="db_export_selection">Select file for export</string>
+    <string name="db_import_error">Failed to import %1$s.</string>
+    <string name="db_import_success">%1$s successfully imported.</string>
+    <string name="db_import_selection">Select file for import</string>
 
     <!-- titles -->
     <string name="activity_title_edit">Edit</string>

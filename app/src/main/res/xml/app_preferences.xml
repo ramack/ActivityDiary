@@ -64,7 +64,22 @@
             android:title="@string/setting_tag_images"
             android:summary="@string/setting_tag_yes"
             android:defaultValue="true" />
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_backup_category"
+        >
 
+        <Preference
+            android:key="pref_db_export"
+            android:title="@string/setting_export"
+            android:summary="@string/setting_export_summary" >
+
+        </Preference>
+        <Preference
+            android:key="pref_db_import"
+            android:title="@string/setting_import"
+            android:summary="@string/setting_import_summary" >
+        </Preference>
     </android.support.v7.preference.PreferenceCategory>
 
 </android.support.v7.preference.PreferenceScreen>

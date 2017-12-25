@@ -14,6 +14,12 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
                 keyAlias 'key0'
                 keyPassword  props['key.password']
             }
+            release {
+                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore_default")
+                storePassword props['keystore_default.password']
+                keyAlias 'defaultRelease'
+                keyPassword  props['key_default.password']
+            }
         }
         playAccountConfigs {
             defaultAccountConfig {
@@ -50,6 +56,7 @@ android {
             versionNameSuffix "-debug"
         }
         release {
+            signingConfig signingConfigs.release
 //            minifyEnabled false
 //            shrinkResources true
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
