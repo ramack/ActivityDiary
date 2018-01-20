@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:name=".ActivityDiaryApplication"
         android:installLocation="auto">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.main.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
