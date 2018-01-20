@@ -150,7 +150,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
     }
 
     public long getDiaryImageIdAt(int position){
-        if(idRowIdx <= 0){
+        if(idRowIdx < 0){
             throw new IllegalStateException("idRowIdx not valid");
         }
         if(position < 0){

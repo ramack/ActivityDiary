@@ -20,11 +20,14 @@
 
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<!-- TODO: #25    <item
+    <item
         android:id="@+id/action_filter"
-        android:icon="@drawable/ic_filter"
         android:title="@string/action_filter"
-        app:showAsAction="always" />-->
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:searchIcon="@drawable/ic_filter"
+        app:searchIcon="@drawable/ic_filter"
+        />
     <item
         android:id="@+id/action_add_activity"
         android:icon="@drawable/ic_add"

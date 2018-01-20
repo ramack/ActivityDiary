@@ -83,7 +83,8 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                                 ActivityDiaryContract.DiaryImage.CONTENT_URI,
                                 values,
                                 ActivityDiaryContract.DiaryImage._ID + "=?",
-                                new String[]{Long.toString(mViewHolders.get(adapterPosition).mDetailAdapter.getDiaryImageIdAt(adapterPosition))}
+                                new String[]{Long.toString(
+                                        mViewHolders.get(adapterPosition).mDetailAdapter.getDiaryImageIdAt(adapterPosition))}
                         );
 
                     }})

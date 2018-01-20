@@ -37,7 +37,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 105
-        versionName "1.0.5"
+        versionName "1.0.5-dev"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         if (project.file('../ActivityDiarySigning.properties').exists()) {

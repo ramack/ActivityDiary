@@ -90,6 +90,8 @@
     <string name="action_delete">Delete Activity</string>
     <string name="action_store">Save</string>
     <string name="action_filter">Filter</string>
+    <string name="search_hint">Search Activity...</string>
+    <string name="search_description">Diaryactivities</string>
 
     <!-- dialog -->
     <string name="dlg_ok">OK</string>

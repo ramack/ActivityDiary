@@ -99,5 +99,7 @@
     <string name="setting_tag_yes">Für neue Fotos die laufende Aktivität in das EXIF-Attribut UserComment schreiben.</string>
     <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern.</string>
     <string name="setting_tag_images">Metadaten</string>
+    <string name="search_hint">Suche Aktivität...</string>
+    <string name="search_description">Tagebuchaktivitäten</string>
 
 </resources>

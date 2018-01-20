@@ -19,6 +19,7 @@
 package de.rampro.activitydiary.ui.main;
 
 import android.Manifest;
+import android.app.SearchManager;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,6 +44,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -60,6 +62,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -85,7 +88,9 @@ public class MainActivity extends BaseActivity implements
         DetailRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
         NoteEditDialog.NoteEditDialogListener,
-        View.OnLongClickListener {
+        View.OnLongClickListener,
+        SearchView.OnQueryTextListener,
+        SearchView.OnCloseListener{
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
@@ -99,9 +104,10 @@ public class MainActivity extends BaseActivity implements
     private TextView mNoteTextView;
     private String mCurrentPhotoPath;
 
-    private SelectRecyclerViewAdapter rcAdapter;
-    private RecyclerView detailRecyclerView;
+    private RecyclerView selectRecyclerView;
+    private SelectRecyclerViewAdapter selectAdapter;
 
+    private RecyclerView detailRecyclerView;
     private DetailRecyclerViewAdapter detailAdapter;
 
     private DiaryActivity mCurrentActivity;
@@ -140,7 +146,7 @@ public class MainActivity extends BaseActivity implements
         setContent(contentView);
 // TODO: check whether there is some way to use instead of inflating with root null...
 //        setContentView(R.layout.activity_main_content);
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.select_recycler);
+        selectRecyclerView = (RecyclerView)findViewById(R.id.select_recycler);
 
         View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
@@ -154,12 +160,11 @@ public class MainActivity extends BaseActivity implements
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
         StaggeredGridLayoutManager selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(selectorLayoutManager);
+        selectRecyclerView.setLayoutManager(selectorLayoutManager);
 
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
 
-        rcAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
-        recyclerView.setAdapter(rcAdapter);
+        likelyhoodSort();
 
         durationLabel = findViewById(R.id.duration_label);
         mNoteTextView = findViewById(R.id.note);
@@ -311,10 +316,14 @@ public class MainActivity extends BaseActivity implements
                 this, null);
         detailRecyclerView.setAdapter(detailAdapter);
 
+        // Get the intent, verify the action and get the search query
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            filterActivityView(query);
+        }
+
         onActivityChanged(); /* do this at the very end to ensure that no Loader finishes its data loading before */
-    /* TODO #25: add a search box in the toolbar to filter / fuzzy search
-    * see http://www.vogella.com/tutorials/AndroidActionBar/article.html and https://developer.android.com/training/appbar/action-views.html*/
-    /* TODO #25 see also https://developer.android.com/guide/components/loaders.html for example how to filter */
     }
 
     private File createImageFile() throws IOException {
@@ -362,7 +371,7 @@ public class MainActivity extends BaseActivity implements
         ActivityHelper.helper.registerDataChangeListener(this);
         super.onResume();
         onActivityChanged(); // refresh mainly the duration_label
-        rcAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
+        selectAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
     }
 
     @Override
@@ -386,7 +395,7 @@ public class MainActivity extends BaseActivity implements
     public boolean onItemLongClick(int adapterPosition){
         Intent i = new Intent(MainActivity.this, EditActivity.class);
         if(mCurrentActivity != null) {
-            i.putExtra("activityID", rcAdapter.item(adapterPosition).getId());
+            i.putExtra("activityID", selectAdapter.item(adapterPosition).getId());
         }
         startActivity(i);
         return true;
@@ -462,18 +471,30 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onActivityDataChanged() {
         /* TODO: this could be done more fine grained here... */
-        rcAdapter.notifyDataSetChanged();
+        selectAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onActivityDataChanged(DiaryActivity activity){
-        rcAdapter.notifyItemChanged(rcAdapter.positionOf(activity));
+        selectAdapter.notifyItemChanged(selectAdapter.positionOf(activity));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_filter).getActionView();
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnCloseListener(this);
+        searchView.setOnQueryTextListener(this);
+        // setOnSuggestionListener -> for selection of a suggestion
+        // setSuggestionsAdapter
+
         return true;
     }
 
@@ -483,12 +504,66 @@ public class MainActivity extends BaseActivity implements
             case R.id.action_add_activity:
                 startActivity(new Intent(this, EditActivity.class));
                 break;
-//            case R.id.action_filter:
-                /* TODO #25 filter -> open text box in actionbar to type a name, which filters using levenshtein distance */
-//                Toast.makeText(this, "filtering not yet implemented.", Toast.LENGTH_LONG).show();
-//                break;
+            /* filtering is handled by the SearchView widget
+            case R.id.action_filter:
+            */
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onNewIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            filterActivityView(query);
+        }
+    }
+
+    private void filterActivityView(String query){
+        // TODO: do in separate thread?
+        ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.activities.size());
+        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.activities.size());
+        int[] rawdistances = new int[ActivityHelper.helper.activities.size()];
+
+        for(DiaryActivity a : ActivityHelper.helper.activities){
+            int dist = ActivityHelper.searchDistance(query, a.getName());
+            int pos = 0;
+            // search where to enter it
+            for(Integer i : filteredDist){
+                if(dist > i.intValue()){
+                    pos++;
+                }else{
+                    break;
+                }
+            }
+
+            filteredDist.add(pos, new Integer(dist));
+            filtered.add(pos, a);
+        }
+
+        selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, filtered);
+        selectRecyclerView.swapAdapter(selectAdapter, false);
+    }
+
+    private void likelyhoodSort() {
+        selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
+        selectRecyclerView.swapAdapter(selectAdapter, false);
+    }
+
+    @Override
+    public boolean onClose() {
+        likelyhoodSort();
+        return false; /* we wanna clear and close the search */
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        filterActivityView(newText);
+        return true; /* we handle the search directly, so no suggestions need to be show even if #70 is implemented */
     }
 
     @Override
@@ -508,7 +583,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            if(mCurrentPhotoPath != null) {
+            if(mCurrentPhotoPath != null && mCurrentDiaryUri != null) {
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
                         BuildConfig.APPLICATION_ID + ".fileprovider",
                         new File(mCurrentPhotoPath));
@@ -587,6 +662,4 @@ public class MainActivity extends BaseActivity implements
         // longer using it.
         detailAdapter.swapCursor(null);
     }
-
-
 }

@@ -37,6 +37,7 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
     public SelectRecyclerViewAdapter(SelectListener selectListener, List<DiaryActivity> activityList){
         mActivityList = activityList;
         mSelectListener = selectListener;
+        setHasStableIds(true);
     }
 
     @Override
@@ -67,6 +68,11 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
     public interface SelectListener{
         void onItemClick(int adapterPosition);
         boolean onItemLongClick(int adapterPosition);
+    }
+
+    @Override
+    public long getItemId(int position){
+        return mActivityList.get(position).getId();
     }
 
     public int positionOf(DiaryActivity activity){

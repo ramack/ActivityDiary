@@ -19,12 +19,16 @@
         android:name=".ActivityDiaryApplication"
         android:installLocation="auto">
         <activity android:name=".ui.main.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleTop"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".ui.generic.EditActivity"
             android:label="@string/activity_title_edit_new"
@@ -49,6 +53,11 @@
             android:readPermission="${applicationId}.READ"
             android:writePermission="${applicationId}.WRITE"
             />
+        <!-- TODO #70
+        <provider
+            android:name=".search.ActivitySuggestionProvider"
+            android:authorities="" />
+        -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
