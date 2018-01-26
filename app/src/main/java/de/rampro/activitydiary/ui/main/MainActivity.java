@@ -466,17 +466,47 @@ public class MainActivity extends BaseActivity implements
     }
 
     /**
+     * Called on change of the activity order due to likelyhood.
+     */
+    @Override
+    public void onActivityOrderChanged() {
+        likelyhoodSort();
+    }
+
+    /**
      * Called when the data has changed.
      */
     @Override
     public void onActivityDataChanged() {
-        /* TODO: this could be done more fine grained here... */
         selectAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onActivityDataChanged(DiaryActivity activity){
         selectAdapter.notifyItemChanged(selectAdapter.positionOf(activity));
+    }
+
+    /**
+     * Called on addition of an activity.
+     *
+     * @param activity
+     */
+    @Override
+    public void onActivityAdded(DiaryActivity activity) {
+        // TODO: check whether we can be sure that the selectAdapter uses the global activities list
+        selectAdapter.notifyItemInserted(selectAdapter.positionOf(activity));
+    }
+
+    /**
+     * Called on removale of an activity.
+     *
+     * @param activity
+     */
+    @Override
+    public void onActivityRemoved(DiaryActivity activity) {
+        // TODO: Fix this together with onActivityAdded: only if the adapter uses an OWN list we can tell him about this removal in detail.
+        // for now refresh it completely
+        selectAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -522,7 +552,6 @@ public class MainActivity extends BaseActivity implements
         // TODO: do in separate thread?
         ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.activities.size());
         ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.activities.size());
-        int[] rawdistances = new int[ActivityHelper.helper.activities.size()];
 
         for(DiaryActivity a : ActivityHelper.helper.activities){
             int dist = ActivityHelper.searchDistance(query, a.getName());

@@ -25,22 +25,34 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.PreferenceManager;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
+import de.rampro.activitydiary.model.conditions.Condition;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.conditions.PredecessorCondition;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /**
  * provide a smooth interface to an OO abstraction of the data for our diary.
  */
 public class ActivityHelper extends AsyncQueryHandler{
+    private static final String TAG = ActivityHelper.class.getName();
+
     private static final int QUERY_ALL_ACTIVITIES = 0;
     private static final int UPDATE_CLOSE_ACTIVITY = 1;
     private static final int INSERT_NEW_DIARY_ENTRY = 2;
@@ -69,11 +81,35 @@ public class ActivityHelper extends AsyncQueryHandler{
     private Uri mCurrentDiaryUri;
     private String mCurrentNote;
     private DataSetObserver mDataObserver;
+    private Condition[] conditions;
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
+        /*
+         * handleMessage() defines the operations to perform when
+         * the Handler receives a new Message to process.
+         */
+        @Override
+        public void handleMessage(Message inputMessage) {
+            // so far we only have one message here so no need to look at the details
+            // just assume that at least one Condition evaluation is finished and we check
+            // whether all are done
+            boolean allDone = true;
+            for(Condition c:conditions){
+                if(c.isActive()){
+                    allDone = false;
+                    break;
+                }
+            }
+            if(allDone) {
+                reorderActivites();
+            }
+        }
 
-    /* TODO: this could be done more fine grained here... (I. e. not refresh everything on just an insert or delete) */
+    };
+
     public interface DataChangedListener{
         /**
          * Called when the data has changed and no further specification is possible.
+         * => everything needs to be refreshed!
          */
         void onActivityDataChanged();
 
@@ -83,9 +119,25 @@ public class ActivityHelper extends AsyncQueryHandler{
         void onActivityDataChanged(DiaryActivity activity);
 
         /**
+         * Called on addition of an activity.
+         */
+        void onActivityAdded(DiaryActivity activity);
+
+        /**
+         * Called on removale of an activity.
+         */
+        void onActivityRemoved(DiaryActivity activity);
+
+        /**
          * Called on change of the current activity.
          */
         void onActivityChanged();
+
+        /**
+         * Called on change of the activity order due to likelyhood.
+         */
+        void onActivityOrderChanged();
+
     }
     private List<DataChangedListener> mDataChangeListeners;
 
@@ -102,6 +154,9 @@ public class ActivityHelper extends AsyncQueryHandler{
         super(ActivityDiaryApplication.getAppContext().getContentResolver());
         mDataChangeListeners = new ArrayList<DataChangedListener>(3);
         activities = new ArrayList<DiaryActivity>();
+
+        conditions = new Condition[]{new PredecessorCondition(this),
+                new AlphabeticalCondition(this)};
 
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,
@@ -125,7 +180,6 @@ public class ActivityHelper extends AsyncQueryHandler{
                         null);
             }
         };
-
     }
 
     @Override
@@ -176,13 +230,14 @@ public class ActivityHelper extends AsyncQueryHandler{
          * but who knows? -> Let's update all. */
         if(mCurrentActivity != activity) {
             ContentValues values = new ContentValues();
-            values.put(ActivityDiaryContract.Diary.END, System.currentTimeMillis());
+            Long timestamp = System.currentTimeMillis();
+            values.put(ActivityDiaryContract.Diary.END, timestamp);
 
-            startUpdate(UPDATE_CLOSE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+            startUpdate(UPDATE_CLOSE_ACTIVITY, timestamp, ActivityDiaryContract.Diary.CONTENT_URI,
                     values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
             mCurrentActivity = activity;
-            mCurrentActivityStartTime.setTime(System.currentTimeMillis());
+            mCurrentActivityStartTime.setTime(timestamp);
             mCurrentNote = "";
         }
     }
@@ -195,9 +250,9 @@ public class ActivityHelper extends AsyncQueryHandler{
                 ContentValues values = new ContentValues();
 
                 values.put(ActivityDiaryContract.Diary.ACT_ID, mCurrentActivity.getId());
-                values.put(ActivityDiaryContract.Diary.START, System.currentTimeMillis());
+                values.put(ActivityDiaryContract.Diary.START, (Long)cookie);
 
-                startInsert(INSERT_NEW_DIARY_ENTRY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                startInsert(INSERT_NEW_DIARY_ENTRY, cookie, ActivityDiaryContract.Diary.CONTENT_URI,
                         values);
             }
         }else if(token == UPDATE_ACTIVITY){
@@ -220,7 +275,7 @@ public class ActivityHelper extends AsyncQueryHandler{
             DiaryActivity act = (DiaryActivity)cookie;
             act.setId(Integer.parseInt(uri.getLastPathSegment()));
             for(DataChangedListener listener : mDataChangeListeners) {
-                listener.onActivityDataChanged();
+                listener.onActivityAdded(act);
             }
             if(PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
@@ -239,7 +294,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 null);
 
         for(DataChangedListener listener : mDataChangeListeners) {
-            listener.onActivityDataChanged();
+            listener.onActivityDataChanged(act);
         }
     }
 
@@ -263,7 +318,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 values, ActivityDiaryContract.DiaryActivity._ID + " = " + act.getId(), null);
         activities.remove(act);
         for(DataChangedListener listener : mDataChangeListeners) {
-            listener.onActivityDataChanged();
+            listener.onActivityRemoved(act);
         }
     }
 
@@ -334,7 +389,11 @@ public class ActivityHelper extends AsyncQueryHandler{
 
         // we want to give some preference for true substrings and character occurrences
         String mStr = model.toString();
+        String sStr = search.toString();
         if(mStr.contains(search)){
+            result = result - 20;
+        }
+        if(mStr.toLowerCase().contains(sStr.toLowerCase())){
             result = result - 20;
         }
         for(int i = 0; i < search.length(); i++){
@@ -345,4 +404,52 @@ public class ActivityHelper extends AsyncQueryHandler{
         }
         return result;
     }
+
+    /* is one of the conditions currently evaluating? */
+    private boolean reorderingInProgress;
+
+    public void reorderActivites(){
+        IdentityHashMap<DiaryActivity, Double> likeliActivites = new IdentityHashMap<>(activities.size());
+
+        for (DiaryActivity a:activities) {
+            likeliActivites.put(a, new Double(0.0));
+        }
+
+        // reevaluate the conditions
+        for (Condition c: conditions) {
+            for(Condition.Likelihood l : c.likelihoods()){
+                Double lv = likeliActivites.get(l.activity);
+                if(lv == null){
+                    Log.e(TAG, "Activity " + l.activity.getName() + " has no likelyhood...");
+                }else {
+                    likeliActivites.put(l.activity, lv + l.likelihood);
+                }
+            }
+        }
+
+        List<DiaryActivity> list = new ArrayList<DiaryActivity>(likeliActivites.keySet());
+
+        Collections.sort(list, Collections.reverseOrder(new Comparator<DiaryActivity>() {
+            public int compare(DiaryActivity o1,
+                               DiaryActivity o2) {
+                return likeliActivites.get(o1).compareTo(likeliActivites.get(o2));
+            }
+        }));
+        activities = list;
+        reorderingInProgress = false;
+        for(DataChangedListener listener : mDataChangeListeners) {
+            listener.onActivityOrderChanged();
+        }
+    }
+
+    /*
+     * collect results from all Conditions (if all are finished)
+     * can be called from any Thread
+     */
+    public void conditionEvaluationFinished() {
+        Message completeMessage =
+                mHandler.obtainMessage();
+        completeMessage.sendToTarget();
+    }
+
 }

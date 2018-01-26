@@ -27,7 +27,7 @@ import android.graphics.Color;
 
 public class LocalDBHelper extends SQLiteOpenHelper {
 
-    LocalDBHelper(Context context) {
+    public LocalDBHelper(Context context) {
         super(context, ActivityDiaryContract.AUTHORITY, null, CURRENT_VERSION);
     }
 
