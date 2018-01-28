@@ -25,36 +25,38 @@ import java.util.Comparator;
 
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /**
  * Model the likelihood of the activities based on the alphabetical sorting of their names
  */
 public class AlphabeticalCondition extends Condition implements ActivityHelper.DataChangedListener {
 
-    private static final double WEIGHT = 5; // todo: make globally configurable
-
     public AlphabeticalCondition(ActivityHelper helper){
         helper.registerDataChangeListener(this);
     }
 
     protected void doEvaluation(){
-        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.activities.size());
+        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_ALPHA, "5"));
+        if(weight != 0.0) {
+            ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.activities.size());
 
-        ArrayList<DiaryActivity> sort = new ArrayList<>(ActivityHelper.helper.activities);
-        Collections.sort(sort, new Comparator<DiaryActivity>() {
-            @Override
-            public int compare(DiaryActivity o1, DiaryActivity o2) {
-                return o2.getName().compareTo(o1.getName());
+            ArrayList<DiaryActivity> sort = new ArrayList<>(ActivityHelper.helper.activities);
+            Collections.sort(sort, new Comparator<DiaryActivity>() {
+                @Override
+                public int compare(DiaryActivity o1, DiaryActivity o2) {
+                    return o2.getName().compareTo(o1.getName());
+                }
+            });
+            double step = weight / (sort.size() * (sort.size() + 1) / 2);
+            int no = 0;
+            for (DiaryActivity a : sort) {
+                result.add(new Likelihood(a, step * no));
+                no++;
             }
-        });
-        double step = WEIGHT / (sort.size() * (sort.size() + 1) / 2);
-        int no = 0;
-        for(DiaryActivity a : sort){
-            result.add(new Likelihood(a, step * no));
-            no++;
-        }
 
-        this.setResult(result);
+            this.setResult(result);
+        }
     }
 
     /**

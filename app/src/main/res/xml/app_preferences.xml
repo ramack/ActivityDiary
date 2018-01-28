@@ -65,10 +65,29 @@
             android:summary="@string/setting_tag_yes"
             android:defaultValue="true" />
     </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_condition_category"
+        >
+        <ListPreference
+            android:key="pref_cond_alpha"
+            android:title="@string/setting_cond_alpha"
+            android:dialogTitle="@string/setting_cond_alpha"
+            android:entries="@array/pref_cond_weight_list_user"
+            android:entryValues="@array/pref_cond_weight_list_values"
+            android:defaultValue="@string/pref_cond_alpha_default" />
+        <ListPreference
+            android:key="pref_cond_predecessor"
+            android:title="@string/setting_cond_predecessor"
+            android:dialogTitle="@string/setting_cond_predecessor"
+            android:entries="@array/pref_cond_weight_list_user"
+            android:entryValues="@array/pref_cond_weight_list_values"
+            android:defaultValue="@string/pref_cond_predecessor_default" />
+
+    </android.support.v7.preference.PreferenceCategory>
     <android.support.v7.preference.PreferenceCategory
         android:title="@string/setting_backup_category"
         >
-
         <Preference
             android:key="pref_db_export"
             android:title="@string/setting_export"
@@ -81,5 +100,4 @@
             android:summary="@string/setting_import_summary" >
         </Preference>
     </android.support.v7.preference.PreferenceCategory>
-
 </android.support.v7.preference.PreferenceScreen>

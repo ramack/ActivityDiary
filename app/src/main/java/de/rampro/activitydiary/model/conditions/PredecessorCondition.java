@@ -28,50 +28,54 @@ import java.util.ArrayList;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /**
  * Model the likelihood of the activities based on its predecessors in the diary
  */
 
 public class PredecessorCondition extends Condition implements ActivityHelper.DataChangedListener {
-    public static final double WEIGHT = 20; // TODO replace by setting
     public PredecessorCondition(ActivityHelper helper){
         helper.registerDataChangeListener(this);
     }
 
     @Override
     protected void doEvaluation() {
-        DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
-        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.activities.size());
+        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
 
-        SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
-        SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+        if(weight != 0.0) {
+            DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
+            ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.activities.size());
 
-        qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " A, " + ActivityDiaryContract.Diary.TABLE_NAME + " B");
-        Cursor c = qBuilder.query(db,
-                new String[] {"A." + ActivityDiaryContract.Diary.ACT_ID, "COUNT(A." + ActivityDiaryContract.Diary.ACT_ID + ")"},
-                " B." + ActivityDiaryContract.Diary.ACT_ID + " = ? AND (A." +
-                        ActivityDiaryContract.Diary.START + " >= B." + ActivityDiaryContract.Diary.END + " - 500) AND (A." +
-                        ActivityDiaryContract.Diary.START + " < B." + ActivityDiaryContract.Diary.END + " + 50)" +
-                        "AND A._deleted = 0 AND B._deleted = 0"
-                ,
-                new String[] {Long.toString(current.getId())},
-                "A." + ActivityDiaryContract.Diary.ACT_ID,
-                null,
-                null);
-        c.moveToFirst();
-        long total = 0;
-        while (!c.isAfterLast()) {
-            DiaryActivity a = ActivityHelper.helper.activityWithId(c.getInt(0));
-            total = total + c.getInt(1);
-            result.add(new Likelihood(a, c.getInt(1)));
-            c.moveToNext();
+            SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
+            SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+
+            qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " A, " + ActivityDiaryContract.Diary.TABLE_NAME + " B");
+            Cursor c = qBuilder.query(db,
+                    new String[]{"A." + ActivityDiaryContract.Diary.ACT_ID, "COUNT(A." + ActivityDiaryContract.Diary.ACT_ID + ")"},
+                    " B." + ActivityDiaryContract.Diary.ACT_ID + " = ? AND (A." +
+                            ActivityDiaryContract.Diary.START + " >= B." + ActivityDiaryContract.Diary.END + " - 500) AND (A." +
+                            ActivityDiaryContract.Diary.START + " < B." + ActivityDiaryContract.Diary.END + " + 50)" +
+                            "AND A._deleted = 0 AND B._deleted = 0"
+                    ,
+                    new String[]{Long.toString(current.getId())},
+                    "A." + ActivityDiaryContract.Diary.ACT_ID,
+                    null,
+                    null);
+            c.moveToFirst();
+            long total = 0;
+            while (!c.isAfterLast()) {
+                DiaryActivity a = ActivityHelper.helper.activityWithId(c.getInt(0));
+                total = total + c.getInt(1);
+                result.add(new Likelihood(a, c.getInt(1)));
+                c.moveToNext();
+            }
+
+            for (Likelihood l : result) {
+                l.likelihood = l.likelihood / total * weight;
+            }
+            setResult(result);
         }
-
-        for (Likelihood l: result){
-            l.likelihood = l.likelihood / total * WEIGHT;
-        }
-        setResult(result);
     }
 
     /**

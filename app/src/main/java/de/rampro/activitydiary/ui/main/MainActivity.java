@@ -368,6 +368,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onResume() {
         mNavigationView.getMenu().findItem(R.id.nav_main).setChecked(true);
+        ActivityHelper.helper.evaluateAllConditions(); // this is quite heavy and I am not so sure whether it is a good idea to do it unconditionally here...
         ActivityHelper.helper.registerDataChangeListener(this);
         super.onResume();
         onActivityChanged(); // refresh mainly the duration_label

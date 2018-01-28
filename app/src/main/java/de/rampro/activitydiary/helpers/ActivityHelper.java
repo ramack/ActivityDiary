@@ -405,22 +405,32 @@ public class ActivityHelper extends AsyncQueryHandler{
         return result;
     }
 
+    /* reevaluate ALL conditions, very heavy operation, do not trigger without need */
+    public void evaluateAllConditions() {
+        for (Condition c : conditions) {
+            c.refresh();
+        }
+    }
     /* is one of the conditions currently evaluating? */
     private boolean reorderingInProgress;
 
     public void reorderActivites(){
-        IdentityHashMap<DiaryActivity, Double> likeliActivites = new IdentityHashMap<>(activities.size());
+        List<DiaryActivity> as = activities;
+        IdentityHashMap<DiaryActivity, Double> likeliActivites = new IdentityHashMap<>(as.size());
 
-        for (DiaryActivity a:activities) {
+        for (DiaryActivity a:as) {
             likeliActivites.put(a, new Double(0.0));
         }
 
         // reevaluate the conditions
         for (Condition c: conditions) {
             for(Condition.Likelihood l : c.likelihoods()){
+                if(!likeliActivites.containsKey(l.activity)){
+                    Log.e(TAG, "Activity " + l.activity.getName() + " not in likeliActivites " + as.contains(l.activity));
+                }
                 Double lv = likeliActivites.get(l.activity);
                 if(lv == null){
-                    Log.e(TAG, "Activity " + l.activity.getName() + " has no likelyhood...");
+                    Log.e(TAG, "Activity " + l.activity.getName() + " has no likelyhood in Condition " + c.getClass().getSimpleName());
                 }else {
                     likeliActivites.put(l.activity, lv + l.likelihood);
                 }

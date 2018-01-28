@@ -58,6 +58,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_TAG_IMAGES = "pref_tag_images";
     public static final String KEY_PREF_DB_EXPORT = "pref_db_export";
     public static final String KEY_PREF_DB_IMPORT = "pref_db_import";
+    public static final String KEY_PREF_COND_ALPHA = "pref_cond_alpha";
+    public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -66,6 +68,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference autoSelectPref;
     private Preference storageFolderPref;
     private Preference tagImagesPref;
+    private Preference condAlphaPref;
+    private Preference condPredecessorPref;
     private Preference exportPref;
     private Preference importPref;
 
@@ -84,6 +88,10 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateStorageFolderSummary();
         }else if(key.equals(KEY_PREF_TAG_IMAGES)) {
             updateTagImageSummary();
+        }else if(key.equals(KEY_PREF_COND_ALPHA)) {
+            updateCondAlphaSummary();
+        }else if(key.equals(KEY_PREF_COND_PREDECESSOR)) {
+            updateCondPredecessorSummary();
         }
     }
 
@@ -103,6 +111,28 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 .getString(KEY_PREF_STORAGE_FOLDER, "ActivityDiary");
 
         storageFolderPref.setSummary(getResources().getString(R.string.setting_storage_folder_summary, dir));
+    }
+
+    private void updateCondAlphaSummary() {
+        String def = getResources().getString(R.string.pref_cond_alpha_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_COND_ALPHA, def);
+
+        if(Double.parseDouble(value) == 0.0){
+            condAlphaPref.setSummary(getResources().getString(R.string.setting_cond_alpha_not_used_summary));
+        }else {
+            condAlphaPref.setSummary(getResources().getString(R.string.setting_cond_alpha_summary, value));
+        }
+    }
+
+    private void updateCondPredecessorSummary() {
+        String def = getResources().getString(R.string.pref_cond_predecessor_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_COND_PREDECESSOR, def);
+
+        condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_summary, value));
     }
 
     private void updateAutoSelectSummary() {
@@ -176,9 +206,14 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             }
         });
 
+        condAlphaPref =  mPreferenceManager.findPreference(KEY_PREF_COND_ALPHA);
+        condPredecessorPref =  mPreferenceManager.findPreference(KEY_PREF_COND_PREDECESSOR);
+
         updateAutoSelectSummary();
         updateStorageFolderSummary();
         updateTagImageSummary();
+        updateCondAlphaSummary();
+        updateCondPredecessorSummary();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

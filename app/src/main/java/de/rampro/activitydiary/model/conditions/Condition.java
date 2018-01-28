@@ -19,7 +19,9 @@
 
 package de.rampro.activitydiary.model.conditions;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,8 @@ import static java.lang.Thread.State.NEW;
  * Conditions model a specific aspect which influences the likelihood of the activities.
  **/
 public abstract class Condition {
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
+
     public class Likelihood{
         public DiaryActivity activity;
         public double likelihood;

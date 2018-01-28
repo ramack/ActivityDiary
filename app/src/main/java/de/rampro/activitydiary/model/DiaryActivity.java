@@ -43,4 +43,7 @@ public class DiaryActivity {
     public int getId() { return mId;}
     public void setId(int id) { mId = id;}
 
+    public boolean equals(Object other){
+        return other != null && other instanceof DiaryActivity && ((DiaryActivity)other).getName().equals(mName);
+    }
 }
