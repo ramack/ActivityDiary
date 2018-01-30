@@ -116,5 +116,14 @@
     <string name="db_import_error">Wiederherstellung aus %1$s fehlgeschlagen.</string>
     <string name="db_import_success">%1$s wurde erfolgreich wiederhergestellt.</string>
     <string name="unsupported_on_api_level">Die Funktion wird auf dieser Version von Android nicht unterstützt. Es wird mindestns API level %1$d benötigt.</string>
+    <string name="setting_condition_category">Bedingungen</string>
+    <string name="pref_cond_off">AUS</string>
+    <string name="setting_cond_alpha">Alphabetische Sortierung</string>
+    <string name="setting_cond_alpha_not_used_summary">Alphabetische Sortierung wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+    <string name="setting_cond_predecessor">Aktivitätshistorie</string>
+    <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
+    <string name="setting_expert">Experteneinstellungen</string>
+    <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+    <string name="setting_cond_alpha_summary">Alphabetische Sortierung wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
 
 </resources>

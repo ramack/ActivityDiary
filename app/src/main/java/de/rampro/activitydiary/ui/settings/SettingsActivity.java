@@ -132,7 +132,11 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getString(KEY_PREF_COND_PREDECESSOR, def);
 
-        condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_summary, value));
+        if(Double.parseDouble(value) == 0.0){
+            condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_not_used_summary));
+        }else {
+            condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_summary, value));
+        }
     }
 
     private void updateAutoSelectSummary() {

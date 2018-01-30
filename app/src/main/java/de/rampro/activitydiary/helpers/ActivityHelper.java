@@ -434,11 +434,11 @@ public class ActivityHelper extends AsyncQueryHandler{
         for (Condition c: conditions) {
             for(Condition.Likelihood l : c.likelihoods()){
                 if(!likeliActivites.containsKey(l.activity)){
-                    Log.e(TAG, "Activity " + l.activity.getName() + " not in likeliActivites " + as.contains(l.activity));
+                    Log.e(TAG, "Activity " + l.activity + " not in likeliActivites " + as.contains(l.activity));
                 }
                 Double lv = likeliActivites.get(l.activity);
                 if(lv == null){
-                    Log.e(TAG, "Activity " + l.activity.getName() + " has no likelyhood in Condition " + c.getClass().getSimpleName());
+                    Log.e(TAG, "Activity " + l.activity + " has no likelyhood in Condition " + c.getClass().getSimpleName());
                 }else {
                     likeliActivites.put(l.activity, lv + l.likelihood);
                 }

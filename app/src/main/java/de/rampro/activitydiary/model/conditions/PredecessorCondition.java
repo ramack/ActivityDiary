@@ -50,13 +50,16 @@ public class PredecessorCondition extends Condition implements ActivityHelper.Da
             SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
             SQLiteDatabase db = mOpenHelper.getReadableDatabase();
 
-            qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " A, " + ActivityDiaryContract.Diary.TABLE_NAME + " B");
+            qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " A, " + ActivityDiaryContract.Diary.TABLE_NAME + " B, " +
+                    ActivityDiaryContract.DiaryActivity.TABLE_NAME + " C, " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + " D");
             Cursor c = qBuilder.query(db,
                     new String[]{"A." + ActivityDiaryContract.Diary.ACT_ID, "COUNT(A." + ActivityDiaryContract.Diary.ACT_ID + ")"},
                     " B." + ActivityDiaryContract.Diary.ACT_ID + " = ? AND (A." +
                             ActivityDiaryContract.Diary.START + " >= B." + ActivityDiaryContract.Diary.END + " - 500) AND (A." +
                             ActivityDiaryContract.Diary.START + " < B." + ActivityDiaryContract.Diary.END + " + 50)" +
-                            "AND A._deleted = 0 AND B._deleted = 0"
+                            "AND A." + ActivityDiaryContract.Diary._DELETED + " = 0 AND B." + ActivityDiaryContract.Diary._DELETED + " = 0 " +
+                            "AND A." + ActivityDiaryContract.Diary.ACT_ID + " = C." + ActivityDiaryContract.DiaryActivity._ID + " AND C. " + ActivityDiaryContract.DiaryActivity._DELETED + " = 0 " +
+                            "AND B." + ActivityDiaryContract.Diary.ACT_ID + " = D." + ActivityDiaryContract.DiaryActivity._ID + " AND D. " + ActivityDiaryContract.DiaryActivity._DELETED + " = 0"
                     ,
                     new String[]{Long.toString(current.getId())},
                     "A." + ActivityDiaryContract.Diary.ACT_ID,
