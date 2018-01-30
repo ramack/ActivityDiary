@@ -46,4 +46,9 @@ public class DiaryActivity {
     public boolean equals(Object other){
         return other != null && other instanceof DiaryActivity && ((DiaryActivity)other).getName().equals(mName);
     }
+
+    @Override
+    public String toString(){
+        return mName + " (" + mId + ")";
+    }
 }

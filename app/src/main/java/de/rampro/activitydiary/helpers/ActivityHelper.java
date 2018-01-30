@@ -189,10 +189,11 @@ public class ActivityHelper extends AsyncQueryHandler{
             if(token == QUERY_ALL_ACTIVITIES) {
                 activities.clear();
                 while (!cursor.isAfterLast()) {
-                    /* TODO: optimize by keeping a map with id as key and the DiaryActivities */
-                    activities.add(new DiaryActivity(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)),
+                    DiaryActivity act = new DiaryActivity(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)),
                             cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME)),
-                            cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR))));
+                            cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR)));
+                    /* TODO: optimize by keeping a map with id as key and the DiaryActivities */
+                    activities.add(act);
                     cursor.moveToNext();
                 }
                 for(DataChangedListener listener : mDataChangeListeners) {
@@ -314,9 +315,16 @@ public class ActivityHelper extends AsyncQueryHandler{
         ContentValues values = new ContentValues();
         values.put(ActivityDiaryContract.DiaryActivity._DELETED, "1");
 
-        startUpdate(UPDATE_DELETE_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
-                values, ActivityDiaryContract.DiaryActivity._ID + " = " + act.getId(), null);
-        activities.remove(act);
+        startUpdate(UPDATE_DELETE_ACTIVITY,
+                act,
+                ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, act.getId()),
+                values,
+                null, /* entry selected via URI */
+                null);
+
+        if(!activities.remove(act)) {
+            Log.e(TAG, "removal of activity " + act.toString() + " failed");
+        }
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityRemoved(act);
         }
