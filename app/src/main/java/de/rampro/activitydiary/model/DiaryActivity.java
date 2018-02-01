@@ -19,7 +19,7 @@
 
 package de.rampro.activitydiary.model;
 
-public class DiaryActivity {
+public class DiaryActivity{
     private String mName;
     private int mId;
     private int mColor;
@@ -50,5 +50,10 @@ public class DiaryActivity {
     @Override
     public String toString(){
         return mName + " (" + mId + ")";
+    }
+
+    @Override
+    public int hashCode(){
+        return mId;
     }
 }

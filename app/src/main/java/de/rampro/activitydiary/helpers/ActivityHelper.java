@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final String SELECTION = ActivityDiaryContract.DiaryActivity._DELETED + "=0";
 
     public static final ActivityHelper helper = new ActivityHelper();
-    public List<DiaryActivity> activities;
+    private List<DiaryActivity> activities;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
@@ -105,6 +106,10 @@ public class ActivityHelper extends AsyncQueryHandler{
         }
 
     };
+
+    public List<DiaryActivity> getActivities() {
+        return activities;
+    }
 
     public interface DataChangedListener{
         /**
@@ -187,14 +192,16 @@ public class ActivityHelper extends AsyncQueryHandler{
                                    Cursor cursor) {
         if ((cursor != null) && cursor.moveToFirst()) {
             if(token == QUERY_ALL_ACTIVITIES) {
-                activities.clear();
-                while (!cursor.isAfterLast()) {
-                    DiaryActivity act = new DiaryActivity(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)),
-                            cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME)),
-                            cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR)));
-                    /* TODO: optimize by keeping a map with id as key and the DiaryActivities */
-                    activities.add(act);
-                    cursor.moveToNext();
+                synchronized (this) {
+                    activities.clear();
+                    while (!cursor.isAfterLast()) {
+                        DiaryActivity act = new DiaryActivity(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)),
+                                cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME)),
+                                cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR)));
+                        /* TODO: optimize by keeping a map with id as key and the DiaryActivities */
+                        activities.add(act);
+                        cursor.moveToNext();
+                    }
                 }
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
@@ -301,7 +308,9 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* inserts a new activity and sets it as the current one if configured in the preferences */
     public void insertActivity(DiaryActivity act){
-        activities.add(act);
+        synchronized (this) {
+            activities.add(act);
+        }
         startInsert(INSERT_NEW_ACTIVITY,
                 act,
                 ActivityDiaryContract.DiaryActivity.CONTENT_URI,
@@ -321,9 +330,10 @@ public class ActivityHelper extends AsyncQueryHandler{
                 values,
                 null, /* entry selected via URI */
                 null);
-
-        if(!activities.remove(act)) {
-            Log.e(TAG, "removal of activity " + act.toString() + " failed");
+        synchronized (this) {
+            if (!activities.remove(act)) {
+                Log.e(TAG, "removal of activity " + act.toString() + " failed");
+            }
         }
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityRemoved(act);
@@ -423,38 +433,41 @@ public class ActivityHelper extends AsyncQueryHandler{
     private boolean reorderingInProgress;
 
     public void reorderActivites(){
-        List<DiaryActivity> as = activities;
-        IdentityHashMap<DiaryActivity, Double> likeliActivites = new IdentityHashMap<>(as.size());
+        synchronized (this) {
+            List<DiaryActivity> as = activities;
+            HashMap<DiaryActivity, Double> likeliActivites = new HashMap<>(as.size());
 
-        for (DiaryActivity a:as) {
-            likeliActivites.put(a, new Double(0.0));
-        }
+            for (DiaryActivity a : as) {
+                likeliActivites.put(a, new Double(0.0));
+            }
 
-        // reevaluate the conditions
-        for (Condition c: conditions) {
-            for(Condition.Likelihood l : c.likelihoods()){
-                if(!likeliActivites.containsKey(l.activity)){
-                    Log.e(TAG, "Activity " + l.activity + " not in likeliActivites " + as.contains(l.activity));
-                }
-                Double lv = likeliActivites.get(l.activity);
-                if(lv == null){
-                    Log.e(TAG, "Activity " + l.activity + " has no likelyhood in Condition " + c.getClass().getSimpleName());
-                }else {
-                    likeliActivites.put(l.activity, lv + l.likelihood);
+            // reevaluate the conditions
+            for (Condition c : conditions) {
+                List<Condition.Likelihood> s = c.likelihoods();
+                for (Condition.Likelihood l : s) {
+                    if (!likeliActivites.containsKey(l.activity)) {
+                        Log.e(TAG, "Activity " + l.activity + " not in likeliActivites " + as.contains(l.activity));
+                    }
+                    Double lv = likeliActivites.get(l.activity);
+                    if (lv == null) {
+                        Log.e(TAG, "Activity " + l.activity + " has no likelyhood in Condition " + c.getClass().getSimpleName());
+                    } else {
+                        likeliActivites.put(l.activity, lv + l.likelihood);
+                    }
                 }
             }
+
+            List<DiaryActivity> list = new ArrayList<DiaryActivity>(likeliActivites.keySet());
+
+            Collections.sort(list, Collections.reverseOrder(new Comparator<DiaryActivity>() {
+                public int compare(DiaryActivity o1,
+                                   DiaryActivity o2) {
+                    return likeliActivites.get(o1).compareTo(likeliActivites.get(o2));
+                }
+            }));
+            activities = list;
+            reorderingInProgress = false;
         }
-
-        List<DiaryActivity> list = new ArrayList<DiaryActivity>(likeliActivites.keySet());
-
-        Collections.sort(list, Collections.reverseOrder(new Comparator<DiaryActivity>() {
-            public int compare(DiaryActivity o1,
-                               DiaryActivity o2) {
-                return likeliActivites.get(o1).compareTo(likeliActivites.get(o2));
-            }
-        }));
-        activities = list;
-        reorderingInProgress = false;
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityOrderChanged();
         }

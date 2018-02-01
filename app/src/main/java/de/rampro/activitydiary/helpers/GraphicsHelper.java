@@ -138,7 +138,7 @@ public class GraphicsHelper {
     // function to calculate the color to be set for next newly created activity
     public static int prepareColorForNextActivity(){
         int result = activityColorPalette.get(0);
-        List<DiaryActivity> acts = ActivityHelper.helper.activities;
+        List<DiaryActivity> acts = ActivityHelper.helper.getActivities();
         double maxDistance = 0;
 
         // check for each color in the palette the average distance to what is already configured

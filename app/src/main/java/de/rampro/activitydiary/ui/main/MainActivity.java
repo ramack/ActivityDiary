@@ -404,7 +404,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(int adapterPosition) {
-        ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.activities.get(adapterPosition));
+        ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.getActivities().get(adapterPosition));
     }
 
     @Override
@@ -551,10 +551,10 @@ public class MainActivity extends BaseActivity implements
 
     private void filterActivityView(String query){
         // TODO: do in separate thread?
-        ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.activities.size());
-        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.activities.size());
+        ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
 
-        for(DiaryActivity a : ActivityHelper.helper.activities){
+        for(DiaryActivity a : ActivityHelper.helper.getActivities()){
             int dist = ActivityHelper.searchDistance(query, a.getName());
             int pos = 0;
             // search where to enter it
@@ -575,7 +575,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void likelyhoodSort() {
-        selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.activities);
+        selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, ActivityHelper.helper.getActivities());
         selectRecyclerView.swapAdapter(selectAdapter, false);
     }
 

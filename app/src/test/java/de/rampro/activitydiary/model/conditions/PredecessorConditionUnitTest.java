@@ -45,7 +45,7 @@ public class PredecessorConditionUnitTest {
     ActivityHelper helper;
 
     private void cleanActivities(){
-        for (DiaryActivity d: helper.activities) {
+        for (DiaryActivity d: helper.getActivities()) {
             helper.deleteActivity(d);
         }
     }
