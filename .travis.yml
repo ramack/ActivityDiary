@@ -15,4 +15,4 @@ android:
 script:
   - ./gradlew assembleDebug
 #  - ./gradlew test
-  - ./gradlew check
+  - ./gradlew check --stacktrace
