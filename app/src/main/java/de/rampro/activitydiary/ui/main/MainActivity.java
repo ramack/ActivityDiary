@@ -112,6 +112,7 @@ public class MainActivity extends BaseActivity implements
 
     private DiaryActivity mCurrentActivity;
     private Uri mCurrentDiaryUri;
+    private String filter = "";
 
     private class QHandler extends AsyncQueryHandler{
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -471,7 +472,10 @@ public class MainActivity extends BaseActivity implements
      */
     @Override
     public void onActivityOrderChanged() {
-        likelyhoodSort();
+        /* only do likelihood sort in case we are not in a search */
+        if(filter.length() == 0){
+            likelyhoodSort();
+        }
     }
 
     /**
@@ -550,6 +554,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void filterActivityView(String query){
+        this.filter = query;
         // TODO: do in separate thread?
         ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
         ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());

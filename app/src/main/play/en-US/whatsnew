@@ -1,1 +1,3 @@
-- better support of landscape views and other UI improvements
+- adding searching and sorting (based an different conditions evaluating the likelihood of upcoming activities)
+- bug fixes
+- added backup functionality
