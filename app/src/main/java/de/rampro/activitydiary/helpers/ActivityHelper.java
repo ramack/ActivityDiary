@@ -45,6 +45,7 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
 import de.rampro.activitydiary.model.conditions.PredecessorCondition;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
@@ -161,7 +162,8 @@ public class ActivityHelper extends AsyncQueryHandler{
         activities = new ArrayList<DiaryActivity>();
 
         conditions = new Condition[]{new PredecessorCondition(this),
-                new AlphabeticalCondition(this)};
+                new AlphabeticalCondition(this),
+                new GlobalOccurrenceCondition(this)};
 
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,

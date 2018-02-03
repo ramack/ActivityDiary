@@ -20,14 +20,12 @@
 package de.rampro.activitydiary.ui.settings;
 
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateFormat;
@@ -42,7 +40,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.Set;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -60,6 +57,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_DB_IMPORT = "pref_db_import";
     public static final String KEY_PREF_COND_ALPHA = "pref_cond_alpha";
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
+    public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -70,6 +68,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference tagImagesPref;
     private Preference condAlphaPref;
     private Preference condPredecessorPref;
+    private Preference condOccurrencePref;
     private Preference exportPref;
     private Preference importPref;
 
@@ -92,6 +91,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateCondAlphaSummary();
         }else if(key.equals(KEY_PREF_COND_PREDECESSOR)) {
             updateCondPredecessorSummary();
+        }else if(key.equals(KEY_PREF_COND_OCCURRENCE)) {
+            updateCondOccurenceSummary();
         }
     }
 
@@ -138,6 +139,20 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_summary, value));
         }
     }
+
+    private void updateCondOccurenceSummary() {
+        String def = getResources().getString(R.string.pref_cond_occurrence_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_COND_OCCURRENCE, def);
+
+        if(Double.parseDouble(value) == 0.0){
+            condOccurrencePref.setSummary(getResources().getString(R.string.setting_cond_occurrence_not_used_summary));
+        }else {
+            condOccurrencePref.setSummary(getResources().getString(R.string.setting_cond_occurrence_summary, value));
+        }
+    }
+
 
     private void updateAutoSelectSummary() {
         if(PreferenceManager
@@ -210,14 +225,16 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             }
         });
 
-        condAlphaPref =  mPreferenceManager.findPreference(KEY_PREF_COND_ALPHA);
-        condPredecessorPref =  mPreferenceManager.findPreference(KEY_PREF_COND_PREDECESSOR);
+        condAlphaPref = mPreferenceManager.findPreference(KEY_PREF_COND_ALPHA);
+        condPredecessorPref = mPreferenceManager.findPreference(KEY_PREF_COND_PREDECESSOR);
+        condOccurrencePref = mPreferenceManager.findPreference(KEY_PREF_COND_OCCURRENCE);
 
         updateAutoSelectSummary();
         updateStorageFolderSummary();
         updateTagImageSummary();
         updateCondAlphaSummary();
         updateCondPredecessorSummary();
+        updateCondOccurenceSummary();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

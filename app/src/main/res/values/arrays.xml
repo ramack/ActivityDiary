@@ -22,6 +22,7 @@
     <string-array name="pref_cond_weight_list_user" translatable="false">
         <item>@string/pref_cond_off</item>
         <item>1</item>
+        <item>3</item>
         <item>5</item>
         <item>10</item>
         <item>15</item>
@@ -33,6 +34,7 @@
     <string-array name="pref_cond_weight_list_values" translatable="false">
         <item>0</item>
         <item>1</item>
+        <item>3</item>
         <item>5</item>
         <item>10</item>
         <item>15</item>
