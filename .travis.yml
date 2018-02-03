@@ -14,5 +14,6 @@ android:
 
 script:
   - ./gradlew assembleDebug
-  - ./gradlew test --info
-  - ./gradlew check --stacktrace
+  - ./gradlew lint
+#  - ./gradlew test
+#  - ./gradlew check --stacktrace
