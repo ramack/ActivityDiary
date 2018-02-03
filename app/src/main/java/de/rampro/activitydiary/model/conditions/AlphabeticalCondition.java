@@ -45,7 +45,15 @@ public class AlphabeticalCondition extends Condition implements ActivityHelper.D
             Collections.sort(sort, new Comparator<DiaryActivity>() {
                 @Override
                 public int compare(DiaryActivity o1, DiaryActivity o2) {
-                    return o2.getName().compareTo(o1.getName());
+                    if(o1 == o2){
+                        return 0;
+                    }else if(o1 == null){
+                        return -1;
+                    }else if(o2 == null){
+                        return 1;
+                    }else{
+                        return o2.getName().compareTo(o1.getName());
+                    }
                 }
             });
             double step = weight / (sort.size() * (sort.size() + 1) / 2);
