@@ -159,6 +159,7 @@ public class EditActivity extends BaseActivity
             }
         });
         mDrawerToggle.setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_cancel);
         checkConstraints();
     }
 
