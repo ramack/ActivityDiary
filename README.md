@@ -19,8 +19,8 @@ You should have received a copy of the GNU General Public License along with thi
 Copyright notices in this project are mostly given with a reference to the year in form of xxxx-yyyy as a short cut with the meaning, that there is a contribution in every year in the given range.
 
 # Authors and Contribution
-This app is currently under development by Raphael Mack [@ramack](https://github.com/ramack).
-Any form of contribution is warmly welcome and I am happy to read tickets with suggestions or bug reports or even better pull requests with fixes or new features. For code contributions it would be good to have a ticket describing the changes as a place for discussion before starting to work on it. I so far work directly in the master branch as long as I am alone; For pull requests it might be worth working on a dedicated feature branch. It is good practice to use descriptive commit messages and reference tickets using #xxx, which is even suggested for TODO comments in the code. Small commits are fine and there is no need to squash multiple changes into one commit.
+This app is currently under development by Raphael Mack [@ramack](https://github.com/ramack) who you can reach via e-mail on activity-diary@rampro.de.
+Any form of contribution is warmly welcome and a [small guide how to help is in the wiki](https://github.com/ramack/ActivityDiary/wiki/How-to-help). I am happy to read tickets with suggestions or bug reports or even better pull requests with fixes or new features. For code contributions it would be good to have a ticket describing the changes as a place for discussion before starting to work on it. I so far work directly in the master branch as long as I am alone; For pull requests it might be worth working on a dedicated feature branch. It is good practice to use descriptive commit messages and reference tickets using #xxx, which is even suggested for TODO comments in the code. Small commits are fine and there is no need to squash multiple changes into one commit.
 
 By submitting a pull request on github the submitter certifies the following:
 `Developer Certificate of Origin
