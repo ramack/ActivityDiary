@@ -1,5 +1,9 @@
-# ActivityDiary
-![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
+# ActivityDiary ![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
+
+<a href="https://f-droid.org/packages/de.rampro.activitydiary/" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+<a href="https://play.google.com/store/apps/details?id=de.rampro.activitydiary" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
 
 # Functionality
 ActivityDiary is a diary for any kind of activities - track and organize your tasks in agile way with this android app and get reminded.
