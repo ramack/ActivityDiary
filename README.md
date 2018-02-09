@@ -4,6 +4,8 @@
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
 <a href="https://play.google.com/store/apps/details?id=de.rampro.activitydiary" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
+<script src="https://liberapay.com/ActivityDiary/widgets/button.js"></script>
+<noscript><a href="https://liberapay.com/ActivityDiary/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 # Functionality
 ActivityDiary is a diary for any kind of activities - track and organize your tasks in agile way with this android app and get reminded.
@@ -12,6 +14,9 @@ In the long term many functions shall be implemented, see https://github.com/ram
 
 Currently you can select the your current activity, attach notes and pictures and browse your history:
 ![Alt text](/app/src/main/play/en-US/listing/phoneScreenshots/Screenshot_SelectActivity.png?raw=true "Select Activity")
+
+# Donations
+In case you want to support the project and its developers you can do that on [Liberapay](https://liberapay.com/ActivityDiary).
 
 # License and Copyright
 Activity Dairy is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
