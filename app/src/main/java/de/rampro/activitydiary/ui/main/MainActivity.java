@@ -405,6 +405,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(int adapterPosition) {
+        // TOOD: fix #74 here
         ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.getActivities().get(adapterPosition));
     }
 
@@ -498,8 +499,7 @@ public class MainActivity extends BaseActivity implements
      */
     @Override
     public void onActivityAdded(DiaryActivity activity) {
-        // TODO: check whether we can be sure that the selectAdapter uses the global activities list
-        selectAdapter.notifyItemInserted(selectAdapter.positionOf(activity));
+        /* no need to add it, as due to the reevaluation of the conditions the order change will happen */
     }
 
     /**
@@ -509,8 +509,6 @@ public class MainActivity extends BaseActivity implements
      */
     @Override
     public void onActivityRemoved(DiaryActivity activity) {
-        // TODO: Fix this together with onActivityAdded: only if the adapter uses an OWN list we can tell him about this removal in detail.
-        // for now refresh it completely
         selectAdapter.notifyDataSetChanged();
     }
 
