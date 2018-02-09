@@ -108,6 +108,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     };
 
+    /* to be used only in the UI thread */
     public List<DiaryActivity> getActivities() {
         return activities;
     }
@@ -344,9 +345,11 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public DiaryActivity activityWithId(int id){
         /* TODO improve performance by storing the DiaryActivities in a map or Hashtable instead of a list */
-        for (DiaryActivity a:activities) {
-            if(a.getId() == id){
-                return a;
+        synchronized (this) {
+            for (DiaryActivity a : activities) {
+                if (a.getId() == id) {
+                    return a;
+                }
             }
         }
         return null;
