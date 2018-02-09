@@ -1,3 +1,2 @@
-- adding searching and sorting (based an different conditions evaluating the likelihood of upcoming activities)
-- bug fixes
-- added backup functionality
+- corrected bug of wrong activitiy selection in search results
+- corrected crash on creation of new activity

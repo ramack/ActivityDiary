@@ -1,3 +1,2 @@
-- Suchen und Sortieren der Aktivitäten im Auswahlfeld.
-- Fehlerbehebungen
-- Hinzufügen einer Bckaup-Funktion
+- Fehler bei er Aktivitätsauswahl in den Suchergebnissen behoben
+- Absturz beim anlegen einer neuen Aktivität behoben
