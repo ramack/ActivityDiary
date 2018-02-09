@@ -42,8 +42,8 @@ android {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 114
-        versionName "1.1.4-beta"
+        versionCode 115
+        versionName "1.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         if (project.file('../ActivityDiarySigning.properties').exists()) {
