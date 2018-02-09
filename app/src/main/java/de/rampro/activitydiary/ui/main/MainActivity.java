@@ -405,8 +405,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(int adapterPosition) {
-        // TOOD: fix #74 here
-        ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.getActivities().get(adapterPosition));
+        ActivityHelper.helper.setCurrentActivity(selectAdapter.item(adapterPosition));
     }
 
     @Override
