@@ -285,6 +285,9 @@ public class ActivityHelper extends AsyncQueryHandler{
 
             DiaryActivity act = (DiaryActivity)cookie;
             act.setId(Integer.parseInt(uri.getLastPathSegment()));
+            synchronized (this) {
+                activities.add(act);
+            }
             for(DataChangedListener listener : mDataChangeListeners) {
                 listener.onActivityAdded(act);
             }
@@ -311,9 +314,6 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* inserts a new activity and sets it as the current one if configured in the preferences */
     public void insertActivity(DiaryActivity act){
-        synchronized (this) {
-            activities.add(act);
-        }
         startInsert(INSERT_NEW_ACTIVITY,
                 act,
                 ActivityDiaryContract.DiaryActivity.CONTENT_URI,
