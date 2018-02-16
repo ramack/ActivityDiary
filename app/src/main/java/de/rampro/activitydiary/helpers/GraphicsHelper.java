@@ -93,19 +93,24 @@ public class GraphicsHelper {
      *
      * do better not call this for a network uri, as this would probably mean to fetch it twice
      * */
-    public static int getFileExifRotation(Uri uri) throws IOException {
-        InputStream inputStream = ActivityDiaryApplication.getAppContext().getContentResolver().openInputStream(uri);
-        ExifInterface exifInterface = new ExifInterface(inputStream);
-        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-        switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                return 90;
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                return 180;
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                return 270;
-            default:
-                return 0;
+    public static int getFileExifRotation(Uri uri) {
+        try {
+            InputStream inputStream = ActivityDiaryApplication.getAppContext().getContentResolver().openInputStream(uri);
+            ExifInterface exifInterface = new ExifInterface(inputStream);
+            int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    return 90;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    return 180;
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    return 270;
+                default:
+                    return 0;
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "reading image failed (for exif rotation)", e);
+            return 0;
         }
     }
 

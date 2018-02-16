@@ -94,15 +94,11 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             s = mCursor.getString(uriRowIdx);
             Uri i = Uri.parse(s);
 
-            try {
-                Picasso.with(mContext).load(i)
-                        .rotate(GraphicsHelper.getFileExifRotation(i))
-                        .resize(500, 500)
-                        .centerInside()
-                        .into(holder.mSymbol);
-            } catch (IOException e) {
-                Log.e(TAG, "reading image failed", e);
-            }
+            Picasso.with(mContext).load(i)
+                    .rotate(GraphicsHelper.getFileExifRotation(i))
+                    .resize(500, 500)
+                    .centerInside()
+                    .into(holder.mSymbol);
         }else{
             Log.e(TAG, "onBindViewHolder: uriRowIdx = " + Integer.toString(uriRowIdx));
         }

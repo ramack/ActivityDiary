@@ -56,7 +56,7 @@
     <string name="setting_images_category">Fotos</string>
 
     <string name="setting_datetime_format">Datumsformat</string>
-    <string name="setting_datetime_format_summary">\@string/default_datetime_format</string>
+    <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
     <string name="setting_auto_select_new">Neue Aktivitäten aktivieren</string>
     <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt.</string>
