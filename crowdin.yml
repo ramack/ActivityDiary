@@ -6,6 +6,6 @@ files:
         de: de
     translate_attributes: '0'
   - source: /app/src/main/play/en-US/*/*
-    translation: /app/src/main/play/%locale_with_underscore%/listing/%original_file_name%
+    translation: /app/src/main/play/%locale%/listing/%original_file_name%
   - source: /app/src/main/play/en-US/*
-    translation: /app/src/main/play/%locale_with_underscore%/%original_file_name%
+    translation: /app/src/main/play/%locale%/%original_file_name%
