@@ -50,7 +50,7 @@
   <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt.</string>
   <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität.</string>
   <string name="setting_enable_acra">Fehlerberichte</string>
-  <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden.</string>
+  <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
   <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
   <string name="setting_storage_folder">Ablageort für Bilder</string>
   <string name="setting_storage_folder_summary">Fotos im Verzeichnis %1$s ablegen</string>
@@ -116,7 +116,7 @@
   <string name="yesterday">Gestern</string>
   <string name="lastWeek">Letzte Woche</string>
   <!-- ACRA crash reporting -->
-  <string name="crash_dialog_text">Ein unerwarteter Fehler führter zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickts. Alles was du dafür tun musst ist auf OK zu klicken.</string>
+  <string name="crash_dialog_text">Ein unerwarteter Fehler führte zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickst. Alles was du dafür tun musst ist auf Ok zu klicken.</string>
   <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
   <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
 </resources>
