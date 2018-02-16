@@ -20,94 +20,103 @@
         %4$s
         ]]>
     </string>
-    <string name="perm_write_external_storage_xplain">Fotos abzuspeichern benötigt die entsprechende Berechtigung &#8230;</string>
-    <string name="nav_main">Aktivität wählen</string>
-    <string name="nav_diary">Tagebuch</string>
-    <string name="nav_add_activity">Aktivität hinzufügen</string>
-    <string name="nav_activity_manager">Aktivitäten bearbeiten</string>
-    <string name="nav_settings">Einstellungen</string>
-    <string name="nav_about">Über</string>
-    <string name="desc_activity_color">Aktivitätsfarbe</string>
-    <string name="desc_activity_hint">Aktivitätstitel</string>
-    <string name="desc_activity_select">Wähle aktuelle Aktivität&#8230;</string>
-    <string name="activity_image_description">Aktivitätsbild</string>
-    <string name="drawer_open">Navigation öffnen</string>
-    <string name="drawer_close">Navigation schließen</string>
-    <string name="setting_view_category">Anzeige</string>
-    <string name="setting_behavior_category">Verhalten</string>
-    <string name="setting_images_category">Fotos</string>
-
-    <string name="setting_datetime_format">Datumsformat</string>
-    <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-    <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
-    <string name="setting_auto_select_new">Neue Aktivitäten aktivieren</string>
-    <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt.</string>
-    <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität.</string>
-    <string name="setting_enable_acra">Fehlerberichte</string>
-    <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden.</string>
-    <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt.</string>
-    <string name="setting_storage_folder">Ablageort für Bilder</string>
-    <string name="setting_storage_folder_summary">Fotos im Verzeichnis %1$s ablegen.</string>
-    <string name="setting_storage_folder_description">Verzeichnis für die Ablage von Fotos.</string>
-    <string name="default_storage_folder">ActivityDiary</string>
-    <string name="activity_title_edit">Bearbeiten</string>
-    <string name="activity_title_edit_new">Neue Aktivität</string>
-    <string name="activity_title_manage_activities">Aktivitäten organisieren</string>
-    <string name="activity_title_history">Tagebuch</string>
-    <string name="activity_subtitle_main">Was machst du gerade?</string>
-    <string name="activity_title_about">Über</string>
-    <string name="activity_title_settings">Einstellungen</string>
-    <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
-    <string name="dialog_title_note">Notiz</string>
-    <string name="action_delete">Aktivität löschen</string>
-    <string name="action_store">Speichern</string>
-    <string name="action_filter">Filter</string>
-    <string name="dlg_ok">Ok</string>
-    <string name="dlg_cancel">Abbrechen</string>
-    <string name="dlg_delete_image_title">Löschen bestätigen</string>
-    <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
-    <string name="duration_description">Dauer:</string>
-    <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
-    <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s.</string>
-    <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
-    <string name="today">Heute</string>
-    <string name="yesterday">Gestern</string>
-    <string name="lastWeek">Letzte Woche</string>
-    <string name="crash_dialog_text">Ein unerwarteter Fehler führter zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickts. Alles was du dafür tun musst ist auf OK zu klicken.</string>
-    <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
-    <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
-    <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden.</string>
-    <string name="contentDesc_logo">ActivityDiary Logo</string>
-    <string name="setting_tag_yes">Für neue Fotos die laufende Aktivität in das EXIF-Attribut UserComment schreiben.</string>
-    <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern.</string>
-    <string name="setting_tag_images">Metadaten</string>
-
-    <string name="search_hint">Suche Aktivität...</string>
-    <string name="search_description">Tagebuchaktivitäten</string>
-
-    <string name="setting_backup_category">Backup</string>
-    <string name="setting_export">Datenbank Exportieren</string>
-    <string name="setting_import">Datenbank Importieren</string>
-    <string name="setting_export_summary">Kopie der Datenbank in eine Datei speichern.</string>
-    <string name="setting_import_summary">Datenbank aus Datei wiederherstellen.</string>
-    <string name="db_export_error">Datenbankexport nach %1$s fehlgeschlagen.</string>
-    <string name="db_export_success">Datenbank nach %1$s exportiert.</string>
-    <string name="db_export_name_suggestion">ActivityDiary_Export</string>
-    <string name="db_export_selection">Exportdatei wählen</string>
-    <string name="db_import_selection">Datei für Import wählen</string>
-    <string name="db_import_error">Wiederherstellung aus %1$s fehlgeschlagen.</string>
-    <string name="db_import_success">%1$s wurde erfolgreich wiederhergestellt.</string>
-    <string name="unsupported_on_api_level">Die Funktion wird auf dieser Version von Android nicht unterstützt. Es wird mindestns API level %1$d benötigt.</string>
-    <string name="setting_condition_category">Bedingungen</string>
-    <string name="pref_cond_off">AUS</string>
-    <string name="setting_cond_alpha">Alphabetische Sortierung</string>
-    <string name="setting_cond_alpha_not_used_summary">Alphabetische Sortierung wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
-    <string name="setting_cond_predecessor">Aktivitätshistorie</string>
-    <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
-    <string name="setting_expert">Experteneinstellungen</string>
-    <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
-    <string name="setting_cond_alpha_summary">Alphabetische Sortierung wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
-    <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
-    <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
-    <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="perm_write_external_storage_xplain">Fotos abzuspeichern benötigt die entsprechende Berechtigung &#8230;</string>
+  <string name="unsupported_on_api_level">Die Funktion wird auf dieser Version von Android nicht unterstützt. Es wird mindestns API level %1$d benötigt.</string>
+  <!-- Navigation Drawer Menu -->
+  <string name="nav_main">Aktivität wählen</string>
+  <string name="nav_diary">Tagebuch</string>
+  <string name="nav_add_activity">Aktivität hinzufügen</string>
+  <string name="nav_activity_manager">Aktivitäten bearbeiten</string>
+  <string name="nav_settings">Einstellungen</string>
+  <string name="nav_about">Über</string>
+  <string name="desc_activity_color">Aktivitätsfarbe</string>
+  <string name="desc_activity_hint">Aktivitätstitel</string>
+  <string name="desc_activity_select">Wähle aktuelle Aktivität&#8230;</string>
+  <!-- -->
+  <string name="activity_image_description">Aktivitätsbild</string>
+  <string name="contentDesc_logo">ActivityDiary Logo</string>
+  <string name="drawer_open">Navigation öffnen</string>
+  <string name="drawer_close">Navigation schließen</string>
+  <!-- settings -->
+  <string name="setting_view_category">Anzeige</string>
+  <string name="setting_behavior_category">Verhalten</string>
+  <string name="setting_images_category">Fotos</string>
+  <string name="setting_backup_category">Backup</string>
+  <string name="setting_condition_category">Bedingungen</string>
+  <string name="setting_datetime_format">Datumsformat</string>
+  <string name="setting_datetime_format_summary">\@string/default_datetime_format</string>
+  <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
+  <string name="setting_auto_select_new">Neue Aktivitäten aktivieren</string>
+  <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt.</string>
+  <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität.</string>
+  <string name="setting_enable_acra">Fehlerberichte</string>
+  <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
+  <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
+  <string name="setting_storage_folder">Ablageort für Bilder</string>
+  <string name="setting_storage_folder_summary">Fotos im Verzeichnis %1$s ablegen</string>
+  <string name="setting_storage_folder_description">Verzeichnis für die Ablage von Fotos</string>
+  <string name="default_storage_folder">ActivityDiary</string>
+  <string name="setting_tag_images">Metadaten</string>
+  <string name="setting_tag_yes">Für neue Fotos die laufende Aktivität in das EXIF-Attribut UserComment schreiben.</string>
+  <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern.</string>
+  <!-- Conditions -->
+  <string name="pref_cond_off">AUS</string>
+  <string name="setting_cond_alpha">Alphabetische Sortierung</string>
+  <string name="setting_cond_alpha_summary">Alphabetische Sortierung wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetische Sortierung wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_cond_predecessor">Aktivitätshistorie</string>
+  <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
+  <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen.</string>
+  <string name="setting_expert">Experteneinstellungen</string>
+  <string name="setting_export">Datenbank Exportieren</string>
+  <string name="setting_import">Datenbank Importieren</string>
+  <string name="setting_export_summary">Kopie der Datenbank in eine Datei speichern.</string>
+  <string name="setting_import_summary">Datenbank aus Datei wiederherstellen.</string>
+  <string name="db_export_error">Datenbankexport nach %1$s fehlgeschlagen.</string>
+  <string name="db_export_success">Datenbank nach %1$s exportiert.</string>
+  <string name="db_export_name_suggestion">ActivityDiary_Export</string>
+  <string name="db_export_selection">Exportdatei wählen</string>
+  <string name="db_import_error">Wiederherstellung aus %1$s fehlgeschlagen.</string>
+  <string name="db_import_success">%1$s wurde erfolgreich wiederhergestellt.</string>
+  <string name="db_import_selection">Datei für Import wählen</string>
+  <!-- titles -->
+  <string name="activity_title_edit">Bearbeiten</string>
+  <string name="activity_title_edit_new">Neue Aktivität</string>
+  <string name="activity_title_manage_activities">Aktivitäten organisieren</string>
+  <string name="activity_title_history">Tagebuch</string>
+  <string name="activity_subtitle_main">Was machst du gerade?</string>
+  <string name="activity_title_about">Über</string>
+  <string name="activity_title_settings">Einstellungen</string>
+  <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
+  <string name="dialog_title_note">Notiz</string>
+  <!-- actions -->
+  <string name="action_delete">Aktivität löschen</string>
+  <string name="action_store">Speichern</string>
+  <string name="action_filter">Filter</string>
+  <string name="search_hint">Suche Aktivität...</string>
+  <string name="search_description">Tagebuchaktivitäten</string>
+  <!-- dialog -->
+  <string name="dlg_ok">Ok</string>
+  <string name="dlg_cancel">Abbrechen</string>
+  <string name="dlg_delete_image_title">Löschen bestätigen</string>
+  <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
+  <!-- main view -->
+  <string name="duration_description">Dauer:</string>
+  <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
+  <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden.</string>
+  <!-- edit view -->
+  <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s.</string>
+  <!-- history -->
+  <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
+  <!-- relative dates -->
+  <string name="today">Heute</string>
+  <string name="yesterday">Gestern</string>
+  <string name="lastWeek">Letzte Woche</string>
+  <!-- ACRA crash reporting -->
+  <string name="crash_dialog_text">Ein unerwarteter Fehler führte zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickst. Alles was du dafür tun musst ist auf Ok zu klicken.</string>
+  <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
+  <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
 </resources>
