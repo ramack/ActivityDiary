@@ -1,6 +1,8 @@
-Das Aktivitätstagebuch ermöglicht deine Tätigkeiten aufzuzeichnen. Du kannst Notizen und Bilder an die Tagebucheinträge heften und dadurch allerlei Details hinterlegen wie z. B. wann im Garten welches Gemüse gesät wurde. Die Tagebuchansicht bietet dann einen Überblick was wann erledigt wurde.
-Funktionalität um die Aktivitäten in Kategorien einzuteilen und an wiederkehrende Aktivitäten erinnert zu werden sind geplant.
+Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
+The functions to categorize activites and get a reminder for recurrent actions are planned.
 
-Activity Diary ist Freie Software: Es ist dir gestattet diese weitergzugeben und/oder zu verändern solange die Anforderungen der <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a> in Version 3 oder einer späteren Version, welche durch die Free Software Foundation veröffentlicht wird, eingehalten werden.</p>
+Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Dieses Programm wurde in der Hoffnung nützlich zu sein veröffentlicht, die Autoren und Bereitsteller übernehmen jedoche KEINERLEI GEWÄHRLEISTUNG oder GARANTIE dafür für einen bestimmten Zweck verwendet werden zu können. Für Details sei auf die GNU General Public License auf https://www.gnu.org/licenses/ im Volltext verwiesen.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+For legal details see https://www.gnu.org/licenses/.
