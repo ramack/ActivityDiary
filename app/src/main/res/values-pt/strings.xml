@@ -27,8 +27,8 @@
   <string name="setting_backup_category">Cópia de segurança</string>
   <string name="setting_condition_category">Condições</string>
   <string name="setting_datetime_format">Formato de data</string>
-  <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Formato de exibição da data e hora para o início de uma atividade. Os formatos habituais são aaaa-MM-dd HH: mm ou dd.MM. hh: mm</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
+  <string name="setting_datetime_format_description">Formato de exibição da data e hora para o início de uma atividade. Os formatos habituais são yyyy-MM-dd HH:mm ou dd.MM. hh:mm</string>
   <string name="setting_auto_select_new">Selecione Novas Atividades</string>
   <string name="setting_auto_select_new_summary_active">Uma atividade recém-criada é selecionada diretamente como a nova.</string>
   <string name="setting_auto_select_new_summary_inactive">A criação de novas atividades não influencia a atividade atualmente ativa.</string>
