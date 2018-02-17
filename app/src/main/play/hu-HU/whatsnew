@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+- helyesbített hiba a nem megfelelő tevékenység kiválasztásában a keresési eredmények között
+- korrigált összeomlás az új tevékenység létrehozásakor
