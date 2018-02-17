@@ -27,7 +27,7 @@
   <string name="setting_backup_category">גיבוי</string>
   <string name="setting_condition_category">תנאים</string>
   <string name="setting_datetime_format">פורמט תאריך</string>
-  <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
   <string name="setting_datetime_format_description">הצגת תבנית התאריך והשעה לתחילת הפעילות. הפורמטים הרגילים הם yyyy-MM-dH HH: mm או dd.MM. h: mm</string>
   <string name="setting_auto_select_new">בחר פעילויות חדשות</string>
   <string name="setting_auto_select_new_summary_active">פעילות שנוצרה זה עתה נבחרה ישירות כפעולה החדשה.</string>
