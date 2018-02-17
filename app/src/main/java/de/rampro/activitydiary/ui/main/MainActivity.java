@@ -105,6 +105,7 @@ public class MainActivity extends BaseActivity implements
     private String mCurrentPhotoPath;
 
     private RecyclerView selectRecyclerView;
+    private StaggeredGridLayoutManager selectorLayoutManager;
     private SelectRecyclerViewAdapter selectAdapter;
 
     private RecyclerView detailRecyclerView;
@@ -160,7 +161,7 @@ public class MainActivity extends BaseActivity implements
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
-        StaggeredGridLayoutManager selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
+        selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
         selectRecyclerView.setLayoutManager(selectorLayoutManager);
 
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
@@ -465,6 +466,7 @@ public class MainActivity extends BaseActivity implements
             mCurrentDiaryUri = null;
         }
         getSupportLoaderManager().restartLoader(0, null, this);
+        selectorLayoutManager.scrollToPosition(0);
     }
 
     /**
@@ -645,7 +647,7 @@ public class MainActivity extends BaseActivity implements
                             exifInterface.saveAttributes();
                         }
                     } catch (IOException e) {
-                        Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed");
+                        Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed", e);
                     }
                 }
             }
