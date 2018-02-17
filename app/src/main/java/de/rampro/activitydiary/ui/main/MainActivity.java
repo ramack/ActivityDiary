@@ -645,7 +645,7 @@ public class MainActivity extends BaseActivity implements
                             exifInterface.saveAttributes();
                         }
                     } catch (IOException e) {
-                        Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed");
+                        Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed", e);
                     }
                 }
             }
