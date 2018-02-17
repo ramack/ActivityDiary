@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+Toiminto-päiväkirja mahdollistaa päiväkirjan tallentamisen toiminnoistasi. Voit liittää muistiinpanoja ja kuvia aktiviteetteihin ja tuon tietueen yksityiskohdat, kuten vihannekset, joita istut puutarhassa. Päiväkirjanäkymä tarjoaa yleiskuvan siitä, mitä teit ja milloin.
+Suunnitellaan toiminnot, joilla luokitellaan aktiviteetit ja saat muistutuksen toistuviin toimiin.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Toimintapäiväkirja on ilmainen ohjelmisto: voit jakaa sen uudelleen ja / tai muokata sitä GNU General Public License -sivulla, jonka Free Software Foundation julkaisee, joko lisenssin version 3 tai mahdollisen myöhemmän version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+Ohjelma jakautuu siinä toivossa, että se on hyödyllinen, mutta ilman mitään takuuta; ilman edes merkinnyt takuuta KAUPALLISUUDESTA tai SOPIVUUDESTA TIETTYYN TARKOITUKSEEN.  Katso lisätietoja GNU General Public Licensista.
 
-For legal details see https://www.gnu.org/licenses/.
+Oikeudellisia tietoja on osoitteessa https://www.gnu.org/licenses/.
