@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+Діяльність "Щоденник" дозволяє записувати щоденник для вашої діяльності. Ви можете прикріпити нотатки та фотографії до активності та до деталей запису, як-от різновиди овочів, які ви посадили під час садівництва. Погляд у щоденнику дає огляд того, що ви зробили і коли.
+Планується розподілити функції та отримати нагадування про повторювані дії.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Щоденник активності - це вільне програмне забезпечення: ви можете його перерозподілити та / або змінювати за умовами Загальної публічної ліцензії GNU, що опубліковані Фондом вільного програмного забезпечення, версія 3 Ліцензії або (за вашим вибором) будь-якої пізнішої версії.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+Ця програма розповсюджується в надії, що вона буде корисною, але БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ; навіть неявну гарантію ТОВАРНОГО ЗАБЕЗПЕЧЕННЯ чи ПРИДАТНОСТІ ДЛЯ КОНКРЕТНОЇ МЕТИ.  Для отримання додаткової інформації дивіться загальну публічну ліцензію GNU.
 
-For legal details see https://www.gnu.org/licenses/.
+Для юридичних деталей див. Https://www.gnu.org/licenses/.
