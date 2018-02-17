@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+- korrigerad fel på felaktigt val i sökresultat
+- Korrigerad krasch vid skapandet av ny aktivitet
