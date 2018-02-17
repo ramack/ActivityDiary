@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+- Arama sonuçlarında yanlış aktivite seçim hatasını düzeltti
+- Yeni etkinlik oluşturulması üzerine düzeltilmiş kaza
