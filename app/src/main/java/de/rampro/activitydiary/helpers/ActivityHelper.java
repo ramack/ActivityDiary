@@ -223,9 +223,8 @@ public class ActivityHelper extends AsyncQueryHandler{
                     }
                 }
             }
-        } else if (cursor != null) {
-            cursor.close();
         }
+        cursor.close();
     }
 
     public DiaryActivity getCurrentActivity(){
