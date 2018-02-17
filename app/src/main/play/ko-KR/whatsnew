@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+- 검색 결과에서 잘못된 활동 선택의 버그 수정
+- 새로운 활동 생성시 충돌이 수정되었습니다.
