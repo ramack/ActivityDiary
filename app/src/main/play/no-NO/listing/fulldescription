@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+Aktivitetsdagbok gjør det mulig å registrere en dagbok for aktivitetene dine. Du kan legge ved notater og bilder til aktivitetene og av de rekorddetaljene som slags grønnsaker du frøet under hagearbeid. Dagbokvisningen gir en oversikt over hva du gjorde og når.
+Funksjonene for å kategorisere aktiviteter og få en påminnelse om gjentatte handlinger er planlagt.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Aktivitetsdagbok er fri programvare: Du kan omfordele den og / eller endre den i henhold til vilkårene i GNU General Public License som utgitt av Free Software Foundation, enten versjon 3 av lisensen eller (eventuelt ditt) en senere versjon.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+Dette programmet distribueres i håp om at det vil være nyttig, men UTEN NOGEN GARANTI; uten selv den underforståtte garantien om SALGBARHET eller EGNETHET TIL ET BESTEMT FORMÅL.  Se GNU General Public License for mer informasjon.
 
-For legal details see https://www.gnu.org/licenses/.
+For juridiske detaljer, se https://www.gnu.org/licenses/.
