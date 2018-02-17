@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+יומן פעילות מאפשר להקליט יומן עבור הפעילות שלך. אתה יכול לצרף הערות ותמונות של הפעילויות ועל ידי פרטי שיא כמו סוג של ירקות לך seeded בעת גינון. תצוגת היומן מספקת סקירה כללית של מה שעשית ומתי.
+הפונקציות כדי לסווג פעילויות ולקבל תזכורת עבור פעולות חוזרות מתוכננות.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+יומן הפעילות הוא תוכנה חופשית: ניתן להפיצו מחדש ו / או לשנותו תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם על ידי קרן התוכנה החופשית, גרסה 3 של הרישיון או (לפי בחירתך) בכל גרסה מאוחרת יותר.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+תוכנית זו מופצת בתקווה שזה יהיה שימושי, אבל ללא אחריות כלשהי; אפילו ללא אחריות מרומזת של סחירות או התאמה למטרה מסוימת.  למידע נוסף, עיין ברישיון הציבורי הכללי של גנו.
 
-For legal details see https://www.gnu.org/licenses/.
+לפרטים משפטיים, ראה https://www.gnu.org/licenses/.
