@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary view provides an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+Etkinlik Günlüğü, faaliyetleriniz için bir günlük kaydetmenize olanak tanır. Çalışmalara notlar ve resimler ekleyebilir ve bahçe yaparken ektiğiniz sebze türünü kaydeder. Günlük görünüm, yaptığınız ve ne zaman ne yaptığının genel bir görünümünü sağlar.
+Aktiviteleri sınıflandırmak ve tekrar eden eylemler için bir hatırlatma almak için işlevler planlanmaktadır.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Etkinlik Günlüğü ücretsiz bir yazılımdır: GNU Genel Kamu Lisansı uyarınca, Lisansın sürüm 3'ünü veya (isteğe bağlı olarak) sonraki herhangi bir sürümünü Free Software Foundation tarafından yayınlanan şartlara göre yeniden dağıtabilir ve / veya değiştirebilirsiniz.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+Bu program, yararlı olacağı umuduyla dağıtılır ancak herhangi bir garantisi olmadan; BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA ZIMNİ ZIMNİ UYARILAR.  Daha fazla ayrıntı için GNU Genel Kamu Lisansı'na bakın.
 
-For legal details see https://www.gnu.org/licenses/.
+Hukuki ayrıntılar için https://www.gnu.org/licenses/ adresini ziyaret edin.
