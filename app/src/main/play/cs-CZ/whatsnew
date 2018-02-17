@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+- opravena chyba nesprávného výběru aktivit ve výsledcích vyhledávání
+- opravena havárie při vytváření nové činnosti
