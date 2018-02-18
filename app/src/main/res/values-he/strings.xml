@@ -36,7 +36,7 @@
   <string name="setting_acra_enabled">שלח דוחות על קריסות</string>
   <string name="setting_acra_disabled">אל תשלח דוחות על קריסות</string>
   <string name="setting_storage_folder">תיקיית אחסון תמונות</string>
-  <string name="setting_storage_folder_summary">אחסן תמונות פעילות בספריה</string>
+  <string name="setting_storage_folder_summary">אחסן תמונות פעילות בספריה %1$s</string>
   <string name="setting_storage_folder_description">מדריך כדי לאחסן את תמונות הפעילות</string>
   <string name="default_storage_folder">פעילות</string>
   <string name="setting_tag_images">מטה-נתונים</string>
