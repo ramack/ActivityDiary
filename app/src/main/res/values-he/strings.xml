@@ -48,10 +48,10 @@
   <string name="setting_cond_alpha_summary">למיון האלפיתי יש משקל %1$s על הפעילויות הבאות הציע.</string>
   <string name="setting_cond_alpha_not_used_summary">מיון אלפביתי שאינו משמש להצעה של הפעילויות הבאות.</string>
   <string name="setting_cond_predecessor">רצף פעילות</string>
-  <string name="setting_cond_predecessor_summary">רצף הפעילות ביומן הוא במשקל של 123_4_0_321 על הפעילויות הבאות הציע.</string>
+  <string name="setting_cond_predecessor_summary">רצף הפעילות ביומן הוא במשקל של %1$s על הפעילויות הבאות הציע.</string>
   <string name="setting_cond_predecessor_not_used_summary">רצף הפעילות ביומן לא שימש להצעה של הפעילויות הבאות.</string>
   <string name="setting_cond_occurrence">התרחשות פעילות</string>
-  <string name="setting_cond_occurrence_summary">תדירות הפעילות ביומן היא בעלת משקל של 123_4_0_321 | על הפעילויות הבאות הציע.</string>
+  <string name="setting_cond_occurrence_summary">תדירות הפעילות ביומן היא בעלת משקל של %1$s על הפעילויות הבאות הציע.</string>
   <string name="setting_cond_occurrence_not_used_summary">תדירות הפעילות ביומן לא משמשת להצעת פעילויות נוספות.</string>
   <string name="setting_expert">הגדרות מומחה</string>
   <string name="setting_export">ייצוא מסד נתונים</string>
