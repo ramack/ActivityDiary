@@ -27,8 +27,8 @@
   <string name="setting_backup_category">지원</string>
   <string name="setting_condition_category">정황</string>
   <string name="setting_datetime_format">날짜 형식</string>
-  <string name="setting_datetime_format_summary">\@ 문자열 / default_datetime_format</string>
-  <string name="setting_datetime_format_description">표시 활동의 시작 날짜 및 시간의 형식. 일반적인 형식은 yyyy-MM-dd HH : mm 또는 dd.MM입니다. hh : mm</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
+  <string name="setting_datetime_format_description">표시 활동의 시작 날짜 및 시간의 형식. 일반적인 형식은 yyyy-MM-dd HH:mm 또는 dd.MM입니다. hh:mm</string>
   <string name="setting_auto_select_new">새 활동 선택</string>
   <string name="setting_auto_select_new_summary_active">새롭게 생성 된 활동이 새로운 활성 활동으로 직접 선택됩니다.</string>
   <string name="setting_auto_select_new_summary_inactive">새로운 활동의 창립은 현재 활동중인 활동에 영향을 미치지 않습니다.</string>

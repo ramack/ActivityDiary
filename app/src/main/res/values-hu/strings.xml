@@ -27,8 +27,8 @@
   <string name="setting_backup_category">biztonsági mentés</string>
   <string name="setting_condition_category">Körülmények</string>
   <string name="setting_datetime_format">Dátum formátum</string>
-  <string name="setting_datetime_format_summary">\@ String / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Megjeleníti a tevékenység kezdetének dátumát és időpontját. A szokásos formátumok: yyyy-MM-dd HH: mm vagy dd.MM hh: mm</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
+  <string name="setting_datetime_format_description">Megjeleníti a tevékenység kezdetének dátumát és időpontját. A szokásos formátumok: yyyy-MM-dd HH:mm vagy dd.MM hh:mm</string>
   <string name="setting_auto_select_new">Válassza az Új tevékenységek lehetőséget</string>
   <string name="setting_auto_select_new_summary_active">A frissen létrehozott tevékenységet közvetlenül kiválasztják az új aktívaként.</string>
   <string name="setting_auto_select_new_summary_inactive">Az új aktivitások létrehozása nem befolyásolja az aktuális tevékenységet.</string>
