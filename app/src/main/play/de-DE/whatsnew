@@ -1,2 +1,2 @@
-- corrected bug of wrong activitiy selection in search results
-- corrected crash on creation of new activity
+Fehler bei der Auswahl falscher Aktivitäten in den Suchergebnissen behoben
+Absturz beim Erstellen neuer Aktivitäten korrigiert
