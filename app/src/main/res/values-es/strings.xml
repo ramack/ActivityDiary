@@ -27,8 +27,8 @@
   <string name="setting_backup_category">Apoyo</string>
   <string name="setting_condition_category">Condiciones</string>
   <string name="setting_datetime_format">Formato de fecha</string>
-  <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Formato de visualización de la fecha y hora para el inicio de una actividad. Los formatos habituales son aaaa-MM-dd HH: mm o dd.MM. hh: mm</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
+  <string name="setting_datetime_format_description">Formato de visualización de la fecha y hora para el inicio de una actividad. Los formatos habituales son yyyy-MM-dd HH:mm o dd.MM. hh:mm</string>
   <string name="setting_auto_select_new">Seleccionar nuevas actividades</string>
   <string name="setting_auto_select_new_summary_active">Una actividad recién creada se selecciona directamente como la nueva actividad activa.</string>
   <string name="setting_auto_select_new_summary_inactive">La creación de nuevas actividades no influye en la actividad actualmente activa.</string>

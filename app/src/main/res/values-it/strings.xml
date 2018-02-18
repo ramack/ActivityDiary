@@ -41,7 +41,7 @@
   <string name="setting_condition_category">Condizioni</string>
   <string name="setting_datetime_format">Formato della data</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Formato di visualizzazione della data e dell\'ora per l\'inizio di un\'attività. Sono soliti formati yyyy-MM-dd HH: mm o dd.MM. hh: mm</string>
+  <string name="setting_datetime_format_description">Formato di visualizzazione della data e dell\'ora per l\'inizio di un\'attività. Sono soliti formati yyyy-MM-dd HH:mm o dd.MM. hh:mm</string>
   <string name="setting_auto_select_new">Selezionare nuove attività</string>
   <string name="setting_auto_select_new_summary_active">Un\'attività appena creata viene direttamente selezionata come il nuovo attivo.</string>
   <string name="setting_auto_select_new_summary_inactive">Creazione di nuove attività non influenza l\'attività attualmente attiva.</string>
