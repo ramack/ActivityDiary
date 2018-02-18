@@ -79,6 +79,7 @@
   <string name="action_delete">Удалить действие</string>
   <string name="action_store">Сохранить</string>
   <string name="action_filter">Фильтр</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Поиск активности ...</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
