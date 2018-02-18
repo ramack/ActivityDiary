@@ -48,10 +48,10 @@
   <string name="setting_cond_alpha_summary">A betűrendes válogatás súlya %1$s a következő következő tevékenységekről.</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting nem használt a következő tevékenységekre.</string>
   <string name="setting_cond_predecessor">Tevékenységsorozat</string>
-  <string name="setting_cond_predecessor_summary">A napló tevékenységi sorrendje a 123_4_0_321 | tömegű a következő következő tevékenységekről.</string>
+  <string name="setting_cond_predecessor_summary">A napló tevékenységi sorrendje súlya %1$s a következő következő tevékenységekről.</string>
   <string name="setting_cond_predecessor_not_used_summary">Tevékenység sorrend a naplóban, amely nem használható a következő tevékenységekre.</string>
   <string name="setting_cond_occurrence">Tevékenység előfordulása</string>
-  <string name="setting_cond_occurrence_summary">A napló tevékenységi gyakorisága a 123_4_0_321 | tömegű a következő következő tevékenységekről.</string>
+  <string name="setting_cond_occurrence_summary">A napló tevékenységi gyakorisága súlya %1$s a következő következő tevékenységekről.</string>
   <string name="setting_cond_occurrence_not_used_summary">Tevékenység gyakorisága a naptárban, amely nem használható a következő tevékenységekre.</string>
   <string name="setting_expert">Szakértői beállítások</string>
   <string name="setting_export">Adatbázis exportálása</string>
