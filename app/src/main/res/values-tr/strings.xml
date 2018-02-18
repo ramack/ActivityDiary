@@ -80,7 +80,7 @@
   <string name="action_store">Kayıt etmek</string>
   <string name="action_filter">filtre</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Etkinliği Ara ...</string>
+  <string name="search_hint">Search Activity&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">tamam</string>
