@@ -80,7 +80,7 @@
   <string name="action_store">Salvar</string>
   <string name="action_filter">Filtrar</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Actividad de búsqueda ...</string>
+  <string name="search_hint">Search Activity&#8230;</string>
   <string name="search_description">Actividades cotidianas</string>
   <!-- dialog -->
   <string name="dlg_ok">DE ACUERDO</string>
