@@ -79,6 +79,7 @@
   <string name="action_delete">Supprimer l\'activité</string>
   <string name="action_store">sauvegarder</string>
   <string name="action_filter">Filtre</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Rechercher une activité ...</string>
   <string name="search_description">Activités diary</string>
   <!-- dialog -->
