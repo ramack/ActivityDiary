@@ -80,7 +80,7 @@
   <string name="action_store">Αποθηκεύσετε</string>
   <string name="action_filter">Φίλτρο</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Δραστηριότητα αναζήτησης ...</string>
+  <string name="search_hint">Search Activity&#8230;</string>
   <string name="search_description">Δραστηριότητες διάρκειας</string>
   <!-- dialog -->
   <string name="dlg_ok">Εντάξει</string>
