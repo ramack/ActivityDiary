@@ -92,6 +92,7 @@
   <string name="action_delete">Elimina attività</string>
   <string name="action_store">Salvare</string>
   <string name="action_filter">Filtro</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Cerca attività...</string>
   <string name="search_description">Attivitàdeldiario</string>
   <!-- dialog -->
