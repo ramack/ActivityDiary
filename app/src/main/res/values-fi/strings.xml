@@ -80,7 +80,7 @@
   <string name="action_store">Tallentaa</string>
   <string name="action_filter">Suodattaa</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Hakuaktiviteetti ...</string>
+  <string name="search_hint">Search Activity&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">kunnossa</string>
