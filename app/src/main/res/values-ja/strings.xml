@@ -79,6 +79,7 @@
   <string name="action_delete">アクティビティの削除</string>
   <string name="action_store">セーブ</string>
   <string name="action_filter">フィルタ</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">アクティビティの検索...</string>
   <string name="search_description">日記</string>
   <!-- dialog -->
