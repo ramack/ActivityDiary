@@ -62,6 +62,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final int INSERT_NEW_ACTIVITY = 4;
     private static final int UPDATE_DELETE_ACTIVITY = 5;
     private static final int QUERY_CURRENT_ACTIVITY = 6;
+    private static final int DELETE_LAST_DIARY_ENTRY = 7;
+    private static final int REOPEN_LAST_DIARY_ENTRY = 8;
 
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
@@ -82,7 +84,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
     private String mCurrentNote;
-    private DataSetObserver mDataObserver;
+//    private DataSetObserver mDataObserver;
     private Condition[] conditions;
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
@@ -169,25 +171,36 @@ public class ActivityHelper extends AsyncQueryHandler{
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,
                 null);
-        startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
-                DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL", null,
-                ActivityDiaryContract.Diary.START + " DESC");
+        readCurrentActivity();
         mCurrentActivityStartTime = new Date();
+        /* TODO: the DataObserver doesn't seem to do what I expected e.g. closing the cursor - what we
+                 should do to not have too many open - will lead to an onInvaldidated call
         mDataObserver = new DataSetObserver(){
             public void onChanged() {
-                /* notify about the data change */
+                / * notify about the data change * /
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
                 }
             }
 
             public void onInvalidated() {
-                /* re-read the complete data */
+                / * re-read the complete data * /
                 startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                         ACTIVITIES_PROJ, SELECTION, null,
                         null);
+
             }
         };
+        */
+    }
+
+    /* start the query to read the current activity
+     * will trigger the update of currentActivity and send notifications afterwards */
+    private void readCurrentActivity() {
+        startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
+                DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL AND "
+                + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + " = 0", null,
+                ActivityDiaryContract.Diary.START + " DESC");
     }
 
     @Override
@@ -209,7 +222,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
                 }
-                cursor.registerDataSetObserver(mDataObserver);
+// TODO                cursor.registerDataSetObserver(mDataObserver);
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(mCurrentActivity == null) {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
@@ -254,6 +267,16 @@ public class ActivityHelper extends AsyncQueryHandler{
         }
     }
 
+    /* undo the last activity selection by deleteing all open entries
+     *
+     * */
+    public void undoLastActivitySelection() {
+        startDelete(DELETE_LAST_DIARY_ENTRY, null,
+                ActivityDiaryContract.Diary.CONTENT_URI,
+                ActivityDiaryContract.Diary.END + " is NULL",
+                null);
+    }
+
     @Override
     protected void onUpdateComplete(int token, Object cookie, int result) {
         if(token == UPDATE_CLOSE_ACTIVITY) {
@@ -271,6 +294,25 @@ public class ActivityHelper extends AsyncQueryHandler{
             for(DataChangedListener listener : mDataChangeListeners) {
                 listener.onActivityDataChanged((DiaryActivity)cookie);
             }
+        }else if(token == REOPEN_LAST_DIARY_ENTRY){
+            mCurrentActivity = null;
+            readCurrentActivity();
+        }
+    }
+
+
+    @Override
+    protected void onDeleteComplete(int token, Object cookie, int result) {
+        if(token == DELETE_LAST_DIARY_ENTRY){
+            ContentValues values = new ContentValues();
+            values.putNull(ActivityDiaryContract.Diary.END);
+
+            startUpdate(REOPEN_LAST_DIARY_ENTRY, null,
+                    ActivityDiaryContract.Diary.CONTENT_URI,
+                    values,
+                    ActivityDiaryContract.Diary.END + "=(SELECT MAX(" + ActivityDiaryContract.Diary.END + ") FROM " + ActivityDiaryContract.Diary.TABLE_NAME + " )",
+                    null
+            );
         }
     }
 

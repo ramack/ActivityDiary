@@ -230,12 +230,16 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      */
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+        boolean isGlobalDelete = false;
         String table;
         ContentValues values = new ContentValues();
         switch(sUriMatcher.match(uri)) {
             case activities_ID:
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 break;
+            case diary:
+                isGlobalDelete = true;
+                /* fall though */
             case diary_ID:
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
                 break;
@@ -250,12 +254,14 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         "Unsupported URI for deletion: " + uri);
         }
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        if(selection != null) {
-            selection = selection + " AND ";
-        }else{
-            selection = "";
+        if(!isGlobalDelete) {
+            if(selection != null) {
+                selection = selection + " AND ";
+            }else{
+                selection = "";
+            }
+            selection = selection + "_id=" + uri.getLastPathSegment();
         }
-        selection = selection + "_id=" + uri.getLastPathSegment();
         values.put(ActivityDiaryContract.DiaryActivity._DELETED, "1");
 
         int upds = db.update(table,
@@ -269,7 +275,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         }else {
             throw new SQLException(
-                    "Problem while deleting uri: " + uri);
+                    "Problem while deleting uri: " + uri + " with selection " + selection);
         }
         return upds;
     }
@@ -338,7 +344,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         }else if(isID) {
             throw new SQLException(
-                    "Problem while updating uri: " + uri);
+                    "Problem while updating uri: " + uri + " with selection " + selection);
         }
         return upds;
     }
