@@ -58,7 +58,7 @@
   <string name="setting_import">データベースのインポート</string>
   <string name="setting_export_summary">現在のデータベースのコピーをバックアップ用のファイルに保存します。</string>
   <string name="setting_import_summary">バックアップファイルを現在のデータベースに復元します。</string>
-  <string name="db_export_error">データベースを123_4_0_321にエクスポートできませんでした。</string>
+  <string name="db_export_error">データベースを ‎%1‎$s にエクスポートできませんでした。</string>
   <string name="db_export_success">%1$sにデータベースをエクスポートしました。</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">エクスポートするファイルを選択する</string>
