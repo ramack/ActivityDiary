@@ -79,6 +79,7 @@
   <string name="action_delete">Activiteit verwijderen</string>
   <string name="action_store">Opslaan</string>
   <string name="action_filter">Filter</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Zoekactiviteit ...</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
