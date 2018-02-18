@@ -79,6 +79,7 @@
   <string name="action_delete">Poista aktiviteetti</string>
   <string name="action_store">Tallentaa</string>
   <string name="action_filter">Suodattaa</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Hakuaktiviteetti ...</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
