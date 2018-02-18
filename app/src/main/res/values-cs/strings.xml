@@ -79,6 +79,7 @@
   <string name="action_delete">Smazat aktivitu</string>
   <string name="action_store">Uložit</string>
   <string name="action_filter">Filtr</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Aktivita vyhledávání ...</string>
   <string name="search_description">Diářové aktivity</string>
   <!-- dialog -->
