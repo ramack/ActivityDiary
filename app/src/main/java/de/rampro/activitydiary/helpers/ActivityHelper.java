@@ -223,7 +223,8 @@ public class ActivityHelper extends AsyncQueryHandler{
                     }
                 }
             }
-        } else if (cursor != null) {
+        }
+        if (cursor != null) {
             cursor.close();
         }
     }
