@@ -79,6 +79,7 @@
   <string name="action_delete">Tevékenység törlése</string>
   <string name="action_store">Mentés</string>
   <string name="action_filter">Szűrő</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Keresési tevékenység ...</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
