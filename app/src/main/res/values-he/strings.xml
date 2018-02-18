@@ -79,6 +79,7 @@
   <string name="action_delete">מחק את הפעילות</string>
   <string name="action_store">להציל</string>
   <string name="action_filter">לְסַנֵן</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">פעילות חיפוש ...</string>
   <string name="search_description">פעולות יומיות</string>
   <!-- dialog -->
