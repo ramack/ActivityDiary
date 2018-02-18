@@ -58,8 +58,8 @@
   <string name="setting_import">데이터베이스 가져 오기</string>
   <string name="setting_export_summary">백업을 위해 현재 데이터베이스 사본을 파일에 저장하십시오.</string>
   <string name="setting_import_summary">백업 파일을 현재 데이터베이스로 복원하십시오.</string>
-  <string name="db_export_error">데이터베이스를 123_4_0_321로 반출하는 데 실패했습니다.</string>
-  <string name="db_export_success">데이터베이스를 123_4_0_321로 내 보낸 |.</string>
+  <string name="db_export_error">Failed to export database to %1$s.</string>
+  <string name="db_export_success">Exported database to %1$s.</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">내보낼 파일 선택</string>
   <string name="db_import_error">%1$s을 (를) 가져 오는 데 실패했습니다.</string>
