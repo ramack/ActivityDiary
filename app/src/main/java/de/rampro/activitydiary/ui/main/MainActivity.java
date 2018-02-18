@@ -604,7 +604,7 @@ public class MainActivity extends BaseActivity implements
                 }
             }
 
-            filteredDist.add(pos, new Integer(dist));
+            filteredDist.add(pos, Integer.valueOf(dist));
             filtered.add(pos, a);
         }
 

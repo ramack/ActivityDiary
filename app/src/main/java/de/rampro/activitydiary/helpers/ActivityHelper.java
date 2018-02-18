@@ -39,6 +39,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
@@ -459,7 +460,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         if(mStr.contains(search)){
             result = result - 20;
         }
-        if(mStr.toLowerCase().contains(sStr.toLowerCase())){
+        if(mStr.toLowerCase(Locale.getDefault()).contains(sStr.toLowerCase(Locale.getDefault()))){
             result = result - 20;
         }
         for(int i = 0; i < search.length(); i++){
@@ -486,7 +487,7 @@ public class ActivityHelper extends AsyncQueryHandler{
             HashMap<DiaryActivity, Double> likeliActivites = new HashMap<>(as.size());
 
             for (DiaryActivity a : as) {
-                likeliActivites.put(a, new Double(0.0));
+                likeliActivites.put(a, Double.valueOf(0.0));
             }
 
             // reevaluate the conditions

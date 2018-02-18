@@ -261,6 +261,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         if(requestCode == ACTIVITIY_RESULT_IMPORT && resultCode == RESULT_OK) {
             Uri selectedfile = data.getData(); //The uri with the location of the file
             // import
+            // TODO: replace /data by Context.getFilesDir().getPath() -> see lint
             File db = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY);
             try {
                 String s = getResources().getString(R.string.db_import_success, data.getData().toString());
@@ -285,6 +286,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         if(requestCode == ACTIVITIY_RESULT_EXPORT && resultCode == RESULT_OK) {
 
             // export
+            // TODO: replace /data by Context.getFilesDir().getPath() -> see lint
             File db = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY);
             try {
                 String s = getResources().getString(R.string.db_export_success, data.getData().toString());
