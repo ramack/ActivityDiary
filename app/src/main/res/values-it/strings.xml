@@ -93,7 +93,7 @@
   <string name="action_store">Salvare</string>
   <string name="action_filter">Filtro</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Cerca attività...</string>
+  <string name="search_hint">Search Activity&#8230;</string>
   <string name="search_description">Attivitàdeldiario</string>
   <!-- dialog -->
   <string name="dlg_ok">Ok</string>
