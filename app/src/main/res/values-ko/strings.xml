@@ -79,6 +79,7 @@
   <string name="action_delete">활동 삭제</string>
   <string name="action_store">구하다</string>
   <string name="action_filter">필터</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">검색 활동 ...</string>
   <string name="search_description">다이어리 활동</string>
   <!-- dialog -->
