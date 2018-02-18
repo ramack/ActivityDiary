@@ -48,7 +48,7 @@
   <string name="setting_cond_alpha_summary">Aakkosjärjestyksessä lajitella paino %1$s ehdotetuista seuraavista toiminnoista.</string>
   <string name="setting_cond_alpha_not_used_summary">Aakkosellinen lajittelu ei ole tarkoitettu seuraaviin toimintoihin.</string>
   <string name="setting_cond_predecessor">Activity Sequence</string>
-  <string name="setting_cond_predecessor_summary">Päiväkirjojen toimintosekvenssin paino on 123_4_0_321 | ehdotetuista seuraavista toiminnoista.</string>
+  <string name="setting_cond_predecessor_summary">Päiväkirjojen toimintosekvenssin paino on %1$s ehdotetuista seuraavista toiminnoista.</string>
   <string name="setting_cond_predecessor_not_used_summary">Päiväkirjaan liittyvä toimintosekvenssi, jota ei ole käytetty seuraavan toiminnan ehdottamiseen.</string>
   <string name="setting_cond_occurrence">Toiminnan esiintyminen</string>
   <string name="setting_cond_occurrence_summary">Päiväkirjan aktiivisuustaajuus on %1$s ehdotetuista seuraavista toiminnoista.</string>
