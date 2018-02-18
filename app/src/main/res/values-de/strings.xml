@@ -96,6 +96,7 @@
   <string name="action_delete">Aktivität löschen</string>
   <string name="action_store">Speichern</string>
   <string name="action_filter">Filter</string>
+  <string name="action_undo">UNDO</string>
   <string name="search_hint">Suche Aktivität...</string>
   <string name="search_description">Tagebuchaktivitäten</string>
   <!-- dialog -->
