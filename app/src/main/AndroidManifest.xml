@@ -46,7 +46,7 @@
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="${applicationId}.provider"
             android:multiprocess="true"
-            android:exported="true"
+            android:exported="false"
             android:grantUriPermissions="true"
             android:label="ActivityDiaryProvider"
             android:icon="@mipmap/ic_launcher"

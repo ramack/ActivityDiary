@@ -220,6 +220,7 @@ public class MainActivity extends BaseActivity implements
                                     BuildConfig.APPLICATION_ID + ".fileprovider",
                                     photoFile);
                             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                            takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                         }
 
@@ -361,11 +362,14 @@ public class MainActivity extends BaseActivity implements
         }
 
         if(storageDir != null){
-            File image = File.createTempFile(
+            File image = new File(storageDir, imageFileName + ".jpg");
+            image.createNewFile();
+/* #80            File image = File.createTempFile(
                     imageFileName,
                     ".jpg",
                     storageDir
             );
+            */
             return image;
         }else{
             return null;
@@ -682,6 +686,7 @@ public class MainActivity extends BaseActivity implements
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed", e);
+                        throw new RuntimeException("writing exif data to " + mCurrentPhotoPath + " failed " + e.toString(), e);
                     }
                 }
             }
