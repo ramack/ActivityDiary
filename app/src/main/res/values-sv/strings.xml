@@ -79,8 +79,8 @@
   <string name="action_delete">Radera aktivitet</string>
   <string name="action_store">Spara</string>
   <string name="action_filter">Filtrera</string>
-  <string name="action_undo">UNDO</string>
-  <string name="search_hint">Search Activity&#8230;</string>
+  <string name="action_undo">ÅNGRA</string>
+  <string name="search_hint">Sök aktivitet&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">ok</string>
