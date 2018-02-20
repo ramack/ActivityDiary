@@ -79,8 +79,8 @@
   <string name="action_delete">Eliminar atividade</string>
   <string name="action_store">Salve </string>
   <string name="action_filter">Filtro</string>
-  <string name="action_undo">UNDO</string>
-  <string name="search_hint">Search Activity&#8230;</string>
+  <string name="action_undo">DESFAZER</string>
+  <string name="search_hint">Busca na atividade&#8230;</string>
   <string name="search_description">Atividades diárias</string>
   <!-- dialog -->
   <string name="dlg_ok">Está bem</string>
