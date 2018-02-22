@@ -1,2 +1,3 @@
-Fehler bei der Auswahl falscher Aktivitäten in den Suchergebnissen behoben
-Absturz beim Erstellen neuer Aktivitäten korrigiert
+- Einige toolbasierte Übersetzungen hinzugefügt, Kommentare zur Übersetzungsverbesserungen sind willkommen!
+- Anzeiger einer Snackbar nach dem Auswählen einer neuen Aktivität, mit der Option zum Rückgängigmachen der Auswahl.
+- Mehrere Fehler behoben

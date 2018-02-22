@@ -1,2 +1,3 @@
-- Korrigert feil med feil aktivitetsvalg i søkeresultatene
-- Korrigert krasj ved opprettelse av ny aktivitet
+- Lagt til mange verktøybaserte oversettelser, oversettelsesomtale kommentarer er velkomne!
+- Vis snackbar etter å ha valgt ny aktivitet, med mulighet for å angre
+- Flere feilrettinger

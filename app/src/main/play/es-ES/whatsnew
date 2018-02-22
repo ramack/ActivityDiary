@@ -1,2 +1,3 @@
-- Error corregido de selección de actividad incorrecta en los resultados de búsqueda
-- falla corregida en la creación de nueva actividad
+- Added a lot of tool-based translations, translation review comments are welcome!
+- Show snackbar after selecting new activity, with option to undo
+- Several bug fixes

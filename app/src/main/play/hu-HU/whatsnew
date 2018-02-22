@@ -1,2 +1,3 @@
-- helyesbített hiba a nem megfelelő tevékenység kiválasztásában a keresési eredmények között
-- korrigált összeomlás az új tevékenység létrehozásakor
+- Sokat szerszám-alapú fordításokat egészítettek ki, a fordítás felülvizsgálati megjegyzéseit üdvözöljük!
+- A snackbar megjelenítése az új tevékenység kiválasztása után, a visszavonás lehetőségével
+- Több hibajavítás

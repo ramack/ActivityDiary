@@ -1,2 +1,3 @@
-- gecorrigeerde bug van verkeerde activiteitsselectie in zoekresultaten
-- gecorrigeerde crash bij het creëren van nieuwe activiteit
+- Veel tool-based vertalingen toegevoegd, opmerkingen over vertaalbesprekingen zijn welkom!
+- Toon snackbar na het selecteren van nieuwe activiteit, met optie om ongedaan te maken
+- Verschillende bugfixes

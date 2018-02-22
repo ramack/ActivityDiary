@@ -1,2 +1,3 @@
-- Bug corrigé de mauvaise sélection d'activité dans les résultats de recherche
-- crash corrigé lors de la création d'une nouvelle activité
+- Ajout d'un grand nombre de traductions à base d'outils, commentaires de révision de traduction sont les bienvenus!
+- Afficher le snack après avoir sélectionné une nouvelle activité, avec option d'annulation
+- Plusieurs corrections de bugs
