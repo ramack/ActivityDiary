@@ -7,11 +7,11 @@
   <string name="unsupported_on_api_level">Cette fonctionnalité n\'est pas prise en charge sur votre version Android. Niveau d\'API minimum %1$d Champs obligatoires.</string>
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Sélectionnez une activité</string>
-  <string name="nav_diary">Journal intime</string>
+  <string name="nav_diary">Journal</string>
   <string name="nav_add_activity">Ajouter une activité</string>
   <string name="nav_activity_manager">Modifier les activités</string>
   <string name="nav_settings">Paramètres</string>
-  <string name="nav_about">Sur</string>
+  <string name="nav_about">À propos</string>
   <string name="desc_activity_color">Couleur de l\'activité</string>
   <string name="desc_activity_hint">Titre de l\'activité</string>
   <string name="desc_activity_select">Choisissez l\'activité actuelle&#8230;</string>
