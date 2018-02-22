@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.media.ExifInterface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
@@ -46,6 +47,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
@@ -214,6 +220,7 @@ public class MainActivity extends BaseActivity implements
                                     BuildConfig.APPLICATION_ID + ".fileprovider",
                                     photoFile);
                             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                            takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                         }
 
@@ -355,11 +362,14 @@ public class MainActivity extends BaseActivity implements
         }
 
         if(storageDir != null){
-            File image = File.createTempFile(
+            File image = new File(storageDir, imageFileName + ".jpg");
+            image.createNewFile();
+/* #80            File image = File.createTempFile(
                     imageFileName,
                     ".jpg",
                     storageDir
             );
+            */
             return image;
         }else{
             return null;
@@ -406,7 +416,31 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(int adapterPosition) {
-        ActivityHelper.helper.setCurrentActivity(selectAdapter.item(adapterPosition));
+        DiaryActivity newAct = selectAdapter.item(adapterPosition);
+        ActivityHelper.helper.setCurrentActivity(newAct);
+
+        SpannableStringBuilder snackbarText = new SpannableStringBuilder();
+        snackbarText.append(newAct.getName());
+        int end = snackbarText.length();
+        snackbarText.setSpan(new ForegroundColorSpan(newAct.getColor()), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        snackbarText.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        snackbarText.setSpan(new RelativeSizeSpan((float)1.4152), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+        Snackbar undoSnackBar = Snackbar.make(findViewById(R.id.main_layout),
+                snackbarText, Snackbar.LENGTH_LONG);
+        undoSnackBar.setAction(R.string.action_undo, new View.OnClickListener() {
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                Log.v(TAG, "UNDO Activity Selection");
+                ActivityHelper.helper.undoLastActivitySelection();
+            }
+        });
+        undoSnackBar.show();
     }
 
     @Override
@@ -444,6 +478,10 @@ public class MainActivity extends BaseActivity implements
 
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
+        boolean onlyRefresh = false;
+        if(mCurrentActivity == newAct){
+            onlyRefresh = true;
+        }
         mCurrentActivity = newAct;
         if(mCurrentActivity != null) {
             mCurrentDiaryUri = ActivityHelper.helper.getCurrentDiaryUri();
@@ -570,7 +608,7 @@ public class MainActivity extends BaseActivity implements
                 }
             }
 
-            filteredDist.add(pos, new Integer(dist));
+            filteredDist.add(pos, Integer.valueOf(dist));
             filtered.add(pos, a);
         }
 
@@ -648,6 +686,7 @@ public class MainActivity extends BaseActivity implements
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed", e);
+                        throw new RuntimeException("writing exif data to " + mCurrentPhotoPath + " failed " + e.toString(), e);
                     }
                 }
             }

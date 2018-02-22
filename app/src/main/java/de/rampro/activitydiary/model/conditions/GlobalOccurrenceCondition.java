@@ -69,6 +69,8 @@ public class GlobalOccurrenceCondition extends Condition implements ActivityHelp
                 c.moveToNext();
             }
 
+            c.close();
+
             for (Likelihood l : result) {
                 l.likelihood = l.likelihood / total * weight;
             }
