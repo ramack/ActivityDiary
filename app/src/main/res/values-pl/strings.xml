@@ -79,8 +79,8 @@
   <string name="action_delete">Usuń aktywność</string>
   <string name="action_store">Zapisać</string>
   <string name="action_filter">Filtr</string>
-  <string name="action_undo">UNDO</string>
-  <string name="search_hint">Search Activity&#8230;</string>
+  <string name="action_undo">COFNIJ</string>
+  <string name="search_hint">Wyszukiwanie aktywności&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">ok</string>
