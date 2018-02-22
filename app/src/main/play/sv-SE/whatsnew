@@ -1,2 +1,3 @@
-- korrigerad fel på felaktigt val i sökresultat
-- Korrigerad krasch vid skapandet av ny aktivitet
+- Added a lot of tool-based translations, translation review comments are welcome!
+- Show snackbar after selecting new activity, with option to undo
+- Several bug fixes
