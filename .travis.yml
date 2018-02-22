@@ -17,3 +17,9 @@ script:
 #  - ./gradlew lint
 #  - ./gradlew test
 #  - ./gradlew check --stacktrace
+
+# blocklist
+branches:
+  except:
+  - l10n_master
+
