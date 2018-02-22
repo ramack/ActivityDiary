@@ -1,2 +1,3 @@
-- helyesbített hiba a nem megfelelő tevékenység kiválasztásában a keresési eredmények között
-- korrigált összeomlás az új tevékenység létrehozásakor
+- Added a lot of tool-based translations, translation review comments are welcome!
+- Show snackbar after selecting new activity, with option to undo
+- Several bug fixes
