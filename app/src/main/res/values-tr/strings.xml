@@ -3,33 +3,33 @@
 <resources>
   <string name="app_name">Etkinlik Günlüğü</string>
   <string name="about_text"><![CDATA[<h1>%1$s</h1><br />sürüm <b>%2$s</b></p><p>Her türlü etkinlik için bir günlük - görevlerinizi çevik olarak organize edin ve bir şeylerin tekrarlanması beklenirse hatırlatın.</p><h1>Lisans</h1><p>%1$s ücretsiz bir yazılımdır: onu yeniden dağıtabilir ve / veya 123_55_15_321 | GNU Genel Kamu Lisansı</a> şartları altında değiştirebilirsiniz. Free Software Foundation tarafından yayımlandığı şekliyle, Lisans sürüm 3 ya da (isteğe bağlı olarak) sonraki herhangi bir sürüm. 123_4_17_321 | <p>Bu programın yararlı olacağı ümidiyle dağıtılır ancak herhangi bir garantisi olmadan; BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA ZIMNİ ZIMNİ UYARILAR. Daha fazla ayrıntı için GNU Genel Kamu Lisansı'na bakın.</p><h1>İletişim</h1><p>Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sayı etiketi</a>.</p><p>Kaynak Kodu 123_50_27_321 | Github</a>.</p>adresinde bulunabilir. <h1>Katkıda</h1>%3$s<p>Siz de bu listede adınızı söylemeyi umuyoruz.</p><h1>Kütüphaneleri</h1>Aşağıdaki kütüphaneler bu başvuru tarafından kullanılır ve adlandırılmış lisanslar kapsamında lisanslanır. %4$s]]></string>
-  <string name="perm_write_external_storage_xplain">Fotoğrafları saklama izni gerektirir, bunu yapmak &#8230;</string>
-  <string name="unsupported_on_api_level">Bu özellik Android Sürümünde desteklenmiyor. Minimum API seviyesi %1$d gereklidir.</string>
+  <string name="perm_write_external_storage_xplain">Fotoğrafları saklamak izin gerektirir &#8230;</string>
+  <string name="unsupported_on_api_level">Bu özellik Android Sürümünüzde desteklenmiyor. En az API seviyesi %1$d gerekli.</string>
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Etkinliği Seç</string>
-  <string name="nav_diary">günlük</string>
+  <string name="nav_diary">Günlük</string>
   <string name="nav_add_activity">Etkinlik Ekle</string>
   <string name="nav_activity_manager">Etkinlikleri Düzenle</string>
   <string name="nav_settings">Ayarlar</string>
-  <string name="nav_about">hakkında</string>
+  <string name="nav_about">Hakkında</string>
   <string name="desc_activity_color">Etkinlik Rengi</string>
   <string name="desc_activity_hint">Etkinlik Başlığı</string>
-  <string name="desc_activity_select">Mevcut etkinliği seçin&#8230;</string>
+  <string name="desc_activity_select">Şimdiki etkinliği seç&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Etkinlik İçin Resim</string>
-  <string name="contentDesc_logo">ActivityDiary logosu</string>
+  <string name="activity_image_description">Etkinlik için Resim</string>
+  <string name="contentDesc_logo">ActivityDiary Logosu</string>
   <string name="drawer_open">Gezinmeyi aç</string>
   <string name="drawer_close">Gezinmeyi Kapat</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
-  <string name="setting_behavior_category">davranış</string>
-  <string name="setting_images_category">Görüntüler</string>
-  <string name="setting_backup_category">yedek</string>
+  <string name="setting_behavior_category">Davranış</string>
+  <string name="setting_images_category">Resimler</string>
+  <string name="setting_backup_category">Yedekleme</string>
   <string name="setting_condition_category">Koşullar</string>
-  <string name="setting_datetime_format">Tarih formatı</string>
-  <string name="setting_datetime_format_summary">\@ String / default_datetime_format</string>
+  <string name="setting_datetime_format">Tarih Biçimi</string>
+  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
   <string name="setting_datetime_format_description">Ekran Bir etkinliğin başlaması için tarih ve saat biçimini. Normal biçimler yyyy-AA-GG HH: mm veya gg.MM\'dir. ss: dd</string>
-  <string name="setting_auto_select_new">Yeni Etkinlikler\'i seçin</string>
+  <string name="setting_auto_select_new">Yeni Etkinlikleri Seç</string>
   <string name="setting_auto_select_new_summary_active">Yeni oluşturulan etkinlik, doğrudan yeni etkinlik olarak seçilir.</string>
   <string name="setting_auto_select_new_summary_inactive">Yeni faaliyelerin yaratılması, şu anda aktif olan etkinliği etkilemez.</string>
   <string name="setting_enable_acra">Kilitlenme Raporlaması</string>
