@@ -14,12 +14,12 @@
   <string name="nav_about">Hakkında</string>
   <string name="desc_activity_color">Etkinlik Rengi</string>
   <string name="desc_activity_hint">Etkinlik Başlığı</string>
-  <string name="desc_activity_select">Şimdiki etkinliği seç&#8230;</string>
+  <string name="desc_activity_select">Şu anki etkinliği seç&#8230;</string>
   <!-- -->
   <string name="activity_image_description">Etkinlik için Resim</string>
   <string name="contentDesc_logo">ActivityDiary Logosu</string>
-  <string name="drawer_open">Gezinmeyi aç</string>
-  <string name="drawer_close">Gezinmeyi Kapat</string>
+  <string name="drawer_open">Navigasyonu Aç</string>
+  <string name="drawer_close">Navigasyonu kapat</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
   <string name="setting_behavior_category">Davranış</string>
@@ -28,12 +28,12 @@
   <string name="setting_condition_category">Koşullar</string>
   <string name="setting_datetime_format">Tarih Biçimi</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Ekran Bir etkinliğin başlaması için tarih ve saat biçimini. Normal biçimler yyyy-AA-GG HH: mm veya gg.MM\'dir. ss: dd</string>
+  <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin Gösterim Biçimi. yyyy-MM-dd HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
   <string name="setting_auto_select_new">Yeni Etkinlikleri Seç</string>
-  <string name="setting_auto_select_new_summary_active">Yeni oluşturulan etkinlik, doğrudan yeni etkinlik olarak seçilir.</string>
-  <string name="setting_auto_select_new_summary_inactive">Yeni faaliyelerin yaratılması, şu anda aktif olan etkinliği etkilemez.</string>
-  <string name="setting_enable_acra">Kilitlenme Raporlaması</string>
-  <string name="setting_acra_enabled">Çöküyor raporları gönder</string>
+  <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan yeni etkin olan olarak seçilir.</string>
+  <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez.</string>
+  <string name="setting_enable_acra">Hata Bildirimi</string>
+  <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
   <string name="setting_acra_disabled">Çöküyor raporları gönderme</string>
   <string name="setting_storage_folder">Resim Depolama Klasörü</string>
   <string name="setting_storage_folder_summary">Etkinlik fotoğraflarını dizinde sakla %1$s</string>
