@@ -58,12 +58,12 @@
   <string name="setting_import">Veritabanını İçe Al</string>
   <string name="setting_export_summary">Geçerli veritabanının bir kopyasını yedekleme için bir dosyada sakla.</string>
   <string name="setting_import_summary">Yedek bir dosyayı o anki veritabanına geri yükleyin.</string>
-  <string name="db_export_error">Veritabanını %1$s dosyasına aktarma başarısız.</string>
+  <string name="db_export_error">Veritabanını %1$s dosyasına aktarılamadı.</string>
   <string name="db_export_success">Veritabanı %1$s dosyasına aktarıldı.</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Dışa aktarmak için dosya seçin</string>
-  <string name="db_import_error">%1$s| alınamadı.</string>
-  <string name="db_import_success">%1$s başarıyla içe aktarıldı.</string>
+  <string name="db_import_error">%1$s dosyasından alınamadı.</string>
+  <string name="db_import_success">%1$s başarıyla içe alındı.</string>
   <string name="db_import_selection">İçe aktarılacak dosyayı seçin</string>
   <!-- titles -->
   <string name="activity_title_edit">Düzenle</string>
@@ -90,7 +90,7 @@
   <!-- main view -->
   <string name="duration_description">Süre:</string>
   <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
-  <string name="no_active_activity_error">Bu eylemi gerçekleştirmek için önce bir etkinlik seçilmesi gerekiyor.</string>
+  <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli.</string>
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var.</string>
   <!-- history -->
@@ -100,7 +100,7 @@
   <string name="yesterday">Dün</string>
   <string name="lastWeek">Geçen Hafta</string>
   <!-- ACRA crash reporting -->
-  <string name="crash_dialog_text">Uygulamanın durdurulmasına neden olan beklenmedik bir hata oluştu. Lütfen bize bunu hata verileri göndererek düzeltmemize yardımcı ol, yapmanız gereken Tamam\'ı tıklamak.</string>
+  <string name="crash_dialog_text">Uygulamanın durmasını zorunlu kılan beklenmedik bir hata oluştu. Lütfen bunu düzeltmemize bize hata verisini göndererek yardımcı olun, tek yapmanız gereken Tamam\'a tıklamak.</string>
   <string name="crash_dialog_comment_prompt">Soruyla ilgili yorumlarınızı aşağıya ekleyebilirsiniz:</string>
-  <string name="crash_dialog_ok_toast">Teşekkür ederim. Lütfen hazırlanan e-postayı içeriğini inceledikten sonra gönderin.</string>
+  <string name="crash_dialog_ok_toast">Teşekkürler. Lütfen hazırlanan e-postayı içeriğini inceledikten sonra gönderin.</string>
 </resources>
