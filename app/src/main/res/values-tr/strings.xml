@@ -6,7 +6,7 @@
   <string name="perm_write_external_storage_xplain">Fotoğrafları saklamak izin gerektirir &#8230;</string>
   <string name="unsupported_on_api_level">Bu özellik Android Sürümünüzde desteklenmiyor. En az API seviyesi %1$d gerekli.</string>
   <!-- Navigation Drawer Menu -->
-  <string name="nav_main">Etkinliği Seç</string>
+  <string name="nav_main">Etkinlik Seç</string>
   <string name="nav_diary">Günlük</string>
   <string name="nav_add_activity">Etkinlik Ekle</string>
   <string name="nav_activity_manager">Etkinlikleri Düzenle</string>
@@ -39,12 +39,12 @@
   <string name="setting_storage_folder_summary">Etkinlik fotoğraflarını dizinde sakla %1$s</string>
   <string name="setting_storage_folder_description">Etkinlik fotoğraflarını saklamak için dizin</string>
   <string name="default_storage_folder">ActivityDiary</string>
-  <string name="setting_tag_images">Meta veri</string>
+  <string name="setting_tag_images">Üst veri</string>
   <string name="setting_tag_yes">Mevcut etkinliği EXIF ​​etiketi içine yazın Yeni görüntülerin UserComment.</string>
   <string name="setting_tag_no">Yeni resimlerin EXIF ​​etiketlerine dokunmayın.</string>
   <!-- Conditions -->
   <string name="pref_cond_off">KAPALI</string>
-  <string name="setting_cond_alpha">Alfabetik sırala</string>
+  <string name="setting_cond_alpha">Alfabetik Sıralama</string>
   <string name="setting_cond_alpha_summary">Alfabetik sıralama, %1$s Önerilen sonraki aktiviteler.</string>
   <string name="setting_cond_alpha_not_used_summary">Alfabetik sıralama, bir sonraki aktiviteleri önermek için kullanılmaz.</string>
   <string name="setting_cond_predecessor">Etkinlik Sırası</string>
@@ -54,8 +54,8 @@
   <string name="setting_cond_occurrence_summary">Günlüğün etkinlik sıklığı %1$s | Önerilen sonraki aktiviteler.</string>
   <string name="setting_cond_occurrence_not_used_summary">Günlüğün etkinlik sıklığı sonraki etkinlikleri önermek için kullanılmıyor.</string>
   <string name="setting_expert">Uzman Ayarları</string>
-  <string name="setting_export">Veritabanını Ver</string>
-  <string name="setting_import">Veritabanını Al</string>
+  <string name="setting_export">Veritabanını Dışa Aktar</string>
+  <string name="setting_import">Veritabanını İçe Al</string>
   <string name="setting_export_summary">Geçerli veritabanının bir kopyasını yedekleme için bir dosyaya kaydedin.</string>
   <string name="setting_import_summary">Bir yedek dosyayı geçerli veritabanına geri yükleyin.</string>
   <string name="db_export_error">%1$sveritabanını dışa aktarma işlemi başarısız oldu.</string>
@@ -67,38 +67,38 @@
   <string name="db_import_selection">İçe aktarılacak dosyayı seçin</string>
   <!-- titles -->
   <string name="activity_title_edit">Düzenle</string>
-  <string name="activity_title_edit_new">Yeni Aktivite</string>
-  <string name="activity_title_manage_activities">Faaliyetleri Yönetin</string>
-  <string name="activity_title_history">günlük</string>
-  <string name="activity_subtitle_main">Ne yapıyorsun?</string>
-  <string name="activity_title_about">hakkında</string>
+  <string name="activity_title_edit_new">Yeni Etkinlik</string>
+  <string name="activity_title_manage_activities">Etkinlikleri Yönet</string>
+  <string name="activity_title_history">Günlük</string>
+  <string name="activity_subtitle_main">Ne yapıyorsunuz?</string>
+  <string name="activity_title_about">Hakkında</string>
   <string name="activity_title_settings">Ayarlar</string>
-  <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
+  <string name="activity_title_no_selected_act">&lt;Etkinlik Yok&gt;</string>
   <string name="dialog_title_note">Not</string>
   <!-- actions -->
   <string name="action_delete">Etkinliği Sil</string>
-  <string name="action_store">Kayıt etmek</string>
-  <string name="action_filter">filtre</string>
+  <string name="action_store">Kaydet</string>
+  <string name="action_filter">Süz</string>
   <string name="action_undo">GERİ AL</string>
-  <string name="search_hint">Arama Faaliyeti&#8230;</string>
+  <string name="search_hint">Etkinlik Ara&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
-  <string name="dlg_ok">tamam</string>
-  <string name="dlg_cancel">İptal etmek</string>
-  <string name="dlg_delete_image_title">Silmeyi onayla</string>
-  <string name="dlg_delete_image_text">Gerçekten bu resmi geçerli etkinlik girişinden kaldırmak mı istiyorsunuz?</string>
+  <string name="dlg_ok">Tamam</string>
+  <string name="dlg_cancel">İptal</string>
+  <string name="dlg_delete_image_title">Silmeyi Onayla</string>
+  <string name="dlg_delete_image_text">Bu resim gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
   <!-- main view -->
   <string name="duration_description">Süre:</string>
   <string name="camera_error">Burada bir şeyler ters gitti. Resim saklanamadı.</string>
-  <string name="no_active_activity_error">Bu eylemi gerçekleştirmek için öncelikle bir etkinlik seçmeniz gerekiyor.</string>
+  <string name="no_active_activity_error">Bu eylemi gerçekleştirmek için önce bir etkinlik seçilmesi gerekiyor.</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Adla etkinlik %1$s zaten var.</string>
+  <string name="error_name_already_used">%1$s adlı etkinlik zaten var.</string>
   <!-- history -->
-  <string name="default_datetime_format">yyyy.MM.dd SS: mm</string>
+  <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
   <!-- relative dates -->
   <string name="today">Bugün</string>
   <string name="yesterday">Dün</string>
-  <string name="lastWeek">Geçen hafta</string>
+  <string name="lastWeek">Geçen Hafta</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Uygulamanın durdurulmasına neden olan beklenmedik bir hata oluştu. Lütfen bize bunu hata verileri göndererek düzeltmemize yardımcı ol, yapmanız gereken Tamam\'ı tıklamak.</string>
   <string name="crash_dialog_comment_prompt">Soruyla ilgili yorumlarınızı aşağıya ekleyebilirsiniz:</string>
