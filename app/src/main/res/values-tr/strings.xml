@@ -19,11 +19,11 @@
   <string name="activity_image_description">Etkinlik için Resim</string>
   <string name="contentDesc_logo">ActivityDiary Logosu</string>
   <string name="drawer_open">Navigasyonu Aç</string>
-  <string name="drawer_close">Navigasyonu kapat</string>
+  <string name="drawer_close">Navigasyonu Kapat</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
   <string name="setting_behavior_category">Davranış</string>
-  <string name="setting_images_category">Resimler</string>
+  <string name="setting_images_category">Görseller</string>
   <string name="setting_backup_category">Yedekleme</string>
   <string name="setting_condition_category">Koşullar</string>
   <string name="setting_datetime_format">Tarih Biçimi</string>
@@ -32,16 +32,16 @@
   <string name="setting_auto_select_new">Yeni Etkinlikleri Seç</string>
   <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan yeni etkin olan olarak seçilir.</string>
   <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez.</string>
-  <string name="setting_enable_acra">Hata Bildirimi</string>
+  <string name="setting_enable_acra">Çökme Bildirimi</string>
   <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
-  <string name="setting_acra_disabled">Çöküyor raporları gönderme</string>
-  <string name="setting_storage_folder">Resim Depolama Klasörü</string>
-  <string name="setting_storage_folder_summary">Etkinlik fotoğraflarını dizinde sakla %1$s</string>
-  <string name="setting_storage_folder_description">Etkinlik fotoğraflarını saklamak için dizin</string>
+  <string name="setting_acra_disabled">Çökmelerde raporları gönderme</string>
+  <string name="setting_storage_folder">Resim Saklama Klasörü</string>
+  <string name="setting_storage_folder_summary">Etkinlik fotoğraflarını %1$s dizininde sakla</string>
+  <string name="setting_storage_folder_description">Etkinlik fotoğraflarının saklanacağı dizin</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Üst veri</string>
-  <string name="setting_tag_yes">Mevcut etkinliği EXIF ​​etiketi içine yazın Yeni görüntülerin UserComment.</string>
-  <string name="setting_tag_no">Yeni resimlerin EXIF ​​etiketlerine dokunmayın.</string>
+  <string name="setting_tag_yes">O anki etkinliği yeni görsellerin EXIF ​​UserComment etiketine yaz.</string>
+  <string name="setting_tag_no">Yeni görsellerin EXIF ​​etiketlerine dokunma.</string>
   <!-- Conditions -->
   <string name="pref_cond_off">KAPALI</string>
   <string name="setting_cond_alpha">Alfabetik Sıralama</string>
@@ -56,8 +56,8 @@
   <string name="setting_expert">Uzman Ayarları</string>
   <string name="setting_export">Veritabanını Dışa Aktar</string>
   <string name="setting_import">Veritabanını İçe Al</string>
-  <string name="setting_export_summary">Geçerli veritabanının bir kopyasını yedekleme için bir dosyaya kaydedin.</string>
-  <string name="setting_import_summary">Bir yedek dosyayı geçerli veritabanına geri yükleyin.</string>
+  <string name="setting_export_summary">Geçerli veritabanının bir kopyasını yedekleme için bir dosyada sakla.</string>
+  <string name="setting_import_summary">Yedek bir dosyayı o anki veritabanına geri yükleyin.</string>
   <string name="db_export_error">%1$sveritabanını dışa aktarma işlemi başarısız oldu.</string>
   <string name="db_export_success">Veritabanı %1$s\'e verildi!</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
@@ -86,10 +86,10 @@
   <string name="dlg_ok">Tamam</string>
   <string name="dlg_cancel">İptal</string>
   <string name="dlg_delete_image_title">Silmeyi Onayla</string>
-  <string name="dlg_delete_image_text">Bu resim gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
+  <string name="dlg_delete_image_text">Bu görsel gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
   <!-- main view -->
   <string name="duration_description">Süre:</string>
-  <string name="camera_error">Burada bir şeyler ters gitti. Resim saklanamadı.</string>
+  <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
   <string name="no_active_activity_error">Bu eylemi gerçekleştirmek için önce bir etkinlik seçilmesi gerekiyor.</string>
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var.</string>
