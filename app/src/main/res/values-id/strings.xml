@@ -119,5 +119,5 @@
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Sebuah kesalahan yang tidak terduka terjadi memaksa aplikasi berhenti. Tolong bantu kami untuk memperbaikinya dengan mengirimkan data kesalahan kepada kami, yang harus anda lakukan adalah mengklik OK.</string>
   <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
-  <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
+  <string name="crash_dialog_ok_toast">Terima kasih. Silahkan mengirimkan email yang sudah disiapkan setelah meninjau isinya.</string>
 </resources>
