@@ -52,9 +52,9 @@
   <string name="setting_enable_acra">Crash Reporting</string>
   <string name="setting_acra_enabled">Send reports on crashes</string>
   <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
-  <string name="setting_storage_folder">Picture Storage Folder</string>
-  <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
-  <string name="setting_storage_folder_description">Directory to store the activity photos</string>
+  <string name="setting_storage_folder">Berkas Tempat penyimpanan Gambar</string>
+  <string name="setting_storage_folder_summary">Menyimpan aktivitas foto dalam daftar %1$s</string>
+  <string name="setting_storage_folder_description">Daftar untuk menyimpan aktivitas foto</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadata</string>
   <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images.</string>
