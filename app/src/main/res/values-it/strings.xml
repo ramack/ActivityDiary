@@ -17,9 +17,9 @@
          %4$s
         ]]>    </string>
   <string name="perm_write_external_storage_xplain">La memorizzazione delle foto richiede il permesso di farlo &#8230;</string>
-  <string name="unsupported_on_api_level">Questa funzionalità non è supportata la versione Android. Livello minimo di API %1$d Obbligatorio.</string>
+  <string name="unsupported_on_api_level">Questa funzionalità non è supportata nella tua versione Android. Livello minimo di API %1$d richiesto.</string>
   <!-- Navigation Drawer Menu -->
-  <string name="nav_main">Selezionare attività</string>
+  <string name="nav_main">Seleziona l\' attività</string>
   <string name="nav_diary">Diario</string>
   <string name="nav_add_activity">Aggiungi un\' attività</string>
   <string name="nav_activity_manager">Modifica attività</string>
