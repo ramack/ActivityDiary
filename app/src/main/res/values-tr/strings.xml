@@ -49,7 +49,7 @@
   <string name="setting_auto_select_new">Yeni Etkinlikleri Seç</string>
   <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan yeni etkin olan olarak seçilir.</string>
   <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez.</string>
-  <string name="setting_enable_acra">Çökme Bildirme</string>
+  <string name="setting_enable_acra">Çökme Raporu</string>
   <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
   <string name="setting_acra_disabled">Çökmelerde raporları gönderme</string>
   <string name="setting_storage_folder">Resim Saklama Klasörü</string>
