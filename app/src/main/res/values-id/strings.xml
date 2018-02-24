@@ -61,12 +61,12 @@
   <string name="setting_tag_no">Jangan sentuh tag EXIF ​​untuk gambar baru.</string>
   <!-- Conditions -->
   <string name="pref_cond_off">MATI</string>
-  <string name="setting_cond_alpha">Alphabetical Sort</string>
-  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities.</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities.</string>
-  <string name="setting_cond_predecessor">Activity Sequence</string>
-  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities.</string>
+  <string name="setting_cond_alpha">Menurut Abjad</string>
+  <string name="setting_cond_alpha_summary">Pengurutan abjad memiliki bobot %1$s pada kegiatan berikutnya yang telah disarankan.</string>
+  <string name="setting_cond_alpha_not_used_summary">Pengurutan abjad tidak digunakan untuk menyarankan kegiatan selanjutnya.</string>
+  <string name="setting_cond_predecessor">Rangkaian Kegiatan</string>
+  <string name="setting_cond_predecessor_summary">Rangkaian kegiatan dalam buku harian memiliki bobot %1$s pada aktivitas selanjutnya yang telah disarankan.</string>
+  <string name="setting_cond_predecessor_not_used_summary">Rangkaian kegiatan dalam buku harian tidak digunakan untuk menyarankan kegiatan selanjutnya.</string>
   <string name="setting_cond_occurrence">Activity Occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities.</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities.</string>
