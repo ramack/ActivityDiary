@@ -21,12 +21,12 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Selezionare attività</string>
   <string name="nav_diary">Diario</string>
-  <string name="nav_add_activity">Aggiungere attività</string>
+  <string name="nav_add_activity">Aggiungi un\' attività</string>
   <string name="nav_activity_manager">Modifica attività</string>
   <string name="nav_settings">Impostazioni</string>
   <string name="nav_about">Circa</string>
-  <string name="desc_activity_color">Colore di attività</string>
-  <string name="desc_activity_hint">Titolo attività</string>
+  <string name="desc_activity_color">Colore dell\' attività</string>
+  <string name="desc_activity_hint">Titolo dell\' attività</string>
   <string name="desc_activity_select">Scegliere attività corrente&#8230;</string>
   <!-- -->
   <string name="activity_image_description">Foto per attività</string>
