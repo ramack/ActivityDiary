@@ -35,20 +35,20 @@
   <!-- -->
   <string name="activity_image_description">Gambar untuk Kegiatan</string>
   <string name="contentDesc_logo">Logo of ActivityDiary</string>
-  <string name="drawer_open">Open Navigation</string>
-  <string name="drawer_close">Close Navigation</string>
+  <string name="drawer_open">Buka Navigasi</string>
+  <string name="drawer_close">Tutup Navigasi</string>
   <!-- settings -->
-  <string name="setting_view_category">View</string>
+  <string name="setting_view_category">Tampilan</string>
   <string name="setting_behavior_category">Behavior</string>
-  <string name="setting_images_category">Images</string>
+  <string name="setting_images_category">Gambar</string>
   <string name="setting_backup_category">Backup</string>
-  <string name="setting_condition_category">Conditions</string>
-  <string name="setting_datetime_format">Date Format</string>
+  <string name="setting_condition_category">Kondisi</string>
+  <string name="setting_datetime_format">Format Tanggal</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Display Format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Select New Activities</string>
+  <string name="setting_datetime_format_description">Menampilkan Format dari tanggal dan waktu untuk memulai sebuah kegiatan. Format biasa adalah yyyy-MM-dd HH:mm atau dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Pilih Kegiatan Baru</string>
   <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one.</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity.</string>
+  <string name="setting_auto_select_new_summary_inactive">Pembuat kegiatan baru tidak akan mempengaruhi kegiatan yang sedang aktif.</string>
   <string name="setting_enable_acra">Crash Reporting</string>
   <string name="setting_acra_enabled">Send reports on crashes</string>
   <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
