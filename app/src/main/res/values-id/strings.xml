@@ -109,7 +109,7 @@
   <string name="camera_error">Something went wrong here. Could not store image.</string>
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first.</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists.</string>
+  <string name="error_name_already_used">Kegiatan dengan nama %1$s sudah ada.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
   <!-- relative dates -->
