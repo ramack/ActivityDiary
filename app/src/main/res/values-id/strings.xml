@@ -106,7 +106,7 @@
   <string name="dlg_delete_image_text">Benar-benar menghapus gambar ini dari catatan kegiatan pada saat ini?</string>
   <!-- main view -->
   <string name="duration_description">Durasi:</string>
-  <string name="camera_error">Something went wrong here. Could not store image.</string>
+  <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first.</string>
   <!-- edit view -->
   <string name="error_name_already_used">Kegiatan dengan nama %1$s sudah ada.</string>
