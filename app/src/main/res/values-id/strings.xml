@@ -103,7 +103,7 @@
   <string name="dlg_ok">Oke</string>
   <string name="dlg_cancel">Membatalkan</string>
   <string name="dlg_delete_image_title">Mengkomfirmasikan Penghapusan</string>
-  <string name="dlg_delete_image_text">Benar-benar menghapus gambar ini dari catatan kegiatan pada saat ini?</string>
+  <string name="dlg_delete_image_text">Benar-benar menghapus gambar ini dari catatan aktivitas pada saat ini?</string>
   <!-- main view -->
   <string name="duration_description">Durasi:</string>
   <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
