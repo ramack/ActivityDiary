@@ -67,7 +67,7 @@
   <string name="setting_cond_predecessor">Rangkaian Kegiatan</string>
   <string name="setting_cond_predecessor_summary">Rangkaian kegiatan dalam buku harian memiliki bobot %1$s pada aktivitas selanjutnya yang telah disarankan.</string>
   <string name="setting_cond_predecessor_not_used_summary">Rangkaian kegiatan dalam buku harian tidak digunakan untuk menyarankan kegiatan selanjutnya.</string>
-  <string name="setting_cond_occurrence">Activity Occurrence</string>
+  <string name="setting_cond_occurrence">Terjadinya Aktivitas</string>
   <string name="setting_cond_occurrence_summary">Frekuensi kegiatan memiliki bobot %1$s pada kegiatan selanjutnya yang telah disarankan.</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekuensi kegiatan dalam buku harian tidak digunakan untuk menyarankan kegiatan berikutnya.</string>
   <string name="setting_expert">Pengaturan Utama</string>
