@@ -68,8 +68,8 @@
   <string name="setting_cond_predecessor_summary">Rangkaian kegiatan dalam buku harian memiliki bobot %1$s pada aktivitas selanjutnya yang telah disarankan.</string>
   <string name="setting_cond_predecessor_not_used_summary">Rangkaian kegiatan dalam buku harian tidak digunakan untuk menyarankan kegiatan selanjutnya.</string>
   <string name="setting_cond_occurrence">Activity Occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities.</string>
+  <string name="setting_cond_occurrence_summary">Frekuensi kegiatan memiliki bobot %1$s pada kegiatan selanjutnya yang telah disarankan.</string>
+  <string name="setting_cond_occurrence_not_used_summary">Frekuensi kegiatan dalam buku harian tidak digunakan untuk menyarankan kegiatan berikutnya.</string>
   <string name="setting_expert">Pengaturan Utama</string>
   <string name="setting_export">Ekspor Database</string>
   <string name="setting_import">Impor Database</string>
