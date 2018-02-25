@@ -70,16 +70,16 @@
   <string name="setting_cond_occurrence">Activity Occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities.</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities.</string>
-  <string name="setting_expert">Expert Settings</string>
-  <string name="setting_export">Export Database</string>
-  <string name="setting_import">Import Database</string>
+  <string name="setting_expert">Pengaturan Utama</string>
+  <string name="setting_export">Ekspor Database</string>
+  <string name="setting_import">Impor Database</string>
   <string name="setting_export_summary">Simpan salinan database pada saat ini dalam berkas untuk dicadangkan.</string>
   <string name="setting_import_summary">Memulihkan berkas cadangan ke database saat ini.</string>
   <string name="db_export_error">Mengekspor database gagal %1$s.</string>
-  <string name="db_export_success">Exported database to %1$s.</string>
-  <string name="db_export_name_suggestion">ActivityDiary_Export</string>
-  <string name="db_export_selection">Select file for export</string>
-  <string name="db_import_error">Failed to import %1$s.</string>
+  <string name="db_export_success">Ekspor database ke %1$s.</string>
+  <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
+  <string name="db_export_selection">Memilih berkas untuk di ekspor</string>
+  <string name="db_import_error">Gagal untuk mengimpor %1$s.</string>
   <string name="db_import_success">%1$s successfully imported.</string>
   <string name="db_import_selection">Select file for import</string>
   <!-- titles -->
