@@ -80,8 +80,8 @@
   <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
   <string name="db_export_selection">Memilih berkas untuk di ekspor</string>
   <string name="db_import_error">Gagal untuk mengimpor %1$s.</string>
-  <string name="db_import_success">%1$s successfully imported.</string>
-  <string name="db_import_selection">Select file for import</string>
+  <string name="db_import_success">%1$s berhasil diimpor.</string>
+  <string name="db_import_selection">Memilih berkas untuk diimpor</string>
   <!-- titles -->
   <string name="activity_title_edit">Sunting</string>
   <string name="activity_title_edit_new">Kegiatan Baru</string>
@@ -95,17 +95,17 @@
   <!-- actions -->
   <string name="action_delete">Hapus Kegiatan</string>
   <string name="action_store">Simpan</string>
-  <string name="action_filter">Filter</string>
-  <string name="action_undo">UNDO</string>
-  <string name="search_hint">Search Activity&#8230;</string>
+  <string name="action_filter">Saring</string>
+  <string name="action_undo">URUNGKAN</string>
+  <string name="search_hint">Cari kegiatan&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
-  <string name="dlg_ok">OK</string>
-  <string name="dlg_cancel">Cancel</string>
-  <string name="dlg_delete_image_title">Confirm Deletion</string>
-  <string name="dlg_delete_image_text">Really remove this image from the current activity entry?</string>
+  <string name="dlg_ok">Oke</string>
+  <string name="dlg_cancel">Membatalkan</string>
+  <string name="dlg_delete_image_title">Mengkomfirmasikan Penghapusan</string>
+  <string name="dlg_delete_image_text">Benar-benar menghapus gambar ini dari catatan kegiatan pada saat ini?</string>
   <!-- main view -->
-  <string name="duration_description">Duration:</string>
+  <string name="duration_description">Durasi:</string>
   <string name="camera_error">Something went wrong here. Could not store image.</string>
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first.</string>
   <!-- edit view -->
