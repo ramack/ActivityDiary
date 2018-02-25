@@ -49,9 +49,9 @@
   <string name="setting_auto_select_new">Pilih Kegiatan Baru</string>
   <string name="setting_auto_select_new_summary_active">Kegiatan yang baru dibuat secara langsung dipilih sebagai kegiatan yang baru aktif.</string>
   <string name="setting_auto_select_new_summary_inactive">Pembuat kegiatan baru tidak akan mempengaruhi kegiatan yang sedang aktif.</string>
-  <string name="setting_enable_acra">Crash Reporting</string>
-  <string name="setting_acra_enabled">Send reports on crashes</string>
-  <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
+  <string name="setting_enable_acra">Laporan Kerusakan</string>
+  <string name="setting_acra_enabled">Mengirim laporan tentang kerusakan</string>
+  <string name="setting_acra_disabled">Jangan mengirim laporan tentang kerusakan</string>
   <string name="setting_storage_folder">Berkas Tempat penyimpanan Gambar</string>
   <string name="setting_storage_folder_summary">Menyimpan aktivitas foto dalam daftar %1$s</string>
   <string name="setting_storage_folder_description">Daftar untuk menyimpan aktivitas foto</string>
@@ -107,7 +107,7 @@
   <!-- main view -->
   <string name="duration_description">Durasi:</string>
   <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first.</string>
+  <string name="no_active_activity_error">Untuk menjalankan tindakan ini perlu terlebih dahulu untuk memilih sebuah aktivitas.</string>
   <!-- edit view -->
   <string name="error_name_already_used">Kegiatan dengan nama %1$s sudah ada.</string>
   <!-- history -->
