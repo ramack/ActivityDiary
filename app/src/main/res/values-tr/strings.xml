@@ -35,8 +35,8 @@
   <!-- -->
   <string name="activity_image_description">Etkinlik için Resim</string>
   <string name="contentDesc_logo">ActivityDiary Logosu</string>
-  <string name="drawer_open">Navigasyonu Aç</string>
-  <string name="drawer_close">Navigasyonu Kapat</string>
+  <string name="drawer_open">Çekmeceyi Aç</string>
+  <string name="drawer_close">Çekmeceyi Kapat</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
   <string name="setting_behavior_category">Davranış</string>
