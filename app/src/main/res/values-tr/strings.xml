@@ -111,7 +111,7 @@
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var.</string>
   <!-- history -->
-  <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
+  <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
   <string name="today">Bugün</string>
   <string name="yesterday">Dün</string>
