@@ -7,7 +7,7 @@
         <br />sürüm <b>%2$s</b></p>
         <p>Her çeşit etkinlik için bir günlük - görevlerinizi hızlıca düzenleyin ve olması beklenen bir şey tekrar ederse bildirim alın.</p>
         <h1>Lisans</h1>
-        <p>%1$s ücretsiz bir yazılımdır: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Genel Kamu Lisansı</a> uyarınca, Lisansın sürüm 3'ünü veya (isteğe bağlı olarak) sonraki herhangi bir sürümünü Free Software Foundation tarafından yayınlanan şartlara göre yeniden dağıtabilir ve / veya değiştirebilirsiniz.</p>
+        <p>%1$s ücretsiz bir yazılımdır: <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Genel Kamu Lisansı</a> uyarınca, Lisansın sürüm 3'ünü veya (isteğe bağlı olarak) sonraki herhangi bir sürümünü Özgür Yazılım Vakfı tarafından yayınlanan şartlara göre yeniden dağıtabilir ve / veya değiştirebilirsiniz.</p>
         <p>Bu program, yararlı olacağı umuduyla dağıtılır ancak HERHANGİ BİR GARANTİ olmadan; hatta BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA zımni garanti olmaksızın. Daha çok ayrıntı için GNU Genel Kamu Lisansı'na bakın.</p>
         <h1>İletişim</h1>
         <p>Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a> kullanın.</p>
