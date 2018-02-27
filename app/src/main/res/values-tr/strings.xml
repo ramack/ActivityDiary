@@ -34,7 +34,7 @@
   <string name="desc_activity_select">Şu anki etkinliği seç&#8230;</string>
   <!-- -->
   <string name="activity_image_description">Etkinlik için Resim</string>
-  <string name="contentDesc_logo">ActivityDiary Logosu</string>
+  <string name="contentDesc_logo">Etkinlik Günlüğü Logosu</string>
   <string name="drawer_open">Çekmeceyi Aç</string>
   <string name="drawer_close">Çekmeceyi Kapat</string>
   <!-- settings -->
@@ -98,7 +98,7 @@
   <string name="action_filter">Süz</string>
   <string name="action_undo">GERİ AL</string>
   <string name="search_hint">Etkinlik Ara&#8230;</string>
-  <string name="search_description">Diaryactivities</string>
+  <string name="search_description">Günlük etkinlikleri</string>
   <!-- dialog -->
   <string name="dlg_ok">Tamam</string>
   <string name="dlg_cancel">İptal</string>
