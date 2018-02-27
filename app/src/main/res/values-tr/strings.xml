@@ -117,7 +117,7 @@
   <string name="yesterday">Dün</string>
   <string name="lastWeek">Geçen Hafta</string>
   <!-- ACRA crash reporting -->
-  <string name="crash_dialog_text">Uygulamanın durmasını zorunlu kılan beklenmedik bir hata oluştu. Lütfen bunu düzeltmemize bize hata verisini göndererek yardımcı olun, tek yapmanız gereken Tamam\'a tıklamak.</string>
-  <string name="crash_dialog_comment_prompt">Soruyla ilgili yorumlarınızı aşağıya ekleyebilirsiniz:</string>
+  <string name="crash_dialog_text">Uygulamanın durmasını zorunlu kılan beklenmedik bir hata oluştu. Lütfen, bize hata verisini göndererek bunu düzeltmemize yardımcı olun, tek yapmanız gereken Tamam\'a tıklamak.</string>
+  <string name="crash_dialog_comment_prompt">Sorunla ilgili yorumlarınızı aşağıya ekleyebilirsiniz:</string>
   <string name="crash_dialog_ok_toast">Teşekkürler. Lütfen hazırlanan e-postayı içeriğini inceledikten sonra gönderin.</string>
 </resources>
