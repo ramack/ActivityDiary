@@ -78,16 +78,16 @@
   <string name="db_export_error">Veritabanı %1$s dosyasına aktarılamadı.</string>
   <string name="db_export_success">Veritabanı %1$s dosyasına aktarıldı.</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
-  <string name="db_export_selection">Dışa aktarmak için dosya seçin</string>
-  <string name="db_import_error">%1$s dosyasından alınamadı.</string>
-  <string name="db_import_success">%1$s başarıyla içe alındı.</string>
+  <string name="db_export_selection">Dışa aktarma için dosya seçin</string>
+  <string name="db_import_error">Veritabanı %1$s dosyasından alınamadı.</string>
+  <string name="db_import_success">Veritabanı %1$s dosyasından alındı.</string>
   <string name="db_import_selection">İçe aktarılacak dosyayı seçin</string>
   <!-- titles -->
   <string name="activity_title_edit">Düzenle</string>
   <string name="activity_title_edit_new">Yeni Etkinlik</string>
   <string name="activity_title_manage_activities">Etkinlikleri Yönet</string>
   <string name="activity_title_history">Günlük</string>
-  <string name="activity_subtitle_main">Ne yapıyorsunuz?</string>
+  <string name="activity_subtitle_main">Ne yapıyorsun?</string>
   <string name="activity_title_about">Hakkında</string>
   <string name="activity_title_settings">Ayarlar</string>
   <string name="activity_title_no_selected_act">&lt;Etkinlik Yok&gt;</string>
