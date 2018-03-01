@@ -22,6 +22,7 @@
     <string name="contributors" translatable="false"><![CDATA[
         <p>Raphael Mack (<a href="https://www.raphael-mack.de">www.raphael-mack.de</a>)</p>
         <p>Simone Pessotto (<a href="https://github.com/Pes8/android-material-color-picker-dialog">library android-material-color-picker-dialog</a>)</p>
+        <p><a href="https://web.facebook.com/profile.php?id=100011025332183">Murtala Umar</a> (Indonesian translation)</p>
         ]]>
     </string>
     <string name="libraries" translatable="false"><![CDATA[
