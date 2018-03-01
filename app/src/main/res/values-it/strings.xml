@@ -54,12 +54,12 @@
   <string name="default_storage_folder">Diario delle attività</string>
   <string name="setting_tag_images">Metadati</string>
   <string name="setting_tag_yes">Scrivi l\'attività corrente nel tag EXIF UserComment di nuove immagini.</string>
-  <string name="setting_tag_no">Non toccare i tag EXIF di nuove immagini.</string>
+  <string name="setting_tag_no">Non toccare i tag EXIF delle nuove immagini.</string>
   <!-- Conditions -->
   <string name="pref_cond_off">Spento</string>
   <string name="setting_cond_alpha">Ordinamento alfabetico</string>
   <string name="setting_cond_alpha_summary">L\'ordinamento alfabetico ha un peso di %1$s sulle attività successive suggerite.</string>
-  <string name="setting_cond_alpha_not_used_summary">Ordinamento alfabetico non utilizzato per suggerire attività successive.</string>
+  <string name="setting_cond_alpha_not_used_summary">Ordinamento alfabetico non utilizzato per suggerire le attività successive.</string>
   <string name="setting_cond_predecessor">Sequenza di attività</string>
   <string name="setting_cond_predecessor_summary">La sequenza di attività nel diario ha un peso di %1$s nelle attività successive suggerite.</string>
   <string name="setting_cond_predecessor_not_used_summary">Sequenza di attività nel diario non utilizzata per suggerire attività successive.</string>
