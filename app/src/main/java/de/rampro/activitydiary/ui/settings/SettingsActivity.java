@@ -214,7 +214,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 /* import database */
                 if (Build.VERSION.SDK_INT >= 19) {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("application/x-sqlite3");
+                    intent.setType("application/*");
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
                     startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.db_import_selection)), ACTIVITIY_RESULT_IMPORT);
                 }else{
