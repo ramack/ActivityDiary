@@ -8,9 +8,9 @@
          <p>Un diario per qualsiasi tipo di attività - organizzare le attività in modo agile e ottenere ricordato se qualcosa dovrebbe ripresentarsi.</p>
          <h1>Licenza</h1>
          <p>%1$s è software libero: è possibile ridistribuirlo o modificarlo secondo i termini della <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"> GNU General Public License</a> come pubblicata dalla Free Software Foundation, sia la versione 3 del Licenza, o (a tua scelta) qualsiasi versione successiva.</p>
-         <p>Questo programma è distribuito nella speranza che sarà utile, but WITHOUT ANY WARRANTY; senza neppure la garanzia implicita di commerciabilità o idoneità per uno scopo particolare. Vedi la GNU General Public License per maggiori dettagli.</p>
+         <p>Questo programma è distribuito nella speranza che sarà utile, ma SENZA ALCUNA GARANZIA, senza neppure la garanzia implicita di commerciabilità o idoneità per uno scopo particolare. Vedi la GNU General Public License per maggiori dettagli.</p>
          <h1>Contatto</h1>
-         <p>Per bug e suggerimenti utilizzano il <a href="https://github.com/ramack/ActivityDiary/issues"> tacker problema</a>.</p>
+         <p>Per bug e suggerimenti utilizzano il <a href="https://github.com/ramack/ActivityDiary/issues"> tracker problema</a>.</p>
          <p>Codice sorgente può essere trovato su <a href="https://github.com/ramack/ActivityDiary"> Github</a>.</p>
          <h1>Contributori</h1> %3$s        <p>Siamo lieti di menzionare il tuo nome in questa lista, troppo.</p>
          <h1>Biblioteche</h1>         Le seguenti librerie sono utilizzate da questa applicazione e rilasciate sotto le licenze denominate.
@@ -54,12 +54,12 @@
   <string name="default_storage_folder">Diario delle attività</string>
   <string name="setting_tag_images">Metadati</string>
   <string name="setting_tag_yes">Scrivi l\'attività corrente nel tag EXIF UserComment di nuove immagini.</string>
-  <string name="setting_tag_no">Non toccare i tag EXIF di nuove immagini.</string>
+  <string name="setting_tag_no">Non toccare i tag EXIF delle nuove immagini.</string>
   <!-- Conditions -->
   <string name="pref_cond_off">Spento</string>
   <string name="setting_cond_alpha">Ordinamento alfabetico</string>
   <string name="setting_cond_alpha_summary">L\'ordinamento alfabetico ha un peso di %1$s sulle attività successive suggerite.</string>
-  <string name="setting_cond_alpha_not_used_summary">Ordinamento alfabetico non utilizzato per suggerire attività successive.</string>
+  <string name="setting_cond_alpha_not_used_summary">Ordinamento alfabetico non utilizzato per suggerire le attività successive.</string>
   <string name="setting_cond_predecessor">Sequenza di attività</string>
   <string name="setting_cond_predecessor_summary">La sequenza di attività nel diario ha un peso di %1$s nelle attività successive suggerite.</string>
   <string name="setting_cond_predecessor_not_used_summary">Sequenza di attività nel diario non utilizzata per suggerire attività successive.</string>
