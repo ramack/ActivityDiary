@@ -58,6 +58,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_COND_ALPHA = "pref_cond_alpha";
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
     public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
+    public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -69,6 +70,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference condAlphaPref;
     private Preference condPredecessorPref;
     private Preference condOccurrencePref;
+    private Preference nofifShowCurActPref;
     private Preference exportPref;
     private Preference importPref;
 
@@ -93,6 +95,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateCondPredecessorSummary();
         }else if(key.equals(KEY_PREF_COND_OCCURRENCE)) {
             updateCondOccurenceSummary();
+        }else if(key.equals(KEY_PREF_NOTIF_SHOW_CUR_ACT)) {
+            updateNotifShowCurSummary();
         }
     }
 
@@ -164,6 +168,16 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         }
     }
 
+    private void updateNotifShowCurSummary() {
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean(KEY_PREF_NOTIF_SHOW_CUR_ACT, true)){
+            nofifShowCurActPref.setSummary(getResources().getString(R.string.setting_show_cur_activitiy_notification_summary_active));
+        }else{
+            nofifShowCurActPref.setSummary(getResources().getString(R.string.setting_show_cur_activitiy_notification_summary_inactive));
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +203,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
+        nofifShowCurActPref = mPreferenceManager.findPreference(KEY_PREF_NOTIF_SHOW_CUR_ACT);
 
         exportPref =  mPreferenceManager.findPreference(KEY_PREF_DB_EXPORT);
         exportPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -235,6 +250,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondAlphaSummary();
         updateCondPredecessorSummary();
         updateCondOccurenceSummary();
+        updateNotifShowCurSummary();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

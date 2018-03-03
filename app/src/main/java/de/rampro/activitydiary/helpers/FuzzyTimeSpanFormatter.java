@@ -20,25 +20,34 @@
 package de.rampro.activitydiary.helpers;
 
 
+import android.content.res.Resources;
+
 import java.util.Date;
+
+import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.R;
 
 public class FuzzyTimeSpanFormatter {
 
     public static String format(Date start, Date end) {
+        Resources res = ActivityDiaryApplication.getAppContext().getResources();
         if(end == null){
             end = new Date();
         }
         long delta = (end.getTime() - start.getTime() + 500) / 1000;
-/* TODO: allow localization for these strings */
-        if (delta <= 90) {
-            return delta == 1 ? "1 sec" : delta + " sec";
+
+        if (delta <= 3){
+            return res.getString(R.string.just_now);
+        }else if (delta <= 35){
+            return res.getString(R.string.few_seconds);
+        }else if (delta <= 90) {
+            return (((delta + 8) / 15) * 15) + " " + res.getString(R.string.seconds_short);
+        }else if (delta <= 90 * 60) {
+            return (delta + 30) / 60 + " " + res.getString(R.string.minutes_short);
+        }else if (delta <= 90 * 60 * 60) {
+            return (delta + 30 * 60) / 3600 + " " + res.getString(R.string.hours_short);
+        }else {
+            return (delta + 12 * 60 * 60) / 3600 / 24 + " " + res.getString(R.string.days);
         }
-        if (delta <= 90 * 60) {
-            return (delta + 30) / 60 + " min";
-        }
-        if (delta <= 90 * 60 * 60) {
-            return (delta + 30 * 60) / 3600 + " h";
-        }
-        return (delta + 12 * 60 * 60) / 3600 / 24 + " days";
     }
 }

@@ -213,9 +213,9 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         }
         holder.mNoteLabel.setText(noteStr);
 
-        String duration = mContext.getResources().getString(R.string.duration_description);
-        duration += " ";
-        duration += FuzzyTimeSpanFormatter.format(start, end);
+        String duration = mContext.getResources().
+                getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(start, end));
+
         holder.mDurationLabel.setText(duration);
 
         /* TODO #33: set activity picture (icon + main pciture if available) */

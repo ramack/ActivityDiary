@@ -105,7 +105,7 @@
   <string name="dlg_delete_image_title">Löschen bestätigen</string>
   <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
   <!-- main view -->
-  <string name="duration_description">Dauer:</string>
+  <string name="duration_description">Seit %1$s</string>
   <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden.</string>
   <!-- edit view -->

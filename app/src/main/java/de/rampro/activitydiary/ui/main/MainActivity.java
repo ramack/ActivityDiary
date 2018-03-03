@@ -30,6 +30,7 @@ import android.database.Cursor;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -383,12 +384,15 @@ public class MainActivity extends BaseActivity implements
         ActivityHelper.helper.evaluateAllConditions(); // this is quite heavy and I am not so sure whether it is a good idea to do it unconditionally here...
         ActivityHelper.helper.registerDataChangeListener(this);
         super.onResume();
-        onActivityChanged(); // refresh mainly the duration_label
+        updateDurationTextView();
+        updateDurationHandler.postDelayed(updateDurationRunnable, 10 * 1000);
+
         selectAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
     }
 
     @Override
     public void onPause() {
+        updateDurationHandler.removeCallbacks(updateDurationRunnable);
         ActivityHelper.helper.unregisterDataChangeListener(this);
 
         super.onPause();
@@ -475,6 +479,14 @@ public class MainActivity extends BaseActivity implements
         builder.create().show();
         return true;
     }
+    private Handler updateDurationHandler = new Handler();
+    private Runnable updateDurationRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateDurationTextView();
+            updateDurationHandler.postDelayed(this, 10 * 1000);
+        }
+    };
 
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
@@ -490,11 +502,7 @@ public class MainActivity extends BaseActivity implements
             findViewById(R.id.activity_background).setBackgroundColor(mCurrentActivity.getColor());
             aName.setTextColor(GraphicsHelper.textColorOnBackground(mCurrentActivity.getColor()));
 
-            String duration = getResources().getString(R.string.duration_description);
-            duration += " ";
-            duration += FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date());
-            durationLabel.setText(duration);
-            mNoteTextView.setText(ActivityHelper.helper.getCurrentNote());
+            updateDurationTextView();
             /* TODO: move note and starttime from ActivityHelper to here
              * register a listener to get updates directly from the ContentProvider */
 
@@ -505,6 +513,12 @@ public class MainActivity extends BaseActivity implements
         }
         getSupportLoaderManager().restartLoader(0, null, this);
         selectorLayoutManager.scrollToPosition(0);
+    }
+
+    private void updateDurationTextView() {
+        String duration = getResources().getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
+        durationLabel.setText(duration);
+        mNoteTextView.setText(ActivityHelper.helper.getCurrentNote());
     }
 
     /**
@@ -587,6 +601,11 @@ public class MainActivity extends BaseActivity implements
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             filterActivityView(query);
+        }
+
+        if (intent.hasExtra("SELECT_ACTIVITY_WITH_ID")) {
+            int id = intent.getIntExtra("SELECT_ACTIVITY_WITH_ID", -1);
+            ActivityHelper.helper.setCurrentActivity(ActivityHelper.helper.activityWithId(id));
         }
     }
 

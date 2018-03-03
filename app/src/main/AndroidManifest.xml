@@ -68,6 +68,8 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
 
+        <service
+            android:name=".helpers.RefreshService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
-
 </manifest>
