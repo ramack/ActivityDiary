@@ -1,3 +1,4 @@
-- Aggiunte un sacco di traduzioni nuove. Le nuove tradzioni sono basati su traduttori automatici, i commenti, e le recensioni delle traduzioni sono i benvenuti!
-- Mostra la barra degli snack dopo aver selezionato una nuova attività, con l'opzione di annullare
-- Diverse correzioni di bug
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-
