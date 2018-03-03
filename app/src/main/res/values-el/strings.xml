@@ -20,18 +20,24 @@
   <string name="contentDesc_logo">Λογότυπο του ActivityDiary</string>
   <string name="drawer_open">Ανοίξτε την Πλοήγηση</string>
   <string name="drawer_close">Κλείστε την Πλοήγηση</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Θέα</string>
   <string name="setting_behavior_category">η ΣΥΜΠΕΡΙΦΟΡΑ</string>
   <string name="setting_images_category">Εικόνες</string>
   <string name="setting_backup_category">Αντιγράφων ασφαλείας</string>
   <string name="setting_condition_category">Συνθήκες</string>
-  <string name="setting_datetime_format">Μορφή ημερομηνίας</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Εμφάνιση μορφής ημερομηνίας και ώρας για την έναρξη μιας δραστηριότητας. Οι συνήθεις μορφότυποι είναι yyyy-MM-dd HH: mm ή dd.MM. hh: mm</string>
-  <string name="setting_auto_select_new">Επιλέξτε Νέες δραστηριότητες</string>
-  <string name="setting_auto_select_new_summary_active">Μια πρόσφατα δημιουργηθείσα δραστηριότητα επιλέγεται άμεσα ως νέα ενεργή.</string>
-  <string name="setting_auto_select_new_summary_inactive">Η δημιουργία νέων δραστηριοτήτων δεν επηρεάζει την τρέχουσα ενεργή δραστηριότητα.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Αναφορά σφαλμάτων</string>
   <string name="setting_acra_enabled">Αποστολή αναφορών σε συντριβές</string>
   <string name="setting_acra_disabled">Μην στέλνετε αναφορές σε συντριβές</string>
@@ -40,30 +46,30 @@
   <string name="setting_storage_folder_description">Κατάλογος για την αποθήκευση των φωτογραφιών δραστηριότητας</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Μεταδεδομένα</string>
-  <string name="setting_tag_yes">Γράψτε την τρέχουσα δραστηριότητα στην ετικέτα EXIF ​​UserComment των νέων εικόνων.</string>
-  <string name="setting_tag_no">Μην αγγίζετε ετικέτες EXIF ​​για νέες εικόνες.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">ΜΑΚΡΙΑ ΑΠΟ</string>
   <string name="setting_cond_alpha">Αλφαβητική Ταξινόμηση</string>
-  <string name="setting_cond_alpha_summary">Η αλφαβητική ταξινόμηση έχει βάρος %1$s σε προτεινόμενες επόμενες δραστηριότητες.</string>
-  <string name="setting_cond_alpha_not_used_summary">Η αλφαβητική ταξινόμηση δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες.</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
   <string name="setting_cond_predecessor">Ακολουθία δραστηριότητας</string>
-  <string name="setting_cond_predecessor_summary">Η αλληλουχία δραστηριότητας στο ημερολόγιο έχει βάρος %1$s σε προτεινόμενες επόμενες δραστηριότητες.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Ακολουθία δραστηριότητας στο ημερολόγιο που δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες.</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Εκδήλωση δραστηριότητας</string>
-  <string name="setting_cond_occurrence_summary">Η συχνότητα δραστηριότητας στο ημερολόγιο έχει βάρος %1$s σε προτεινόμενες επόμενες δραστηριότητες.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Η συχνότητα της δραστηριότητας στο ημερολόγιο δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες.</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">Ρυθμίσεις εμπειρογνωμόνων</string>
   <string name="setting_export">Εξαγωγή βάσης δεδομένων</string>
   <string name="setting_import">Εισαγωγή βάσης δεδομένων</string>
-  <string name="setting_export_summary">Αποθηκεύστε ένα αντίγραφο της τρέχουσας βάσης δεδομένων σε ένα αρχείο για δημιουργία αντιγράφων ασφαλείας.</string>
-  <string name="setting_import_summary">Επαναφέρετε ένα αρχείο αντιγράφου ασφαλείας στην τρέχουσα βάση δεδομένων.</string>
-  <string name="db_export_error">Αποτυχία εξαγωγής βάσης δεδομένων σε %1$s.</string>
-  <string name="db_export_success">Εξάγεται βάση δεδομένων με %1$s.</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Επιλέξτε αρχείο για εξαγωγή</string>
-  <string name="db_import_error">Αποτυχία εισαγωγής %1$s.</string>
-  <string name="db_import_success">%1$s εισήχθη με επιτυχία.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">Επιλέξτε αρχείο για εισαγωγή</string>
   <!-- titles -->
   <string name="activity_title_edit">Επεξεργασία</string>
@@ -88,11 +94,17 @@
   <string name="dlg_delete_image_title">Επιβεβαίωση διαγραφής</string>
   <string name="dlg_delete_image_text">Αφαιρέστε πραγματικά αυτήν την εικόνα από την τρέχουσα καταχώριση δραστηριότητας;</string>
   <!-- main view -->
-  <string name="duration_description">Διάρκεια:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">Κάτι πήγε στραβά εδώ. Δεν ήταν δυνατή η αποθήκευση εικόνας.</string>
-  <string name="no_active_activity_error">Για να εκτελέσετε αυτήν την ενέργεια, πρέπει πρώτα να επιλέξετε μια δραστηριότητα.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Δραστηριότητα με όνομα %1$s υπάρχει ήδη.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <!-- relative dates -->
