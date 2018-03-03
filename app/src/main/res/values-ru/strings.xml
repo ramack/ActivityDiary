@@ -12,16 +12,16 @@
   <string name="nav_activity_manager">Изменить действия</string>
   <string name="nav_settings">настройки</string>
   <string name="nav_about">Около</string>
-  <string name="desc_activity_color">Цвет активности</string>
-  <string name="desc_activity_hint">Название мероприятия</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Выберите текущую активность&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Изображение для деятельности</string>
-  <string name="contentDesc_logo">Логотип</string>
-  <string name="drawer_open">Открыть навигацию</string>
-  <string name="drawer_close">Закрыть навигацию</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_name">Current activity</string>
   <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Посмотреть</string>
@@ -50,18 +50,18 @@
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">OFF</string>
-  <string name="setting_cond_alpha">Алфавитный порядок</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Последовательность действий</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Мероприятие</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Параметры эксперта</string>
-  <string name="setting_export">Экспортная база данных</string>
-  <string name="setting_import">Импорт базы данных</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
@@ -73,8 +73,8 @@
   <string name="db_import_selection">Выбрать файл для импорта</string>
   <!-- titles -->
   <string name="activity_title_edit">редактировать</string>
-  <string name="activity_title_edit_new">Новая активность</string>
-  <string name="activity_title_manage_activities">Управление мероприятиями</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Дневник</string>
   <string name="activity_subtitle_main">Что делаешь?</string>
   <string name="activity_title_about">Около</string>
@@ -82,16 +82,16 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Заметка</string>
   <!-- actions -->
-  <string name="action_delete">Удалить действие</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">Сохранить</string>
   <string name="action_filter">Фильтр</string>
   <string name="action_undo">ОТМЕНИТЬ</string>
-  <string name="search_hint">Поиск Активность&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">ОК</string>
   <string name="dlg_cancel">Отмена</string>
-  <string name="dlg_delete_image_title">Подтвердить удаление</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Действительно удалить это изображение из текущей записи активности?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -110,7 +110,7 @@
   <!-- relative dates -->
   <string name="today">Cегодня</string>
   <string name="yesterday">Вчера</string>
-  <string name="lastWeek">На прошлой неделе</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Произошла непредвиденная ошибка, вынуждающая приложение остановиться. Пожалуйста, помогите нам исправить это, отправив нам данные об ошибках, все, что вам нужно сделать, это нажать «ОК».</string>
   <string name="crash_dialog_comment_prompt">Вы можете добавить свои комментарии к проблеме ниже:</string>
