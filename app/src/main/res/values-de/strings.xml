@@ -29,17 +29,17 @@
   <string name="nav_activity_manager">Aktivitäten bearbeiten</string>
   <string name="nav_settings">Einstellungen</string>
   <string name="nav_about">Über</string>
-  <string name="desc_activity_color">Activity color</string>
-  <string name="desc_activity_hint">Activity title</string>
+  <string name="desc_activity_color">Aktivitätsfarbe</string>
+  <string name="desc_activity_hint">Aktivitätstitel</string>
   <string name="desc_activity_select">Wähle aktuelle Aktivität&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
-  <string name="drawer_open">Open navigation</string>
-  <string name="drawer_close">Close navigation</string>
+  <string name="activity_image_description">Aktivitätsbild</string>
+  <string name="contentDesc_logo">ActivityDiary Logo</string>
+  <string name="drawer_open">Navigation öffnen</string>
+  <string name="drawer_close">Navigation schließen</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current activity</string>
-  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
+  <string name="notif_channel_current_activity_name">Aktuelle Aktivität</string>
+  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
   <!-- settings -->
   <string name="setting_view_category">Anzeige</string>
   <string name="setting_behavior_category">Verhalten</string>
@@ -53,8 +53,8 @@
   <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt</string>
   <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität</string>
   <string name="setting_show_cur_activitiy_notification">Benachrichtigung für die aktuelle Aktivität</string>
-  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
-  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Die aktuelle Aktivität wird als Benachrichtigung angezeigt</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">Es wird keine Benachrichtigung für die aktuelle Aktivität angezeigt</string>
   <string name="setting_enable_acra">Fehlerberichte</string>
   <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
   <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
@@ -67,18 +67,18 @@
   <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern</string>
   <!-- Conditions -->
   <string name="pref_cond_off">AUS</string>
-  <string name="setting_cond_alpha">Alphabetical sort</string>
+  <string name="setting_cond_alpha">Alphabetische Sortierung</string>
   <string name="setting_cond_alpha_summary">Alphabetische Sortierung wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetische Sortierung wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
-  <string name="setting_cond_predecessor">Activity sequence</string>
+  <string name="setting_cond_predecessor">Aktivitätshistorie</string>
   <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
-  <string name="setting_cond_occurrence">Activity occurrence</string>
+  <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
   <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
-  <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
+  <string name="setting_expert">Experteneinstellungen</string>
+  <string name="setting_export">Datenbank Exportieren</string>
+  <string name="setting_import">Datenbank Importieren</string>
   <string name="setting_export_summary">Kopie der Datenbank in eine Datei speichern</string>
   <string name="setting_import_summary">Datenbank aus Datei wiederherstellen</string>
   <string name="db_export_error">Datenbankexport nach %1$s fehlgeschlagen</string>
@@ -114,14 +114,26 @@
   <string name="duration_description">Seit %1$s</string>
   <string name="just_now">gerade eben</string>
   <string name="few_seconds">einigen Sekunden</string>
-  <string name="seconds_short">s</string>
-  <string name="minutes_short">min</string>
-  <string name="hours_short">Std</string>
-  <string name="days">Tage</string>
+  <plurals name="seconds_short">
+    <item quantity="one">%d sec</item>
+    <item quantity="other">%d sec</item>
+  </plurals>
+  <plurals name="minutes_short">
+    <item quantity="one">%d min</item>
+    <item quantity="other">%d min</item>
+  </plurals>
+  <plurals name="hours_short">
+    <item quantity="one">%d h</item>
+    <item quantity="other">%d h</item>
+  </plurals>
+  <plurals name="days">
+    <item quantity="one">%d Day</item>
+    <item quantity="other">%d Days</item>
+  </plurals>
   <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+  <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists</string>
+  <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
