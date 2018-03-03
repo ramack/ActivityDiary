@@ -12,16 +12,16 @@
   <string name="nav_activity_manager">활동 편집</string>
   <string name="nav_settings">설정</string>
   <string name="nav_about">약</string>
-  <string name="desc_activity_color">활동 색상</string>
-  <string name="desc_activity_hint">활동 제목</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">현재 활동 선택&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">활동 그림</string>
-  <string name="contentDesc_logo">ActivityDiary의 로고</string>
-  <string name="drawer_open">내비게이션 열기</string>
-  <string name="drawer_close">탐색 닫기</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_name">Current activity</string>
   <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">전망</string>
@@ -50,18 +50,18 @@
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">떨어져서</string>
-  <string name="setting_cond_alpha">알파벳순 정렬</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">활동 순서</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">활동 발생</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">전문가 설정</string>
-  <string name="setting_export">데이터베이스 내보내기</string>
-  <string name="setting_import">데이터베이스 가져 오기</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
@@ -73,8 +73,8 @@
   <string name="db_import_selection">가져올 파일 선택</string>
   <!-- titles -->
   <string name="activity_title_edit">편집하다</string>
-  <string name="activity_title_edit_new">새로운 활동</string>
-  <string name="activity_title_manage_activities">활동 관리</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">일기</string>
   <string name="activity_subtitle_main">뭐하고 있니?</string>
   <string name="activity_title_about">약</string>
@@ -82,16 +82,16 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">노트</string>
   <!-- actions -->
-  <string name="action_delete">활동 삭제</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">구하다</string>
   <string name="action_filter">필터</string>
   <string name="action_undo">실행취소</string>
-  <string name="search_hint">검색 활동&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">다이어리 활동</string>
   <!-- dialog -->
   <string name="dlg_ok">승인</string>
   <string name="dlg_cancel">취소</string>
-  <string name="dlg_delete_image_title">삭제 확인</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">현재 활동 항목에서이 이미지를 제거 하시겠습니까?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -110,7 +110,7 @@
   <!-- relative dates -->
   <string name="today">오늘</string>
   <string name="yesterday">어제</string>
-  <string name="lastWeek">지난주</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">응용 프로그램이 중지되도록 예기치 않은 오류가 발생했습니다. 오류 데이터를 보내서 문제를 해결하는 데 도움을주세요. 확인을 클릭하기 만하면됩니다.</string>
   <string name="crash_dialog_comment_prompt">문제에 대한 의견을 아래에 추가 할 수 있습니다.</string>
