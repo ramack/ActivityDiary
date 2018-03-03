@@ -49,10 +49,10 @@
   <string name="setting_datetime_format">Datumsformat</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
   <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
-  <string name="setting_auto_select_new">Select new activities</string>
-  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_auto_select_new">Neue Aktivitäten aktivieren</string>
+  <string name="setting_auto_select_new_summary_active">Eine neu angelegte Aktivität wird direkt als die aktive gesetzt</string>
+  <string name="setting_auto_select_new_summary_inactive">Anlegen neuer Aktivitäten hat keinen Einfluss auf die gerade laufende Aktivität</string>
+  <string name="setting_show_cur_activitiy_notification">Benachrichtigung für die aktuelle Aktivität</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Fehlerberichte</string>
@@ -63,35 +63,35 @@
   <string name="setting_storage_folder_description">Verzeichnis für die Ablage von Fotos</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadaten</string>
-  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
-  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
+  <string name="setting_tag_yes">Für neue Fotos die laufende Aktivität in das EXIF-Attribut UserComment schreiben</string>
+  <string name="setting_tag_no">EXIF-Attribute neuer Fotos nicht verändern</string>
   <!-- Conditions -->
   <string name="pref_cond_off">AUS</string>
   <string name="setting_cond_alpha">Alphabetical sort</string>
-  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
+  <string name="setting_cond_alpha_summary">Alphabetische Sortierung wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetische Sortierung wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_predecessor">Activity sequence</string>
-  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence">Activity occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_expert">Expert settings</string>
   <string name="setting_export">Export database</string>
   <string name="setting_import">Import database</string>
-  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
-  <string name="setting_import_summary">Restore a backup file to current database</string>
-  <string name="db_export_error">Failed to export database to %1$s</string>
-  <string name="db_export_success">Exported database to %1$s</string>
+  <string name="setting_export_summary">Kopie der Datenbank in eine Datei speichern</string>
+  <string name="setting_import_summary">Datenbank aus Datei wiederherstellen</string>
+  <string name="db_export_error">Datenbankexport nach %1$s fehlgeschlagen</string>
+  <string name="db_export_success">Datenbank nach %1$s exportiert</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Exportdatei wählen</string>
-  <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
+  <string name="db_import_error">Wiederherstellung aus %1$s fehlgeschlagen</string>
+  <string name="db_import_success">%1$s wurde erfolgreich wiederhergestellt</string>
   <string name="db_import_selection">Datei für Import wählen</string>
   <!-- titles -->
   <string name="activity_title_edit">Bearbeiten</string>
-  <string name="activity_title_edit_new">New activity</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
+  <string name="activity_title_edit_new">Neue Aktivität</string>
+  <string name="activity_title_manage_activities">Aktivitäten verwalten</string>
   <string name="activity_title_history">Tagebuch</string>
   <string name="activity_subtitle_main">Was machst du gerade?</string>
   <string name="activity_title_about">Über</string>
@@ -99,25 +99,25 @@
   <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
   <string name="dialog_title_note">Notiz</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
+  <string name="action_delete">Aktivität löschen</string>
   <string name="action_store">Speichern</string>
   <string name="action_filter">Filter</string>
   <string name="action_undo">RÜCKGÄNGIG</string>
-  <string name="search_hint">Search activity&#8230;</string>
+  <string name="search_hint">Suche Aktivität&#8230;</string>
   <string name="search_description">Tagebuchaktivitäten</string>
   <!-- dialog -->
   <string name="dlg_ok">Ok</string>
   <string name="dlg_cancel">Abbrechen</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
+  <string name="dlg_delete_image_title">Löschen bestätigen</string>
   <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
-  <string name="just_now">just now</string>
-  <string name="few_seconds">a few seconds</string>
-  <string name="seconds_short">sec</string>
+  <string name="duration_description">Seit %1$s</string>
+  <string name="just_now">gerade eben</string>
+  <string name="few_seconds">einigen Sekunden</string>
+  <string name="seconds_short">s</string>
   <string name="minutes_short">min</string>
-  <string name="hours_short">h</string>
-  <string name="days">Days</string>
+  <string name="hours_short">Std</string>
+  <string name="days">Tage</string>
   <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
@@ -127,7 +127,7 @@
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>
-  <string name="lastWeek">Last week</string>
+  <string name="lastWeek">Letzte Woche</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Ein unerwarteter Fehler führte zum Absturz dieser Anwendung. Bitte hilf mit dies zu beheben indem du einen Fehlerbericht an die Entwickler schickst. Alles was du dafür tun musst ist auf Ok zu klicken.</string>
   <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
