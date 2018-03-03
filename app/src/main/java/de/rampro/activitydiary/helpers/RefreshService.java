@@ -19,15 +19,9 @@
 
 package de.rampro.activitydiary.helpers;
 
-import android.app.job.JobInfo;
 import android.app.job.JobParameters;
-import android.app.job.JobScheduler;
 import android.app.job.JobService;
-import android.content.ComponentName;
 import android.util.Log;
-
-import de.rampro.activitydiary.ActivityDiaryApplication;
-import de.rampro.activitydiary.ui.main.MainActivity;
 
 public class RefreshService extends JobService {
     private static final String TAG = RefreshService.class.getName();
@@ -43,9 +37,8 @@ public class RefreshService extends JobService {
         /* UI refresh is so fast we can do it directly here */
         ActivityHelper.helper.updateNotification();
 
-
         // We need 'jobParameters' so we can call 'jobFinished'
-        startWorkOnNewThread(jobParameters); // Services do NOT run on a separate thread
+        startWorkOnNewThread(jobParameters);
 
         return isWorking;
     }
@@ -63,7 +56,6 @@ public class RefreshService extends JobService {
         if (jobCancelled)
             return;
 
-        Log.d(TAG, "Refreshing DONE TODO - remove"); // TODO
         isWorking = false;
         boolean needsReschedule = false;
         ActivityHelper.helper.scheduleRefresh();
@@ -73,7 +65,6 @@ public class RefreshService extends JobService {
     // Called if the job was cancelled before being finished
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
-        Log.d(TAG, "Job cancelled before being completed.");
         jobCancelled = true;
         boolean needsReschedule = isWorking;
         jobFinished(jobParameters, needsReschedule);

@@ -41,13 +41,17 @@ public class FuzzyTimeSpanFormatter {
         }else if (delta <= 35){
             return res.getString(R.string.few_seconds);
         }else if (delta <= 90) {
-            return (((delta + 8) / 15) * 15) + " " + res.getString(R.string.seconds_short);
+            int val = (int)((delta + 8) / 15) * 15;
+            return res.getQuantityString(R.plurals.seconds_short, val, val);
         }else if (delta <= 90 * 60) {
-            return (delta + 30) / 60 + " " + res.getString(R.string.minutes_short);
+            int val = (int)((delta + 30) / 60);
+            return res.getQuantityString(R.plurals.minutes_short, val, val);
         }else if (delta <= 90 * 60 * 60) {
-            return (delta + 30 * 60) / 3600 + " " + res.getString(R.string.hours_short);
+            int val = (int)((delta + 30 * 60) / 3600);
+            return res.getQuantityString(R.plurals.hours_short, val, val);
         }else {
-            return (delta + 12 * 60 * 60) / 3600 / 24 + " " + res.getString(R.string.days);
+            int val = (int)((delta + 12 * 60 * 60) / 3600 / 24);
+            return res.getQuantityString(R.plurals.days, val, val);
         }
     }
 }
