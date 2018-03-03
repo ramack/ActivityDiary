@@ -25,16 +25,16 @@
   <string name="nav_activity_manager">Modifica attività</string>
   <string name="nav_settings">Impostazioni</string>
   <string name="nav_about">Circa</string>
-  <string name="desc_activity_color">Colore dell\' attività</string>
-  <string name="desc_activity_hint">Titolo dell\' attività</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Scegliere attività corrente&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Foto per attività</string>
-  <string name="contentDesc_logo">Logo di ActivityDiary</string>
-  <string name="drawer_open">Navigazione aperta</string>
-  <string name="drawer_close">Chiudere la navigazione</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_name">Current activity</string>
   <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Vista</string>
@@ -63,18 +63,18 @@
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">Spento</string>
-  <string name="setting_cond_alpha">Ordinamento alfabetico</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Sequenza di attività</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Evento di attività</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Impostazioni avanzate</string>
-  <string name="setting_export">Esporta database</string>
-  <string name="setting_import">Importa database</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
@@ -86,8 +86,8 @@
   <string name="db_import_selection">Seleziona il file per l\'importazione</string>
   <!-- titles -->
   <string name="activity_title_edit">Modificare</string>
-  <string name="activity_title_edit_new">Nuova attività</string>
-  <string name="activity_title_manage_activities">Gestisci attività</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Diario</string>
   <string name="activity_subtitle_main">Cosa fai?</string>
   <string name="activity_title_about">Circa</string>
@@ -95,16 +95,16 @@
   <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
   <string name="dialog_title_note">Nota</string>
   <!-- actions -->
-  <string name="action_delete">Elimina attività</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">Salvare</string>
   <string name="action_filter">Filtro</string>
   <string name="action_undo">ANNULLA</string>
-  <string name="search_hint">Attività di ricerca&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Attivitàdeldiario</string>
   <!-- dialog -->
   <string name="dlg_ok">Ok</string>
   <string name="dlg_cancel">Annulla</string>
-  <string name="dlg_delete_image_title">Confermare l\'eliminazione</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Davvero rimuovere questa immagine la voce corrente di attività?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -123,7 +123,7 @@
   <!-- relative dates -->
   <string name="today">Oggi</string>
   <string name="yesterday">Ieri</string>
-  <string name="lastWeek">La settimana scorsa</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Errore imprevisto durante l\'imposizione all\'applicazione di interrompere. Vi preghiamo di aiutarci a risolvere questo problema inviandoci i dati errore, tutto quello che dovete fare è fare clic su OK.</string>
   <string name="crash_dialog_comment_prompt">È possibile aggiungere i vostri commenti sul problema riportato di seguito:</string>
