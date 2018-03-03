@@ -1,3 +1,4 @@
-- Sokat szerszám-alapú fordításokat egészítettek ki, a fordítás felülvizsgálati megjegyzéseit üdvözöljük!
-- A snackbar megjelenítése az új tevékenység kiválasztása után, a visszavonás lehetőségével
-- Több hibajavítás
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-
