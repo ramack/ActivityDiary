@@ -20,18 +20,24 @@
   <string name="contentDesc_logo">Logo ActivityDiary</string>
   <string name="drawer_open">Otwórz nawigację</string>
   <string name="drawer_close">Zamknij nawigację</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Widok</string>
   <string name="setting_behavior_category">Zachowanie</string>
   <string name="setting_images_category">Obrazy</string>
   <string name="setting_backup_category">Utworzyć kopię zapasową</string>
   <string name="setting_condition_category">Warunki</string>
-  <string name="setting_datetime_format">Format daty</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Wyświetl format daty i godziny rozpoczęcia działania. Typowe formaty to rrrr-MM-dd GG: mm lub dd.MM. hh: mm</string>
-  <string name="setting_auto_select_new">Wybierz Nowe działania</string>
-  <string name="setting_auto_select_new_summary_active">Nowo utworzona aktywność jest bezpośrednio wybierana jako nowa aktywna.</string>
-  <string name="setting_auto_select_new_summary_inactive">Tworzenie nowych aktivivies nie ma wpływu na aktualnie aktywną działalność.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Raportowanie awarii</string>
   <string name="setting_acra_enabled">Wysyłaj raporty o awariach</string>
   <string name="setting_acra_disabled">Nie wysyłaj raportów o awariach</string>
@@ -40,30 +46,30 @@
   <string name="setting_storage_folder_description">Katalog do przechowywania zdjęć aktywności</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadane</string>
-  <string name="setting_tag_yes">Zapisz bieżącą aktywność w tagu EXIF ​​UserComment nowych zdjęć.</string>
-  <string name="setting_tag_no">Nie dotykaj tagów EXIF ​​nowych zdjęć.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">POZA</string>
   <string name="setting_cond_alpha">Sortuj alfabetycznie</string>
-  <string name="setting_cond_alpha_summary">Sortowanie alfabetyczne ma wagę %1$s w sugerowanych następnych działaniach.</string>
-  <string name="setting_cond_alpha_not_used_summary">Sortowanie alfabetyczne nie służy do sugerowania kolejnych działań.</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
   <string name="setting_cond_predecessor">Sekwencja działań</string>
-  <string name="setting_cond_predecessor_summary">Sekwencja czynności w dzienniku ma masę %1$s w sugerowanych następnych działaniach.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Sekwencja czynności w dzienniku nie służy do sugerowania następnych czynności.</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Aktywność działania</string>
-  <string name="setting_cond_occurrence_summary">Częstotliwość aktywności w dzienniku ma masę %1$s w sugerowanych następnych działaniach.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Częstotliwość zajęć w dzienniku nie służy do sugerowania następnych czynności.</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">Ustawienia eksperta</string>
   <string name="setting_export">Eksportuj bazę danych</string>
   <string name="setting_import">Importuj bazę danych</string>
-  <string name="setting_export_summary">Przechowuj kopię bieżącej bazy danych w pliku do wykonania kopii zapasowej.</string>
-  <string name="setting_import_summary">Przywróć plik kopii zapasowej do bieżącej bazy danych.</string>
-  <string name="db_export_error">Nie można wyeksportować bazy danych do %1$s.</string>
-  <string name="db_export_success">Wyeksportowana baza danych do %1$s.</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Wybierz plik do eksportu</string>
-  <string name="db_import_error">Nie udało się importować %1$s.</string>
-  <string name="db_import_success">%1$s pomyślnie zaimportowane.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">Wybierz plik do importu</string>
   <!-- titles -->
   <string name="activity_title_edit">Edytować</string>
@@ -88,11 +94,17 @@
   <string name="dlg_delete_image_title">Potwierdź usunięcie</string>
   <string name="dlg_delete_image_text">Naprawdę usunąć ten obraz z bieżącego wpisu aktywności?</string>
   <!-- main view -->
-  <string name="duration_description">Trwanie:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">Coś poszło nie tak. Nie można zapisać obrazu.</string>
-  <string name="no_active_activity_error">Aby wykonać tę akcję, należy najpierw wybrać aktywność.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Aktywność o nazwie %1$s już istnieje.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <!-- relative dates -->
