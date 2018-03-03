@@ -20,18 +20,24 @@
   <string name="contentDesc_logo">לוגו של פעילות</string>
   <string name="drawer_open">פתח את הניווט</string>
   <string name="drawer_close">סגור את הניווט</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">נוף</string>
   <string name="setting_behavior_category">התנהגות</string>
   <string name="setting_images_category">תמונות</string>
   <string name="setting_backup_category">גיבוי</string>
   <string name="setting_condition_category">תנאים</string>
-  <string name="setting_datetime_format">פורמט תאריך</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">הצגת תבנית התאריך והשעה לתחילת הפעילות. הפורמטים הרגילים הם yyyy-MM-dH HH: mm או dd.MM. h: mm</string>
-  <string name="setting_auto_select_new">בחר פעילויות חדשות</string>
-  <string name="setting_auto_select_new_summary_active">פעילות שנוצרה זה עתה נבחרה ישירות כפעולה החדשה.</string>
-  <string name="setting_auto_select_new_summary_inactive">יצירת פעילויות חדשות אינה משפיעה על הפעילות הפעילה.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">דיווח על קריסה</string>
   <string name="setting_acra_enabled">שלח דוחות על קריסות</string>
   <string name="setting_acra_disabled">אל תשלח דוחות על קריסות</string>
@@ -40,30 +46,30 @@
   <string name="setting_storage_folder_description">מדריך כדי לאחסן את תמונות הפעילות</string>
   <string name="default_storage_folder">פעילות</string>
   <string name="setting_tag_images">מטה-נתונים</string>
-  <string name="setting_tag_yes">כתיבת הפעילות הנוכחית לתוך תג EXIF ​​משתמשתמונות חדשות.</string>
-  <string name="setting_tag_no">אל תיגע בתגי EXIF ​​של תמונות חדשות.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">כבוי</string>
   <string name="setting_cond_alpha">מיון אלפביתי</string>
-  <string name="setting_cond_alpha_summary">למיון האלפיתי יש משקל %1$s על הפעילויות הבאות הציע.</string>
-  <string name="setting_cond_alpha_not_used_summary">מיון אלפביתי שאינו משמש להצעה של הפעילויות הבאות.</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
   <string name="setting_cond_predecessor">רצף פעילות</string>
-  <string name="setting_cond_predecessor_summary">רצף הפעילות ביומן הוא במשקל של %1$s על הפעילויות הבאות הציע.</string>
-  <string name="setting_cond_predecessor_not_used_summary">רצף הפעילות ביומן לא שימש להצעה של הפעילויות הבאות.</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">התרחשות פעילות</string>
-  <string name="setting_cond_occurrence_summary">תדירות הפעילות ביומן היא בעלת משקל של %1$s על הפעילויות הבאות הציע.</string>
-  <string name="setting_cond_occurrence_not_used_summary">תדירות הפעילות ביומן לא משמשת להצעת פעילויות נוספות.</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">הגדרות מומחה</string>
   <string name="setting_export">ייצוא מסד נתונים</string>
   <string name="setting_import">ייבוא ​​מסד נתונים</string>
-  <string name="setting_export_summary">אחסן עותק של מסד הנתונים הנוכחי בקובץ לגיבוי.</string>
-  <string name="setting_import_summary">שחזור קובץ גיבוי למסד הנתונים הנוכחי.</string>
-  <string name="db_export_error">נכשל ייצוא מסד הנתונים אל %1$s</string>
-  <string name="db_export_success">מסד נתונים מיוצא ל %1$s</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">פעילות</string>
   <string name="db_export_selection">בחר קובץ לייצוא</string>
-  <string name="db_import_error">הייבוא ​​נכשל %1$s</string>
-  <string name="db_import_success">%1$s יובא בהצלחה.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">בחר קובץ לייבוא</string>
   <!-- titles -->
   <string name="activity_title_edit">לַעֲרוֹך</string>
@@ -88,11 +94,17 @@
   <string name="dlg_delete_image_title">אשר מחיקתו</string>
   <string name="dlg_delete_image_text">האם להסיר באמת את התמונה מערך הפעילות הנוכחי?</string>
   <!-- main view -->
-  <string name="duration_description">מֶשֶׁך:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">משהו השתבש כאן. לא ניתן לאחסן את התמונה.</string>
-  <string name="no_active_activity_error">כדי לבצע פעולה זו יש לבחור תחילה פעילות.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">פעילות עם שם %1$s כבר קיים.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: מ\"מ</string>
   <!-- relative dates -->
