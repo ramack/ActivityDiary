@@ -41,6 +41,12 @@
             android:defaultValue="true"/>
 
         <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="pref_show_cur_activity_notification"
+            android:title="@string/setting_show_cur_activitiy_notification"
+            android:summary="@string/setting_show_cur_activitiy_notification_summary_active"
+            android:defaultValue="true"/>
+
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="acra.enable"
             android:title="@string/setting_enable_acra"
             android:summaryOn="@string/setting_acra_enabled"

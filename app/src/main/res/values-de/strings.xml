@@ -111,7 +111,7 @@
   <string name="dlg_delete_image_title">Löschen bestätigen</string>
   <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
+  <string name="duration_description">Seit %1$s</string>
   <string name="just_now">just now</string>
   <string name="few_seconds">a few seconds</string>
   <string name="seconds_short">sec</string>

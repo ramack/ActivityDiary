@@ -40,7 +40,7 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "de.rampro.activitydiary"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 119
         versionName "1.1.9-dev"

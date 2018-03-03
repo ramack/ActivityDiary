@@ -19,17 +19,28 @@
 
 package de.rampro.activitydiary.helpers;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.AsyncQueryHandler;
+import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.DataSetObserver;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.preference.PreferenceManager;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -37,18 +48,22 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
 import de.rampro.activitydiary.model.conditions.PredecessorCondition;
+import de.rampro.activitydiary.ui.main.MainActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
+
+import static android.content.Context.JOB_SCHEDULER_SERVICE;
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * provide a smooth interface to an OO abstraction of the data for our diary.
@@ -80,12 +95,16 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final String SELECTION = ActivityDiaryContract.DiaryActivity._DELETED + "=0";
 
     public static final ActivityHelper helper = new ActivityHelper();
+    private static final String CURRENT_ACTIVITY_CHANNEL_ID = "CurrentActivity";
+    private static final int CURRENT_ACTIVITY_NOTIFICATION_ID = 0;
+
+    private static final int ACTIVITY_HELPER_REFRESH_JOB = 0;
+
     private List<DiaryActivity> activities;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
     private Uri mCurrentDiaryUri;
     private String mCurrentNote;
-//    private DataSetObserver mDataObserver;
     private Condition[] conditions;
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
@@ -111,9 +130,40 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     };
 
+    /* null if either no notification has be shown yet, or notification is disabled in settings */
+    private @Nullable NotificationCompat.Builder notificationBuilder;
+    private NotificationManagerCompat notificationManager;
+
+    JobInfo refreshJobInfo;
+
     /* to be used only in the UI thread */
     public List<DiaryActivity> getActivities() {
         return activities;
+    }
+
+    public void scheduleRefresh() {
+        int cycleTime;
+        long delta = (new Date().getTime() - mCurrentActivityStartTime.getTime() + 500) / 1000;
+        if(delta <= 15) {
+            cycleTime = 1000 * 10;
+        }else if(delta <= 45){
+            cycleTime = 1000 * 20;
+        }else if(delta <= 95){
+            cycleTime = 1000 * 60;
+        }else{
+            cycleTime = 1000 * 60 * 5; /* 5 min for now. if we want we can make this time configurable in the settings */
+        }
+        ComponentName componentName = new ComponentName(ActivityDiaryApplication.getAppContext(), RefreshService.class);
+        JobInfo.Builder builder = new JobInfo.Builder(ACTIVITY_HELPER_REFRESH_JOB, componentName);
+        builder.setMinimumLatency(cycleTime);
+        refreshJobInfo = builder.build();
+
+        JobScheduler jobScheduler = (JobScheduler) ActivityDiaryApplication.getAppContext().getSystemService(JOB_SCHEDULER_SERVICE);
+        int resultCode = jobScheduler.schedule(refreshJobInfo);
+        if (resultCode != JobScheduler.RESULT_SUCCESS) {
+            Log.w(TAG, "RefreshJob not scheduled");
+        }
+// TODO: do we need to keep track on the scheduled jobs, or is a waiting job with the same ID as a new one automatically canceled?
     }
 
     public interface DataChangedListener{
@@ -174,25 +224,25 @@ public class ActivityHelper extends AsyncQueryHandler{
                 null);
         readCurrentActivity();
         mCurrentActivityStartTime = new Date();
-        /* TODO: the DataObserver doesn't seem to do what I expected e.g. closing the cursor - what we
-                 should do to not have too many open - will lead to an onInvaldidated call
-        mDataObserver = new DataSetObserver(){
-            public void onChanged() {
-                / * notify about the data change * /
-                for(DataChangedListener listener : mDataChangeListeners) {
-                    listener.onActivityDataChanged();
-                }
-            }
+        createNotificationChannels();
 
-            public void onInvalidated() {
-                / * re-read the complete data * /
-                startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                        ACTIVITIES_PROJ, SELECTION, null,
-                        null);
+        scheduleRefresh();
+    }
 
-            }
-        };
-        */
+    /* create all the notification channels */
+    private void createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel for the "current activity"
+            CharSequence name = ActivityDiaryApplication.getAppContext().getResources().getString(R.string.notif_channel_current_activity_name);
+            String description = ActivityDiaryApplication.getAppContext().getResources().getString(R.string.notif_channel_current_activity_desc);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel nChannel = new NotificationChannel(CURRENT_ACTIVITY_CHANNEL_ID, name, importance);
+            nChannel.setDescription(description);
+
+            NotificationManager notificationManager = (NotificationManager) ActivityDiaryApplication.getAppContext().getSystemService(
+                    NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(nChannel);
+        }
     }
 
     /* start the query to read the current activity
@@ -223,7 +273,6 @@ public class ActivityHelper extends AsyncQueryHandler{
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
                 }
-// TODO                cursor.registerDataSetObserver(mDataObserver);
             }else if(token == QUERY_CURRENT_ACTIVITY){
                 if(mCurrentActivity == null) {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
@@ -231,6 +280,8 @@ public class ActivityHelper extends AsyncQueryHandler{
                     mCurrentNote = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
                     mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
                                         Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
+
+                    showCurrentActivityNotification();
 
                     for(DataChangedListener listener : mDataChangeListeners) {
                         listener.onActivityChanged();
@@ -265,6 +316,70 @@ public class ActivityHelper extends AsyncQueryHandler{
             mCurrentActivity = activity;
             mCurrentActivityStartTime.setTime(timestamp);
             mCurrentNote = "";
+
+            showCurrentActivityNotification();
+        }
+    }
+
+    private void showCurrentActivityNotification() {
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)) {
+            notificationBuilder =
+                    new NotificationCompat.Builder(ActivityDiaryApplication.getAppContext(),
+                            CURRENT_ACTIVITY_CHANNEL_ID)
+                            .setColor(ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null))
+                            .setSmallIcon(R.mipmap.ic_launcher) // TODO: use ic_nav_select in orange
+                            .setContentTitle(mCurrentActivity.getName())
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            // TODO: add icon on implementing #33
+
+            notificationManager = NotificationManagerCompat.from(ActivityDiaryApplication.getAppContext());
+
+            Intent intent = new Intent(ActivityDiaryApplication.getAppContext(), MainActivity.class);
+            PendingIntent pIntent = PendingIntent.getActivity(ActivityDiaryApplication.getAppContext(), (int) System.currentTimeMillis(), intent, 0);
+            notificationBuilder.setContentIntent(pIntent);
+            updateNotification();
+        }else{
+            notificationBuilder = null;
+        }
+    }
+
+    public void updateNotification(){
+        String duration = ActivityDiaryApplication.getAppContext().getResources().
+                getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
+
+        if(notificationBuilder != null) {
+            // if this comes faster than building the first notification we just ignore the update.
+            // also in case the notification is disabled in the settings notificationBuilder is null
+            boolean needUpdate = false;
+            int idx = 0;
+            for(NotificationCompat.Action a: notificationBuilder.mActions){
+                if(activities.get(notificationBuilder.mActions.size() - idx - 1).getId() != a.getExtras().getInt("SELECT_ACTIVITY_WITH_ID")) {
+                    needUpdate = true;
+                }
+                idx++;
+            }
+            if(needUpdate || notificationBuilder.mActions.size() < 1) {
+                notificationBuilder.mActions.clear();
+
+                for (int i = 2; i >= 0; i--) {
+                    if (i <= activities.size()) {
+                        DiaryActivity act = activities.get(i);
+                        SpannableString coloredActivity = new SpannableString(act.getName());
+                        coloredActivity.setSpan(new ForegroundColorSpan(act.getColor()), 0, coloredActivity.length(), 0);
+
+                        Intent intent = new Intent(ActivityDiaryApplication.getAppContext(), MainActivity.class);
+                        intent.putExtra("SELECT_ACTIVITY_WITH_ID", act.getId());
+                        PendingIntent pIntent = PendingIntent.getActivity(ActivityDiaryApplication.getAppContext(), (int) System.currentTimeMillis(), intent, 0);
+                        NotificationCompat.Action a = new NotificationCompat.Action(R.drawable.ic_nav_select, coloredActivity, pIntent);
+                        a.getExtras().putInt("SELECT_ACTIVITY_WITH_ID", act.getId());
+                        notificationBuilder.addAction(a);
+                    }
+                }
+            }
+            notificationBuilder.setContentText(duration);
+            notificationManager.notify(CURRENT_ACTIVITY_NOTIFICATION_ID, notificationBuilder.build());
         }
     }
 
@@ -520,6 +635,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityOrderChanged();
         }
+        updateNotification();
     }
 
     /*
@@ -532,4 +648,8 @@ public class ActivityHelper extends AsyncQueryHandler{
         completeMessage.sendToTarget();
     }
 
+    /* perform cyclic actions like update of timing on current activity and checking time based Conditions */
+    public void cyclicUpdate(){
+
+    }
 }
