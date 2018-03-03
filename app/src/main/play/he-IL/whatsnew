@@ -1,3 +1,4 @@
-- נוסף הרבה תרגומים מבוססי כלים, הערות ביקורת התרגום יתקבלו בברכה!
-- הצג snackbar לאחר בחירת פעילות חדשה, עם אפשרות לבטל
-- מספר תיקוני באגים
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-
