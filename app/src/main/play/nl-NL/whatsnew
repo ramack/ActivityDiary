@@ -1,3 +1,4 @@
-- Veel tool-based vertalingen toegevoegd, opmerkingen over vertaalbesprekingen zijn welkom!
-- Toon snackbar na het selecteren van nieuwe activiteit, met optie om ongedaan te maken
-- Verschillende bugfixes
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-

@@ -12,26 +12,32 @@
   <string name="nav_activity_manager">Изменить действия</string>
   <string name="nav_settings">настройки</string>
   <string name="nav_about">Около</string>
-  <string name="desc_activity_color">Цвет активности</string>
-  <string name="desc_activity_hint">Название мероприятия</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Выберите текущую активность&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Изображение для деятельности</string>
-  <string name="contentDesc_logo">Логотип</string>
-  <string name="drawer_open">Открыть навигацию</string>
-  <string name="drawer_close">Закрыть навигацию</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Посмотреть</string>
   <string name="setting_behavior_category">Поведение</string>
   <string name="setting_images_category">Изображений</string>
   <string name="setting_backup_category">Резервное копирование</string>
   <string name="setting_condition_category">условия</string>
-  <string name="setting_datetime_format">Формат даты</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">\@ Строка / default_datetime_format</string>
-  <string name="setting_datetime_format_description">Формат отображения даты и времени начала действия. Обычными форматами являются yyyy-MM-dd HH: mm или dd.MM. чч: мм</string>
-  <string name="setting_auto_select_new">Выберите новые действия</string>
-  <string name="setting_auto_select_new_summary_active">Недавно созданная деятельность непосредственно выбирается как новая активная.</string>
-  <string name="setting_auto_select_new_summary_inactive">Создание новых активов не влияет на текущую активную деятельность.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Отчеты о сбоях</string>
   <string name="setting_acra_enabled">Отправить отчеты о сбоях</string>
   <string name="setting_acra_disabled">Не отправлять отчеты о сбоях</string>
@@ -40,35 +46,35 @@
   <string name="setting_storage_folder_description">Каталог для хранения фотографий</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Метаданные</string>
-  <string name="setting_tag_yes">Записывайте текущую активность в тег EXIF ​​UserComment новых изображений.</string>
-  <string name="setting_tag_no">Не трогайте теги EXIF ​​новых изображений.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">OFF</string>
-  <string name="setting_cond_alpha">Алфавитный порядок</string>
-  <string name="setting_cond_alpha_summary">Алфавитная сортировка имеет вес %1$s о предлагаемых мероприятиях.</string>
-  <string name="setting_cond_alpha_not_used_summary">Алфавитная сортировка не используется для указания следующих действий.</string>
-  <string name="setting_cond_predecessor">Последовательность действий</string>
-  <string name="setting_cond_predecessor_summary">Последовательность действий в дневнике имеет вес %1$s о предлагаемых мероприятиях.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Порядок действий в дневнике, который не используется для указания следующих действий.</string>
-  <string name="setting_cond_occurrence">Мероприятие</string>
-  <string name="setting_cond_occurrence_summary">Частота активности в дневнике имеет вес %1$s о предлагаемых мероприятиях.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Частота активности в дневнике, не используемая для указания следующих действий.</string>
-  <string name="setting_expert">Параметры эксперта</string>
-  <string name="setting_export">Экспортная база данных</string>
-  <string name="setting_import">Импорт базы данных</string>
-  <string name="setting_export_summary">Храните копию текущей базы данных в файле для резервного копирования.</string>
-  <string name="setting_import_summary">Восстановить файл резервной копии в текущей базе данных.</string>
-  <string name="db_export_error">Не удалось экспортировать базу данных в %1$s.</string>
-  <string name="db_export_success">Экспортированная база данных в %1$s.</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Выбрать файл для экспорта</string>
-  <string name="db_import_error">Не удалось импортировать %1$s.</string>
-  <string name="db_import_success">%1$s успешно импортировано.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">Выбрать файл для импорта</string>
   <!-- titles -->
   <string name="activity_title_edit">редактировать</string>
-  <string name="activity_title_edit_new">Новая активность</string>
-  <string name="activity_title_manage_activities">Управление мероприятиями</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Дневник</string>
   <string name="activity_subtitle_main">Что делаешь?</string>
   <string name="activity_title_about">Около</string>
@@ -76,29 +82,35 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Заметка</string>
   <!-- actions -->
-  <string name="action_delete">Удалить действие</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">Сохранить</string>
   <string name="action_filter">Фильтр</string>
   <string name="action_undo">ОТМЕНИТЬ</string>
-  <string name="search_hint">Поиск Активность&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">ОК</string>
   <string name="dlg_cancel">Отмена</string>
-  <string name="dlg_delete_image_title">Подтвердить удаление</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Действительно удалить это изображение из текущей записи активности?</string>
   <!-- main view -->
-  <string name="duration_description">Продолжительность:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
-  <string name="no_active_activity_error">Для выполнения этого действия сначала необходимо выбрать действие.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Деятельность с именем %1$s уже существует.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: мм</string>
   <!-- relative dates -->
   <string name="today">Cегодня</string>
   <string name="yesterday">Вчера</string>
-  <string name="lastWeek">На прошлой неделе</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Произошла непредвиденная ошибка, вынуждающая приложение остановиться. Пожалуйста, помогите нам исправить это, отправив нам данные об ошибках, все, что вам нужно сделать, это нажать «ОК».</string>
   <string name="crash_dialog_comment_prompt">Вы можете добавить свои комментарии к проблеме ниже:</string>

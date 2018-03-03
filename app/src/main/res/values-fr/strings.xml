@@ -12,26 +12,32 @@
   <string name="nav_activity_manager">Modifier les activités</string>
   <string name="nav_settings">Paramètres</string>
   <string name="nav_about">À propos</string>
-  <string name="desc_activity_color">Couleur de l\'activité</string>
-  <string name="desc_activity_hint">Titre de l\'activité</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Choisissez l\'activité actuelle&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Image pour Activité</string>
-  <string name="contentDesc_logo">Logo de ActivityDiary</string>
-  <string name="drawer_open">Ouvrir la navigation</string>
-  <string name="drawer_close">Fermer la navigation</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Vue</string>
   <string name="setting_behavior_category">Comportement</string>
   <string name="setting_images_category">Images</string>
   <string name="setting_backup_category">Sauvegarde</string>
   <string name="setting_condition_category">Conditions</string>
-  <string name="setting_datetime_format">Format de date</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Afficher Format de la date et de l\'heure du début d\'une activité. Les formats habituels sont yyyy-MM-dd HH:mm ou dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Sélectionnez de nouvelles activités</string>
-  <string name="setting_auto_select_new_summary_active">Une activité fraîchement créée est directement sélectionnée en tant que nouvelle activité.</string>
-  <string name="setting_auto_select_new_summary_inactive">La création de nouvelles activités n\'influence pas l\'activité actuellement active.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Rapport de crash</string>
   <string name="setting_acra_enabled">Envoyer des rapports sur des plantages</string>
   <string name="setting_acra_disabled">Ne pas envoyer de rapports sur les plantages</string>
@@ -40,35 +46,35 @@
   <string name="setting_storage_folder_description">Répertoire pour stocker les photos d\'activité</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Métadonnées</string>
-  <string name="setting_tag_yes">Écrire l\'activité en cours dans la balise EXIF ​​UserComment de nouvelles images.</string>
-  <string name="setting_tag_no">Ne touchez pas les tags EXIF ​​des nouvelles images.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">DE</string>
-  <string name="setting_cond_alpha">Tri alphabétique</string>
-  <string name="setting_cond_alpha_summary">Le tri alphabétique a un poids de %1$s sur les prochaines activités suggérées.</string>
-  <string name="setting_cond_alpha_not_used_summary">Tri alphabétique non utilisé pour suggérer des activités suivantes.</string>
-  <string name="setting_cond_predecessor">Séquence d\'activité</string>
-  <string name="setting_cond_predecessor_summary">La séquence d\'activité dans le journal a un poids de %1$s sur les prochaines activités suggérées.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Séquence d\'activité dans le journal inutilisée pour suggérer des activités suivantes.</string>
-  <string name="setting_cond_occurrence">Activité Occurrence</string>
-  <string name="setting_cond_occurrence_summary">La fréquence d\'activité dans le journal a un poids de %1$s sur les prochaines activités suggérées.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Fréquence d\'activité dans le journal inutilisée pour suggérer des activités suivantes.</string>
-  <string name="setting_expert">Paramètres experts</string>
-  <string name="setting_export">Exporter la base</string>
-  <string name="setting_import">Importer la base</string>
-  <string name="setting_export_summary">Stocker une copie de la base de données en cours dans un fichier pour la sauvegarde.</string>
-  <string name="setting_import_summary">Restaurez un fichier de sauvegarde dans la base de données actuelle.</string>
-  <string name="db_export_error">Échec de l\'exportation de la base de données vers %1$s</string>
-  <string name="db_export_success">Base de données exportée vers %1$s.</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Sélectionnez le fichier à exporter</string>
-  <string name="db_import_error">Impossible d\'importer %1$s.</string>
-  <string name="db_import_success">%1$s importé avec succès.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">Sélectionnez le fichier à importer</string>
   <!-- titles -->
   <string name="activity_title_edit">modifier</string>
-  <string name="activity_title_edit_new">Nouvelle activité</string>
-  <string name="activity_title_manage_activities">Gérer les activités</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Journal intime</string>
   <string name="activity_subtitle_main">Qu\'est-ce que tu fais?</string>
   <string name="activity_title_about">Sur</string>
@@ -76,29 +82,35 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Remarque</string>
   <!-- actions -->
-  <string name="action_delete">Supprimer l\'activité</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">sauvegarder</string>
   <string name="action_filter">Filtre</string>
   <string name="action_undo">ANNULER</string>
-  <string name="search_hint">Rechercher activité&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Activités diary</string>
   <!-- dialog -->
   <string name="dlg_ok">D\'accord</string>
   <string name="dlg_cancel">Annuler</string>
-  <string name="dlg_delete_image_title">Confirmer la suppression</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Vraiment supprimer cette image de l\'entrée d\'activité en cours?</string>
   <!-- main view -->
-  <string name="duration_description">Durée:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">Quelque chose s\'est mal passé ici. Impossible de stocker l\'image.</string>
-  <string name="no_active_activity_error">Pour effectuer cette action, il est nécessaire de sélectionner une activité en premier.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activité avec nom %1$s existe déjà.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <!-- relative dates -->
   <string name="today">Aujourd\'hui</string>
   <string name="yesterday">Hier</string>
-  <string name="lastWeek">La semaine dernière</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Une erreur inattendue s\'est produite obligeant l\'application à s\'arrêter. S\'il vous plaît aidez-nous à résoudre ce problème en nous envoyant des données d\'erreur, tout ce que vous avez à faire est de cliquer sur OK.</string>
   <string name="crash_dialog_comment_prompt">Vous pouvez ajouter vos commentaires sur le problème ci-dessous:</string>

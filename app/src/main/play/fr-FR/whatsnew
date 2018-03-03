@@ -1,3 +1,4 @@
-- Ajout d'un grand nombre de traductions à base d'outils, commentaires de révision de traduction sont les bienvenus!
-- Afficher le snack après avoir sélectionné une nouvelle activité, avec option d'annulation
-- Plusieurs corrections de bugs
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-

@@ -1,3 +1,4 @@
-- Προστέθηκαν πολλές μεταφράσεις με βάση τα εργαλεία, τα σχόλια σχετικά με τη μετάφραση είναι ευπρόσδεκτα!
-- Εμφάνιση γραμμής σνακ μετά την επιλογή νέας δραστηριότητας, με δυνατότητα αναίρεσης
-- Πολλές διορθώσεις σφαλμάτων
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-
