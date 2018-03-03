@@ -1,3 +1,4 @@
-- Přidáno mnoho překladů založených na nástrojích, komentáře k překlady jsou vítány!
-- Po výběru nové aktivity vyberte možnost snackbar s možností vrátit zpět
-- Několik opravených chyb
+- Drop of support for Android version < 5.0 (at least Lollipop required)
+- Add notifications (you can disable it in the preferences)
+-
+-
