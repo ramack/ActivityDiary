@@ -37,18 +37,24 @@
   <string name="contentDesc_logo">Etkinlik Günlüğü Logosu</string>
   <string name="drawer_open">Çekmeceyi Aç</string>
   <string name="drawer_close">Çekmeceyi Kapat</string>
+  <!-- Notification Channels -->
+  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
   <string name="setting_behavior_category">Davranış</string>
   <string name="setting_images_category">Görseller</string>
   <string name="setting_backup_category">Yedekleme</string>
   <string name="setting_condition_category">Koşullar</string>
-  <string name="setting_datetime_format">Tarih Biçimi</string>
+  <string name="setting_datetime_format">Date format</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin Gösterim Biçimi. yyyy-MM-dd HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
-  <string name="setting_auto_select_new">Yeni Etkinlikleri Seç</string>
-  <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan etkin olan olarak seçilir.</string>
-  <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez.</string>
+  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
+  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Çökme Raporu</string>
   <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
   <string name="setting_acra_disabled">Çökmelerde raporları gönderme</string>
@@ -57,30 +63,30 @@
   <string name="setting_storage_folder_description">Etkinlik fotoğraflarının saklanacağı dizin</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Üst veri</string>
-  <string name="setting_tag_yes">O anki etkinliği yeni görsellerin EXIF ​​UserComment etiketine yaz.</string>
-  <string name="setting_tag_no">Yeni görsellerin EXIF ​​etiketlerine dokunma.</string>
+  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
+  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">KAPALI</string>
   <string name="setting_cond_alpha">Alfabetik Sıralama</string>
-  <string name="setting_cond_alpha_summary">Alfabetik sıralamanın önerilen sonraki etkinliklerde %1$s ağırlığı vardır.</string>
-  <string name="setting_cond_alpha_not_used_summary">Alfabetik sıralama, sonraki etkinlikleri önermek için kullanılmaz.</string>
+  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
   <string name="setting_cond_predecessor">Etkinlik Sırası</string>
-  <string name="setting_cond_predecessor_summary">Günlükteki etkinlik sırasının, önerilen sonraki etkinliklerde %1$s ağırlığı vardır.</string>
-  <string name="setting_cond_predecessor_not_used_summary">Günlükteki etkinlik sırası, sonraki etkinlikleri önermek için kullanılmaz.</string>
+  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Etkinlik Sıklığı</string>
-  <string name="setting_cond_occurrence_summary">Günlükteki etkinlik sıklığının, önerilen sonraki etkinliklerde %1$s ağırlığı vardır.</string>
-  <string name="setting_cond_occurrence_not_used_summary">Günlükteki etkinlik sıklığı, sonraki etkinlikleri önermek için kullanılmaz.</string>
+  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">Uzman Ayarları</string>
   <string name="setting_export">Veritabanını Dışa Aktar</string>
   <string name="setting_import">Veritabanını İçe Aktar</string>
-  <string name="setting_export_summary">O anki veritabanının bir kopyasını yedekleme için bir dosyada sakla.</string>
-  <string name="setting_import_summary">O anki veritabanını, yedeklenmiş bir dosyadan geri yükle.</string>
-  <string name="db_export_error">Veritabanı %1$s dosyasına aktarılamadı.</string>
-  <string name="db_export_success">Veritabanı %1$s dosyasına aktarıldı.</string>
+  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="db_export_error">Failed to export database to %1$s</string>
+  <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Dışa aktarma için dosya seçin</string>
-  <string name="db_import_error">Veritabanı %1$s dosyasından alınamadı.</string>
-  <string name="db_import_success">Veritabanı %1$s dosyasından alındı.</string>
+  <string name="db_import_error">Failed to import %1$s</string>
+  <string name="db_import_success">%1$s successfully imported</string>
   <string name="db_import_selection">İçe aktarılacak dosyayı seçin</string>
   <!-- titles -->
   <string name="activity_title_edit">Düzenle</string>
@@ -105,11 +111,17 @@
   <string name="dlg_delete_image_title">Silmeyi Onayla</string>
   <string name="dlg_delete_image_text">Bu görsel gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
   <!-- main view -->
-  <string name="duration_description">Süre:</string>
+  <string name="duration_description">Since %1$s</string>
+  <string name="just_now">just now</string>
+  <string name="few_seconds">a few seconds</string>
+  <string name="seconds_short">sec</string>
+  <string name="minutes_short">min</string>
+  <string name="hours_short">h</string>
+  <string name="days">Days</string>
   <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
-  <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli.</string>
+  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
-  <string name="error_name_already_used">%1$s adlı etkinlik zaten var.</string>
+  <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
