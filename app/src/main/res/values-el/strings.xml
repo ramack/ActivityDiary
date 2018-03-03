@@ -12,16 +12,16 @@
   <string name="nav_activity_manager">Επεξεργασία δραστηριοτήτων</string>
   <string name="nav_settings">Ρυθμίσεις</string>
   <string name="nav_about">Σχετικά με</string>
-  <string name="desc_activity_color">Χρώμα δραστηριότητας</string>
-  <string name="desc_activity_hint">Τίτλος δραστηριότητας</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Επιλέξτε τρέχουσα δραστηριότητα&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Εικόνα για Δραστηριότητα</string>
-  <string name="contentDesc_logo">Λογότυπο του ActivityDiary</string>
-  <string name="drawer_open">Ανοίξτε την Πλοήγηση</string>
-  <string name="drawer_close">Κλείστε την Πλοήγηση</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_name">Current activity</string>
   <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Θέα</string>
@@ -50,18 +50,18 @@
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">ΜΑΚΡΙΑ ΑΠΟ</string>
-  <string name="setting_cond_alpha">Αλφαβητική Ταξινόμηση</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Ακολουθία δραστηριότητας</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Εκδήλωση δραστηριότητας</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Ρυθμίσεις εμπειρογνωμόνων</string>
-  <string name="setting_export">Εξαγωγή βάσης δεδομένων</string>
-  <string name="setting_import">Εισαγωγή βάσης δεδομένων</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
@@ -73,8 +73,8 @@
   <string name="db_import_selection">Επιλέξτε αρχείο για εισαγωγή</string>
   <!-- titles -->
   <string name="activity_title_edit">Επεξεργασία</string>
-  <string name="activity_title_edit_new">Νέα δραστηριότητα</string>
-  <string name="activity_title_manage_activities">Διαχείριση δραστηριοτήτων</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Ημερολόγιο</string>
   <string name="activity_subtitle_main">Τι κάνεις?</string>
   <string name="activity_title_about">Σχετικά με</string>
@@ -82,16 +82,16 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Σημείωση</string>
   <!-- actions -->
-  <string name="action_delete">Διαγραφή δραστηριότητας</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">Αποθηκεύσετε</string>
   <string name="action_filter">Φίλτρο</string>
   <string name="action_undo">ΑΝΑΙΡΕΣΗ</string>
-  <string name="search_hint">Δραστηριότητα αναζήτησης&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Δραστηριότητες διάρκειας</string>
   <!-- dialog -->
   <string name="dlg_ok">Εντάξει</string>
   <string name="dlg_cancel">Ματαίωση</string>
-  <string name="dlg_delete_image_title">Επιβεβαίωση διαγραφής</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Αφαιρέστε πραγματικά αυτήν την εικόνα από την τρέχουσα καταχώριση δραστηριότητας;</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -110,7 +110,7 @@
   <!-- relative dates -->
   <string name="today">Σήμερα</string>
   <string name="yesterday">Εχθές</string>
-  <string name="lastWeek">Την προηγούμενη εβδομάδα</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Παρουσιάστηκε μη αναμενόμενο σφάλμα που αναγκάζει την εφαρμογή να σταματήσει. Παρακαλώ βοηθήστε μας να διορθώσουμε αυτό στέλνοντας μας δεδομένα σφάλματος, το μόνο που έχετε να κάνετε είναι να κάνετε κλικ στο OK.</string>
   <string name="crash_dialog_comment_prompt">Μπορείτε να προσθέσετε τα σχόλιά σας σχετικά με το παρακάτω πρόβλημα:</string>
