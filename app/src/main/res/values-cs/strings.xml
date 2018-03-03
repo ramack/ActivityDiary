@@ -12,16 +12,16 @@
   <string name="nav_activity_manager">Upravit aktivity</string>
   <string name="nav_settings">Nastavení</string>
   <string name="nav_about">O</string>
-  <string name="desc_activity_color">Barva aktivity</string>
-  <string name="desc_activity_hint">Název činnosti</string>
+  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Vyberte aktuální aktivitu&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Obrázek aktivity</string>
-  <string name="contentDesc_logo">Logo společnosti ActivityDiary</string>
-  <string name="drawer_open">Otevřete navigaci</string>
-  <string name="drawer_close">Zavřete navigaci</string>
+  <string name="activity_image_description">Picture for activity</string>
+  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="drawer_open">Open navigation</string>
+  <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current Activity</string>
+  <string name="notif_channel_current_activity_name">Current activity</string>
   <string name="notif_channel_current_activity_desc">Show the activity you are currently doing as notification</string>
   <!-- settings -->
   <string name="setting_view_category">Pohled</string>
@@ -50,18 +50,18 @@
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">VYPNUTO</string>
-  <string name="setting_cond_alpha">Abecední řazení</string>
+  <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Sekvence činností</string>
+  <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Výskyt aktivity</string>
+  <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Expertní nastavení</string>
-  <string name="setting_export">Exportní databáze</string>
-  <string name="setting_import">Importovat databázi</string>
+  <string name="setting_expert">Expert settings</string>
+  <string name="setting_export">Export database</string>
+  <string name="setting_import">Import database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
@@ -73,8 +73,8 @@
   <string name="db_import_selection">Vyberte soubor pro import</string>
   <!-- titles -->
   <string name="activity_title_edit">Upravit</string>
-  <string name="activity_title_edit_new">Nová aktivita</string>
-  <string name="activity_title_manage_activities">Správa aktivit</string>
+  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Deník</string>
   <string name="activity_subtitle_main">Co to děláš?</string>
   <string name="activity_title_about">O</string>
@@ -82,16 +82,16 @@
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Poznámka</string>
   <!-- actions -->
-  <string name="action_delete">Smazat aktivitu</string>
+  <string name="action_delete">Delete activity</string>
   <string name="action_store">Uložit</string>
   <string name="action_filter">Filtr</string>
   <string name="action_undo">ZPĚT</string>
-  <string name="search_hint">Aktivita vyhledávání&#8230;</string>
+  <string name="search_hint">Search activity&#8230;</string>
   <string name="search_description">Diářové aktivity</string>
   <!-- dialog -->
   <string name="dlg_ok">OK</string>
   <string name="dlg_cancel">zrušení</string>
-  <string name="dlg_delete_image_title">Potvrdit vymazání</string>
+  <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Opravdu odstranit tento obrázek z aktuální položky aktivity?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -110,7 +110,7 @@
   <!-- relative dates -->
   <string name="today">Dnes</string>
   <string name="yesterday">Včera</string>
-  <string name="lastWeek">Minulý týden</string>
+  <string name="lastWeek">Last week</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Došlo k neočekávané chybě, která přinutila aplikaci zastavit. Pomozte nám to opravit zasláním chybových údajů, stačí kliknout na tlačítko OK.</string>
   <string name="crash_dialog_comment_prompt">Můžete přidat poznámky k problému níže:</string>
