@@ -39,7 +39,7 @@
   <string name="drawer_close">Navigation schließen</string>
   <!-- Notification Channels -->
   <string name="notif_channel_current_activity_name">Aktuelle Aktivität</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_desc">Benachrichtigung anzeigen für die Aktivität, die Sie gerade ausführen</string>
   <!-- settings -->
   <string name="setting_view_category">Anzeige</string>
   <string name="setting_behavior_category">Verhalten</string>
@@ -115,20 +115,20 @@
   <string name="just_now">gerade eben</string>
   <string name="few_seconds">einigen Sekunden</string>
   <plurals name="seconds_short">
-    <item quantity="one">%d sec</item>
-    <item quantity="other">%d sec</item>
+    <item quantity="one">%d s</item>
+    <item quantity="other">%d s</item>
   </plurals>
   <plurals name="minutes_short">
     <item quantity="one">%d min</item>
     <item quantity="other">%d min</item>
   </plurals>
   <plurals name="hours_short">
-    <item quantity="one">%d h</item>
-    <item quantity="other">%d h</item>
+    <item quantity="one">%d Std.</item>
+    <item quantity="other">%d Std.</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">%d Day</item>
-    <item quantity="other">%d Days</item>
+    <item quantity="one">%d Tag</item>
+    <item quantity="other">%d Tage</item>
   </plurals>
   <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
