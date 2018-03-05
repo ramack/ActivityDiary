@@ -82,12 +82,12 @@
   <string name="db_export_name_suggestion">ActivityDiary_Esportato</string>
   <string name="db_export_selection">Seleziona il file per l\'esportazione</string>
   <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
+  <string name="db_import_success">%1$s è importato con successo</string>
   <string name="db_import_selection">Seleziona il file per l\'importazione</string>
   <!-- titles -->
   <string name="activity_title_edit">Modificare</string>
   <string name="activity_title_edit_new">Nuova attività</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
+  <string name="activity_title_manage_activities">Gestisci le tue attivvità</string>
   <string name="activity_title_history">Diario</string>
   <string name="activity_subtitle_main">Cosa fai?</string>
   <string name="activity_title_about">Circa</string>
