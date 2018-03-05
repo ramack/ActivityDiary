@@ -29,7 +29,7 @@
   <string name="nav_activity_manager">Etkinlikleri Düzenle</string>
   <string name="nav_settings">Ayarlar</string>
   <string name="nav_about">Hakkında</string>
-  <string name="desc_activity_color">Activity color</string>
+  <string name="desc_activity_color">Etkinlik rengi</string>
   <string name="desc_activity_hint">Activity title</string>
   <string name="desc_activity_select">Şu anki etkinliği seç&#8230;</string>
   <!-- -->
