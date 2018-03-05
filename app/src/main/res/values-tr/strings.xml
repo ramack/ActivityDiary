@@ -38,7 +38,7 @@
   <string name="drawer_open">Gezinme çekmecesini aç</string>
   <string name="drawer_close">Gezinme çekmecesini kapa</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Şu anki aktivite</string>
+  <string name="notif_channel_current_activity_name">Şu anki etkinlik</string>
   <string name="notif_channel_current_activity_desc">O anda yaptığınız etkinlik için bildirim gösterir</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
@@ -71,27 +71,27 @@
   <string name="setting_cond_alpha_summary">Alfabetik sıralamanın, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
   <string name="setting_cond_alpha_not_used_summary">Alfabetik sıralama, sonraki etkinlikleri önermek için kullanılmaz</string>
   <string name="setting_cond_predecessor">Etkinlik sırası</string>
-  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Activity occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
-  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
-  <string name="setting_import_summary">Restore a backup file to current database</string>
-  <string name="db_export_error">Failed to export database to %1$s</string>
-  <string name="db_export_success">Exported database to %1$s</string>
+  <string name="setting_cond_predecessor_summary">Günlükteki etkinlik sırasının, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
+  <string name="setting_cond_predecessor_not_used_summary">Günlükteki etkinlik sırası, sonraki etkinlikleri önermek için kullanılmaz</string>
+  <string name="setting_cond_occurrence">Etkinlik sıklığı</string>
+  <string name="setting_cond_occurrence_summary">Günlükteki etkinlik sıklığının, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
+  <string name="setting_cond_occurrence_not_used_summary">Günlükteki etkinlik sıklığı, sonraki etkinlikleri önermek için kullanılmaz</string>
+  <string name="setting_expert">Uzman ayarları</string>
+  <string name="setting_export">Veritabanını dışa aktar</string>
+  <string name="setting_import">Veritabanını içe aktar</string>
+  <string name="setting_export_summary">O anki veritabanının bir kopyasını yedekleme için bir dosyada sakla</string>
+  <string name="setting_import_summary">O anki veritabanını, yedeklenmiş bir dosyadan geri yükle</string>
+  <string name="db_export_error">Veritabanı %1$s dosyasına aktarılamadı</string>
+  <string name="db_export_success">Veritabanı %1$s dosyasına aktarıldı</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Dışa aktarma için dosya seçin</string>
-  <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
+  <string name="db_import_error">Veritabanı %1$s dosyasından alınamadı</string>
+  <string name="db_import_success">Veritabanı %1$s dosyasından alındı</string>
   <string name="db_import_selection">İçe aktarılacak dosyayı seçin</string>
   <!-- titles -->
   <string name="activity_title_edit">Düzenle</string>
-  <string name="activity_title_edit_new">New activity</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
+  <string name="activity_title_edit_new">Yeni etkinlik</string>
+  <string name="activity_title_manage_activities">Etkinlikleri yönet</string>
   <string name="activity_title_history">Günlük</string>
   <string name="activity_subtitle_main">Ne yapıyorsun?</string>
   <string name="activity_title_about">Hakkında</string>
@@ -99,47 +99,47 @@
   <string name="activity_title_no_selected_act">&lt;Etkinlik Yok&gt;</string>
   <string name="dialog_title_note">Not</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
+  <string name="action_delete">Etkinliği sil</string>
   <string name="action_store">Kaydet</string>
   <string name="action_filter">Süz</string>
   <string name="action_undo">GERİ AL</string>
-  <string name="search_hint">Search activity&#8230;</string>
+  <string name="search_hint">Etkinlik ara&#8230;</string>
   <string name="search_description">Günlük etkinlikleri</string>
   <!-- dialog -->
   <string name="dlg_ok">Tamam</string>
   <string name="dlg_cancel">İptal</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
+  <string name="dlg_delete_image_title">Silmeyi onayla</string>
   <string name="dlg_delete_image_text">Bu görsel gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
-  <string name="just_now">just now</string>
-  <string name="few_seconds">a few seconds</string>
+  <string name="duration_description">%1$s tarihinden beri</string>
+  <string name="just_now">şimdi</string>
+  <string name="few_seconds">birkaç saniye</string>
   <plurals name="seconds_short">
-    <item quantity="one">%d sec</item>
-    <item quantity="other">%d sec</item>
+    <item quantity="one">%d sn</item>
+    <item quantity="other">%d sn</item>
   </plurals>
   <plurals name="minutes_short">
-    <item quantity="one">%d min</item>
-    <item quantity="other">%d min</item>
+    <item quantity="one">%d dk</item>
+    <item quantity="other">%d dk</item>
   </plurals>
   <plurals name="hours_short">
-    <item quantity="one">%d h</item>
-    <item quantity="other">%d h</item>
+    <item quantity="one">%d sa</item>
+    <item quantity="other">%d sa</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">%d Day</item>
-    <item quantity="other">%d Days</item>
+    <item quantity="one">%d Gün</item>
+    <item quantity="other">%d Gün</item>
   </plurals>
   <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+  <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists</string>
+  <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
   <string name="today">Bugün</string>
   <string name="yesterday">Dün</string>
-  <string name="lastWeek">Last week</string>
+  <string name="lastWeek">Geçen hafta</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Uygulamanın durmasını zorunlu kılan beklenmedik bir hata oluştu. Lütfen, bize hata verisini göndererek bunu düzeltmemize yardımcı olun, tek yapmanız gereken Tamam\'a tıklamak.</string>
   <string name="crash_dialog_comment_prompt">Sorunla ilgili yorumlarınızı aşağıya ekleyebilirsiniz:</string>
