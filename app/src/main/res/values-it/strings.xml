@@ -86,7 +86,7 @@
   <string name="db_import_selection">Seleziona il file per l\'importazione</string>
   <!-- titles -->
   <string name="activity_title_edit">Modificare</string>
-  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_edit_new">Nuova attività</string>
   <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Diario</string>
   <string name="activity_subtitle_main">Cosa fai?</string>
