@@ -34,7 +34,7 @@
   <string name="drawer_open">Apri la Navigazione</string>
   <string name="drawer_close">Chiudi la navigazione</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current activity</string>
+  <string name="notif_channel_current_activity_name">Attività attuale</string>
   <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
   <!-- settings -->
   <string name="setting_view_category">Vista</string>
@@ -72,9 +72,9 @@
   <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
+  <string name="setting_expert">Impostazioni per esperti</string>
+  <string name="setting_export">Esporta database</string>
+  <string name="setting_import">Importa database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
