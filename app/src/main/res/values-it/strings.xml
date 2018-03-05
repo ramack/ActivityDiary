@@ -25,13 +25,13 @@
   <string name="nav_activity_manager">Modifica attività</string>
   <string name="nav_settings">Impostazioni</string>
   <string name="nav_about">Circa</string>
-  <string name="desc_activity_color">Activity color</string>
-  <string name="desc_activity_hint">Activity title</string>
+  <string name="desc_activity_color">Colore dell\'attività</string>
+  <string name="desc_activity_hint">Titolo dell\'attività</string>
   <string name="desc_activity_select">Scegliere attività corrente&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
-  <string name="drawer_open">Open navigation</string>
+  <string name="activity_image_description">Immagine per l\'attività</string>
+  <string name="contentDesc_logo">Logo di Activity Diary</string>
+  <string name="drawer_open">Apri la Navigazione</string>
   <string name="drawer_close">Close navigation</string>
   <!-- Notification Channels -->
   <string name="notif_channel_current_activity_name">Current activity</string>
