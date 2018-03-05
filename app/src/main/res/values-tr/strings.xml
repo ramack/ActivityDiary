@@ -30,31 +30,31 @@
   <string name="nav_settings">Ayarlar</string>
   <string name="nav_about">Hakkında</string>
   <string name="desc_activity_color">Etkinlik rengi</string>
-  <string name="desc_activity_hint">Activity title</string>
+  <string name="desc_activity_hint">Etkinlik başlığı</string>
   <string name="desc_activity_select">Şu anki etkinliği seç&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
-  <string name="drawer_open">Open navigation</string>
-  <string name="drawer_close">Close navigation</string>
+  <string name="activity_image_description">Etkinlik için resim</string>
+  <string name="contentDesc_logo">Etkinlik günlüğü logosu</string>
+  <string name="drawer_open">Gezinme çekmecesini aç</string>
+  <string name="drawer_close">Gezinme çekmecesini kapa</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current activity</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_name">Şu anki aktivite</string>
+  <string name="notif_channel_current_activity_desc">O anda yaptığınız etkinlik için bildirim gösterir</string>
   <!-- settings -->
   <string name="setting_view_category">Görünüm</string>
   <string name="setting_behavior_category">Davranış</string>
   <string name="setting_images_category">Görseller</string>
   <string name="setting_backup_category">Yedekleme</string>
   <string name="setting_condition_category">Koşullar</string>
-  <string name="setting_datetime_format">Date format</string>
+  <string name="setting_datetime_format">Tarih biçimi</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Select new activities</string>
-  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
-  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
-  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
+  <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin gösterim biçimi. yyyy-MM-dd HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
+  <string name="setting_auto_select_new">Yeni etkinlikleri seç</string>
+  <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan etkin olan olarak seçilir</string>
+  <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez</string>
+  <string name="setting_show_cur_activitiy_notification">O anki etkinlik için bildirim</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Şu anki etkinlik bildirim olarak gösterilir</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">Şu anki etkinlik için bildirim gösterilmez</string>
   <string name="setting_enable_acra">Çökme Raporu</string>
   <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
   <string name="setting_acra_disabled">Çökmelerde raporları gönderme</string>
@@ -63,14 +63,14 @@
   <string name="setting_storage_folder_description">Etkinlik fotoğraflarının saklanacağı dizin</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Üst veri</string>
-  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
-  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
+  <string name="setting_tag_yes">O anki etkinliği yeni görsellerin EXIF ​​UserComment etiketine yaz</string>
+  <string name="setting_tag_no">Yeni görsellerin EXIF ​​etiketlerine dokunma</string>
   <!-- Conditions -->
   <string name="pref_cond_off">KAPALI</string>
-  <string name="setting_cond_alpha">Alphabetical sort</string>
-  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Activity sequence</string>
+  <string name="setting_cond_alpha">Alfabetik sıralama</string>
+  <string name="setting_cond_alpha_summary">Alfabetik sıralamanın, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
+  <string name="setting_cond_alpha_not_used_summary">Alfabetik sıralama, sonraki etkinlikleri önermek için kullanılmaz</string>
+  <string name="setting_cond_predecessor">Etkinlik sırası</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Activity occurrence</string>
