@@ -35,20 +35,20 @@
   <string name="drawer_close">Chiudi la navigazione</string>
   <!-- Notification Channels -->
   <string name="notif_channel_current_activity_name">Attività attuale</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_desc">Mostra la notifica per l\'attività che stai facendo al momento</string>
   <!-- settings -->
   <string name="setting_view_category">Vista</string>
   <string name="setting_behavior_category">Comportamento</string>
   <string name="setting_images_category">Immagini</string>
   <string name="setting_backup_category">Backup</string>
   <string name="setting_condition_category">Condizioni</string>
-  <string name="setting_datetime_format">Date format</string>
+  <string name="setting_datetime_format">Formato della data</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
   <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Select new activities</string>
+  <string name="setting_auto_select_new">Seleziona nuove attività</string>
   <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_auto_select_new_summary_inactive">La creazione di nuove attività non andrà a influenzare l\'attività attuale</string>
+  <string name="setting_show_cur_activitiy_notification">Notifica per l\'attività attuale</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Crash report</string>
@@ -95,7 +95,7 @@
   <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
   <string name="dialog_title_note">Nota</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
+  <string name="action_delete">Elimina un\'attività</string>
   <string name="action_store">Salvare</string>
   <string name="action_filter">Filtro</string>
   <string name="action_undo">ANNULLA</string>
@@ -104,7 +104,7 @@
   <!-- dialog -->
   <string name="dlg_ok">Ok</string>
   <string name="dlg_cancel">Annulla</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
+  <string name="dlg_delete_image_title">Confermare la cancellazione</string>
   <string name="dlg_delete_image_text">Davvero rimuovere questa immagine la voce corrente di attività?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
@@ -135,7 +135,7 @@
   <!-- relative dates -->
   <string name="today">Oggi</string>
   <string name="yesterday">Ieri</string>
-  <string name="lastWeek">Last week</string>
+  <string name="lastWeek">La settimana scorsa</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Errore imprevisto durante l\'imposizione all\'applicazione di interrompere. Vi preghiamo di aiutarci a risolvere questo problema inviandoci i dati errore, tutto quello che dovete fare è fare clic su OK.</string>
   <string name="crash_dialog_comment_prompt">È possibile aggiungere i vostri commenti sul problema riportato di seguito:</string>
