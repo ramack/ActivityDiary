@@ -44,7 +44,7 @@
   <string name="setting_condition_category">Condizioni</string>
   <string name="setting_datetime_format">Formato della data</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+  <string name="setting_datetime_format_description">Visualizza il formato della data e dell\'ora per l\'inizio di un\'attività. I formati usuali sono aaaa-MM-gg HH: mm oppure gg.MM. hh: mm</string>
   <string name="setting_auto_select_new">Seleziona nuove attività</string>
   <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
   <string name="setting_auto_select_new_summary_inactive">La creazione di nuove attività non andrà a influenzare l\'attività attuale</string>
