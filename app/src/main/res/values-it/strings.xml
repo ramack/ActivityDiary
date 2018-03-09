@@ -127,9 +127,9 @@
     <item quantity="other">%d Days</item>
   </plurals>
   <string name="camera_error">Qualcosa è andato storto qui. Non può memorizzare le immagini.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+  <string name="no_active_activity_error">Per eseguire questa azione è necessario selezionare prima un\'attività</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists</string>
+  <string name="error_name_already_used">Esiste già un\'attività con il nome %1$s</string>
   <!-- history -->
   <string name="default_datetime_format">yyy.MM.dd HH:mm</string>
   <!-- relative dates -->
