@@ -124,10 +124,10 @@
   </plurals>
   <plurals name="days">
     <item quantity="one">%d Giorni</item>
-    <item quantity="other">%d Days</item>
+    <item quantity="other">%d Giorni</item>
   </plurals>
   <string name="camera_error">Qualcosa è andato storto qui. Non può memorizzare le immagini.</string>
-  <string name="no_active_activity_error">Per eseguire questa azione è necessario selezionare prima un\'attività</string>
+  <string name="no_active_activity_error">Per eseguire questa azione bisogna selezionare prima un\'attività</string>
   <!-- edit view -->
   <string name="error_name_already_used">Esiste già un\'attività con il nome %1$s</string>
   <!-- history -->
