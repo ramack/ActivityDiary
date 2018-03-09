@@ -123,7 +123,7 @@
     <item quantity="other">%d h</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">%d Day</item>
+    <item quantity="one">%d Giorni</item>
     <item quantity="other">%d Days</item>
   </plurals>
   <string name="camera_error">Qualcosa è andato storto qui. Non può memorizzare le immagini.</string>
