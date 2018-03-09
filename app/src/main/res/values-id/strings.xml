@@ -52,7 +52,7 @@
   <string name="setting_auto_select_new">Pilih aktivitas baru</string>
   <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
   <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
+  <string name="setting_show_cur_activitiy_notification">Pemberitahuan untuk aktivitas saat ini</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Laporan Kerusakan</string>
@@ -135,7 +135,7 @@
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
-  <string name="lastWeek">Last week</string>
+  <string name="lastWeek">Minggu lalu</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Sebuah kesalahan yang tidak terduka terjadi memaksa aplikasi berhenti. Tolong bantu kami untuk memperbaikinya dengan mengirimkan data kesalahan kepada kami, yang harus anda lakukan adalah mengklik OK.</string>
   <string name="crash_dialog_comment_prompt">Anda bisa memberikan komentar tentang masalah dibawah ini:</string>
