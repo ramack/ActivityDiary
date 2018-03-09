@@ -21,7 +21,7 @@
         ]]>
     </string>
   <string name="perm_write_external_storage_xplain">Membutuhkan izin untuk melakukan penyimpanan foto &#8230;</string>
-  <string name="unsupported_on_api_level">Versi Android anda tidak mendukung fitur ini. Minimum tingkat API %1$d dibutuhkan.</string>
+  <string name="unsupported_on_api_level">Versi Android Anda tidak mendukung fitur ini. Minimum tingkat API %1$d dibutuhkan.</string>
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Pilih kegiatan</string>
   <string name="nav_diary">Buku harian</string>
