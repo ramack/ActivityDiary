@@ -113,7 +113,7 @@
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
   <string name="just_now">just now</string>
-  <string name="few_seconds">a few seconds</string>
+  <string name="few_seconds">beberapa detik</string>
   <plurals name="seconds_short">
     <item quantity="other">%d sec</item>
   </plurals>
