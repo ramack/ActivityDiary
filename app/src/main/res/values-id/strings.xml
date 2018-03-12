@@ -124,7 +124,7 @@
     <item quantity="other">%d h</item>
   </plurals>
   <plurals name="days">
-    <item quantity="other">%d Days</item>
+    <item quantity="other">%d Hari</item>
   </plurals>
   <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
