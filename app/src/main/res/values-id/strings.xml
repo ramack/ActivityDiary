@@ -90,7 +90,7 @@
   <string name="db_import_selection">Memilih berkas untuk diimpor</string>
   <!-- titles -->
   <string name="activity_title_edit">Sunting</string>
-  <string name="activity_title_edit_new">New activity</string>
+  <string name="activity_title_edit_new">Aktivitas baru</string>
   <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Buku harian</string>
   <string name="activity_subtitle_main">Apa yang kamu lakukan?</string>
@@ -99,7 +99,7 @@
   <string name="activity_title_no_selected_act">&lt;Tidak ada Kegiatan&gt;</string>
   <string name="dialog_title_note">Catatan</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
+  <string name="action_delete">Hapus aktivitas</string>
   <string name="action_store">Simpan</string>
   <string name="action_filter">Saring</string>
   <string name="action_undo">URUNGKAN</string>
