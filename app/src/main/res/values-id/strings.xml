@@ -66,7 +66,7 @@
   <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
   <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
   <!-- Conditions -->
-  <string name="pref_cond_off">MATI</string>
+  <string name="pref_cond_off">TUTUP</string>
   <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
@@ -84,19 +84,19 @@
   <string name="db_export_error">Failed to export database to %1$s</string>
   <string name="db_export_success">Exported database to %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
-  <string name="db_export_selection">Memilih berkas untuk di ekspor</string>
+  <string name="db_export_selection">Pilih berkas untuk diekspor</string>
   <string name="db_import_error">Failed to import %1$s</string>
   <string name="db_import_success">%1$s successfully imported</string>
-  <string name="db_import_selection">Memilih berkas untuk diimpor</string>
+  <string name="db_import_selection">Pilih berkas untuk diimpor</string>
   <!-- titles -->
-  <string name="activity_title_edit">Sunting</string>
+  <string name="activity_title_edit">Ubah</string>
   <string name="activity_title_edit_new">Aktivitas baru</string>
   <string name="activity_title_manage_activities">Manage activities</string>
   <string name="activity_title_history">Buku harian</string>
-  <string name="activity_subtitle_main">Apa yang kamu lakukan?</string>
+  <string name="activity_subtitle_main">Apa yang sedang Anda lakukan?</string>
   <string name="activity_title_about">Tentang</string>
   <string name="activity_title_settings">Pengaturan</string>
-  <string name="activity_title_no_selected_act">&lt;Tidak ada Kegiatan&gt;</string>
+  <string name="activity_title_no_selected_act">&lt;Tidak ada Aktivitas&gt;</string>
   <string name="dialog_title_note">Catatan</string>
   <!-- actions -->
   <string name="action_delete">Hapus aktivitas</string>
@@ -107,7 +107,7 @@
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">Oke</string>
-  <string name="dlg_cancel">Membatalkan</string>
+  <string name="dlg_cancel">Batalkan</string>
   <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Benar-benar menghapus gambar ini dari catatan aktivitas pada saat ini?</string>
   <!-- main view -->
