@@ -86,7 +86,7 @@
   <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
   <string name="db_export_selection">Pilih berkas untuk diekspor</string>
   <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
+  <string name="db_import_success">%1$s berhasil diimpor</string>
   <string name="db_import_selection">Pilih berkas untuk diimpor</string>
   <!-- titles -->
   <string name="activity_title_edit">Ubah</string>
@@ -111,17 +111,17 @@
   <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas pada saat ini?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
-  <string name="just_now">just now</string>
+  <string name="duration_description">Sejak %1$s</string>
+  <string name="just_now">baru saja</string>
   <string name="few_seconds">beberapa detik</string>
   <plurals name="seconds_short">
-    <item quantity="other">%d sec</item>
+    <item quantity="other">%d detik</item>
   </plurals>
   <plurals name="minutes_short">
-    <item quantity="other">%d min</item>
+    <item quantity="other">%d menit</item>
   </plurals>
   <plurals name="hours_short">
-    <item quantity="other">%d h</item>
+    <item quantity="other">%d jam</item>
   </plurals>
   <plurals name="days">
     <item quantity="other">%d Hari</item>
