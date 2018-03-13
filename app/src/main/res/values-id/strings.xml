@@ -29,11 +29,11 @@
   <string name="nav_activity_manager">Ubah Aktivitas</string>
   <string name="nav_settings">Pengaturan</string>
   <string name="nav_about">Tentang</string>
-  <string name="desc_activity_color">Activity color</string>
-  <string name="desc_activity_hint">Activity title</string>
+  <string name="desc_activity_color">Warna aktivitas</string>
+  <string name="desc_activity_hint">Judul aktivitas</string>
   <string name="desc_activity_select">Pilih Aktivitas saat ini&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
+  <string name="activity_image_description">Gambar untuk aktivitas</string>
   <string name="contentDesc_logo">Logo of activitydiary</string>
   <string name="drawer_open">Buka navigasi</string>
   <string name="drawer_close">Tutup navigasi</string>
@@ -137,7 +137,7 @@
   <string name="yesterday">Kemarin</string>
   <string name="lastWeek">Minggu lalu</string>
   <!-- ACRA crash reporting -->
-  <string name="crash_dialog_text">Sebuah kesalahan yang tidak terduka terjadi memaksa aplikasi berhenti. Tolong bantu kami untuk memperbaikinya dengan mengirimkan data kesalahan kepada kami, yang harus anda lakukan adalah mengklik OK.</string>
-  <string name="crash_dialog_comment_prompt">Anda bisa memberikan komentar tentang masalah dibawah ini:</string>
+  <string name="crash_dialog_text">Sebuah kesalahan yang tidak terduka terjadi memaksa aplikasi berhenti. Tolong bantu kami untuk memperbaikinya dengan mengirimkan data kesalahan kepada kami, yang harus Anda lakukan adalah mengklik OK.</string>
+  <string name="crash_dialog_comment_prompt">Anda bisa menambahkan komentar Anda tentang masalah di bawah ini:</string>
   <string name="crash_dialog_ok_toast">Terima kasih. Silahkan mengirimkan email yang sudah disiapkan setelah meninjau isinya.</string>
 </resources>
