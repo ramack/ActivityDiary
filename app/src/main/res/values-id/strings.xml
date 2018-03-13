@@ -51,7 +51,7 @@
   <string name="setting_datetime_format_description">Format tampilan untuk tanggal dan waktu memulai aktivitas. format biasa adalah yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
   <string name="setting_auto_select_new">Pilih aktivitas baru</string>
   <string name="setting_auto_select_new_summary_active">Aktivitas yang baru saja dibuat diatur langsung sebagai yang baru aktif</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
+  <string name="setting_auto_select_new_summary_inactive">Pembuatan aktivitas baru tidak akan mempengaruhi aktivitas yang sedang aktif</string>
   <string name="setting_show_cur_activitiy_notification">Pemberitahuan untuk aktivitas saat ini</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
