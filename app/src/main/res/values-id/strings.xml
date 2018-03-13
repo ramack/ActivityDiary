@@ -23,15 +23,15 @@
   <string name="perm_write_external_storage_xplain">Membutuhkan izin untuk melakukan penyimpanan foto &#8230;</string>
   <string name="unsupported_on_api_level">Versi Android Anda tidak mendukung fitur ini. Minimum tingkat API %1$d dibutuhkan.</string>
   <!-- Navigation Drawer Menu -->
-  <string name="nav_main">Pilih kegiatan</string>
+  <string name="nav_main">Pilih Aktifitas</string>
   <string name="nav_diary">Buku harian</string>
-  <string name="nav_add_activity">Tambahkan Kegiatan</string>
-  <string name="nav_activity_manager">Ubah Kegiatan</string>
+  <string name="nav_add_activity">Tambahkan Aktifitas</string>
+  <string name="nav_activity_manager">Ubah Aktivitas</string>
   <string name="nav_settings">Pengaturan</string>
   <string name="nav_about">Tentang</string>
   <string name="desc_activity_color">Activity color</string>
   <string name="desc_activity_hint">Activity title</string>
-  <string name="desc_activity_select">Pilih kegiatan pada saat ini&#8230;</string>
+  <string name="desc_activity_select">Pilih Aktivitas saat ini&#8230;</string>
   <!-- -->
   <string name="activity_image_description">Picture for activity</string>
   <string name="contentDesc_logo">Logo of activitydiary</string>
