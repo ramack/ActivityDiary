@@ -34,12 +34,12 @@
   <string name="desc_activity_select">Pilih Aktivitas saat ini&#8230;</string>
   <!-- -->
   <string name="activity_image_description">Gambar untuk aktivitas</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
+  <string name="contentDesc_logo">Logo activitydiary</string>
   <string name="drawer_open">Buka navigasi</string>
   <string name="drawer_close">Tutup navigasi</string>
   <!-- Notification Channels -->
   <string name="notif_channel_current_activity_name">Aktivitas saat ini</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_desc">Tampilkan pemberitahuan untuk aktivitas yang sedang Anda lakukan</string>
   <!-- settings -->
   <string name="setting_view_category">Tampilan</string>
   <string name="setting_behavior_category">Perilaku</string>
