@@ -44,7 +44,7 @@
   <string name="setting_view_category">Tampilan</string>
   <string name="setting_behavior_category">Perilaku</string>
   <string name="setting_images_category">Gambar</string>
-  <string name="setting_backup_category">Candangkan</string>
+  <string name="setting_backup_category">Cadangkan</string>
   <string name="setting_condition_category">Kondisi</string>
   <string name="setting_datetime_format">Format tanggal</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
@@ -56,11 +56,11 @@
   <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
   <string name="setting_enable_acra">Laporan Kerusakan</string>
-  <string name="setting_acra_enabled">Mengirim laporan tentang kerusakan</string>
-  <string name="setting_acra_disabled">Jangan mengirim laporan tentang kerusakan</string>
+  <string name="setting_acra_enabled">Kirim laporan tentang kerusakan</string>
+  <string name="setting_acra_disabled">Jangan kirim laporan tentang kerusakan</string>
   <string name="setting_storage_folder">Berkas Tempat penyimpanan Gambar</string>
-  <string name="setting_storage_folder_summary">Menyimpan aktivitas foto dalam daftar %1$s</string>
-  <string name="setting_storage_folder_description">Daftar untuk menyimpan aktivitas foto</string>
+  <string name="setting_storage_folder_summary">Simpan foto aktivitas dalam daftar %1$s</string>
+  <string name="setting_storage_folder_description">Daftar untuk menyimpan foto aktivitas</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadata</string>
   <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
