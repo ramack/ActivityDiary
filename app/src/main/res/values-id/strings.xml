@@ -53,8 +53,8 @@
   <string name="setting_auto_select_new_summary_active">Aktivitas yang baru saja dibuat diatur langsung sebagai yang baru aktif</string>
   <string name="setting_auto_select_new_summary_inactive">Pembuatan aktivitas baru tidak akan mempengaruhi aktivitas yang sedang aktif</string>
   <string name="setting_show_cur_activitiy_notification">Pemberitahuan untuk aktivitas saat ini</string>
-  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
-  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Aktivitas saat ini ditampilkan sebagai pemberitahuan</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">Tidak ada pemberitahuan yang ditampilkan untuk aktivitas saat ini</string>
   <string name="setting_enable_acra">Laporan Kerusakan</string>
   <string name="setting_acra_enabled">Kirim laporan tentang kerusakan</string>
   <string name="setting_acra_disabled">Jangan kirim laporan tentang kerusakan</string>
@@ -77,8 +77,8 @@
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
+  <string name="setting_export">Ekspor database</string>
+  <string name="setting_import">Impor database</string>
   <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Failed to export database to %1$s</string>
