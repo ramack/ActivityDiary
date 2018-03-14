@@ -64,7 +64,7 @@
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadata</string>
   <string name="setting_tag_yes">Tulis aktivitas saat ini ke dalam tag EXIF UserComment untuk gambar baru</string>
-  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
+  <string name="setting_tag_no">Jangan ubah tag EXIF untuk gambar baru</string>
   <!-- Conditions -->
   <string name="pref_cond_off">MATI</string>
   <string name="setting_cond_alpha">Alphabetical sort</string>
