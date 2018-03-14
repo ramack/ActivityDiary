@@ -91,7 +91,7 @@
   <!-- titles -->
   <string name="activity_title_edit">Ubah</string>
   <string name="activity_title_edit_new">Aktivitas baru</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
+  <string name="activity_title_manage_activities">Mengelola aktivitas</string>
   <string name="activity_title_history">Buku harian</string>
   <string name="activity_subtitle_main">Apa yang sedang Anda lakukan?</string>
   <string name="activity_title_about">Tentang</string>
@@ -103,12 +103,12 @@
   <string name="action_store">Simpan</string>
   <string name="action_filter">Saring</string>
   <string name="action_undo">URUNGKAN</string>
-  <string name="search_hint">Search activity&#8230;</string>
+  <string name="search_hint">Cari aktivitas &#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
   <string name="dlg_ok">Oke</string>
   <string name="dlg_cancel">Batalkan</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
+  <string name="dlg_delete_image_title">Konfirmasi penghapusan</string>
   <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas pada saat ini?</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
