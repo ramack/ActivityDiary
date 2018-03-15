@@ -79,7 +79,7 @@
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
-  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
+  <string name="setting_export_summary">Simpan salinan database saat ini dalam berkas untuk dicadangkan</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Gagal mengekspor database ke %1$s</string>
   <string name="db_export_success">Exported database to %1$s</string>
