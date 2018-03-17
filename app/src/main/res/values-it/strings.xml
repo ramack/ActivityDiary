@@ -3,19 +3,25 @@
 <resources>
   <string name="app_name">Diario attività</string>
   <string name="about_text"><![CDATA[
-         <h1>%1$s</h1>
-         <br />versione <b>%2$s</b></p>
-         <p>Un diario per qualsiasi tipo di attività - organizzare le attività in modo agile e ottenere ricordato se qualcosa dovrebbe ripresentarsi.</p>
-         <h1>Licenza</h1>
-         <p>%1$s è software libero: è possibile ridistribuirlo o modificarlo secondo i termini della <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"> GNU General Public License</a> come pubblicata dalla Free Software Foundation, sia la versione 3 del Licenza, o (a tua scelta) qualsiasi versione successiva.</p>
-         <p>Questo programma è distribuito nella speranza che sarà utile, ma SENZA ALCUNA GARANZIA, senza neppure la garanzia implicita di commerciabilità o idoneità per uno scopo particolare. Vedi la GNU General Public License per maggiori dettagli.</p>
-         <h1>Contatto</h1>
-         <p>Per bug e suggerimenti utilizzano il <a href="https://github.com/ramack/ActivityDiary/issues"> tracker problema</a>.</p>
-         <p>Codice sorgente può essere trovato su <a href="https://github.com/ramack/ActivityDiary"> Github</a>.</p>
-         <h1>Contributori</h1> %3$s        <p>Siamo lieti di menzionare il tuo nome in questa lista, troppo.</p>
-         <h1>Biblioteche</h1>         Le seguenti librerie sono utilizzate da questa applicazione e rilasciate sotto le licenze denominate.
-         %4$s
-        ]]>    </string>
+        <h1>%1$s</h1>
+        <br />version <b>%2$s</b></p>
+        <p>A diary for any kind of activities - organize your tasks in agile way and get reminded if something is expected to reoccur.</p>
+        <h1>License</h1>
+        <p>%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+        <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+        <h1>Contact</h1>
+        <p>For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>.</p>
+        <p>Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</p>
+        <h1>Support</h1>
+        <p>In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</p>
+        <h1>Contributors</h1>
+        %3$s
+        <p>We are looking forward to mention your name in this list, too.</p>
+        <h1>Libraries</h1>
+        The following libraries are used by this application and licensed under the named licenses.
+        %4$s
+        ]]>
+    </string>
   <string name="perm_write_external_storage_xplain">La memorizzazione delle foto richiede il permesso di farlo &#8230;</string>
   <string name="unsupported_on_api_level">Questa funzionalità non è supportata nella tua versione Android. Livello minimo di API %1$d richiesto.</string>
   <!-- Navigation Drawer Menu -->
@@ -130,6 +136,7 @@
   <string name="no_active_activity_error">Per eseguire questa azione bisogna selezionare prima un\'attività</string>
   <!-- edit view -->
   <string name="error_name_already_used">Esiste già un\'attività con il nome %1$s</string>
+  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">yyy.MM.dd HH:mm</string>
   <!-- relative dates -->
