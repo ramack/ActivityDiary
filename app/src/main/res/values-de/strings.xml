@@ -4,19 +4,21 @@
   <string name="app_name">Aktivitätstagebuch</string>
   <string name="about_text"><![CDATA[
         <h1>%1$s</h1>
-        <br />Version <b>%2$s</b></p>
-        <p>Ein Tagebuch für alle möglichen Aktivitäten um deine Aufgaben agil zu organisieren und dich an wiederkehrende zu erinnern.</p>
-        <h1>Lizenz</h1>
-        <p>%1$s ist Freie Software: Es ist dir gestattet diese weiterzugeben und/oder zu verändern solange die Anforderungen der <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a> in Version 3 oder einer späteren Version, welche durch die Free Software Foundation veröffentlicht wird, eingehalten werden.</p>
-        <p>Dieses Programm wurde in der Hoffnung nützlich zu sein veröffentlicht, die Autoren und Bereitsteller übernehmen jedoch KEINERLEI GEWÄHRLEISTUNG oder GARANTIE dafür für einen bestimmten Zweck verwendet werden zu können. Für Details sei auf die GNU General Public License im Volltext verwiesen.</p>
-        <h1>Kontakt</h1>
-        <p>Fehler oder Verbesserungsvorschläge bitte ein <a href="https://github.com/ramack/ActivityDiary/issues">Ticket</a> anlegen, nach Möglichkeit in Englischer Sprache.</p>
-        <p>Der Quellcode steht auf <a href="https://github.com/ramack/ActivityDiary">Github</a> bereit.</p>
-        <h1>Mitwirkende</h1>
+        <br />version <b>%2$s</b></p>
+        <p>A diary for any kind of activities - organize your tasks in agile way and get reminded if something is expected to reoccur.</p>
+        <h1>License</h1>
+        <p>%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+        <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+        <h1>Contact</h1>
+        <p>For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>.</p>
+        <p>Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</p>
+        <h1>Support</h1>
+        <p>In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</p>
+        <h1>Contributors</h1>
         %3$s
-        <p>Es würde uns freuen auch deinen Namen bald hier auflisten zu können.</p>
-        <h1>Bibliotheken</h1>
-        Folgende Bibliotheken werden von diesem Programm verwendet welche unter den angegebenen Lizenzen veröffentlicht wurden:
+        <p>We are looking forward to mention your name in this list, too.</p>
+        <h1>Libraries</h1>
+        The following libraries are used by this application and licensed under the named licenses.
         %4$s
         ]]>
     </string>
@@ -134,6 +136,7 @@
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
+  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
