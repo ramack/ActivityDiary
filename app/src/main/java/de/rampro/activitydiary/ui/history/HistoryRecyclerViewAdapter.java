@@ -215,6 +215,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
 
         String duration = mContext.getResources().
                 getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(start, end));
+//TODO        do not use FuzzyTimeSpanFormatter here, but use xx sec for <1min yy min for <1h hh:mm otherwise
 
         holder.mDurationLabel.setText(duration);
 

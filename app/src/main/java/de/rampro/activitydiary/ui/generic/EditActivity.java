@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,12 @@
 package de.rampro.activitydiary.ui.generic;
 
 import android.content.AsyncQueryHandler;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -34,6 +37,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -51,12 +55,13 @@ import de.rampro.activitydiary.model.DiaryActivity;
  * EditActivity to add and modify activities
  *
  * */
-public class EditActivity extends BaseActivity
-{
+public class EditActivity extends BaseActivity implements ActivityHelper.DataChangedListener {
     @Nullable
     private DiaryActivity currentActivity; /* null is for creating a new object */
 
     private final int QUERY_NAMES = 1;
+    private final int RENAME_DELETED_ACTIVITY = 2;
+
     private final String COLOR_KEY = "COLOR";
     private final String NAME_KEY = "NAME";
 
@@ -65,6 +70,9 @@ public class EditActivity extends BaseActivity
     private ImageView mActivityColorImg;
     private int mActivityColor;
     private ColorPicker mCp;
+    private int linkCol; /* accent color -> to be sued for links */
+    private ImageButton mQuickFixBtn1;
+    private ImageButton mBtnRenameDeleted;
 
     private class QHandler extends AsyncQueryHandler {
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -76,15 +84,88 @@ public class EditActivity extends BaseActivity
                                        Cursor cursor) {
             if ((cursor != null)) {
                 if(token == QUERY_NAMES && cursor.moveToFirst()) {
-                    mActivityNameTIL.setError(getResources().getString(R.string.error_name_already_used, cursor.getString(0)));
+                    mQuickFixBtn1.setVisibility(View.VISIBLE);
+                    boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
+                    int actId = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID));
+                    String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+
+                    if(deleted) {
+                        CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
+                        mBtnRenameDeleted.setVisibility(View.VISIBLE);
+
+                        mActivityNameTIL.setError(str);
+                        mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_undelete));
+
+                        mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(EditActivity.this, "clicked undelete", Toast.LENGTH_LONG).show();
+
+                                currentActivity = ActivityHelper.helper.undeleteActivity(actId, name);
+                                refreshElements();
+                            }
+                        });
+                        mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(EditActivity.this, "clicked rename", Toast.LENGTH_LONG).show();
+                                ContentValues values = new ContentValues();
+                                String newName = name + "_deleted";
+                                values.put(ActivityDiaryContract.DiaryActivity.NAME, newName);
+
+                                startUpdate(RENAME_DELETED_ACTIVITY, null,
+                                        ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, actId),
+                                        values, ActivityDiaryContract.Diary._ID + " = " + actId, null);
+
+                            }
+                        });
+                    }else{
+                        mActivityNameTIL.setError(getResources().getString(R.string.error_name_already_used, cursor.getString(0)));
+                        mBtnRenameDeleted.setVisibility(View.GONE);
+                        mBtnRenameDeleted.setOnClickListener(null);
+                        mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_edit));
+                        mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(EditActivity.this, "clicked edit that one, " + actId, Toast.LENGTH_LONG).show();
+                                currentActivity = ActivityHelper.helper.activityWithId(actId);
+                                refreshElements();
+                            }
+                        });
+                    }
                 }
                 else{
                     mActivityNameTIL.setError("");
+                    mQuickFixBtn1.setVisibility(View.GONE);
+                    mQuickFixBtn1.setOnClickListener(null);
+                    mBtnRenameDeleted.setVisibility(View.GONE);
+                    mBtnRenameDeleted.setOnClickListener(null);
                 }
                 cursor.close();
             }
         }
 
+        @Override
+        protected void onUpdateComplete(int token, Object cookie, int result) {
+            super.onUpdateComplete(token, cookie, result);
+            if(token == RENAME_DELETED_ACTIVITY){
+                checkConstraints();
+            }
+        }
+    }
+
+    /* refresh all view elements depending on currentActivity */
+    private void refreshElements() {
+        if (currentActivity != null) {
+            mActivityName.setText(currentActivity.getName());
+            getSupportActionBar().setTitle(currentActivity.getName());
+            mActivityColor = currentActivity.getColor();
+        } else {
+            currentActivity = null;
+            mActivityColor = GraphicsHelper.prepareColorForNextActivity();
+        }
+        mActivityColorImg.setBackgroundColor(mActivityColor);
+        mCp.setColor(mActivityColor);
     }
 
     private QHandler mQHandler = new QHandler();
@@ -93,6 +174,12 @@ public class EditActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            linkCol = getResources().getColor(R.color.colorAccent, null);
+        }else{
+            linkCol = getResources().getColor(R.color.colorAccent);
+        }
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         int actId = i.getIntExtra("activityID", -1);
@@ -124,10 +211,23 @@ public class EditActivity extends BaseActivity
         });
         mActivityNameTIL = (TextInputLayout) findViewById(R.id.edit_activity_name_til);
 
+        mQuickFixBtn1 = (ImageButton)findViewById(R.id.quickFixButton1);
+        mBtnRenameDeleted = (ImageButton)findViewById(R.id.quickFixButtonRename);
+
         mActivityColorImg = (ImageView) contentView.findViewById(R.id.edit_activity_color);
         mActivityColorImg.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mCp.show();
+            }
+        });
+
+        mCp = new ColorPicker(EditActivity.this);
+        mCp.setCallback(new ColorPickerCallback() {
+            @Override
+            public void onColorChosen(@ColorInt int color) {
+                mActivityColor = color;
+                mActivityColorImg.setBackgroundColor(mActivityColor);
+                mCp.hide();
             }
         });
 
@@ -138,26 +238,8 @@ public class EditActivity extends BaseActivity
             getSupportActionBar().setTitle(name);
             checkConstraints();
         }else{
-            if (currentActivity != null) {
-                mActivityName.setText(currentActivity.getName());
-                getSupportActionBar().setTitle(currentActivity.getName());
-                mActivityColor = currentActivity.getColor();
-            } else {
-                currentActivity = null;
-                mActivityColor = GraphicsHelper.prepareColorForNextActivity();
-            }
+            refreshElements();
         }
-        mActivityColorImg.setBackgroundColor(mActivityColor);
-        mCp = new ColorPicker(EditActivity.this);
-        mCp.setColor(mActivityColor);
-        mCp.setCallback(new ColorPickerCallback() {
-            @Override
-            public void onColorChosen(@ColorInt int color) {
-                mActivityColor = color;
-                mActivityColorImg.setBackgroundColor(mActivityColor);
-                mCp.hide();
-            }
-        });
         mDrawerToggle.setDrawerIndicatorEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_cancel);
         checkConstraints();
@@ -168,7 +250,15 @@ public class EditActivity extends BaseActivity
         if(currentActivity == null) {
             mNavigationView.getMenu().findItem(R.id.nav_add_activity).setChecked(true);
         }
+        ActivityHelper.helper.registerDataChangeListener(this);
+
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ActivityHelper.helper.unregisterDataChangeListener(this);
     }
 
     @Override
@@ -227,7 +317,7 @@ public class EditActivity extends BaseActivity
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                    new String[]{ActivityDiaryContract.DiaryActivity.NAME},
+                    new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=?",
                     new String[]{mActivityName.getText().toString()}, null);
         }else{
@@ -235,11 +325,73 @@ public class EditActivity extends BaseActivity
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                    new String[]{ActivityDiaryContract.DiaryActivity.NAME},
+                    new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=? AND " +
                     ActivityDiaryContract.DiaryActivity._ID + " != ?",
                     new String[]{mActivityName.getText().toString(), Long.toString(currentActivity.getId())},
                     null);
         }
+    }
+
+    /**
+     * Called when the data has changed and no further specification is possible.
+     * => everything needs to be refreshed!
+     */
+    @Override
+    public void onActivityDataChanged() {
+        refreshElements();
+    }
+
+    /**
+     * Called when the data of one activity was changed.
+     *
+     * @param activity
+     */
+    @Override
+    public void onActivityDataChanged(DiaryActivity activity) {
+        if(activity == currentActivity){
+            refreshElements();
+        }
+    }
+
+    /**
+     * Called on addition of an activity.
+     *
+     * @param activity
+     */
+    @Override
+    public void onActivityAdded(DiaryActivity activity) {
+        if(activity == currentActivity){
+            refreshElements();
+        }
+    }
+
+    /**
+     * Called on removale of an activity.
+     *
+     * @param activity
+     */
+    @Override
+    public void onActivityRemoved(DiaryActivity activity) {
+        if(activity == currentActivity){
+            refreshElements();
+            // TODO: handle deletion of the activity while in editing it...
+        }
+    }
+
+    /**
+     * Called on change of the current activity.
+     */
+    @Override
+    public void onActivityChanged() {
+
+    }
+
+    /**
+     * Called on change of the activity order due to likelyhood.
+     */
+    @Override
+    public void onActivityOrderChanged() {
+
     }
 }

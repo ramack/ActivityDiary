@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,9 +52,10 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.DiaryActivity._ID,
             ActivityDiaryContract.DiaryActivity.NAME,
-            ActivityDiaryContract.DiaryActivity.COLOR
+            ActivityDiaryContract.DiaryActivity.COLOR,
+            ActivityDiaryContract.DiaryActivity._DELETED
     };
-    private static final String SELECTION = ActivityDiaryContract.DiaryActivity._DELETED + "=0";
+    private static final String SELECTION = ""; //ActivityDiaryContract.DiaryActivity._DELETED + "=0";
 
     private ListView mList;
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
@@ -70,8 +72,14 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);
             actName.setText(name);
+            if(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) == 0) {
+                actName.setPaintFlags(actName.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+            }else{
+                actName.setPaintFlags(actName.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+            }
             RelativeLayout bgrd = (RelativeLayout) view.findViewById(R.id.activity_background);
             bgrd.setBackgroundColor(color);
+
             actName.setTextColor(GraphicsHelper.textColorOnBackground(color));
 
             ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);

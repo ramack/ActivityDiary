@@ -25,22 +25,47 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/edit_activity_name_til"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        >
+        android:orientation="horizontal">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edit_activity_name"
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_activity_name_til"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/desc_activity_hint"
-            android:inputType="textCapWords|textAutoCorrect"
-            android:maxLines="1" />
+            android:layout_weight="10"
+            app:errorEnabled="true">
 
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_activity_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/desc_activity_hint"
+                android:inputType="textCapWords|textAutoCorrect"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/quickFixButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_undelete" />
+
+        <ImageButton
+            android:id="@+id/quickFixButtonRename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="1dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_rename_deleted" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/edit_activity_color_label"

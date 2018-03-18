@@ -80,6 +80,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final int QUERY_CURRENT_ACTIVITY = 6;
     private static final int DELETE_LAST_DIARY_ENTRY = 7;
     private static final int REOPEN_LAST_DIARY_ENTRY = 8;
+    private static final int UNDELETE_ACTIVITY = 9;
 
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
@@ -100,6 +101,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     private static final int ACTIVITY_HELPER_REFRESH_JOB = 0;
 
+    /* list of all activities, not including deleted ones */
     private List<DiaryActivity> activities;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
@@ -287,6 +289,18 @@ public class ActivityHelper extends AsyncQueryHandler{
                         listener.onActivityChanged();
                     }
                 }
+            }else if(token == UNDELETE_ACTIVITY){
+
+                DiaryActivity act = (DiaryActivity)cookie;
+                act.setColor(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR)));
+                act.setName(cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME)));
+                act.setId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
+
+                for(DataChangedListener listener : mDataChangeListeners) {
+                    // notify about the (re-)added activity
+                    listener.onActivityAdded(act);
+                }
+
             }
         }
         if (cursor != null) {
@@ -324,7 +338,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     private void showCurrentActivityNotification() {
         if(PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)) {
+                .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)
+                && mCurrentActivity != null) {
             notificationBuilder =
                     new NotificationCompat.Builder(ActivityDiaryApplication.getAppContext(),
                             CURRENT_ACTIVITY_CHANNEL_ID)
@@ -341,6 +356,7 @@ public class ActivityHelper extends AsyncQueryHandler{
             notificationBuilder.setContentIntent(pIntent);
             updateNotification();
         }else{
+            notificationManager.cancel(CURRENT_ACTIVITY_NOTIFICATION_ID);
             notificationBuilder = null;
         }
     }
@@ -413,6 +429,14 @@ public class ActivityHelper extends AsyncQueryHandler{
         }else if(token == REOPEN_LAST_DIARY_ENTRY){
             mCurrentActivity = null;
             readCurrentActivity();
+        }else if(token == UNDELETE_ACTIVITY){
+            DiaryActivity act = (DiaryActivity)cookie;
+
+            startQuery(UNDELETE_ACTIVITY, cookie,
+                    ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                    ACTIVITIES_PROJ, ActivityDiaryContract.DiaryActivity._ID + " = " + act.getId(),
+                    null,
+                    null);
         }
     }
 
@@ -469,6 +493,19 @@ public class ActivityHelper extends AsyncQueryHandler{
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityDataChanged(act);
         }
+    }
+
+    /* undelete an activity with given ID */
+    public DiaryActivity undeleteActivity(int id, String name){
+        DiaryActivity result = new DiaryActivity(id, name, 0);
+        ContentValues values = new ContentValues();
+        values.put(ActivityDiaryContract.Diary._DELETED, 0);
+
+        startUpdate(UNDELETE_ACTIVITY, result, ActivityDiaryContract.Diary.CONTENT_URI,
+                values, ActivityDiaryContract.Diary._ID + " = " + id, null);
+
+        activities.add(result);
+        return result;
     }
 
     /* inserts a new activity and sets it as the current one if configured in the preferences */
