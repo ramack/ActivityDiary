@@ -111,7 +111,7 @@
   <string name="dlg_ok">Tamam</string>
   <string name="dlg_cancel">İptal</string>
   <string name="dlg_delete_image_title">Silmeyi onayla</string>
-  <string name="dlg_delete_image_text">Bu görsel gerçekten şu anki etkinlik girdisinden kaldırılsın mı?</string>
+  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
   <!-- main view -->
   <string name="duration_description">%1$s tarihinden beri</string>
   <string name="just_now">şimdi</string>
