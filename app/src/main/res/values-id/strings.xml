@@ -111,7 +111,7 @@
   <string name="dlg_ok">Oke</string>
   <string name="dlg_cancel">Batalkan</string>
   <string name="dlg_delete_image_title">Konfirmasi penghapusan</string>
-  <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas pada saat ini?</string>
+  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
   <string name="just_now">baru saja</string>
