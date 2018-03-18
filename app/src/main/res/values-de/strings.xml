@@ -111,7 +111,7 @@
   <string name="dlg_ok">Ok</string>
   <string name="dlg_cancel">Abbrechen</string>
   <string name="dlg_delete_image_title">Löschen bestätigen</string>
-  <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
+  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
   <!-- main view -->
   <string name="duration_description">Seit %1$s</string>
   <string name="just_now">gerade eben</string>
@@ -136,7 +136,7 @@
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
-  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+  <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
