@@ -111,7 +111,7 @@
   <string name="dlg_ok">kunnossa</string>
   <string name="dlg_cancel">Peruuttaa</string>
   <string name="dlg_delete_image_title">Confirm deletion</string>
-  <string name="dlg_delete_image_text">Poista tämä kuva todellisesta aktiviteetistä?</string>
+  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
   <string name="just_now">just now</string>
