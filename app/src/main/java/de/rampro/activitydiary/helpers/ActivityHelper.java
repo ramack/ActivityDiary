@@ -356,7 +356,9 @@ public class ActivityHelper extends AsyncQueryHandler{
             notificationBuilder.setContentIntent(pIntent);
             updateNotification();
         }else{
-            notificationManager.cancel(CURRENT_ACTIVITY_NOTIFICATION_ID);
+            if(notificationManager != null) {
+                notificationManager.cancel(CURRENT_ACTIVITY_NOTIFICATION_ID);
+            }
             notificationBuilder = null;
         }
     }
