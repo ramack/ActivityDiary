@@ -81,7 +81,7 @@
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
   <string name="setting_export_summary">Simpan salinan database saat ini dalam berkas untuk dicadangkan</string>
-  <string name="setting_import_summary">Restore a backup file to current database</string>
+  <string name="setting_import_summary">Pulihkan berkas cadangan ke database saat ini</string>
   <string name="db_export_error">Gagal mengekspor database ke %1$s</string>
   <string name="db_export_success">Database diekspor ke %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
@@ -110,7 +110,7 @@
   <string name="dlg_ok">Oke</string>
   <string name="dlg_cancel">Batalkan</string>
   <string name="dlg_delete_image_title">Konfirmasi penghapusan</string>
-  <string name="dlg_delete_image_text">Apakah anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
+  <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
   <string name="just_now">baru saja</string>
