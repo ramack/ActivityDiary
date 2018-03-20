@@ -131,7 +131,7 @@
   <string name="no_active_activity_error">Pilih sebuah aktivitas untuk menjalankan tindakan ini</string>
   <!-- edit view -->
   <string name="error_name_already_used">Aktivitas dengan nama %1$s sudah ada</string>
-  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+  <string name="error_name_already_used_in_deleted">Sudah ada aktivitas yang dihapus dengan nama %1$s</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
   <!-- relative dates -->
