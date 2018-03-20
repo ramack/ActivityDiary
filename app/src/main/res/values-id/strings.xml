@@ -83,7 +83,7 @@
   <string name="setting_export_summary">Simpan salinan database saat ini dalam berkas untuk dicadangkan</string>
   <string name="setting_import_summary">Restore a backup file to current database</string>
   <string name="db_export_error">Gagal mengekspor database ke %1$s</string>
-  <string name="db_export_success">Exported database to %1$s</string>
+  <string name="db_export_success">Database diekspor ke %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Ekspor</string>
   <string name="db_export_selection">Pilih berkas untuk diekspor</string>
   <string name="db_import_error">Gagal untuk mengimpor %1$s</string>
