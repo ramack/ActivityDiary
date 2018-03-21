@@ -75,7 +75,7 @@
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Activity occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
   <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
