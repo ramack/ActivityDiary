@@ -5,7 +5,10 @@ files:
       language:
         de: de
     translate_attributes: '0'
+    update_option: update_as_unapproved
   - source: /app/src/main/play/en-US/*/*
     translation: /app/src/main/play/%locale%/listing/%original_file_name%
+    update_option: update_as_unapproved
   - source: /app/src/main/play/en-US/*
     translation: /app/src/main/play/%locale%/%original_file_name%
+    update_option: update_as_unapproved
