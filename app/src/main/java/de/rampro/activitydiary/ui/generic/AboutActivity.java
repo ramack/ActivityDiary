@@ -49,7 +49,27 @@ public class AboutActivity extends BaseActivity {
         String libraries = getResources().getString(R.string.libraries);
         String versionName = BuildConfig.VERSION_NAME;
 
-        String mergedAboutText = getResources().getString(R.string.about_text, appName, versionName, contributors, libraries);
+        String mergedAboutText = "<h1>" + appName + "</h1>";
+        mergedAboutText += getResources().getString(R.string.about_text_version, versionName);
+        mergedAboutText += "<h1>" + getResources().getString(R.string.about_text_licence_h) + "</h1>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_licence, appName) + "</p>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_license_2) + "</p>";
+
+        mergedAboutText += "<h1>" + getResources().getString(R.string.about_text_contact_h) + "</h1>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_contact) + "</p>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_contact_2) + "</p>";
+
+        mergedAboutText += "<h1>" + getResources().getString(R.string.about_text_support_h) + "</h1>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_support) + "</p>";
+
+        mergedAboutText += "<h1>" + getResources().getString(R.string.about_text_cont_h) + "</h1>";
+        mergedAboutText += "<p>" + contributors + "</p>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_cont_2) + "</p>";
+
+        mergedAboutText += "<h1>" + getResources().getString(R.string.about_text_lib_h) + "</h1>";
+        mergedAboutText += "<p>" + getResources().getString(R.string.about_text_lib) + "</p>";
+        mergedAboutText += "<p>" + libraries + "</p>";
+
         if (Build.VERSION.SDK_INT >= 24) {
             aboutText.setText(Html.fromHtml(mergedAboutText, Html.FROM_HTML_MODE_LEGACY));
         } else {
