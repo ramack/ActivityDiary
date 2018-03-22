@@ -8,14 +8,14 @@
   <string name="about_text_licence">Das Programm %1$s ist freie Software: Du darst es weitergeben und verändern unter den Bedingungen der <a href="https://www.gnu.org/licenses/gpl.html">GNU General Public License</a>, wie von der Free Software Foundation veröffentlicht, entweder gemäß Version 3 der Lizenz oder jeder späteren Version.</string>
   <string name="about_text_license_2">Dieses Programm wird in der Hoffnung verbreitet, dass es nützlich ist, aber OHNE IRGENDEINE GARANTIE, insbesondere ohne eine implizite Garantie der Marktreife oder der Eignung für einen bestimmten Zweck. Lies die GNU General Public License für weitere Details.</string>
   <string name="about_text_contact_h">Kontakt</string>
-  <string name="about_text_contact">For bugs and suggestions use the &lt;a href=\"https://github.com/ramack/ActivityDiary/issues\"&gt;issue tacker&lt;/a&gt;, preferably in English langauge.</string>
-  <string name="about_text_contact_2">Source Code can be found on &lt;a href=\"https://github.com/ramack/ActivityDiary\"&gt;Github&lt;/a&gt;.</string>
+  <string name="about_text_contact">Verwenden Sie für Fehlerberichte und Verbesserungsvorschläge das <a href="https://github.com/ramack/ActivityDiary/issues">Ticketsystem</a>, vorzugsweise in englischer Sprache.</string>
+  <string name="about_text_contact_2">Der Quellcode ist auf <a href="https://github.com/ramack/ActivityDiary">Github</a> zu finden.</string>
   <string name="about_text_support_h">Unterstützung</string>
-  <string name="about_text_support">In case you want to support the development of %1$s consider discussing &lt;a href=\"https://github.com/ramack/ActivityDiary/issues\"&gt;issues on github&lt;/a&gt;, translating on &lt;a href=\"https://crowdin.com/project/activitydiary\"&gt;crowdin&lt;/a&gt; or donation on &lt;a href=\"https://liberapay.com/ActivityDiary/\"&gt;Liberapay&lt;/a&gt;.</string>
+  <string name="about_text_support">Falls du die Entwicklung von %1$s unterstützen möchtest, ziehe die Möglichkeiten <a href="https://github.com/ramack/ActivityDiary/issues">Probleme auf github</a> zu diskutieren, Inhalte auf <a href="https://crowdin.com/project/activitydiary">crowdin</a> zu übersetzen oder über <a href="https://liberapay.com/ActivityDiary/">Liberapay</a> zu spenden.</string>
   <string name="about_text_cont_h">Mitwirkende</string>
-  <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
+  <string name="about_text_cont_2">Es würde uns freuen auch deinen Namen bald hier auflisten zu können.</string>
   <string name="about_text_lib_h">Bibliotheken</string>
-  <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses.</string>
+  <string name="about_text_lib">Folgende Bibliotheken werden von diesem Programm verwendet welche unter den angegebenen Lizenzen veröffentlicht wurden:</string>
   <string name="perm_write_external_storage_xplain">Fotos abzuspeichern benötigt die entsprechende Berechtigung &#8230;</string>
   <string name="unsupported_on_api_level">Die Funktion wird auf dieser Version von Android nicht unterstützt. Es wird mindestns API level %1$d benötigt.</string>
   <!-- Navigation Drawer Menu -->
