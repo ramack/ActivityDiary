@@ -1,4 +1,4 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
+- Android sürüm <5.0 (en az Lollipop gerekli) için destek kaldırıldı
+- Bildirimler eklendi (tercihlerde devre dışı bırakabilirsiniz)
 -
 -

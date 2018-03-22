@@ -1,4 +1,4 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
+- Eliminazione del supporto per la versione Android da 5.0 in giù (richiesto almeno Lollipop)
+- Aggiunte le notifiche (puoi disabilitarle nelle preferenze)
 -
 -
