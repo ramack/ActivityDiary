@@ -12,7 +12,7 @@
   <string name="about_text_contact_2">Kode sumber bisa ditemukan di <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
   <string name="about_text_support_h">Dukungan</string>
   <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
-  <string name="about_text_cont_h">Contributors</string>
+  <string name="about_text_cont_h">Kontributor</string>
   <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
   <string name="about_text_lib_h">Perpustakaan</string>
   <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
