@@ -8,8 +8,8 @@
   <string name="about_text_licence">%1$s adalah perangkat lunak bebas: Anda bisa membagikan dan/atau mengubahnya menurut ketentuan dari <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
   <string name="about_text_license_2">Program ini dibagikan dengan harapan akan bermamfaat, akan tetapi TAMPA JAMINAN APAPUN; bahkan tanpa ada jaminan tersirat atas KELAYAKAN UNTUK DIPERDAGANGKAN atau KESESUAIAN UNTUK TUJUAN TERTENTU. Untuk lebih jelasnya lihat GNU General Public License.</string>
   <string name="about_text_contact_h">Kontak</string>
-  <string name="about_text_contact">For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>, preferably in English language.</string>
-  <string name="about_text_contact_2">Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact">Gunakan <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a> untuk bug dan saran, sebaiknya dalam bahasa inggris.</string>
+  <string name="about_text_contact_2">Kode sumber bisa ditemukan di <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
   <string name="about_text_support_h">Dukungan</string>
   <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
   <string name="about_text_cont_h">Contributors</string>
