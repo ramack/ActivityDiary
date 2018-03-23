@@ -3,7 +3,7 @@
 <resources>
   <string name="app_name">Buku Catatan Aktivitas Harian</string>
   <string name="about_text_version">versi <b>%1$s</b></string>
-  <string name="about_text_intro">A diary for any kind of activities - organize your tasks in agile way and get reminded if something is expected to reoccur.</string>
+  <string name="about_text_intro">Buku harian untuk semua jenis aktivitas - atur tugas Anda dengan cara yang cepat dan sebagai pengingat jika ada sesuatu yang diharapkan untuk terulang kembali.</string>
   <string name="about_text_licence_h">Lisensi</string>
   <string name="about_text_licence">%1$s adalah perangkat lunak bebas: Anda bisa membagikan dan/atau mengubahnya menurut ketentuan dari <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
   <string name="about_text_license_2">Program ini dibagikan dengan harapan akan bermamfaat, akan tetapi TAMPA JAMINAN APAPUN; bahkan tanpa ada jaminan tersirat atas KELAYAKAN UNTUK DIPERDAGANGKAN atau KESESUAIAN UNTUK TUJUAN TERTENTU. Untuk lebih jelasnya lihat GNU General Public License.</string>
