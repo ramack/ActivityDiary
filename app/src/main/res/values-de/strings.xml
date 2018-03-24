@@ -22,6 +22,8 @@
   <string name="nav_main">Aktivität wählen</string>
   <string name="nav_diary">Tagebuch</string>
   <string name="nav_add_activity">Aktivität hinzufügen</string>
+  <string name="nav_show_deleted">Zeige Gelöschte</string>
+  <string name="nav_hide_deleted">Verstecke Gelöschte</string>
   <string name="nav_activity_manager">Aktivitäten bearbeiten</string>
   <string name="nav_settings">Einstellungen</string>
   <string name="nav_about">Über</string>
@@ -106,6 +108,8 @@
   <string name="dlg_cancel">Abbrechen</string>
   <string name="dlg_delete_image_title">Löschen bestätigen</string>
   <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
+  <string name="dlg_undelete_activity_title">Aktivität wiederherstellen</string>
+  <string name="dlg_undelete_activity_text">Soll die Aktivität %1$s wiederhergestellt werden und wieder auswählbar sein?</string>
   <!-- main view -->
   <string name="duration_description">Seit %1$s</string>
   <string name="just_now">gerade eben</string>
@@ -131,6 +135,9 @@
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
   <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
+  <string name="recover_activity_toast">Aktivität %1$s wiederhergestellt. Sie ist und jetzt wieder auswählbar.</string>
+  <string name="renamed_deleted_activity_toast">Die bereits gelöschte Aktivität %1$s wurde umbenannt.</string>
+  <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
