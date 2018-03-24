@@ -26,4 +26,10 @@
         android:title="@string/nav_add_activity"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_show_hide_deleted"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/nav_show_deleted"
+        app:showAsAction="ifRoom" />
+
 </menu>
