@@ -11,11 +11,11 @@
   <string name="about_text_contact">Gunakan <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a> untuk bug dan saran, sebaiknya dalam bahasa inggris.</string>
   <string name="about_text_contact_2">Kode sumber bisa ditemukan di <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
   <string name="about_text_support_h">Dukungan</string>
-  <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support">Jika Anda ingin mendukung untuk pengembangan %1$s pertimbangkan untuk mendiskusikan <a href="https://github.com/ramack/ActivityDiary/issues">masalah di github</a>, menterjemahkan di <a href="https://crowdin.com/project/activitydiary">crowdin</a> atau donasi di <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
   <string name="about_text_cont_h">Kontributor</string>
-  <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
+  <string name="about_text_cont_2">Kami sangat ingin melihat nama Anda berada dalam daftar ini juga</string>
   <string name="about_text_lib_h">Perpustakaan</string>
-  <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
+  <string name="about_text_lib">Pustakan berikut yang digunakan oleh aplikasi ini dan telah dilisensikan dibawah lisensi yang bernama:</string>
   <string name="perm_write_external_storage_xplain">Membutuhkan izin untuk melakukan penyimpanan foto &#8230;</string>
   <string name="unsupported_on_api_level">Versi Android Anda tidak mendukung fitur ini. Minimum tingkat API %1$d dibutuhkan.</string>
   <!-- Navigation Drawer Menu -->
