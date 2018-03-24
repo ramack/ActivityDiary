@@ -63,15 +63,15 @@
   <string name="setting_tag_no">Jangan ubah tag EXIF untuk gambar baru</string>
   <!-- Conditions -->
   <string name="pref_cond_off">MATI</string>
-  <string name="setting_cond_alpha">Alphabetical sort</string>
+  <string name="setting_cond_alpha">Penyortiran abjad</string>
   <string name="setting_cond_alpha_summary">Penyortiran abjad memiliki bobot %1$s untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_alpha_not_used_summary">Penyortiran abjad tidak gunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_predecessor">Urutan aktivitas</string>
   <string name="setting_cond_predecessor_summary">Rangkaian aktivitas dalam buku harian memiliki bobot %1$s untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_predecessor_not_used_summary">Rangkaian aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
-  <string name="setting_cond_occurrence">Activity occurrence</string>
+  <string name="setting_cond_occurrence">Frekuensi aktivitas</string>
   <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Frekuensi aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
