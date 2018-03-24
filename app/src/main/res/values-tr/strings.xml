@@ -11,7 +11,7 @@
   <string name="about_text_contact">Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.</string>
   <string name="about_text_contact_2">Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>\'da bulunabilir.</string>
   <string name="about_text_support_h">Destek</string>
-  <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support">%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>\'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>\'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>\'de bağış yapmayı düşünebilirsiniz.</string>
   <string name="about_text_cont_h">Katkıda Bulunanlar</string>
   <string name="about_text_cont_2">Bu listede sizin de adınızın geçmesini bekliyoruz.</string>
   <string name="about_text_lib_h">Kitaplıklar</string>
@@ -105,7 +105,7 @@
   <string name="dlg_ok">Tamam</string>
   <string name="dlg_cancel">İptal</string>
   <string name="dlg_delete_image_title">Silmeyi onayla</string>
-  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
+  <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
   <!-- main view -->
   <string name="duration_description">%1$s tarihinden beri</string>
   <string name="just_now">şimdi</string>
@@ -130,7 +130,7 @@
   <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
-  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+  <string name="error_name_already_used_in_deleted">%1$s adlı silinmiş bir etkinlik zaten var</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <!-- relative dates -->
