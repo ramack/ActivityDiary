@@ -22,6 +22,8 @@
   <string name="nav_main">Vælg aktivitet</string>
   <string name="nav_diary">Dagbog</string>
   <string name="nav_add_activity">Tilføj aktivitet</string>
+  <string name="nav_show_deleted">Show Deleted</string>
+  <string name="nav_hide_deleted">Hide Deleted</string>
   <string name="nav_activity_manager">Rediger aktiviteter</string>
   <string name="nav_settings">Indstillinger</string>
   <string name="nav_about">Om</string>
@@ -106,6 +108,8 @@
   <string name="dlg_cancel">Afbestille</string>
   <string name="dlg_delete_image_title">Confirm deletion</string>
   <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
+  <string name="dlg_undelete_activity_title">Recover Activity</string>
+  <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
   <!-- main view -->
   <string name="duration_description">Since %1$s</string>
   <string name="just_now">just now</string>
@@ -131,6 +135,9 @@
   <!-- edit view -->
   <string name="error_name_already_used">Activity with name %1$s already exists</string>
   <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+  <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
+  <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
+  <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <!-- relative dates -->
