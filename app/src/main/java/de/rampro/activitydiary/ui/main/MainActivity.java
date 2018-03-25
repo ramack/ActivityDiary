@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,6 +62,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,7 +98,7 @@ public class MainActivity extends BaseActivity implements
         NoteEditDialog.NoteEditDialogListener,
         View.OnLongClickListener,
         SearchView.OnQueryTextListener,
-        SearchView.OnCloseListener{
+        SearchView.OnCloseListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
@@ -121,6 +122,31 @@ public class MainActivity extends BaseActivity implements
     private DiaryActivity mCurrentActivity;
     private Uri mCurrentDiaryUri;
     private String filter = "";
+    private View headerView;
+    private int searchRowCount, normalRowCount;
+    private FloatingActionButton fabNoteEdit;
+    private FloatingActionButton fabAttachPicture;
+    private SearchView searchView;
+    private MenuItem searchMenuItem;
+
+    private void setSearchMode(boolean searchMode){
+        if(searchMode){
+            headerView.setVisibility(View.GONE);
+            fabNoteEdit.setVisibility(View.GONE);
+            fabAttachPicture.setVisibility(View.GONE);
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            ((StaggeredGridLayoutManager)selectRecyclerView.getLayoutManager()).setSpanCount(searchRowCount);
+
+        }else{
+            ((StaggeredGridLayoutManager)selectRecyclerView.getLayoutManager()).setSpanCount(normalRowCount);
+
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+            headerView.setVisibility(View.VISIBLE);
+            fabNoteEdit.setVisibility(View.VISIBLE);
+            fabAttachPicture.setVisibility(View.VISIBLE);
+        }
+
+    }
 
     private class QHandler extends AsyncQueryHandler{
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -160,26 +186,28 @@ public class MainActivity extends BaseActivity implements
         View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
 
-        int rows;
-
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, value, true);
 
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        rows = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
-        selectorLayoutManager = new StaggeredGridLayoutManager(rows, StaggeredGridLayoutManager.HORIZONTAL);
-        selectRecyclerView.setLayoutManager(selectorLayoutManager);
+        normalRowCount = (int)Math.floor((metrics.heightPixels / value.getDimension(metrics) - 2) / 2);
+        searchRowCount = normalRowCount - 2;
+        if(searchRowCount <= 0) searchRowCount = 1;
 
+        selectorLayoutManager = new StaggeredGridLayoutManager(normalRowCount, StaggeredGridLayoutManager.HORIZONTAL);
+        selectRecyclerView.setLayoutManager(selectorLayoutManager);
         getSupportActionBar().setSubtitle(getResources().getString(R.string.activity_subtitle_main));
 
         likelyhoodSort();
 
+        headerView = findViewById(R.id.header_area);
+
         durationLabel = findViewById(R.id.duration_label);
         mNoteTextView = findViewById(R.id.note);
 
-        FloatingActionButton fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
-        FloatingActionButton fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
+        fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
+        fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
 
         fabNoteEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -423,6 +451,10 @@ public class MainActivity extends BaseActivity implements
         DiaryActivity newAct = selectAdapter.item(adapterPosition);
         ActivityHelper.helper.setCurrentActivity(newAct);
 
+        searchView.setQuery("",false);
+        searchView.setIconified(true);
+
+
         SpannableStringBuilder snackbarText = new SpannableStringBuilder();
         snackbarText.append(newAct.getName());
         int end = snackbarText.length();
@@ -572,7 +604,8 @@ public class MainActivity extends BaseActivity implements
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_filter).getActionView();
+        searchMenuItem = menu.findItem(R.id.action_filter);
+        searchView = (SearchView) searchMenuItem.getActionView();
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
@@ -580,7 +613,12 @@ public class MainActivity extends BaseActivity implements
         searchView.setOnQueryTextListener(this);
         // setOnSuggestionListener -> for selection of a suggestion
         // setSuggestionsAdapter
-
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setSearchMode(true);
+            }
+        });
         return true;
     }
 
@@ -642,12 +680,14 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public boolean onClose() {
+        setSearchMode(false);
         likelyhoodSort();
         return false; /* we wanna clear and close the search */
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        setSearchMode(false);
         return false;
     }
 

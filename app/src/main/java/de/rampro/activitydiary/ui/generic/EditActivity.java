@@ -61,6 +61,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
 
     private final int QUERY_NAMES = 1;
     private final int RENAME_DELETED_ACTIVITY = 2;
+    private final int TEST_DELETED_NAME = 3;
+
+    private final String[] NAME_TEST_PROJ = new String[]{ActivityDiaryContract.DiaryActivity.NAME};
 
     private final String COLOR_KEY = "COLOR";
     private final String NAME_KEY = "NAME";
@@ -83,63 +86,109 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         protected void onQueryComplete(int token, Object cookie,
                                        Cursor cursor) {
             if ((cursor != null)) {
-                if(token == QUERY_NAMES && cursor.moveToFirst()) {
-                    mQuickFixBtn1.setVisibility(View.VISIBLE);
-                    boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
-                    int actId = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID));
-                    String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                if(token == QUERY_NAMES){
+                    if(cursor.moveToFirst()) {
+                        mQuickFixBtn1.setVisibility(View.VISIBLE);
+                        boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
+                        int actId = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID));
+                        String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
 
-                    if(deleted) {
-                        CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
-                        mBtnRenameDeleted.setVisibility(View.VISIBLE);
+                        if(deleted) {
+                            CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
+                            mBtnRenameDeleted.setVisibility(View.VISIBLE);
 
-                        mActivityNameTIL.setError(str);
-                        mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_undelete));
+                            mActivityNameTIL.setError(str);
+                            mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_undelete));
 
-                        mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(EditActivity.this, "clicked undelete", Toast.LENGTH_LONG).show();
+                            mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    currentActivity = ActivityHelper.helper.undeleteActivity(actId, name);
+                                    Toast.makeText(EditActivity.this,
+                                            getResources().getString(R.string.recover_activity_toast, currentActivity.getName()),
+                                            Toast.LENGTH_LONG).show();
 
-                                currentActivity = ActivityHelper.helper.undeleteActivity(actId, name);
-                                refreshElements();
-                            }
-                        });
-                        mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(EditActivity.this, "clicked rename", Toast.LENGTH_LONG).show();
-                                ContentValues values = new ContentValues();
-                                String newName = name + "_deleted";
-                                values.put(ActivityDiaryContract.DiaryActivity.NAME, newName);
+                                    refreshElements();
+                                }
+                            });
+                            mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
+                                @Override
+                                public void onClick(View v) {
+                                    Toast.makeText(EditActivity.this,
+                                            getResources().getString(R.string.renamed_deleted_activity_toast, name),
+                                            Toast.LENGTH_LONG).show();
 
-                                startUpdate(RENAME_DELETED_ACTIVITY, null,
-                                        ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, actId),
-                                        values, ActivityDiaryContract.Diary._ID + " = " + actId, null);
+                                    ContentValues values = new ContentValues();
+                                    String newName = name + "_deleted";
 
-                            }
-                        });
-                    }else{
-                        mActivityNameTIL.setError(getResources().getString(R.string.error_name_already_used, cursor.getString(0)));
+                                    values.put(ActivityDiaryContract.DiaryActivity.NAME, newName);
+                                    values.put(ActivityDiaryContract.DiaryActivity._ID, Long.valueOf(actId));
+                                    startQuery(TEST_DELETED_NAME,
+                                            values,
+                                            ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                                            NAME_TEST_PROJ,
+                                            ActivityDiaryContract.DiaryActivity.NAME + " = ?",
+                                            new String[]{newName},
+                                            null
+                                            );
+                                }
+                            });
+                        }else{
+                            mActivityNameTIL.setError(getResources().getString(R.string.error_name_already_used, cursor.getString(0)));
+                            mBtnRenameDeleted.setVisibility(View.GONE);
+                            mBtnRenameDeleted.setOnClickListener(null);
+                            mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_edit));
+                            mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    currentActivity = ActivityHelper.helper.activityWithId(actId);
+                                    Toast.makeText(EditActivity.this,
+                                            getResources().getString(R.string.edit_existing_activity_toast, currentActivity.getName()),
+                                            Toast.LENGTH_LONG).show();
+
+                                    refreshElements();
+                                }
+                            });
+                        }
+                    }else {
+                        mActivityNameTIL.setError("");
+                        mQuickFixBtn1.setVisibility(View.GONE);
+                        mQuickFixBtn1.setOnClickListener(null);
                         mBtnRenameDeleted.setVisibility(View.GONE);
                         mBtnRenameDeleted.setOnClickListener(null);
-                        mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_edit));
-                        mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(EditActivity.this, "clicked edit that one, " + actId, Toast.LENGTH_LONG).show();
-                                currentActivity = ActivityHelper.helper.activityWithId(actId);
-                                refreshElements();
-                            }
-                        });
                     }
-                }
-                else{
-                    mActivityNameTIL.setError("");
-                    mQuickFixBtn1.setVisibility(View.GONE);
-                    mQuickFixBtn1.setOnClickListener(null);
-                    mBtnRenameDeleted.setVisibility(View.GONE);
-                    mBtnRenameDeleted.setOnClickListener(null);
+                }else if(token == TEST_DELETED_NAME){
+                    ContentValues values = (ContentValues)cookie;
+                    if(cursor.moveToFirst()){
+                        // name already exists, choose another one
+                        String triedName = (String)values.get(ActivityDiaryContract.Diary.NAME);
+                        String newName = triedName.replaceFirst("-\\d+$", "");
+                        String idx;
+                        if(triedName.length() == newName.length()) {
+                            // no "-x" at the end so far
+                            idx = "-2";
+                        }else{
+                            String x = triedName.substring(newName.length() + 1);
+                            idx = "-" + (Integer.parseInt(x) + 1);
+                        }
+                        newName += idx;
+                        values.put(ActivityDiaryContract.DiaryActivity.NAME, newName);
+                        startQuery(TEST_DELETED_NAME, values,
+                                ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                                NAME_TEST_PROJ,
+                                ActivityDiaryContract.DiaryActivity.NAME + " = ?",
+                                new String[]{newName},
+                                null
+                        );
+
+                    }else {
+                        // name not found, use it for the deleted one
+                        Long actId = (Long)values.get(ActivityDiaryContract.Diary._ID);
+                        values.remove(ActivityDiaryContract.Diary._ID);
+                        startUpdate(RENAME_DELETED_ACTIVITY, null,
+                                ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, actId),
+                                values, ActivityDiaryContract.Diary._ID + " = " + actId, null);
+                    }
                 }
                 cursor.close();
             }

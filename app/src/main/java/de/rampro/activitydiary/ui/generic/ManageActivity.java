@@ -20,26 +20,31 @@
 package de.rampro.activitydiary.ui.generic;
 
 import android.app.LoaderManager;
+import android.content.AsyncQueryHandler;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.CursorLoader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
 
+import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
@@ -55,7 +60,19 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
             ActivityDiaryContract.DiaryActivity.COLOR,
             ActivityDiaryContract.DiaryActivity._DELETED
     };
-    private static final String SELECTION = ""; //ActivityDiaryContract.DiaryActivity._DELETED + "=0";
+    private static final String SELECTION = ActivityDiaryContract.DiaryActivity._DELETED + "=0";
+
+    /* are deleted items currently visible? */
+    private boolean showDeleted = false;
+
+    private class QHandler extends AsyncQueryHandler {
+        /* Access only allowed via ActivityHelper.helper singleton */
+        private QHandler(){
+            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        }
+    }
+
+    private QHandler mQHandler = new QHandler();
 
     private ListView mList;
     private class DiaryActivityAdapter extends ResourceCursorAdapter {
@@ -68,7 +85,6 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         public void bindView(View view, Context context, Cursor cursor){
             String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
             int color = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR));
-            int textColor = 0;
 
             TextView actName = (TextView) view.findViewById(R.id.activity_name);
             actName.setText(name);
@@ -81,9 +97,6 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
             bgrd.setBackgroundColor(color);
 
             actName.setTextColor(GraphicsHelper.textColorOnBackground(color));
-
-            ImageView imageView = (ImageView) view.findViewById(R.id.activity_image);
-    /* TODO #33 fill image here */
         }
     }
 
@@ -127,6 +140,17 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
                 Intent intentaddact = new Intent(ManageActivity.this, EditActivity.class);
                 startActivity(intentaddact);
                 break;
+            case R.id.action_show_hide_deleted:
+                showDeleted = !showDeleted;
+                getLoaderManager().restartLoader(-2, null, this);
+                if(showDeleted) {
+                    item.setIcon(R.drawable.ic_rename_deleted);
+                    item.setTitle(R.string.nav_hide_deleted);
+                }else{
+                    item.setIcon(R.drawable.ic_delete);
+                    item.setTitle(R.string.nav_show_deleted);
+                }
+                break;
             case android.R.id.home:
                 finish();
                 break;
@@ -139,7 +163,9 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
         return new CursorLoader(this, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                PROJECTION, SELECTION, null, null);
+                PROJECTION,
+                showDeleted ? "" : SELECTION,
+                null, null);
     }
 
     // Called when a previously created loader has finished loading
@@ -161,9 +187,37 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
         public void onItemClick(AdapterView<?> parent, View v, int position, long id)
         {
             Cursor c = (Cursor)parent.getItemAtPosition(position);
-            Intent i = new Intent(ManageActivity.this, EditActivity.class);
-            i.putExtra("activityID", c.getInt(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
-            startActivity(i);
+            if(c.getInt(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) == 0) {
+                Intent i = new Intent(ManageActivity.this, EditActivity.class);
+                i.putExtra("activityID", c.getInt(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)));
+                startActivity(i);
+            }else{
+                // selected item is deleted. Ask for undeleting it.
+                AlertDialog.Builder builder = new AlertDialog.Builder(ManageActivity.this)
+                        .setTitle(R.string.dlg_undelete_activity_title)
+                        .setMessage(getResources().getString(R.string.dlg_undelete_activity_text,
+                                c.getString(c.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME))))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                ContentValues values = new ContentValues();
+                                values.put(ActivityDiaryContract.DiaryActivity._DELETED, 0);
+
+                                mQHandler.startUpdate(0,
+                                        null,
+                                        ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                                                c.getLong(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID))),
+                                        values,
+                                        ActivityDiaryContract.DiaryActivity._ID + "=?",
+                                        new String[]{c.getString(c.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID))}
+                                );
+
+                            }})
+                        .setNegativeButton(android.R.string.no, null);
+
+                builder.create().show();
+
+            }
         }
     };
 
