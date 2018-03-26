@@ -22,8 +22,8 @@
   <string name="nav_main">Etkinlik Seç</string>
   <string name="nav_diary">Günlük</string>
   <string name="nav_add_activity">Etkinlik Ekle</string>
-  <string name="nav_show_deleted">Show Deleted</string>
-  <string name="nav_hide_deleted">Hide Deleted</string>
+  <string name="nav_show_deleted">Silinenleri Göster</string>
+  <string name="nav_hide_deleted">Silinenleri Gizle</string>
   <string name="nav_activity_manager">Etkinlikleri Düzenle</string>
   <string name="nav_settings">Ayarlar</string>
   <string name="nav_about">Hakkında</string>
@@ -108,8 +108,8 @@
   <string name="dlg_cancel">İptal</string>
   <string name="dlg_delete_image_title">Silmeyi onayla</string>
   <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
-  <string name="dlg_undelete_activity_title">Recover Activity</string>
-  <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
+  <string name="dlg_undelete_activity_title">Etkinliği Kurtar</string>
+  <string name="dlg_undelete_activity_text">%1$s etkinliği kurtarılsın ve tekrar kullanılabilir olsun mu?</string>
   <!-- main view -->
   <string name="duration_description">%1$s tarihinden beri</string>
   <string name="just_now">şimdi</string>
@@ -135,7 +135,7 @@
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
   <string name="error_name_already_used_in_deleted">%1$s adlı silinmiş bir etkinlik zaten var</string>
-  <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
+  <string name="recover_activity_toast">%1$s etkinliği kurtarıldı. Şimdi tekrar seçilebilir.</string>
   <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
   <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
   <!-- history -->
