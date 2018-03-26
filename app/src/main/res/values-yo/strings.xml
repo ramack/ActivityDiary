@@ -3,119 +3,119 @@
 <resources>
   <string name="app_name">Aṣiṣe Iṣẹ-ṣiṣe</string>
   <string name="about_text_version">version <b>%1$s</b></string>
-  <string name="about_text_intro">A diary for any kind of activities - organize your tasks in agile way and get reminded if something is expected to reoccur.</string>
-  <string name="about_text_licence_h">License</string>
+  <string name="about_text_intro">A ọjọ-ọjọ fun eyikeyi iru awọn iṣẹ - ṣeto awọn iṣẹ rẹ ni ọna idaniloju ati ki o leti ti o ba ti ni nkan ti o reti lati reoccur.</string>
+  <string name="about_text_licence_h">Iwe-ašẹ</string>
   <string name="about_text_licence">%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
-  <string name="about_text_license_2">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</string>
-  <string name="about_text_contact_h">Contact</string>
-  <string name="about_text_contact">For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>, preferably in English language.</string>
-  <string name="about_text_contact_2">Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
-  <string name="about_text_support_h">Support</string>
-  <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
-  <string name="about_text_cont_h">Contributors</string>
-  <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
-  <string name="about_text_lib_h">Libraries</string>
-  <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
-  <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
-  <string name="unsupported_on_api_level">This feature is not supported on your Android Version. Minimum API level %1$d required.</string>
+  <string name="about_text_license_2">Eto yii pin ni ireti pe yoo wulo, ṣugbọn LATI ỌJẸ ATILẸYIN ỌJA; laisi ani atilẹyin ọja ti MERCHANTABILITY tabi FITNESS FUN NIPA PURPOSE. Wo Iwe-ašẹ Gbogbogbo GNU fun alaye diẹ sii.</string>
+  <string name="about_text_contact_h">Kan si</string>
+  <string name="about_text_contact">Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"></a>, daradara ni ede Gẹẹsi.</string>
+  <string name="about_text_contact_2">Orisun koodu ni a le rii lori <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_support_h">Atilẹyin</string>
+  <string name="about_text_support">Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_cont_h">Awọn oluranlọwọ</string>
+  <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, ju.</string>
+  <string name="about_text_lib_h">Awọn ile-iwe</string>
+  <string name="about_text_lib">Awọn ile-ikawe wọnyi wa ni lilo nipasẹ ohun elo yii ati iwe-aṣẹ labẹ awọn iwe-aṣẹ ti a daruko:</string>
+  <string name="perm_write_external_storage_xplain">Ntọju awọn fọto nbeere igbanilaaye lati ṣe bẹ &#8230;</string>
+  <string name="unsupported_on_api_level">Ẹya yii ko ni atilẹyin lori Android Version rẹ. Iwọn ipele API ti o kere julọ %1$d beere fun.</string>
   <!-- Navigation Drawer Menu -->
-  <string name="nav_main">Select Activity</string>
-  <string name="nav_diary">Diary</string>
-  <string name="nav_add_activity">Add Activity</string>
-  <string name="nav_show_deleted">Show Deleted</string>
-  <string name="nav_hide_deleted">Hide Deleted</string>
-  <string name="nav_activity_manager">Edit Activities</string>
-  <string name="nav_settings">Settings</string>
-  <string name="nav_about">About</string>
-  <string name="desc_activity_color">Activity color</string>
-  <string name="desc_activity_hint">Activity title</string>
-  <string name="desc_activity_select">Choose current activity&#8230;</string>
+  <string name="nav_main">Yan Iṣẹ</string>
+  <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
+  <string name="nav_add_activity">Fi iṣẹ kun</string>
+  <string name="nav_show_deleted">Fihan Paarẹ</string>
+  <string name="nav_hide_deleted">Tọju Paarẹ</string>
+  <string name="nav_activity_manager">Ṣatunkọ Awọn iṣẹ</string>
+  <string name="nav_settings">Ètò</string>
+  <string name="nav_about">Nipa</string>
+  <string name="desc_activity_color">Iṣiṣe iṣẹ-ṣiṣe</string>
+  <string name="desc_activity_hint">Akọle iṣẹ</string>
+  <string name="desc_activity_select">Yan iṣẹ lọwọlọwọ&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
-  <string name="drawer_open">Open navigation</string>
-  <string name="drawer_close">Close navigation</string>
+  <string name="activity_image_description">Aworan fun aṣayan iṣẹ</string>
+  <string name="contentDesc_logo">Logo ti activitydiary</string>
+  <string name="drawer_open">Ṣi i lilọ kiri</string>
+  <string name="drawer_close">Pade lilọ kiri</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current activity</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_name">Iṣẹ lọwọlọwọ</string>
+  <string name="notif_channel_current_activity_desc">Fi ifitonileti fun iṣẹ ti o n ṣe lọwọlọwọ</string>
   <!-- settings -->
-  <string name="setting_view_category">View</string>
-  <string name="setting_behavior_category">Behavior</string>
-  <string name="setting_images_category">Images</string>
-  <string name="setting_backup_category">Backup</string>
-  <string name="setting_condition_category">Conditions</string>
-  <string name="setting_datetime_format">Date format</string>
-  <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Select new activities</string>
-  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
-  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
-  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
-  <string name="setting_enable_acra">Crash Reporting</string>
-  <string name="setting_acra_enabled">Send reports on crashes</string>
-  <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
-  <string name="setting_storage_folder">Picture Storage Folder</string>
-  <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
-  <string name="setting_storage_folder_description">Directory to store the activity photos</string>
+  <string name="setting_view_category">Wo</string>
+  <string name="setting_behavior_category">Ẹwa</string>
+  <string name="setting_images_category">Awọn aworan</string>
+  <string name="setting_backup_category">Afẹyinti</string>
+  <string name="setting_condition_category">Awọn ipo</string>
+  <string name="setting_datetime_format">Ọjọ kika</string>
+  <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
+  <string name="setting_datetime_format_description">Ifihan kika ti ọjọ ati akoko fun ibẹrẹ iṣẹ. Awọn ọna kika ọna kika jẹ yyy-MM-dd HH: mm tabi dd.MM. hh: mm</string>
+  <string name="setting_auto_select_new">Yan awọn iṣẹ titun</string>
+  <string name="setting_auto_select_new_summary_active">A iṣẹ tuntun ti a ṣẹda ni a yan bi o ti yan lọwọ titun</string>
+  <string name="setting_auto_select_new_summary_inactive">Ṣiṣẹda awọn oniṣẹ tuntun ko ni ipa ni iṣẹ ṣiṣe lọwọlọwọ</string>
+  <string name="setting_show_cur_activitiy_notification">Ifitonileti fun aṣayan iṣẹ lọwọlọwọ</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">Iṣẹ lọwọlọwọ yoo han bi ifitonileti</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">Ko si ifitonileti fun iṣẹ ṣiṣe lọwọlọwọ yoo han</string>
+  <string name="setting_enable_acra">Iroyin jamba</string>
+  <string name="setting_acra_enabled">Firanṣẹ lori awọn ijamba</string>
+  <string name="setting_acra_disabled">Ma ṣe fi iroyin ranṣẹ lori awọn ijamba</string>
+  <string name="setting_storage_folder">Apakan Idanilenu aworan</string>
+  <string name="setting_storage_folder_summary">Ṣe awọn akojọ aṣayan iṣẹ-ṣiṣe ni itọsọna %1$s</string>
+  <string name="setting_storage_folder_description">Ilana lati tọju awọn fọto ṣiṣe</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Metadata</string>
-  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
-  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
+  <string name="setting_tag_yes">Kọ aṣayan iṣẹ-ṣiṣe si aṣajuwe UserComment ti awọn aworan titun</string>
+  <string name="setting_tag_no">Maṣe fi ọwọ kan awọn afihan ti awọn aworan titun ti EXIF</string>
   <!-- Conditions -->
-  <string name="pref_cond_off">OFF</string>
-  <string name="setting_cond_alpha">Alphabetical sort</string>
-  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Activity sequence</string>
-  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Activity occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
-  <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
-  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
-  <string name="setting_import_summary">Restore a backup file to current database</string>
-  <string name="db_export_error">Failed to export database to %1$s</string>
-  <string name="db_export_success">Exported database to %1$s</string>
+  <string name="pref_cond_off">PA</string>
+  <string name="setting_cond_alpha">Iwọn ti itumọ</string>
+  <string name="setting_cond_alpha_summary">Isọtọ ti itọnisọna ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle nigbamii</string>
+  <string name="setting_cond_alpha_not_used_summary">Aṣeyọri ti itọnisọna ko lo fun ṣiṣe iyanju awọn iṣẹ to tẹle</string>
+  <string name="setting_cond_predecessor">Akopọ aṣayan iṣẹ</string>
+  <string name="setting_cond_predecessor_summary">Aṣayan aṣayan iṣẹ ni iwe-iṣẹlẹ ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
+  <string name="setting_cond_predecessor_not_used_summary">Aṣayan isẹ ni diary ko lo fun ni iyanju awọn iṣẹ to tẹle</string>
+  <string name="setting_cond_occurrence">Iṣẹ iṣe iṣẹlẹ</string>
+  <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
+  <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
+  <string name="setting_expert">Awọn eto imọran</string>
+  <string name="setting_export">Wọle si ipamọ data</string>
+  <string name="setting_import">Wọle data ipilẹ</string>
+  <string name="setting_export_summary">Ṣe daakọ ẹda ti database inulọwọ ni faili kan fun afẹyinti</string>
+  <string name="setting_import_summary">Mu faili afẹyinti pada si database ti isiyi</string>
+  <string name="db_export_error">Ko kùn lati gbe ipamọ data si %1$s</string>
+  <string name="db_export_success">Aaye data ti a fiwe si %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
-  <string name="db_export_selection">Select file for export</string>
-  <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
-  <string name="db_import_selection">Select file for import</string>
+  <string name="db_export_selection">Yan faili fun ikọja</string>
+  <string name="db_import_error">Ko kùn lati gbe %1$s wọle</string>
+  <string name="db_import_success">%1$s ni ifijišẹ wọle</string>
+  <string name="db_import_selection">Yan faili lati gbe wọle</string>
   <!-- titles -->
-  <string name="activity_title_edit">Edit</string>
-  <string name="activity_title_edit_new">New activity</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
-  <string name="activity_title_history">Diary</string>
-  <string name="activity_subtitle_main">What are you doing?</string>
-  <string name="activity_title_about">About</string>
-  <string name="activity_title_settings">Settings</string>
+  <string name="activity_title_edit">Ṣatunkọ</string>
+  <string name="activity_title_edit_new">Iṣẹ titun</string>
+  <string name="activity_title_manage_activities">Ṣakoso awọn iṣẹ</string>
+  <string name="activity_title_history">Iwe ito iṣẹlẹ ojojumọ</string>
+  <string name="activity_subtitle_main">Kini o n ṣe?</string>
+  <string name="activity_title_about">Nipa</string>
+  <string name="activity_title_settings">Ètò</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
-  <string name="dialog_title_note">Note</string>
+  <string name="dialog_title_note">Akiyesi</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
-  <string name="action_store">Save</string>
-  <string name="action_filter">Filter</string>
+  <string name="action_delete">Pa iṣẹ ṣiṣe</string>
+  <string name="action_store">Fipamọ</string>
+  <string name="action_filter">Ajọwe</string>
   <string name="action_undo">UNDO</string>
-  <string name="search_hint">Search activity&#8230;</string>
+  <string name="search_hint">Iwadi iwadi&#8230;</string>
   <string name="search_description">Diaryactivities</string>
   <!-- dialog -->
-  <string name="dlg_ok">OK</string>
-  <string name="dlg_cancel">Cancel</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
-  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
-  <string name="dlg_undelete_activity_title">Recover Activity</string>
-  <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
+  <string name="dlg_ok">O DARA</string>
+  <string name="dlg_cancel">Fagilee</string>
+  <string name="dlg_delete_image_title">Jẹrisi piparẹ</string>
+  <string name="dlg_delete_image_text">Ṣe o da ọ loju pe o fẹ yọ aworan yii kuro ni titẹsi iṣẹ ṣiṣelọwọ?</string>
+  <string name="dlg_undelete_activity_title">Bọsipọ aṣayan iṣẹ</string>
+  <string name="dlg_undelete_activity_text">Yoo ṣe iṣẹ naa %1$s ki o si wa ni ibẹrẹ lẹẹkansi?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
-  <string name="just_now">just now</string>
-  <string name="few_seconds">a few seconds</string>
+  <string name="duration_description">Niwon %1$s</string>
+  <string name="just_now">ni bayi</string>
+  <string name="few_seconds">iṣẹju diẹ</string>
   <plurals name="seconds_short">
-    <item quantity="other">%d sec</item>
+    <item quantity="other">%d iṣẹju-aaya</item>
   </plurals>
   <plurals name="minutes_short">
     <item quantity="other">%d min</item>
@@ -124,24 +124,24 @@
     <item quantity="other">%d h</item>
   </plurals>
   <plurals name="days">
-    <item quantity="other">%d Days</item>
+    <item quantity="other">%d Ọjọ</item>
   </plurals>
-  <string name="camera_error">Something went wrong here. Could not store image.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+  <string name="camera_error">Nkankan kan ti ko tọ si ibi. Ko le tọju aworan.</string>
+  <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists</string>
-  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
-  <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
-  <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
-  <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
+  <string name="error_name_already_used">Iṣẹ ṣiṣe pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="error_name_already_used_in_deleted">Iṣẹ-ṣiṣe ti a ti paarẹ pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="recover_activity_toast">Iṣẹ iṣẹ atunṣe %1$s. O ti tun yan yan lẹẹkansi.</string>
+  <string name="renamed_deleted_activity_toast">Ṣe atunṣe aṣayan iṣẹ ti a ti tẹlẹ tẹlẹ %1$s.</string>
+  <string name="edit_existing_activity_toast">Nisisiyi ṣiṣatunkọ iṣẹ ṣiṣe to wa pẹlu orukọ %1$s.</string>
   <!-- history -->
-  <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
+  <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <!-- relative dates -->
-  <string name="today">Today</string>
-  <string name="yesterday">Yesterday</string>
-  <string name="lastWeek">Last week</string>
+  <string name="today">Loni</string>
+  <string name="yesterday">Lana</string>
+  <string name="lastWeek">Ose ti o koja</string>
   <!-- ACRA crash reporting -->
-  <string name="crash_dialog_text">An unexpected error occurred forcing the application to stop. Please help us fix this by sending us error data, all you have to do is click OK.</string>
-  <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
-  <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
+  <string name="crash_dialog_text">Aṣiṣe ti ko ni airotẹlẹ ṣẹlẹ laya ohun elo lati da. Jọwọ ṣe iranlọwọ fun wa ni atunṣe nipa fifiranṣẹ aṣiṣe wa, gbogbo ohun ti o ni lati ṣe jẹ tẹ Dara.</string>
+  <string name="crash_dialog_comment_prompt">O le fi awọn ọrọ rẹ kun nipa iṣoro naa ni isalẹ:</string>
+  <string name="crash_dialog_ok_toast">E dupe. Jowo fi imeeli ti a ti pese silẹ lẹhin ti o ṣayẹwo awọn akoonu rẹ.</string>
 </resources>
