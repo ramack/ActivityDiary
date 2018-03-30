@@ -75,8 +75,8 @@
   <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_daytime">Tageszeit</string>
-  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
+  <string name="setting_cond_daytime_summary">Die Uhrzeit der Aktivitäten im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_daytime_not_used_summary">Tageszeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_expert">Experteneinstellungen</string>
   <string name="setting_export">Datenbank Exportieren</string>
   <string name="setting_import">Datenbank Importieren</string>
