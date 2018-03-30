@@ -44,6 +44,7 @@ import java.util.Date;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -96,7 +97,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         }else if(key.equals(KEY_PREF_COND_OCCURRENCE)) {
             updateCondOccurenceSummary();
         }else if(key.equals(KEY_PREF_NOTIF_SHOW_CUR_ACT)) {
-            updateNotifShowCurSummary();
+            updateNotifShowCurActivity();
         }
     }
 
@@ -168,7 +169,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         }
     }
 
-    private void updateNotifShowCurSummary() {
+    private void updateNotifShowCurActivity() {
         if(PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getBoolean(KEY_PREF_NOTIF_SHOW_CUR_ACT, true)){
@@ -176,6 +177,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         }else{
             nofifShowCurActPref.setSummary(getResources().getString(R.string.setting_show_cur_activitiy_notification_summary_inactive));
         }
+        ActivityHelper.helper.showCurrentActivityNotification();
     }
 
     @Override
@@ -250,7 +252,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondAlphaSummary();
         updateCondPredecessorSummary();
         updateCondOccurenceSummary();
-        updateNotifShowCurSummary();
+        updateNotifShowCurActivity();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

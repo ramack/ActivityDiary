@@ -335,7 +335,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         }
     }
 
-    private void showCurrentActivityNotification() {
+    public void showCurrentActivityNotification() {
         if(PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)
