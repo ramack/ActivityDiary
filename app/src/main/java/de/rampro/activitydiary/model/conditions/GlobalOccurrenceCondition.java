@@ -44,7 +44,7 @@ public class GlobalOccurrenceCondition extends Condition implements ActivityHelp
     protected void doEvaluation() {
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
 
-        if(weight != 0.0) {
+        if(weight > 0.000001) {
             List<DiaryActivity> all = ActivityHelper.helper.getActivities();
             ArrayList<Likelihood> result = new ArrayList<>(all.size());
 

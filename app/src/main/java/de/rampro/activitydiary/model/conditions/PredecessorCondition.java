@@ -44,7 +44,7 @@ public class PredecessorCondition extends Condition implements ActivityHelper.Da
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
         DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
 
-        if(weight != 0.0 && current != null) {
+        if(weight > 0.0000001 && current != null) {
             ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
 
             SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();

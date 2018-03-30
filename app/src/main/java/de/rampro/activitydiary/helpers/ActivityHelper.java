@@ -57,6 +57,7 @@ import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.conditions.DayTimeCondition;
 import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
 import de.rampro.activitydiary.model.conditions.PredecessorCondition;
 import de.rampro.activitydiary.ui.main.MainActivity;
@@ -186,7 +187,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         void onActivityAdded(DiaryActivity activity);
 
         /**
-         * Called on removale of an activity.
+         * Called on removal of an activity.
          */
         void onActivityRemoved(DiaryActivity activity);
 
@@ -219,7 +220,9 @@ public class ActivityHelper extends AsyncQueryHandler{
 
         conditions = new Condition[]{new PredecessorCondition(this),
                 new AlphabeticalCondition(this),
-                new GlobalOccurrenceCondition(this)};
+                new GlobalOccurrenceCondition(this),
+                new DayTimeCondition(this)
+        };
 
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,

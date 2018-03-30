@@ -60,6 +60,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
     public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
     public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
+    public static final String KEY_PREF_COND_DAY_TIME = "pref_cond_daytime";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
