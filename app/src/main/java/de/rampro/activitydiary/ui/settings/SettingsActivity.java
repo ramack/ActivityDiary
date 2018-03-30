@@ -60,7 +60,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
     public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
     public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
-    public static final String KEY_PREF_COND_DAY_TIME = "pref_cond_daytime";
+    public static final String KEY_PREF_COND_DAYTIME = "pref_cond_daytime";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -72,6 +72,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference condAlphaPref;
     private Preference condPredecessorPref;
     private Preference condOccurrencePref;
+    private Preference condDayTimePref;
     private Preference nofifShowCurActPref;
     private Preference exportPref;
     private Preference importPref;
@@ -99,6 +100,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateCondOccurenceSummary();
         }else if(key.equals(KEY_PREF_NOTIF_SHOW_CUR_ACT)) {
             updateNotifShowCurActivity();
+        }else if(key.equals(KEY_PREF_COND_DAYTIME)){
+            updateCondDayTimeSummary();
         }
     }
 
@@ -143,6 +146,19 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_not_used_summary));
         }else {
             condPredecessorPref.setSummary(getResources().getString(R.string.setting_cond_predecessor_summary, value));
+        }
+    }
+
+    private void updateCondDayTimeSummary() {
+        String def = getResources().getString(R.string.pref_cond_daytime_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_COND_DAYTIME, def);
+
+        if(Double.parseDouble(value) == 0.0){
+            condDayTimePref.setSummary(getResources().getString(R.string.setting_cond_daytime_not_used_summary));
+        }else {
+            condDayTimePref.setSummary(getResources().getString(R.string.setting_cond_daytime_summary, value));
         }
     }
 
@@ -246,6 +262,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         condAlphaPref = mPreferenceManager.findPreference(KEY_PREF_COND_ALPHA);
         condPredecessorPref = mPreferenceManager.findPreference(KEY_PREF_COND_PREDECESSOR);
         condOccurrencePref = mPreferenceManager.findPreference(KEY_PREF_COND_OCCURRENCE);
+        condDayTimePref = mPreferenceManager.findPreference(KEY_PREF_COND_DAYTIME);
 
         updateAutoSelectSummary();
         updateStorageFolderSummary();
@@ -253,6 +270,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondAlphaSummary();
         updateCondPredecessorSummary();
         updateCondOccurenceSummary();
+        updateCondDayTimeSummary();
         updateNotifShowCurActivity();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);

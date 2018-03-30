@@ -96,6 +96,14 @@
             android:entries="@array/pref_cond_weight_list_user"
             android:entryValues="@array/pref_cond_weight_list_values"
             android:defaultValue="@string/pref_cond_occurrence_default" />
+        <ListPreference
+            android:key="pref_cond_daytime"
+            android:title="@string/setting_cond_daytime"
+            android:dialogTitle="@string/setting_cond_daytime"
+            android:entries="@array/pref_cond_weight_list_user"
+            android:entryValues="@array/pref_cond_weight_list_values"
+            android:defaultValue="@string/pref_cond_daytime_default" />
+
 
 
     </android.support.v7.preference.PreferenceCategory>

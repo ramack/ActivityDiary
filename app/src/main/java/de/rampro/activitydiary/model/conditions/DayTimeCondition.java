@@ -21,7 +21,6 @@ package de.rampro.activitydiary.model.conditions;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +32,8 @@ import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 public class DayTimeCondition extends Condition implements ActivityHelper.DataChangedListener {
-    HashMap<DiaryActivity, Float> activityStartTimes = new HashMap<>(127);
+    HashMap<DiaryActivity, Float> activityStartTimeMean = new HashMap<>(127);
+    HashMap<DiaryActivity, Float> activityStartTimeVar = new HashMap<>(127);
     private static float DAY = 24*60*60;
 
     public DayTimeCondition(ActivityHelper helper){
@@ -41,27 +41,49 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     }
 
     private void updateStartTimes(){
-        SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-
-        qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME);
-        Cursor c = qBuilder.query(db,
-                new String[]{ActivityDiaryContract.Diary.ACT_ID
-                        + ", avg(strftime('%s'," + ActivityDiaryContract.Diary.START
-                        + "/1000, 'unixepoch') - strftime('%s',datetime(" + ActivityDiaryContract.Diary.START
-                        + "/1000, 'unixepoch', 'start of day')))"
-                        },
-                null,
-                null,
-                ActivityDiaryContract.Diary.ACT_ID,
-                null,
-                null);
+// TODO: mean should consider "modulo" - i.e. agv of (23h and 1h) should be 0h
+// TODO: extend to multiple peaks per day (configurable)
+        Cursor c = db.rawQuery(
+                        "SELECT " + ActivityDiaryContract.Diary.TABLE_NAME + "."
+                        + ActivityDiaryContract.Diary.ACT_ID
+                        + ", sub.m as mean, "
+                        + "AVG(  (   (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch')"
+                        +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +           ") - sub.m"
+                        +      " )*( (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch')"
+                        +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +           ") - sub.m"
+                        +         ")"
+                        +    ") as var "
+                        + "FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", "
+                        + "(SELECT " + ActivityDiaryContract.Diary.ACT_ID + ", "
+                        + "   AVG(    strftime('%s'," + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch')"
+                        +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.START
+                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +        ") as m "
+                        + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + " GROUP BY " + ActivityDiaryContract.Diary.ACT_ID + ") as sub "
+                        + "WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + "=sub." + ActivityDiaryContract.Diary.ACT_ID
+                        + " AND " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0 "
+                        + "GROUP BY " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID
+                ,null);
         c.moveToFirst();
         while (!c.isAfterLast()) {
             DiaryActivity a = ActivityHelper.helper.activityWithId(c.getInt(0));
             if(a != null) {
-                Float f = c.getFloat(1);
-                activityStartTimes.put(a, f);
+                Float mean = c.getFloat(1);
+                activityStartTimeMean.put(a, mean);
+                Float var = c.getFloat(2);
+                if(var < 0.1){
+                    // we use a sd of 30min for those activities which are only there once
+                    var = (float)(30 * 60) * (30 * 60);
+                }
+                activityStartTimeVar.put(a, var);
             }
             c.moveToNext();
         }
@@ -70,7 +92,7 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
 
     @Override
     protected void doEvaluation() {
-        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_DAY_TIME, "20"));
+        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_DAYTIME, "20"));
 
         if(weight > 0.0000001) {
             Calendar c = Calendar.getInstance();
@@ -85,32 +107,26 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
             ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
 
             for (DiaryActivity a:ActivityHelper.helper.getActivities()) {
-                float start = DAY / 2.0f;
-                Float af = activityStartTimes.get(a);
-                if(af != null){
-                    start = af;
-                }else
-                {
-                    start = 2;
+                float mean = DAY / 2.0f;
+                float var = 30*60*30*60;
+
+                Float meanF = activityStartTimeMean.get(a);
+                Float varF = activityStartTimeVar.get(a);
+                if(meanF != null && varF != null){
+                    mean = meanF;
+                    var = varF;
                 }
-                float delta = Math.abs(now - start);
+                /*
+                 modulo time distance would be
+                float delta = Math.abs(now - mean);
                 float dist = Math.min(delta, DAY - delta);
-
-                // TODO: remove
-                int hd = (int)dist/3600;
-                int md = (int)(dist-hd*3600)/60;
-
-                int absh = (int)(start/3600);
-                int absm = (int)((start - 3600*absh)/60);
-
-                // TODO: add consideration of variance...
-                // FOR now we do it linear
-                /* create table t (row int);
-                insert into t values (1),(2),(3);
-                SELECT AVG((t.row - sub.a) * (t.row - sub.a)) as var from t,
-                (SELECT AVG(row) AS a FROM t) AS sub;
                 */
-                Likelihood l = new Likelihood(a, weight * 2.0 / DAY * (DAY/2.0 - dist));
+
+                double ld = DAY / Math.sqrt(2 * Math.PI * var);
+                ld = ld * Math.exp(-((now - mean) * (now - mean) / (2 * var)));
+
+                ld = ld * weight;
+                Likelihood l = new Likelihood(a, ld);
                 result.add(l);
             }
             setResult(result);
