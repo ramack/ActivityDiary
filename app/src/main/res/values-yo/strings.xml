@@ -133,7 +133,10 @@
   <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
   <!-- edit view -->
   <string name="error_name_already_used">Iṣẹ ṣiṣe pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">Iṣẹ-ṣiṣe ti a ti paarẹ pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">Iṣẹ iṣẹ atunṣe %1$s. O ti tun yan yan lẹẹkansi.</string>
   <string name="renamed_deleted_activity_toast">Ṣe atunṣe aṣayan iṣẹ ti a ti tẹlẹ tẹlẹ %1$s.</string>
   <string name="edit_existing_activity_toast">Nisisiyi ṣiṣatunkọ iṣẹ ṣiṣe to wa pẹlu orukọ %1$s.</string>
