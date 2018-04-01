@@ -137,7 +137,10 @@
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">Aktivität %1$s wiederhergestellt. Sie ist und jetzt wieder auswählbar.</string>
   <string name="renamed_deleted_activity_toast">Die bereits gelöschte Aktivität %1$s wurde umbenannt.</string>
   <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
