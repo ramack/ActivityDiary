@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.TooltipCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -96,9 +97,11 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         if(deleted) {
                             CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
                             mBtnRenameDeleted.setVisibility(View.VISIBLE);
+                            setBtnTooltip(mBtnRenameDeleted, getResources().getString(R.string.tooltip_quickfix_btn_rename_deleted));
 
                             mActivityNameTIL.setError(str);
                             mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_undelete));
+                            setBtnTooltip(mQuickFixBtn1, getResources().getString(R.string.tooltip_quickfix_btn_undelete_existing));
 
                             mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -138,6 +141,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                             mBtnRenameDeleted.setVisibility(View.GONE);
                             mBtnRenameDeleted.setOnClickListener(null);
                             mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_edit));
+                            setBtnTooltip(mQuickFixBtn1, getResources().getString(R.string.tooltip_quickfix_btn_edit_existing));
                             mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -200,6 +204,14 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
             if(token == RENAME_DELETED_ACTIVITY){
                 checkConstraints();
             }
+        }
+    }
+
+    private void setBtnTooltip(View view, @Nullable CharSequence tooltipText) {
+        if (Build.VERSION.SDK_INT < 26) {
+            TooltipCompat.setTooltipText(view, tooltipText);
+        }else{
+            view.setTooltipText(tooltipText);
         }
     }
 

@@ -174,7 +174,10 @@
 
     <!-- edit view -->
     <string name="error_name_already_used">Activity with name %1$s already exists</string>
+    <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
     <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+    <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+    <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
     <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
     <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
     <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
