@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   id="svg3033"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="ic_show_deleted_48px.svg"
+   inkscape:export-filename="/home/r/ActivityDiary/artwork/icons/ic_rename_deleted_96x96.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <metadata
+     id="metadata3041">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>based on </dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license
+           rdf:resource="" />
+        <dc:source>https://www.materialpalette.com/icons</dc:source>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Google, modification to undelete by Raphael Mack</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3039" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="958"
+     id="namedview3037"
+     showgrid="false"
+     inkscape:zoom="8.0000001"
+     inkscape:cx="21.239008"
+     inkscape:cy="12.192951"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3033" />
+  <path
+     style="stroke:none"
+     d="M 12 14 L 12 38 C 12 40.21 13.79 42 16 42 L 32 42 C 34.21 42 36 40.21 36 38 L 36 14 L 12 14 z M 24 21.28125 C 28.545454 21.28125 32.427271 24.107457 34 28.125 C 32.427271 32.14254 28.545454 35 24 35 C 19.454546 35 15.572729 32.14254 14 28.125 C 15.572729 24.107458 19.454546 21.28125 24 21.28125 z M 24 23.5625 C 21.49091 23.5625 19.46875 25.599156 19.46875 28.125 C 19.46875 30.650834 21.49091 32.71875 24 32.71875 C 26.50909 32.71875 28.53125 30.650834 28.53125 28.125 C 28.53125 25.599156 26.50909 23.5625 24 23.5625 z M 24 25.40625 C 25.50909 25.40625 26.71875 26.605837 26.71875 28.125 C 26.71875 29.644152 25.50909 30.875 24 30.875 C 22.49091 30.875 21.28125 29.644152 21.28125 28.125 C 21.28125 26.605837 22.49091 25.40625 24 25.40625 z "
+     id="path4589" />
+  <path
+     d="m 37.985154,9.092654 -6.999999,-0.00226 -1.999353,-2.0006471 -9.999999,-0.00323 -2.000647,1.9993521 -6.999999,-0.00226 -0.0013,4 27.999998,0.0091 0.0013,-4.0000008 z"
+     id="path3035"
+     inkscape:connector-curvature="0" />
+</svg>

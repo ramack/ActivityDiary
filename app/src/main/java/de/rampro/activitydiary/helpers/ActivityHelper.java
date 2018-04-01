@@ -692,6 +692,6 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* perform cyclic actions like update of timing on current activity and checking time based Conditions */
     public void cyclicUpdate(){
-
+        // TODO add a service like RefreshService, to call this with configurable cycle time
     }
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   id="svg3033"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="ic_hide_deleted_48px.svg"
+   inkscape:export-filename="/home/r/ActivityDiary/artwork/icons/ic_rename_deleted_96x96.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <metadata
+     id="metadata3041">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>based on </dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license
+           rdf:resource="http://artlibre.org/licence/lal" />
+        <dc:source>https://www.materialpalette.com/icons</dc:source>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Google, modification to undelete by Raphael Mack</dc:title>
+          </cc:Agent>
+        </dc:rights>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://artlibre.org/licence/lal">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3039" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="958"
+     id="namedview3037"
+     showgrid="false"
+     inkscape:zoom="8.0000001"
+     inkscape:cx="31.676508"
+     inkscape:cy="12.192951"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3033" />
+  <path
+     style="stroke:none"
+     d="M 12 14 L 12 38 C 12 40.21 13.79 42 16 42 L 32 42 C 34.21 42 36 40.21 36 38 L 36 14 L 12 14 z M 16.0625 19.21875 L 32.1875 35.34375 L 31.03125 36.5 L 28.375 33.84375 L 28 33.46875 C 26.77217 33.959886 25.409725 34.21875 24 34.21875 C 19.452475 34.21875 15.57344 31.398968 14 27.40625 C 14.709413 25.605432 15.896472 24.048257 17.40625 22.875 L 16.96875 22.4375 L 14.90625 20.375 L 16.0625 19.21875 z M 24 20.59375 C 28.547525 20.59375 32.42656 23.413522 34 27.40625 C 33.336059 29.097924 32.248354 30.572774 30.875 31.71875 L 28.21875 29.0625 C 28.427937 28.544084 28.5625 27.997429 28.5625 27.40625 C 28.5625 24.89602 26.51023 22.84375 24 22.84375 C 23.408821 22.84375 22.862166 22.978313 22.34375 23.1875 L 20.375 21.21875 C 21.502786 20.809467 22.726699 20.59375 24 20.59375 z M 23.84375 24.6875 L 24 24.6875 C 25.509779 24.6875 26.75 25.896472 26.75 27.40625 L 26.71875 27.5625 L 23.84375 24.6875 z M 19.9375 25.40625 C 19.63737 26.015619 19.46875 26.687737 19.46875 27.40625 C 19.46875 29.91648 21.48977 31.9375 24 31.9375 C 24.718503 31.9375 25.390638 31.76889 26 31.46875 L 24.59375 30.0625 C 24.402754 30.1079 24.200087 30.125 24 30.125 C 22.490222 30.125 21.28125 28.916028 21.28125 27.40625 C 21.28125 27.206154 21.29825 27.003496 21.34375 26.8125 L 19.9375 25.40625 z "
+     id="path4589" />
+  <path
+     d="m 37.985154,9.092654 -6.999999,-0.00226 -1.999353,-2.0006471 -9.999999,-0.00323 -2.000647,1.9993521 -6.999999,-0.00226 -0.0013,4 27.999998,0.0091 0.0013,-4.0000008 z"
+     id="path3035"
+     inkscape:connector-curvature="0" />
+</svg>

@@ -179,7 +179,6 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     public void onActivityChanged() {
         // TODO: optimize performance: update only for the current newly selected ID
         updateStartTimes();
-        refresh();// TODO remove
     }
 
 }

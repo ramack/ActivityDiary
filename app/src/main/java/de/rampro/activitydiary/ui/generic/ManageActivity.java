@@ -144,10 +144,10 @@ public class ManageActivity extends BaseActivity implements LoaderManager.Loader
                 showDeleted = !showDeleted;
                 getLoaderManager().restartLoader(-2, null, this);
                 if(showDeleted) {
-                    item.setIcon(R.drawable.ic_rename_deleted);
+                    item.setIcon(R.drawable.ic_hide_deleted);
                     item.setTitle(R.string.nav_hide_deleted);
                 }else{
-                    item.setIcon(R.drawable.ic_delete);
+                    item.setIcon(R.drawable.ic_show_deleted);
                     item.setTitle(R.string.nav_show_deleted);
                 }
                 break;
