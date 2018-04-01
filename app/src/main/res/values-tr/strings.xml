@@ -137,7 +137,10 @@
   <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">%1$s adlı silinmiş bir etkinlik zaten var</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">%1$s etkinliği kurtarıldı. Şimdi tekrar seçilebilir.</string>
   <string name="renamed_deleted_activity_toast">Silinmiş bulunan %1$s etkinliği yeniden adlandırıldı.</string>
   <string name="edit_existing_activity_toast">Şimdi var olan %1$s adlı etkinlik düzenleniyor.</string>
