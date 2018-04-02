@@ -74,7 +74,7 @@
   <string name="setting_cond_occurrence">Iṣẹ iṣe iṣẹlẹ</string>
   <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
-  <string name="setting_cond_daytime">Daytime</string>
+  <string name="setting_cond_daytime">Oju momo</string>
   <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
   <string name="setting_expert">Awọn eto imọran</string>
