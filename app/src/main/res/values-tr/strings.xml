@@ -74,9 +74,9 @@
   <string name="setting_cond_occurrence">Etkinlik sıklığı</string>
   <string name="setting_cond_occurrence_summary">Günlükteki etkinlik sıklığının, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
   <string name="setting_cond_occurrence_not_used_summary">Günlükteki etkinlik sıklığı, sonraki etkinlikleri önermek için kullanılmaz</string>
-  <string name="setting_cond_daytime">Gündüz</string>
-  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
+  <string name="setting_cond_daytime">Gün süresi</string>
+  <string name="setting_cond_daytime_summary">Günlükteki etkinliklerin gün süresi, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
+  <string name="setting_cond_daytime_not_used_summary">Günlükteki etkinliklerin gün süresi, sonraki etkinlikleri önermek için kullanılmaz</string>
   <string name="setting_expert">Uzman ayarları</string>
   <string name="setting_export">Veritabanını dışa aktar</string>
   <string name="setting_import">Veritabanını içe aktar</string>
@@ -137,7 +137,7 @@
   <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
   <!-- edit view -->
   <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
-  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Şu anki düzenlemeyi reddet ve aynı adlı var olan etkinliği aç</string>
   <string name="error_name_already_used_in_deleted">%1$s adlı silinmiş bir etkinlik zaten var</string>
   <string name="tooltip_quickfix_btn_rename_deleted">Çakışmayı çözmek için aynı adlı silinmiş etkinliği yeniden adlandır</string>
   <string name="tooltip_quickfix_btn_undelete_existing">Aynı adlı etkinliği geri getir</string>
