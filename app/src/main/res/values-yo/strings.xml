@@ -13,8 +13,8 @@
   <string name="about_text_support_h">Atilẹyin</string>
   <string name="about_text_support">Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
   <string name="about_text_cont_h">Awọn oluranlọwọ</string>
-  <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, ju.</string>
-  <string name="about_text_lib_h">Awọn ile-iwe</string>
+  <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, na.</string>
+  <string name="about_text_lib_h">Awọn ile-ikawe</string>
   <string name="about_text_lib">Awọn ile-ikawe wọnyi wa ni lilo nipasẹ ohun elo yii ati iwe-aṣẹ labẹ awọn iwe-aṣẹ ti a daruko:</string>
   <string name="perm_write_external_storage_xplain">Ntọju awọn fọto nbeere igbanilaaye lati ṣe bẹ &#8230;</string>
   <string name="unsupported_on_api_level">Ẹya yii ko ni atilẹyin lori Android Version rẹ. Iwọn ipele API ti o kere julọ %1$d beere fun.</string>
@@ -74,7 +74,7 @@
   <string name="setting_cond_occurrence">Iṣẹ iṣe iṣẹlẹ</string>
   <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
-  <string name="setting_cond_daytime">Oju momo</string>
+  <string name="setting_cond_daytime">Oju mọmọ</string>
   <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
   <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
   <string name="setting_expert">Awọn eto imọran</string>
