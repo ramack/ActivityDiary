@@ -22,8 +22,8 @@
   <string name="nav_main">Pilih Aktifitas</string>
   <string name="nav_diary">Buku harian</string>
   <string name="nav_add_activity">Tambahkan Aktifitas</string>
-  <string name="nav_show_deleted">Show Deleted</string>
-  <string name="nav_hide_deleted">Hide Deleted</string>
+  <string name="nav_show_deleted">Tampilkan Dihapus</string>
+  <string name="nav_hide_deleted">Sembunyikan Dihapus</string>
   <string name="nav_activity_manager">Ubah Aktivitas</string>
   <string name="nav_settings">Pengaturan</string>
   <string name="nav_about">Tentang</string>
