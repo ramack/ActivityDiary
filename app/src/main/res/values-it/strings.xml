@@ -12,9 +12,9 @@
   <string name="about_text_contact_2">Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
   <string name="about_text_support_h">Support</string>
   <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
-  <string name="about_text_cont_h">Contributors</string>
-  <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
-  <string name="about_text_lib_h">Libraries</string>
+  <string name="about_text_cont_h">Contributori</string>
+  <string name="about_text_cont_2">Non vediamo l\'ora di menzionare il tuo nome in questa lista.</string>
+  <string name="about_text_lib_h">Librerie</string>
   <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
   <string name="perm_write_external_storage_xplain">La memorizzazione delle foto richiede il permesso di farlo &#8230;</string>
   <string name="unsupported_on_api_level">Questa funzionalità non è supportata nella tua versione Android. Livello minimo di API %1$d richiesto.</string>
