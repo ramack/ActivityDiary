@@ -73,8 +73,9 @@ public class HistoryActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID) {
-        /* TODO: #25 filter history to show only entries of the clicked activity */
-        Toast.makeText(HistoryActivity.this, "changing the activity in the history is not yet supported, maybe we filter the history one day for " + viewHolder.mName.getText(), Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, HistoryDetailActivity.class);
+        i.putExtra("diaryEntryID", diaryID);
+        startActivity(i);
     }
 
     public boolean onItemLongClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID){

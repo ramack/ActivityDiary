@@ -45,6 +45,7 @@
     <string name="desc_activity_color">Activity color</string>
     <string name="desc_activity_hint">Activity title</string>
     <string name="desc_activity_select">Choose current activity&#8230;</string>
+    <string name="desc_note_hint" translatable="false">@string/dialog_title_note</string>
 
     <!-- -->
     <string name="activity_image_description">Picture for activity</string>
@@ -124,6 +125,7 @@
     <string name="activity_title_edit_new">New activity</string>
     <string name="activity_title_manage_activities">Manage activities</string>
     <string name="activity_title_history">Diary</string>
+    <string name="activity_title_history_detail">Diary detail</string>
     <string name="activity_subtitle_main">What are you doing?</string>
     <string name="activity_title_about">About</string>
     <string name="activity_title_settings">Settings</string>
@@ -132,6 +134,7 @@
 
     <!-- actions -->
     <string name="action_delete">Delete activity</string>
+    <string name="action_diary_entry_delete">Delete entry</string>
     <string name="action_store">Save</string>
     <string name="action_filter">Filter</string>
     <string name="action_undo">UNDO</string>
@@ -184,6 +187,12 @@
 
     <!-- history -->
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
+    <string name="date_format">yyyy.MM.dd</string>
+    <string name="time_format">HH:mm</string>
+    <string name="desc_start_date">Start date</string>
+    <string name="desc_start_time">Start time</string>
+    <string name="desc_end_date">End date</string>
+    <string name="desc_end_time">End time</string>
 
     <!-- relative dates -->
     <string name="today">Today</string>

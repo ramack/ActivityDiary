@@ -140,6 +140,8 @@
   <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
   <!-- history -->
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
+  <string name="date_format">dd.MM.yyyy</string>
+  <string name="time_format">HH:mm</string>
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>

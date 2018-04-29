@@ -50,7 +50,7 @@ import de.rampro.activitydiary.ui.generic.BaseActivity;
 public class SettingsActivity extends BaseActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = SettingsActivity.class.getName();
 
-    public static final String KEY_PREF_DATE_FORMAT = "pref_datetimeFormat";
+    public static final String KEY_PREF_DATETIME_FORMAT = "pref_datetimeFormat";
     public static final String KEY_PREF_AUTO_SELECT = "pref_auto_select_new";
     public static final String KEY_PREF_STORAGE_FOLDER = "pref_storageFolder";
     public static final String KEY_PREF_TAG_IMAGES = "pref_tag_images";
@@ -81,7 +81,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
                                           String key) {
-        if (key.equals(KEY_PREF_DATE_FORMAT)) {
+        if (key.equals(KEY_PREF_DATETIME_FORMAT)) {
             String def = getResources().getString(R.string.default_datetime_format);
             // Set summary to be the user-description for the selected value
             dateformatPref.setSummary(DateFormat.format(sharedPreferences.getString(key, def), new Date()));
@@ -209,14 +209,14 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         SettingsFragment sf = (SettingsFragment)getSupportFragmentManager().findFragmentById(R.id.settings_fragment);
 
         mPreferenceManager = sf.getPreferenceManager();
-        dateformatPref = mPreferenceManager.findPreference(KEY_PREF_DATE_FORMAT);
+        dateformatPref = mPreferenceManager.findPreference(KEY_PREF_DATETIME_FORMAT);
 
         String def = getResources().getString(R.string.default_datetime_format);
 
         dateformatPref.setSummary(DateFormat.format(
                 PreferenceManager
                         .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                        .getString(KEY_PREF_DATE_FORMAT, def)
+                        .getString(KEY_PREF_DATETIME_FORMAT, def)
                 , new Date()));
 
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);

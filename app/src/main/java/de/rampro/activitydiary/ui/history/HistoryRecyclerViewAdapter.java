@@ -198,7 +198,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         holder.mName.setText(name);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
-        String formatString = sharedPref.getString(SettingsActivity.KEY_PREF_DATE_FORMAT,
+        String formatString = sharedPref.getString(SettingsActivity.KEY_PREF_DATETIME_FORMAT,
                 mContext.getResources().getString(R.string.default_datetime_format));
 /* TODO: #36 register listener on preference change to redraw the date time formatting */
 

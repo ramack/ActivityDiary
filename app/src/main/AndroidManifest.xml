@@ -36,6 +36,9 @@
             />
         <activity android:name=".ui.generic.ManageActivity"
             android:label="@string/activity_title_manage_activities" />
+        <activity android:name=".ui.history.HistoryDetailActivity"
+            android:label="@string/activity_title_history_detail"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.history.HistoryActivity"
             android:label="@string/activity_title_history" />
         <activity android:name=".ui.generic.AboutActivity"
