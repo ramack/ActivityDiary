@@ -13,8 +13,8 @@
   <string name="about_text_support_h">Atilẹyin</string>
   <string name="about_text_support">Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
   <string name="about_text_cont_h">Awọn oluranlọwọ</string>
-  <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, ju.</string>
-  <string name="about_text_lib_h">Awọn ile-iwe</string>
+  <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, na.</string>
+  <string name="about_text_lib_h">Awọn ile-ikawe</string>
   <string name="about_text_lib">Awọn ile-ikawe wọnyi wa ni lilo nipasẹ ohun elo yii ati iwe-aṣẹ labẹ awọn iwe-aṣẹ ti a daruko:</string>
   <string name="perm_write_external_storage_xplain">Ntọju awọn fọto nbeere igbanilaaye lati ṣe bẹ &#8230;</string>
   <string name="unsupported_on_api_level">Ẹya yii ko ni atilẹyin lori Android Version rẹ. Iwọn ipele API ti o kere julọ %1$d beere fun.</string>
@@ -34,13 +34,13 @@
   <string name="activity_image_description">Aworan fun aṣayan iṣẹ</string>
   <string name="contentDesc_logo">Logo ti activitydiary</string>
   <string name="drawer_open">Ṣi i lilọ kiri</string>
-  <string name="drawer_close">Pade lilọ kiri</string>
+  <string name="drawer_close">Pa lilọ kiri de</string>
   <!-- Notification Channels -->
   <string name="notif_channel_current_activity_name">Iṣẹ lọwọlọwọ</string>
   <string name="notif_channel_current_activity_desc">Fi ifitonileti fun iṣẹ ti o n ṣe lọwọlọwọ</string>
   <!-- settings -->
   <string name="setting_view_category">Wo</string>
-  <string name="setting_behavior_category">Ẹwa</string>
+  <string name="setting_behavior_category">Iwa</string>
   <string name="setting_images_category">Awọn aworan</string>
   <string name="setting_backup_category">Afẹyinti</string>
   <string name="setting_condition_category">Awọn ipo</string>
@@ -74,6 +74,9 @@
   <string name="setting_cond_occurrence">Iṣẹ iṣe iṣẹlẹ</string>
   <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
+  <string name="setting_cond_daytime">Oju mọmọ</string>
+  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
   <string name="setting_expert">Awọn eto imọran</string>
   <string name="setting_export">Wọle si ipamọ data</string>
   <string name="setting_import">Wọle data ipilẹ</string>
@@ -130,7 +133,10 @@
   <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
   <!-- edit view -->
   <string name="error_name_already_used">Iṣẹ ṣiṣe pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">Iṣẹ-ṣiṣe ti a ti paarẹ pẹlu orukọ %1$s tẹlẹ wa</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">Iṣẹ iṣẹ atunṣe %1$s. O ti tun yan yan lẹẹkansi.</string>
   <string name="renamed_deleted_activity_toast">Ṣe atunṣe aṣayan iṣẹ ti a ti tẹlẹ tẹlẹ %1$s.</string>
   <string name="edit_existing_activity_toast">Nisisiyi ṣiṣatunkọ iṣẹ ṣiṣe to wa pẹlu orukọ %1$s.</string>

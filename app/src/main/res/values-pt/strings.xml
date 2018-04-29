@@ -67,13 +67,16 @@
   <string name="pref_cond_off">FORA</string>
   <string name="setting_cond_alpha">Alphabetical sort</string>
   <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting not used for suggesting next activities</string>
+  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting is not used for suggesting next activities</string>
   <string name="setting_cond_predecessor">Activity sequence</string>
   <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary is not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Activity occurrence</string>
   <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary not used for suggesting next activities</string>
+  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary is not used for suggesting next activities</string>
+  <string name="setting_cond_daytime">Daytime</string>
+  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
   <string name="setting_expert">Expert settings</string>
   <string name="setting_export">Export database</string>
   <string name="setting_import">Import database</string>
@@ -134,7 +137,10 @@
   <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
   <!-- edit view -->
   <string name="error_name_already_used">Activity with name %1$s already exists</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
   <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
   <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>

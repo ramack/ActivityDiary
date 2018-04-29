@@ -74,6 +74,9 @@
   <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
   <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_daytime">Tageszeit</string>
+  <string name="setting_cond_daytime_summary">Die Uhrzeit der Aktivitäten im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_daytime_not_used_summary">Tageszeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_expert">Experteneinstellungen</string>
   <string name="setting_export">Datenbank Exportieren</string>
   <string name="setting_import">Datenbank Importieren</string>
@@ -134,7 +137,10 @@
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
   <string name="recover_activity_toast">Aktivität %1$s wiederhergestellt. Sie ist und jetzt wieder auswählbar.</string>
   <string name="renamed_deleted_activity_toast">Die bereits gelöschte Aktivität %1$s wurde umbenannt.</string>
   <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
