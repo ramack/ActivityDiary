@@ -125,7 +125,7 @@
     <string name="activity_title_edit_new">New activity</string>
     <string name="activity_title_manage_activities">Manage activities</string>
     <string name="activity_title_history">Diary</string>
-    <string name="activity_title_history_detail">Diary detail</string>
+    <string name="activity_title_history_detail">Diary entry</string>
     <string name="activity_subtitle_main">What are you doing?</string>
     <string name="activity_title_about">About</string>
     <string name="activity_title_settings">Settings</string>
