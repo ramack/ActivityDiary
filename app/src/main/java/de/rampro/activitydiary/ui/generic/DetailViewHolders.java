@@ -28,12 +28,16 @@ import android.widget.TextView;
 import de.rampro.activitydiary.R;
 
 class DetailViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public interface SelectListener{
+        void onDetailItemClick(int adapterPosition);
+        boolean onDetailItemLongClick(int adapterPosition);
+    }
 
     @NonNull public TextView mTextView;
     @NonNull public ImageView mSymbol;
-    @NonNull private DetailRecyclerViewAdapter.SelectListener mListener;
+    @NonNull private SelectListener mListener;
 
-    public DetailViewHolders(@NonNull DetailRecyclerViewAdapter.SelectListener listener, @NonNull View itemView) {
+    public DetailViewHolders(@NonNull SelectListener listener, @NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);

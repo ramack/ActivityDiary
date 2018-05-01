@@ -93,7 +93,6 @@ import de.rampro.activitydiary.ui.settings.SettingsActivity;
 public class MainActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
         SelectRecyclerViewAdapter.SelectListener,
-        DetailRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
         NoteEditDialog.NoteEditDialogListener,
         View.OnLongClickListener,
@@ -149,7 +148,6 @@ public class MainActivity extends BaseActivity implements
     }
 
     private class QHandler extends AsyncQueryHandler{
-        /* Access only allowed via ActivityHelper.helper singleton */
         private QHandler(){
             super(ActivityDiaryApplication.getAppContext().getContentResolver());
         }
@@ -351,7 +349,7 @@ public class MainActivity extends BaseActivity implements
         detailRecyclerView.setLayoutManager(detailLayoutManager);
 //        detailRecyclerView.setNestedScrollingEnabled(true);
         detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this,
-                this, null);
+                null);
         detailRecyclerView.setAdapter(detailAdapter);
 
         // Get the intent, verify the action and get the search query
@@ -479,38 +477,6 @@ public class MainActivity extends BaseActivity implements
         undoSnackBar.show();
     }
 
-    @Override
-    public void onDetailItemClick(int adapterPosition) {
-        Toast.makeText(this, "picture " + Integer.toString(adapterPosition) + " clicked -> please create a ticket and tell what you expect to be done here", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public boolean onDetailItemLongClick(final int adapterPosition) {
-        //TODO: generalize the DetailView to include this code also
-        //      such that it is not duplicated between MainActivity and HistoryRecyclerViewAdapter
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle(R.string.dlg_delete_image_title)
-                .setMessage(R.string.dlg_delete_image_text)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        ContentValues values = new ContentValues();
-                        values.put(ActivityDiaryContract.DiaryImage._DELETED, 1);
-
-                        mQHandler.startUpdate(0,
-                                null,
-                                ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                                values,
-                                ActivityDiaryContract.DiaryImage._ID + "=?",
-                                new String[]{Long.toString(detailAdapter.getDiaryImageIdAt(adapterPosition))}
-                                );
-
-                    }})
-                .setNegativeButton(android.R.string.no, null);
-
-        builder.create().show();
-        return true;
-    }
     private Handler updateDurationHandler = new Handler();
     private Runnable updateDurationRunnable = new Runnable() {
         @Override

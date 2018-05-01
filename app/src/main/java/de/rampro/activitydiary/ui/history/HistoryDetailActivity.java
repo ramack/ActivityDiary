@@ -66,7 +66,7 @@ import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
  * HistoryDetailActivity to show details of and modify diary entries
  *
  * */
-public class HistoryDetailActivity extends BaseActivity implements DetailRecyclerViewAdapter.SelectListener, LoaderManager.LoaderCallbacks<Cursor>{
+public class HistoryDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>{
     private static final String[] PROJECTION_IMG = new String[]{
             ActivityDiaryContract.DiaryImage.URI,
             ActivityDiaryContract.DiaryImage._ID
@@ -154,17 +154,6 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
             // Create a new instance of TimePickerDialog and return it
             return new DatePickerDialog(getActivity(), listener, year, month, day);
         }
-    }
-
-
-    @Override
-    public void onDetailItemClick(int adapterPosition) {
-
-    }
-
-    @Override
-    public boolean onDetailItemLongClick(int adapterPosition) {
-        return false;
     }
 
     private class QHandler extends AsyncQueryHandler {
@@ -311,7 +300,7 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
         detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
         RecyclerView.LayoutManager layoutMan = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         detailRecyclerView.setLayoutManager(layoutMan);
-        detailAdapter = new DetailRecyclerViewAdapter(this,this, null);
+        detailAdapter = new DetailRecyclerViewAdapter(this,null);
         detailRecyclerView.setAdapter(detailAdapter);
 
         getSupportLoaderManager().restartLoader(0, null, this);

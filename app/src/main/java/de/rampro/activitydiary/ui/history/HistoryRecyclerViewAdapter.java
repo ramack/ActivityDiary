@@ -49,7 +49,7 @@ import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
-public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryViewHolders> implements DetailRecyclerViewAdapter.SelectListener {
+public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryViewHolders> {
     private Cursor mCursor;
     private HistoryActivity mContext;
     private DataSetObserver mDataObserver;
@@ -60,40 +60,6 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
     private List<HistoryViewHolders> mViewHolders;
 
     private SelectListener mListener;
-
-    @Override
-    public void onDetailItemClick(int adapterPosition) {
-        Toast.makeText(mContext, "history picture " + Integer.toString(adapterPosition) +  " clicked", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public boolean onDetailItemLongClick(final int adapterPosition) {
-        //TODO: generalize the DetailView to include this code also
-        //      such that it is not duplicated between MainActivity and HistoryRecyclerViewAdapter
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(R.string.dlg_delete_image_title)
-                .setMessage(R.string.dlg_delete_image_text)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        ContentValues values = new ContentValues();
-                        values.put(ActivityDiaryContract.DiaryImage._DELETED, 1);
-
-                        mContext.mQHandler.startUpdate(0,
-                                null,
-                                ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                                values,
-                                ActivityDiaryContract.DiaryImage._ID + "=?",
-                                new String[]{Long.toString(
-                                        mViewHolders.get(adapterPosition).mDetailAdapter.getDiaryImageIdAt(adapterPosition))}
-                        );
-
-                    }})
-                .setNegativeButton(android.R.string.no, null);
-
-        builder.create().show();
-        return true;
-    }
 
     public interface SelectListener{
         void onItemClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID);
@@ -244,7 +210,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
 
         /* TODO #33: set activity picture (icon + main pciture if available) */
 
-        holder.mDetailAdapter = new DetailRecyclerViewAdapter(mContext, this, null);
+        holder.mDetailAdapter = new DetailRecyclerViewAdapter(mContext, null);
 
         mContext.addDetailAdapter(mCursor.getLong(idRowIdx), holder.mDetailAdapter);
 

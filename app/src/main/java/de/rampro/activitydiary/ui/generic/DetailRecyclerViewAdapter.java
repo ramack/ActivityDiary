@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,42 +19,56 @@
 
 package de.rampro.activitydiary.ui.generic;
 
+import android.content.AsyncQueryHandler;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
+import de.rampro.activitydiary.ui.main.MainActivity;
 
-public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHolders>{
+public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHolders> implements DetailViewHolders.SelectListener {
     private static final String TAG = DetailRecyclerViewAdapter.class.getName();
+
+    private class QHandler extends AsyncQueryHandler {
+        private QHandler(){
+            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        }
+    }
+
+    private QHandler mQHandler = new QHandler();
 
     private static int lastAdapterId = 0;
 
-    private SelectListener mSelectListener;
     private Cursor mCursor;
     private Context mContext;
     private DataSetObserver mDataObserver;
     private int uriRowIdx = 0, idRowIdx = 0;
     private int mAdapterId;
 
-    public DetailRecyclerViewAdapter(Context context, SelectListener selectListener, Cursor details){
+    public DetailRecyclerViewAdapter(Context context, Cursor details){
         mAdapterId = lastAdapterId;
         lastAdapterId++;
         mCursor = details;
-        mSelectListener = selectListener;
         mContext = context;
+        // TODO: do we need this one here?
         mDataObserver = new DataSetObserver(){
             public void onChanged() {
                 /* notify about the data change */
@@ -79,7 +93,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
     public DetailViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.detail_recycler_item, null);
-        DetailViewHolders rcv = new DetailViewHolders(mSelectListener, layoutView);
+        DetailViewHolders rcv = new DetailViewHolders(this, layoutView);
 
         return rcv;
     }
@@ -110,11 +124,6 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             return mCursor.getCount();
         }
         return 0;
-    }
-
-    public interface SelectListener{
-        void onDetailItemClick(int adapterPosition);
-        boolean onDetailItemLongClick(int adapterPosition);
     }
 
     public Cursor swapCursor(Cursor newCursor) {
@@ -162,4 +171,37 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
         mCursor.moveToPosition(pos);
         return result;
     }
+
+    @Override
+    public void onDetailItemClick(int adapterPosition) {
+        // TODO: show image in full screen
+    }
+
+    public boolean onDetailItemLongClick(int adapterPosition) {
+        long diaryImageId = getDiaryImageIdAt(adapterPosition);
+        //TODO: generalize the DetailView to include this code also
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+                .setTitle(R.string.dlg_delete_image_title)
+                .setMessage(R.string.dlg_delete_image_text)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ContentValues values = new ContentValues();
+                        values.put(ActivityDiaryContract.DiaryImage._DELETED, 1);
+
+                        mQHandler.startUpdate(0,
+                                null,
+                                ActivityDiaryContract.DiaryImage.CONTENT_URI,
+                                values,
+                                ActivityDiaryContract.DiaryImage._ID + "=?",
+                                new String[]{Long.toString(diaryImageId)}
+                        );
+
+                    }})
+                .setNegativeButton(android.R.string.no, null);
+
+        builder.create().show();
+        return true;
+    }
+
 }
