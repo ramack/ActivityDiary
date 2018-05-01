@@ -20,6 +20,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,7 +38,16 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/listPreferredItemHeight"
             android:transitionName="@string/current_activity_transition" />
+
     </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/start_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/headline_start"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,6 +73,13 @@
             android:onClick="showStartTimePickerDialog"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/end_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/headline_end"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,6 +104,21 @@
             android:contentDescription="@string/desc_end_time"
             android:onClick="showEndTimePickerDialog"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/time_error"
+        style="@style/Base.TextAppearance.AppCompat.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/adjust_adjacent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/adjust_adjacent_times" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/edit_activity_note_til"

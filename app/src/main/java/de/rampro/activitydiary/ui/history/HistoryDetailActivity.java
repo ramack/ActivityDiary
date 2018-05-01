@@ -38,22 +38,23 @@ import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -71,13 +72,17 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
             ActivityDiaryContract.DiaryImage._ID
     };
 
+
     private RecyclerView detailRecyclerView;
     private DetailRecyclerViewAdapter detailAdapter;
 
-    /* TODO : adjust remove unneeded */
     private final int READ_ALL = 1;
     private final int UPDATE_ENTRY = 2;
-    private final int TEST_DELETED_NAME = 3;
+    private final int UPDATE_PRE = 3;
+    private final int UPDATE_SUCC = 4;
+    private boolean mUpdatePending[] = new boolean[UPDATE_SUCC + 1];
+    private final int OVERLAP_CHECK = 5;
+
 
     private final String[] ENTRY_PROJ = new String[]{
             ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME,
@@ -86,8 +91,9 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
             ActivityDiaryContract.Diary.START,
             ActivityDiaryContract.Diary.END};
 
-    private final String COLOR_KEY = "COLOR";
-    private final String NOTE_KEY = "NAME";
+    private final String DIRAY_ENTRY_ID_KEY = "ENTRY_ID";
+    private final String UPDATE_VALUE_KEY = "UPDATE_VALUE";
+    private final String ADJUST_ADJACENT_KEY = "ADJUST_ADJACENT";
 
     String dateFormatString = ActivityDiaryApplication.getAppContext().getResources().getString(R.string.date_format);
     String timeFormatString = ActivityDiaryApplication.getAppContext().getResources().getString(R.string.time_format);
@@ -97,15 +103,18 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
 
     private CardView mActivityCard;
     private TextView mActivityName;
+    private CheckBox mAdjustAdjacent;
     private Button mStartDate, mEndDate, mStartTime, mEndTime;
-    private Calendar start;
-    private Calendar end;
+    private Calendar start, storedStart;
+    private Calendar end, storedEnd;
 
     private EditText mNote;
     private TextInputLayout mNoteTIL;
     private View mBackground;
     private SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
+
     private ContentValues updateValues = new ContentValues();
+    private TextView mTimeError;
 
     public static class TimePickerFragment extends DialogFragment{
         private int hour, minute;
@@ -169,11 +178,20 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
                 if(token == READ_ALL){
                     if(cursor.moveToFirst()) {
                         start = Calendar.getInstance();
+                        storedStart = Calendar.getInstance();
                         start.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
+                        storedStart.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
                         end = Calendar.getInstance();
-                        end.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.END)));
+                        storedEnd = Calendar.getInstance();
+                        long endMillis = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.END));
+                        storedEnd.setTimeInMillis(endMillis);
+                        if(endMillis != 0) {
+                            end.setTimeInMillis(endMillis);
+                        }
 
-                        mNote.setText(cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE)));
+                        if(!updateValues.containsKey(ActivityDiaryContract.Diary.NOTE)) {
+                            mNote.setText(cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE)));
+                        }
                         mActivityName.setText(
                             cursor.getString(
                                 cursor.getColumnIndex(
@@ -182,7 +200,7 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
                         mBackground.setBackgroundColor(cursor.getInt(cursor.getColumnIndex(
                                     ActivityDiaryContract.DiaryActivity.COLOR)));
 
-                        updateDateTimes();
+                        overrideUpdates();
                     }
                 }
                 cursor.close();
@@ -193,11 +211,41 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
         protected void onUpdateComplete(int token, Object cookie, int result) {
             super.onUpdateComplete(token, cookie, result);
             if(token == UPDATE_ENTRY){
-                checkConstraints();
-                // TOOD: only finish if checkConstraints ok
+                mUpdatePending[UPDATE_ENTRY] = false;
+            }
+            if(token == UPDATE_SUCC){
+                mUpdatePending[UPDATE_SUCC] = false;
+            }
+            if(token == UPDATE_PRE){
+                mUpdatePending[UPDATE_PRE] = false;
+            }
+            int i;
+            for(i = 0; i < mUpdatePending.length; i++){
+                if(mUpdatePending[i]){
+                    break;
+                }
+            }
+            if(i >= mUpdatePending.length) {
                 finish();
             }
+
+            //finish();
+
         }
+    }
+
+    // override the UI by the values in updateValues
+    private void overrideUpdates() {
+        if(updateValues.containsKey(ActivityDiaryContract.Diary.NOTE)) {
+            mNote.setText((CharSequence) updateValues.get(ActivityDiaryContract.Diary.NOTE));
+        }
+        if(updateValues.containsKey(ActivityDiaryContract.Diary.START)) {
+            start.setTimeInMillis(updateValues.getAsLong(ActivityDiaryContract.Diary.START));
+        }
+        if(updateValues.containsKey(ActivityDiaryContract.Diary.END)) {
+            end.setTimeInMillis(updateValues.getAsLong(ActivityDiaryContract.Diary.END));
+        }
+        updateDateTimes();
     }
 
     private void updateDateTimes() {
@@ -205,6 +253,7 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
         mStartTime.setText(DateFormat.format(timeFormatString, start));
         mEndDate.setText(DateFormat.format(dateFormatString, end));
         mEndTime.setText(DateFormat.format(timeFormatString, end));
+        checkConstraints();
     }
 
     private QHandler mQHandler = new QHandler();
@@ -212,12 +261,13 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-// TODO: fill and use savedInstanceState
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         diaryEntryID = i.getIntExtra("diaryEntryID", -1);
         if(diaryEntryID == -1) {
-            /* TODO: handle activity Intent without diaryEntryID */
+            Toast.makeText(this, R.string.illegal_usage_of_history_activity, Toast.LENGTH_LONG).show();
+            finish();
         }
 
         View contentView = inflater.inflate(R.layout.activity_history_detail_content, null, false);
@@ -227,13 +277,36 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
         mActivityName = (TextView) contentView.findViewById(R.id.activity_name);
         mBackground = (View) mActivityCard.findViewById(R.id.activity_background);
 
+        mAdjustAdjacent = (CheckBox) contentView.findViewById(R.id.adjust_adjacent);
+
         mNoteTIL = (TextInputLayout) contentView.findViewById(R.id.edit_activity_note_til);
         mNote = (EditText) contentView.findViewById(R.id.edit_activity_note);
+
+        mNote.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // empty
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // empty
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String ss = s.toString();
+                updateValues.put(ActivityDiaryContract.Diary.NOTE, ss);
+            }
+        });
 
         mStartDate = (Button)contentView.findViewById(R.id.date_start);
         mEndDate = (Button)contentView.findViewById(R.id.date_end);
         mStartTime = (Button)contentView.findViewById(R.id.time_start);
         mEndTime = (Button)contentView.findViewById(R.id.time_end);
+        start = Calendar.getInstance();
+        end = Calendar.getInstance();
+        mTimeError = (TextView) contentView.findViewById(R.id.time_error);
 
         detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
         RecyclerView.LayoutManager layoutMan = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
@@ -243,22 +316,25 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
 
         getSupportLoaderManager().restartLoader(0, null, this);
 
-        if(savedInstanceState == null) {
-            mQHandler.startQuery(READ_ALL,
-                    null,
-                    ActivityDiaryContract.Diary.CONTENT_URI,
-                    ENTRY_PROJ,
-                    ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID + "=?",
-                    new String[]{Long.toString(diaryEntryID)},
-                    null);
-        }else{
-            String note = savedInstanceState.getString(NOTE_KEY);
-            mNote.setText(note);
-            checkConstraints();
+        if(savedInstanceState != null) {
+            updateValues = savedInstanceState.getParcelable(UPDATE_VALUE_KEY);
+            diaryEntryID = savedInstanceState.getLong(DIRAY_ENTRY_ID_KEY);
+            mAdjustAdjacent.setChecked(savedInstanceState.getBoolean(ADJUST_ADJACENT_KEY));
+            overrideUpdates();
         }
+        for(int n = 0; n < mUpdatePending.length; n++){
+            mUpdatePending[n] = false;
+        }
+        mQHandler.startQuery(READ_ALL,
+                null,
+                ActivityDiaryContract.Diary.CONTENT_URI,
+                ENTRY_PROJ,
+                ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID + "=?",
+                new String[]{Long.toString(diaryEntryID)},
+                null);
+
         mDrawerToggle.setDrawerIndicatorEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_cancel);
-        checkConstraints();
     }
 
     @Override
@@ -274,7 +350,9 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString(NOTE_KEY, mNote.getText().toString());
+        outState.putBoolean(ADJUST_ADJACENT_KEY, mAdjustAdjacent.isChecked());
+        outState.putLong(DIRAY_ENTRY_ID_KEY, diaryEntryID);
+        outState.putParcelable(UPDATE_VALUE_KEY, updateValues);
         // call superclass to save any view hierarchy
         super.onSaveInstanceState(outState);
     }
@@ -298,18 +376,80 @@ public class HistoryDetailActivity extends BaseActivity implements DetailRecycle
                 finish();
                 break;
             case R.id.action_edit_done:
-                /* cancel edit */
-                mQHandler.startUpdate(UPDATE_ENTRY, null,
-                        ContentUris.withAppendedId(ActivityDiaryContract.Diary.CONTENT_URI, diaryEntryID),
-                        updateValues, null, null);
+                /* finish edit and save */
+                if(checkConstraints()) {
+                    if (updateValues.size() > 0) {
+                        mQHandler.startUpdate(UPDATE_ENTRY, null,
+                                ContentUris.withAppendedId(ActivityDiaryContract.Diary.CONTENT_URI, diaryEntryID),
+                                updateValues, null, null);
+                        mUpdatePending[UPDATE_ENTRY] = true;
+
+                        if (mAdjustAdjacent.isChecked()) {
+                            if (updateValues.containsKey(ActivityDiaryContract.Diary.START)) {
+                                // update also the predecessor
+                                ContentValues updateEndTime = new ContentValues();
+                                updateEndTime.put(ActivityDiaryContract.Diary.END, updateValues.getAsString(ActivityDiaryContract.Diary.START));
+                                mQHandler.startUpdate(UPDATE_PRE, null,
+                                        ActivityDiaryContract.Diary.CONTENT_URI,
+                                        updateEndTime,
+                                        ActivityDiaryContract.Diary.END + "=?",
+                                        new String[]{Long.toString(storedStart.getTimeInMillis())});
+                                mUpdatePending[UPDATE_PRE] = true;
+
+                            }
+                            if (updateValues.containsKey(ActivityDiaryContract.Diary.END)) {
+                                // update also the successor
+                                ContentValues updateStartTime = new ContentValues();
+                                updateStartTime.put(ActivityDiaryContract.Diary.START, updateValues.getAsString(ActivityDiaryContract.Diary.END));
+                                mQHandler.startUpdate(UPDATE_SUCC, null,
+                                        ActivityDiaryContract.Diary.CONTENT_URI,
+                                        updateStartTime,
+                                        ActivityDiaryContract.Diary.START + "=?",
+                                        new String[]{Long.toString(storedEnd.getTimeInMillis())});
+                                mUpdatePending[UPDATE_SUCC] = true;
+                            }
+                        }
+                    } else {
+                        finish();
+                    }
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void checkConstraints(){
-// TODO
+    private boolean checkConstraints(){
+        boolean result = true;
+        if(end.getTimeInMillis() != 0 && !end.after(start)){
+            result = false;
+            mTimeError.setText(R.string.constraint_positive_duration);
+        }
 
+        checkForOverlap();
+// TODO
+        // end >= start + 1000
+        // no overlap OR adjust adjacent (but still no oerlap with the next next and last last
+
+        if(!result) {
+            // TODO: make animation here, and do so only if it is not already visibile
+            mTimeError.setVisibility(View.VISIBLE);
+        }else{
+            mTimeError.setVisibility(View.GONE);
+        }
+        return result;
+    }
+
+    private void checkForOverlap() {
+/*        mQHandler.startQuery(OVERLAP_CHECK,
+                null,
+                ActivityDiaryContract.Diary.CONTENT_URI,
+                new String[]{
+                        ActivityDiaryContract.Diary._ID
+                },
+                ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID + "=?",
+                new String[]{Long.toString(start.getTimeInMillis()), Long.toString(end.getTimeInMillis())},
+                null);
+                */
     }
 
     /**

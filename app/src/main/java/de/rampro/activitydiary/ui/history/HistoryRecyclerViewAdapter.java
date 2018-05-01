@@ -22,6 +22,7 @@ package de.rampro.activitydiary.ui.history;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.support.v7.app.AlertDialog;
@@ -202,7 +203,8 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                 mContext.getResources().getString(R.string.default_datetime_format));
 /* TODO: #36 register listener on preference change to redraw the date time formatting */
 
-        holder.mStartLabel.setText(DateFormat.format(formatString, start));
+        holder.mStartLabel.setText(ActivityDiaryApplication.getAppContext().getResources().
+                getString(R.string.headline_start) + ": " + DateFormat.format(formatString, start));
 
         String noteStr = "";
         if(!mCursor.isNull(noteRowIdx)){
@@ -213,9 +215,30 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         }
         holder.mNoteLabel.setText(noteStr);
 
-        String duration = mContext.getResources().
-                getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(start, end));
-//TODO        do not use FuzzyTimeSpanFormatter here, but use xx sec for <1min yy min for <1h hh:mm otherwise
+        String duration;
+        if(end == null){
+            duration = ActivityDiaryApplication.getAppContext().getResources().
+                    getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(start, new Date()));
+        }else {
+            duration = ActivityDiaryApplication.getAppContext().getResources().
+                    getString(R.string.headline_end) + ": " + DateFormat.format(formatString, end) + " (";
+            long s = start.getTime();
+            long e = end.getTime();
+            Resources res = ActivityDiaryApplication.getAppContext().getResources();
+            if ((e - s) < 1000 * 90) {
+                int d = (int) ((e - s) / 1000);
+                duration += res.getQuantityString(R.plurals.seconds_short, d, d);
+            } else if ((e - s) < 1000 * 90 * 60) {
+                int d = (int) ((e - s) / 1000 / 60);
+                duration += res.getQuantityString(R.plurals.minutes_short, d, d);
+            } else {
+                int d = (int) ((e - s) / 1000 / 60);
+                int h = d / 60;
+                int m = d - h * 60;
+                duration += Integer.toString(h) + ":" + Integer.toString(m);
+            }
+            duration += ")";
+        }
 
         holder.mDurationLabel.setText(duration);
 
