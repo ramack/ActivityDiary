@@ -196,7 +196,7 @@
     <string name="desc_end_date">End date</string>
     <string name="desc_end_time">End time</string>
     <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
-    <string name="illegal_usage_of_history_activity">This activity was started with illegal options. Missing 'diaryEntryID' in intent.</string>
+    <string name="illegal_usage_of_history_activity" translatable="false">This activity was started with illegal options. Missing 'diaryEntryID' in intent.</string>
     <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
 
 
