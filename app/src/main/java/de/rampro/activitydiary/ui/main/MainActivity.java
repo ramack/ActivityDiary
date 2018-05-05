@@ -674,6 +674,8 @@ public class MainActivity extends BaseActivity implements
                 values,
                 null, null);
         mNoteTextView.setText(str);
+        resizeNote();
+
         ActivityHelper.helper.setCurrentNote(str);
     }
 
@@ -684,7 +686,6 @@ public class MainActivity extends BaseActivity implements
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
                         BuildConfig.APPLICATION_ID + ".fileprovider",
                         new File(mCurrentPhotoPath));
-
                 ContentValues values = new ContentValues();
                 values.put(ActivityDiaryContract.DiaryImage.URI, photoURI.toString());
                 values.put(ActivityDiaryContract.DiaryImage.DIARY_ID, mCurrentDiaryUri.getLastPathSegment());
@@ -736,21 +737,30 @@ public class MainActivity extends BaseActivity implements
         // Swap the new cursor in
         detailAdapter.swapCursor(data);
 
-        if(data != null) {
-        }
-        if(data == null || data.getCount() == 0){
+        resizeNote();
+    }
+
+    private void resizeNote() {
+        if(detailAdapter.getItemCount() == 0){
             LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
             p.width = LinearLayout.LayoutParams.WRAP_CONTENT;
             mNoteTextView.setLayoutParams(p);
-        }else {
+        } else {
             LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
             Display display = getWindowManager().getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
 
-            p.width = size.x * 67 / 100;
+            if(mNoteTextView.getText().length() == 0){
+                p.width = 0;
+            }else if(mNoteTextView.getText().length() < 30) {
+                p.width = size.x * 40 / 100;
+            }else{
+                p.width = size.x * 67 / 100;
+            }
             mNoteTextView.setLayoutParams(p);
         }
+
     }
 
     // Called when a previously created loader is reset, making the data unavailable
