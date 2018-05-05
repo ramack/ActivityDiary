@@ -36,12 +36,12 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 119
         versionName "1.1.9-dev"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -92,7 +92,7 @@ dependencies {
     implementation "com.android.support:exifinterface:${supportLibVersion}"
     implementation 'com.pes.materialcolorpicker:library:1.2.2'
     implementation 'ch.acra:acra:4.9.2'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 

@@ -27,7 +27,7 @@ allprojects {
 }
 
 ext {
-    supportLibVersion = '26.1.0'
+    supportLibVersion = '27.1.0'
 }
 
 task clean(type: Delete) {

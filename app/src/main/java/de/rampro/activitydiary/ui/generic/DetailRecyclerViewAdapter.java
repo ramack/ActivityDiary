@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.PicassoProvider;
 
 import java.io.IOException;
 
@@ -108,7 +109,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
             s = mCursor.getString(uriRowIdx);
             Uri i = Uri.parse(s);
 
-            Picasso.with(mContext).load(i)
+            Picasso.get().load(i)
                     .rotate(GraphicsHelper.getFileExifRotation(i))
                     .resize(500, 500)
                     .centerInside()
