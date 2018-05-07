@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Drop podpory pro verzi Android <5.0 (vyžaduje se alespoň Lollipop)
+- Přidání upozornění (v předvolbách ji můžete deaktivovat)
+- Vylepšená historie (možnosti úprav a zobrazení)
+- Přidejte podmínku DayTime a navrhněte další aktivity založené na aktuálním čase a střední době jejich zahájení
+- Povolit uživateli zpracovávat smazané aktivity
+- Několik chyb

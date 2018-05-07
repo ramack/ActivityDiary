@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Az Android verzió <5.0 verziójának támogatása (legalább Lollipop szükséges)
+- Értesítések hozzáadása (letilthatja a beállításokat)
+- Jobb előzmények (szerkesztési képességek és nézet)
+- Add DayTime állapotot, hogy a következő tevékenységeket javasolja a jelenlegi idő és az indulás időtartamának megfelelően
+- Engedélyezze a felhasználónak a törölt tevékenységek kezelését
+- Számos hibajavítás

@@ -94,6 +94,7 @@
   <string name="activity_title_edit_new">Neue Aktivität</string>
   <string name="activity_title_manage_activities">Aktivitäten verwalten</string>
   <string name="activity_title_history">Tagebuch</string>
+  <string name="activity_title_history_detail">Tagebucheintrag</string>
   <string name="activity_subtitle_main">Was machst du gerade?</string>
   <string name="activity_title_about">Über</string>
   <string name="activity_title_settings">Einstellungen</string>
@@ -101,6 +102,7 @@
   <string name="dialog_title_note">Notiz</string>
   <!-- actions -->
   <string name="action_delete">Aktivität löschen</string>
+  <string name="action_diary_entry_delete">Eintrag löschen</string>
   <string name="action_store">Speichern</string>
   <string name="action_filter">Filter</string>
   <string name="action_undo">RÜCKGÄNGIG</string>
@@ -137,10 +139,10 @@
   <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
   <!-- edit view -->
   <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
-  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Aktuelle Bearbeitung abbrechen und stattdessen die bestehende Aktivität mit selbem Namen öffnen</string>
   <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
-  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
-  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Gelösche Aktivität mit selbem Namen umbenennen um den Konflikt zu beheben</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Aktivität mit selbem Namen wiederherstellen</string>
   <string name="recover_activity_toast">Aktivität %1$s wiederhergestellt. Sie ist und jetzt wieder auswählbar.</string>
   <string name="renamed_deleted_activity_toast">Die bereits gelöschte Aktivität %1$s wurde umbenannt.</string>
   <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
@@ -148,6 +150,14 @@
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <string name="date_format">dd.MM.yyyy</string>
   <string name="time_format">HH:mm</string>
+  <string name="headline_start">Beginn</string>
+  <string name="headline_end">Ende</string>
+  <string name="desc_start_date">Startdatum</string>
+  <string name="desc_start_time">Startzeit</string>
+  <string name="desc_end_date">Enddatum</string>
+  <string name="desc_end_time">Endzeit</string>
+  <string name="adjust_adjacent_times">Angrezende Tagebucheinträge ebenfalls anpassen</string>
+  <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>

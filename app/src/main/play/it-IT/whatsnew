@@ -1,4 +1,6 @@
 - Eliminazione del supporto per la versione Android da 5.0 in giù (richiesto almeno Lollipop)
 - Aggiunte le notifiche (puoi disabilitarle nelle preferenze)
--
--
+- Improved history (edit capabilities and view)
+- Add DayTime condition, to suggest next activities based on the current time and the mean time of their start
+- Enable the user to handle deleted activites
+- Several Bugfixes

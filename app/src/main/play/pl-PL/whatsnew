@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Upadek wsparcia dla wersji Androida <5.0 (wymagany przynajmniej Lollipop)
+- Dodaj powiadomienia (możesz wyłączyć to w preferencjach)
+- Poprawiona historia (możliwości edycji i widok)
+- Dodaj warunek DayTime, aby zasugerować następne działania na podstawie bieżącego czasu i średniego czasu ich rozpoczęcia
+- Włącz użytkownikowi obsługę usuniętych działań
+- Kilka poprawek błędów

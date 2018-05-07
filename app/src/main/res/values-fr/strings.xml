@@ -3,27 +3,27 @@
 <resources>
   <string name="app_name">Journal d\'activité</string>
   <string name="about_text_version">version <b>%1$s</b></string>
-  <string name="about_text_intro">A diary for any kind of activities - organize your tasks in agile way and get reminded if something is expected to reoccur.</string>
+  <string name="about_text_intro">Un journal pour tout type d\'activités - organisez vos tâches de manière agile et rappelez-vous si quelque chose devrait se reproduire.</string>
   <string name="about_text_licence_h">Licence</string>
-  <string name="about_text_licence">%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
-  <string name="about_text_license_2">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</string>
+  <string name="about_text_licence">%1$s est un logiciel libre: vous pouvez le redistribuer et / ou le modifier selon les termes de la <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_license_2">Ce programme est distribué dans l\'espoir qu\'il sera utile, mais SANS AUCUNE GARANTIE; sans même la garantie implicite de QUALITÉ MARCHANDE ou d\'ADÉQUATION À UN USAGE PARTICULIER. Voir la Licence publique générale GNU pour plus de détails.</string>
   <string name="about_text_contact_h">Contact</string>
-  <string name="about_text_contact">For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>, preferably in English language.</string>
-  <string name="about_text_contact_2">Source Code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact">Pour les bugs et suggestions utiliser le <a href="https://github.com/ramack/ActivityDiary/issues">problème tacker</a>, de préférence en langue anglaise.</string>
+  <string name="about_text_contact_2">Le code source peut être trouvé sur <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
   <string name="about_text_support_h">Appui</string>
-  <string name="about_text_support">In case you want to support the development of %1$s consider discussing <a href="https://github.com/ramack/ActivityDiary/issues">issues on github</a>, translating on <a href="https://crowdin.com/project/activitydiary">crowdin</a> or donation on <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support">Dans le cas où vous voulez soutenir le développement de %1$s envisager de discuter <a href="https://github.com/ramack/ActivityDiary/issues">questions sur github</a>, la traduction sur <a href="https://crowdin.com/project/activitydiary">crowdin</a> ou un don sur <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
   <string name="about_text_cont_h">Collaborateurs</string>
-  <string name="about_text_cont_2">We are looking forward to mention your name in this list, too.</string>
+  <string name="about_text_cont_2">Nous sommes impatients de mentionner votre nom dans cette liste également.</string>
   <string name="about_text_lib_h">Bibliothèques</string>
-  <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
+  <string name="about_text_lib">Les bibliothèques suivantes sont utilisées par cette application et sous licence sous les licences nommées:</string>
   <string name="perm_write_external_storage_xplain">Le stockage des photos nécessite la permission de le faire &#8230;</string>
   <string name="unsupported_on_api_level">Cette fonctionnalité n\'est pas prise en charge sur votre version Android. Niveau d\'API minimum %1$d Champs obligatoires.</string>
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Sélectionnez une activité</string>
   <string name="nav_diary">Journal</string>
   <string name="nav_add_activity">Ajouter une activité</string>
-  <string name="nav_show_deleted">Show Deleted</string>
-  <string name="nav_hide_deleted">Hide Deleted</string>
+  <string name="nav_show_deleted">Afficher supprimé</string>
+  <string name="nav_hide_deleted">Masquer supprimé</string>
   <string name="nav_activity_manager">Modifier les activités</string>
   <string name="nav_settings">Paramètres</string>
   <string name="nav_about">À propos</string>
@@ -31,28 +31,28 @@
   <string name="desc_activity_hint">Titre de l\'activité</string>
   <string name="desc_activity_select">Choisissez l\'activité actuelle&#8230;</string>
   <!-- -->
-  <string name="activity_image_description">Picture for activity</string>
-  <string name="contentDesc_logo">Logo of activitydiary</string>
-  <string name="drawer_open">Open navigation</string>
-  <string name="drawer_close">Close navigation</string>
+  <string name="activity_image_description">Image pour l\'activité</string>
+  <string name="contentDesc_logo">Logo de activitydiary</string>
+  <string name="drawer_open">Ouvrir la navigation</string>
+  <string name="drawer_close">Fermer la navigation</string>
   <!-- Notification Channels -->
-  <string name="notif_channel_current_activity_name">Current activity</string>
-  <string name="notif_channel_current_activity_desc">Show notification for the activity you are currently doing</string>
+  <string name="notif_channel_current_activity_name">Activité actuel</string>
+  <string name="notif_channel_current_activity_desc">Afficher la notification pour l\'activité en cours</string>
   <!-- settings -->
   <string name="setting_view_category">Vue</string>
   <string name="setting_behavior_category">Comportement</string>
   <string name="setting_images_category">Images</string>
   <string name="setting_backup_category">Sauvegarde</string>
   <string name="setting_condition_category">Conditions</string>
-  <string name="setting_datetime_format">Date format</string>
+  <string name="setting_datetime_format">Format de date</string>
   <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
-  <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
-  <string name="setting_auto_select_new">Select new activities</string>
-  <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
-  <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
-  <string name="setting_show_cur_activitiy_notification">Notification for current activity</string>
-  <string name="setting_show_cur_activitiy_notification_summary_active">Current activity is shown as notification</string>
-  <string name="setting_show_cur_activitiy_notification_summary_inactive">No notification for the current activity is shown</string>
+  <string name="setting_datetime_format_description">Affiche le format de la date et de l\'heure pour le début d\'une activité. Les formats habituels sont aaaa-MM-jj HH: mm ou jj.MM. hh: mm</string>
+  <string name="setting_auto_select_new">Sélectionnez de nouvelles activités</string>
+  <string name="setting_auto_select_new_summary_active">Une activité fraîchement créée est directement sélectionnée en tant que nouvelle activité</string>
+  <string name="setting_auto_select_new_summary_inactive">La création de nouvelles activités n\'influence pas l\'activité actuellement active</string>
+  <string name="setting_show_cur_activitiy_notification">Notification pour l\'activité en cours</string>
+  <string name="setting_show_cur_activitiy_notification_summary_active">L\'activité actuelle est indiquée comme notification</string>
+  <string name="setting_show_cur_activitiy_notification_summary_inactive">Aucune notification pour l\'activité en cours n\'est affichée</string>
   <string name="setting_enable_acra">Rapport de crash</string>
   <string name="setting_acra_enabled">Envoyer des rapports sur des plantages</string>
   <string name="setting_acra_disabled">Ne pas envoyer de rapports sur les plantages</string>
@@ -61,62 +61,64 @@
   <string name="setting_storage_folder_description">Répertoire pour stocker les photos d\'activité</string>
   <string name="default_storage_folder">ActivityDiary</string>
   <string name="setting_tag_images">Métadonnées</string>
-  <string name="setting_tag_yes">Write current activity into EXIF tag UserComment of new images</string>
-  <string name="setting_tag_no">Do not touch EXIF tags of new images</string>
+  <string name="setting_tag_yes">Écrire l\'activité en cours dans la balise EXIF ​​UserComment de nouvelles images</string>
+  <string name="setting_tag_no">Ne touchez pas les tags EXIF ​​des nouvelles images</string>
   <!-- Conditions -->
   <string name="pref_cond_off">DE</string>
-  <string name="setting_cond_alpha">Alphabetical sort</string>
-  <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting is not used for suggesting next activities</string>
-  <string name="setting_cond_predecessor">Activity sequence</string>
-  <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary is not used for suggesting next activities</string>
-  <string name="setting_cond_occurrence">Activity occurrence</string>
-  <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary is not used for suggesting next activities</string>
-  <string name="setting_cond_daytime">Daytime</string>
-  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
-  <string name="setting_expert">Expert settings</string>
-  <string name="setting_export">Export database</string>
-  <string name="setting_import">Import database</string>
-  <string name="setting_export_summary">Store a copy of the current database in a file for backup</string>
-  <string name="setting_import_summary">Restore a backup file to current database</string>
-  <string name="db_export_error">Failed to export database to %1$s</string>
-  <string name="db_export_success">Exported database to %1$s</string>
+  <string name="setting_cond_alpha">Tri alphabétique</string>
+  <string name="setting_cond_alpha_summary">Le tri alphabétique a un poids de %1$s sur les prochaines activités suggérées</string>
+  <string name="setting_cond_alpha_not_used_summary">Le tri alphabétique n\'est pas utilisé pour suggérer des activités suivantes</string>
+  <string name="setting_cond_predecessor">Séquence d\'activité</string>
+  <string name="setting_cond_predecessor_summary">La séquence d\'activité dans le journal a un poids de %1$s sur les prochaines activités suggérées</string>
+  <string name="setting_cond_predecessor_not_used_summary">La séquence d\'activité dans le journal n\'est pas utilisée pour suggérer des activités suivantes</string>
+  <string name="setting_cond_occurrence">Occurrence d\'activité</string>
+  <string name="setting_cond_occurrence_summary">La fréquence des activités dans le journal a un poids de %1$s sur les prochaines activités suggérées</string>
+  <string name="setting_cond_occurrence_not_used_summary">La fréquence des activités dans le journal n\'est pas utilisée pour suggérer des activités suivantes</string>
+  <string name="setting_cond_daytime">Jour</string>
+  <string name="setting_cond_daytime_summary">La journée des activités dans le journal a un poids de %1$s sur les prochaines activités suggérées</string>
+  <string name="setting_cond_daytime_not_used_summary">La journée des activités dans le journal n\'est pas utilisée pour suggérer les activités suivantes</string>
+  <string name="setting_expert">Paramètres experts</string>
+  <string name="setting_export">Base de données export</string>
+  <string name="setting_import">Importer la base</string>
+  <string name="setting_export_summary">Stocker une copie de la base de données en cours dans un fichier pour sauvegarde</string>
+  <string name="setting_import_summary">Restaurer un fichier de sauvegarde dans la base de données en cours</string>
+  <string name="db_export_error">Échec de l\'exportation de la base de données vers %1$s</string>
+  <string name="db_export_success">Base de données exportée à %1$s</string>
   <string name="db_export_name_suggestion">ActivityDiary_Export</string>
   <string name="db_export_selection">Sélectionnez le fichier à exporter</string>
-  <string name="db_import_error">Failed to import %1$s</string>
-  <string name="db_import_success">%1$s successfully imported</string>
+  <string name="db_import_error">Impossible d\'importer %1$s</string>
+  <string name="db_import_success">%1$s importé avec succès</string>
   <string name="db_import_selection">Sélectionnez le fichier à importer</string>
   <!-- titles -->
   <string name="activity_title_edit">modifier</string>
-  <string name="activity_title_edit_new">New activity</string>
-  <string name="activity_title_manage_activities">Manage activities</string>
+  <string name="activity_title_edit_new">Nouvelle activité</string>
+  <string name="activity_title_manage_activities">Gérer les activités</string>
   <string name="activity_title_history">Journal intime</string>
+  <string name="activity_title_history_detail">Entrée dans le journal</string>
   <string name="activity_subtitle_main">Qu\'est-ce que tu fais?</string>
   <string name="activity_title_about">Sur</string>
   <string name="activity_title_settings">Paramètres</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Remarque</string>
   <!-- actions -->
-  <string name="action_delete">Delete activity</string>
+  <string name="action_delete">Supprimer l\'activité</string>
+  <string name="action_diary_entry_delete">Supprimer l\'entrée</string>
   <string name="action_store">sauvegarder</string>
   <string name="action_filter">Filtre</string>
   <string name="action_undo">ANNULER</string>
-  <string name="search_hint">Search activity&#8230;</string>
+  <string name="search_hint">Rechercher une activité&#8230;</string>
   <string name="search_description">Activités diary</string>
   <!-- dialog -->
   <string name="dlg_ok">D\'accord</string>
   <string name="dlg_cancel">Annuler</string>
-  <string name="dlg_delete_image_title">Confirm deletion</string>
-  <string name="dlg_delete_image_text">Are you sure you want to remove this image from the current activity entry?</string>
-  <string name="dlg_undelete_activity_title">Recover Activity</string>
-  <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
+  <string name="dlg_delete_image_title">Confirmer la suppression</string>
+  <string name="dlg_delete_image_text">Êtes-vous sûr de vouloir supprimer cette image de l\'entrée d\'activité en cours?</string>
+  <string name="dlg_undelete_activity_title">Récupérer l\'activité</string>
+  <string name="dlg_undelete_activity_text">L\'activité %1$s être récupérée et redevenue disponible?</string>
   <!-- main view -->
-  <string name="duration_description">Since %1$s</string>
-  <string name="just_now">just now</string>
-  <string name="few_seconds">a few seconds</string>
+  <string name="duration_description">Depuis %1$s</string>
+  <string name="just_now">juste maintenant</string>
+  <string name="few_seconds">quelques secondes</string>
   <plurals name="seconds_short">
     <item quantity="one">%d sec</item>
     <item quantity="other">%d sec</item>
@@ -130,26 +132,36 @@
     <item quantity="other">%d h</item>
   </plurals>
   <plurals name="days">
-    <item quantity="one">%d Day</item>
-    <item quantity="other">%d Days</item>
+    <item quantity="one">%d jour</item>
+    <item quantity="other">%d jours</item>
   </plurals>
   <string name="camera_error">Quelque chose s\'est mal passé ici. Impossible de stocker l\'image.</string>
-  <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+  <string name="no_active_activity_error">Pour effectuer cette action, il est nécessaire de sélectionner une activité en premier</string>
   <!-- edit view -->
-  <string name="error_name_already_used">Activity with name %1$s already exists</string>
-  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
-  <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
-  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
-  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
-  <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
-  <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
-  <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
+  <string name="error_name_already_used">L\'activité avec le nom %1$s existe déjà</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Rejeter la modification en cours et ouvrir l\'activité existante avec le même nom à la place</string>
+  <string name="error_name_already_used_in_deleted">Une activité supprimée avec le nom %1$s existe déjà</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Renommez l\'activité supprimée avec le même nom pour résoudre le conflit</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activité avec le même nom</string>
+  <string name="recover_activity_toast">Activité récupérée %1$s. Il est maintenant sélectionnable à nouveau.</string>
+  <string name="renamed_deleted_activity_toast">Renommé l\'activité déjà supprimée %1$s.</string>
+  <string name="edit_existing_activity_toast">Maintenant, éditer l\'activité existante avec le nom %1$s.</string>
   <!-- history -->
-  <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
+  <string name="default_datetime_format">dd/MM/yyyy HH:mm</string>
+  <string name="date_format">dd/MM/yyyy</string>
+  <string name="time_format">HH: mm</string>
+  <string name="headline_start">Début</string>
+  <string name="headline_end">Fin</string>
+  <string name="desc_start_date">Date de début</string>
+  <string name="desc_start_time">Heure de début</string>
+  <string name="desc_end_date">Date de fin</string>
+  <string name="desc_end_time">Heure de fin</string>
+  <string name="adjust_adjacent_times">Ajuster les entrées du journal adjacent</string>
+  <string name="constraint_positive_duration">L\'activité doit toujours commencer avant la fin.</string>
   <!-- relative dates -->
   <string name="today">Aujourd\'hui</string>
   <string name="yesterday">Hier</string>
-  <string name="lastWeek">Last week</string>
+  <string name="lastWeek">La semaine dernière</string>
   <!-- ACRA crash reporting -->
   <string name="crash_dialog_text">Une erreur inattendue s\'est produite obligeant l\'application à s\'arrêter. S\'il vous plaît aidez-nous à résoudre ce problème en nous envoyant des données d\'erreur, tout ce que vous avez à faire est de cliquer sur OK.</string>
   <string name="crash_dialog_comment_prompt">Vous pouvez ajouter vos commentaires sur le problème ci-dessous:</string>

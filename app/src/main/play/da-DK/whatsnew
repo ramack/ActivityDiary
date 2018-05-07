@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Drop of support til Android version <5.0 (mindst Lollipop påkrævet)
+- Tilføj notifikationer (du kan deaktivere det i præferencerne)
+- Forbedret historie (rediger evner og visning)
+- Tilføj DayTime betingelse for at foreslå næste aktiviteter baseret på den aktuelle tid og den gennemsnitlige tid for deres start
+- Aktiver brugeren til at håndtere slettede aktiviteter
+- Flere fejlrettelser
