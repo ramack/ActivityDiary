@@ -75,8 +75,8 @@
   <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekuensi aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_daytime">Siang hari</string>
-  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
+  <string name="setting_cond_daytime_summary">Waktu aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
+  <string name="setting_cond_daytime_not_used_summary">Waktu aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
@@ -94,6 +94,7 @@
   <string name="activity_title_edit_new">Aktivitas baru</string>
   <string name="activity_title_manage_activities">Mengelola aktivitas</string>
   <string name="activity_title_history">Buku harian</string>
+  <string name="activity_title_history_detail">Catatan harian</string>
   <string name="activity_subtitle_main">Apa yang sedang Anda lakukan?</string>
   <string name="activity_title_about">Tentang</string>
   <string name="activity_title_settings">Pengaturan</string>
@@ -101,6 +102,7 @@
   <string name="dialog_title_note">Catatan</string>
   <!-- actions -->
   <string name="action_delete">Hapus aktivitas</string>
+  <string name="action_diary_entry_delete">Delete entry</string>
   <string name="action_store">Simpan</string>
   <string name="action_filter">Saring</string>
   <string name="action_undo">URUNGKAN</string>
@@ -136,12 +138,22 @@
   <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
   <string name="error_name_already_used_in_deleted">Sudah ada aktivitas yang dihapus dengan nama %1$s</string>
   <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
-  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Batalkan penghapusan aktivitas dengan nama yang sama</string>
   <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
-  <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
-  <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
+  <string name="renamed_deleted_activity_toast">Mengganti aktivitas %1$s yang sudah dihapus.</string>
+  <string name="edit_existing_activity_toast">Sekarang ubah aktivitas dengan nama %1$s.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
+  <string name="date_format">tttt.bb.hh</string>
+  <string name="time_format">JJ:mm</string>
+  <string name="headline_start">Mulai</string>
+  <string name="headline_end">Selesai</string>
+  <string name="desc_start_date">Tanggal mulai</string>
+  <string name="desc_start_time">Waktu mulai</string>
+  <string name="desc_end_date">Tanggal selesai</string>
+  <string name="desc_end_time">Waktu selesai</string>
+  <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
+  <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
