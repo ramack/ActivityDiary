@@ -1,4 +1,6 @@
 - Dukungan Drop untuk Android versi <5.0 (setidaknya dibutuhkan Lollipop)
 - Tambahkan pemberitahuan ( anda bisa menonaktifkannya dalam preferensi)
--
--
+- Riwayat ditingkatkan (kemampuan edit dan tampilan)
+- Tambahkan kondisi DayTime, untuk menyarankan aktivitas berdasarkan pada waktu saat ini dan waktu yang menunjukkan mereka memulai
+- Mengizinkan pengguna untuk menangani aktivitas yang dihapus
+- Beberapa perbaikan bug
