@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+-  Androidバージョン<5.0（少なくともLollipopが必要）のサポートが中止
+- 通知を追加する（環境設定で通知を無効にすることができます）
+- 改善された履歴（機能の編集と表示）
+-  DayTime条件を追加して、現在の時間とその開始の平均時間に基づいて次のアクティビティを提案する
+- 削除されたアクティビティをユーザが処理できるようにする
+- いくつかのバグ修正
