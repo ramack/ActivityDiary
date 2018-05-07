@@ -11,7 +11,7 @@
   <string name="about_text_contact">バグや提案については、英語の問題 <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>を使用することをお勧めします。</string>
   <string name="about_text_contact_2">ソースコードは <a href="https://github.com/ramack/ActivityDiary">Github</a>ます。</string>
   <string name="about_text_support_h">サポート</string>
-  <string name="about_text_support">あなたが %1$s の開発をサポートしたい場合、github</a>に関する <a href="https://github.com/ramack/ActivityDiary/issues">問題、 <a href="https://crowdin.com/project/activitydiary">Crowdin</a> 翻訳、または <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>寄付に関する議論を検討してください。</string>
+  <string name="about_text_support">あなたが %1$s の開発をサポートしたい場合、<a href="https://github.com/ramack/ActivityDiary/issues">github</a>に関する 問題、 <a href="https://crowdin.com/project/activitydiary">Crowdin</a> 翻訳、または <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>寄付に関する議論を検討してください。</string>
   <string name="about_text_cont_h">貢献者</string>
   <string name="about_text_cont_2">このリストにあなたの名前を言いたいと思います。</string>
   <string name="about_text_lib_h">図書館</string>
@@ -143,9 +143,9 @@
   <string name="renamed_deleted_activity_toast">すでに削除アクティビティ改名 %1$s。</string>
   <string name="edit_existing_activity_toast">これで、既存のアクティビティを名前 %1$s編集し%1$s 。</string>
   <!-- history -->
-  <string name="default_datetime_format">yyyy.MM.dd HH：mm</string>
+  <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
   <string name="date_format">yyyy.MM.dd</string>
-  <string name="time_format">HH：mm</string>
+  <string name="time_format">HH:mm</string>
   <string name="headline_start">開始</string>
   <string name="headline_end">終わり</string>
   <string name="desc_start_date">開始日</string>
