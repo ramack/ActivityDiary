@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Queda de suporte para a versão Android <5,0 (pelo menos Lollipop necessário)
+- Adicionar notificações (você pode desativá-lo nas preferências)
+- Histórico aprimorado (recursos de edição e visualização)
+- Adicionar a condição DayTime, para sugerir as próximas atividades com base na hora atual e no tempo médio de sua partida
+- Permitir que o usuário manipule atividades excluídas
+- Várias correções de erros
