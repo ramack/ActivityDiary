@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Drop of support voor Android-versie <5.0 (tenminste Lollipop vereist)
+- Meldingen toevoegen (u kunt het in de voorkeuren uitschakelen)
+- Verbeterde geschiedenis (bewerkingsmogelijkheden en weergave)
+- Voeg de DayTime-voorwaarde toe om volgende activiteiten te suggereren op basis van de huidige tijd en de gemiddelde starttijd
+- Schakel de gebruiker in om verwijderde activiteiten af ​​te handelen
+- Verschillende Bugfixes
