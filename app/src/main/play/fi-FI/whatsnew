@@ -1,4 +1,6 @@
-- Drop of support for Android version < 5.0 (at least Lollipop required)
-- Add notifications (you can disable it in the preferences)
--
--
+- Tuki Android-versiolle <5.0 (ainakin Lollipop vaaditaan)
+- Lisää ilmoituksia (voit poistaa sen käytöstä asetuksissa)
+- Parannettu historia (muokkausominaisuudet ja näkymä)
+- Lisää DayTime-tila, jotta voit ehdottaa seuraavia aktiviteetteja nykyisen ajan ja alkamisajan mukaan
+- Ota käyttäjä käsittelemään poistettuja toimintoja
+- Useita virheenkorjauksia
