@@ -19,6 +19,5 @@ Click the + sign on the top right corner of the application, or click the menu i
 ## How do I edit or delete an activity among the activity list?
 Click on the menu icon on the top left corner, click on **Select Activity**, thereafter, Click and hold the preferred activity from the list of activities, then edit the activity name in the space provided or select the delete sign on the top right corner for deletion of the activity.
 
-##How do I add notes to a particular activity?
-
+## How do I add notes to a particular activity?
 Click on the menu icon on the top left corner, click on **Diary**, click and hold on which ever activity of your choice, the note space comes up, then type the note in the space, and click on **ok**.
