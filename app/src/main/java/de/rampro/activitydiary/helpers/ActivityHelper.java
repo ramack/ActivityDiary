@@ -343,10 +343,17 @@ public class ActivityHelper extends AsyncQueryHandler{
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)
                 && mCurrentActivity != null) {
+            int col = 0;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null);
+            }else {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary);
+            }
             notificationBuilder =
                     new NotificationCompat.Builder(ActivityDiaryApplication.getAppContext(),
                             CURRENT_ACTIVITY_CHANNEL_ID)
-                            .setColor(ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null))
+                            .setColor(col)
                             .setSmallIcon(R.mipmap.ic_launcher) // TODO: use ic_nav_select in orange
                             .setContentTitle(mCurrentActivity.getName())
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
@@ -376,7 +383,9 @@ public class ActivityHelper extends AsyncQueryHandler{
             boolean needUpdate = false;
             int idx = 0;
             for(NotificationCompat.Action a: notificationBuilder.mActions){
-                if(activities.get(notificationBuilder.mActions.size() - idx - 1).getId() != a.getExtras().getInt("SELECT_ACTIVITY_WITH_ID")) {
+                if(notificationBuilder.mActions.size() - idx - 1 < activities.size()
+                    &&
+                   activities.get(notificationBuilder.mActions.size() - idx - 1).getId() != a.getExtras().getInt("SELECT_ACTIVITY_WITH_ID")) {
                     needUpdate = true;
                 }
                 idx++;
@@ -385,7 +394,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 notificationBuilder.mActions.clear();
 
                 for (int i = 2; i >= 0; i--) {
-                    if (i <= activities.size()) {
+                    if (i < activities.size()) {
                         DiaryActivity act = activities.get(i);
                         SpannableString coloredActivity = new SpannableString(act.getName());
                         coloredActivity.setSpan(new ForegroundColorSpan(act.getColor()), 0, coloredActivity.length(), 0);

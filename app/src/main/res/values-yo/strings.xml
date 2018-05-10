@@ -5,7 +5,7 @@
   <string name="about_text_version">version <b>%1$s</b></string>
   <string name="about_text_intro">A ọjọ-ọjọ fun eyikeyi iru awọn iṣẹ - ṣeto awọn iṣẹ rẹ ni ọna idaniloju ati ki o leti ti o ba ti ni nkan ti o reti lati reoccur.</string>
   <string name="about_text_licence_h">Iwe-ašẹ</string>
-  <string name="about_text_licence">%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_licence">%1$s jẹ software ọfẹ: o le ṣe alabapin rẹ ati / tabi yi o pada labẹ awọn ofin ti <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Gbogbogbo Igbẹhin Gbogbogbo</a></string>
   <string name="about_text_license_2">Eto yii pin ni ireti pe yoo wulo, ṣugbọn LATI ỌJẸ ATILẸYIN ỌJA; laisi ani atilẹyin ọja ti MERCHANTABILITY tabi FITNESS FUN NIPA PURPOSE. Wo Iwe-ašẹ Gbogbogbo GNU fun alaye diẹ sii.</string>
   <string name="about_text_contact_h">Kan si</string>
   <string name="about_text_contact">Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"/>, daradara ni ede Gẹẹsi.</string>
@@ -75,8 +75,8 @@
   <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
   <string name="setting_cond_daytime">Oju mọmọ</string>
-  <string name="setting_cond_daytime_summary">Daytime of the activities in the diary has a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
+  <string name="setting_cond_daytime_summary">Ojo ti awọn iṣẹ inu iwe-kikọ ni o ni idiwọn %1$s lori awọn iṣẹ ṣiṣe ti o tẹle</string>
+  <string name="setting_cond_daytime_not_used_summary">Ojoojumọ awọn iṣẹ ti o wa ninu iwe ito iṣẹlẹ ojojumọ ko lo fun imọran awọn iṣẹ ti o tẹle</string>
   <string name="setting_expert">Awọn eto imọran</string>
   <string name="setting_export">Wọle si ipamọ data</string>
   <string name="setting_import">Wọle data ipilẹ</string>
@@ -94,7 +94,7 @@
   <string name="activity_title_edit_new">Iṣẹ titun</string>
   <string name="activity_title_manage_activities">Ṣakoso awọn iṣẹ</string>
   <string name="activity_title_history">Iwe ito iṣẹlẹ ojojumọ</string>
-  <string name="activity_title_history_detail">Diary entry</string>
+  <string name="activity_title_history_detail">Akọsilẹ kikọsi</string>
   <string name="activity_subtitle_main">Kini o n ṣe?</string>
   <string name="activity_title_about">Nipa</string>
   <string name="activity_title_settings">Ètò</string>
@@ -102,7 +102,7 @@
   <string name="dialog_title_note">Akiyesi</string>
   <!-- actions -->
   <string name="action_delete">Pa iṣẹ ṣiṣe</string>
-  <string name="action_diary_entry_delete">Delete entry</string>
+  <string name="action_diary_entry_delete">Pa titẹ sii</string>
   <string name="action_store">Fipamọ</string>
   <string name="action_filter">Ajọwe</string>
   <string name="action_undo">UNDO</string>
@@ -135,25 +135,25 @@
   <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
   <!-- edit view -->
   <string name="error_name_already_used">Iṣẹ ṣiṣe pẹlu orukọ %1$s tẹlẹ wa</string>
-  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Kọ satunkọ lọwọlọwọ ati ṣiṣi ṣiṣe ṣiṣe tẹlẹ pẹlu orukọ kanna dipo</string>
   <string name="error_name_already_used_in_deleted">Iṣẹ-ṣiṣe ti a ti paarẹ pẹlu orukọ %1$s tẹlẹ wa</string>
-  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
-  <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Lorukọ iṣẹ-ṣiṣe ti o paarẹ pẹlu orukọ kanna lati yanju ija</string>
+  <string name="tooltip_quickfix_btn_undelete_existing">Iṣẹ ṣiṣe alaiṣẹ pẹlu orukọ kanna</string>
   <string name="recover_activity_toast">Iṣẹ iṣẹ atunṣe %1$s. O ti tun yan yan lẹẹkansi.</string>
   <string name="renamed_deleted_activity_toast">Ṣe atunṣe aṣayan iṣẹ ti a ti tẹlẹ tẹlẹ %1$s.</string>
   <string name="edit_existing_activity_toast">Nisisiyi ṣiṣatunkọ iṣẹ ṣiṣe to wa pẹlu orukọ %1$s.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
   <string name="date_format">yyyy.MM.dd</string>
-  <string name="time_format">HH:mm</string>
-  <string name="headline_start">Start</string>
-  <string name="headline_end">End</string>
-  <string name="desc_start_date">Start date</string>
-  <string name="desc_start_time">Start time</string>
-  <string name="desc_end_date">End date</string>
-  <string name="desc_end_time">End time</string>
-  <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
-  <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
+  <string name="time_format">HH: mm</string>
+  <string name="headline_start">Bẹrẹ</string>
+  <string name="headline_end">Ipari</string>
+  <string name="desc_start_date">Ọjọ ibẹrẹ</string>
+  <string name="desc_start_time">Akoko akoko</string>
+  <string name="desc_end_date">Ọjọ ipari</string>
+  <string name="desc_end_time">Ipari akoko</string>
+  <string name="adjust_adjacent_times">Ṣatunṣe awọn titẹ sii iwe-ẹri agbegbe</string>
+  <string name="constraint_positive_duration">Iṣẹ naa yoo bẹrẹ nigbagbogbo ṣaaju ki o to pari.</string>
   <!-- relative dates -->
   <string name="today">Loni</string>
   <string name="yesterday">Lana</string>

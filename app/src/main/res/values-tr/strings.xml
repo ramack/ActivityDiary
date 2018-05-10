@@ -94,7 +94,7 @@
   <string name="activity_title_edit_new">Yeni etkinlik</string>
   <string name="activity_title_manage_activities">Etkinlikleri yönet</string>
   <string name="activity_title_history">Günlük</string>
-  <string name="activity_title_history_detail">Diary entry</string>
+  <string name="activity_title_history_detail">Günlük girişi</string>
   <string name="activity_subtitle_main">Ne yapıyorsun?</string>
   <string name="activity_title_about">Hakkında</string>
   <string name="activity_title_settings">Ayarlar</string>
@@ -102,7 +102,7 @@
   <string name="dialog_title_note">Not</string>
   <!-- actions -->
   <string name="action_delete">Etkinliği sil</string>
-  <string name="action_diary_entry_delete">Delete entry</string>
+  <string name="action_diary_entry_delete">Girişi sil</string>
   <string name="action_store">Kaydet</string>
   <string name="action_filter">Süz</string>
   <string name="action_undo">GERİ AL</string>
@@ -150,14 +150,14 @@
   <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
   <string name="date_format">dd.MM.yyyy</string>
   <string name="time_format">HH:mm</string>
-  <string name="headline_start">Start</string>
-  <string name="headline_end">End</string>
-  <string name="desc_start_date">Start date</string>
-  <string name="desc_start_time">Start time</string>
-  <string name="desc_end_date">End date</string>
-  <string name="desc_end_time">End time</string>
-  <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
-  <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
+  <string name="headline_start">başla</string>
+  <string name="headline_end">Son</string>
+  <string name="desc_start_date">Başlangıç ​​tarihi</string>
+  <string name="desc_start_time">Başlama zamanı</string>
+  <string name="desc_end_date">Bitiş tarihi</string>
+  <string name="desc_end_time">Bitiş zamanı</string>
+  <string name="adjust_adjacent_times">Bitişik günlük girişlerini ayarlama</string>
+  <string name="constraint_positive_duration">Etkinlik her zaman bitmeden başlayacaktır.</string>
   <!-- relative dates -->
   <string name="today">Bugün</string>
   <string name="yesterday">Dün</string>

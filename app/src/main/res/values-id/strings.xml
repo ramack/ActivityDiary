@@ -102,7 +102,7 @@
   <string name="dialog_title_note">Catatan</string>
   <!-- actions -->
   <string name="action_delete">Hapus aktivitas</string>
-  <string name="action_diary_entry_delete">Delete entry</string>
+  <string name="action_diary_entry_delete">Hapus entri</string>
   <string name="action_store">Simpan</string>
   <string name="action_filter">Saring</string>
   <string name="action_undo">URUNGKAN</string>
@@ -114,7 +114,7 @@
   <string name="dlg_delete_image_title">Konfirmasi penghapusan</string>
   <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
   <string name="dlg_undelete_activity_title">Pulihkan Aktivitas</string>
-  <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
+  <string name="dlg_undelete_activity_text">Apakah aktivitas %1$s dipulihkan dan menjadi tersedia lagi?</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
   <string name="just_now">baru saja</string>
@@ -135,11 +135,11 @@
   <string name="no_active_activity_error">Pilih sebuah aktivitas untuk menjalankan tindakan ini</string>
   <!-- edit view -->
   <string name="error_name_already_used">Aktivitas dengan nama %1$s sudah ada</string>
-  <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
+  <string name="tooltip_quickfix_btn_edit_existing">Tolak edit saat ini dan buka aktivitas yang ada dengan nama yang sama</string>
   <string name="error_name_already_used_in_deleted">Sudah ada aktivitas yang dihapus dengan nama %1$s</string>
-  <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+  <string name="tooltip_quickfix_btn_rename_deleted">Ubah nama aktivitas yang dihapus dengan nama yang sama untuk menyelesaikan konflik</string>
   <string name="tooltip_quickfix_btn_undelete_existing">Batalkan penghapusan aktivitas dengan nama yang sama</string>
-  <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
+  <string name="recover_activity_toast">Memulihkan aktivitas %1$s. Sekarang dapat dipilih lagi.</string>
   <string name="renamed_deleted_activity_toast">Mengganti aktivitas %1$s yang sudah dihapus.</string>
   <string name="edit_existing_activity_toast">Sekarang ubah aktivitas dengan nama %1$s.</string>
   <!-- history -->
@@ -152,8 +152,8 @@
   <string name="desc_start_time">Waktu mulai</string>
   <string name="desc_end_date">Tanggal selesai</string>
   <string name="desc_end_time">Waktu selesai</string>
-  <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
-  <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
+  <string name="adjust_adjacent_times">Sesuaikan entri buku harian yang berdekatan</string>
+  <string name="constraint_positive_duration">Kegiatan harus selalu dimulai sebelum berakhir.</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
