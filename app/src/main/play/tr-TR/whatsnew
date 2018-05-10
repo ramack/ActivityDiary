@@ -1,6 +1,6 @@
 - Android sürüm <5.0 (en az Lollipop gerekli) için destek kaldırıldı
 - Bildirimler eklendi (tercihlerde devre dışı bırakabilirsiniz)
-- Improved history (edit capabilities and view)
-- Add DayTime condition, to suggest next activities based on the current time and the mean time of their start
-- Enable the user to handle deleted activites
-- Several Bugfixes
+- Geliştirilmiş tarih (yetenekleri ve görünümü düzenle)
+- Geçerli zamana ve başlangıç ​​saatlerine göre sonraki etkinlikleri önermek için DayTime koşulu ekleyin.
+- Kullanıcının silinen aktiviteleri işlemesine izin ver
+- Birkaç Hata Düzeltmesi
