@@ -343,10 +343,17 @@ public class ActivityHelper extends AsyncQueryHandler{
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getBoolean(SettingsActivity.KEY_PREF_NOTIF_SHOW_CUR_ACT, true)
                 && mCurrentActivity != null) {
+            int col = 0;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null);
+            }else {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary);
+            }
             notificationBuilder =
                     new NotificationCompat.Builder(ActivityDiaryApplication.getAppContext(),
                             CURRENT_ACTIVITY_CHANNEL_ID)
-                            .setColor(ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null))
+                            .setColor(col)
                             .setSmallIcon(R.mipmap.ic_launcher) // TODO: use ic_nav_select in orange
                             .setContentTitle(mCurrentActivity.getName())
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
