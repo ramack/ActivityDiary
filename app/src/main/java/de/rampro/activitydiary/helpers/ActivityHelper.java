@@ -383,7 +383,9 @@ public class ActivityHelper extends AsyncQueryHandler{
             boolean needUpdate = false;
             int idx = 0;
             for(NotificationCompat.Action a: notificationBuilder.mActions){
-                if(activities.get(notificationBuilder.mActions.size() - idx - 1).getId() != a.getExtras().getInt("SELECT_ACTIVITY_WITH_ID")) {
+                if(notificationBuilder.mActions.size() - idx - 1 < activities.size()
+                    &&
+                   activities.get(notificationBuilder.mActions.size() - idx - 1).getId() != a.getExtras().getInt("SELECT_ACTIVITY_WITH_ID")) {
                     needUpdate = true;
                 }
                 idx++;
@@ -392,7 +394,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 notificationBuilder.mActions.clear();
 
                 for (int i = 2; i >= 0; i--) {
-                    if (i <= activities.size()) {
+                    if (i < activities.size()) {
                         DiaryActivity act = activities.get(i);
                         SpannableString coloredActivity = new SpannableString(act.getName());
                         coloredActivity.setSpan(new ForegroundColorSpan(act.getColor()), 0, coloredActivity.length(), 0);
