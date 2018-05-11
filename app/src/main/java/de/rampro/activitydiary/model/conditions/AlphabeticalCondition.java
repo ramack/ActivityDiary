@@ -38,8 +38,8 @@ public class AlphabeticalCondition extends Condition implements ActivityHelper.D
 
     protected void doEvaluation(){
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_ALPHA, "5"));
-        if(weight != 0.0) {
-            ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
+        if(weight > 0.001) {
 
             ArrayList<DiaryActivity> sort = new ArrayList<>(ActivityHelper.helper.getActivities());
             Collections.sort(sort, new Comparator<DiaryActivity>() {
@@ -56,15 +56,14 @@ public class AlphabeticalCondition extends Condition implements ActivityHelper.D
                     }
                 }
             });
-            double step = weight / (sort.size() * (sort.size() + 1) / 2);
+            double step = weight / sort.size();
             int no = 0;
             for (DiaryActivity a : sort) {
                 result.add(new Likelihood(a, step * no));
                 no++;
             }
-
-            this.setResult(result);
         }
+        this.setResult(result);
     }
 
     /**

@@ -43,9 +43,9 @@ public class PredecessorCondition extends Condition implements ActivityHelper.Da
     protected void doEvaluation() {
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
         DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
 
         if(weight > 0.0000001 && current != null) {
-            ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
 
             SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
             SQLiteDatabase db = mOpenHelper.getReadableDatabase();
@@ -77,8 +77,8 @@ public class PredecessorCondition extends Condition implements ActivityHelper.Da
             for (Likelihood l : result) {
                 l.likelihood = l.likelihood / total * weight;
             }
-            setResult(result);
         }
+        setResult(result);
     }
 
     /**
