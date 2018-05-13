@@ -50,9 +50,6 @@ import de.rampro.activitydiary.helpers.GraphicsHelper;
 @AcraMailSender(mailTo = "activity-diary@rampro.de")
 @AcraDialog(resCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. When defined, adds a user text field input with this text resource as a label
         resText = R.string.crash_dialog_text)
-@AcraToast(
-        resText = R.string.crash_dialog_ok_toast // optional. displays a Toast message when the user accepts to send a report.
-)
 public class ActivityDiaryApplication extends Application {
 
     private static Context context;

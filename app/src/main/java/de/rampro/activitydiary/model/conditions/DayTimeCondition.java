@@ -25,6 +25,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
@@ -51,21 +52,21 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
                         + "AVG(  (   (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
                         +                      "/1000, 'unixepoch')"
                         +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +                      "/1000, 'unixepoch', 'start of day', 'utc'), 'utc')"
                         +           ") - sub.m"
                         +      " )*( (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
                         +                      "/1000, 'unixepoch')"
                         +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +                      "/1000, 'unixepoch', 'start of day', 'utc'), 'utc')"
                         +           ") - sub.m"
                         +         ")"
                         +    ") as var "
                         + "FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", "
                         + "(SELECT " + ActivityDiaryContract.Diary.ACT_ID + ", "
                         + "   AVG(    strftime('%s'," + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch')"
+                        +                      "/1000, 'unixepoch', 'utc')"
                         +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch', 'start of day'))"
+                        +                      "/1000, 'unixepoch', 'start of day', 'utc'), 'utc')"
                         +        ") as m "
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + " GROUP BY " + ActivityDiaryContract.Diary.ACT_ID + ") as sub "
                         + "WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + "=sub." + ActivityDiaryContract.Diary.ACT_ID
@@ -93,6 +94,7 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     @Override
     protected void doEvaluation() {
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_DAYTIME, "20"));
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
 
         if(weight > 0.0000001) {
             Calendar c = Calendar.getInstance();
@@ -103,10 +105,8 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
             c.set(Calendar.MILLISECOND, 0);
             long passed = nowm - c.getTimeInMillis();
             float now = passed / 1000.0f;
-
-            ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
-
-            for (DiaryActivity a:ActivityHelper.helper.getActivities()) {
+            List<DiaryActivity> list = ActivityHelper.helper.getActivities();
+            for (DiaryActivity a:list) {
                 float mean = DAY / 2.0f;
                 float var = 30*60*30*60;
 
@@ -116,21 +116,22 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
                     mean = meanF;
                     var = varF;
                 }
+
                 /*
                  modulo time distance would be
                 float delta = Math.abs(now - mean);
                 float dist = Math.min(delta, DAY - delta);
                 */
 
-                double ld = DAY / Math.sqrt(2 * Math.PI * var);
+                double ld = DAY / 180 / Math.sqrt(2 * Math.PI * var); // Math.sqrt(2 * Math.PI);
                 ld = ld * Math.exp(-((now - mean) * (now - mean) / (2 * var)));
 
                 ld = ld * weight;
                 Likelihood l = new Likelihood(a, ld);
                 result.add(l);
             }
-            setResult(result);
         }
+        setResult(result);
     }
 
     /**
@@ -140,6 +141,7 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     @Override
     public void onActivityDataChanged() {
         updateStartTimes();
+        refresh();
     }
 
     /**

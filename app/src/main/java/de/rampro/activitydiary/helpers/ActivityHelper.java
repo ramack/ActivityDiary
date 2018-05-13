@@ -230,7 +230,6 @@ public class ActivityHelper extends AsyncQueryHandler{
         readCurrentActivity();
         mCurrentActivityStartTime = new Date();
         createNotificationChannels();
-
         scheduleRefresh();
     }
 
@@ -646,11 +645,18 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
     /* is one of the conditions currently evaluating? */
     private boolean reorderingInProgress;
+    private HashMap<DiaryActivity, Double> likeliActivites = new HashMap<>(1);
+    public double likelihoodFor(DiaryActivity a){
+        if(likeliActivites.containsKey(a)){
+            return likeliActivites.get(a);
+        }
+        return 0.0;
+    }
 
     public void reorderActivites(){
         synchronized (this) {
             List<DiaryActivity> as = activities;
-            HashMap<DiaryActivity, Double> likeliActivites = new HashMap<>(as.size());
+            likeliActivites = new HashMap<>(as.size());
 
             for (DiaryActivity a : as) {
                 likeliActivites.put(a, Double.valueOf(0.0));
@@ -681,6 +687,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 }
             }));
             activities = list;
+
             reorderingInProgress = false;
         }
         for(DataChangedListener listener : mDataChangeListeners) {

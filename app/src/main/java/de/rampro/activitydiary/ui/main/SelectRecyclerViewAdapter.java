@@ -24,9 +24,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -52,7 +55,8 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
     @Override
     public void onBindViewHolder(SelectViewHolders holder, int position) {
         DiaryActivity act = mActivityList.get(position);
-        holder.mName.setText(act.getName());
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        holder.mName.setText(act.getName() + " (" + formatter.format(ActivityHelper.helper.likelihoodFor(act)) + ")");
 // TODO #33:        holder.mSymbol.setImageResource(act.getPhoto());
         holder.mBackground.setBackgroundColor(act.getColor());
         holder.mName.setTextColor(GraphicsHelper.textColorOnBackground(act.getColor()));
