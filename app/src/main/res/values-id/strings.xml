@@ -144,8 +144,8 @@
   <string name="edit_existing_activity_toast">Sekarang ubah aktivitas dengan nama %1$s.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
-  <string name="date_format">tttt.bb.hh</string>
-  <string name="time_format">JJ:mm</string>
+  <string name="date_format">yyyy.MM.dd</string>
+  <string name="time_format">HH:mm</string>
   <string name="headline_start">Mulai</string>
   <string name="headline_end">Selesai</string>
   <string name="desc_start_date">Tanggal mulai</string>
