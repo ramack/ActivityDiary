@@ -153,7 +153,7 @@
   <string name="desc_end_date">Tanggal selesai</string>
   <string name="desc_end_time">Waktu selesai</string>
   <string name="adjust_adjacent_times">Sesuaikan entri buku harian yang berdekatan</string>
-  <string name="constraint_positive_duration">Kegiatan harus selalu dimulai sebelum berakhir.</string>
+  <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
