@@ -75,8 +75,8 @@
   <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekuensi aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_daytime">Siang hari</string>
-  <string name="setting_cond_daytime_summary">Waktu aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
-  <string name="setting_cond_daytime_not_used_summary">Waktu aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
+  <string name="setting_cond_daytime_summary">Aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
+  <string name="setting_cond_daytime_not_used_summary">Aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
