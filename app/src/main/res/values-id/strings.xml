@@ -75,8 +75,8 @@
   <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekuensi aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_daytime">Siang hari</string>
-  <string name="setting_cond_daytime_summary">Waktu aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
-  <string name="setting_cond_daytime_not_used_summary">Waktu aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
+  <string name="setting_cond_daytime_summary">Aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
+  <string name="setting_cond_daytime_not_used_summary">Aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
@@ -144,8 +144,8 @@
   <string name="edit_existing_activity_toast">Sekarang ubah aktivitas dengan nama %1$s.</string>
   <!-- history -->
   <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
-  <string name="date_format">tttt.bb.hh</string>
-  <string name="time_format">JJ:mm</string>
+  <string name="date_format">yyyy.MM.dd</string>
+  <string name="time_format">HH:mm</string>
   <string name="headline_start">Mulai</string>
   <string name="headline_end">Selesai</string>
   <string name="desc_start_date">Tanggal mulai</string>
@@ -153,7 +153,7 @@
   <string name="desc_end_date">Tanggal selesai</string>
   <string name="desc_end_time">Waktu selesai</string>
   <string name="adjust_adjacent_times">Sesuaikan entri buku harian yang berdekatan</string>
-  <string name="constraint_positive_duration">Kegiatan harus selalu dimulai sebelum berakhir.</string>
+  <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
