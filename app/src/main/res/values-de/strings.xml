@@ -158,6 +158,8 @@
   <string name="desc_end_time">Endzeit</string>
   <string name="adjust_adjacent_times">Angrezende Tagebucheinträge ebenfalls anpassen</string>
   <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>
