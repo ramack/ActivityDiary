@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Ifitonileti fun aṣayan iṣẹ lọwọlọwọ</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Iṣẹ lọwọlọwọ yoo han bi ifitonileti</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Ko si ifitonileti fun iṣẹ ṣiṣe lọwọlọwọ yoo han</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Iroyin jamba</string>
   <string name="setting_acra_enabled">Firanṣẹ lori awọn ijamba</string>
   <string name="setting_acra_disabled">Ma ṣe fi iroyin ranṣẹ lori awọn ijamba</string>
