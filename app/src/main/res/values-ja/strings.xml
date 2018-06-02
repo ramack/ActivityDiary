@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">現在の活動の通知</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">現在のアクティビティは通知として表示されます</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">現在のアクティビティの通知は表示されません</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">クラッシュレポート</string>
   <string name="setting_acra_enabled">クラッシュに関するレポートを送信する</string>
   <string name="setting_acra_disabled">クラッシュに関するレポートを送信しない</string>
