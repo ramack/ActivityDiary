@@ -232,7 +232,8 @@ public class HistoryActivity extends BaseActivity implements
 
         searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
 
-//TODO        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
+//TODO to make it look nice
+//        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
 
         return true;
     }

@@ -40,6 +40,7 @@ import de.rampro.activitydiary.model.DiaryActivity;
 import static android.app.SearchManager.SUGGEST_COLUMN_ICON_1;
 import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
 import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_DATA;
+import static android.app.SearchManager.SUGGEST_COLUMN_QUERY;
 import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
 import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_2;
 
@@ -76,7 +77,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                         SUGGEST_COLUMN_TEXT_1,
                         SUGGEST_COLUMN_ICON_1,
                         SUGGEST_COLUMN_INTENT_ACTION,
-                        SUGGEST_COLUMN_INTENT_DATA
+                        SUGGEST_COLUMN_INTENT_DATA,
+                        SUGGEST_COLUMN_QUERY
                 });
 
                 if(query != null && query.length() > 0) {
@@ -89,7 +91,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                                 filtered.get(i).getName(),
                                 /* icon */ null,
                                 /* intent action */ SEARCH_ACTIVITY,
-                                /* intent data */ Uri.withAppendedPath(SEARCH_URI, Integer.toString(filtered.get(i).getId()))
+                                /* intent data */ Uri.withAppendedPath(SEARCH_URI, Integer.toString(filtered.get(i).getId())),
+                                /* rewrite query */filtered.get(i).getName()
                         });
                     }
 
@@ -98,8 +101,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                             getContext().getResources().getString(R.string.search_notes, query),
                             /* icon */ R.drawable.ic_search,
                             /* intent action */ SEARCH_NOTE,
-                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query)
-
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
                     });
 
                     // Global search
@@ -107,8 +110,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                             getContext().getResources().getString(R.string.search_diary, query),
                             /* icon */ R.drawable.ic_search,
                             /* intent action */ SEARCH_GLOBAL,
-                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query)
-
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
                     });
 
                 }
