@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Powiadomienie o bieżącej działalności</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Bieżąca aktywność jest pokazana jako powiadomienie</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Brak powiadomienia o bieżącej aktywności</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Raportowanie awarii</string>
   <string name="setting_acra_enabled">Wysyłaj raporty o awariach</string>
   <string name="setting_acra_disabled">Nie wysyłaj raportów o awariach</string>
