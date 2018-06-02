@@ -158,6 +158,8 @@
   <string name="desc_end_time">Hora de finalización</string>
   <string name="adjust_adjacent_times">Ajustar las entradas del diario adyacente</string>
   <string name="constraint_positive_duration">La actividad siempre comenzará antes de que termine.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Hoy</string>
   <string name="yesterday">Ayer</string>
