@@ -158,6 +158,8 @@
   <string name="desc_end_time">Τέλος χρόνου</string>
   <string name="adjust_adjacent_times">Ρυθμίστε τις γειτονικές καταχωρήσεις ημερολογίου</string>
   <string name="constraint_positive_duration">Η δραστηριότητα αρχίζει πάντα πριν τελειώσει.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Σήμερα</string>
   <string name="yesterday">Εχθές</string>
