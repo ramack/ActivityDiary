@@ -158,6 +158,8 @@
   <string name="desc_end_time">Slut tid</string>
   <string name="adjust_adjacent_times">Juster tilstødende dagbogsposter</string>
   <string name="constraint_positive_duration">Aktiviteten skal altid starte før den ender.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">I dag</string>
   <string name="yesterday">I går</string>
