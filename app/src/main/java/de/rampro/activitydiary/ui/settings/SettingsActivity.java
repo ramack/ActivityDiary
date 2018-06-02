@@ -60,6 +60,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
     public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
     public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
+    public static final String KEY_PREF_DISABLE_CURRENT = "pref_disable_current_on_click";
     public static final String KEY_PREF_COND_DAYTIME = "pref_cond_daytime";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
@@ -76,6 +77,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference nofifShowCurActPref;
     private Preference exportPref;
     private Preference importPref;
+    private Preference disableOnClickPref;
 
     private PreferenceManager mPreferenceManager;
 
@@ -102,6 +104,18 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateNotifShowCurActivity();
         }else if(key.equals(KEY_PREF_COND_DAYTIME)){
             updateCondDayTimeSummary();
+        }else if(key.equals(KEY_PREF_DISABLE_CURRENT)){
+            updateDisableCurrent();
+        }
+    }
+
+    private void updateDisableCurrent() {
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean(KEY_PREF_DISABLE_CURRENT, false)){
+            disableOnClickPref.setSummary(getResources().getString(R.string.setting_disable_on_click_summary_active));
+        }else{
+            disableOnClickPref.setSummary(getResources().getString(R.string.setting_disable_on_click_summary_inactive));
         }
     }
 
@@ -220,6 +234,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 , new Date()));
 
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
+        disableOnClickPref = mPreferenceManager.findPreference(KEY_PREF_DISABLE_CURRENT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
         nofifShowCurActPref = mPreferenceManager.findPreference(KEY_PREF_NOTIF_SHOW_CUR_ACT);
@@ -272,6 +287,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondOccurenceSummary();
         updateCondDayTimeSummary();
         updateNotifShowCurActivity();
+        updateDisableCurrent();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

@@ -28,6 +28,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -195,7 +196,16 @@ public class MainActivity extends BaseActivity implements
 
         View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
-        selector.setOnClickListener(headerClickHandler); // TODO: #157 xchange
+        selector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(1 == 2) {
+                    headerClickHandler.onClick(null);
+                }else{
+                    ActivityHelper.helper.setCurrentActivity(null);
+                }
+            }
+        });
 
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, value, true);
@@ -506,22 +516,29 @@ public class MainActivity extends BaseActivity implements
             onlyRefresh = true;
         }
         mCurrentActivity = newAct;
+        TextView aName = (TextView) findViewById(R.id.activity_name);
         if(mCurrentActivity != null) {
             mCurrentDiaryUri = ActivityHelper.helper.getCurrentDiaryUri();
-            TextView aName = (TextView) findViewById(R.id.activity_name);
             aName.setText(mCurrentActivity.getName());
             findViewById(R.id.activity_background).setBackgroundColor(mCurrentActivity.getColor());
             aName.setTextColor(GraphicsHelper.textColorOnBackground(mCurrentActivity.getColor()));
 
-            updateDurationTextView();
-            /* TODO: move note and starttime from ActivityHelper to here
+            /* TODO: move note and starttime from ActivityHelper to here, or even use directly the ContentProvider
              * register a listener to get updates directly from the ContentProvider */
 
         }else{
-            /* This should be really seldom, actually only at very first start or if something went wrong.
-             * In those cases we keep the default text from the xml. */
+            int col;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary, null);
+            }else {
+                col = ActivityDiaryApplication.getAppContext().getResources().getColor(R.color.colorPrimary);
+            }
+            aName.setText(getResources().getString(R.string.activity_title_no_selected_act));
+            findViewById(R.id.activity_background).setBackgroundColor(col);
+            aName.setTextColor(GraphicsHelper.textColorOnBackground(col));
             mCurrentDiaryUri = null;
         }
+        updateDurationTextView();
         getSupportLoaderManager().restartLoader(0, null, this);
         selectorLayoutManager.scrollToPosition(0);
     }

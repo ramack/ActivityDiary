@@ -341,7 +341,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public void setCurrentActivity(@Nullable DiaryActivity activity){
         /* update the current diary entry to "finish" it
-         * in theory there should be only one entry with end = NULL in the diray table
+         * in theory there should be only one entry with end = NULL in the diary table
          * but who knows? -> Let's update all. */
         if(mCurrentActivity != activity) {
             ContentValues values = new ContentValues();
@@ -352,9 +352,15 @@ public class ActivityHelper extends AsyncQueryHandler{
                     values, ActivityDiaryContract.Diary.END + " is NULL", null);
 
             mCurrentActivity = activity;
+            mCurrentDiaryUri = null;
             mCurrentActivityStartTime.setTime(timestamp);
             mCurrentNote = "";
-
+            if(mCurrentActivity == null){
+                // activity terminated, so we have to notify here...
+                for(DataChangedListener listener : mDataChangeListeners) {
+                    listener.onActivityChanged();
+                }
+            }
             showCurrentActivityNotification();
         }
     }
