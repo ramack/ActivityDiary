@@ -23,8 +23,7 @@
     android:hint="@string/search_hint"
     android:includeInGlobalSearch="true"
     android:searchSettingsDescription="@string/search_description"
+    android:searchSuggestAuthority="@string/search_provider_authority"
+    android:searchSuggestPath="history"
     >
-    <!-- TODO #70:
-         android:searchSuggestAuthority="de.rampro.activitydiary.search.ActivitySuggestionProvider"
-    -->
 </searchable>

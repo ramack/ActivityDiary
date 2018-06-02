@@ -139,7 +139,8 @@
     <string name="action_filter">Filter</string>
     <string name="action_undo">UNDO</string>
     <string name="search_hint">Search activity&#8230;</string>
-    <string name="search_description">Diaryactivities</string>
+    <string name="search_description">Entries in the ActivityDiary</string>
+    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.search.ActivityDiarySuggestionProvider</string>
 
     <!-- dialog -->
     <string name="dlg_ok">OK</string>
@@ -198,7 +199,8 @@
     <string name="adjust_adjacent_times">Adjust adjacent diary entries</string>
     <string name="illegal_usage_of_history_activity" translatable="false">This activity was started with illegal options. Missing 'diaryEntryID' in intent.</string>
     <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
-
+    <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+    <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
 
     <!-- relative dates -->
     <string name="today">Today</string>

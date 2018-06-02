@@ -614,24 +614,7 @@ public class MainActivity extends BaseActivity implements
     private void filterActivityView(String query){
         this.filter = query;
         // TODO: do in separate thread?
-        ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
-        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
-
-        for(DiaryActivity a : ActivityHelper.helper.getActivities()){
-            int dist = ActivityHelper.searchDistance(query, a.getName());
-            int pos = 0;
-            // search where to enter it
-            for(Integer i : filteredDist){
-                if(dist > i.intValue()){
-                    pos++;
-                }else{
-                    break;
-                }
-            }
-
-            filteredDist.add(pos, Integer.valueOf(dist));
-            filtered.add(pos, a);
-        }
+        ArrayList<DiaryActivity> filtered = ActivityHelper.helper.sortedActivities(query);
 
         selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, filtered);
         selectRecyclerView.swapAdapter(selectAdapter, false);

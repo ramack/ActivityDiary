@@ -26,10 +26,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".ui.generic.EditActivity"
             android:label="@string/activity_title_edit_new"
@@ -41,11 +38,22 @@
             android:label="@string/activity_title_history_detail"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ui.history.HistoryActivity"
-            android:label="@string/activity_title_history" />
+            android:label="@string/activity_title_history"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <action android:name=".action.SEARCH_ACTIVITY" />
+                <action android:name=".action.SEARCH_NOTE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name=".ui.generic.AboutActivity"
             android:label="@string/activity_title_about" />
         <activity android:name=".ui.settings.SettingsActivity"
             android:label="@string/activity_title_settings"/>
+
         <provider
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="${applicationId}.provider"
@@ -57,11 +65,11 @@
             android:readPermission="${applicationId}.READ"
             android:writePermission="${applicationId}.WRITE"
             />
-        <!-- TODO #70
         <provider
-            android:name=".search.ActivitySuggestionProvider"
-            android:authorities="" />
-        -->
+            android:name=".search.ActivityDiarySuggestionProvider"
+            android:authorities="${applicationId}.search.ActivityDiarySuggestionProvider"
+            >
+        </provider>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
