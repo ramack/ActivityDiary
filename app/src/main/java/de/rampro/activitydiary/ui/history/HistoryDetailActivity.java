@@ -87,6 +87,7 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
     private final String[] ENTRY_PROJ = new String[]{
             ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME,
             ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR,
+            ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.NOTE,
             ActivityDiaryContract.Diary.START,
             ActivityDiaryContract.Diary.END};
@@ -189,6 +190,9 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
                         mBackground.setBackgroundColor(cursor.getInt(cursor.getColumnIndex(
                                     ActivityDiaryContract.DiaryActivity.COLOR)));
 
+                        if(diaryEntryID == -1){
+                            diaryEntryID = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID));
+                        }
                         overrideUpdates();
                     }
                 }
@@ -254,10 +258,6 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         diaryEntryID = i.getIntExtra("diaryEntryID", -1);
-        if(diaryEntryID == -1) {
-            Toast.makeText(this, R.string.illegal_usage_of_history_activity, Toast.LENGTH_LONG).show();
-            finish();
-        }
 
         View contentView = inflater.inflate(R.layout.activity_history_detail_content, null, false);
 
@@ -314,13 +314,24 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
         for(int n = 0; n < mUpdatePending.length; n++){
             mUpdatePending[n] = false;
         }
-        mQHandler.startQuery(READ_ALL,
-                null,
-                ActivityDiaryContract.Diary.CONTENT_URI,
-                ENTRY_PROJ,
-                ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID + "=?",
-                new String[]{Long.toString(diaryEntryID)},
-                null);
+        if(diaryEntryID == -1) {
+            mQHandler.startQuery(READ_ALL,
+                    null,
+                    ActivityDiaryContract.Diary.CONTENT_URI,
+                    ENTRY_PROJ,
+                    ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID
+                            + " = (SELECT MAX(" + ActivityDiaryContract.Diary._ID + ") FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ")",
+                    null,
+                    null);
+        }else {
+            mQHandler.startQuery(READ_ALL,
+                    null,
+                    ActivityDiaryContract.Diary.CONTENT_URI,
+                    ENTRY_PROJ,
+                    ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID + "=?",
+                    new String[]{Long.toString(diaryEntryID)},
+                    null);
+        }
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_cancel);

@@ -82,6 +82,7 @@ import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.EditActivity;
+import de.rampro.activitydiary.ui.history.HistoryDetailActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
 /*
@@ -125,6 +126,7 @@ public class MainActivity extends BaseActivity implements
     private FloatingActionButton fabAttachPicture;
     private SearchView searchView;
     private MenuItem searchMenuItem;
+    private View.OnClickListener headerClickHandler;
 
     private void setSearchMode(boolean searchMode){
         if(searchMode){
@@ -177,10 +179,23 @@ public class MainActivity extends BaseActivity implements
         setContent(contentView);
 // TODO: check whether there is some way to use instead of inflating with root null...
 //        setContentView(R.layout.activity_main_content);
+        headerView = findViewById(R.id.header_area);
+        headerClickHandler = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mCurrentActivity != null) {
+                    Intent i = new Intent(MainActivity.this, HistoryDetailActivity.class);
+                    // no diaryEntryID will edit the last one
+                    startActivity(i);
+                }
+            }
+        };
+        headerView.setOnClickListener(headerClickHandler);
         selectRecyclerView = (RecyclerView)findViewById(R.id.select_recycler);
 
         View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
+        selector.setOnClickListener(headerClickHandler); // TODO: #157 xchange
 
         TypedValue value = new TypedValue();
         getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, value, true);
@@ -197,10 +212,10 @@ public class MainActivity extends BaseActivity implements
 
         likelyhoodSort();
 
-        headerView = findViewById(R.id.header_area);
-
         durationLabel = findViewById(R.id.duration_label);
+        durationLabel.setOnClickListener(headerClickHandler);
         mNoteTextView = findViewById(R.id.note);
+        mNoteTextView.setOnClickListener(headerClickHandler);
 
         fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
         fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
