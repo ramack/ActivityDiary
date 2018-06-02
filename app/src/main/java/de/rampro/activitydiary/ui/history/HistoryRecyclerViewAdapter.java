@@ -151,7 +151,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                 header = mContext.getResources().getString(R.string.lastWeek);
                     /* TODO: this is shown for each day last week, which is too much... -> refactor to get rid of showHeader or set it in this if-elsif-chain */
             }else{
-                SimpleDateFormat formatter = new SimpleDateFormat("MMMMM yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy");
                 header = formatter.format(start);
             }
         }

@@ -20,6 +20,7 @@
 package de.rampro.activitydiary.ui.history;
 
 import android.app.LoaderManager;
+import android.app.SearchManager;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
@@ -29,19 +30,22 @@ import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.search.ActivityDiarySuggestionProvider;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.EditActivity;
@@ -53,7 +57,7 @@ import de.rampro.activitydiary.ui.main.NoteEditDialog;
 public class HistoryActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
         NoteEditDialog.NoteEditDialogListener,
-        HistoryRecyclerViewAdapter.SelectListener {
+        HistoryRecyclerViewAdapter.SelectListener, SearchView.OnCloseListener, SearchView.OnQueryTextListener {
 
     private static final String[] PROJECTION = new String[] {
             ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
@@ -67,9 +71,14 @@ public class HistoryActivity extends BaseActivity implements
     private static final String SELECTION = ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0";
 
     private static final int LOADER_ID_HISTORY = -1;
+    private static final int SEACH_TYPE_ACTIVITYID = 1;
+    private static final int SEACH_TYPE_NOTE = 2;
+    private static final int SEACH_TYPE_TEXT_ALL = 3;
 
     private HistoryRecyclerViewAdapter historyAdapter;
     private DetailRecyclerViewAdapter detailAdapters[];
+    private MenuItem searchMenuItem;
+    private SearchView searchView;
 
     @Override
     public void onItemClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID) {
@@ -84,6 +93,46 @@ public class HistoryActivity extends BaseActivity implements
         dialog.setText(viewHolder.mNoteLabel.getText().toString());
         dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
         return true;
+    }
+
+    /**
+     * The user is attempting to close the SearchView.
+     *
+     * @return true if the listener wants to override the default behavior of clearing the
+     * text field and dismissing it, false otherwise.
+     */
+    @Override
+    public boolean onClose() {
+        filterHistoryView(null);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // handled via Intent
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!searchView.isIconified()) {
+            searchView.setIconified(true);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Called when the query text is changed by the user.
+     *
+     * @param newText the new content of the query text field.
+     * @return false if the SearchView should perform the default action of showing any
+     * suggestions if available, true if the action was handled by the listener.
+     */
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        // no dynamic change before starting the search...
+        return false;
     }
 
     protected class QHandler extends AsyncQueryHandler {
@@ -122,16 +171,107 @@ public class HistoryActivity extends BaseActivity implements
         // and yes, for performance reasons it is good to do it the relational way and not with an OO design
         getLoaderManager().initLoader(LOADER_ID_HISTORY, null, this);
         mDrawerToggle.setDrawerIndicatorEnabled(false);
+
+        // Get the intent, verify the action and get the query
+        handleIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (ActivityDiarySuggestionProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Uri data = intent.getData();
+            if(data != null) {
+                long id = Long.decode(data.getLastPathSegment());
+                filterHistoryView(id);
+            }
+        }else if (ActivityDiarySuggestionProvider.SEARCH_NOTE.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if(data != null) {
+                String query = data.getLastPathSegment();
+                filterHistoryNotes(query);
+            }
+
+        }else if (ActivityDiarySuggestionProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if(data != null) {
+                String query = data.getLastPathSegment();
+                filterHistoryView(query);
+            }
+        }else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            filterHistoryView(query);
+        }
+            /* TODO: save recent query
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
+                    MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE);
+            suggestions.saveRecentQuery(query, null);
+*/
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        /* todo change menu */
-        /* TODO #25: ADD a search */
-/*        inflater.inflate(R.menu.manage_menu, menu);*/
+        inflater.inflate(R.menu.history_menu, menu);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchMenuItem = menu.findItem(R.id.action_filter);
+        searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setIconifiedByDefault(true);
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnCloseListener(this);
+        searchView.setOnQueryTextListener(this);
+
+        searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
+
+//TODO to make it look nice
+//        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
+
         return true;
     }
+
+
+    /**
+     *
+     * @param query the search string, if null resets the filter
+     */
+    private void filterHistoryView(@Nullable String query){
+        if(query == null){
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, null, this);
+        }else{
+            Bundle args = new Bundle();
+            args.putInt("TYPE", SEACH_TYPE_TEXT_ALL);
+            args.putString("TEXT", query);
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+        }
+    }
+
+    /* show only activity with id activityId
+     */
+    private void filterHistoryView(long activityId){
+        Bundle args = new Bundle();
+        args.putInt("TYPE", SEACH_TYPE_ACTIVITYID);
+        args.putLong("ACTIVITY_ID", activityId);
+        getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+    }
+
+    /* show only activity with id activityId
+     */
+    private void filterHistoryNotes(String notetext){
+        Bundle args = new Bundle();
+        args.putInt("TYPE", SEACH_TYPE_NOTE);
+        args.putString("TEXT", notetext);
+        getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -153,8 +293,31 @@ public class HistoryActivity extends BaseActivity implements
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
         if(id == LOADER_ID_HISTORY) {
+            String sel = SELECTION;
+            String[] sel_args = null;
+            if(args != null) {
+                switch (args.getInt("TYPE")) {
+                    case SEACH_TYPE_ACTIVITYID:
+                        sel = sel + " AND " + ActivityDiaryContract.Diary.ACT_ID + " = ?";
+                        sel_args = new String[]{Long.toString(args.getLong("ACTIVITY_ID"))};
+                        break;
+                    case SEACH_TYPE_NOTE:
+                        sel = sel + " AND " + ActivityDiaryContract.Diary.NOTE + " LIKE ?";
+                        sel_args = new String[]{"%" + args.getString("TEXT") + "%"};
+                        break;
+                    case SEACH_TYPE_TEXT_ALL:
+                        sel = sel + " AND (" + ActivityDiaryContract.Diary.NOTE + " LIKE ?"
+                                + " OR " + ActivityDiaryContract.DiaryActivity.NAME + " LIKE ?)";
+                        sel_args = new String[]{"%" + args.getString("TEXT") + "%",
+                                                "%" + args.getString("TEXT") + "%"};
+
+                        break;
+                    default:
+                        break;
+                }
+            }
             return new CursorLoader(this, ActivityDiaryContract.Diary.CONTENT_URI,
-                    PROJECTION, SELECTION, null, null);
+                    PROJECTION, sel, sel_args, null);
         }else{
 
             return new CursorLoader(HistoryActivity.this,
@@ -178,7 +341,6 @@ public class HistoryActivity extends BaseActivity implements
         }else{
             detailAdapters[i].swapCursor(data);
         }
-
     }
 
     // Called when a previously created loader is reset, making the data unavailable
@@ -240,4 +402,5 @@ public class HistoryActivity extends BaseActivity implements
         getLoaderManager().initLoader(adapter.getAdapterId(), b, this);
 
     }
+
 }

@@ -169,6 +169,28 @@ public class ActivityHelper extends AsyncQueryHandler{
 // TODO: do we need to keep track on the scheduled jobs, or is a waiting job with the same ID as a new one automatically canceled?
     }
 
+    public ArrayList<DiaryActivity> sortedActivities(String query) {
+        ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
+
+        for(DiaryActivity a : ActivityHelper.helper.getActivities()){
+            int dist = ActivityHelper.searchDistance(query, a.getName());
+            int pos = 0;
+            // search where to enter it
+            for(Integer i : filteredDist){
+                if(dist > i.intValue()){
+                    pos++;
+                }else{
+                    break;
+                }
+            }
+
+            filteredDist.add(pos, Integer.valueOf(dist));
+            filtered.add(pos, a);
+        }
+        return filtered;
+    }
+
     public interface DataChangedListener{
         /**
          * Called when the data has changed and no further specification is possible.

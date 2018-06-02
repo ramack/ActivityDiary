@@ -2,7 +2,7 @@
 <!--
   ~ ActivityDiary
   ~
-  ~ Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2018-2018 Raphael Mack http://www.raphael-mack.de
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -18,13 +18,14 @@
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<searchable xmlns:android="http://schemas.android.com/apk/res/android"
-    android:label="@string/app_name"
-    android:hint="@string/search_hint"
-    android:searchMode="queryRewriteFromText"
-    android:includeInGlobalSearch="true"
-    android:searchSettingsDescription="@string/search_description"
-    android:searchSuggestAuthority="@string/search_provider_authority"
-    android:searchSuggestPath="history"
-    >
-</searchable>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_filter"
+        android:title="@string/action_filter"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:searchIcon="@drawable/ic_filter"
+        app:searchIcon="@drawable/ic_filter"
+        />
+</menu>
