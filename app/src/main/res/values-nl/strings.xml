@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Melding voor huidige activiteit</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">De huidige activiteit wordt weergegeven als melding</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Er wordt geen melding voor de huidige activiteit weergegeven</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Crash-rapportage</string>
   <string name="setting_acra_enabled">Verstuur rapporten over crashes</string>
   <string name="setting_acra_disabled">Stuur geen rapporten over crashes</string>
