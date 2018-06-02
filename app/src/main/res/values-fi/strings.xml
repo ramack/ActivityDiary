@@ -158,6 +158,8 @@
   <string name="desc_end_time">Loppu aika</string>
   <string name="adjust_adjacent_times">Säädä viereiset päiväkirjakirjaukset</string>
   <string name="constraint_positive_duration">Toiminnan on aina aloituttava ennen sen päättymistä.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Tänään</string>
   <string name="yesterday">Eilen</string>
