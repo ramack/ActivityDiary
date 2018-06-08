@@ -727,7 +727,6 @@ public class MainActivity extends BaseActivity implements
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "writing exif data to " + mCurrentPhotoPath + " failed", e);
-                        throw new RuntimeException("writing exif data to " + mCurrentPhotoPath + " failed " + e.toString(), e);
                     }
                 }
             }
