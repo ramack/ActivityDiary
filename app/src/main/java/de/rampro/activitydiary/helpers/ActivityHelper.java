@@ -86,6 +86,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
+            ActivityDiaryContract.Diary.END,
             ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.NOTE
     };
@@ -106,8 +107,8 @@ public class ActivityHelper extends AsyncQueryHandler{
     private List<DiaryActivity> activities;
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
-    private Uri mCurrentDiaryUri;
-    private String mCurrentNote;
+    private @Nullable Uri mCurrentDiaryUri;
+    private /* @NonNull */ String mCurrentNote;
     private Condition[] conditions;
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
@@ -275,8 +276,10 @@ public class ActivityHelper extends AsyncQueryHandler{
      * will trigger the update of currentActivity and send notifications afterwards */
     private void readCurrentActivity() {
         startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
-                DIARY_PROJ, ActivityDiaryContract.Diary.END + " is NULL AND "
-                + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + " = 0", null,
+                DIARY_PROJ, ActivityDiaryContract.Diary.START + " = (SELECT MAX("
+                + ActivityDiaryContract.Diary.START + ") FROM "
+                + ActivityDiaryContract.Diary.TABLE_NAME + " WHERE " + SELECTION +")"
+                , null,
                 ActivityDiaryContract.Diary.START + " DESC");
     }
 
@@ -300,18 +303,23 @@ public class ActivityHelper extends AsyncQueryHandler{
                     listener.onActivityDataChanged();
                 }
             }else if(token == QUERY_CURRENT_ACTIVITY){
-                if(mCurrentActivity == null) {
+                if(!cursor.isNull(cursor.getColumnIndex(ActivityDiaryContract.Diary.END))){
+                    /* no current activity */
+                    mCurrentNote = "";
+                    mCurrentDiaryUri = null;
+                    mCurrentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.END)));
+                }else if(mCurrentActivity == null) {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
                     mCurrentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
                     mCurrentNote = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
                     mCurrentDiaryUri = Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
                                         Long.toString(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary._ID))));
 
-                    showCurrentActivityNotification();
+                }
+                showCurrentActivityNotification();
 
-                    for(DataChangedListener listener : mDataChangeListeners) {
-                        listener.onActivityChanged();
-                    }
+                for(DataChangedListener listener : mDataChangeListeners) {
+                    listener.onActivityChanged();
                 }
             }else if(token == UNDELETE_ACTIVITY){
 
@@ -599,7 +607,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         return result;
     }
 
-    public Uri getCurrentDiaryUri(){
+    public @Nullable Uri getCurrentDiaryUri(){
         return mCurrentDiaryUri;
     }
 
