@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Ilmoitus nykyisestä toiminnasta</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Nykyinen toiminta näkyy ilmoituksena</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Mitään ilmoitusta nykyisestä toiminnasta ei näy</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Crash Reporting</string>
   <string name="setting_acra_enabled">Lähetä raportit kaatumisista</string>
   <string name="setting_acra_disabled">Älä lähetä raportteja kaatumisista</string>
@@ -158,6 +161,8 @@
   <string name="desc_end_time">Loppu aika</string>
   <string name="adjust_adjacent_times">Säädä viereiset päiväkirjakirjaukset</string>
   <string name="constraint_positive_duration">Toiminnan on aina aloituttava ennen sen päättymistä.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Tänään</string>
   <string name="yesterday">Eilen</string>

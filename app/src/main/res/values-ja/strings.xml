@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">現在の活動の通知</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">現在のアクティビティは通知として表示されます</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">現在のアクティビティの通知は表示されません</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">クラッシュレポート</string>
   <string name="setting_acra_enabled">クラッシュに関するレポートを送信する</string>
   <string name="setting_acra_disabled">クラッシュに関するレポートを送信しない</string>
@@ -154,6 +157,8 @@
   <string name="desc_end_time">終了時間</string>
   <string name="adjust_adjacent_times">隣接する日記項目を調整する</string>
   <string name="constraint_positive_duration">アクティビティは、終了する前に常に開始されます。</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">今日</string>
   <string name="yesterday">昨日</string>

@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Notificación de actividad actual</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">La actividad actual se muestra como notificación</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">No se muestra ninguna notificación para la actividad actual</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Informes de fallas</string>
   <string name="setting_acra_enabled">Enviar informes sobre fallas</string>
   <string name="setting_acra_disabled">No envíe informes sobre fallas</string>
@@ -158,6 +161,8 @@
   <string name="desc_end_time">Hora de finalización</string>
   <string name="adjust_adjacent_times">Ajustar las entradas del diario adyacente</string>
   <string name="constraint_positive_duration">La actividad siempre comenzará antes de que termine.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Hoy</string>
   <string name="yesterday">Ayer</string>

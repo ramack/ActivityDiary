@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">Oznámení pro aktuální činnost</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Aktuální aktivita se zobrazuje jako oznámení</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Není zobrazeno žádné oznámení o aktuální aktivitě</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Hlášení o selhání</string>
   <string name="setting_acra_enabled">Odesílání zpráv o haváriích</string>
   <string name="setting_acra_disabled">Neposílejte zprávy o nehodách</string>
@@ -166,6 +169,8 @@
   <string name="desc_end_time">Čas ukončení</string>
   <string name="adjust_adjacent_times">Upravte sousední záznamy deníku</string>
   <string name="constraint_positive_duration">Činnost musí vždy začít, než skončí.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Dnes</string>
   <string name="yesterday">Včera</string>

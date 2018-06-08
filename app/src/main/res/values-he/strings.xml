@@ -53,6 +53,9 @@
   <string name="setting_show_cur_activitiy_notification">הודעה על הפעילות השוטפת</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">הפעילות הנוכחית מוצגת כהודעה</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">לא תוצג הודעה על הפעילות הנוכחית</string>
+  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
+  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">דיווח על קריסה</string>
   <string name="setting_acra_enabled">שלח דוחות על קריסות</string>
   <string name="setting_acra_disabled">אל תשלח דוחות על קריסות</string>
@@ -166,6 +169,8 @@
   <string name="desc_end_time">שעת הסיום</string>
   <string name="adjust_adjacent_times">התאמת רשומות יומן סמוכות</string>
   <string name="constraint_positive_duration">הפעילות תתחיל תמיד לפני שהיא מסתיימת.</string>
+  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- relative dates -->
   <string name="today">היום</string>
   <string name="yesterday">אתמול</string>
