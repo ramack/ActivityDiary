@@ -23,6 +23,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
@@ -175,7 +176,21 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHo
 
     @Override
     public void onDetailItemClick(int adapterPosition) {
-        // TODO: show image in full screen
+        long diaryImageId = getDiaryImageIdAt(adapterPosition);
+
+        if (!mCursor.moveToPosition(adapterPosition)) {
+            throw new IllegalStateException("couldn't move cursor to position " + adapterPosition);
+        }
+
+        String s = mCursor.getString(uriRowIdx);
+        Uri i = Uri.parse(s);
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(i, "image/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        mContext.startActivity(intent);
+
     }
 
     public boolean onDetailItemLongClick(int adapterPosition) {
