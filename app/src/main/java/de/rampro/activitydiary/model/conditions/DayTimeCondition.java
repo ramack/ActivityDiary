@@ -94,7 +94,7 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     @Override
     protected void doEvaluation() {
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_DAYTIME, "20"));
-        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getUnsortedActivities().size());
 
         if(weight > 0.0000001) {
             Calendar c = Calendar.getInstance();
@@ -105,7 +105,7 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
             c.set(Calendar.MILLISECOND, 0);
             long passed = nowm - c.getTimeInMillis();
             float now = passed / 1000.0f;
-            List<DiaryActivity> list = ActivityHelper.helper.getActivities();
+            List<DiaryActivity> list = ActivityHelper.helper.getUnsortedActivities();
             for (DiaryActivity a:list) {
                 float mean = DAY / 2.0f;
                 float var = 30*60*30*60;

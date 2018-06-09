@@ -38,10 +38,10 @@ public class AlphabeticalCondition extends Condition implements ActivityHelper.D
 
     protected void doEvaluation(){
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_ALPHA, "5"));
-        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getUnsortedActivities().size());
         if(weight > 0.001) {
 
-            ArrayList<DiaryActivity> sort = new ArrayList<>(ActivityHelper.helper.getActivities());
+            ArrayList<DiaryActivity> sort = new ArrayList<>(ActivityHelper.helper.getUnsortedActivities());
             Collections.sort(sort, new Comparator<DiaryActivity>() {
                 @Override
                 public int compare(DiaryActivity o1, DiaryActivity o2) {

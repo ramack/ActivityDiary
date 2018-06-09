@@ -43,7 +43,7 @@ public class PredecessorCondition extends Condition implements ActivityHelper.Da
     protected void doEvaluation() {
         double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
         DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
-        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getUnsortedActivities().size());
 
         if(weight > 0.0000001 && current != null) {
 

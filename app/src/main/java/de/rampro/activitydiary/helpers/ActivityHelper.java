@@ -105,6 +105,9 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* list of all activities, not including deleted ones */
     private List<DiaryActivity> activities;
+    /* unsortedActivities is not allowed to be modified */
+    private List<DiaryActivity> unsortedActivities;
+
     private DiaryActivity mCurrentActivity = null;
     private Date mCurrentActivityStartTime;
     private @Nullable Uri mCurrentDiaryUri;
@@ -140,9 +143,14 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     JobInfo refreshJobInfo;
 
-    /* to be used only in the UI thread */
+    /* to be used only in the UI thread, consider getActivitiesCopy() */
     public List<DiaryActivity> getActivities() {
         return activities;
+    }
+
+    /* get a list of the activities as non-modifable copy, not guaranteed to be up to date */
+    public List<DiaryActivity> getUnsortedActivities(){
+        return unsortedActivities;
     }
 
     public void scheduleRefresh() {
@@ -240,6 +248,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         super(ActivityDiaryApplication.getAppContext().getContentResolver());
         mDataChangeListeners = new ArrayList<DataChangedListener>(3);
         activities = new ArrayList<DiaryActivity>();
+        unsortedActivities = new ArrayList<DiaryActivity>();
 
         conditions = new Condition[]{new PredecessorCondition(this),
                 new AlphabeticalCondition(this),
@@ -290,12 +299,14 @@ public class ActivityHelper extends AsyncQueryHandler{
             if(token == QUERY_ALL_ACTIVITIES) {
                 synchronized (this) {
                     activities.clear();
+                    unsortedActivities.clear();
                     while (!cursor.isAfterLast()) {
                         DiaryActivity act = new DiaryActivity(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID)),
                                 cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME)),
                                 cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.COLOR)));
                         /* TODO: optimize by keeping a map with id as key and the DiaryActivities */
                         activities.add(act);
+                        unsortedActivities.add(act);
                         cursor.moveToNext();
                     }
                 }
@@ -519,6 +530,7 @@ public class ActivityHelper extends AsyncQueryHandler{
             act.setId(Integer.parseInt(uri.getLastPathSegment()));
             synchronized (this) {
                 activities.add(act);
+                unsortedActivities.add(act);
             }
             for(DataChangedListener listener : mDataChangeListeners) {
                 listener.onActivityAdded(act);
@@ -554,6 +566,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                 values, ActivityDiaryContract.Diary._ID + " = " + id, null);
 
         activities.add(result);
+        unsortedActivities.add(result);
         return result;
     }
 
@@ -579,7 +592,9 @@ public class ActivityHelper extends AsyncQueryHandler{
                 null, /* entry selected via URI */
                 null);
         synchronized (this) {
-            if (!activities.remove(act)) {
+            if (activities.remove(act)) {
+                unsortedActivities.remove(act);
+            }else{
                 Log.e(TAG, "removal of activity " + act.toString() + " failed");
             }
         }
