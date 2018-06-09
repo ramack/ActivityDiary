@@ -647,11 +647,15 @@ public class MainActivity extends BaseActivity implements
 
     private void filterActivityView(String query){
         this.filter = query;
-        // TODO: do in separate thread?
-        ArrayList<DiaryActivity> filtered = ActivityHelper.helper.sortedActivities(query);
+        if(filter.length() == 0){
+            likelyhoodSort();
+        }else {
+            ArrayList<DiaryActivity> filtered = ActivityHelper.helper.sortedActivities(query);
 
-        selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, filtered);
-        selectRecyclerView.swapAdapter(selectAdapter, false);
+            selectAdapter = new SelectRecyclerViewAdapter(MainActivity.this, filtered);
+            selectRecyclerView.swapAdapter(selectAdapter, false);
+            selectRecyclerView.scrollToPosition(0);
+        }
     }
 
     private void likelyhoodSort() {
