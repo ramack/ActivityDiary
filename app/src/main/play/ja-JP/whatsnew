@@ -1,6 +1,4 @@
--  Androidバージョン<5.0（少なくともLollipopが必要）のサポートが中止
-- 通知を追加する（環境設定で通知を無効にすることができます）
-- 改善された履歴（機能の編集と表示）
--  DayTime条件を追加して、現在の時間とその開始の平均時間に基づいて次のアクティビティを提案する
-- 削除されたアクティビティをユーザが処理できるようにする
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - いくつかのバグ修正
