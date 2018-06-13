@@ -54,8 +54,8 @@
   <string name="setting_show_cur_activitiy_notification_summary_active">Die aktuelle Aktivität wird als Benachrichtigung angezeigt</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Es wird keine Benachrichtigung für die aktuelle Aktivität angezeigt</string>
   <string name="setting_disable_on_click">Aktivität durch anklicken beenden</string>
-  <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
-  <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
+  <string name="setting_disable_on_click_summary_active">Aktuelle Aktivität kann durch anklicken beendet werden</string>
+  <string name="setting_disable_on_click_summary_inactive">Aktuelle Aktivität kann nur durch Auswahl einer neuen beendet werden</string>
   <string name="setting_enable_acra">Fehlerberichte</string>
   <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
   <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
@@ -161,8 +161,8 @@
   <string name="desc_end_time">Endzeit</string>
   <string name="adjust_adjacent_times">Angrezende Tagebucheinträge ebenfalls anpassen</string>
   <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
-  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
-  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <string name="search_notes">In den Notizen nach \'%1$s\' suchen&#x2026;</string>
+  <string name="search_diary">Überall nach \'%1$s\' suchen&#x2026;</string>
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>
