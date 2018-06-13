@@ -1,6 +1,4 @@
-- Droppe support för Android-versionen <5.0 (minst Lollipop krävs)
-- Lägg till meddelanden (du kan inaktivera det i inställningarna)
-- Förbättrad historia (redigera funktioner och visa)
-- Lägg till DayTime-villkor, föreslå nästa aktiviteter baserat på den aktuella tiden och den genomsnittliga tiden för starten
-- Aktivera användaren att hantera borttagna aktiviteter
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Flera buggfixar
