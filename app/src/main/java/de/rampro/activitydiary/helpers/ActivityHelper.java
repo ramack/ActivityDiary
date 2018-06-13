@@ -463,10 +463,12 @@ public class ActivityHelper extends AsyncQueryHandler{
      *
      * */
     public void undoLastActivitySelection() {
-        startDelete(DELETE_LAST_DIARY_ENTRY, null,
-                ActivityDiaryContract.Diary.CONTENT_URI,
-                ActivityDiaryContract.Diary.END + " is NULL",
-                null);
+        if(mCurrentActivity != null) {
+            startDelete(DELETE_LAST_DIARY_ENTRY, null,
+                    ActivityDiaryContract.Diary.CONTENT_URI,
+                    ActivityDiaryContract.Diary.END + " is NULL",
+                    null);
+        }
     }
 
     @Override
