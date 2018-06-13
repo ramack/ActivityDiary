@@ -1,6 +1,4 @@
-- Queda de suporte para a versão Android <5,0 (pelo menos Lollipop necessário)
-- Adicionar notificações (você pode desativá-lo nas preferências)
-- Histórico aprimorado (recursos de edição e visualização)
-- Adicionar a condição DayTime, para sugerir as próximas atividades com base na hora atual e no tempo médio de sua partida
-- Permitir que o usuário manipule atividades excluídas
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Várias correções de erros
