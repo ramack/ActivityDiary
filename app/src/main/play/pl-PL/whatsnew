@@ -1,6 +1,4 @@
-- Upadek wsparcia dla wersji Androida <5.0 (wymagany przynajmniej Lollipop)
-- Dodaj powiadomienia (możesz wyłączyć to w preferencjach)
-- Poprawiona historia (możliwości edycji i widok)
-- Dodaj warunek DayTime, aby zasugerować następne działania na podstawie bieżącego czasu i średniego czasu ich rozpoczęcia
-- Włącz użytkownikowi obsługę usuniętych działań
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Kilka poprawek błędów
