@@ -1,6 +1,4 @@
-- keine Unterstützung mehr für Android-Version <5.0 (mindestens Lollipop erforderlich)
-- Neues Feature: Benachrichtigungen (die in den Einstellungen deaktiviert werden können)
-- Verbessertes Tagebuch (Ansicht sowie Möglichkeit zum editieren)
-- Neue Bedingung 'Tageszeit'
-- Verbesserte Behandlung gelöschter Aktivitäten
+- Bilder können durch Antippen in einer Galerie-App geöffnet werden
+- Erlaube das einfach Beenden der laufenden Aktivität
+- Suche im Tagebuch
 - Verschiedene Fehler wurden behoben

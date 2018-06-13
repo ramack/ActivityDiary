@@ -1,6 +1,4 @@
-- Az Android verzió <5.0 verziójának támogatása (legalább Lollipop szükséges)
-- Értesítések hozzáadása (letilthatja a beállításokat)
-- Jobb előzmények (szerkesztési képességek és nézet)
-- Add DayTime állapotot, hogy a következő tevékenységeket javasolja a jelenlegi idő és az indulás időtartamának megfelelően
-- Engedélyezze a felhasználónak a törölt tevékenységek kezelését
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Számos hibajavítás

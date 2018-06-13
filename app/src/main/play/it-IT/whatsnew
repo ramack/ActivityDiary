@@ -1,6 +1,4 @@
-- Eliminazione del supporto per la versione Android da 5.0 in giù (richiesto almeno Lollipop)
-- Aggiunte le notifiche (puoi disabilitarle nelle preferenze)
-- Storia migliorata (possibilità di modifica e visualizzazione)
-- Aggiungi la condizione DayTime, per suggerire le attività successive in base all'ora corrente e al tempo medio della loro partenza
-- Abilita l'utente a gestire le attività cancellate
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Diversi bugfix
