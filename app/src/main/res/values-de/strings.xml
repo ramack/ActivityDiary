@@ -54,7 +54,7 @@
   <string name="setting_show_cur_activitiy_notification_summary_active">Die aktuelle Aktivität wird als Benachrichtigung angezeigt</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Es wird keine Benachrichtigung für die aktuelle Aktivität angezeigt</string>
   <string name="setting_disable_on_click">Aktivität durch anklicken beenden</string>
-  <string name="setting_disable_on_click_summary_active">Aktuelle Aktivität kann durch anklicken beendet werden</string>
+  <string name="setting_disable_on_click_summary_active">Aktuelle Aktivität kann durch Anklicken beendet werden</string>
   <string name="setting_disable_on_click_summary_inactive">Aktuelle Aktivität kann nur durch Auswahl einer neuen beendet werden</string>
   <string name="setting_enable_acra">Fehlerberichte</string>
   <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
