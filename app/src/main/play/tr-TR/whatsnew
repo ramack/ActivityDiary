@@ -1,6 +1,4 @@
-- Android sürüm <5.0 (en az Lollipop gerekli) için destek kaldırıldı
-- Bildirimler eklendi (tercihlerde devre dışı bırakabilirsiniz)
-- Geliştirilmiş tarih (yetenekleri ve görünümü düzenle)
-- Geçerli zamana ve başlangıç ​​saatlerine göre sonraki etkinlikleri önermek için DayTime koşulu ekleyin.
-- Kullanıcının silinen aktiviteleri işlemesine izin ver
+- Images can be opened in a gallery app by clicking them
+- Allow termination of the current activity
+- Search in the diary
 - Birkaç Hata Düzeltmesi
