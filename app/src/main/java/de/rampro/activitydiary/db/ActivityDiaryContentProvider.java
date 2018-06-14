@@ -274,8 +274,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     notifyChange(uri, null);
 
         }else {
-            throw new SQLException(
-                    "Problem while deleting uri: " + uri + " with selection " + selection);
+            Log.i(TAG,"Could not delete anything for uri: " + uri + " with selection '" + selection + "'");
         }
         return upds;
     }
@@ -344,7 +343,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         }else if(isID) {
             throw new SQLException(
-                    "Problem while updating uri: " + uri + " with selection " + selection);
+                    "Problem while updating uri: " + uri + " with selection '" + selection + "'");
         }
         return upds;
     }
