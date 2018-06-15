@@ -42,7 +42,7 @@ public class GlobalOccurrenceCondition extends Condition implements ActivityHelp
 
     @Override
     protected void doEvaluation() {
-        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
+        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_OCCURRENCE, "20"));
         List<DiaryActivity> all = ActivityHelper.helper.getUnsortedActivities();
         ArrayList<Likelihood> result = new ArrayList<>(all.size());
 
@@ -61,9 +61,11 @@ public class GlobalOccurrenceCondition extends Condition implements ActivityHelp
                     null);
             c.moveToFirst();
             long total = 0;
+            long max = 0;
             while (!c.isAfterLast()) {
                 DiaryActivity a = ActivityHelper.helper.activityWithId(c.getInt(0));
                 total = total + c.getInt(1);
+                max = Math.max(max, c.getInt(1));
                 result.add(new Likelihood(a, c.getInt(1)));
                 c.moveToNext();
             }
@@ -71,7 +73,7 @@ public class GlobalOccurrenceCondition extends Condition implements ActivityHelp
             c.close();
 
             for (Likelihood l : result) {
-                l.likelihood = l.likelihood / total * weight;
+                l.likelihood = l.likelihood / max * weight;
             }
         }
         setResult(result);
