@@ -63,11 +63,18 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundImage" value="$PROJECT_DIR$/artwork/logo/adaptive-background.svg" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/artwork/logo/adaptive-foreground.svg" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </PersistentState>

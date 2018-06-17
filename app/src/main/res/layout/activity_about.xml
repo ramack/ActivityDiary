@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
             android:scaleType="centerInside"
-            android:src="@drawable/activity_diary_logo" />
+            android:src="@drawable/feature_graphic" />
 
         <TextView
             android:id="@+id/aboutTextView"

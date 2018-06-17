@@ -1,4 +1,4 @@
-![ActivityDiary-logotype](https://github.com/Tobaloidee/ActivityDiary/blob/master/artwork/logo/logotype-a.png) 
+![ActivityDiary-logotype](/artwork/logo/logotype-a.png)
 
 ![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
 
