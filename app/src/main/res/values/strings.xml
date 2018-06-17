@@ -81,6 +81,10 @@
     <string name="setting_acra_enabled">Send reports on crashes</string>
     <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
 
+    <string name="setting_use_location">Location</string>
+    <string name="setting_use_location_summary">Location service %1$s used to track user location</string>
+    <string name="setting_use_location_off_summary">User location not tracked at all</string>
+
     <string name="setting_storage_folder">Picture Storage Folder</string>
     <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
     <string name="setting_storage_folder_description">Directory to store the activity photos</string>

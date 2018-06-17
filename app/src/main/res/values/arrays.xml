@@ -43,4 +43,15 @@
         <item>50</item>
     </string-array>
 
+    <string-array name="pref_location_setting_list" translatable="false">
+        <item>off</item>
+        <item>network</item>
+        <item>gps</item>
+    </string-array>
+    <string-array name="pref_location_setting_list_values" translatable="true">
+        <item>OFF</item>
+        <item>Network</item>
+        <item>GPS and network</item>
+    </string-array>
+
 </resources>

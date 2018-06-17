@@ -26,6 +26,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
 import android.text.format.DateFormat;
@@ -62,6 +63,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
     public static final String KEY_PREF_DISABLE_CURRENT = "pref_disable_current_on_click";
     public static final String KEY_PREF_COND_DAYTIME = "pref_cond_daytime";
+    public static final String KEY_PREF_USE_LOCATION = "pref_use_location";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -78,6 +80,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference exportPref;
     private Preference importPref;
     private Preference disableOnClickPref;
+    private ListPreference useLocationPref;
 
     private PreferenceManager mPreferenceManager;
 
@@ -106,6 +109,24 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateCondDayTimeSummary();
         }else if(key.equals(KEY_PREF_DISABLE_CURRENT)){
             updateDisableCurrent();
+        }else if(key.equals(KEY_PREF_USE_LOCATION)){
+            updateUseLocation();
+        }
+    }
+
+    private void updateUseLocation() {
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_USE_LOCATION, "off");
+
+        PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_USE_LOCATION, "off");
+
+        if(value.equals("off")){
+            useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_off_summary));
+        }else {
+            useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_summary, useLocationPref.getValue()));
         }
     }
 

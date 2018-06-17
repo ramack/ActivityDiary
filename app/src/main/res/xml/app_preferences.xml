@@ -59,6 +59,14 @@
             android:summaryOff="@string/setting_acra_disabled"
             android:defaultValue="true"/>
 
+        <ListPreference
+            android:key="pref_use_location"
+            android:title="@string/setting_use_location"
+            android:dialogTitle="@string/setting_use_location"
+            android:entries="@array/pref_location_setting_list"
+            android:entryValues="@array/pref_location_setting_list_values"
+            android:defaultValue="off" />
+
     </android.support.v7.preference.PreferenceCategory>
     <android.support.v7.preference.PreferenceCategory
         android:title="@string/setting_images_category"
