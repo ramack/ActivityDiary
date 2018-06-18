@@ -1,4 +1,6 @@
-# ActivityDiary ![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
+![ActivityDiary-logotype](/artwork/logo/logotype-a.png)
+
+![](https://api.travis-ci.org/ramack/ActivityDiary.svg)
 
 <a href="https://f-droid.org/packages/de.rampro.activitydiary/" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
