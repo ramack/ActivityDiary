@@ -202,9 +202,9 @@ public class MainActivity extends BaseActivity implements
                 if(PreferenceManager
                         .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                         .getBoolean(SettingsActivity.KEY_PREF_DISABLE_CURRENT, false)){
-                    headerClickHandler.onClick(null);
-                }else{
                     ActivityHelper.helper.setCurrentActivity(null);
+                }else{
+                    headerClickHandler.onClick(null);
                 }
             }
         });
