@@ -59,6 +59,7 @@ public class RefreshService extends JobService {
         isWorking = false;
         boolean needsReschedule = false;
         ActivityHelper.helper.scheduleRefresh();
+        LocationHelper.helper.updateLocation();
         jobFinished(jobParameters, needsReschedule);
     }
 

@@ -20,12 +20,16 @@
 package de.rampro.activitydiary.ui.settings;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
@@ -115,19 +119,48 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     }
 
     private void updateUseLocation() {
-        String value = PreferenceManager
-                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                .getString(KEY_PREF_USE_LOCATION, "off");
+        int permissionCheckFine = PackageManager.PERMISSION_DENIED;
+        int permissionCheckCoarse = PackageManager.PERMISSION_DENIED;
 
-        PreferenceManager
+        String value = PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getString(KEY_PREF_USE_LOCATION, "off");
 
         if(value.equals("off")){
             useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_off_summary));
         }else {
-            useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_summary, useLocationPref.getValue()));
+            useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_summary, useLocationPref.getEntry()));
         }
+
+        if(value.equals("gps")) {
+            permissionCheckFine = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION);
+            if (permissionCheckFine != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                    Toast.makeText(this, R.string.perm_location_xplain, Toast.LENGTH_LONG).show();
+                }
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        4712);
+            }
+        }else{
+            permissionCheckCoarse = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION);
+            if (permissionCheckCoarse != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+
+                    Toast.makeText(this, R.string.perm_location_xplain, Toast.LENGTH_LONG).show();
+                }
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        4713);
+            }
+        }
+
+
     }
 
     private void updateDisableCurrent() {
@@ -257,6 +290,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
         disableOnClickPref = mPreferenceManager.findPreference(KEY_PREF_DISABLE_CURRENT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
+        useLocationPref = (ListPreference) mPreferenceManager.findPreference(KEY_PREF_USE_LOCATION);
+
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
         nofifShowCurActPref = mPreferenceManager.findPreference(KEY_PREF_NOTIF_SHOW_CUR_ACT);
 
@@ -309,6 +344,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondDayTimeSummary();
         updateNotifShowCurActivity();
         updateDisableCurrent();
+        updateUseLocation();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

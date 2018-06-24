@@ -380,6 +380,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                     listener.onActivityChanged();
                 }
             }
+            LocationHelper.helper.updateLocation();
             showCurrentActivityNotification();
         }
     }
