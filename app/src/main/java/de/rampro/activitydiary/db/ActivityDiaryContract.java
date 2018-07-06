@@ -243,4 +243,104 @@ public class ActivityDiaryContract {
 
     }
 
+    /* DiaryLocations are the location history logged in the Diary */
+    public final static class DiaryLocation implements DiaryLocationColumns{
+        /**
+         * This utility class cannot be instantiated
+         */
+        private DiaryLocation() {}
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "locations");
+
+        /**
+         * The name of the database table, to be used for joining queries as column prefix.
+         */
+        public static final String TABLE_NAME = "location";
+
+        /**
+         * The mime type of a directory of this entry.
+         */
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_locations";
+        /**
+         * The mime type of a single entry.
+         */
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_location";
+        /**
+         * A projection of all columns
+         * in the items table.
+         */
+        public static final String[] PROJECTION_ALL =
+                {_ID, LATITUDE, LONGITUDE, ALTITUDE, TIMESTAMP, SPEED, HACC, VACC, SACC};
+
+        /**
+         * The default sort order for
+         * queries containing NAME fields.
+         */
+        public static final String SORT_ORDER_DEFAULT =
+                _ID + " DESC";
+    }
+
+    /* The columns in a DiaryActivity which are joinable */
+    protected interface DiaryLocationJoinableColumns {
+        /**
+         * The latitude of the position
+         * <P>Type: REAL</P>
+         */
+        public static final String LATITUDE = "latitude";
+        /**
+         * The longitude of the position
+         * <P>Type: REAL</P>
+         */
+        public static final String LONGITUDE = "longitude";
+        /**
+         * The altitude of the location information, in m above WSG84 reference ellipsoid
+         * <P>Type: REAL</P>
+         */
+        public static final String ALTITUDE = "altitude";
+        /**
+         * The timestamp of the location information, in milli seconds since epoch.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String TIMESTAMP = "ts";
+        /**
+         * The speed associated the the location information in meters/second over ground, NULL means unknown
+         * <P>Type: REAL</P>
+         */
+        public static final String SPEED = "speed";
+        /**
+         * The estimated horizontal accuracy of the location information, in 1/10 meters, NULL means unknown
+         * <P>Type: INTEGER</P>
+         */
+        public static final String HACC = "hacc";
+        /**
+         * The estimated vertical accuracy of the location information, in 1/10 meters, NULL means unknown
+         * <P>Type: INTEGER</P>
+         */
+        public static final String VACC = "vacc";
+        /**
+         * The estimated speed accuracy of the location information, in 1/10 meters/sec, NULL means unknown
+         * <P>Type: INTEGER</P>
+         */
+        public static final String SACC = "sacc";
+
+    }
+
+    /* The columns in a location */
+    protected interface DiaryLocationColumns extends DiaryLocationJoinableColumns{
+        /**
+         * The id (primary key) for the Activity
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _ID = "_id";
+        /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
+    }
+
 }

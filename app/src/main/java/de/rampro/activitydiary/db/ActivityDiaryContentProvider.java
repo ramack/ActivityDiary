@@ -50,6 +50,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     private static final int diary_ID = 6;
     private static final int diary_image = 7;
     private static final int diary_image_ID = 8;
+    private static final int diary_location = 9;
+    private static final int diary_location_ID = 10;
     private static final String TAG = ActivityDiaryContentProvider.class.getName();
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -63,6 +65,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_image);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_image_ID);
+
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
 
         /* TODO #18 */
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
@@ -93,6 +98,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case conditions_ID:
             case diary_ID:
             case diary_image_ID:
+            case diary_location_ID:
                 if(selection != null) {
                     selection = selection + " AND ";
                 }else{
@@ -109,10 +115,15 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 qBuilder.setTables(ActivityDiaryContract.DiaryActivity.TABLE_NAME);
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
                 break;
-            case diary_image_ID:
+            case diary_image_ID: /* intended fall through */
             case diary_image:
                 qBuilder.setTables(ActivityDiaryContract.DiaryImage.TABLE_NAME);
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT;
+                break;
+            case diary_location_ID: /* intended fall through */
+            case diary_location:
+                qBuilder.setTables(ActivityDiaryContract.DiaryLocation.TABLE_NAME);
+                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryLocation.SORT_ORDER_DEFAULT;
                 break;
             case diary_ID: /* intended fall through */
             case diary:
@@ -155,6 +166,12 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 return ActivityDiaryContract.DiaryActivity.CONTENT_ITEM_TYPE;
             case diary:
                 return ActivityDiaryContract.Diary.CONTENT_TYPE;
+            case diary_ID:
+                return ActivityDiaryContract.Diary.CONTENT_ITEM_TYPE;
+            case diary_location:
+                return ActivityDiaryContract.DiaryLocation.CONTENT_TYPE;
+            case diary_location_ID:
+                return ActivityDiaryContract.DiaryLocation.CONTENT_ITEM_TYPE;
             // TODO #18: add other types
             default:
                 Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
@@ -180,6 +197,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_image:
                 table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiaryImage.CONTENT_URI;
+                break;
+            case diary_location:
+                table = ActivityDiaryContract.DiaryLocation.TABLE_NAME;
+                resultUri = ActivityDiaryContract.DiaryLocation.CONTENT_URI;
                 break;
             case conditions:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
@@ -244,7 +265,16 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
                 break;
             case diary_image:
+                isGlobalDelete = true;
+                /* fall though */
+            case diary_image_ID:
                 table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
+                break;
+            case diary_location:
+                isGlobalDelete = true;
+                /* fall though */
+            case diary_location_ID:
+                table = ActivityDiaryContract.DiaryLocation.TABLE_NAME;
                 break;
             case conditions_ID:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
@@ -313,6 +343,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case diary_image:
                 table = ActivityDiaryContract.DiaryImage.TABLE_NAME;
+                break;
+            case diary_location_ID:
+                isID = true;
+            case diary_location:
+                table = ActivityDiaryContract.DiaryLocation.TABLE_NAME;
                 break;
             case conditions_ID:
                 isID = true;

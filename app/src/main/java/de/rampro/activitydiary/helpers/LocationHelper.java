@@ -20,30 +20,48 @@
 package de.rampro.activitydiary.helpers;
 
 import android.Manifest;
+import android.content.AsyncQueryHandler;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
-public class LocationHelper implements LocationListener {
+public class LocationHelper extends AsyncQueryHandler implements LocationListener {
     private static final String TAG = LocationHelper.class.getName();
 
     public static final LocationHelper helper = new LocationHelper();
     private static final long MIN_TIME = 1000 * 60 * 2; // for now every 2 minutes, TODO: make configurable
     private static final float MIN_DISTANCE = 50.0f;
 
+    private Location currentLocation;
+
     LocationManager locationManager = (LocationManager) ActivityDiaryApplication.getAppContext().getSystemService(Context.LOCATION_SERVICE);
 
     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
+
+    public LocationHelper() {
+        super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        currentLocation = new Location("DiaryLocation");
+    }
+
+    public Location getCurrentLocation(){
+        return currentLocation;
+    }
 
     void updateLocation() {
         String setting = sharedPreferences.getString(SettingsActivity.KEY_PREF_USE_LOCATION, "off");
@@ -64,12 +82,12 @@ public class LocationHelper implements LocationListener {
             }
             if(permissionCheckFine == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.GPS_PROVIDER;
-                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this);
+                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this, Looper.getMainLooper());
             }
 
             if(permissionCheckCoarse == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.NETWORK_PROVIDER;
-                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this);
+                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this, Looper.getMainLooper());
 
             }
         }
@@ -84,7 +102,33 @@ public class LocationHelper implements LocationListener {
      */
     @Override
     public void onLocationChanged(Location location) {
-        Log.w(TAG, "location updated to " + location.toString());
+        ContentValues values = new ContentValues();
+        currentLocation = location;
+        values.put(ActivityDiaryContract.DiaryLocation.TIMESTAMP, location.getTime());
+        values.put(ActivityDiaryContract.DiaryLocation.LATITUDE, location.getLatitude());
+        values.put(ActivityDiaryContract.DiaryLocation.LONGITUDE, location.getLongitude());
+        if (location.hasAccuracy()) {
+            values.put(ActivityDiaryContract.DiaryLocation.HACC, new Integer(Math.round(location.getAccuracy() * 10)));
+        }
+        if (location.hasSpeed()) {
+            values.put(ActivityDiaryContract.DiaryLocation.SPEED, location.getSpeed());
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (location.hasSpeedAccuracy()) {
+                    values.put(ActivityDiaryContract.DiaryLocation.SACC, new Integer(Math.round(location.getSpeedAccuracyMetersPerSecond() * 10)));
+                }
+            }
+        }
+        if (location.hasAltitude()) {
+            values.put(ActivityDiaryContract.DiaryLocation.ALTITUDE, location.getAltitude());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (location.hasVerticalAccuracy()) {
+                    values.put(ActivityDiaryContract.DiaryLocation.VACC,  new Integer(Math.round(location.getVerticalAccuracyMeters() * 10)));
+                }
+            }
+        }
+        startInsert(0, null, ActivityDiaryContract.DiaryLocation.CONTENT_URI,
+                values);
 
     }
 

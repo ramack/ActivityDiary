@@ -83,7 +83,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " ('Sleeping', '" + Color.parseColor("#303f9f") + "');");
     }
 
-    public static final int CURRENT_VERSION = 3;
+    public static final int CURRENT_VERSION = 4;
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -106,13 +106,34 @@ public class LocalDBHelper extends SQLiteOpenHelper {
             onCreate(db);
             oldVersion = CURRENT_VERSION;
         }
-        if(oldVersion == 2){
+        if(oldVersion < 3){
             /* upgrade from 2 to 3 */
             createDiaryImageTable(db);
         }
-        if(newVersion > 3){
+        if(oldVersion < 4){
+            /* upgrade from 3 to 4 */
+            createDiaryLocationTable(db);
+        }
+        if(newVersion > 4){
             throw new RuntimeException("Database upgrade to version " + newVersion + " nyi.");
         }
+    }
+
+    private void createDiaryLocationTable(SQLiteDatabase db){
+        db.execSQL("CREATE TABLE " +
+                ActivityDiaryContract.DiaryLocation.TABLE_NAME + " " +
+                "(" +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0, " +
+                "ts INTEGER NOT NULL, " +
+                "latitude REAL NOT NULL, " +
+                "longitude REAL NOT NULL, " +
+                "altitude REAL DEFAULT NULL, " +
+                "speed INTEGER DEFAULT NULL," +
+                "hacc INTEGER DEFAULT NULL, " +
+                "vacc INTEGER DEFAULT NULL, " +
+                "sacc INTEGER DEFAULT NULL " +
+                ");");
     }
 
     private void createDiaryImageTable(SQLiteDatabase db){
@@ -155,38 +176,8 @@ public class LocalDBHelper extends SQLiteOpenHelper {
         }
 
         if (version >= 4){
-/* TODO #20 do in a dedicated method, to allow an upgrade path of the DB
-        db.execSQL("CREATE TABLE " +
-                ACTIVITY_ALIAS_DB_TABLE +
-                "(" +
-                " _deleted INTEGER DEFAULT 0," +
-                " act_id INTEGER NOT NULL, " +
-                " name TEXT NOT NULL UNIQUE," +
-                " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
-                ");");
- */
-/*
-        db.execSQL("CREATE TABLE " +
-                CONDITION_DB_TABLE +
-                "(" +
-                " _id INTEGER PRIMARY KEY ASC, " +
-                " _deleted INTEGER DEFAULT 0," +
-                " name TEXT NOT NULL UNIQUE, " +
-                " type TEXT, " +
-                " parameter TEXT " +
-                ");");
-
-        db.execSQL("CREATE TABLE " +
-                CONDITIONS_DB_TABLE +
-                "(" +
-                " _deleted INTEGER DEFAULT 0," +
-                " act_id INTEGER NOT NULL, " +
-                " cond_id INTEGER NOT NULL, " +
-                " FOREIGN KEY(act_id) REFERENCES activity(_id), " +
-                " FOREIGN KEY(cond_id) REFERENCES condition(_id) " +
-                ");");
-*/
-
+            createDiaryLocationTable(db);
         }
+
     }
 }
