@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Válasszon tevékenységet</string>
   <string name="nav_diary">Napló</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Tevékenység hozzáadása</string>
   <string name="nav_show_deleted">Megjelenítés törölve</string>
   <string name="nav_hide_deleted">Elrejtett elrejtése</string>
@@ -41,6 +42,7 @@
   <!-- settings -->
   <string name="setting_view_category">Kilátás</string>
   <string name="setting_behavior_category">Viselkedés</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">képek</string>
   <string name="setting_backup_category">biztonsági mentés</string>
   <string name="setting_condition_category">Körülmények</string>
@@ -59,6 +61,10 @@
   <string name="setting_enable_acra">Összeomlásjelentés</string>
   <string name="setting_acra_enabled">Jelentéseket küld a bukásokról</string>
   <string name="setting_acra_disabled">Ne küldjön jelentéseket összeomlásról</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Kép tároló mappa</string>
   <string name="setting_storage_folder_summary">Tárolja a tevékenységi fotókat a könyvtárban %1$s</string>
   <string name="setting_storage_folder_description">A tevékenységi fotók tárolására szolgáló könyvtár</string>
@@ -80,6 +86,10 @@
   <string name="setting_cond_daytime">Nappal</string>
   <string name="setting_cond_daytime_summary">A napló tevékenységeinek nappali súlya %1$s a javasolt következő tevékenységeknél</string>
   <string name="setting_cond_daytime_not_used_summary">A napló tevékenységeinek nappali napja nem használható a következő tevékenységekre</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Szakértői beállítások</string>
   <string name="setting_export">Export adatbázis</string>
   <string name="setting_import">Import adatbázis</string>
@@ -100,6 +110,7 @@
   <string name="activity_title_history_detail">Naplóbejegyzést</string>
   <string name="activity_subtitle_main">Mit csinálsz?</string>
   <string name="activity_title_about">Ról ről</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Beállítások</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">jegyzet</string>
