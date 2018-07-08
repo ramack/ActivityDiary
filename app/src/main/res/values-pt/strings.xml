@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Selecione a atividade</string>
   <string name="nav_diary">Diário</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Adicionar atividade</string>
   <string name="nav_show_deleted">Mostrar excluído</string>
   <string name="nav_hide_deleted">Ocultar Excluído</string>
@@ -41,6 +42,7 @@
   <!-- settings -->
   <string name="setting_view_category">Visão</string>
   <string name="setting_behavior_category">Comportamento</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Imagens</string>
   <string name="setting_backup_category">Cópia de segurança</string>
   <string name="setting_condition_category">Condições</string>
@@ -59,6 +61,10 @@
   <string name="setting_enable_acra">Relatório de acidentes</string>
   <string name="setting_acra_enabled">Enviar relatórios sobre falhas</string>
   <string name="setting_acra_disabled">Não envie relatórios sobre falhas</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Pasta de armazenamento de imagens</string>
   <string name="setting_storage_folder_summary">Armazenar fotos de atividades no diretório %1$s</string>
   <string name="setting_storage_folder_description">Diretório para armazenar as fotos da atividade</string>
@@ -80,6 +86,10 @@
   <string name="setting_cond_daytime">Dia</string>
   <string name="setting_cond_daytime_summary">O dia das atividades no diário tem um peso de %1$s nas próximas atividades sugeridas</string>
   <string name="setting_cond_daytime_not_used_summary">O dia das atividades no diário não é usado para sugerir as próximas atividades</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Configurações de especialistas</string>
   <string name="setting_export">Banco de dados de exportação</string>
   <string name="setting_import">Banco de dados de importação</string>
@@ -100,6 +110,7 @@
   <string name="activity_title_history_detail">Entrada diário</string>
   <string name="activity_subtitle_main">O que você está fazendo?</string>
   <string name="activity_title_about">Sobre</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Configurações</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Nota</string>
