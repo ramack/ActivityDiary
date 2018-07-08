@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Selecteer Activiteit</string>
   <string name="nav_diary">Dagboek</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Activiteit toevoegen</string>
   <string name="nav_show_deleted">Toon verwijderd</string>
   <string name="nav_hide_deleted">Verwijder verwijderd</string>
@@ -41,6 +42,7 @@
   <!-- settings -->
   <string name="setting_view_category">Uitzicht</string>
   <string name="setting_behavior_category">Gedrag</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Afbeeldingen</string>
   <string name="setting_backup_category">backup</string>
   <string name="setting_condition_category">Voorwaarden</string>
@@ -59,6 +61,10 @@
   <string name="setting_enable_acra">Crash-rapportage</string>
   <string name="setting_acra_enabled">Verstuur rapporten over crashes</string>
   <string name="setting_acra_disabled">Stuur geen rapporten over crashes</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Opslagmap voor afbeeldingen</string>
   <string name="setting_storage_folder_summary">Bewaar activiteitsfoto\'s in map %1$s</string>
   <string name="setting_storage_folder_description">Directory om de activiteitsfoto\'s op te slaan</string>
@@ -80,6 +86,10 @@
   <string name="setting_cond_daytime">Dag</string>
   <string name="setting_cond_daytime_summary">Dag van de activiteiten in het dagboek heeft een gewicht van %1$s op voorgestelde volgende activiteiten</string>
   <string name="setting_cond_daytime_not_used_summary">Overdag van de activiteiten in het dagboek wordt niet gebruikt voor het voorstellen van volgende activiteiten</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Expert instellingen</string>
   <string name="setting_export">Database exporteren</string>
   <string name="setting_import">Importeer database</string>
@@ -100,6 +110,7 @@
   <string name="activity_title_history_detail">Dagboek invulling</string>
   <string name="activity_subtitle_main">Wat ben je aan het doen?</string>
   <string name="activity_title_about">Over</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">instellingen</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Notitie</string>
