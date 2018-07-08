@@ -259,6 +259,7 @@ public class ActivityHelper extends AsyncQueryHandler{
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,
                 null);
+        LocationHelper.helper.updateLocation();
         readCurrentActivity();
         mCurrentActivityStartTime = new Date();
         createNotificationChannels();
@@ -380,6 +381,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                     listener.onActivityChanged();
                 }
             }
+            LocationHelper.helper.updateLocation();
             showCurrentActivityNotification();
         }
     }

@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.ui.history.HistoryActivity;
+import de.rampro.activitydiary.ui.location.MapActivity;
 import de.rampro.activitydiary.ui.main.MainActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
@@ -94,6 +95,10 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.nav_diary:
                         Intent intentdiary = new Intent(BaseActivity.this, HistoryActivity.class);
                         startActivity(intentdiary);
+                        break;
+                    case R.id.nav_map:
+                        Intent intentmap = new Intent(BaseActivity.this, MapActivity.class);
+                        startActivity(intentmap);
                         break;
                     case R.id.nav_about:
                         Intent intentabout = new Intent(BaseActivity.this, AboutActivity.class);

@@ -100,6 +100,7 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'org.osmdroid:osmdroid-android:6.0.1'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
     androidTestImplementation 'junit:junit:4.12'

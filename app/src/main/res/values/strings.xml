@@ -24,6 +24,7 @@
         ]]>
     </string>
     <string name="libraries" translatable="false"><![CDATA[
+        <p><a href="https://github.com/osmdroid/osmdroid">osmdroid</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="https://github.com/Pes8/android-material-color-picker-dialog">Android Material Color Picker Dialog</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="https://github.com/ACRA/acra">ACRA - Application Crash Reports for Android</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
@@ -35,6 +36,7 @@
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Select Activity</string>
     <string name="nav_diary">Diary</string>
+    <string name="nav_map">Map</string>
     <string name="nav_add_activity">Add Activity</string>
     <string name="nav_show_deleted">Show Deleted</string>
     <string name="nav_hide_deleted">Hide Deleted</string>
@@ -61,6 +63,7 @@
     <!-- settings -->
     <string name="setting_view_category">View</string>
     <string name="setting_behavior_category">Behavior</string>
+    <string name="setting_location_category">Location</string>
     <string name="setting_images_category">Images</string>
     <string name="setting_backup_category">Backup</string>
     <string name="setting_condition_category">Conditions</string>
@@ -81,6 +84,11 @@
     <string name="setting_enable_acra">Crash Reporting</string>
     <string name="setting_acra_enabled">Send reports on crashes</string>
     <string name="setting_acra_disabled">Don\'t send reports on crashes</string>
+
+    <string name="setting_use_location">Location Serivce</string>
+    <string name="setting_use_location_summary">%1$s used to track device location</string>
+    <string name="setting_use_location_off_summary">User location not tracked at all</string>
+    <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
 
     <string name="setting_storage_folder">Picture Storage Folder</string>
     <string name="setting_storage_folder_summary">Store activity photos in directory %1$s</string>
@@ -110,6 +118,12 @@
     <string name="setting_cond_daytime_not_used_summary">Daytime of the activities in the diary is not used for suggesting next activities</string>
     <string name="pref_cond_daytime_default" translatable="false">20</string>
 
+    <string name="pref_location_age_default" translatable="false">5</string>
+    <string name="pref_location_age">Request a location update every %1$s minutes</string>
+    <string name="setting_location_age">Update period</string>
+    <string name="pref_location_dist_default" translatable="false">50</string>
+    <string name="pref_location_dist">Request a location update every %1$s meters</string>
+    <string name="setting_location_dist">Update distance</string>
 
     <string name="setting_expert">Expert settings</string>
     <string name="setting_export">Export database</string>
@@ -132,6 +146,7 @@
     <string name="activity_title_history_detail">Diary entry</string>
     <string name="activity_subtitle_main">What are you doing?</string>
     <string name="activity_title_about">About</string>
+    <string name="activity_title_map">Map</string>
     <string name="activity_title_settings">Settings</string>
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">Note</string>
