@@ -150,7 +150,11 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* get a list of the activities as non-modifable copy, not guaranteed to be up to date */
     public List<DiaryActivity> getUnsortedActivities(){
-        return unsortedActivities;
+        List<DiaryActivity> result = new ArrayList<DiaryActivity>(unsortedActivities.size());
+        synchronized (this){
+            result.addAll(unsortedActivities);
+        }
+        return result;
     }
 
     public void scheduleRefresh() {
