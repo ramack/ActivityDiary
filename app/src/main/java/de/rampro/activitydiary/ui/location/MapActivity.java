@@ -116,14 +116,14 @@ public class MapActivity extends BaseActivity implements LoaderManager.LoaderCal
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
         Polyline line = new Polyline(map);
-        line.setWidth(10f);
+        line.setWidth(4f);
         line.setColor(Color.BLUE);
         List<GeoPoint> pts = new ArrayList<>(data.getCount());
         if ((data != null) && data.moveToFirst()) {
             while (!data.isAfterLast()) {
                 int hacc_idx = data.getColumnIndex(ActivityDiaryContract.DiaryLocation.HACC);
 
-                if(data.isNull(hacc_idx) || data.getInt(hacc_idx) < 300) {
+                if(data.isNull(hacc_idx) || data.getInt(hacc_idx) < 250) {
                     pts.add(new GeoPoint(data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LATITUDE)), data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LONGITUDE))));
                 }
                 data.moveToNext();

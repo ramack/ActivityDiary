@@ -30,6 +30,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
@@ -68,6 +69,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_DISABLE_CURRENT = "pref_disable_current_on_click";
     public static final String KEY_PREF_COND_DAYTIME = "pref_cond_daytime";
     public static final String KEY_PREF_USE_LOCATION = "pref_use_location";
+    public static final String KEY_PREF_LOCATION_AGE = "pref_location_age";
+    public static final String KEY_PREF_LOCATION_DIST = "pref_location_dist";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -85,6 +88,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference importPref;
     private Preference disableOnClickPref;
     private ListPreference useLocationPref;
+    private EditTextPreference locationAgePref;
+    private EditTextPreference locationDistPref;
 
     private PreferenceManager mPreferenceManager;
 
@@ -115,6 +120,10 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateDisableCurrent();
         }else if(key.equals(KEY_PREF_USE_LOCATION)){
             updateUseLocation();
+        }else if(key.equals(KEY_PREF_LOCATION_AGE)){
+            updateLocationAge();
+        }else if(key.equals(KEY_PREF_LOCATION_DIST)){
+            updateLocationDist();
         }
     }
 
@@ -127,8 +136,12 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 .getString(KEY_PREF_USE_LOCATION, "off");
 
         if(value.equals("off")){
+            locationAgePref.setEnabled(false);
+            locationDistPref.setEnabled(false);
             useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_off_summary));
         }else {
+            locationAgePref.setEnabled(true);
+            locationDistPref.setEnabled(true);
             useLocationPref.setSummary(getResources().getString(R.string.setting_use_location_summary, useLocationPref.getEntry()));
         }
 
@@ -159,8 +172,53 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                         4713);
             }
         }
+    }
 
+    private void updateLocationDist() {
+        String def = getResources().getString(R.string.pref_location_dist_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_LOCATION_DIST, def);
 
+        int v = Integer.parseInt(value.replaceAll("\\D",""));
+        if(v < 5){
+            v = 5;
+        }
+        String nvalue = Integer.toString(v);
+        if(!value.equals(nvalue)){
+            SharedPreferences.Editor editor = PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext()).edit();
+            editor.putString(KEY_PREF_LOCATION_DIST, nvalue);
+            editor.commit();
+            value = PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                    .getString(KEY_PREF_LOCATION_DIST, def);
+        }
+
+        locationDistPref.setSummary(getResources().getString(R.string.pref_location_dist, value));
+    }
+    private void updateLocationAge() {
+        String def = getResources().getString(R.string.pref_location_age_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_LOCATION_AGE, def);
+        int v = Integer.parseInt(value.replaceAll("\\D",""));
+        if(v < 2){
+            v = 2;
+        }else if(v > 60){
+            v = 60;
+        }
+        String nvalue = Integer.toString(v);
+        if(!value.equals(nvalue)){
+            SharedPreferences.Editor editor = PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext()).edit();
+            editor.putString(KEY_PREF_LOCATION_AGE, nvalue);
+            editor.commit();
+            value = PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                    .getString(KEY_PREF_LOCATION_AGE, def);
+        }
+        locationAgePref.setSummary(getResources().getString(R.string.pref_location_age, value));
     }
 
     private void updateDisableCurrent() {
@@ -291,6 +349,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         disableOnClickPref = mPreferenceManager.findPreference(KEY_PREF_DISABLE_CURRENT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
         useLocationPref = (ListPreference) mPreferenceManager.findPreference(KEY_PREF_USE_LOCATION);
+        locationAgePref = (EditTextPreference)mPreferenceManager.findPreference(KEY_PREF_LOCATION_AGE);
+        locationDistPref = (EditTextPreference)mPreferenceManager.findPreference(KEY_PREF_LOCATION_DIST);
 
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
         nofifShowCurActPref = mPreferenceManager.findPreference(KEY_PREF_NOTIF_SHOW_CUR_ACT);
@@ -345,6 +405,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateNotifShowCurActivity();
         updateDisableCurrent();
         updateUseLocation();
+        updateLocationAge();
+        updateLocationDist();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

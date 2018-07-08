@@ -58,7 +58,10 @@
             android:summaryOn="@string/setting_acra_enabled"
             android:summaryOff="@string/setting_acra_disabled"
             android:defaultValue="true"/>
-
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory
+        android:title="@string/setting_location_category"
+        >
         <ListPreference
             android:key="pref_use_location"
             android:title="@string/setting_use_location"
@@ -66,6 +69,21 @@
             android:entries="@array/pref_location_setting_list"
             android:entryValues="@array/pref_location_setting_list_values"
             android:defaultValue="off" />
+
+        <EditTextPreference
+            android:key="pref_location_age"
+            android:defaultValue="50"
+            android:dialogTitle="@string/setting_location_age"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:title="@string/setting_location_age" />
+
+        <EditTextPreference
+            android:key="pref_location_dist"
+            android:defaultValue="50"
+            android:dialogTitle="@string/setting_location_dist"
+            android:inputType="number"
+            android:title="@string/setting_location_dist" />
 
     </android.support.v7.preference.PreferenceCategory>
     <android.support.v7.preference.PreferenceCategory

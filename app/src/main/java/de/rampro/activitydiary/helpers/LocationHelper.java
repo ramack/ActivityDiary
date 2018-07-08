@@ -21,7 +21,6 @@ package de.rampro.activitydiary.helpers;
 
 import android.Manifest;
 import android.content.AsyncQueryHandler;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,21 +31,24 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
-import android.util.Log;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
-public class LocationHelper extends AsyncQueryHandler implements LocationListener {
+public class LocationHelper extends AsyncQueryHandler implements LocationListener, SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = LocationHelper.class.getName();
 
     public static final LocationHelper helper = new LocationHelper();
-    private static final long MIN_TIME = 1000 * 60 * 2; // for now every 2 minutes, TODO: make configurable
-    private static final float MIN_DISTANCE = 50.0f;
+    private static final long MIN_TIME_DEF = 5; // for now every 5 minutes
+    private static final long MIN_TIME_FACTOR = 1000 * 60;
+    private static final float MIN_DISTANCE_DEF = 50.0f;
+
+    private long minTime;
+    private float minDist;
+    private String setting;
 
     private Location currentLocation;
 
@@ -57,6 +59,8 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
     public LocationHelper() {
         super(ActivityDiaryApplication.getAppContext().getContentResolver());
         currentLocation = new Location("DiaryLocation");
+        updatePreferences();
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     public Location getCurrentLocation(){
@@ -64,7 +68,6 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
     }
 
     void updateLocation() {
-        String setting = sharedPreferences.getString(SettingsActivity.KEY_PREF_USE_LOCATION, "off");
 
         if (setting.equals("off")) {
             // do nothing
@@ -82,12 +85,12 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
             }
             if(permissionCheckFine == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.GPS_PROVIDER;
-                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this, Looper.getMainLooper());
+                locationManager.requestLocationUpdates(locationProvider, minTime, minDist, this, Looper.getMainLooper());
             }
 
             if(permissionCheckCoarse == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.NETWORK_PROVIDER;
-                locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, this, Looper.getMainLooper());
+                locationManager.requestLocationUpdates(locationProvider, minTime, minDist, this, Looper.getMainLooper());
 
             }
         }
@@ -183,4 +186,28 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
     public void onProviderDisabled(String provider) {
 
     }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals(SettingsActivity.KEY_PREF_USE_LOCATION)
+                || key.equals(SettingsActivity.KEY_PREF_LOCATION_AGE)
+                || key.equals(SettingsActivity.KEY_PREF_LOCATION_DIST)
+                ) {
+            updatePreferences();
+            updateLocation();
+        }
+    }
+
+    void updatePreferences(){
+        try {
+            setting = sharedPreferences.getString(SettingsActivity.KEY_PREF_USE_LOCATION, "off");
+            String minTimeS = sharedPreferences.getString(SettingsActivity.KEY_PREF_LOCATION_AGE, Long.toString(MIN_TIME_DEF * MIN_TIME_FACTOR));
+            minTime = Long.parseLong(minTimeS);
+            String minDistS = sharedPreferences.getString(SettingsActivity.KEY_PREF_LOCATION_DIST, Float.toString(MIN_DISTANCE_DEF));
+            minDist = Float.parseFloat(minDistS);
+        }catch (NumberFormatException e){
+            /* no change in settings on invalid config */
+        }
+    }
 }
+
