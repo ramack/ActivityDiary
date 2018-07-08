@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Velg aktivitet</string>
   <string name="nav_diary">Diary</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Legg til aktivitet</string>
   <string name="nav_show_deleted">Vis slettet</string>
   <string name="nav_hide_deleted">Skjul slettet</string>
@@ -41,6 +42,7 @@
   <!-- settings -->
   <string name="setting_view_category">Utsikt</string>
   <string name="setting_behavior_category">Oppførsel</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Bilder</string>
   <string name="setting_backup_category">backup</string>
   <string name="setting_condition_category">Forhold</string>
@@ -59,6 +61,10 @@
   <string name="setting_enable_acra">Crash Reporting</string>
   <string name="setting_acra_enabled">Send rapporter om krasjer</string>
   <string name="setting_acra_disabled">Ikke send rapporter om krasjer</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Bildelagringsmappe</string>
   <string name="setting_storage_folder_summary">Lag aktivitetsfotografier i katalogen %1$s</string>
   <string name="setting_storage_folder_description">Katalog for å lagre aktivitetsfotografiene</string>
@@ -80,6 +86,10 @@
   <string name="setting_cond_daytime">dagtid</string>
   <string name="setting_cond_daytime_summary">Dagtid av aktivitetene i dagboken har en vekt på %1$s på foreslåtte neste aktiviteter</string>
   <string name="setting_cond_daytime_not_used_summary">Dagtid av aktivitetene i dagboken er ikke brukt til å foreslå neste aktiviteter</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Ekspertinnstillinger</string>
   <string name="setting_export">Eksporter database</string>
   <string name="setting_import">Importer database</string>
@@ -100,6 +110,7 @@
   <string name="activity_title_history_detail">Dagbokoppføring</string>
   <string name="activity_subtitle_main">Hva gjør du?</string>
   <string name="activity_title_about">Handle om</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">innstillinger</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Merk</string>
