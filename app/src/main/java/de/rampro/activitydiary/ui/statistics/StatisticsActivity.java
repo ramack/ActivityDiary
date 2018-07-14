@@ -49,10 +49,11 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
     private static final int LOADER_ID_TIME = 0;
 
     private static final String[] PROJECTION = new String[] {
-            ActivityDiaryContract.Diary.START,
-            ActivityDiaryContract.Diary.END
+            ActivityDiaryContract.DiaryStats.NAME,
+            ActivityDiaryContract.DiaryStats.COLOR,
+            ActivityDiaryContract.DiaryStats.PORTION,
+            ActivityDiaryContract.DiaryStats.DURATION
     };
-    private static final String SELECTION_INIT = ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0";
     private PieChart chart;
 
 
@@ -71,7 +72,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         getLoaderManager().initLoader(LOADER_ID_TIME, null, this);
         chart = (PieChart) findViewById(R.id.piechart);
         chart.getLegend().setEnabled(false);
-        
+
         mDrawerToggle.setDrawerIndicatorEnabled(false);
 }
 
@@ -79,9 +80,14 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
-        if(id == LOADER_ID_TIME + 1) {
-            return new CursorLoader(this, ActivityDiaryContract.Diary.CONTENT_URI,
-                    PROJECTION, SELECTION_INIT, null, null);
+        if(id == LOADER_ID_TIME) {
+
+            return new CursorLoader(this,
+                    ActivityDiaryContract.DiaryStats.CONTENT_URI,
+                    PROJECTION,
+                    "",
+                    null,
+                    ActivityDiaryContract.DiaryStats.SORT_ORDER_DEFAULT);
         }else{
             return null;
         }
@@ -95,14 +101,18 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         List<PieEntry> entries = new ArrayList<>();
         List<Integer> colors = new ArrayList<>();
 
-        entries.add(new PieEntry(18.5f, "Green"));
-        colors.add(Color.GREEN);
-        entries.add(new PieEntry(46.7f, "Yellow"));
-        colors.add(Color.YELLOW);
-        entries.add(new PieEntry(4.0f, "Red"));
-        colors.add(Color.RED);
-        entries.add(new PieEntry(30.8f, "Blue"));
-        colors.add(Color.BLUE);
+        int portion_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.PORTION);
+        int name_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.NAME);
+        int col_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.COLOR);
+
+        if ((data != null) && data.moveToFirst()) {
+            while (!data.isAfterLast()) {
+                entries.add(new PieEntry(data.getFloat(portion_idx), data.getString(name_idx)));
+                colors.add(data.getInt(col_idx));
+
+                data.moveToNext();
+            }
+        }
 
         PieDataSet set = new PieDataSet(entries, getResources().getString(R.string.activities));
         PieData dat = new PieData(set);

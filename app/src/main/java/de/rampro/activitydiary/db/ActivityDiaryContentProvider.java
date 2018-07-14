@@ -52,6 +52,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     private static final int diary_image_ID = 8;
     private static final int diary_location = 9;
     private static final int diary_location_ID = 10;
+    private static final int diary_stats = 11;
     private static final String TAG = ActivityDiaryContentProvider.class.getName();
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -63,8 +64,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath().replaceAll("^/+", ""), diary);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.Diary.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_ID);
 
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_image);
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_image_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryStats.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_stats);
+
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
@@ -87,6 +90,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
+        boolean useRawQuery = false;
+        String sql = "";
+        Cursor c;
 
         if(sUriMatcher.match(uri) < 1)
         {
@@ -135,6 +141,29 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 );
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
                 break;
+            case diary_stats:
+                useRawQuery = true;
+
+                String subselect = "SELECT SUM(" + ActivityDiaryContract.Diary.END + " - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
+
+                if(selection != null && selection.length() > 0) {
+                    subselect += " WHERE " + selection;
+                }
+                sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
+                        + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR + " as " + ActivityDiaryContract.DiaryStats.COLOR
+                        + ", SUM(" + ActivityDiaryContract.Diary.END + " - " + ActivityDiaryContract.Diary.START + ") as " + ActivityDiaryContract.DiaryStats.DURATION
+                        + ", (SUM(end - start) * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
+                        + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
+                        + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                        ;
+                if(selection != null && selection.length() > 0) {
+                    sql += " AND " + selection;
+                }
+                sql += " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
+                if(sortOrder != null && sortOrder.length() > 0) {
+                    sql += " ORDER by " + sortOrder;
+                }
+                break;
             case conditions_ID:
                 /* intended fall through */
             case conditions:
@@ -144,13 +173,17 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* empty */
         }
 
-        Cursor c = qBuilder.query(mOpenHelper.getReadableDatabase(),
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder);
+        if(useRawQuery){
+            c = mOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
+        }else {
+            c = qBuilder.query(mOpenHelper.getReadableDatabase(),
+                    projection,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    sortOrder);
+        }
         c.setNotificationUri(getContext().getContentResolver(), uri);
 
         return c;
@@ -172,6 +205,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 return ActivityDiaryContract.DiaryLocation.CONTENT_TYPE;
             case diary_location_ID:
                 return ActivityDiaryContract.DiaryLocation.CONTENT_ITEM_TYPE;
+            case diary_stats:
+                return ActivityDiaryContract.DiaryStats.CONTENT_TYPE;
             // TODO #18: add other types
             default:
                 Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
@@ -206,6 +241,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
 // TODO #18               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
 //                break;
+            case diary_stats: /* intended fall-through */
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for insertion: " + uri);
@@ -279,6 +315,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case conditions_ID:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
 //                break;
+            case diary_stats: /* intended fall-through */
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for deletion: " + uri);
@@ -353,6 +390,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 isID = true;
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
 //                break;
+            case diary_stats: /* intended fall-through */
             default:
                 throw new IllegalArgumentException(
                         "Unsupported URI for update: " + uri);
