@@ -376,13 +376,13 @@ public class ActivityDiaryContract {
         public static final String COLOR = "color";
 
         /**
-         * The time in milliseconds
+         * The time in milliseconds, not allowed to be used in conditions
          * <P>Type: LONG</P>
          */
         public static final String DURATION = "duration";
 
         /**
-         * The portion in percent
+         * The portion in percent, not allowed to be used in conditions
          * <P>Type: FLOAT</P>
          */
         public static final String PORTION = "portion";

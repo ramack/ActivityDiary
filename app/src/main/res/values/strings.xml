@@ -175,6 +175,9 @@
     <string name="dlg_undelete_activity_title">Recover Activity</string>
     <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
 
+
+    <string name="statistics_rest">Rest</string>
+
     <!-- main view -->
     <string name="duration_description">Since %1$s</string>
     <string name="just_now">just now</string>

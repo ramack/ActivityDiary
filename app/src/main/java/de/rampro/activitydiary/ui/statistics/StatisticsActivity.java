@@ -31,9 +31,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import org.osmdroid.config.Configuration;
 
@@ -72,6 +75,9 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         getLoaderManager().initLoader(LOADER_ID_TIME, null, this);
         chart = (PieChart) findViewById(R.id.piechart);
         chart.getLegend().setEnabled(false);
+        chart.setDescription(null);
+        chart.setHoleRadius(30.0f);
+        chart.setTransparentCircleRadius(40.0f);
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
 }
@@ -85,7 +91,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
             return new CursorLoader(this,
                     ActivityDiaryContract.DiaryStats.CONTENT_URI,
                     PROJECTION,
-                    "",
+                    null,
                     null,
                     ActivityDiaryContract.DiaryStats.SORT_ORDER_DEFAULT);
         }else{
@@ -104,21 +110,66 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         int portion_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.PORTION);
         int name_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.NAME);
         int col_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.COLOR);
+        int dur_idx = data.getColumnIndex(ActivityDiaryContract.DiaryStats.DURATION);
 
         if ((data != null) && data.moveToFirst()) {
+            float acc = 0.0f;
+            float acc_po = 0.0f;
             while (!data.isAfterLast()) {
-                entries.add(new PieEntry(data.getFloat(portion_idx), data.getString(name_idx)));
-                colors.add(data.getInt(col_idx));
-
+                float portion = data.getFloat(portion_idx);
+                long duration = data.getLong(dur_idx);
+                if(portion > 3.0f){
+                    PieEntry ent = new PieEntry((float)duration, data.getString(name_idx));
+                    entries.add(ent);
+                    colors.add(data.getInt(col_idx));
+                }else{
+                    // accumulate the small, not shown entries
+                    acc += duration;
+                    acc_po += portion;
+                }
                 data.moveToNext();
+            }
+            if(acc_po > 2.0f) {
+                entries.add(new PieEntry(acc, getResources().getString(R.string.statistics_rest)));
+                colors.add(Color.GRAY);
             }
         }
 
         PieDataSet set = new PieDataSet(entries, getResources().getString(R.string.activities));
         PieData dat = new PieData(set);
         set.setColors(colors);
+
+        set.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                PieEntry e = (PieEntry)entry;
+                long dur = (long)e.getValue() / 1000;
+                int d = (int)(dur / 60 / 60 / 24);
+                int h = (int)((dur - d * (60 * 60 * 24)) / 60 / 60);
+                int m = (int)((dur - d * (60 * 60 * 24) - h * (60 * 60)) / 60);
+                int s = (int)((dur - d * (60 * 60 * 24) - h * (60 * 60) - m * 60));
+                String result;
+                if(d > 0){
+                    result = d + "d";
+                }else{
+                    result = "";
+                }
+
+                if(d > 0 || h > 0){
+                    result += h + "h";
+                }
+                if(d > 0 || h > 0 || m > 0){
+                    result += m + "m";
+                }
+                if(d > 0 || h > 0 || m > 0 || s > 0){
+                    result += s + "s";
+                }
+                return result;
+            }
+        });
         chart.setData(dat);
         chart.setUsePercentValues(true);
+        chart.setRotationAngle(180.0f);
         chart.invalidate(); // refresh
 
     }

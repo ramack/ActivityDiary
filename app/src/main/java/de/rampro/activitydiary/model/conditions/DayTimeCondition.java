@@ -44,18 +44,19 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     private void updateStartTimes(){
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();
 // TODO: mean should consider "modulo" - i.e. agv of (23h and 1h) should be 0h
-// TODO: extend to multiple peaks per day (configurable)
+// TODO: extend to multiple peaks per day (configurable or better by generic k-means)
+// TODO: check if utc handling is really correct...
         Cursor c = db.rawQuery(
                         "SELECT " + ActivityDiaryContract.Diary.TABLE_NAME + "."
                         + ActivityDiaryContract.Diary.ACT_ID
                         + ", sub.m as mean, "
                         + "AVG(  (   (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch')"
+                        +                      "/1000, 'unixepoch', 'utc')"
                         +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
                         +                      "/1000, 'unixepoch', 'start of day', 'utc'), 'utc')"
                         +           ") - sub.m"
                         +      " )*( (    strftime('%s'," + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
-                        +                      "/1000, 'unixepoch')"
+                        +                      "/1000, 'unixepoch', 'utc')"
                         +             " - strftime('%s',datetime(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.START
                         +                      "/1000, 'unixepoch', 'start of day', 'utc'), 'utc')"
                         +           ") - sub.m"

@@ -144,15 +144,16 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_stats:
                 useRawQuery = true;
 
-                String subselect = "SELECT SUM(" + ActivityDiaryContract.Diary.END + " - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
+                String subselect = "SELECT SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
 
                 if(selection != null && selection.length() > 0) {
                     subselect += " WHERE " + selection;
                 }
+
                 sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
                         + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR + " as " + ActivityDiaryContract.DiaryStats.COLOR
-                        + ", SUM(" + ActivityDiaryContract.Diary.END + " - " + ActivityDiaryContract.Diary.START + ") as " + ActivityDiaryContract.DiaryStats.DURATION
-                        + ", (SUM(end - start) * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
+                        + ", SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") as " + ActivityDiaryContract.DiaryStats.DURATION
+                        + ", (SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
                         + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
                         ;
