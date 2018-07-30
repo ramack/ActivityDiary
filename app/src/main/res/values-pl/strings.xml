@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Wybierz aktywność</string>
   <string name="nav_diary">Dziennik</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Dodaj aktywność</string>
   <string name="nav_show_deleted">Pokaż usunięte</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Wpis do pamiętnika</string>
   <string name="activity_subtitle_main">Co robisz?</string>
   <string name="activity_title_about">O</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Ustawienia</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Uwaga</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Usuń aktywność</string>
   <string name="action_diary_entry_delete">Usuń wpis</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Czy na pewno chcesz usunąć ten obraz z bieżącego wpisu aktywności?</string>
   <string name="dlg_undelete_activity_title">Odzyskaj aktywność</string>
   <string name="dlg_undelete_activity_text">Czy aktywność %1$s zostanie odzyskana i stanie się ponownie dostępna?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Od %1$s</string>
   <string name="just_now">właśnie</string>
@@ -182,6 +186,12 @@
   <string name="constraint_positive_duration">Czynność powinna zawsze rozpocząć się przed jej zakończeniem.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Dzisiaj</string>
   <string name="yesterday">Wczoraj</string>
