@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Yan Iṣẹ</string>
   <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Fi iṣẹ kun</string>
   <string name="nav_show_deleted">Fihan Paarẹ</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Akọsilẹ kikọsi</string>
   <string name="activity_subtitle_main">Kini o n ṣe?</string>
   <string name="activity_title_about">Nipa</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Ètò</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Akiyesi</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Pa iṣẹ ṣiṣe</string>
   <string name="action_diary_entry_delete">Pa titẹ sii</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Ṣe o da ọ loju pe o fẹ yọ aworan yii kuro ni titẹsi iṣẹ ṣiṣelọwọ?</string>
   <string name="dlg_undelete_activity_title">Bọsipọ aṣayan iṣẹ</string>
   <string name="dlg_undelete_activity_text">Yoo ṣe iṣẹ naa %1$s ki o si wa ni ibẹrẹ lẹẹkansi?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Niwon %1$s</string>
   <string name="just_now">ni bayi</string>
@@ -170,6 +174,12 @@
   <string name="constraint_positive_duration">Iṣẹ naa yoo bẹrẹ nigbagbogbo ṣaaju ki o to pari.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Loni</string>
   <string name="yesterday">Lana</string>
