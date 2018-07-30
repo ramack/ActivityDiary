@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">アクティビティの選択</string>
   <string name="nav_diary">日記</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">アクティビティを追加</string>
   <string name="nav_show_deleted">削除済みを表示</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">日記エントリ</string>
   <string name="activity_subtitle_main">何してるの？</string>
   <string name="activity_title_about">約</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">設定</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">注意</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">アクティビティの削除</string>
   <string name="action_diary_entry_delete">記入を消す</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">現在のアクティビティエントリからこのイメージを削除してもよろしいですか？</string>
   <string name="dlg_undelete_activity_title">活動を回復する</string>
   <string name="dlg_undelete_activity_text">アクティビティー %1$s は回復され、再び使用可能になりますか？</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">%1$s以降</string>
   <string name="just_now">ちょうど今</string>
@@ -170,6 +174,12 @@
   <string name="constraint_positive_duration">アクティビティは、終了する前に常に開始されます。</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">今日</string>
   <string name="yesterday">昨日</string>
