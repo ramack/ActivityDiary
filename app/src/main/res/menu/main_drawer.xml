@@ -33,6 +33,10 @@
             android:icon="@drawable/ic_nav_history"
             android:title="@string/nav_diary" />
         <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_nav_stats"
+            android:title="@string/nav_stats" />
+        <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_nav_map"
             android:title="@string/nav_map" />

@@ -54,4 +54,13 @@
         <item>gps</item>
     </string-array>
 
+    <string-array name="statistic_dropdown" translatable="true">
+        <item>All</item>
+        <item>Last 7 Days</item>
+        <item>Last 30 Days</item>
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+    </string-array>
+
 </resources>

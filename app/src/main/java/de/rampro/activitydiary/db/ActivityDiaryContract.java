@@ -343,4 +343,63 @@ public class ActivityDiaryContract {
         public static final String _DELETED = "_deleted";
     }
 
+    /* DiaryStats - readonly */
+    public final static class DiaryStats {
+        /**
+         * This utility class cannot be instantiated
+         */
+        private DiaryStats() {}
+
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diaryStats");
+
+        /**
+         * You shall not do joins with this table...
+         */
+
+        /**
+         * The mime type of a directory of this entry.
+         */
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary_stats";
+
+        /**
+         * The name of the activity
+         * <P>Type: TEXT</P>
+         */
+        public static final String NAME = "name";
+
+        /**
+         * The color of the Activity
+         * <P>Type: TEXT</P>
+         */
+        public static final String COLOR = "color";
+
+        /**
+         * The time in milliseconds, not allowed to be used in conditions
+         * <P>Type: LONG</P>
+         */
+        public static final String DURATION = "duration";
+
+        /**
+         * The portion in percent, not allowed to be used in conditions
+         * <P>Type: FLOAT</P>
+         */
+        public static final String PORTION = "portion";
+
+        /**
+         * A projection of all columns in the diary table
+         */
+        public static final String[] PROJECTION_ALL =
+                {NAME, COLOR, DURATION, PORTION};
+
+        /**
+         * The default sort order for the statistics
+         */
+        public static final String SORT_ORDER_DEFAULT = DURATION + " DESC";
+
+    }
+
+
+
 }

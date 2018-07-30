@@ -36,6 +36,7 @@ import de.rampro.activitydiary.ui.history.HistoryActivity;
 import de.rampro.activitydiary.ui.location.MapActivity;
 import de.rampro.activitydiary.ui.main.MainActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
+import de.rampro.activitydiary.ui.statistics.StatisticsActivity;
 
 /*
  * MainActivity to show most of the UI, based on switching the fragements
@@ -99,6 +100,10 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.nav_map:
                         Intent intentmap = new Intent(BaseActivity.this, MapActivity.class);
                         startActivity(intentmap);
+                        break;
+                    case R.id.nav_statistics:
+                        Intent intentstats = new Intent(BaseActivity.this, StatisticsActivity.class);
+                        startActivity(intentstats);
                         break;
                     case R.id.nav_about:
                         Intent intentabout = new Intent(BaseActivity.this, AboutActivity.class);

@@ -142,7 +142,7 @@ public class MapActivity extends BaseActivity implements LoaderManager.LoaderCal
 
     @Override
     public void onResume(){
-        mNavigationView.getMenu().findItem(R.id.nav_about).setChecked(true);
+        mNavigationView.getMenu().findItem(R.id.nav_map).setChecked(true);
         super.onResume();
         //this will refresh the osmdroid configuration on resuming.
         //if you make changes to the configuration, use
