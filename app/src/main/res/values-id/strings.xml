@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Pilih Aktifitas</string>
   <string name="nav_diary">Buku harian</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Tambahkan Aktifitas</string>
   <string name="nav_show_deleted">Tampilkan Dihapus</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Catatan harian</string>
   <string name="activity_subtitle_main">Apa yang sedang Anda lakukan?</string>
   <string name="activity_title_about">Tentang</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Pengaturan</string>
   <string name="activity_title_no_selected_act">&lt;Tidak ada Aktivitas&gt;</string>
   <string name="dialog_title_note">Catatan</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Hapus aktivitas</string>
   <string name="action_diary_entry_delete">Hapus entri</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
   <string name="dlg_undelete_activity_title">Pulihkan Aktivitas</string>
   <string name="dlg_undelete_activity_text">Apakah aktivitas %1$s dipulihkan dan menjadi tersedia lagi?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
   <string name="just_now">baru saja</string>
@@ -170,6 +174,12 @@
   <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>
