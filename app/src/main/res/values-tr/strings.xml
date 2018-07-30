@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Etkinlik Seç</string>
   <string name="nav_diary">Günlük</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Etkinlik Ekle</string>
   <string name="nav_show_deleted">Silinenleri Göster</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Günlük girişi</string>
   <string name="activity_subtitle_main">Ne yapıyorsun?</string>
   <string name="activity_title_about">Hakkında</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Ayarlar</string>
   <string name="activity_title_no_selected_act">&lt;Etkinlik Yok&gt;</string>
   <string name="dialog_title_note">Not</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Etkinliği sil</string>
   <string name="action_diary_entry_delete">Girişi sil</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
   <string name="dlg_undelete_activity_title">Etkinliği Kurtar</string>
   <string name="dlg_undelete_activity_text">%1$s etkinliği kurtarılsın ve tekrar kullanılabilir olsun mu?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">%1$s tarihinden beri</string>
   <string name="just_now">şimdi</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">Etkinlik her zaman bitmeden başlayacaktır.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Bugün</string>
   <string name="yesterday">Dün</string>
