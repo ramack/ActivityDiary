@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Selecione a atividade</string>
   <string name="nav_diary">Diário</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Adicionar atividade</string>
   <string name="nav_show_deleted">Mostrar excluído</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Entrada diário</string>
   <string name="activity_subtitle_main">O que você está fazendo?</string>
   <string name="activity_title_about">Sobre</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Configurações</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Nota</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Excluir atividade</string>
   <string name="action_diary_entry_delete">Excluir entrada</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Tem certeza de que deseja remover esta imagem da entrada de atividade atual?</string>
   <string name="dlg_undelete_activity_title">Recuperar atividade</string>
   <string name="dlg_undelete_activity_text">A atividade %1$s será recuperada e ficará disponível novamente?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Desde %1$s</string>
   <string name="just_now">Agora mesmo</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">A atividade deve começar sempre antes de terminar.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Hoje</string>
   <string name="yesterday">Ontem</string>
