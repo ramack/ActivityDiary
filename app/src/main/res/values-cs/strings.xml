@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Vyberte možnost Aktivita</string>
   <string name="nav_diary">Deník</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Přidat aktivitu</string>
   <string name="nav_show_deleted">Zobrazit smazané</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Zápis do deníku</string>
   <string name="activity_subtitle_main">Co to děláš?</string>
   <string name="activity_title_about">O</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Nastavení</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Poznámka</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Smazat aktivitu</string>
   <string name="action_diary_entry_delete">Smazat záznam</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Opravdu chcete tento obrázek odstranit z aktuální položky aktivity?</string>
   <string name="dlg_undelete_activity_title">Aktivita obnovení</string>
   <string name="dlg_undelete_activity_text">Je aktivita %1$s obnovena a znovu dostupná?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Od %1$s</string>
   <string name="just_now">právě teď</string>
@@ -182,6 +186,12 @@
   <string name="constraint_positive_duration">Činnost musí vždy začít, než skončí.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Dnes</string>
   <string name="yesterday">Včera</string>
