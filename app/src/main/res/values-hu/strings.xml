@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Válasszon tevékenységet</string>
   <string name="nav_diary">Napló</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Tevékenység hozzáadása</string>
   <string name="nav_show_deleted">Megjelenítés törölve</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Naplóbejegyzést</string>
   <string name="activity_subtitle_main">Mit csinálsz?</string>
   <string name="activity_title_about">Ról ről</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Beállítások</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">jegyzet</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">A tevékenység törlése</string>
   <string name="action_diary_entry_delete">A bejegyzés törlése</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Biztosan eltávolítja ezt a képet az aktuális tevékenységbejegyzésből?</string>
   <string name="dlg_undelete_activity_title">Tevékenység visszaállítása</string>
   <string name="dlg_undelete_activity_text">A %1$s tevékenység lesz-e helyreállítva, és újra elérhetővé válik?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">%1$sóta</string>
   <string name="just_now">pont most</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">A tevékenységnek mindig a befejezés előtt meg kell kezdődnie.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Ma</string>
   <string name="yesterday">Tegnap</string>
