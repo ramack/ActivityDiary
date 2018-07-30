@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Selecteer Activiteit</string>
   <string name="nav_diary">Dagboek</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Activiteit toevoegen</string>
   <string name="nav_show_deleted">Toon verwijderd</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Dagboek invulling</string>
   <string name="activity_subtitle_main">Wat ben je aan het doen?</string>
   <string name="activity_title_about">Over</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">instellingen</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Notitie</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Activiteit verwijderen</string>
   <string name="action_diary_entry_delete">Vermelding verwijderen</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Weet je zeker dat je deze afbeelding uit het huidige activiteitsitem wilt verwijderen?</string>
   <string name="dlg_undelete_activity_title">Herstel activiteit</string>
   <string name="dlg_undelete_activity_text">Zal de activiteit %1$s worden hersteld en opnieuw beschikbaar worden?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Sinds %1$s</string>
   <string name="just_now">net nu</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">De activiteit begint altijd voordat deze eindigt.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Vandaag</string>
   <string name="yesterday">Gisteren</string>
