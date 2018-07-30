@@ -145,7 +145,13 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 useRawQuery = true;
 
                 String subselect = "SELECT SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
-
+                if(selectionArgs != null) {
+                    /* we duplicate the where condition, so we have to do the same with the arguments */
+                    String[] selArgs = new String[2 * selectionArgs.length];
+                    System.arraycopy(selectionArgs, 0, selArgs, 0, selectionArgs.length);
+                    System.arraycopy(selectionArgs, 0, selArgs, selectionArgs.length, selectionArgs.length);
+                    selectionArgs = selArgs;
+                }
                 if(selection != null && selection.length() > 0) {
                     subselect += " WHERE " + selection;
                 }
@@ -158,7 +164,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
                         ;
                 if(selection != null && selection.length() > 0) {
-                    sql += " AND " + selection;
+                    sql += " AND (" + selection + ")";
                 }
                 sql += " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
                 if(sortOrder != null && sortOrder.length() > 0) {

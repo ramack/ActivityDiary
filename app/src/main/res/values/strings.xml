@@ -226,6 +226,12 @@
     <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
     <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+    <!-- statistics -->
+    <string name="earlier">earlier</string>
+    <string name="later">later</string>
+    <string name="week_format">yyyy \'Week\' ww</string>
+    <string name="month_format">MMMM yyyy</string>
+    <string name="year_format">yyyy</string>
 
     <!-- relative dates -->
     <string name="today">Today</string>
@@ -236,4 +242,5 @@
     <string name="crash_dialog_text">An unexpected error occurred forcing the application to stop. Please help us fix this by sending us error data, all you have to do is click OK.</string>
     <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
     <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
+
 </resources>
