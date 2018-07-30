@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Sélectionnez une activité</string>
   <string name="nav_diary">Journal</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Ajouter une activité</string>
   <string name="nav_show_deleted">Afficher supprimé</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Entrée dans le journal</string>
   <string name="activity_subtitle_main">Qu\'est-ce que tu fais?</string>
   <string name="activity_title_about">Sur</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Paramètres</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Remarque</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Supprimer l\'activité</string>
   <string name="action_diary_entry_delete">Supprimer l\'entrée</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Êtes-vous sûr de vouloir supprimer cette image de l\'entrée d\'activité en cours?</string>
   <string name="dlg_undelete_activity_title">Récupérer l\'activité</string>
   <string name="dlg_undelete_activity_text">L\'activité %1$s être récupérée et redevenue disponible?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Depuis %1$s</string>
   <string name="just_now">juste maintenant</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">L\'activité doit toujours commencer avant la fin.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Aujourd\'hui</string>
   <string name="yesterday">Hier</string>
