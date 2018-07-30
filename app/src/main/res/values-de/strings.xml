@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Aktivität wählen</string>
   <string name="nav_diary">Tagebuch</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Aktivität hinzufügen</string>
   <string name="nav_show_deleted">Zeige Gelöschte</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Tagebucheintrag</string>
   <string name="activity_subtitle_main">Was machst du gerade?</string>
   <string name="activity_title_about">Über</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Einstellungen</string>
   <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
   <string name="dialog_title_note">Notiz</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Aktivität löschen</string>
   <string name="action_diary_entry_delete">Eintrag löschen</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
   <string name="dlg_undelete_activity_title">Aktivität wiederherstellen</string>
   <string name="dlg_undelete_activity_text">Soll die Aktivität %1$s wiederhergestellt werden und wieder auswählbar sein?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Seit %1$s</string>
   <string name="just_now">gerade eben</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
   <string name="search_notes">In den Notizen nach \'%1$s\' suchen&#x2026;</string>
   <string name="search_diary">Überall nach \'%1$s\' suchen&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Heute</string>
   <string name="yesterday">Gestern</string>
