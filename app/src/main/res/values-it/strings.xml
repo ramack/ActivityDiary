@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Seleziona l\' attività</string>
   <string name="nav_diary">Diario</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Aggiungi un\' attività</string>
   <string name="nav_show_deleted">Mostra eliminato</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Voce del diario</string>
   <string name="activity_subtitle_main">Cosa fai?</string>
   <string name="activity_title_about">Circa</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Impostazioni</string>
   <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
   <string name="dialog_title_note">Nota</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Elimina un\'attività</string>
   <string name="action_diary_entry_delete">Elimina la voce</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Sei sicuro di voler rimuovere questa immagine dalla voce di attività corrente?</string>
   <string name="dlg_undelete_activity_title">Recupera attività</string>
   <string name="dlg_undelete_activity_text">L\'attività %1$s essere recuperata e diventare nuovamente disponibile?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Dal %1$s</string>
   <string name="just_now">proprio adesso</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">L\'attività inizia sempre prima che finisca.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Oggi</string>
   <string name="yesterday">Ieri</string>
