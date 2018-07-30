@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">활동 선택</string>
   <string name="nav_diary">일기</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">활동 추가</string>
   <string name="nav_show_deleted">삭제 된 항목 표시</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">일기 항목</string>
   <string name="activity_subtitle_main">뭐하고 있니?</string>
   <string name="activity_title_about">약</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">설정</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">노트</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">활동 삭제</string>
   <string name="action_diary_entry_delete">항목 삭제</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">현재 활동 항목에서이 이미지를 제거 하시겠습니까?</string>
   <string name="dlg_undelete_activity_title">활동 복구</string>
   <string name="dlg_undelete_activity_text">활동 %1$s 이 복구되어 다시 사용 가능하게됩니까?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">%1$s이후</string>
   <string name="just_now">방금</string>
@@ -170,6 +174,12 @@
   <string name="constraint_positive_duration">활동은 끝나기 전에 항상 시작됩니다.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">오늘</string>
   <string name="yesterday">어제</string>
