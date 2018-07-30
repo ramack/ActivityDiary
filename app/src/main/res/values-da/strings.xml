@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Vælg aktivitet</string>
   <string name="nav_diary">Dagbog</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Tilføj aktivitet</string>
   <string name="nav_show_deleted">Vis slettet</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Diary entry</string>
   <string name="activity_subtitle_main">Hvad laver du?</string>
   <string name="activity_title_about">Om</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Indstillinger</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Bemærk</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Slet aktivitet</string>
   <string name="action_diary_entry_delete">Slet indtastning</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Er du sikker på, at du vil fjerne dette billede fra den aktuelle aktivitetspost?</string>
   <string name="dlg_undelete_activity_title">Gendan aktivitet</string>
   <string name="dlg_undelete_activity_text">Skal aktiviteten %1$s udvindes og blive tilgængelig igen?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Siden %1$s</string>
   <string name="just_now">lige nu</string>
@@ -174,6 +178,12 @@
   <string name="constraint_positive_duration">Aktiviteten skal altid starte før den ender.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">I dag</string>
   <string name="yesterday">I går</string>
