@@ -21,6 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Выберите действие</string>
   <string name="nav_diary">Дневник</string>
+  <string name="nav_stats">Statistics</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Добавить деятельность</string>
   <string name="nav_show_deleted">Показать удалено</string>
@@ -110,10 +111,12 @@
   <string name="activity_title_history_detail">Запись в дневнике</string>
   <string name="activity_subtitle_main">Что делаешь?</string>
   <string name="activity_title_about">Около</string>
+  <string name="activity_title_stats">Statistics</string>
   <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">настройки</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Заметка</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Удалить активность</string>
   <string name="action_diary_entry_delete">Удалить запись</string>
@@ -129,6 +132,7 @@
   <string name="dlg_delete_image_text">Вы действительно хотите удалить это изображение из текущей записи активности?</string>
   <string name="dlg_undelete_activity_title">Восстановить активность</string>
   <string name="dlg_undelete_activity_text">Будет ли операция %1$s восстановлена ​​и снова станет доступной?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Поскольку %1$s</string>
   <string name="just_now">прямо сейчас</string>
@@ -182,6 +186,12 @@
   <string name="constraint_positive_duration">Деятельность всегда начинается до ее окончания.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Cегодня</string>
   <string name="yesterday">Вчера</string>
