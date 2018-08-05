@@ -469,35 +469,42 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(int adapterPosition) {
+
         DiaryActivity newAct = selectAdapter.item(adapterPosition);
-        ActivityHelper.helper.setCurrentActivity(newAct);
+        if(newAct != ActivityHelper.helper.getCurrentActivity()) {
 
-        searchView.setQuery("",false);
-        searchView.setIconified(true);
+            ActivityHelper.helper.setCurrentActivity(newAct);
+
+            searchView.setQuery("", false);
+            searchView.setIconified(true);
 
 
-        SpannableStringBuilder snackbarText = new SpannableStringBuilder();
-        snackbarText.append(newAct.getName());
-        int end = snackbarText.length();
-        snackbarText.setSpan(new ForegroundColorSpan(newAct.getColor()), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        snackbarText.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        snackbarText.setSpan(new RelativeSizeSpan((float)1.4152), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            SpannableStringBuilder snackbarText = new SpannableStringBuilder();
+            snackbarText.append(newAct.getName());
+            int end = snackbarText.length();
+            snackbarText.setSpan(new ForegroundColorSpan(newAct.getColor()), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            snackbarText.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            snackbarText.setSpan(new RelativeSizeSpan((float) 1.4152), 0, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 
-        Snackbar undoSnackBar = Snackbar.make(findViewById(R.id.main_layout),
-                snackbarText, Snackbar.LENGTH_LONG);
-        undoSnackBar.setAction(R.string.action_undo, new View.OnClickListener() {
-            /**
-             * Called when a view has been clicked.
-             *
-             * @param v The view that was clicked.
-             */
-            @Override
-            public void onClick(View v) {
-                Log.v(TAG, "UNDO Activity Selection");
-                ActivityHelper.helper.undoLastActivitySelection();
-            }
-        });
-        undoSnackBar.show();
+            Snackbar undoSnackBar = Snackbar.make(findViewById(R.id.main_layout),
+                    snackbarText, Snackbar.LENGTH_LONG);
+            undoSnackBar.setAction(R.string.action_undo, new View.OnClickListener() {
+                /**
+                 * Called when a view has been clicked.
+                 *
+                 * @param v The view that was clicked.
+                 */
+                @Override
+                public void onClick(View v) {
+                    Log.v(TAG, "UNDO Activity Selection");
+                    ActivityHelper.helper.undoLastActivitySelection();
+                }
+            });
+            undoSnackBar.show();
+        }else{
+            /* clicked the currently active activity in the list, so let's terminate it due to #176 */
+            ActivityHelper.helper.setCurrentActivity(null);
+        }
     }
 
     private Handler updateDurationHandler = new Handler();
