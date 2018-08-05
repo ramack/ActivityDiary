@@ -462,9 +462,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     public boolean onItemLongClick(int adapterPosition){
         Intent i = new Intent(MainActivity.this, EditActivity.class);
-        if(mCurrentActivity != null) {
-            i.putExtra("activityID", selectAdapter.item(adapterPosition).getId());
-        }
+        i.putExtra("activityID", selectAdapter.item(adapterPosition).getId());
         startActivity(i);
         return true;
     }
