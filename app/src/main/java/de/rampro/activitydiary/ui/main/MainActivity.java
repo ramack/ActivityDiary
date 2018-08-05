@@ -201,7 +201,7 @@ public class MainActivity extends BaseActivity implements
             public void onClick(View v) {
                 if(PreferenceManager
                         .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                        .getBoolean(SettingsActivity.KEY_PREF_DISABLE_CURRENT, false)){
+                        .getBoolean(SettingsActivity.KEY_PREF_DISABLE_CURRENT, true)){
                     ActivityHelper.helper.setCurrentActivity(null);
                 }else{
                     headerClickHandler.onClick(null);

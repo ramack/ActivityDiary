@@ -44,7 +44,7 @@
             android:key="pref_disable_current_on_click"
             android:title="@string/setting_disable_on_click"
             android:summary="@string/setting_disable_on_click_summary_inactive"
-            android:defaultValue="false"/>
+            android:defaultValue="true"/>
 
         <android.support.v7.preference.SwitchPreferenceCompat
             android:key="pref_show_cur_activity_notification"

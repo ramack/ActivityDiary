@@ -224,7 +224,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private void updateDisableCurrent() {
         if(PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                .getBoolean(KEY_PREF_DISABLE_CURRENT, false)){
+                .getBoolean(KEY_PREF_DISABLE_CURRENT, true)){
             disableOnClickPref.setSummary(getResources().getString(R.string.setting_disable_on_click_summary_active));
         }else{
             disableOnClickPref.setSummary(getResources().getString(R.string.setting_disable_on_click_summary_inactive));
