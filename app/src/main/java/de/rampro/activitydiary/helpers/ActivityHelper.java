@@ -259,15 +259,20 @@ public class ActivityHelper extends AsyncQueryHandler{
                 new GlobalOccurrenceCondition(this),
                 new DayTimeCondition(this)
         };
+        reloadAll();
 
-        startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
-                ACTIVITIES_PROJ, SELECTION, null,
-                null);
         LocationHelper.helper.updateLocation();
-        readCurrentActivity();
         mCurrentActivityStartTime = new Date();
         createNotificationChannels();
         scheduleRefresh();
+    }
+
+    /* reload all the activities from the database */
+    public void reloadAll(){
+        startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                ACTIVITIES_PROJ, SELECTION, null,
+                null);
+        readCurrentActivity();
     }
 
     /* create all the notification channels */

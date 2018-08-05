@@ -453,7 +453,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                 String s = getResources().getString(R.string.db_import_error, data.getData().toString());
                 Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
             }
-
+            ActivityHelper.helper.reloadAll();
         }
         if(requestCode == ACTIVITIY_RESULT_EXPORT && resultCode == RESULT_OK) {
 
