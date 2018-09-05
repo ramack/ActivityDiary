@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Последовательность действий</string>
   <string name="setting_cond_predecessor_summary">Последовательность действий в дневнике имеет вес %1$s по предлагаемым следующим действиям</string>
   <string name="setting_cond_predecessor_not_used_summary">Последовательность действий в дневнике не используется для указания следующих действий</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Мероприятие</string>
   <string name="setting_cond_occurrence_summary">Частота активности в дневнике имеет вес %1$s по предлагаемым следующим действиям</string>
   <string name="setting_cond_occurrence_not_used_summary">Частота активности в дневнике не используется для указания следующих действий</string>
