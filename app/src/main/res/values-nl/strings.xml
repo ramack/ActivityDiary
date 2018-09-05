@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Activiteitsvolgorde</string>
   <string name="setting_cond_predecessor_summary">Activiteitsvolgorde in het dagboek heeft een gewicht van %1$s op voorgestelde volgende activiteiten</string>
   <string name="setting_cond_predecessor_not_used_summary">Activiteitsvolgorde in het dagboek wordt niet gebruikt voor het voorstellen van volgende activiteiten</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Activiteitsincident</string>
   <string name="setting_cond_occurrence_summary">De activiteitsfrequentie in het dagboek heeft een gewicht van %1$s op voorgestelde volgende activiteiten</string>
   <string name="setting_cond_occurrence_not_used_summary">De activiteitsfrequentie in het dagboek wordt niet gebruikt voor het voorstellen van volgende activiteiten</string>
