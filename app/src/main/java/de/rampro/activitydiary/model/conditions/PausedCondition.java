@@ -70,9 +70,6 @@ public class PausedCondition extends Condition implements ActivityHelper.DataCha
                 if(m.containsKey(a)){
                     w = w + m.get(a);
                 }
-                if(a == null){
-                    Log.e("kkkk", "a == null");
-                }
                 m.put(a, w);
                 c.moveToNext();
                 cnt++;
