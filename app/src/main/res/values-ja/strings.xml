@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">アクティビティシーケンス</string>
   <string name="setting_cond_predecessor_summary">日記のアクティビティシーケンスは、次の推奨アクティビティで %1$s 重みを持ちます</string>
   <string name="setting_cond_predecessor_not_used_summary">日記のアクティビティシーケンスは、次のアクティビティの提案には使用されません</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">アクティビティの発生</string>
   <string name="setting_cond_occurrence_summary">日記の活動頻度は、提案された次の活動について %1$s 重みを有する</string>
   <string name="setting_cond_occurrence_not_used_summary">日記の活動頻度は、次の活動を提案するためには使用されない</string>
