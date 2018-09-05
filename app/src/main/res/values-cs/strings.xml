@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Sekvence činností</string>
   <string name="setting_cond_predecessor_summary">Sekvence činností v deníku má váhu %1$s na navrhovaných dalších aktivitách</string>
   <string name="setting_cond_predecessor_not_used_summary">Sekvence činností v deníku se nepoužívá pro navrhování dalších aktivit</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Výskyt aktivity</string>
   <string name="setting_cond_occurrence_summary">Četnost aktivity v deníku má váhu %1$s na navrhovaných dalších aktivitách</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekvence aktivity v deníku se nepoužívá pro navrhování dalších aktivit</string>
