@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Sequenza di attività</string>
   <string name="setting_cond_predecessor_summary">La sequenza di attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
   <string name="setting_cond_predecessor_not_used_summary">La sequenza di attività nel diario non viene utilizzata per suggerire attività successive</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Occorrenza di attività</string>
   <string name="setting_cond_occurrence_summary">La frequenza dell\'attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
   <string name="setting_cond_occurrence_not_used_summary">La frequenza delle attività nel diario non viene utilizzata per suggerire attività successive</string>
