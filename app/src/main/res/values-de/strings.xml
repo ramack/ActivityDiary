@@ -21,8 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Aktivität wählen</string>
   <string name="nav_diary">Tagebuch</string>
-  <string name="nav_stats">Statistics</string>
-  <string name="nav_map">Map</string>
+  <string name="nav_stats">Statistik</string>
+  <string name="nav_map">Karte</string>
   <string name="nav_add_activity">Aktivität hinzufügen</string>
   <string name="nav_show_deleted">Zeige Gelöschte</string>
   <string name="nav_hide_deleted">Verstecke Gelöschte</string>
@@ -43,7 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Anzeige</string>
   <string name="setting_behavior_category">Verhalten</string>
-  <string name="setting_location_category">Location</string>
+  <string name="setting_location_category">Standort</string>
   <string name="setting_images_category">Fotos</string>
   <string name="setting_backup_category">Backup</string>
   <string name="setting_condition_category">Bedingungen</string>
@@ -62,7 +62,7 @@
   <string name="setting_enable_acra">Fehlerberichte</string>
   <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
   <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
-  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location">Standortdienst</string>
   <string name="setting_use_location_summary">%1$s used to track device location</string>
   <string name="setting_use_location_off_summary">User location not tracked at all</string>
   <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Aktivitätshistorie</string>
   <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
   <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
