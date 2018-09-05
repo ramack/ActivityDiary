@@ -63,9 +63,9 @@
   <string name="setting_acra_enabled">Fehlerberichte bei Absturz senden</string>
   <string name="setting_acra_disabled">Keine Berichte senden wenn die App abstürzt</string>
   <string name="setting_use_location">Standortdienst</string>
-  <string name="setting_use_location_summary">%1$s used to track device location</string>
-  <string name="setting_use_location_off_summary">User location not tracked at all</string>
-  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
+  <string name="setting_use_location_summary">%1$s wird verwendet um den Gerätestandort zu verfolgen</string>
+  <string name="setting_use_location_off_summary">Standort des Benutzers wird nicht aufgezeichnet</string>
+  <string name="perm_location_xplain">Die ausgewählte Option um deinen Standort zu verfolgen erfordert die Berechtigung für den Zugriff auf Ihren geografischen Standort deines Gerätes &#8230;</string>
   <string name="setting_storage_folder">Ablageort für Bilder</string>
   <string name="setting_storage_folder_summary">Fotos im Verzeichnis %1$s ablegen</string>
   <string name="setting_storage_folder_description">Verzeichnis für die Ablage von Fotos</string>
@@ -81,19 +81,19 @@
   <string name="setting_cond_predecessor">Aktivitätshistorie</string>
   <string name="setting_cond_predecessor_summary">Aktivitätshistorie wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_predecessor_not_used_summary">Aktivitätshistorie wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
-  <string name="setting_cond_paused">Activity interruptions</string>
-  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
-  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
+  <string name="setting_cond_paused">Aktivitätsunterbrechungen</string>
+  <string name="setting_cond_paused_summary">Kürzlich beendete Aktivitäten werden mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
+  <string name="setting_cond_paused_not_used_summary">Kürzlich beendete Aktivitäten werden nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence">Aktivitätshäufigkeit</string>
   <string name="setting_cond_occurrence_summary">Häufigkeit der Aktivität im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_occurrence_not_used_summary">Aktivitätshäufigkeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_daytime">Tageszeit</string>
   <string name="setting_cond_daytime_summary">Die Uhrzeit der Aktivitäten im Tagebuch wird mit Gewichtung %1$s verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="setting_cond_daytime_not_used_summary">Tageszeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
-  <string name="pref_location_age">Request a location update every %1$s minutes</string>
-  <string name="setting_location_age">Update period</string>
-  <string name="pref_location_dist">Request a location update every %1$s meters</string>
-  <string name="setting_location_dist">Update distance</string>
+  <string name="pref_location_age">Standortaktualisierung wird alle %1$s Minuten angefordert</string>
+  <string name="setting_location_age">Aktualisierungszeitraum</string>
+  <string name="pref_location_dist">Standortaktualisierung wird alle %1$s meter angefordert</string>
+  <string name="setting_location_dist">Aktualisierungsdistanz</string>
   <string name="setting_expert">Experteneinstellungen</string>
   <string name="setting_export">Datenbank Exportieren</string>
   <string name="setting_import">Datenbank Importieren</string>
@@ -114,12 +114,12 @@
   <string name="activity_title_history_detail">Tagebucheintrag</string>
   <string name="activity_subtitle_main">Was machst du gerade?</string>
   <string name="activity_title_about">Über</string>
-  <string name="activity_title_stats">Statistics</string>
-  <string name="activity_title_map">Map</string>
+  <string name="activity_title_stats">Statistik</string>
+  <string name="activity_title_map">Karte</string>
   <string name="activity_title_settings">Einstellungen</string>
   <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
   <string name="dialog_title_note">Notiz</string>
-  <string name="activities">Activities</string>
+  <string name="activities">Aktivititäten</string>
   <!-- actions -->
   <string name="action_delete">Aktivität löschen</string>
   <string name="action_diary_entry_delete">Eintrag löschen</string>
@@ -182,9 +182,9 @@
   <string name="search_notes">In den Notizen nach \'%1$s\' suchen&#x2026;</string>
   <string name="search_diary">Überall nach \'%1$s\' suchen&#x2026;</string>
   <!-- statistics -->
-  <string name="earlier">earlier</string>
-  <string name="later">later</string>
-  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="earlier">früher</string>
+  <string name="later">später</string>
+  <string name="week_format">yyyy \'KW\'ww</string>
   <string name="month_format">MMMM yyyy</string>
   <string name="year_format">yyyy</string>
   <!-- relative dates -->
