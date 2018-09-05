@@ -1,5 +1,5 @@
-- Tracking of position added (needs activation in settings and is not yet used for proposing next activities)
-- Added pie chart for statistics in selectable granularity
-- Simplified pausing: last finished activities get a higher priority
-- Improved searching
-- Several bugfixes
+- Verfolgung der Position hinzugefügt (erfordert Aktivierung in den Einstellungen und wird noch nicht für die Vorschläge der nächsten Aktivitäten verwendet)
+- Kuchendiagramm für die Statistik über einen auswählbaren Zeitraum hinzugefügt
+- Erleichterung beim Pausieren: zuletzt beendete Aktivitäten bekommen mehr Gewicht
+- Verbesserte Suche
+- Verschiedene Fehler wurden behoben
