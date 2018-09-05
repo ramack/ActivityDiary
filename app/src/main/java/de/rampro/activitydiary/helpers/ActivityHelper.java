@@ -59,6 +59,7 @@ import de.rampro.activitydiary.model.conditions.Condition;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.DayTimeCondition;
 import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
+import de.rampro.activitydiary.model.conditions.PausedCondition;
 import de.rampro.activitydiary.model.conditions.PredecessorCondition;
 import de.rampro.activitydiary.ui.main.MainActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
@@ -152,6 +153,15 @@ public class ActivityHelper extends AsyncQueryHandler{
     public List<DiaryActivity> getUnsortedActivities(){
         List<DiaryActivity> result = new ArrayList<DiaryActivity>(unsortedActivities.size());
         synchronized (this){
+            if(unsortedActivities.isEmpty()){
+                /* activities not yet loaded, so it doesn't make sense yet to read the activities */
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    /* intended empty */
+                }
+            }
+
             result.addAll(unsortedActivities);
         }
         return result;
@@ -257,7 +267,8 @@ public class ActivityHelper extends AsyncQueryHandler{
         conditions = new Condition[]{new PredecessorCondition(this),
                 new AlphabeticalCondition(this),
                 new GlobalOccurrenceCondition(this),
-                new DayTimeCondition(this)
+                new DayTimeCondition(this),
+                new PausedCondition(this)
         };
         reloadAll();
 
@@ -272,7 +283,6 @@ public class ActivityHelper extends AsyncQueryHandler{
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,
                 null);
-        readCurrentActivity();
     }
 
     /* create all the notification channels */
@@ -320,6 +330,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                         cursor.moveToNext();
                     }
                 }
+                readCurrentActivity();
                 for(DataChangedListener listener : mDataChangeListeners) {
                     listener.onActivityDataChanged();
                 }
@@ -619,6 +630,14 @@ public class ActivityHelper extends AsyncQueryHandler{
     public DiaryActivity activityWithId(int id){
         /* TODO improve performance by storing the DiaryActivities in a map or Hashtable instead of a list */
         synchronized (this) {
+            if(unsortedActivities.isEmpty()){
+                /* activities not yet loaded, so it doesn't make sense yet to read the activities */
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    /* intended empty */
+                }
+            }
             for (DiaryActivity a : activities) {
                 if (a.getId() == id) {
                     return a;

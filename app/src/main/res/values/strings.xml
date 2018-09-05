@@ -107,10 +107,17 @@
     <string name="setting_cond_alpha_summary">Alphabetical sorting has a weight of %1$s on suggested next activities</string>
     <string name="setting_cond_alpha_not_used_summary">Alphabetical sorting is not used for suggesting next activities</string>
     <string name="pref_cond_alpha_default" translatable="false">3</string>
+
     <string name="setting_cond_predecessor">Activity sequence</string>
     <string name="setting_cond_predecessor_summary">Activity sequence in the diary has a weight of %1$s on suggested next activities</string>
     <string name="setting_cond_predecessor_not_used_summary">Activity sequence in the diary is not used for suggesting next activities</string>
     <string name="pref_cond_predecessor_default" translatable="false">20</string>
+
+    <string name="setting_cond_paused">Activity interruptions</string>
+    <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+    <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
+    <string name="pref_cond_paused_default" translatable="false">10</string>
+
     <string name="setting_cond_occurrence">Activity occurrence</string>
     <string name="setting_cond_occurrence_summary">Activity frequency in the diary has a weight of %1$s on suggested next activities</string>
     <string name="setting_cond_occurrence_not_used_summary">Activity frequency in the diary is not used for suggesting next activities</string>

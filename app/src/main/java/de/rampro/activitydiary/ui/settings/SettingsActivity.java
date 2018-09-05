@@ -71,6 +71,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_USE_LOCATION = "pref_use_location";
     public static final String KEY_PREF_LOCATION_AGE = "pref_location_age";
     public static final String KEY_PREF_LOCATION_DIST = "pref_location_dist";
+    public static final String KEY_PREF_PAUSED = "pref_cond_paused";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
@@ -81,6 +82,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference tagImagesPref;
     private Preference condAlphaPref;
     private Preference condPredecessorPref;
+    private Preference condPausedPref;
     private Preference condOccurrencePref;
     private Preference condDayTimePref;
     private Preference nofifShowCurActPref;
@@ -124,6 +126,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateLocationAge();
         }else if(key.equals(KEY_PREF_LOCATION_DIST)){
             updateLocationDist();
+        }else if(key.equals(KEY_PREF_PAUSED)){
+            updateCondPaused();
         }
     }
 
@@ -275,6 +279,19 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         }
     }
 
+    private void updateCondPaused() {
+        String def = getResources().getString(R.string.pref_cond_paused_default);
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_PAUSED, def);
+
+        if(Double.parseDouble(value) == 0.0){
+            condPausedPref.setSummary(getResources().getString(R.string.setting_cond_paused_not_used_summary));
+        }else {
+            condPausedPref.setSummary(getResources().getString(R.string.setting_cond_paused_summary, value));
+        }
+    }
+
     private void updateCondDayTimeSummary() {
         String def = getResources().getString(R.string.pref_cond_daytime_default);
         String value = PreferenceManager
@@ -392,6 +409,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
 
         condAlphaPref = mPreferenceManager.findPreference(KEY_PREF_COND_ALPHA);
         condPredecessorPref = mPreferenceManager.findPreference(KEY_PREF_COND_PREDECESSOR);
+        condPausedPref = mPreferenceManager.findPreference(KEY_PREF_PAUSED);
         condOccurrencePref = mPreferenceManager.findPreference(KEY_PREF_COND_OCCURRENCE);
         condDayTimePref = mPreferenceManager.findPreference(KEY_PREF_COND_DAYTIME);
 
@@ -400,6 +418,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateTagImageSummary();
         updateCondAlphaSummary();
         updateCondPredecessorSummary();
+        updateCondPaused();
         updateCondOccurenceSummary();
         updateCondDayTimeSummary();
         updateNotifShowCurActivity();

@@ -122,6 +122,13 @@
             android:entryValues="@array/pref_cond_weight_list_values"
             android:defaultValue="@string/pref_cond_predecessor_default" />
         <ListPreference
+            android:key="pref_cond_paused"
+            android:title="@string/setting_cond_paused"
+            android:dialogTitle="@string/setting_cond_paused"
+            android:entries="@array/pref_cond_weight_list_user"
+            android:entryValues="@array/pref_cond_weight_list_values"
+            android:defaultValue="@string/pref_cond_paused_default" />
+        <ListPreference
             android:key="pref_cond_occurrence"
             android:title="@string/setting_cond_occurrence"
             android:dialogTitle="@string/setting_cond_occurrence"
