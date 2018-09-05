@@ -21,6 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">アクティビティの選択</string>
   <string name="nav_diary">日記</string>
+  <string name="nav_stats">Statistics</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">アクティビティを追加</string>
   <string name="nav_show_deleted">削除済みを表示</string>
   <string name="nav_hide_deleted">削除済みを隠す</string>
@@ -41,6 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">ビュー</string>
   <string name="setting_behavior_category">動作</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">イメージ</string>
   <string name="setting_backup_category">バックアップ</string>
   <string name="setting_condition_category">条件</string>
@@ -59,6 +62,10 @@
   <string name="setting_enable_acra">クラッシュレポート</string>
   <string name="setting_acra_enabled">クラッシュに関するレポートを送信する</string>
   <string name="setting_acra_disabled">クラッシュに関するレポートを送信しない</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">画像保存フォルダ</string>
   <string name="setting_storage_folder_summary">ディレクトリにアクティビティ写真を保存する%1$s</string>
   <string name="setting_storage_folder_description">アクティビティ写真を保存するディレクトリ</string>
@@ -74,12 +81,19 @@
   <string name="setting_cond_predecessor">アクティビティシーケンス</string>
   <string name="setting_cond_predecessor_summary">日記のアクティビティシーケンスは、次の推奨アクティビティで %1$s 重みを持ちます</string>
   <string name="setting_cond_predecessor_not_used_summary">日記のアクティビティシーケンスは、次のアクティビティの提案には使用されません</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">アクティビティの発生</string>
   <string name="setting_cond_occurrence_summary">日記の活動頻度は、提案された次の活動について %1$s 重みを有する</string>
   <string name="setting_cond_occurrence_not_used_summary">日記の活動頻度は、次の活動を提案するためには使用されない</string>
   <string name="setting_cond_daytime">昼間</string>
   <string name="setting_cond_daytime_summary">日記のアクティビティの昼間は、次の推奨アクティビティの重みが %1$s</string>
   <string name="setting_cond_daytime_not_used_summary">日記のアクティビティの昼間は、次のアクティビティの提案には使用されません</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">エキスパート設定</string>
   <string name="setting_export">データベースのエクスポート</string>
   <string name="setting_import">データベースのインポート</string>
@@ -100,9 +114,12 @@
   <string name="activity_title_history_detail">日記エントリ</string>
   <string name="activity_subtitle_main">何してるの？</string>
   <string name="activity_title_about">約</string>
+  <string name="activity_title_stats">Statistics</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">設定</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">注意</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">アクティビティの削除</string>
   <string name="action_diary_entry_delete">記入を消す</string>
@@ -118,6 +135,7 @@
   <string name="dlg_delete_image_text">現在のアクティビティエントリからこのイメージを削除してもよろしいですか？</string>
   <string name="dlg_undelete_activity_title">活動を回復する</string>
   <string name="dlg_undelete_activity_text">アクティビティー %1$s は回復され、再び使用可能になりますか？</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">%1$s以降</string>
   <string name="just_now">ちょうど今</string>
@@ -159,6 +177,12 @@
   <string name="constraint_positive_duration">アクティビティは、終了する前に常に開始されます。</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">今日</string>
   <string name="yesterday">昨日</string>
