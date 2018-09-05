@@ -72,7 +72,7 @@
 
         <EditTextPreference
             android:key="pref_location_age"
-            android:defaultValue="50"
+            android:defaultValue="5"
             android:dialogTitle="@string/setting_location_age"
             android:inputType="number"
             android:digits="0123456789"
