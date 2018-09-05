@@ -81,6 +81,9 @@
   <string name="setting_cond_predecessor">Ακολουθία δραστηριοτήτων</string>
   <string name="setting_cond_predecessor_summary">Η ακολουθία δραστηριοτήτων στο ημερολόγιο έχει βάρος %1$s στις προτεινόμενες επόμενες δραστηριότητες</string>
   <string name="setting_cond_predecessor_not_used_summary">Η ακολουθία δραστηριότητας στο ημερολόγιο δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Παρουσίαση δραστηριότητας</string>
   <string name="setting_cond_occurrence_summary">Η συχνότητα δραστηριότητας στο ημερολόγιο έχει βάρος %1$s στις προτεινόμενες επόμενες δραστηριότητες</string>
   <string name="setting_cond_occurrence_not_used_summary">Η συχνότητα δραστηριότητας στο ημερολόγιο δεν χρησιμοποιείται για να υποδείξει τις επόμενες δραστηριότητες</string>
