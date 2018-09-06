@@ -21,7 +21,7 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Yan Iṣẹ</string>
   <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
-  <string name="nav_stats">Statistics</string>
+  <string name="nav_stats">Àwọn ìṣirò</string>
   <string name="nav_map">Map</string>
   <string name="nav_add_activity">Fi iṣẹ kun</string>
   <string name="nav_show_deleted">Fihan Paarẹ</string>
