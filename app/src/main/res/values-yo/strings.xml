@@ -22,7 +22,7 @@
   <string name="nav_main">Yan Iṣẹ</string>
   <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
   <string name="nav_stats">Àwọn ìṣirò</string>
-  <string name="nav_map">Map</string>
+  <string name="nav_map">Àwòrán ayé</string>
   <string name="nav_add_activity">Fi iṣẹ kun</string>
   <string name="nav_show_deleted">Fihan Paarẹ</string>
   <string name="nav_hide_deleted">Tọju Paarẹ</string>
@@ -43,7 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Wo</string>
   <string name="setting_behavior_category">Iwa</string>
-  <string name="setting_location_category">Location</string>
+  <string name="setting_location_category">Ipò</string>
   <string name="setting_images_category">Awọn aworan</string>
   <string name="setting_backup_category">Afẹyinti</string>
   <string name="setting_condition_category">Awọn ipo</string>
@@ -56,7 +56,7 @@
   <string name="setting_show_cur_activitiy_notification">Ifitonileti fun aṣayan iṣẹ lọwọlọwọ</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Iṣẹ lọwọlọwọ yoo han bi ifitonileti</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Ko si ifitonileti fun iṣẹ ṣiṣe lọwọlọwọ yoo han</string>
-  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click">Tẹ láti dá iṣẹ́ dúró</string>
   <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
   <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Iroyin jamba</string>
