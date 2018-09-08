@@ -177,6 +177,8 @@
   <string name="constraint_positive_duration">Iṣẹ naa yoo bẹrẹ nigbagbogbo ṣaaju ki o to pari.</string>
   <string name="search_notes">Wá \'%1$s\' nínú àwọn àkọsílẹ&#x2026;</string>
   <string name="search_diary">Wá \'%1$s\' nínú gbogbo ààyè&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>
