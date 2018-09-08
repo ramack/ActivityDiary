@@ -21,8 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Sélectionnez une activité</string>
   <string name="nav_diary">Journal</string>
-  <string name="nav_stats">Statistics</string>
-  <string name="nav_map">Map</string>
+  <string name="nav_stats">Statistiques</string>
+  <string name="nav_map">Carte</string>
   <string name="nav_add_activity">Ajouter une activité</string>
   <string name="nav_show_deleted">Afficher supprimé</string>
   <string name="nav_hide_deleted">Masquer supprimé</string>
@@ -43,7 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Vue</string>
   <string name="setting_behavior_category">Comportement</string>
-  <string name="setting_location_category">Location</string>
+  <string name="setting_location_category">Géolocalisation</string>
   <string name="setting_images_category">Images</string>
   <string name="setting_backup_category">Sauvegarde</string>
   <string name="setting_condition_category">Conditions</string>
@@ -56,13 +56,13 @@
   <string name="setting_show_cur_activitiy_notification">Notification pour l\'activité en cours</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">L\'activité actuelle est indiquée comme notification</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Aucune notification pour l\'activité en cours n\'est affichée</string>
-  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click">Terminez l\'activité en cliquant</string>
   <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
   <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Rapport de crash</string>
   <string name="setting_acra_enabled">Envoyer des rapports sur des plantages</string>
   <string name="setting_acra_disabled">Ne pas envoyer de rapports sur les plantages</string>
-  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location">Géolocalisation Service</string>
   <string name="setting_use_location_summary">%1$s used to track device location</string>
   <string name="setting_use_location_off_summary">User location not tracked at all</string>
   <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
@@ -114,12 +114,12 @@
   <string name="activity_title_history_detail">Entrée dans le journal</string>
   <string name="activity_subtitle_main">Qu\'est-ce que tu fais?</string>
   <string name="activity_title_about">Sur</string>
-  <string name="activity_title_stats">Statistics</string>
-  <string name="activity_title_map">Map</string>
+  <string name="activity_title_stats">Statistiques</string>
+  <string name="activity_title_map">Carte</string>
   <string name="activity_title_settings">Paramètres</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Remarque</string>
-  <string name="activities">Activities</string>
+  <string name="activities">Activités</string>
   <!-- actions -->
   <string name="action_delete">Supprimer l\'activité</string>
   <string name="action_diary_entry_delete">Supprimer l\'entrée</string>
@@ -135,7 +135,7 @@
   <string name="dlg_delete_image_text">Êtes-vous sûr de vouloir supprimer cette image de l\'entrée d\'activité en cours?</string>
   <string name="dlg_undelete_activity_title">Récupérer l\'activité</string>
   <string name="dlg_undelete_activity_text">L\'activité %1$s être récupérée et redevenue disponible?</string>
-  <string name="statistics_rest">Rest</string>
+  <string name="statistics_rest">Repos</string>
   <!-- main view -->
   <string name="duration_description">Depuis %1$s</string>
   <string name="just_now">juste maintenant</string>
@@ -182,7 +182,7 @@
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
   <!-- Map -->
-  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+  <string name="no_map_data_message">Aucune donnée à afficher Activer les services de localisation dans les paramètres.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>
