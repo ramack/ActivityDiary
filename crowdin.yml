@@ -19,7 +19,7 @@ files:
         id: id
     update_option: update_as_unapproved
   - source: /app/src/main/res/values/arrays.xml
-    translation: /app/src/main/res/arrays-%two_letters_code%/%original_file_name%
+    translation: /app/src/main/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
       language:
         de: de
