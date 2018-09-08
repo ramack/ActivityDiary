@@ -21,6 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Pilih Aktifitas</string>
   <string name="nav_diary">Buku harian</string>
+  <string name="nav_stats">Statistics</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Tambahkan Aktifitas</string>
   <string name="nav_show_deleted">Tampilkan Dihapus</string>
   <string name="nav_hide_deleted">Sembunyikan Dihapus</string>
@@ -41,6 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Tampilan</string>
   <string name="setting_behavior_category">Perilaku</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Gambar</string>
   <string name="setting_backup_category">Cadangkan</string>
   <string name="setting_condition_category">Kondisi</string>
@@ -59,6 +62,10 @@
   <string name="setting_enable_acra">Laporan Kerusakan</string>
   <string name="setting_acra_enabled">Kirim laporan tentang kerusakan</string>
   <string name="setting_acra_disabled">Jangan kirim laporan tentang kerusakan</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Berkas Tempat penyimpanan Gambar</string>
   <string name="setting_storage_folder_summary">Simpan foto aktivitas dalam daftar %1$s</string>
   <string name="setting_storage_folder_description">Daftar untuk menyimpan foto aktivitas</string>
@@ -74,12 +81,19 @@
   <string name="setting_cond_predecessor">Urutan aktivitas</string>
   <string name="setting_cond_predecessor_summary">Rangkaian aktivitas dalam buku harian memiliki bobot %1$s untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_predecessor_not_used_summary">Rangkaian aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Frekuensi aktivitas</string>
   <string name="setting_cond_occurrence_summary">Frekuensi aktivitas dalam buku harian memeliki bobot %1$s pada aktivitas selanjutnya yang disarankan</string>
   <string name="setting_cond_occurrence_not_used_summary">Frekuensi aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas selanjutnya</string>
   <string name="setting_cond_daytime">Siang hari</string>
   <string name="setting_cond_daytime_summary">Aktivitas dalam buku harian memiliki berat %1$s untuk menyarankan aktivitas berikutnya</string>
   <string name="setting_cond_daytime_not_used_summary">Aktivitas dalam buku harian tidak digunakan untuk menyarankan aktivitas berikutnya</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Pengaturan utama</string>
   <string name="setting_export">Ekspor database</string>
   <string name="setting_import">Impor database</string>
@@ -100,9 +114,12 @@
   <string name="activity_title_history_detail">Catatan harian</string>
   <string name="activity_subtitle_main">Apa yang sedang Anda lakukan?</string>
   <string name="activity_title_about">Tentang</string>
+  <string name="activity_title_stats">Statistics</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Pengaturan</string>
   <string name="activity_title_no_selected_act">&lt;Tidak ada Aktivitas&gt;</string>
   <string name="dialog_title_note">Catatan</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Hapus aktivitas</string>
   <string name="action_diary_entry_delete">Hapus entri</string>
@@ -118,6 +135,7 @@
   <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
   <string name="dlg_undelete_activity_title">Pulihkan Aktivitas</string>
   <string name="dlg_undelete_activity_text">Apakah aktivitas %1$s dipulihkan dan menjadi tersedia lagi?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Sejak %1$s</string>
   <string name="just_now">baru saja</string>
@@ -159,6 +177,12 @@
   <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Hari ini</string>
   <string name="yesterday">Kemarin</string>

@@ -21,6 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Επιλέξτε Δραστηριότητα</string>
   <string name="nav_diary">Ημερολόγιο</string>
+  <string name="nav_stats">Statistics</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Προσθήκη δραστηριότητας</string>
   <string name="nav_show_deleted">Εμφάνιση διαγραμμένων</string>
   <string name="nav_hide_deleted">Απόκρυψη διαγραμμένων</string>
@@ -41,6 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Θέα</string>
   <string name="setting_behavior_category">η ΣΥΜΠΕΡΙΦΟΡΑ</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Εικόνες</string>
   <string name="setting_backup_category">Αντιγράφων ασφαλείας</string>
   <string name="setting_condition_category">Συνθήκες</string>
@@ -59,6 +62,10 @@
   <string name="setting_enable_acra">Αναφορά σφαλμάτων</string>
   <string name="setting_acra_enabled">Αποστολή αναφορών σε συντριβές</string>
   <string name="setting_acra_disabled">Μην στέλνετε αναφορές σε συντριβές</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Φάκελος αποθήκευσης εικόνων</string>
   <string name="setting_storage_folder_summary">Αποθήκευση φωτογραφιών δραστηριότητας στον κατάλογο %1$s</string>
   <string name="setting_storage_folder_description">Κατάλογος για την αποθήκευση των φωτογραφιών δραστηριότητας</string>
@@ -74,12 +81,19 @@
   <string name="setting_cond_predecessor">Ακολουθία δραστηριοτήτων</string>
   <string name="setting_cond_predecessor_summary">Η ακολουθία δραστηριοτήτων στο ημερολόγιο έχει βάρος %1$s στις προτεινόμενες επόμενες δραστηριότητες</string>
   <string name="setting_cond_predecessor_not_used_summary">Η ακολουθία δραστηριότητας στο ημερολόγιο δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Παρουσίαση δραστηριότητας</string>
   <string name="setting_cond_occurrence_summary">Η συχνότητα δραστηριότητας στο ημερολόγιο έχει βάρος %1$s στις προτεινόμενες επόμενες δραστηριότητες</string>
   <string name="setting_cond_occurrence_not_used_summary">Η συχνότητα δραστηριότητας στο ημερολόγιο δεν χρησιμοποιείται για να υποδείξει τις επόμενες δραστηριότητες</string>
   <string name="setting_cond_daytime">Ημέρα</string>
   <string name="setting_cond_daytime_summary">Η ημερήσια διάρκεια των δραστηριοτήτων στο ημερολόγιο έχει βάρος %1$s για προτεινόμενες επόμενες δραστηριότητες</string>
   <string name="setting_cond_daytime_not_used_summary">Η ημέρα των δραστηριοτήτων στο ημερολόγιο δεν χρησιμοποιείται για να προτείνει τις επόμενες δραστηριότητες</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Ρυθμίσεις ειδικού</string>
   <string name="setting_export">Εξαγωγή βάσης δεδομένων</string>
   <string name="setting_import">Εισαγωγή βάσης δεδομένων</string>
@@ -100,9 +114,12 @@
   <string name="activity_title_history_detail">Καταχώρηση ημερολογίου</string>
   <string name="activity_subtitle_main">Τι κάνεις?</string>
   <string name="activity_title_about">Σχετικά με</string>
+  <string name="activity_title_stats">Statistics</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Ρυθμίσεις</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Σημείωση</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Διαγραφή δραστηριότητας</string>
   <string name="action_diary_entry_delete">Διαγραφή συμμετοχής</string>
@@ -118,6 +135,7 @@
   <string name="dlg_delete_image_text">Είστε βέβαιοι ότι θέλετε να καταργήσετε αυτήν την εικόνα από την τρέχουσα καταχώριση δραστηριότητας;</string>
   <string name="dlg_undelete_activity_title">Ανάκτηση δραστηριότητας</string>
   <string name="dlg_undelete_activity_text">Θα ανακτηθεί η δραστηριότητα %1$s και θα είναι και πάλι διαθέσιμη;</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Από το %1$s</string>
   <string name="just_now">μόλις τώρα</string>
@@ -163,6 +181,12 @@
   <string name="constraint_positive_duration">Η δραστηριότητα αρχίζει πάντα πριν τελειώσει.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Σήμερα</string>
   <string name="yesterday">Εχθές</string>

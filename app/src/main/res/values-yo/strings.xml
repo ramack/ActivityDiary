@@ -21,6 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Yan Iṣẹ</string>
   <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
+  <string name="nav_stats">Statistics</string>
+  <string name="nav_map">Map</string>
   <string name="nav_add_activity">Fi iṣẹ kun</string>
   <string name="nav_show_deleted">Fihan Paarẹ</string>
   <string name="nav_hide_deleted">Tọju Paarẹ</string>
@@ -41,6 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Wo</string>
   <string name="setting_behavior_category">Iwa</string>
+  <string name="setting_location_category">Location</string>
   <string name="setting_images_category">Awọn aworan</string>
   <string name="setting_backup_category">Afẹyinti</string>
   <string name="setting_condition_category">Awọn ipo</string>
@@ -59,6 +62,10 @@
   <string name="setting_enable_acra">Iroyin jamba</string>
   <string name="setting_acra_enabled">Firanṣẹ lori awọn ijamba</string>
   <string name="setting_acra_disabled">Ma ṣe fi iroyin ranṣẹ lori awọn ijamba</string>
+  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location_summary">%1$s used to track device location</string>
+  <string name="setting_use_location_off_summary">User location not tracked at all</string>
+  <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
   <string name="setting_storage_folder">Apakan Idanilenu aworan</string>
   <string name="setting_storage_folder_summary">Ṣe awọn akojọ aṣayan iṣẹ-ṣiṣe ni itọsọna %1$s</string>
   <string name="setting_storage_folder_description">Ilana lati tọju awọn fọto ṣiṣe</string>
@@ -74,12 +81,19 @@
   <string name="setting_cond_predecessor">Akopọ aṣayan iṣẹ</string>
   <string name="setting_cond_predecessor_summary">Aṣayan aṣayan iṣẹ ni iwe-iṣẹlẹ ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_predecessor_not_used_summary">Aṣayan isẹ ni diary ko lo fun ni iyanju awọn iṣẹ to tẹle</string>
+  <string name="setting_cond_paused">Activity interruptions</string>
+  <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+  <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
   <string name="setting_cond_occurrence">Iṣẹ iṣe iṣẹlẹ</string>
   <string name="setting_cond_occurrence_summary">Igbesẹ aṣayan iṣẹ-ṣiṣe ninu diary ni o ni iwuwo ti %1$s lori awọn iṣẹ ṣiṣe atẹle</string>
   <string name="setting_cond_occurrence_not_used_summary">Aṣayan išẹ-ṣiṣe ninu iwe ito iṣẹlẹ ojojumọ ko lo fun ni imọran awọn iṣẹ to tẹle</string>
   <string name="setting_cond_daytime">Oju mọmọ</string>
   <string name="setting_cond_daytime_summary">Ojo ti awọn iṣẹ inu iwe-kikọ ni o ni idiwọn %1$s lori awọn iṣẹ ṣiṣe ti o tẹle</string>
   <string name="setting_cond_daytime_not_used_summary">Ojoojumọ awọn iṣẹ ti o wa ninu iwe ito iṣẹlẹ ojojumọ ko lo fun imọran awọn iṣẹ ti o tẹle</string>
+  <string name="pref_location_age">Request a location update every %1$s minutes</string>
+  <string name="setting_location_age">Update period</string>
+  <string name="pref_location_dist">Request a location update every %1$s meters</string>
+  <string name="setting_location_dist">Update distance</string>
   <string name="setting_expert">Awọn eto imọran</string>
   <string name="setting_export">Wọle si ipamọ data</string>
   <string name="setting_import">Wọle data ipilẹ</string>
@@ -100,9 +114,12 @@
   <string name="activity_title_history_detail">Akọsilẹ kikọsi</string>
   <string name="activity_subtitle_main">Kini o n ṣe?</string>
   <string name="activity_title_about">Nipa</string>
+  <string name="activity_title_stats">Statistics</string>
+  <string name="activity_title_map">Map</string>
   <string name="activity_title_settings">Ètò</string>
   <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
   <string name="dialog_title_note">Akiyesi</string>
+  <string name="activities">Activities</string>
   <!-- actions -->
   <string name="action_delete">Pa iṣẹ ṣiṣe</string>
   <string name="action_diary_entry_delete">Pa titẹ sii</string>
@@ -118,6 +135,7 @@
   <string name="dlg_delete_image_text">Ṣe o da ọ loju pe o fẹ yọ aworan yii kuro ni titẹsi iṣẹ ṣiṣelọwọ?</string>
   <string name="dlg_undelete_activity_title">Bọsipọ aṣayan iṣẹ</string>
   <string name="dlg_undelete_activity_text">Yoo ṣe iṣẹ naa %1$s ki o si wa ni ibẹrẹ lẹẹkansi?</string>
+  <string name="statistics_rest">Rest</string>
   <!-- main view -->
   <string name="duration_description">Niwon %1$s</string>
   <string name="just_now">ni bayi</string>
@@ -159,6 +177,12 @@
   <string name="constraint_positive_duration">Iṣẹ naa yoo bẹrẹ nigbagbogbo ṣaaju ki o to pari.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- statistics -->
+  <string name="earlier">earlier</string>
+  <string name="later">later</string>
+  <string name="week_format">yyyy \'Week\' ww</string>
+  <string name="month_format">MMMM yyyy</string>
+  <string name="year_format">yyyy</string>
   <!-- relative dates -->
   <string name="today">Loni</string>
   <string name="yesterday">Lana</string>
