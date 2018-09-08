@@ -5,13 +5,13 @@
   <string name="about_text_version">version <b>%1$s</b></string>
   <string name="about_text_intro">Un journal pour tout type d\'activités - organisez vos tâches de manière agile et rappelez-vous si quelque chose devrait se reproduire.</string>
   <string name="about_text_licence_h">Licence</string>
-  <string name="about_text_licence">%1$s est un logiciel libre: vous pouvez le redistribuer et / ou le modifier selon les termes de la <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s est un logiciel libre: vous pouvez le redistribuer et / ou le modifier selon les termes de la <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
   <string name="about_text_license_2">Ce programme est distribué dans l\'espoir qu\'il sera utile, mais SANS AUCUNE GARANTIE; sans même la garantie implicite de QUALITÉ MARCHANDE ou d\'ADÉQUATION À UN USAGE PARTICULIER. Voir la Licence publique générale GNU pour plus de détails.</string>
   <string name="about_text_contact_h">Contact</string>
-  <string name="about_text_contact">Pour les bugs et suggestions utiliser le <a href="https://github.com/ramack/ActivityDiary/issues">problème tacker</a>, de préférence en langue anglaise.</string>
-  <string name="about_text_contact_2">Le code source peut être trouvé sur <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[Pour les bugs et suggestions utiliser le <a href="https://github.com/ramack/ActivityDiary/issues">problème tacker</a>, de préférence en langue anglaise.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Le code source peut être trouvé sur <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Appui</string>
-  <string name="about_text_support">Dans le cas où vous voulez soutenir le développement de %1$s envisager de discuter <a href="https://github.com/ramack/ActivityDiary/issues">questions sur github</a>, la traduction sur <a href="https://crowdin.com/project/activitydiary">crowdin</a> ou un don sur <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Dans le cas où vous voulez soutenir le développement de %1$s envisager de discuter <a href="https://github.com/ramack/ActivityDiary/issues">questions sur github</a>, la traduction sur <a href="https://crowdin.com/project/activitydiary">crowdin</a> ou un don sur <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Collaborateurs</string>
   <string name="about_text_cont_2">Nous sommes impatients de mentionner votre nom dans cette liste également.</string>
   <string name="about_text_lib_h">Bibliothèques</string>
