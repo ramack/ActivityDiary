@@ -5,13 +5,13 @@
   <string name="about_text_version">έκδοση <b>%1$s</b></string>
   <string name="about_text_intro">Ένα ημερολόγιο για κάθε είδους δραστηριότητες - οργανώστε τα καθήκοντά σας με ευκίνητο τρόπο και θυμηθείτε εάν κάτι αναμένεται να επαναληφθεί.</string>
   <string name="about_text_licence_h">Αδεια</string>
-  <string name="about_text_licence">%1$s είναι ελεύθερο λογισμικό: Επιτρέπεται η αναδιανομή ή / και τροποποίησή του υπό τους όρους της <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s είναι ελεύθερο λογισμικό: Επιτρέπεται η αναδιανομή ή / και τροποποίησή του υπό τους όρους της <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
   <string name="about_text_license_2">Αυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ. χωρίς ακόμη και την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ. Για περισσότερες λεπτομέρειες, ανατρέξτε στην άδεια GNU General Public License.</string>
   <string name="about_text_contact_h">Επικοινωνία</string>
-  <string name="about_text_contact">Για τα σφάλματα και τις προτάσεις χρησιμοποιήστε το τεκμήριο <a href="https://github.com/ramack/ActivityDiary/issues">πρόβλημα</a>, κατά προτίμηση στην αγγλική γλώσσα.</string>
-  <string name="about_text_contact_2">Ο πηγαίος κώδικας μπορεί να βρεθεί στο <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[Για τα σφάλματα και τις προτάσεις χρησιμοποιήστε το τεκμήριο <a href="https://github.com/ramack/ActivityDiary/issues">πρόβλημα</a>, κατά προτίμηση στην αγγλική γλώσσα.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Ο πηγαίος κώδικας μπορεί να βρεθεί στο <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Υποστήριξη</string>
-  <string name="about_text_support">Σε περίπτωση που θέλετε να υποστηρίξετε την ανάπτυξη %1$s εξετάστε το ενδεχόμενο να συζητήσετε <a href="https://github.com/ramack/ActivityDiary/issues">θέμα στο github</a>, μεταφράζοντας σε <a href="https://crowdin.com/project/activitydiary">ομάδες</a> ή δωρεά σε <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Σε περίπτωση που θέλετε να υποστηρίξετε την ανάπτυξη %1$s εξετάστε το ενδεχόμενο να συζητήσετε <a href="https://github.com/ramack/ActivityDiary/issues">θέμα στο github</a>, μεταφράζοντας σε <a href="https://crowdin.com/project/activitydiary">ομάδες</a> ή δωρεά σε <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Συνεισφέροντες</string>
   <string name="about_text_cont_2">Ανυπομονούμε να αναφέρουμε και το όνομά σας σε αυτή τη λίστα.</string>
   <string name="about_text_lib_h">Βιβλιοθήκες</string>
