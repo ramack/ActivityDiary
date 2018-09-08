@@ -1,4 +1,5 @@
-- Bilder können durch Antippen in einer Galerie-App geöffnet werden
-- Erlaube das einfach Beenden der laufenden Aktivität
-- Suche im Tagebuch
+- Verfolgung der Position hinzugefügt (erfordert Aktivierung in den Einstellungen und wird noch nicht für die Vorschläge der nächsten Aktivitäten verwendet)
+- Kuchendiagramm für die Statistik über einen auswählbaren Zeitraum hinzugefügt
+- Erleichterung beim Pausieren: zuletzt beendete Aktivitäten bekommen mehr Gewicht
+- Verbesserte Suche
 - Verschiedene Fehler wurden behoben

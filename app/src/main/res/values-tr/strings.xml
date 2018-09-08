@@ -5,13 +5,13 @@
   <string name="about_text_version">sürüm <b>%1$s</b></string>
   <string name="about_text_intro">Her tür etkinlik için bir günlük - görevlerinizi hızlı bir şekilde düzenleyin ve bir şeyin olması bekleniyorsa bildirim alın.</string>
   <string name="about_text_licence_h">Lisans</string>
-  <string name="about_text_licence">%1$s özgür bir yazılımdır: Onu, <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Genel Kamu Lisansı</a> şartları altında dağıtabilir ve/veya değiştirebilirsiniz</string>
+  <string name="about_text_licence"><![CDATA[%1$s özgür bir yazılımdır: Onu, <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Genel Kamu Lisansı</a> şartları altında dağıtabilir ve/veya değiştirebilirsiniz]]></string>
   <string name="about_text_license_2">Bu program, yararlı olacağı umuduyla dağıtılır ancak HERHANGİ BİR GARANTİ olmadan; hatta BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA zımni garanti olmaksızın. Daha çok ayrıntı için GNU Genel Kamu Lisansına bakın.</string>
   <string name="about_text_contact_h">İletişim</string>
-  <string name="about_text_contact">Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.</string>
-  <string name="about_text_contact_2">Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>\'da bulunabilir.</string>
+  <string name="about_text_contact"><![CDATA[Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>'da bulunabilir.]]></string>
   <string name="about_text_support_h">Destek</string>
-  <string name="about_text_support">%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>\'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>\'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>\'de bağış yapmayı düşünebilirsiniz.</string>
+  <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>'de bağış yapmayı düşünebilirsiniz.]]></string>
   <string name="about_text_cont_h">Katkıda Bulunanlar</string>
   <string name="about_text_cont_2">Bu listede sizin de adınızın geçmesini bekliyoruz.</string>
   <string name="about_text_lib_h">Kitaplıklar</string>
@@ -181,6 +181,8 @@
   <string name="constraint_positive_duration">Etkinlik her zaman bitmeden başlayacaktır.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

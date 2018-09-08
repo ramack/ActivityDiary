@@ -5,13 +5,13 @@
   <string name="about_text_version"><b>%1$s</b>verzió</string>
   <string name="about_text_intro">Napló bármely tevékenységre - agilis módon rendezheti feladatait, és emlékeztetni kell arra, hogy valami várhatóan ismétlődik.</string>
   <string name="about_text_licence_h">Engedély</string>
-  <string name="about_text_licence">%1$s szabad szoftver: újraeloszthatja és / vagy módosíthatja azt az <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Általános Nyilvános Licenc</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s szabad szoftver: újraeloszthatja és / vagy módosíthatja azt az <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Általános Nyilvános Licenc</a>]]></string>
   <string name="about_text_license_2">Ezt a programot reméljük, hogy hasznos lesz, de MINDEN GARANCIA NÉLKÜL; anélkül, hogy a VENDÉGHATÁROZÁSRA VAGY EGY ADÁSI CÉLRA VALÓ ALKALMASSÁGRA VONATKOZÓ JÓVÁHAGYÁSI JÓTÁLLÁST sem lett volna szabad. További részletekért olvassa el a GNU általános nyilvános licencet.</string>
   <string name="about_text_contact_h">Kapcsolatba lépni</string>
-  <string name="about_text_contact">A hibákhoz és javaslatokhoz használja a <a href="https://github.com/ramack/ActivityDiary/issues">kiadási tackert</a>, lehetőleg angolul.</string>
-  <string name="about_text_contact_2">A forráskód <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[A hibákhoz és javaslatokhoz használja a <a href="https://github.com/ramack/ActivityDiary/issues">kiadási tackert</a>, lehetőleg angolul.]]></string>
+  <string name="about_text_contact_2"><![CDATA[A forráskód <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Támogatás</string>
-  <string name="about_text_support">Abban az esetben, ha támogatni szeretné a %1$s fejlesztését, vegye fontolóra <a href="https://github.com/ramack/ActivityDiary/issues">kérdést a github</a>, forduljon <a href="https://crowdin.com/project/activitydiary">crowdin</a> vagy adományozzon az <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Abban az esetben, ha támogatni szeretné a %1$s fejlesztését, vegye fontolóra <a href="https://github.com/ramack/ActivityDiary/issues">kérdést a github</a>, forduljon <a href="https://crowdin.com/project/activitydiary">crowdin</a> vagy adományozzon az <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Közreműködők</string>
   <string name="about_text_cont_2">Várjuk, hogy megemlítjük a nevedet ezen a listán is.</string>
   <string name="about_text_lib_h">könyvtárak</string>
@@ -181,6 +181,8 @@
   <string name="constraint_positive_duration">A tevékenységnek mindig a befejezés előtt meg kell kezdődnie.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

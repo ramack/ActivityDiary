@@ -5,13 +5,13 @@
   <string name="about_text_version">version <b>%1$s</b></string>
   <string name="about_text_intro">En dagbok för alla typer av aktiviteter - organisera dina uppgifter på ett smidigt sätt och få påminn om något förväntas återkomma.</string>
   <string name="about_text_licence_h">Licens</string>
-  <string name="about_text_licence">%1$s är fri programvara: Du kan omfördela den och / eller ändra den enligt villkoren i <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s är fri programvara: Du kan omfördela den och / eller ändra den enligt villkoren i <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
   <string name="about_text_license_2">Programmet distribueras i hopp om att det kommer att vara användbart, men UTAN NÅGOT GARANTI. utan även den underförstådda garantin om SÄLJBARHET eller EGNETHET FÖR ET SÄRSKILT SYFTE. Se GNU General Public License för mer information.</string>
   <string name="about_text_contact_h">Kontakta</string>
-  <string name="about_text_contact">För buggar och förslag använder du <a href="https://github.com/ramack/ActivityDiary/issues">problemet tacker</a>, helst på engelska.</string>
-  <string name="about_text_contact_2">Källkod finns på <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[För buggar och förslag använder du <a href="https://github.com/ramack/ActivityDiary/issues">problemet tacker</a>, helst på engelska.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Källkod finns på <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Stöd</string>
-  <string name="about_text_support">Om du vill stödja utvecklingen av %1$s överväga att diskutera <a href="https://github.com/ramack/ActivityDiary/issues">frågor på github</a>, översätta på <a href="https://crowdin.com/project/activitydiary">crowdin</a> eller donation på <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Om du vill stödja utvecklingen av %1$s överväga att diskutera <a href="https://github.com/ramack/ActivityDiary/issues">frågor på github</a>, översätta på <a href="https://crowdin.com/project/activitydiary">crowdin</a> eller donation på <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Medverkande</string>
   <string name="about_text_cont_2">Vi ser fram emot att nämna ditt namn i den här listan också.</string>
   <string name="about_text_lib_h">bibliotek</string>
@@ -181,6 +181,8 @@
   <string name="constraint_positive_duration">Verksamheten ska alltid börja innan den slutar.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

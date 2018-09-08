@@ -5,13 +5,13 @@
   <string name="about_text_version">גרסה <b>%1$s</b></string>
   <string name="about_text_intro">יומן עבור כל סוג של פעילויות - לארגן את המשימות שלך בזריזות ולקבל תזכורת אם משהו צפוי reoccur.</string>
   <string name="about_text_licence_h">רישיון</string>
-  <string name="about_text_licence">%1$s היא תוכנה חינמית: תוכל להפיץ אותה מחדש או לשנות אותה בתנאים של רישיון <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">הכללי של GNU</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s היא תוכנה חינמית: תוכל להפיץ אותה מחדש או לשנות אותה בתנאים של רישיון <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">הכללי של GNU</a>]]></string>
   <string name="about_text_license_2">תוכנית זו מופצת בתקווה שזה יהיה שימושי, אבל ללא אחריות כלשהי; אפילו ללא אחריות מרומזת של סחירות או התאמה למטרה מסוימת. למידע נוסף, עיין ברישיון הציבורי הכללי של גנו.</string>
   <string name="about_text_contact_h">איש קשר</string>
-  <string name="about_text_contact">לבאגים והצעות להשתמש <a href="https://github.com/ramack/ActivityDiary/issues">tacker סוגיה</a>, רצוי בשפה האנגלית.</string>
-  <string name="about_text_contact_2">קוד המקור ניתן למצוא ב <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[לבאגים והצעות להשתמש <a href="https://github.com/ramack/ActivityDiary/issues">tacker סוגיה</a>, רצוי בשפה האנגלית.]]></string>
+  <string name="about_text_contact_2"><![CDATA[קוד המקור ניתן למצוא ב <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">תמיכה</string>
-  <string name="about_text_support">במקרה שאתה רוצה לתמוך בפיתוח של %1$s לשקול דיון <a href="https://github.com/ramack/ActivityDiary/issues">נושאים על github</a>, תרגום על <a href="https://crowdin.com/project/activitydiary">קהל</a> או תרומה על <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[במקרה שאתה רוצה לתמוך בפיתוח של %1$s לשקול דיון <a href="https://github.com/ramack/ActivityDiary/issues">נושאים על github</a>, תרגום על <a href="https://crowdin.com/project/activitydiary">קהל</a> או תרומה על <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">תורמים</string>
   <string name="about_text_cont_2">אנו מצפים להזכיר את שמך ברשימה זו, גם.</string>
   <string name="about_text_lib_h">ספריות</string>
@@ -189,6 +189,8 @@
   <string name="constraint_positive_duration">הפעילות תתחיל תמיד לפני שהיא מסתיימת.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

@@ -5,13 +5,13 @@
   <string name="about_text_version">버전 <b>%1$s</b></string>
   <string name="about_text_intro">모든 종류의 활동을위한 일기 - 민첩한 방식으로 작업을 구성하고 재발 할 것으로 예상되는 경우 생각 나게하십시오.</string>
   <string name="about_text_licence_h">특허</string>
-  <string name="about_text_licence">%1$s 자유 소프트웨어입니다 : 당신이 그것을 재배포 및 / 또는의 규정에 따라 수정할 수 있습니다 <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU 일반 공중 사용 허가서</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s 자유 소프트웨어입니다 : 당신이 그것을 재배포 및 / 또는의 규정에 따라 수정할 수 있습니다 <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU 일반 공중 사용 허가서</a>]]></string>
   <string name="about_text_license_2">이 프로그램은 유용 할 것이라는 희망으로 배포되었지만 어떠한 보증도하지 않습니다. 상품성 또는 특정 목적에의 적합성에 대한 묵시적 보증조차하지 않습니다. 자세한 내용은 GNU General Public License를 참조하십시오.</string>
   <string name="about_text_contact_h">접촉</string>
-  <string name="about_text_contact">버그 및 제안 사항은 <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>을 영어로 사용하십시오.</string>
-  <string name="about_text_contact_2">소스 코드는 <a href="https://github.com/ramack/ActivityDiary">Github</a>에서 찾을 수 있습니다.</string>
+  <string name="about_text_contact"><![CDATA[버그 및 제안 사항은 <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>을 영어로 사용하십시오.]]></string>
+  <string name="about_text_contact_2"><![CDATA[소스 코드는 <a href="https://github.com/ramack/ActivityDiary">Github</a>에서 찾을 수 있습니다.]]></string>
   <string name="about_text_support_h">지원하다</string>
-  <string name="about_text_support">경우 당신의 개발을 지원하려는 %1$s 논의 고려해 <a href="https://github.com/ramack/ActivityDiary/issues">GitHub의에 문제를</a>에 번역, <a href="https://crowdin.com/project/activitydiary">crowdin</a> 또는 기부 <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[경우 당신의 개발을 지원하려는 %1$s 논의 고려해 <a href="https://github.com/ramack/ActivityDiary/issues">GitHub의에 문제를</a>에 번역, <a href="https://crowdin.com/project/activitydiary">crowdin</a> 또는 기부 <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">기여자</string>
   <string name="about_text_cont_2">우리는이 목록에서도 귀하의 이름을 언급하기를 고대하고 있습니다.</string>
   <string name="about_text_lib_h">도서관</string>
@@ -177,6 +177,8 @@
   <string name="constraint_positive_duration">활동은 끝나기 전에 항상 시작됩니다.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

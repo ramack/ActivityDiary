@@ -5,13 +5,13 @@
   <string name="about_text_version">versi <b>%1$s</b></string>
   <string name="about_text_intro">Buku harian untuk semua jenis aktivitas - atur tugas Anda dengan cara yang cepat dan sebagai pengingat jika ada sesuatu yang diharapkan untuk terulang kembali.</string>
   <string name="about_text_licence_h">Lisensi</string>
-  <string name="about_text_licence">%1$s adalah perangkat lunak bebas: Anda bisa membagikan dan/atau mengubahnya menurut ketentuan dari <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s adalah perangkat lunak bebas: Anda bisa membagikan dan/atau mengubahnya menurut ketentuan dari <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
   <string name="about_text_license_2">Program ini dibagikan dengan harapan akan bermamfaat, akan tetapi TAMPA JAMINAN APAPUN; bahkan tanpa ada jaminan tersirat atas KELAYAKAN UNTUK DIPERDAGANGKAN atau KESESUAIAN UNTUK TUJUAN TERTENTU. Untuk lebih jelasnya lihat GNU General Public License.</string>
   <string name="about_text_contact_h">Kontak</string>
-  <string name="about_text_contact">Gunakan <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a> untuk bug dan saran, sebaiknya dalam bahasa inggris.</string>
-  <string name="about_text_contact_2">Kode sumber bisa ditemukan di <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[Gunakan <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a> untuk bug dan saran, sebaiknya dalam bahasa inggris.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Kode sumber bisa ditemukan di <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Dukungan</string>
-  <string name="about_text_support">Jika Anda ingin mendukung untuk pengembangan %1$s pertimbangkan untuk mendiskusikan <a href="https://github.com/ramack/ActivityDiary/issues">masalah di github</a>, menterjemahkan di <a href="https://crowdin.com/project/activitydiary">crowdin</a> atau donasi di <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Jika Anda ingin mendukung untuk pengembangan %1$s pertimbangkan untuk mendiskusikan <a href="https://github.com/ramack/ActivityDiary/issues">masalah di github</a>, menterjemahkan di <a href="https://crowdin.com/project/activitydiary">crowdin</a> atau donasi di <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Kontributor</string>
   <string name="about_text_cont_2">Kami sangat ingin melihat nama Anda berada dalam daftar ini juga</string>
   <string name="about_text_lib_h">Perpustakaan</string>
@@ -177,6 +177,8 @@
   <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

@@ -5,13 +5,13 @@
   <string name="about_text_version">wersja <b>%1$s</b></string>
   <string name="about_text_intro">Pamiętnik dla każdego rodzaju aktywności - organizuj swoje zadania w zwinny sposób i otrzymuj przypomnienia, jeśli coś ma się powtórzyć.</string>
   <string name="about_text_licence_h">Licencja</string>
-  <string name="about_text_licence">%1$s to wolne oprogramowanie: możesz je redystrybuować i / lub modyfikować zgodnie z warunkami <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">Powszechnej Licencji Publicznej GNU</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s to wolne oprogramowanie: możesz je redystrybuować i / lub modyfikować zgodnie z warunkami <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">Powszechnej Licencji Publicznej GNU</a>]]></string>
   <string name="about_text_license_2">Ten program jest rozpowszechniany z nadzieją, że będzie przydatny, ale BEZ JAKIEJKOLWIEK GWARANCJI; nawet domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ lub PRZYDATNOŚCI DO OKREŚLONYCH CELÓW. Więcej informacji można znaleźć w Powszechnej Licencji Publicznej GNU.</string>
   <string name="about_text_contact_h">Kontakt</string>
-  <string name="about_text_contact">W przypadku błędów i sugestii użyj <a href="https://github.com/ramack/ActivityDiary/issues">zszywacza</a>problemu, najlepiej w języku angielskim.</string>
-  <string name="about_text_contact_2">Kod źródłowy można znaleźć na <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[W przypadku błędów i sugestii użyj <a href="https://github.com/ramack/ActivityDiary/issues">zszywacza</a>problemu, najlepiej w języku angielskim.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Kod źródłowy można znaleźć na <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Wsparcie</string>
-  <string name="about_text_support">Jeśli chcesz wesprzeć rozwój %1$s rozważ omówienie <a href="https://github.com/ramack/ActivityDiary/issues">problemów na github</a>, tłumacz na <a href="https://crowdin.com/project/activitydiary">crowdin</a> lub darowiznę na <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Jeśli chcesz wesprzeć rozwój %1$s rozważ omówienie <a href="https://github.com/ramack/ActivityDiary/issues">problemów na github</a>, tłumacz na <a href="https://crowdin.com/project/activitydiary">crowdin</a> lub darowiznę na <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Współtwórcy</string>
   <string name="about_text_cont_2">Z niecierpliwością czekamy również na Twoje nazwisko na tej liście.</string>
   <string name="about_text_lib_h">Biblioteki</string>
@@ -189,6 +189,8 @@
   <string name="constraint_positive_duration">Czynność powinna zawsze rozpocząć się przed jej zakończeniem.</string>
   <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
   <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>

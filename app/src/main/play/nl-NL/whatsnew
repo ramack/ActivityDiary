@@ -1,4 +1,5 @@
-- Images can be opened in a gallery app by clicking them
-- Allow termination of the current activity
-- Search in the diary
-- Verschillende Bugfixes
+- Tracking of position added (needs activation in settings and is not yet used for proposing next activities)
+- Added pie chart for statistics in selectable granularity
+- Simplified pausing: last finished activities get a higher priority
+- Improved searching
+- Several bugfixes

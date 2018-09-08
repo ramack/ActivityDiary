@@ -5,13 +5,13 @@
   <string name="about_text_version">version <b>%1$s</b></string>
   <string name="about_text_intro">A ọjọ-ọjọ fun eyikeyi iru awọn iṣẹ - ṣeto awọn iṣẹ rẹ ni ọna idaniloju ati ki o leti ti o ba ti ni nkan ti o reti lati reoccur.</string>
   <string name="about_text_licence_h">Iwe-ašẹ</string>
-  <string name="about_text_licence">%1$s jẹ software ọfẹ: o le ṣe alabapin rẹ ati / tabi yi o pada labẹ awọn ofin ti <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Gbogbogbo Igbẹhin Gbogbogbo</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s jẹ software ọfẹ: o le ṣe alabapin rẹ ati / tabi yi o pada labẹ awọn ofin ti <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Gbogbogbo Igbẹhin Gbogbogbo</a>]]></string>
   <string name="about_text_license_2">Eto yii pin ni ireti pe yoo wulo, ṣugbọn LATI ỌJẸ ATILẸYIN ỌJA; laisi ani atilẹyin ọja ti MERCHANTABILITY tabi FITNESS FUN NIPA PURPOSE. Wo Iwe-ašẹ Gbogbogbo GNU fun alaye diẹ sii.</string>
   <string name="about_text_contact_h">Kan si</string>
-  <string name="about_text_contact">Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"/>, daradara ni ede Gẹẹsi.</string>
-  <string name="about_text_contact_2">Orisun koodu ni a le rii lori <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"/>, daradara ni ede Gẹẹsi.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Orisun koodu ni a le rii lori <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Atilẹyin</string>
-  <string name="about_text_support">Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Awọn oluranlọwọ</string>
   <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, na.</string>
   <string name="about_text_lib_h">Awọn ile-ikawe</string>
@@ -21,8 +21,8 @@
   <!-- Navigation Drawer Menu -->
   <string name="nav_main">Yan Iṣẹ</string>
   <string name="nav_diary">Iwe ito iṣẹlẹ ojojumọ</string>
-  <string name="nav_stats">Statistics</string>
-  <string name="nav_map">Map</string>
+  <string name="nav_stats">Àwọn ìṣirò</string>
+  <string name="nav_map">Àwòrán ayé</string>
   <string name="nav_add_activity">Fi iṣẹ kun</string>
   <string name="nav_show_deleted">Fihan Paarẹ</string>
   <string name="nav_hide_deleted">Tọju Paarẹ</string>
@@ -43,7 +43,7 @@
   <!-- settings -->
   <string name="setting_view_category">Wo</string>
   <string name="setting_behavior_category">Iwa</string>
-  <string name="setting_location_category">Location</string>
+  <string name="setting_location_category">Ipò</string>
   <string name="setting_images_category">Awọn aworan</string>
   <string name="setting_backup_category">Afẹyinti</string>
   <string name="setting_condition_category">Awọn ipo</string>
@@ -56,7 +56,7 @@
   <string name="setting_show_cur_activitiy_notification">Ifitonileti fun aṣayan iṣẹ lọwọlọwọ</string>
   <string name="setting_show_cur_activitiy_notification_summary_active">Iṣẹ lọwọlọwọ yoo han bi ifitonileti</string>
   <string name="setting_show_cur_activitiy_notification_summary_inactive">Ko si ifitonileti fun iṣẹ ṣiṣe lọwọlọwọ yoo han</string>
-  <string name="setting_disable_on_click">Terminate activity by click</string>
+  <string name="setting_disable_on_click">Tẹ láti dá iṣẹ́ dúró</string>
   <string name="setting_disable_on_click_summary_active">Current activity can be terminated by clicking the activity label</string>
   <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
   <string name="setting_enable_acra">Iroyin jamba</string>
@@ -175,8 +175,11 @@
   <string name="desc_end_time">Ipari akoko</string>
   <string name="adjust_adjacent_times">Ṣatunṣe awọn titẹ sii iwe-ẹri agbegbe</string>
   <string name="constraint_positive_duration">Iṣẹ naa yoo bẹrẹ nigbagbogbo ṣaaju ki o to pari.</string>
-  <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
-  <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+  <string name="search_notes">Wá \'%1$s\' nínú àwọn àkọsílẹ&#x2026;</string>
+  <string name="search_diary">Wá \'%1$s\' nínú gbogbo ààyè&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+
   <!-- statistics -->
   <string name="earlier">earlier</string>
   <string name="later">later</string>
