@@ -58,7 +58,7 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
         NumberFormat formatter = new DecimalFormat("#0.00");
         holder.mName.setText(act.getName());
 // show likelyhood in activity name
-     holder.mName.setText(act.getName() + " (" + formatter.format(ActivityHelper.helper.likelihoodFor(act)) + ")");
+//     holder.mName.setText(act.getName() + " (" + formatter.format(ActivityHelper.helper.likelihoodFor(act)) + ")");
 // TODO #33:        holder.mSymbol.setImageResource(act.getPhoto());
         holder.mBackground.setBackgroundColor(act.getColor());
         holder.mName.setTextColor(GraphicsHelper.textColorOnBackground(act.getColor()));
