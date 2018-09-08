@@ -5,13 +5,13 @@
   <string name="about_text_version">バージョン <b>%1$s</b></string>
   <string name="about_text_intro">あらゆる種類の活動のための日記 - あなたの仕事を機敏なやり方で編成し、何かが再発することが予想される場合に思い出させる。</string>
   <string name="about_text_licence_h">ライセンス</string>
-  <string name="about_text_licence">%1$s フリーソフトウェアです：あなたはそれを再配布および/またはの条件で修正することができます <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU一般公衆利用許諾契約書</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s フリーソフトウェアです：あなたはそれを再配布および/またはの条件で修正することができます <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU一般公衆利用許諾契約書</a>]]></string>
   <string name="about_text_license_2">このプログラムは有用であることを期待して配布されていますが、いかなる保証もありません。商品性または特定目的への適合性の暗黙の保証さえも含みません。詳細については、GNU General Public Licenseを参照してください。</string>
   <string name="about_text_contact_h">接触</string>
-  <string name="about_text_contact">バグや提案については、英語の問題 <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>を使用することをお勧めします。</string>
-  <string name="about_text_contact_2">ソースコードは <a href="https://github.com/ramack/ActivityDiary">Github</a>ます。</string>
+  <string name="about_text_contact"><![CDATA[バグや提案については、英語の問題 <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>を使用することをお勧めします。]]></string>
+  <string name="about_text_contact_2"><![CDATA[ソースコードは <a href="https://github.com/ramack/ActivityDiary">Github</a>ます。]]></string>
   <string name="about_text_support_h">サポート</string>
-  <string name="about_text_support">あなたが %1$s の開発をサポートしたい場合、<a href="https://github.com/ramack/ActivityDiary/issues">github</a>に関する 問題、 <a href="https://crowdin.com/project/activitydiary">Crowdin</a> 翻訳、または <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>寄付に関する議論を検討してください。</string>
+  <string name="about_text_support"><![CDATA[あなたが %1$s の開発をサポートしたい場合、<a href="https://github.com/ramack/ActivityDiary/issues">github</a>に関する 問題、 <a href="https://crowdin.com/project/activitydiary">Crowdin</a> 翻訳、または <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>寄付に関する議論を検討してください。]]></string>
   <string name="about_text_cont_h">貢献者</string>
   <string name="about_text_cont_2">このリストにあなたの名前を言いたいと思います。</string>
   <string name="about_text_lib_h">図書館</string>
