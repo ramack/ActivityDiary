@@ -52,13 +52,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 
@@ -116,6 +117,7 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
 
     private ContentValues updateValues = new ContentValues();
     private TextView mTimeError;
+    private boolean mIsCurrent;
 
     public static class TimePickerFragment extends DialogFragment{
         private int hour, minute;
@@ -177,6 +179,9 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
                         storedEnd.setTimeInMillis(endMillis);
                         if(endMillis != 0) {
                             end.setTimeInMillis(endMillis);
+                            mIsCurrent = false;
+                        }else{
+                            mIsCurrent = true;
                         }
 
                         if(!updateValues.containsKey(ActivityDiaryContract.Diary.NOTE)) {
@@ -219,10 +224,11 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
                 }
             }
             if(i >= mUpdatePending.length) {
+                if(mIsCurrent) {
+                    ActivityHelper.helper.readCurrentActivity();
+                }
                 finish();
             }
-
-            //finish();
 
         }
     }

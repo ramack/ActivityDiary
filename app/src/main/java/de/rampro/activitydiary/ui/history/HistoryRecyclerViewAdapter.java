@@ -201,7 +201,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                 int d = (int) ((e - s) / 1000 / 60);
                 int h = d / 60;
                 int m = d - h * 60;
-                duration += Integer.toString(h) + ":" + Integer.toString(m);
+                duration += Integer.toString(h) + "h" +  String.format("%02d", m);
             }
             duration += ")";
         }

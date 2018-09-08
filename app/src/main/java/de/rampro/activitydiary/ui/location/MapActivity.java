@@ -30,6 +30,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CursorAdapter;
+import android.widget.TextView;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -59,6 +60,8 @@ public class MapActivity extends BaseActivity implements LoaderManager.LoaderCal
     private static final String SELECTION_INIT = ActivityDiaryContract.DiaryLocation._DELETED + "=0";
 
     MapView map = null;
+    TextView noMap = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,8 @@ public class MapActivity extends BaseActivity implements LoaderManager.LoaderCal
         View contentView = inflater.inflate(R.layout.activity_map, null, false);
 
         setContent(contentView);
+
+        noMap = (TextView) findViewById(R.id.noMap);
 
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
@@ -118,19 +123,26 @@ public class MapActivity extends BaseActivity implements LoaderManager.LoaderCal
         Polyline line = new Polyline(map);
         line.setWidth(4f);
         line.setColor(Color.BLUE);
-        List<GeoPoint> pts = new ArrayList<>(data.getCount());
-        if ((data != null) && data.moveToFirst()) {
-            while (!data.isAfterLast()) {
-                int hacc_idx = data.getColumnIndex(ActivityDiaryContract.DiaryLocation.HACC);
+        if(data.getCount() > 0) {
+            List<GeoPoint> pts = new ArrayList<>(data.getCount());
+            if ((data != null) && data.moveToFirst()) {
+                while (!data.isAfterLast()) {
+                    int hacc_idx = data.getColumnIndex(ActivityDiaryContract.DiaryLocation.HACC);
 
-                if(data.isNull(hacc_idx) || data.getInt(hacc_idx) < 250) {
-                    pts.add(new GeoPoint(data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LATITUDE)), data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LONGITUDE))));
+                    if (data.isNull(hacc_idx) || data.getInt(hacc_idx) < 250) {
+                        pts.add(new GeoPoint(data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LATITUDE)), data.getDouble(data.getColumnIndex(ActivityDiaryContract.DiaryLocation.LONGITUDE))));
+                    }
+                    data.moveToNext();
                 }
-                data.moveToNext();
             }
+            line.setPoints(pts);
+            map.getOverlayManager().add(line);
+            noMap.setVisibility(View.GONE);
+            map.setVisibility(View.VISIBLE);
+        }else{
+            noMap.setVisibility(View.VISIBLE);
+            map.setVisibility(View.GONE);
         }
-        line.setPoints(pts);
-        map.getOverlayManager().add(line);
     }
 
     // Called when a previously created loader is reset, making the data unavailable

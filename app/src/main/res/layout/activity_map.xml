@@ -22,7 +22,21 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/noMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/no_map_data_message"
+        android:textAlignment="center"
+        android:visibility="gone"/>
+
     <org.osmdroid.views.MapView android:id="@+id/map"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:visibility="visible"        >
+
+    </org.osmdroid.views.MapView>
+
 </LinearLayout>

@@ -312,7 +312,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* start the query to read the current activity
      * will trigger the update of currentActivity and send notifications afterwards */
-    private void readCurrentActivity() {
+    public void readCurrentActivity() {
         startQuery(QUERY_CURRENT_ACTIVITY, null, ActivityDiaryContract.Diary.CONTENT_URI,
                 DIARY_PROJ, ActivityDiaryContract.Diary.START + " = (SELECT MAX("
                 + ActivityDiaryContract.Diary.START + ") FROM "
