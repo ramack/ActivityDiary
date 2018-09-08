@@ -181,6 +181,8 @@
   <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
   <string name="search_notes">In den Notizen nach \'%1$s\' suchen&#x2026;</string>
   <string name="search_diary">Überall nach \'%1$s\' suchen&#x2026;</string>
+  <!-- Map -->
+  <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
   <!-- statistics -->
   <string name="earlier">früher</string>
   <string name="later">später</string>
