@@ -5,13 +5,13 @@
   <string name="about_text_version">version <b>%1$s</b></string>
   <string name="about_text_intro">A ọjọ-ọjọ fun eyikeyi iru awọn iṣẹ - ṣeto awọn iṣẹ rẹ ni ọna idaniloju ati ki o leti ti o ba ti ni nkan ti o reti lati reoccur.</string>
   <string name="about_text_licence_h">Iwe-ašẹ</string>
-  <string name="about_text_licence">%1$s jẹ software ọfẹ: o le ṣe alabapin rẹ ati / tabi yi o pada labẹ awọn ofin ti <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Gbogbogbo Igbẹhin Gbogbogbo</a></string>
+  <string name="about_text_licence"><![CDATA[%1$s jẹ software ọfẹ: o le ṣe alabapin rẹ ati / tabi yi o pada labẹ awọn ofin ti <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Gbogbogbo Igbẹhin Gbogbogbo</a>]]></string>
   <string name="about_text_license_2">Eto yii pin ni ireti pe yoo wulo, ṣugbọn LATI ỌJẸ ATILẸYIN ỌJA; laisi ani atilẹyin ọja ti MERCHANTABILITY tabi FITNESS FUN NIPA PURPOSE. Wo Iwe-ašẹ Gbogbogbo GNU fun alaye diẹ sii.</string>
   <string name="about_text_contact_h">Kan si</string>
-  <string name="about_text_contact">Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"/>, daradara ni ede Gẹẹsi.</string>
-  <string name="about_text_contact_2">Orisun koodu ni a le rii lori <a href="https://github.com/ramack/ActivityDiary">Github</a>.</string>
+  <string name="about_text_contact"><![CDATA[Fun awọn idun ati awọn didaba lo awọn bọtini tacker <a href="https://github.com/ramack/ActivityDiary/issues"/>, daradara ni ede Gẹẹsi.]]></string>
+  <string name="about_text_contact_2"><![CDATA[Orisun koodu ni a le rii lori <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
   <string name="about_text_support_h">Atilẹyin</string>
-  <string name="about_text_support">Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.</string>
+  <string name="about_text_support"><![CDATA[Ni irú ti o fẹ lati ṣe atilẹyin fun idagbasoke %1$s ṣe ayẹwo lati sọ awọn ọrọ <a href="https://github.com/ramack/ActivityDiary/issues">lori iwe</a>, itumọ lori <a href="https://crowdin.com/project/activitydiary">gbojọ</a> tabi ẹbun lori <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
   <string name="about_text_cont_h">Awọn oluranlọwọ</string>
   <string name="about_text_cont_2">A n wa siwaju lati darukọ orukọ rẹ ninu akojọ yii, na.</string>
   <string name="about_text_lib_h">Awọn ile-ikawe</string>
