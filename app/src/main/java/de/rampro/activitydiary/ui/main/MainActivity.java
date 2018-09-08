@@ -433,6 +433,7 @@ public class MainActivity extends BaseActivity implements
     public void onResume() {
         mNavigationView.getMenu().findItem(R.id.nav_main).setChecked(true);
         ActivityHelper.helper.registerDataChangeListener(this);
+        onActivityChanged(); /* refresh the current activity data */
         super.onResume();
         updateDurationTextView();
         updateDurationHandler.postDelayed(updateDurationRunnable, 10 * 1000);

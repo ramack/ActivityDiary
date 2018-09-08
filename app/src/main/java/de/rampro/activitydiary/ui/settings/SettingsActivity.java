@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
@@ -50,6 +52,7 @@ import java.util.Date;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.db.LocalDBHelper;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 
@@ -454,10 +457,15 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             // import
             // TODO: replace /data by Context.getFilesDir().getPath() -> see lint
             File db = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY);
+            File bak = new File("/data/data/" + getPackageName() + "/databases/" + ActivityDiaryContract.AUTHORITY + ".bak");
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
             try {
+                db.renameTo(bak);
+
                 String s = getResources().getString(R.string.db_import_success, data.getData().toString());
-                InputStream inputStream = getContentResolver().openInputStream(data.getData());
-                OutputStream outputStream = new FileOutputStream(db);
+                inputStream = getContentResolver().openInputStream(data.getData());
+                outputStream = new FileOutputStream(db);
                 byte[] buff = new byte[4048];
                 int len;
                 while ((len = inputStream.read(buff)) > 0 ){
@@ -465,14 +473,41 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                     outputStream.flush();
                 }
                 outputStream.close();
+                outputStream = null;
                 inputStream.close();
+                inputStream = null;
+
+                SQLiteDatabase sdb = SQLiteDatabase.openDatabase(db.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+                int v = sdb.getVersion();
+                sdb.close();
+                if(v > LocalDBHelper.CURRENT_VERSION){
+                    throw new Exception("selected file has version " + v + " which is too high...");
+                }
+
+                ActivityHelper.helper.reloadAll();
                 Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
-            }catch (Exception e){
-                Log.e(TAG,"error on database impport: "+e.getMessage());
+            }catch (Exception e) {
+                if(inputStream != null){
+                    try {
+                        inputStream.close();
+                    } catch (IOException e1) {
+                        /* ignore */
+                    }
+                }
+                if(outputStream != null){
+                    try {
+                        outputStream.close();
+                    } catch (IOException e1) {
+                        /* ignore */
+                    }
+                }
+                bak.renameTo(db);
+                Log.e(TAG, "error on database import: " + e.getMessage());
                 String s = getResources().getString(R.string.db_import_error, data.getData().toString());
                 Toast.makeText(SettingsActivity.this, s, Toast.LENGTH_LONG).show();
+                bak.renameTo(db);
+
             }
-            ActivityHelper.helper.reloadAll();
         }
         if(requestCode == ACTIVITIY_RESULT_EXPORT && resultCode == RESULT_OK) {
 

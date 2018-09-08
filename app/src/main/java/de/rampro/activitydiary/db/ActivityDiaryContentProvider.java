@@ -427,4 +427,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         }
         return upds;
     }
+
+    public void resetDatabase() {
+        mOpenHelper.close();
+    }
 }

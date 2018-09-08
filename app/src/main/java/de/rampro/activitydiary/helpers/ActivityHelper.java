@@ -26,6 +26,8 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.AsyncQueryHandler;
 import android.content.ComponentName;
+import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -53,6 +55,7 @@ import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
@@ -280,6 +283,12 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     /* reload all the activities from the database */
     public void reloadAll(){
+        ContentResolver resolver = ActivityDiaryApplication.getAppContext().getContentResolver();
+        ContentProviderClient client = resolver.acquireContentProviderClient(ActivityDiaryContract.AUTHORITY);
+        ActivityDiaryContentProvider provider = (ActivityDiaryContentProvider) client.getLocalContentProvider();
+        client.close();
+        provider.resetDatabase();
+
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                 ACTIVITIES_PROJ, SELECTION, null,
                 null);
@@ -340,7 +349,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                     mCurrentNote = "";
                     mCurrentDiaryUri = null;
                     mCurrentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.END)));
-                }else if(mCurrentActivity == null) {
+                }else {
                     mCurrentActivity = activityWithId(cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.Diary.ACT_ID)));
                     mCurrentActivityStartTime.setTime(cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.Diary.START)));
                     mCurrentNote = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.Diary.NOTE));
