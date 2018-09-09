@@ -56,8 +56,8 @@ android {
             versionNameSuffix "-debug"
         }
         rcTest {
-            signingConfig signingConfigs.release
             // to be used to create screenshots and alike
+//            signingConfig signingConfigs.release
             applicationIdSuffix ".test"
             versionNameSuffix "-test"
         }
