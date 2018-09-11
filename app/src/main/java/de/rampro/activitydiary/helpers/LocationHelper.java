@@ -34,6 +34,8 @@ import android.os.Looper;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.preference.PreferenceManager;
 
+import java.util.List;
+
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
@@ -75,11 +77,11 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
             int permissionCheckFine = PackageManager.PERMISSION_DENIED;
             int permissionCheckCoarse = PackageManager.PERMISSION_DENIED;
 
-            if(setting.equals("gps")) {
+            if(setting.equals("gps") && locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)) {
                 permissionCheckFine = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION);
                 permissionCheckCoarse = permissionCheckFine;
-            }else{
+            }else if(locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)){
                 permissionCheckCoarse = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                         Manifest.permission.ACCESS_COARSE_LOCATION);
             }
