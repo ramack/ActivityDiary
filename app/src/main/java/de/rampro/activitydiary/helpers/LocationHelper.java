@@ -77,7 +77,7 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
             int permissionCheckFine = PackageManager.PERMISSION_DENIED;
             int permissionCheckCoarse = PackageManager.PERMISSION_DENIED;
 
-            if(setting.equals("gps") && locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)) {
+            if(setting.equals("gps") && locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER)) {
                 permissionCheckFine = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION);
                 permissionCheckCoarse = permissionCheckFine;
@@ -88,12 +88,9 @@ public class LocationHelper extends AsyncQueryHandler implements LocationListene
             if(permissionCheckFine == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.GPS_PROVIDER;
                 locationManager.requestLocationUpdates(locationProvider, minTime, minDist, this, Looper.getMainLooper());
-            }
-
-            if(permissionCheckCoarse == PackageManager.PERMISSION_GRANTED){
+            }else if(permissionCheckCoarse == PackageManager.PERMISSION_GRANTED){
                 String locationProvider = LocationManager.NETWORK_PROVIDER;
                 locationManager.requestLocationUpdates(locationProvider, minTime, minDist, this, Looper.getMainLooper());
-
             }
         }
     }
