@@ -21,15 +21,15 @@
 <resources>
   <string-array name="pref_location_setting_list" translatable="true">
     <item>KI</item>
-    <item>Hálózat</item>
-    <item>GPS (és hálózati)</item>
+    <item>Network</item>
+    <item>GPS (and network)</item>
   </string-array>
   <string-array name="statistic_dropdown" translatable="true">
-    <item>Minden</item>
-    <item>Az elmúlt 7 nap</item>
-    <item>Az elmúlt 30 nap</item>
-    <item>Hét</item>
-    <item>Hónap</item>
-    <item>Év</item>
+    <item>All</item>
+    <item>Last 7 Days</item>
+    <item>Last 30 Days</item>
+    <item>Week</item>
+    <item>Month</item>
+    <item>Year</item>
   </string-array>
 </resources>

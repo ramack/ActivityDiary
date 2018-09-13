@@ -20,16 +20,16 @@
   -->
 <resources>
   <string-array name="pref_location_setting_list" translatable="true">
-    <item>KI</item>
-    <item>Hálózat</item>
-    <item>GPS (és hálózati)</item>
+    <item>AUS</item>
+    <item>Netzwerk</item>
+    <item>GPS (und Netzwerk)</item>
   </string-array>
   <string-array name="statistic_dropdown" translatable="true">
-    <item>Minden</item>
-    <item>Az elmúlt 7 nap</item>
-    <item>Az elmúlt 30 nap</item>
-    <item>Hét</item>
-    <item>Hónap</item>
-    <item>Év</item>
+    <item>Alle</item>
+    <item>Die Letzten 7 Tage</item>
+    <item>Die Letzten 30 Tage</item>
+    <item>Woche</item>
+    <item>Monat</item>
+    <item>Jahr</item>
   </string-array>
 </resources>

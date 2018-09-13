@@ -92,7 +92,7 @@
   <string name="setting_cond_daytime_not_used_summary">Tageszeit wird nicht verwendet um nächste Aktivitäten vorzuschlagen</string>
   <string name="pref_location_age">Standortaktualisierung wird alle %1$s Minuten angefordert</string>
   <string name="setting_location_age">Aktualisierungszeitraum</string>
-  <string name="pref_location_dist">Standortaktualisierung wird alle %1$s meter angefordert</string>
+  <string name="pref_location_dist">Standortaktualisierung wird alle %1$s m angefordert</string>
   <string name="setting_location_dist">Aktualisierungsdistanz</string>
   <string name="setting_expert">Experteneinstellungen</string>
   <string name="setting_export">Datenbank Exportieren</string>
