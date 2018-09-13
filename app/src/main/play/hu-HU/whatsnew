@@ -1,5 +1,5 @@
-- Tracking of position added (needs activation in settings and is not yet used for proposing next activities)
-- Added pie chart for statistics in selectable granularity
-- Simplified pausing: last finished activities get a higher priority
-- Improved searching
-- Several bugfixes
+- A hozzáadott pozíció követése (be kell kapcsolnia a beállításokat, és még nem használják a következő tevékenységek javasolásához)
+- Hozzáadott kördiagram a statisztikákhoz választható granularitásban
+- Egyszerűsített szüneteltetés: az utolsó befejezett tevékenységek magasabb prioritást kapnak
+- Jobb keresés
+- Több hibajavítás
