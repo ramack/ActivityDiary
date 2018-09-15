@@ -286,7 +286,14 @@ public class ActivityHelper extends AsyncQueryHandler{
         ContentResolver resolver = ActivityDiaryApplication.getAppContext().getContentResolver();
         ContentProviderClient client = resolver.acquireContentProviderClient(ActivityDiaryContract.AUTHORITY);
         ActivityDiaryContentProvider provider = (ActivityDiaryContentProvider) client.getLocalContentProvider();
-        client.close();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        {
+            client.close();
+        }
+        else
+        {
+            client.release();
+        }
         provider.resetDatabase();
 
         startQuery(QUERY_ALL_ACTIVITIES, null, ActivityDiaryContract.DiaryActivity.CONTENT_URI,
