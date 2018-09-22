@@ -77,6 +77,18 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private int linkCol; /* accent color -> to be sued for links */
     private ImageButton mQuickFixBtn1;
     private ImageButton mBtnRenameDeleted;
+    private boolean checkOngoing;
+
+    private boolean isCheckOngoing() {
+        return checkOngoing;
+    }
+
+    private void setCheckOngoing(boolean checkOngoing) {
+        this.checkOngoing = checkOngoing;
+        if(checkOngoing && mActivityNameTIL != null){
+            mActivityNameTIL.setError("...");
+        }
+    }
 
     private class QHandler extends AsyncQueryHandler {
         /* Access only allowed via ActivityHelper.helper singleton */
@@ -117,6 +129,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                             mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v) {
+                                    setCheckOngoing(true);
                                     Toast.makeText(EditActivity.this,
                                             getResources().getString(R.string.renamed_deleted_activity_toast, name),
                                             Toast.LENGTH_LONG).show();
@@ -136,6 +149,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             );
                                 }
                             });
+
                         }else{
                             mActivityNameTIL.setError(getResources().getString(R.string.error_name_already_used, cursor.getString(0)));
                             mBtnRenameDeleted.setVisibility(View.GONE);
@@ -161,6 +175,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         mBtnRenameDeleted.setVisibility(View.GONE);
                         mBtnRenameDeleted.setOnClickListener(null);
                     }
+                    setCheckOngoing(false);
+
                 }else if(token == TEST_DELETED_NAME){
                     ContentValues values = (ContentValues)cookie;
                     if(cursor.moveToFirst()){
@@ -201,8 +217,10 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         @Override
         protected void onUpdateComplete(int token, Object cookie, int result) {
             super.onUpdateComplete(token, cookie, result);
-            if(token == RENAME_DELETED_ACTIVITY){
+            if (token == RENAME_DELETED_ACTIVITY) {
                 checkConstraints();
+            } else {
+                setCheckOngoing(false);
             }
         }
     }
@@ -240,7 +258,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         }else{
             linkCol = getResources().getColor(R.color.colorAccent);
         }
-
+        setCheckOngoing(true);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         int actId = i.getIntExtra("activityID", -1);
@@ -347,23 +365,23 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                 finish();
                 break;
             case R.id.action_edit_done:
-                CharSequence error = mActivityNameTIL.getError();
-                if(error != null && error.length() > 0)
-                {
-                    Toast.makeText(EditActivity.this,
-                            error,
-                            Toast.LENGTH_LONG
-                    ).show();
-                }
-                else {
-                    if (currentActivity == null) {
-                        ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor));
+                if(!isCheckOngoing()) {
+                    CharSequence error = mActivityNameTIL.getError();
+                    if (error != null && error.length() > 0) {
+                        Toast.makeText(EditActivity.this,
+                                error,
+                                Toast.LENGTH_LONG
+                        ).show();
                     } else {
-                        currentActivity.setName(mActivityName.getText().toString());
-                        currentActivity.setColor(mActivityColor);
-                        ActivityHelper.helper.updateActivity(currentActivity);
+                        if (currentActivity == null) {
+                            ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor));
+                        } else {
+                            currentActivity.setName(mActivityName.getText().toString());
+                            currentActivity.setColor(mActivityColor);
+                            ActivityHelper.helper.updateActivity(currentActivity);
+                        }
+                        finish();
                     }
-                    finish();
                 }
                 break;
             case android.R.id.home:
@@ -374,6 +392,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     }
 
     private void checkConstraints(){
+        setCheckOngoing(true);
+
         if(currentActivity == null) {
             mQHandler.startQuery(QUERY_NAMES,
                     null,
