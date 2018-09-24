@@ -440,7 +440,7 @@ public class ActivityHelper extends AsyncQueryHandler{
                             .setColor(col)
                             .setSmallIcon(R.mipmap.ic_launcher) // TODO: use ic_nav_select in orange
                             .setContentTitle(mCurrentActivity.getName())
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setPriority(NotificationCompat.PRIORITY_LOW)
                             .setShowWhen(false);
             // TODO: add icon on implementing #33
 
