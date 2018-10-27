@@ -33,6 +33,10 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /*
  * Why a new Content Provider for Diary Activites?
  *
@@ -165,7 +169,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         + ", (SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
                         + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
-                        ;
+                ;
                 if(selection != null && selection.length() > 0) {
                     sql += " AND (" + selection + ")";
                 }
@@ -178,7 +182,12 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* intended fall through */
             case conditions:
 //                qBuilder.setTables(ActivityDiaryContract.Condition.TABLE_NAME);
-/* TODO #18               if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
+                /* TODO #18               if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
+//            case dates:
+//            //    qBuilder.setTables(;
+//                System.out.println("DATESSS CAS");
+//                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
+//                break;
             default:
                 /* empty */
         }
@@ -194,8 +203,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     null,
                     sortOrder);
         }
-        c.setNotificationUri(getContext().getContentResolver(), uri);
-
         return c;
     }
 
@@ -259,8 +266,8 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 
         long id = db.insertOrThrow(table,
-                            null,
-                            values);
+                null,
+                values);
         if(id > 0) {
             resultUri = ContentUris.withAppendedId(resultUri, id);
             getContext().
@@ -434,4 +441,77 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public void resetDatabase() {
         mOpenHelper.close();
     }
+
+
+    /**
+     Search for all dates in database which match start/end date or are in range (between start and end date)
+     * @param date - date is searched
+     * @param dateFormat - format under we search and compare matches
+     * @return query (string) with ids that fulfills defined conditions
+     */
+    public String searchDate(String date, String dateFormat) {
+        String querySelection = " ";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
+        Calendar searchedValueCal = Calendar.getInstance();
+        Calendar startValueCal = Calendar.getInstance();
+        Calendar endValueCal = Calendar.getInstance();
+
+        //Gets all start, end dates and also id of activities
+        try {
+            Cursor allRowsStart =  mOpenHelper.getReadableDatabase().rawQuery(
+                    "SELECT " + ActivityDiaryContract.Diary._ID + ", "
+                            + ActivityDiaryContract.Diary.START +", "
+                            + ActivityDiaryContract.Diary.END
+                            + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME, null
+            );
+
+            if (allRowsStart.moveToFirst()) {
+                String[] columnNames = allRowsStart.getColumnNames();
+                do {
+                    String id = null, start = null, end = null;
+                    for (String name : columnNames) {
+                        if (name.equals(ActivityDiaryContract.Diary.START))
+                            start = simpleDateFormat.format(allRowsStart.getLong(allRowsStart.getColumnIndex(name)));
+                        if (name.equals(ActivityDiaryContract.Diary.END))
+                            end = allRowsStart.getLong(allRowsStart.getColumnIndex(name)) == 0 ? "0" : simpleDateFormat.format(allRowsStart.getLong(allRowsStart.getColumnIndex(name)));
+                        if (name.equals(ActivityDiaryContract.Diary._ID))
+                            id = (allRowsStart.getString(allRowsStart.getColumnIndex(name)));
+                    }
+                    //System.out.println("id: " + id + ", start: " + start + ", end: " + end);
+
+                    //Values (date, start, end) are set to specific calendar - needed for 'between' searching
+                    // (ignore values that are equals to '0' -> if end date have '0' value it means that it has not set end date
+                    // what means that this activity is still in progress)
+                    try {
+                        if (date != null)
+                            searchedValueCal.setTime(simpleDateFormat.parse(date));
+                        if (!start.equals("0") && start != null)
+                            startValueCal.setTime(simpleDateFormat.parse(start));
+                        if (end != null && !end.equals("0"))
+                            endValueCal.setTime(simpleDateFormat.parse(end));
+                    }catch (ParseException e){
+                        e.printStackTrace();
+                    }
+
+                    //here it is creating query from IDs of those activities that are matching with searched date
+                    if ((searchedValueCal.after(startValueCal) && searchedValueCal.before(endValueCal) || searchedValueCal.equals(startValueCal) || searchedValueCal.equals(endValueCal))) {
+                        querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + "=" + id : " OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
+                    } else if (searchedValueCal.after(startValueCal) && end.equals("0") && !searchedValueCal.equals("0")) {
+                        querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id : "OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
+                    }
+
+                } while (allRowsStart.moveToNext());
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+        // if there is no matching dates it returns query which links to find nothings
+        // otherwise it will return query with IDs of matching dates
+        return querySelection.equals(" ") ?  " start=null" : querySelection;
+    }
+
+
+
+
 }

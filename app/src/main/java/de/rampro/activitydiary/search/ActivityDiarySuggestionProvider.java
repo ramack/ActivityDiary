@@ -52,6 +52,7 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
     public static final String SEARCH_ACTIVITY = "de.rampro.activitydiary.action.SEARCH_ACTIVITY";
     public static final String SEARCH_NOTE = "de.rampro.activitydiary.action.SEARCH_NOTE";
     public static final String SEARCH_GLOBAL = "de.rampro.activitydiary.action.SEARCH_GLOBAL";
+    public static final String SEARCH_DATE = "de.rampro.activitydiary.action.SEARCH_DATE";
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -114,6 +115,14 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                             /* rewrite query */ query
                     });
 
+                    // Date
+                    result.addRow(new Object[]{id++,
+                            getContext().getResources().getString(R.string.search_date, query),
+                            /* icon */ R.drawable.ic_calendar,
+                            /* intent action */ SEARCH_DATE,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
+                    });
                 }
                 // has Pictures
                 // TODO: add picture search
@@ -121,8 +130,6 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                 // Location (GPS)
                 // TODO: add location search
 
-                // Date
-                // TODO: add date search
             default:
                 /* empty */
         }
