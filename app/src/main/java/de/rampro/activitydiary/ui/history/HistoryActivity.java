@@ -333,7 +333,6 @@ public class HistoryActivity extends BaseActivity implements
                 switch (args.getInt("TYPE")) {
                     case SEARCH_TYPE_ACTIVITYID:
                         sel = sel + " AND " + ActivityDiaryContract.Diary.ACT_ID + " = ?";
-                        System.out.println("LONG ID: " + Long.toString(args.getLong("ACTIVITY_ID")));
                         sel_args = new String[]{Long.toString(args.getLong("ACTIVITY_ID"))};
                         break;
                     case SEARCH_TYPE_NOTE:

@@ -183,11 +183,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case conditions:
 //                qBuilder.setTables(ActivityDiaryContract.Condition.TABLE_NAME);
                 /* TODO #18               if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
-//            case dates:
-//            //    qBuilder.setTables(;
-//                System.out.println("DATESSS CAS");
-//                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
-//                break;
             default:
                 /* empty */
         }
@@ -203,6 +198,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     null,
                     sortOrder);
         }
+        c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
     }
 
