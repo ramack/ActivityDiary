@@ -25,6 +25,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
@@ -34,6 +35,8 @@ import java.util.ArrayList;
 
 import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.db.LocalDBHelper;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -42,7 +45,8 @@ import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
 import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_DATA;
 import static android.app.SearchManager.SUGGEST_COLUMN_QUERY;
 import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
-import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_2;
+import static android.content.SearchRecentSuggestionsProvider.DATABASE_MODE_QUERIES;
+
 
 public class ActivityDiarySuggestionProvider extends ContentProvider {
     private static final int search_history = 1;
@@ -52,6 +56,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
     public static final String SEARCH_ACTIVITY = "de.rampro.activitydiary.action.SEARCH_ACTIVITY";
     public static final String SEARCH_NOTE = "de.rampro.activitydiary.action.SEARCH_NOTE";
     public static final String SEARCH_GLOBAL = "de.rampro.activitydiary.action.SEARCH_GLOBAL";
+    public final static int MODE = DATABASE_MODE_QUERIES;
+    public static final String TABLE_NAME = "activity";
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -68,10 +74,20 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         int id = 0;
+        String query = null;
         MatrixCursor result = null;
-        switch(sUriMatcher.match(uri)){
-            case search_history :
-                String query = uri.getLastPathSegment().toLowerCase();
+        result = new MatrixCursor(new String[]{
+                BaseColumns._ID,
+                SUGGEST_COLUMN_TEXT_1,
+                SUGGEST_COLUMN_ICON_1,
+                SUGGEST_COLUMN_INTENT_ACTION,
+                SUGGEST_COLUMN_INTENT_DATA,
+                SUGGEST_COLUMN_QUERY
+        });
+        uri.getPath();
+        switch (sUriMatcher.match(uri)) {
+            case search_history:
+                query = uri.getLastPathSegment().toLowerCase();
                 result = new MatrixCursor(new String[]{
                         BaseColumns._ID,
                         SUGGEST_COLUMN_TEXT_1,
@@ -81,19 +97,21 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                         SUGGEST_COLUMN_QUERY
                 });
 
-                if(query != null && query.length() > 0) {
+                if (query != null && query.length() > 0) {
                     // activities matching the current search
                     ArrayList<DiaryActivity> filtered = ActivityHelper.helper.sortedActivities(query);
 
                     // TODO: make the amount of activities shown configurable
                     for (int i = 0; i < 3; i++) {
-                        result.addRow(new Object[]{id++,
-                                filtered.get(i).getName(),
-                                /* icon */ null,
-                                /* intent action */ SEARCH_ACTIVITY,
-                                /* intent data */ Uri.withAppendedPath(SEARCH_URI, Integer.toString(filtered.get(i).getId())),
-                                /* rewrite query */filtered.get(i).getName()
-                        });
+                        if (i < filtered.size()) {
+                            result.addRow(new Object[]{id++,
+                                    filtered.get(i).getName(),
+                                    /* icon */ null,
+                                    /* intent action */ SEARCH_ACTIVITY,
+                                    /* intent data */ Uri.withAppendedPath(SEARCH_URI, Integer.toString(filtered.get(i).getId())),
+                                    /* rewrite query */filtered.get(i).getName()
+                            });
+                        }
                     }
 
                     // Notes
@@ -115,6 +133,8 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
                     });
 
                 }
+
+
                 // has Pictures
                 // TODO: add picture search
 
@@ -126,9 +146,36 @@ public class ActivityDiarySuggestionProvider extends ContentProvider {
             default:
                 /* empty */
         }
+        /*
+            If no query is typed, then show recent suggestions
+         */
+        if (query == null) {
+            LocalDBHelper mOpenHelper = new LocalDBHelper(getContext());
+            SQLiteDatabase db = mOpenHelper.getReadableDatabase();
+            String sql;
+            sql = "SELECT " + ActivityDiaryContract.DiarySuggestion.SUGGESTION + " FROM " +
+                    ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
+                    " ORDER BY " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED + " DESC";
+
+            Cursor c = db.rawQuery(sql, null);
+
+            if (c != null && c.moveToFirst()) {
+                do {
+                    result.addRow(new Object[]{id++,
+                            c.getString(0),
+                            /* icon */ null,
+                            /* intent action */ SEARCH_GLOBAL,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, c.getString(0)),
+                            /* rewrite query */c.getString(0)
+                    });
+                } while (c.moveToNext());
+            }
+        }
+
 
         return result;
     }
+
 
     /**
      * Implement this to handle requests for the MIME type of the data at the

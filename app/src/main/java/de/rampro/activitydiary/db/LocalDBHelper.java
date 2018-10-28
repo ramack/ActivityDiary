@@ -148,6 +148,16 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
     }
 
+    private void createRecentSuggestionsTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " +
+                "suggestions " +
+                "(" +
+                "last_changed TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                "suggestion TEXT NOT NULL " +
+                ");");
+
+    }
+
     private void createTablesForVersion(SQLiteDatabase db, int version){
         db.execSQL("CREATE TABLE " +
                 "activity " +
@@ -177,6 +187,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
         if (version >= 4){
             createDiaryLocationTable(db);
+            createRecentSuggestionsTable(db);
         }
 
     }

@@ -24,10 +24,12 @@ import android.app.SearchManager;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.CursorLoader;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,6 +47,7 @@ import android.view.inputmethod.EditorInfo;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.db.LocalDBHelper;
 import de.rampro.activitydiary.search.ActivityDiarySuggestionProvider;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
@@ -59,7 +62,7 @@ public class HistoryActivity extends BaseActivity implements
         NoteEditDialog.NoteEditDialogListener,
         HistoryRecyclerViewAdapter.SelectListener, SearchView.OnCloseListener, SearchView.OnQueryTextListener {
 
-    private static final String[] PROJECTION = new String[] {
+    private static final String[] PROJECTION = new String[]{
             ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._ID,
             ActivityDiaryContract.Diary.ACT_ID,
             ActivityDiaryContract.Diary.START,
@@ -87,7 +90,7 @@ public class HistoryActivity extends BaseActivity implements
         startActivity(i);
     }
 
-    public boolean onItemLongClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID){
+    public boolean onItemLongClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID) {
         NoteEditDialog dialog = new NoteEditDialog();
         dialog.setDiaryId(diaryID);
         dialog.setText(viewHolder.mNoteLabel.getText().toString());
@@ -135,15 +138,6 @@ public class HistoryActivity extends BaseActivity implements
         return false;
     }
 
-    protected class QHandler extends AsyncQueryHandler {
-        /* Access only allowed via ActivityHelper.helper singleton */
-        private QHandler(){
-            super(ActivityDiaryApplication.getAppContext().getContentResolver());
-        }
-    }
-
-    protected QHandler mQHandler = new QHandler();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,7 +150,7 @@ public class HistoryActivity extends BaseActivity implements
 
         setContent(contentView);
 
-        RecyclerView historyRecyclerView = (RecyclerView)findViewById(R.id.history_list);
+        RecyclerView historyRecyclerView = findViewById(R.id.history_list);
         StaggeredGridLayoutManager detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         detailLayoutManager.setAutoMeasureEnabled(true);
@@ -176,43 +170,79 @@ public class HistoryActivity extends BaseActivity implements
         handleIntent(getIntent());
     }
 
+    protected QHandler mQHandler = new QHandler();
+
+    private void handleIntent(Intent intent) {
+        String query = null;
+        if (ActivityDiarySuggestionProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            Uri data = intent.getData();
+            if (data != null) {
+                long id = Long.decode(data.getLastPathSegment());
+                filterHistoryView(id);
+            }
+        } else if (ActivityDiarySuggestionProvider.SEARCH_NOTE.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if (data != null) {
+                query = data.getLastPathSegment();
+                filterHistoryNotes(query);
+            }
+
+        } else if (ActivityDiarySuggestionProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if (data != null) {
+                query = data.getLastPathSegment();
+                filterHistoryView(query);
+            }
+        } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            filterHistoryView(query);
+        }
+
+        /*
+            if query was searched, then insert query into suggestion table
+         */
+        if (query != null) {
+            LocalDBHelper mOpenHelper = new LocalDBHelper(this);
+            SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+            String sql = "INSERT INTO " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
+                    "(" + ActivityDiaryContract.DiarySuggestion.SUGGESTION + ") " +
+                    "VALUES ('" + query + "');";
+
+            db.execSQL(sql);
+            long count = DatabaseUtils.queryNumEntries(db, ActivityDiaryContract.DiarySuggestion.TABLE_NAME);
+            /*if table contains more than 5 suggestions, then remove the oldest one*/
+            if (count > 5) {
+                sql = "DELETE FROM " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
+                        " WHERE " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED +
+                        " IN (SELECT " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED +
+                        " FROM " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
+                        " ORDER BY " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED + " ASC LIMIT 1);";
+                db.execSQL(sql);
+            }
+        }
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         setIntent(intent);
         handleIntent(intent);
     }
 
-    private void handleIntent(Intent intent) {
-        if (ActivityDiarySuggestionProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            Uri data = intent.getData();
-            if(data != null) {
-                long id = Long.decode(data.getLastPathSegment());
-                filterHistoryView(id);
-            }
-        }else if (ActivityDiarySuggestionProvider.SEARCH_NOTE.equals(intent.getAction())) {
-            Uri data = intent.getData();
-            if(data != null) {
-                String query = data.getLastPathSegment();
-                filterHistoryNotes(query);
-            }
-
-        }else if (ActivityDiarySuggestionProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
-            Uri data = intent.getData();
-            if(data != null) {
-                String query = data.getLastPathSegment();
-                filterHistoryView(query);
-            }
-        }else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            filterHistoryView(query);
+    /**
+     * @param query the search string, if null resets the filter
+     */
+    private void filterHistoryView(@Nullable String query) {
+        if (query == null) {
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, null, this);
+        } else {
+            Bundle args = new Bundle();
+            args.putInt("TYPE", SEACH_TYPE_TEXT_ALL);
+            args.putString("TEXT", query);
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
         }
-            /* TODO: save recent query
-            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
-                    MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE);
-            suggestions.saveRecentQuery(query, null);
-*/
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -238,25 +268,9 @@ public class HistoryActivity extends BaseActivity implements
         return true;
     }
 
-
-    /**
-     *
-     * @param query the search string, if null resets the filter
-     */
-    private void filterHistoryView(@Nullable String query){
-        if(query == null){
-            getLoaderManager().restartLoader(LOADER_ID_HISTORY, null, this);
-        }else{
-            Bundle args = new Bundle();
-            args.putInt("TYPE", SEACH_TYPE_TEXT_ALL);
-            args.putString("TEXT", query);
-            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
-        }
-    }
-
     /* show only activity with id activityId
      */
-    private void filterHistoryView(long activityId){
+    private void filterHistoryView(long activityId) {
         Bundle args = new Bundle();
         args.putInt("TYPE", SEACH_TYPE_ACTIVITYID);
         args.putLong("ACTIVITY_ID", activityId);
@@ -265,18 +279,17 @@ public class HistoryActivity extends BaseActivity implements
 
     /* show only activity with id activityId
      */
-    private void filterHistoryNotes(String notetext){
+    private void filterHistoryNotes(String notetext) {
         Bundle args = new Bundle();
         args.putInt("TYPE", SEACH_TYPE_NOTE);
         args.putString("TEXT", notetext);
         getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle your other action bar items...
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.action_add_activity:
                 Intent intentaddact = new Intent(HistoryActivity.this, EditActivity.class);
                 startActivity(intentaddact);
@@ -292,10 +305,10 @@ public class HistoryActivity extends BaseActivity implements
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
-        if(id == LOADER_ID_HISTORY) {
+        if (id == LOADER_ID_HISTORY) {
             String sel = SELECTION;
             String[] sel_args = null;
-            if(args != null) {
+            if (args != null) {
                 switch (args.getInt("TYPE")) {
                     case SEACH_TYPE_ACTIVITYID:
                         sel = sel + " AND " + ActivityDiaryContract.Diary.ACT_ID + " = ?";
@@ -309,7 +322,7 @@ public class HistoryActivity extends BaseActivity implements
                         sel = sel + " AND (" + ActivityDiaryContract.Diary.NOTE + " LIKE ?"
                                 + " OR " + ActivityDiaryContract.DiaryActivity.NAME + " LIKE ?)";
                         sel_args = new String[]{"%" + args.getString("TEXT") + "%",
-                                                "%" + args.getString("TEXT") + "%"};
+                                "%" + args.getString("TEXT") + "%"};
 
                         break;
                     default:
@@ -318,15 +331,15 @@ public class HistoryActivity extends BaseActivity implements
             }
             return new CursorLoader(this, ActivityDiaryContract.Diary.CONTENT_URI,
                     PROJECTION, sel, sel_args, null);
-        }else{
+        } else {
 
             return new CursorLoader(HistoryActivity.this,
                     ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                    new String[] {ActivityDiaryContract.DiaryImage._ID,
+                    new String[]{ActivityDiaryContract.DiaryImage._ID,
                             ActivityDiaryContract.DiaryImage.URI},
                     ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
                             + ActivityDiaryContract.DiaryImage._DELETED + "=0",
-                    new String[] {Long.toString(args.getLong("DiaryID"))},
+                    new String[]{Long.toString(args.getLong("DiaryID"))},
                     null);
         }
     }
@@ -336,9 +349,9 @@ public class HistoryActivity extends BaseActivity implements
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
         int i = loader.getId();
-        if(i == LOADER_ID_HISTORY) {
+        if (i == LOADER_ID_HISTORY) {
             historyAdapter.swapCursor(data);
-        }else{
+        } else {
             detailAdapters[i].swapCursor(data);
         }
     }
@@ -349,9 +362,9 @@ public class HistoryActivity extends BaseActivity implements
         // above is about to be closed.  We need to make sure we are no
         // longer using it.
         int i = loader.getId();
-        if(i == LOADER_ID_HISTORY) {
+        if (i == LOADER_ID_HISTORY) {
             historyAdapter.swapCursor(null);
-        }else{
+        } else {
             detailAdapters[i].swapCursor(null);
         }
 
@@ -360,7 +373,7 @@ public class HistoryActivity extends BaseActivity implements
     @Override
     public void onNoteEditPositiveClock(String str, DialogFragment dialog) {
         /* update note */
-        NoteEditDialog dlg = (NoteEditDialog)dialog;
+        NoteEditDialog dlg = (NoteEditDialog) dialog;
 
         ContentValues values = new ContentValues();
         values.put(ActivityDiaryContract.Diary.NOTE, str);
@@ -368,14 +381,14 @@ public class HistoryActivity extends BaseActivity implements
         mQHandler.startUpdate(0,
                 null,
                 Uri.withAppendedPath(ActivityDiaryContract.Diary.CONTENT_URI,
-                                     Long.toString(dlg.getDiaryId())),
+                        Long.toString(dlg.getDiaryId())),
                 values,
                 null, null);
 
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         mNavigationView.getMenu().findItem(R.id.nav_diary).setChecked(true);
         super.onResume();
         historyAdapter.notifyDataSetChanged(); /* redraw the complete recyclerview to take care of e.g. date format changes in teh preferences etc. #36 */
@@ -383,11 +396,10 @@ public class HistoryActivity extends BaseActivity implements
 
     public void addDetailAdapter(long diaryEntryId, DetailRecyclerViewAdapter adapter) {
         /* ensure size of detailsAdapters */
-        if(detailAdapters.length <= adapter.getAdapterId())
-        {
+        if (detailAdapters.length <= adapter.getAdapterId()) {
             int i = 0;
             DetailRecyclerViewAdapter[] newArray = new DetailRecyclerViewAdapter[adapter.getAdapterId() + 4];
-            for(DetailRecyclerViewAdapter a: detailAdapters){
+            for (DetailRecyclerViewAdapter a : detailAdapters) {
                 newArray[i] = a;
                 i++;
             }
@@ -401,6 +413,13 @@ public class HistoryActivity extends BaseActivity implements
         detailAdapters[adapter.getAdapterId()] = adapter;
         getLoaderManager().initLoader(adapter.getAdapterId(), b, this);
 
+    }
+
+    protected class QHandler extends AsyncQueryHandler {
+        /* Access only allowed via ActivityHelper.helper singleton */
+        private QHandler() {
+            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        }
     }
 
 }

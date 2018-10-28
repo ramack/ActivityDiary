@@ -51,15 +51,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
-import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.DayTimeCondition;
 import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
 import de.rampro.activitydiary.model.conditions.PausedCondition;
@@ -196,23 +195,24 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public ArrayList<DiaryActivity> sortedActivities(String query) {
+        ArrayList<DiaryActivity> activities = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
         ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
-        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
-
         for(DiaryActivity a : ActivityHelper.helper.getActivities()){
-            int dist = ActivityHelper.searchDistance(query, a.getName());
-            int pos = 0;
-            // search where to enter it
-            for(Integer i : filteredDist){
-                if(dist > i.intValue()){
-                    pos++;
-                }else{
-                    break;
+            if (a.getName().toLowerCase().contains(query.toLowerCase())) {
+                activities.add(a);
+            }
+        }
+
+        int counter = 0;
+        while (activities.size() != filtered.size()) {
+            for (DiaryActivity a : activities) {
+                if (counter <= a.getName().length()) {
+                    if (a.getName().toLowerCase().indexOf(query.toLowerCase()) == counter) {
+                        filtered.add(a);
+                    }
                 }
             }
-
-            filteredDist.add(pos, Integer.valueOf(dist));
-            filtered.add(pos, a);
+            counter++;
         }
         return filtered;
     }

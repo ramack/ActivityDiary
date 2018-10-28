@@ -80,17 +80,17 @@ public class ActivityDiaryContract {
          * The name for the Activity
          * <P>Type: TEXT</P>
          */
-        public static final String NAME = "name";
+        String NAME = "name";
         /**
          * The color for the Activity
          * <P>Type: TEXT</P>
          */
-        public static final String COLOR = "color";
+        String COLOR = "color";
         /**
          * The id of the parent Activity
          * <P>Type: INT</P>
          */
-        public static final String PARENT = "parent";
+        String PARENT = "parent";
 
         /* TODO #25: add image, required and activation conditions */
     }
@@ -101,12 +101,12 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Activity
          * <P>Type: INTEGER</P>
          */
-        public static final String _ID = "_id";
+        String _ID = "_id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
          */
-        public static final String _DELETED = "_deleted";
+        String _DELETED = "_deleted";
     }
 
     /* Diary stores the history of the activities. */
@@ -154,32 +154,32 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Diary (entry)
          * <P>Type: INTEGER</P>
          */
-        public static final String _ID = "_id";
+        String _ID = "_id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
          */
-        public static final String _DELETED = "_deleted";
+        String _DELETED = "_deleted";
         /**
          * The ID for the related Activity
          * <P>Type: TEXT</P>
          */
-        public static final String ACT_ID = "act_id";
+        String ACT_ID = "act_id";
         /**
          * The start time of the diary entry in milli seconds since epoch.
          * <P>Type: INT</P>
          */
-        public static final String START = "start";
+        String START = "start";
         /**
          * The end time of the diary entry in milli seconds since epoch.
          * <P>Type: INT</P>
          */
-        public static final String END = "end";
+        String END = "end";
         /**
          * The note attached to the diary entry. Could be NULL;
          * <P>Type: TEXT</P>
          */
-        public static final String NOTE = "note";
+        String NOTE = "note";
     }
 
     /* DiaryImage attachments for diary entries*/
@@ -290,42 +290,42 @@ public class ActivityDiaryContract {
          * The latitude of the position
          * <P>Type: REAL</P>
          */
-        public static final String LATITUDE = "latitude";
+        String LATITUDE = "latitude";
         /**
          * The longitude of the position
          * <P>Type: REAL</P>
          */
-        public static final String LONGITUDE = "longitude";
+        String LONGITUDE = "longitude";
         /**
          * The altitude of the location information, in m above WSG84 reference ellipsoid
          * <P>Type: REAL</P>
          */
-        public static final String ALTITUDE = "altitude";
+        String ALTITUDE = "altitude";
         /**
          * The timestamp of the location information, in milli seconds since epoch.
          * <P>Type: INTEGER</P>
          */
-        public static final String TIMESTAMP = "ts";
+        String TIMESTAMP = "ts";
         /**
          * The speed associated the the location information in meters/second over ground, NULL means unknown
          * <P>Type: REAL</P>
          */
-        public static final String SPEED = "speed";
+        String SPEED = "speed";
         /**
          * The estimated horizontal accuracy of the location information, in 1/10 meters, NULL means unknown
          * <P>Type: INTEGER</P>
          */
-        public static final String HACC = "hacc";
+        String HACC = "hacc";
         /**
          * The estimated vertical accuracy of the location information, in 1/10 meters, NULL means unknown
          * <P>Type: INTEGER</P>
          */
-        public static final String VACC = "vacc";
+        String VACC = "vacc";
         /**
          * The estimated speed accuracy of the location information, in 1/10 meters/sec, NULL means unknown
          * <P>Type: INTEGER</P>
          */
-        public static final String SACC = "sacc";
+        String SACC = "sacc";
 
     }
 
@@ -335,12 +335,12 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Activity
          * <P>Type: INTEGER</P>
          */
-        public static final String _ID = "_id";
+        String _ID = "_id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
          */
-        public static final String _DELETED = "_deleted";
+        String _DELETED = "_deleted";
     }
 
     /* DiaryStats - readonly */
@@ -397,6 +397,25 @@ public class ActivityDiaryContract {
          * The default sort order for the statistics
          */
         public static final String SORT_ORDER_DEFAULT = DURATION + " DESC";
+
+    }
+
+    public final static class DiarySuggestion {
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "suggestions");
+        public static final String TABLE_NAME = "suggestions";
+        /**
+         * The last_changed timestamp for suggestion
+         * <P>Type: TIMESTAMP</P>
+         */
+        public static final String lAST_CHANGED = "last_changed";
+        /**
+         * recent suggestion
+         * <P>Type: TEXT</P>
+         */
+        public static final String SUGGESTION = "suggestion";
+
+        private DiarySuggestion() {
+        }
 
     }
 
