@@ -62,7 +62,7 @@
   <string name="setting_enable_acra">Crash Reporting</string>
   <string name="setting_acra_enabled">Skicka rapporter om kraschar</string>
   <string name="setting_acra_disabled">Skicka inte rapporter om kraschar</string>
-  <string name="setting_use_location">Location Serivce</string>
+  <string name="setting_use_location">Location Service</string>
   <string name="setting_use_location_summary">%1$s used to track device location</string>
   <string name="setting_use_location_off_summary">User location not tracked at all</string>
   <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
