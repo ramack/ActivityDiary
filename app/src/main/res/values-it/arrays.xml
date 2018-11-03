@@ -21,7 +21,7 @@
 <resources>
     <string-array name="pref_location_setting_list" translatable="true">
         <item>OFF</item>
-        <item>Network</item>
+        <item>Rete</item>
         <item>GPS (e rete)</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
