@@ -83,11 +83,11 @@ public class ActivityDiaryContract {
         public static final String NAME = "name";
         /**
          * The color for the Activity
-         * <P>Type: TEXT</P>
+         * <P>Type: INT</P>
          */
         public static final String COLOR = "color";
         /**
-         * The id of the parent Activity
+         * The id of the parent Activity - not yet used
          * <P>Type: INT</P>
          */
         public static final String PARENT = "parent";
@@ -371,7 +371,7 @@ public class ActivityDiaryContract {
 
         /**
          * The color of the Activity
-         * <P>Type: TEXT</P>
+         * <P>Type: INT</P>
          */
         public static final String COLOR = "color";
 
