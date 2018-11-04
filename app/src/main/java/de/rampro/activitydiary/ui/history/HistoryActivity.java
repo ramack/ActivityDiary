@@ -222,7 +222,7 @@ public class HistoryActivity extends BaseActivity implements
             Uri data = intent.getData();
             if (data != null) {
                 String query = data.getLastPathSegment();
-                    filterHistoryDates(query);
+                filterHistoryDates(query);
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
@@ -341,6 +341,7 @@ public class HistoryActivity extends BaseActivity implements
                                 "%" + args.getString("TEXT") + "%"};
                         break;
                     case SEARCH_TYPE_DATE:
+                        // TOOD: calling here this provider method is a bit strange...
                         String searchResultQuery = provider.searchDate(args.getLong("MILLIS"));
                         sel = sel + " AND " + searchResultQuery;
                         sel_args = null;
@@ -453,7 +454,10 @@ public class HistoryActivity extends BaseActivity implements
             simpleDateFormat.setLenient(false);
             try {
                 return simpleDateFormat.parse(date).getTime();
-            } catch (ParseException e){}
+            } catch (ParseException e){
+                /* intentionally no further handling. We try the next date format and onyl if we cannot parse the date with any
+                 * supported format we return null afterwards. */
+            }
         }
 
         setWrongColorSearchText();

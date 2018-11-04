@@ -436,23 +436,30 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
 
     /**
-     Search for all dates in database which match start/end date or are in range (between start and end date)
+     * Search for all dates in database which match start/end date or are in range (between start and end date)
      * @param dateInMillis - date is searched
      * @return query (string) with ids that fulfills defined conditions
      */
     public String searchDate(Long dateInMillis) {
-      String querySelection = " ", id;
+        // TODO: move this into the method query, for the case diary,
+        // similar to diary_stats, we can modify selection and selection args there
+        // or maybe better, invent a new URI like "diary/number" where number is the dateInMillis
+        // Alternative: move all this directly into HistoryActivity.onCreateLoader
+
+        String querySelection = " ", id;
         long searchedValue = dateInMillis;
-        long searchedValuePlusDay = searchedValue + 86400000;
+        long searchedValuePlusDay = searchedValue + 86400000; // TODO: replace magic numbers by the formula to calculate them...
         long searchSpecialCase = searchedValue + 86399999;  //used for searching for still running activity
 
         try {
+// TODO: -> this query should not be executed outside of the method ActivityDiaryContentProvider.query
             Cursor allRowsStart = mOpenHelper.getReadableDatabase().rawQuery(
-                    "SELECT " + ActivityDiaryContract.Diary._ID
-                            + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + " WHERE " + "(" + searchedValue + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValue + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
-                                                                                              "(" + searchedValuePlusDay + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
-                                                                                              "(" + searchedValue + " < " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " > " + ActivityDiaryContract.Diary.END + ")" + " OR " +
-                                                                                              "(" + searchSpecialCase + " >= " + ActivityDiaryContract.Diary.START + " AND " + ActivityDiaryContract.Diary.END + " IS NULL" + ")", null);
+                "SELECT " + ActivityDiaryContract.Diary._ID
+                    + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME
+                        + " WHERE " + "(" + searchedValue + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValue + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchedValuePlusDay + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchedValue + " < " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " > " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchSpecialCase + " >= " + ActivityDiaryContract.Diary.START + " AND " + ActivityDiaryContract.Diary.END + " IS NULL" + ")", null);
 
             if (allRowsStart.moveToFirst()) {
                 do {
@@ -462,14 +469,12 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     }
                 } while (allRowsStart.moveToNext());
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            // TODO: add proper exception handling. Also "Exception" seems quite generic -> catch all exceptions that can occur directly
+        }
 
         // if there is no matching dates it returns query which links to find nothings
         // otherwise it will return query with IDs of matching dates
         return querySelection.equals(" ") ?  " start=null" : querySelection;
     }
-
-
-
-
 }
