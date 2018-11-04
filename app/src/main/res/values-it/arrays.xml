@@ -19,17 +19,17 @@
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 <resources>
-  <string-array name="pref_location_setting_list" translatable="true">
-    <item>OFF</item>
-    <item>Network</item>
-    <item>GPS (and network)</item>
-  </string-array>
-  <string-array name="statistic_dropdown" translatable="true">
-    <item>All</item>
-    <item>Last 7 Days</item>
-    <item>Last 30 Days</item>
-    <item>Week</item>
-    <item>Month</item>
-    <item>Year</item>
-  </string-array>
+    <string-array name="pref_location_setting_list" translatable="true">
+        <item>OFF</item>
+        <item>Rete</item>
+        <item>GPS (e rete)</item>
+    </string-array>
+    <string-array name="statistic_dropdown" translatable="true">
+        <item>Tutti</item>
+        <item>Ultimi 7 Giorni</item>
+        <item>Ultimi 30 Giorni</item>
+        <item>Settimana</item>
+        <item>Mese</item>
+        <item>Anno</item>
+    </string-array>
 </resources>
