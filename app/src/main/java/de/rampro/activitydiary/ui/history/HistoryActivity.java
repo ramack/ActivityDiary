@@ -45,11 +45,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import junit.framework.Assert;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.regex.Pattern;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -225,12 +222,7 @@ public class HistoryActivity extends BaseActivity implements
             Uri data = intent.getData();
             if (data != null) {
                 String query = data.getLastPathSegment();
-                if (checkDateFormat(query, getDateFormat(query))) {
                     filterHistoryDates(query);
-                } else{
-                    setWrongColorSearchText();
-                    Toast.makeText(getApplication().getBaseContext(), "Please enter date in format:\nyear.month.day or day.month.year", Toast.LENGTH_LONG).show();
-                }
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
@@ -301,10 +293,13 @@ public class HistoryActivity extends BaseActivity implements
     /* show only activities that match date
      */
     private void filterHistoryDates(String date) {
-        Bundle args = new Bundle();
-        args.putInt("TYPE", SEARCH_TYPE_DATE);
-        args.putString("TEXT", date);
-        getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+        Long dateInMilis = checkDateFormatAndParse(date);
+        if (dateInMilis != null) {
+            Bundle args = new Bundle();
+            args.putInt("TYPE", SEARCH_TYPE_DATE);
+            args.putLong("MILLIS", dateInMilis);
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+        }
     }
 
     @Override
@@ -346,7 +341,7 @@ public class HistoryActivity extends BaseActivity implements
                                 "%" + args.getString("TEXT") + "%"};
                         break;
                     case SEARCH_TYPE_DATE:
-                        String searchResultQuery = provider.searchDate(args.getString("TEXT"), getDateFormat(args.getString("TEXT")));
+                        String searchResultQuery = provider.searchDate(args.getLong("MILLIS"));
                         sel = sel + " AND " + searchResultQuery;
                         sel_args = null;
                         break;
@@ -441,42 +436,29 @@ public class HistoryActivity extends BaseActivity implements
     }
 
     /** Checks date format and also checks date can be parsed (used for not existing dates like 35.13.2000)
+     * (in case format not exists or date is incorrect Toast about wrong format is displayed)
      * @param date input that is checked
-     * @param dateFormat format under we want to check (parse) entered date
+     * @return millis of parsed input
      */
-    private boolean checkDateFormat(String date, String dateFormat){
-        if (dateFormat == null)
-            return false;
+    private Long checkDateFormatAndParse(String date){
+        String[] formats = {
+                getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
+                ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(getApplicationContext())).toLocalizedPattern() //locale format
+        };
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
-        simpleDateFormat.setLenient(false);
-        switch (dateFormat) {
-            case "yyyy.MM.dd":
-                if (!date.matches("([0-9]{4})\\.([0-9]{1,2})\\.([0-9]{1,2})"))
-                    return false;
-                break;
-            case "dd.MM.yyyy":
-                if (!date.matches("([0-9]{1,2})\\.([0-9]{1,2})\\.([0-9]{4})"))
-                    return false;
-                break;
-            default:
-                Assert.fail("Wrong date format !");
-                return false;
-        }
-        try {
-            simpleDateFormat.parse(date);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
+        SimpleDateFormat simpleDateFormat;
 
-    /**
-     * Returns date format in string based on entered date - yet returns only formats: yyyy.MM.dd or dd.MM.yyyy
-     * @param dateInput
-     */
-    private String getDateFormat(String dateInput){
-        return Pattern.compile("[0-9]{4}\\.").matcher(dateInput).find() ? "yyyy.MM.dd" : Pattern.compile("[0-9]{1,2}\\.").matcher(dateInput).find() ? "dd.MM.yyyy" : null;
+        for (String format: formats){
+            simpleDateFormat = new SimpleDateFormat(format);
+            simpleDateFormat.setLenient(false);
+            try {
+                return simpleDateFormat.parse(date).getTime();
+            } catch (ParseException e){}
+        }
+
+        setWrongColorSearchText();
+        Toast.makeText(getApplication().getBaseContext(), getResources().getString(R.string.wrongFormat), Toast.LENGTH_LONG).show();
+        return null;
     }
 
     /**

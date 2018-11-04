@@ -33,10 +33,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 /*
  * Why a new Content Provider for Diary Activites?
  *
@@ -441,66 +437,32 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
     /**
      Search for all dates in database which match start/end date or are in range (between start and end date)
-     * @param date - date is searched
-     * @param dateFormat - format under we search and compare matches
+     * @param dateInMillis - date is searched
      * @return query (string) with ids that fulfills defined conditions
      */
-    public String searchDate(String date, String dateFormat) {
-        String querySelection = " ";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
-        Calendar searchedValueCal = Calendar.getInstance();
-        Calendar startValueCal = Calendar.getInstance();
-        Calendar endValueCal = Calendar.getInstance();
+    public String searchDate(Long dateInMillis) {
+      String querySelection = " ", id;
+        long searchedValue = dateInMillis;
+        long searchedValuePlusDay = searchedValue + 86400000;
+        long searchSpecialCase = searchedValue + 86399999;  //used for searching for still running activity
 
-        //Gets all start, end dates and also id of activities
         try {
-            Cursor allRowsStart =  mOpenHelper.getReadableDatabase().rawQuery(
-                    "SELECT " + ActivityDiaryContract.Diary._ID + ", "
-                            + ActivityDiaryContract.Diary.START +", "
-                            + ActivityDiaryContract.Diary.END
-                            + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME, null
-            );
+            Cursor allRowsStart = mOpenHelper.getReadableDatabase().rawQuery(
+                    "SELECT " + ActivityDiaryContract.Diary._ID
+                            + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + " WHERE " + "(" + searchedValue + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValue + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                                                                              "(" + searchedValuePlusDay + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                                                                              "(" + searchedValue + " < " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " > " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                                                                              "(" + searchSpecialCase + " >= " + ActivityDiaryContract.Diary.START + " AND " + ActivityDiaryContract.Diary.END + " IS NULL" + ")", null);
 
             if (allRowsStart.moveToFirst()) {
-                String[] columnNames = allRowsStart.getColumnNames();
                 do {
-                    String id = null, start = null, end = null;
-                    for (String name : columnNames) {
-                        if (name.equals(ActivityDiaryContract.Diary.START))
-                            start = simpleDateFormat.format(allRowsStart.getLong(allRowsStart.getColumnIndex(name)));
-                        if (name.equals(ActivityDiaryContract.Diary.END))
-                            end = allRowsStart.getLong(allRowsStart.getColumnIndex(name)) == 0 ? "0" : simpleDateFormat.format(allRowsStart.getLong(allRowsStart.getColumnIndex(name)));
-                        if (name.equals(ActivityDiaryContract.Diary._ID))
-                            id = (allRowsStart.getString(allRowsStart.getColumnIndex(name)));
+                    for (String name : allRowsStart.getColumnNames()) {
+                           id =  (allRowsStart.getString(allRowsStart.getColumnIndex(name)));
+                           querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id : " OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
                     }
-                    //System.out.println("id: " + id + ", start: " + start + ", end: " + end);
-
-                    //Values (date, start, end) are set to specific calendar - needed for 'between' searching
-                    // (ignore values that are equals to '0' -> if end date have '0' value it means that it has not set end date
-                    // what means that this activity is still in progress)
-                    try {
-                        if (date != null)
-                            searchedValueCal.setTime(simpleDateFormat.parse(date));
-                        if (!start.equals("0") && start != null)
-                            startValueCal.setTime(simpleDateFormat.parse(start));
-                        if (end != null && !end.equals("0"))
-                            endValueCal.setTime(simpleDateFormat.parse(end));
-                    }catch (ParseException e){
-                        e.printStackTrace();
-                    }
-
-                    //here it is creating query from IDs of those activities that are matching with searched date
-                    if ((searchedValueCal.after(startValueCal) && searchedValueCal.before(endValueCal) || searchedValueCal.equals(startValueCal) || searchedValueCal.equals(endValueCal))) {
-                        querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + "=" + id : " OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
-                    } else if (searchedValueCal.after(startValueCal) && end.equals("0") && !searchedValueCal.equals("0")) {
-                        querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id : "OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
-                    }
-
                 } while (allRowsStart.moveToNext());
             }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
 
         // if there is no matching dates it returns query which links to find nothings
         // otherwise it will return query with IDs of matching dates
