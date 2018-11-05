@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Вы действительно хотите удалить это изображение из текущей записи активности?</string>
     <string name="dlg_undelete_activity_title">Восстановить активность</string>
     <string name="dlg_undelete_activity_text">Будет ли операция %1$s восстановлена ​​и снова станет доступной?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">Поскольку %1$s</string>
     <string name="just_now">прямо сейчас</string>
