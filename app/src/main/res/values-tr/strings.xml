@@ -9,9 +9,9 @@
     <string name="about_text_license_2">Bu program, yararlı olacağı umuduyla dağıtılır ancak HERHANGİ BİR GARANTİ olmadan; hatta BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA zımni garanti olmaksızın. Daha çok ayrıntı için GNU Genel Kamu Lisansına bakın.</string>
     <string name="about_text_contact_h">İletişim</string>
     <string name="about_text_contact"><![CDATA[Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.]]></string>
-    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>\'da bulunabilir.]]></string>
+    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>'da bulunabilir.]]></string>
     <string name="about_text_support_h">Destek</string>
-    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>\'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>\'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>\'de bağış yapmayı düşünebilirsiniz.]]></string>
+    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>'de bağış yapmayı düşünebilirsiniz.]]></string>
     <string name="about_text_cont_h">Katkıda Bulunanlar</string>
     <string name="about_text_cont_2">Bu listede sizin de adınızın geçmesini bekliyoruz.</string>
     <string name="about_text_lib_h">Kitaplıklar</string>
@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
     <string name="dlg_undelete_activity_title">Etkinliği Kurtar</string>
     <string name="dlg_undelete_activity_text">%1$s etkinliği kurtarılsın ve tekrar kullanılabilir olsun mu?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">%1$s tarihinden beri</string>
     <string name="just_now">şimdi</string>
