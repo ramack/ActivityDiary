@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Er du sikker på, at du vil fjerne dette billede fra den aktuelle aktivitetspost?</string>
     <string name="dlg_undelete_activity_title">Gendan aktivitet</string>
     <string name="dlg_undelete_activity_text">Skal aktiviteten %1$s udvindes og blive tilgængelig igen?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Siden %1$s</string>
     <string name="just_now">lige nu</string>

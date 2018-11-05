@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Opravdu chcete tento obrázek odstranit z aktuální položky aktivity?</string>
     <string name="dlg_undelete_activity_title">Aktivita obnovení</string>
     <string name="dlg_undelete_activity_text">Je aktivita %1$s obnovena a znovu dostupná?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Od %1$s</string>
     <string name="just_now">právě teď</string>

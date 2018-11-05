@@ -189,7 +189,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
                 data.moveToNext();
             }
             if(acc_po > 2.0f) {
-                entries.add(new PieEntry(acc, getResources().getString(R.string.statistics_rest)));
+                entries.add(new PieEntry(acc, getResources().getString(R.string.statistics_others)));
                 colors.add(Color.GRAY);
             }
         }

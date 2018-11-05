@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">現在のアクティビティエントリからこのイメージを削除してもよろしいですか？</string>
     <string name="dlg_undelete_activity_title">活動を回復する</string>
     <string name="dlg_undelete_activity_text">アクティビティー %1$s は回復され、再び使用可能になりますか？</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">%1$s以降</string>
     <string name="just_now">ちょうど今</string>

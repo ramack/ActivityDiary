@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Weet je zeker dat je deze afbeelding uit het huidige activiteitsitem wilt verwijderen?</string>
     <string name="dlg_undelete_activity_title">Herstel activiteit</string>
     <string name="dlg_undelete_activity_text">Zal de activiteit %1$s worden hersteld en opnieuw beschikbaar worden?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Sinds %1$s</string>
     <string name="just_now">net nu</string>

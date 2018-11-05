@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
     <string name="dlg_undelete_activity_title">Aktivität wiederherstellen</string>
     <string name="dlg_undelete_activity_text">Soll die Aktivität %1$s wiederhergestellt werden und wieder auswählbar sein?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Seit %1$s</string>
     <string name="just_now">gerade eben</string>

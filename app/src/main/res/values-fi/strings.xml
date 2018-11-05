@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Haluatko varmasti poistaa tämän kuvan nykyisestä aktiviteetistä?</string>
     <string name="dlg_undelete_activity_title">Palauta aktiviteetti</string>
     <string name="dlg_undelete_activity_text">Onko toiminto %1$s palautettava ja tulee uudelleen käyttöön?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Koska %1$s</string>
     <string name="just_now">juuri nyt</string>

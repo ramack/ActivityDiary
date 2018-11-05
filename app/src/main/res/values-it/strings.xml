@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Sei sicuro di voler rimuovere questa immagine dalla voce di attività corrente?</string>
     <string name="dlg_undelete_activity_title">Recupera attività</string>
     <string name="dlg_undelete_activity_text">L\'attività %1$s essere recuperata e diventare nuovamente disponibile?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">Dal %1$s</string>
     <string name="just_now">proprio adesso</string>

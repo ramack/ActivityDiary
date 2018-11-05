@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
     <string name="dlg_undelete_activity_title">Etkinliği Kurtar</string>
     <string name="dlg_undelete_activity_text">%1$s etkinliği kurtarılsın ve tekrar kullanılabilir olsun mu?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">%1$s tarihinden beri</string>
     <string name="just_now">şimdi</string>

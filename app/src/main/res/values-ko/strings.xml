@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">현재 활동 항목에서이 이미지를 제거 하시겠습니까?</string>
     <string name="dlg_undelete_activity_title">활동 복구</string>
     <string name="dlg_undelete_activity_text">활동 %1$s 이 복구되어 다시 사용 가능하게됩니까?</string>
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Rest</string>
     <!-- main view -->
     <string name="duration_description">%1$s이후</string>
     <string name="just_now">방금</string>
