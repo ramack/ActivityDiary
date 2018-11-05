@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Biztosan eltávolítja ezt a képet az aktuális tevékenységbejegyzésből?</string>
     <string name="dlg_undelete_activity_title">Tevékenység visszaállítása</string>
     <string name="dlg_undelete_activity_text">A %1$s tevékenység lesz-e helyreállítva, és újra elérhetővé válik?</string>
-    <string name="statistics_others">Pihenés</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">%1$sóta</string>
     <string name="just_now">pont most</string>
