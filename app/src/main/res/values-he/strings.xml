@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">האם אתה בטוח שברצונך להסיר תמונה זו מערך הפעילות הנוכחי?</string>
     <string name="dlg_undelete_activity_title">שחזור פעילות</string>
     <string name="dlg_undelete_activity_text">Shall הפעילות %1$s להיות התאושש ולהיות זמין שוב?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">מאז %1$s</string>
     <string name="just_now">זֶה עַתָה</string>
