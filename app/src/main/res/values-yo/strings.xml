@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Ṣe o da ọ loju pe o fẹ yọ aworan yii kuro ni titẹsi iṣẹ ṣiṣelọwọ?</string>
     <string name="dlg_undelete_activity_title">Bọsipọ aṣayan iṣẹ</string>
     <string name="dlg_undelete_activity_text">Yoo ṣe iṣẹ naa %1$s ki o si wa ni ibẹrẹ lẹẹkansi?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">Niwon %1$s</string>
     <string name="just_now">ni bayi</string>
