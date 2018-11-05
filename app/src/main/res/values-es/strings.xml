@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">¿Seguro que quieres eliminar esta imagen de la entrada de la actividad actual?</string>
     <string name="dlg_undelete_activity_title">Recuperar actividad</string>
     <string name="dlg_undelete_activity_text">¿Se recuperará la actividad %1$s y estará disponible nuevamente?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">Desde %1$s</string>
     <string name="just_now">justo ahora</string>
