@@ -135,7 +135,7 @@
     <string name="dlg_delete_image_text">Apakah Anda yakin ingin menghapus gambar ini dari catatan aktivitas saat ini?</string>
     <string name="dlg_undelete_activity_title">Pulihkan Aktivitas</string>
     <string name="dlg_undelete_activity_text">Apakah aktivitas %1$s dipulihkan dan menjadi tersedia lagi?</string>
-    <string name="statistics_others">Rest</string>
+    <string name="statistics_others">Others</string>
     <!-- main view -->
     <string name="duration_description">Sejak %1$s</string>
     <string name="just_now">baru saja</string>
