@@ -169,7 +169,7 @@
     <string name="action_undo">UNDO</string>
     <string name="search_hint">Search activity&#8230;</string>
     <string name="search_description">Entries in the ActivityDiary</string>
-    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.search.ActivityDiarySuggestionProvider</string>
+    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.provider</string>
 
     <!-- dialog -->
     <string name="dlg_ok">OK</string>

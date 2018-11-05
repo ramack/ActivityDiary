@@ -83,11 +83,6 @@
             android:writePermission="${applicationId}.WRITE"
             />
         <provider
-            android:name=".search.ActivityDiarySuggestionProvider"
-            android:authorities="${applicationId}.search.ActivityDiarySuggestionProvider"
-            >
-        </provider>
-        <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"

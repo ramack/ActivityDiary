@@ -28,8 +28,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,9 +44,8 @@ import android.view.inputmethod.EditorInfo;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
-import de.rampro.activitydiary.db.LocalDBHelper;
-import de.rampro.activitydiary.search.ActivityDiarySuggestionProvider;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.EditActivity;
@@ -72,6 +69,7 @@ public class HistoryActivity extends BaseActivity implements
             ActivityDiaryContract.DiaryActivity.COLOR
     };
     private static final String SELECTION = ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0";
+    private static final int SEARCH_SUGGESTION_DISPLAY_COUNT = 5;
 
     private static final int LOADER_ID_HISTORY = -1;
     private static final int SEACH_TYPE_ACTIVITYID = 1;
@@ -174,21 +172,21 @@ public class HistoryActivity extends BaseActivity implements
 
     private void handleIntent(Intent intent) {
         String query = null;
-        if (ActivityDiarySuggestionProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
+        if (ActivityDiaryContentProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
             Uri data = intent.getData();
             if (data != null) {
                 long id = Long.decode(data.getLastPathSegment());
                 filterHistoryView(id);
             }
-        } else if (ActivityDiarySuggestionProvider.SEARCH_NOTE.equals(intent.getAction())) {
+        } else if (ActivityDiaryContentProvider.SEARCH_NOTE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
                 query = data.getLastPathSegment();
                 filterHistoryNotes(query);
             }
 
-        } else if (ActivityDiarySuggestionProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
+        } else if (ActivityDiaryContentProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
                 query = data.getLastPathSegment();
@@ -203,23 +201,20 @@ public class HistoryActivity extends BaseActivity implements
             if query was searched, then insert query into suggestion table
          */
         if (query != null) {
-            LocalDBHelper mOpenHelper = new LocalDBHelper(this);
-            SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-            String sql = "INSERT INTO " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
-                    "(" + ActivityDiaryContract.DiarySuggestion.SUGGESTION + ") " +
-                    "VALUES ('" + query + "');";
 
-            db.execSQL(sql);
-            long count = DatabaseUtils.queryNumEntries(db, ActivityDiaryContract.DiarySuggestion.TABLE_NAME);
-            /*if table contains more than 5 suggestions, then remove the oldest one*/
-            if (count > 5) {
-                sql = "DELETE FROM " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
-                        " WHERE " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED +
-                        " IN (SELECT " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED +
-                        " FROM " + ActivityDiaryContract.DiarySuggestion.TABLE_NAME +
-                        " ORDER BY " + ActivityDiaryContract.DiarySuggestion.lAST_CHANGED + " ASC LIMIT 1);";
-                db.execSQL(sql);
-            }
+            String URL = "content://" + ActivityDiaryContract.AUTHORITY + ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI.getPath();
+            Uri uri = Uri.parse(URL);
+            ContentValues values = new ContentValues();
+
+            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE '" + query + "'", null);
+
+            values.put(ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION, query);
+            getContentResolver().insert(uri, values);
+
+            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion._ID +
+                    " IN (SELECT " + ActivityDiaryContract.DiarySearchSuggestion._ID +
+                    " FROM " + ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
+                    " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)", null);
         }
     }
 

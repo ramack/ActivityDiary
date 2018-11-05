@@ -28,17 +28,19 @@ import de.rampro.activitydiary.BuildConfig;
 public class ActivityDiaryContract {
 
     /* no instance of this class is allowed */
-    private ActivityDiaryContract(){}
+    private ActivityDiaryContract() {
+    }
 
     public static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".provider";
     public static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
 
     /* DiaryActivities are the main action that can be logged in the Diary */
-    public final static class DiaryActivity implements DiaryActivityColumns{
+    public final static class DiaryActivity implements DiaryActivityColumns {
         /**
          * This utility class cannot be instantiated
          */
-        private DiaryActivity() {}
+        private DiaryActivity() {
+        }
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "activities");
 
@@ -96,7 +98,7 @@ public class ActivityDiaryContract {
     }
 
     /* The columns in a DiaryActivity */
-    protected interface DiaryActivityColumns extends DiaryActivityJoinableColumns{
+    protected interface DiaryActivityColumns extends DiaryActivityJoinableColumns {
         /**
          * The id (primary key) for the Activity
          * <P>Type: INTEGER</P>
@@ -110,11 +112,12 @@ public class ActivityDiaryContract {
     }
 
     /* Diary stores the history of the activities. */
-    public final static class Diary implements DiaryColumns, DiaryActivityJoinableColumns{
+    public final static class Diary implements DiaryColumns, DiaryActivityJoinableColumns {
         /**
          * This utility class cannot be instantiated
          */
-        private Diary() {}
+        private Diary() {
+        }
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diary");
 
@@ -154,7 +157,7 @@ public class ActivityDiaryContract {
          * The id (primary key) for the Diary (entry)
          * <P>Type: INTEGER</P>
          */
-        String _ID = "_id";
+        public static final String _ID = "_id";
         /**
          * Deleted state (0 is alive, 1 is deleted)
          * <P>Type: INTEGER</P>
@@ -187,7 +190,8 @@ public class ActivityDiaryContract {
         /**
          * This utility class cannot be instantiated
          */
-        private DiaryImage() {}
+        private DiaryImage() {
+        }
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diaryImage");
 
@@ -244,11 +248,12 @@ public class ActivityDiaryContract {
     }
 
     /* DiaryLocations are the location history logged in the Diary */
-    public final static class DiaryLocation implements DiaryLocationColumns{
+    public final static class DiaryLocation implements DiaryLocationColumns {
         /**
          * This utility class cannot be instantiated
          */
-        private DiaryLocation() {}
+        private DiaryLocation() {
+        }
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "locations");
 
@@ -330,7 +335,7 @@ public class ActivityDiaryContract {
     }
 
     /* The columns in a location */
-    protected interface DiaryLocationColumns extends DiaryLocationJoinableColumns{
+    protected interface DiaryLocationColumns extends DiaryLocationJoinableColumns {
         /**
          * The id (primary key) for the Activity
          * <P>Type: INTEGER</P>
@@ -348,7 +353,8 @@ public class ActivityDiaryContract {
         /**
          * This utility class cannot be instantiated
          */
-        private DiaryStats() {}
+        private DiaryStats() {
+        }
 
         public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "diaryStats");
 
@@ -400,25 +406,46 @@ public class ActivityDiaryContract {
 
     }
 
-    public final static class DiarySuggestion {
-        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "suggestions");
-        public static final String TABLE_NAME = "suggestions";
+    public final static class DiarySearchSuggestion {
+        public static final Uri CONTENT_URI = Uri.withAppendedPath(AUTHORITY_URI, "searchSuggestions");
+
+        public static final String TABLE_NAME = "diary_search_suggestions";
+
+
+        /**
+         * The mime type of a directory of this entry.
+         */
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary_search_suggestions";
+        /**
+         * The mime type of a single entry.
+         */
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE +
+                        "/vnd.de.rampro.activitydiary_diary_search_suggestions";
+
         /**
          * The last_changed timestamp for suggestion
-         * <P>Type: TIMESTAMP</P>
+         * <P>Type: INTEGER</P>
          */
-        public static final String lAST_CHANGED = "last_changed";
+        public static final String _ID = "_id";
         /**
          * recent suggestion
          * <P>Type: TEXT</P>
          */
         public static final String SUGGESTION = "suggestion";
 
-        private DiarySuggestion() {
+        /**
+         * Deleted state (0 is alive, 1 is deleted)
+         * <P>Type: INTEGER</P>
+         */
+        public static final String _DELETED = "_deleted";
+
+        private DiarySearchSuggestion() {
         }
 
     }
-
 
 
 }
