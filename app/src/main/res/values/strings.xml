@@ -182,7 +182,7 @@
     <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
 
 
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_rest">Others</string>
 
     <!-- main view -->
     <string name="duration_description">Since %1$s</string>
