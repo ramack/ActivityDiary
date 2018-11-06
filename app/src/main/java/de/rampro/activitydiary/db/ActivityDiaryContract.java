@@ -431,11 +431,19 @@ public class ActivityDiaryContract {
          * <P>Type: INTEGER</P>
          */
         public static final String _ID = "_id";
+
         /**
          * recent suggestion
          * <P>Type: TEXT</P>
          */
         public static final String SUGGESTION = "suggestion";
+
+        /**
+         * recent suggestion action (action argument for the intent to perform the search)
+         * shall be one of the ActivityDiaryContentProvider.SEARCH_* values
+         * <P>Type: TEXT</P>
+         */
+        public static final String ACTION = "action_";
 
         /**
          * Deleted state (0 is alive, 1 is deleted)
@@ -447,6 +455,4 @@ public class ActivityDiaryContract {
         }
 
     }
-
-
 }

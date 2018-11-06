@@ -157,13 +157,13 @@ public class LocalDBHelper extends SQLiteOpenHelper {
 
     private void createRecentSuggestionsTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " +
-                ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
+                "diary_search_suggestions" +
                 "(" +
-                ActivityDiaryContract.DiarySearchSuggestion._ID + " INTEGER PRIMARY KEY ASC, " +
-                ActivityDiaryContract.DiarySearchSuggestion._DELETED + " INTEGER DEFAULT 0, " +
-                ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " TEXT NOT NULL " +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0, " +
+                "action_ TEXT NOT NULL, " +
+                "suggestion TEXT NOT NULL " +
                 ");");
-
     }
 
     private void createTablesForVersion(SQLiteDatabase db, int version) {

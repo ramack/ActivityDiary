@@ -55,6 +55,7 @@ import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
  * According https://developer.android.com/guide/topics/providers/content-provider-creating.html
  * we need it to do searching, synching or widget use of the data -> which in the long we all want to do.
  *
+ * Additionally it is used as SearchProvider these days.
  * */
 public class ActivityDiaryContentProvider extends ContentProvider {
 
@@ -78,8 +79,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public static final String SEARCH_ACTIVITY = "de.rampro.activitydiary.action.SEARCH_ACTIVITY";
     public static final String SEARCH_NOTE = "de.rampro.activitydiary.action.SEARCH_NOTE";
     public static final String SEARCH_GLOBAL = "de.rampro.activitydiary.action.SEARCH_GLOBAL";
-    public static final Uri SEARCH_URI = Uri.parse("content://" + ActivityDiaryContract.AUTHORITY);
     public static final String SEARCH_DATE = "de.rampro.activitydiary.action.SEARCH_DATE";
+
+    // TODO: isn't this already somewhere else?
+    public static final Uri SEARCH_URI = Uri.parse("content://" + ActivityDiaryContract.AUTHORITY);
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -100,7 +103,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
-
+// TODO:
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "history/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/", search_recent_suggestion);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "history/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/*", search_suggestion);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_suggestion);
@@ -220,16 +223,30 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
             case search_recent_suggestion:
 
-                sql = "SELECT " + ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " FROM " +
+                sql = "SELECT " + ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + ", " +
+                        ActivityDiaryContract.DiarySearchSuggestion.ACTION + " FROM " +
                         ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
                         " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC";
 
                 c = mOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
                 if (c != null && c.moveToFirst()) {
                     do {
+                        Object icon = null;
+                        String action = c.getString(1);
+
+                        if(action.equals(SEARCH_ACTIVITY)) {
+                            /* icon stays null */
+                        }else if(action.equals(SEARCH_NOTE)){
+                            icon = R.drawable.ic_search;
+                        }else if(action.equals(SEARCH_GLOBAL)){
+                            icon = R.drawable.ic_search;
+                        }else if(action.equals(SEARCH_DATE)){
+                            icon = R.drawable.ic_calendar;
+                        }
+
                         result.addRow(new Object[]{id++,
                                 c.getString(0),
-                                /* icon */ null,
+                                /* icon */ icon,
                                 /* intent action */ SEARCH_GLOBAL,
                                 /* intent data */ Uri.withAppendedPath(SEARCH_URI, c.getString(0)),
                                 /* rewrite query */c.getString(0)

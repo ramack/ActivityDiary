@@ -220,29 +220,28 @@ public class HistoryActivity extends BaseActivity implements
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
+            filterHistoryView(query);
         } else if (ActivityDiaryContentProvider.SEARCH_DATE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
                 query = data.getLastPathSegment();
                 filterHistoryDates(query);
             }
-        } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-            filterHistoryView(query);
         }
-
         /*
             if query was searched, then insert query into suggestion table
          */
         if (query != null) {
 
-            String URL = "content://" + ActivityDiaryContract.AUTHORITY + ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI.getPath();
-            Uri uri = Uri.parse(URL);
+            Uri uri = ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI;
+
             ContentValues values = new ContentValues();
 
-            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE '" + query + "'", null);
+            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE '" + query + "' AND "
+                    + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE '" + intent.getAction() + "'", null);
 
             values.put(ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION, query);
+            values.put(ActivityDiaryContract.DiarySearchSuggestion.ACTION, intent.getAction());
             getContentResolver().insert(uri, values);
 
             getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion._ID +
