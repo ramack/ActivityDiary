@@ -182,7 +182,7 @@
     <string name="dlg_undelete_activity_text">Shall the activity %1$s be recovered and become available again?</string>
 
 
-    <string name="statistics_rest">Rest</string>
+    <string name="statistics_others">Others</string>
 
     <!-- main view -->
     <string name="duration_description">Since %1$s</string>
@@ -232,6 +232,8 @@
     <string name="constraint_positive_duration">The activity shall always start before it ends.</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
     <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
+    <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
+    <string name="wrongFormat">Please enter date in correct format!</string>
     <!-- Map -->
     <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
 

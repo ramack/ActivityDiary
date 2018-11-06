@@ -22,6 +22,7 @@ package de.rampro.activitydiary.ui.history;
 import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.AsyncQueryHandler;
+import android.content.ContentProviderClient;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.CursorLoader;
@@ -41,6 +42,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -72,14 +78,19 @@ public class HistoryActivity extends BaseActivity implements
     private static final int SEARCH_SUGGESTION_DISPLAY_COUNT = 5;
 
     private static final int LOADER_ID_HISTORY = -1;
-    private static final int SEACH_TYPE_ACTIVITYID = 1;
-    private static final int SEACH_TYPE_NOTE = 2;
-    private static final int SEACH_TYPE_TEXT_ALL = 3;
+    private static final int SEARCH_TYPE_ACTIVITYID = 1;
+    private static final int SEARCH_TYPE_NOTE = 2;
+    private static final int SEARCH_TYPE_TEXT_ALL = 3;
+    private static final int SEARCH_TYPE_DATE = 4;
+
 
     private HistoryRecyclerViewAdapter historyAdapter;
     private DetailRecyclerViewAdapter detailAdapters[];
     private MenuItem searchMenuItem;
     private SearchView searchView;
+
+    ContentProviderClient client = ActivityDiaryApplication.getAppContext().getContentResolver().acquireContentProviderClient(ActivityDiaryContract.AUTHORITY);
+    ActivityDiaryContentProvider provider = (ActivityDiaryContentProvider) client.getLocalContentProvider();
 
     @Override
     public void onItemClick(HistoryViewHolders viewHolder, int adapterPosition, int diaryID) {
@@ -133,8 +144,18 @@ public class HistoryActivity extends BaseActivity implements
     @Override
     public boolean onQueryTextChange(String newText) {
         // no dynamic change before starting the search...
-        return false;
+        setDefaultColorSearchText();
+        return true;
     }
+
+    protected class QHandler extends AsyncQueryHandler {
+        /* Access only allowed via ActivityHelper.helper singleton */
+        private QHandler() {
+            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+        }
+    }
+
+    protected QHandler mQHandler = new QHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +169,7 @@ public class HistoryActivity extends BaseActivity implements
 
         setContent(contentView);
 
-        RecyclerView historyRecyclerView = findViewById(R.id.history_list);
+        RecyclerView historyRecyclerView = (RecyclerView) findViewById(R.id.history_list);
         StaggeredGridLayoutManager detailLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
         detailLayoutManager.setAutoMeasureEnabled(true);
@@ -168,7 +189,11 @@ public class HistoryActivity extends BaseActivity implements
         handleIntent(getIntent());
     }
 
-    protected QHandler mQHandler = new QHandler();
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
 
     private void handleIntent(Intent intent) {
         String query = null;
@@ -191,6 +216,14 @@ public class HistoryActivity extends BaseActivity implements
             if (data != null) {
                 query = data.getLastPathSegment();
                 filterHistoryView(query);
+            }
+        } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+        } else if (ActivityDiaryContentProvider.SEARCH_DATE.equals(intent.getAction())) {
+            Uri data = intent.getData();
+            if (data != null) {
+                String query = data.getLastPathSegment();
+                filterHistoryDates(query);
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
@@ -219,27 +252,6 @@ public class HistoryActivity extends BaseActivity implements
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleIntent(intent);
-    }
-
-    /**
-     * @param query the search string, if null resets the filter
-     */
-    private void filterHistoryView(@Nullable String query) {
-        if (query == null) {
-            getLoaderManager().restartLoader(LOADER_ID_HISTORY, null, this);
-        } else {
-            Bundle args = new Bundle();
-            args.putInt("TYPE", SEACH_TYPE_TEXT_ALL);
-            args.putString("TEXT", query);
-            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
-        }
-    }
-
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.history_menu, menu);
@@ -251,34 +263,58 @@ public class HistoryActivity extends BaseActivity implements
         searchView.setIconifiedByDefault(true);
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
         searchView.setOnCloseListener(this);
         searchView.setOnQueryTextListener(this);
-
         searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
-
 //TODO to make it look nice
 //        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
 
         return true;
     }
 
-    /* show only activity with id activityId
+
+    /**
+     * @param query the search string, if null resets the filter
      */
-    private void filterHistoryView(long activityId) {
-        Bundle args = new Bundle();
-        args.putInt("TYPE", SEACH_TYPE_ACTIVITYID);
-        args.putLong("ACTIVITY_ID", activityId);
-        getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+    private void filterHistoryView(@Nullable String query) {
+        if (query == null) {
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, null, this);
+        } else {
+            Bundle args = new Bundle();
+            args.putInt("TYPE", SEARCH_TYPE_TEXT_ALL);
+            args.putString("TEXT", query);
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+        }
     }
 
     /* show only activity with id activityId
      */
+    private void filterHistoryView(long activityId) {
+        Bundle args = new Bundle();
+        args.putInt("TYPE", SEARCH_TYPE_ACTIVITYID);
+        args.putLong("ACTIVITY_ID", activityId);
+        getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+    }
+
+    /* show only activity that contains note
+     */
     private void filterHistoryNotes(String notetext) {
         Bundle args = new Bundle();
-        args.putInt("TYPE", SEACH_TYPE_NOTE);
+        args.putInt("TYPE", SEARCH_TYPE_NOTE);
         args.putString("TEXT", notetext);
         getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+    }
+
+    /* show only activities that match date
+     */
+    private void filterHistoryDates(String date) {
+        Long dateInMilis = checkDateFormatAndParse(date);
+        if (dateInMilis != null) {
+            Bundle args = new Bundle();
+            args.putInt("TYPE", SEARCH_TYPE_DATE);
+            args.putLong("MILLIS", dateInMilis);
+            getLoaderManager().restartLoader(LOADER_ID_HISTORY, args, this);
+        }
     }
 
     @Override
@@ -305,20 +341,25 @@ public class HistoryActivity extends BaseActivity implements
             String[] sel_args = null;
             if (args != null) {
                 switch (args.getInt("TYPE")) {
-                    case SEACH_TYPE_ACTIVITYID:
+                    case SEARCH_TYPE_ACTIVITYID:
                         sel = sel + " AND " + ActivityDiaryContract.Diary.ACT_ID + " = ?";
                         sel_args = new String[]{Long.toString(args.getLong("ACTIVITY_ID"))};
                         break;
-                    case SEACH_TYPE_NOTE:
+                    case SEARCH_TYPE_NOTE:
                         sel = sel + " AND " + ActivityDiaryContract.Diary.NOTE + " LIKE ?";
                         sel_args = new String[]{"%" + args.getString("TEXT") + "%"};
                         break;
-                    case SEACH_TYPE_TEXT_ALL:
+                    case SEARCH_TYPE_TEXT_ALL:
                         sel = sel + " AND (" + ActivityDiaryContract.Diary.NOTE + " LIKE ?"
                                 + " OR " + ActivityDiaryContract.DiaryActivity.NAME + " LIKE ?)";
                         sel_args = new String[]{"%" + args.getString("TEXT") + "%",
                                 "%" + args.getString("TEXT") + "%"};
-
+                        break;
+                    case SEARCH_TYPE_DATE:
+                        // TOOD: calling here this provider method is a bit strange...
+                        String searchResultQuery = provider.searchDate(args.getLong("MILLIS"));
+                        sel = sel + " AND " + searchResultQuery;
+                        sel_args = null;
                         break;
                     default:
                         break;
@@ -327,10 +368,9 @@ public class HistoryActivity extends BaseActivity implements
             return new CursorLoader(this, ActivityDiaryContract.Diary.CONTENT_URI,
                     PROJECTION, sel, sel_args, null);
         } else {
-
             return new CursorLoader(HistoryActivity.this,
                     ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                    new String[]{ActivityDiaryContract.DiaryImage._ID,
+                    new String[] {ActivityDiaryContract.DiaryImage._ID,
                             ActivityDiaryContract.DiaryImage.URI},
                     ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
                             + ActivityDiaryContract.DiaryImage._DELETED + "=0",
@@ -410,11 +450,50 @@ public class HistoryActivity extends BaseActivity implements
 
     }
 
-    protected class QHandler extends AsyncQueryHandler {
-        /* Access only allowed via ActivityHelper.helper singleton */
-        private QHandler() {
-            super(ActivityDiaryApplication.getAppContext().getContentResolver());
+    /** Checks date format and also checks date can be parsed (used for not existing dates like 35.13.2000)
+     * (in case format not exists or date is incorrect Toast about wrong format is displayed)
+     * @param date input that is checked
+     * @return millis of parsed input
+     */
+    private Long checkDateFormatAndParse(String date){
+        String[] formats = {
+                getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
+                ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(getApplicationContext())).toLocalizedPattern() //locale format
+        };
+
+        SimpleDateFormat simpleDateFormat;
+
+        for (String format: formats){
+            simpleDateFormat = new SimpleDateFormat(format);
+            simpleDateFormat.setLenient(false);
+            try {
+                return simpleDateFormat.parse(date).getTime();
+            } catch (ParseException e){
+                /* intentionally no further handling. We try the next date format and onyl if we cannot parse the date with any
+                 * supported format we return null afterwards. */
+            }
         }
+
+        setWrongColorSearchText();
+        Toast.makeText(getApplication().getBaseContext(), getResources().getString(R.string.wrongFormat), Toast.LENGTH_LONG).show();
+        return null;
+    }
+
+    /**
+     * Sets searched text to default color (white) in case it is set to red
+     */
+    private void setDefaultColorSearchText(){
+        TextView textView =  searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        if (textView.getCurrentTextColor() == getResources().getColor(R.color.colorWrongText))
+            textView.setTextColor(getResources().getColor(R.color.activityTextColorLight));
+    }
+
+    /**
+     * Sets searched text to color which indicates wrong searching (red)
+     */
+    private void setWrongColorSearchText(){
+        TextView textView =  searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        textView.setTextColor(getResources().getColor(R.color.colorWrongText));
     }
 
 }

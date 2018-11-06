@@ -680,8 +680,8 @@ public class ActivityHelper extends AsyncQueryHandler{
      * Code based on Levensthein distance from https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Java
      */
     public static int searchDistance(CharSequence inSearch, CharSequence inModel) {
-        String search = inSearch.toString().toLowerCase();
-        String model = inModel.toString().toLowerCase();
+        String search = inSearch.toString().toLowerCase(); // s0
+        String model = inModel.toString().toLowerCase();   // s1
         int result;
         int len0 = search.length() + 1;
         int len1 = model.length() + 1;
@@ -725,6 +725,9 @@ public class ActivityHelper extends AsyncQueryHandler{
         // we want to give some preference for true substrings and character occurrences
         if(model.contains(search)){
             result = result - 30;
+        }
+        if(model.startsWith(search)){
+            result = result - 10;
         }
         for(int i = 0; i < search.length(); i++){
             int idx = model.indexOf(search.charAt(i));

@@ -207,7 +207,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
                         + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
                 ;
-                if (selection != null && selection.length() > 0) {
+                if(selection != null && selection.length() > 0) {
                     sql += " AND (" + selection + ")";
                 }
                 sql += " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
@@ -299,7 +299,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     sortOrder);
         }
         c.setNotificationUri(getContext().getContentResolver(), uri);
-
         return c;
     }
 
@@ -369,7 +368,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         long id = db.insertOrThrow(table,
                 null,
                 values);
-        if (id > 0) {
+        if(id > 0) {
             resultUri = ContentUris.withAppendedId(resultUri, id);
             getContext().
                     getContentResolver().
@@ -545,5 +544,49 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
     public void resetDatabase() {
         mOpenHelper.close();
+    }
+
+
+    /**
+     * Search for all dates in database which match start/end date or are in range (between start and end date)
+     * @param dateInMillis - date is searched
+     * @return query (string) with ids that fulfills defined conditions
+     */
+    public String searchDate(Long dateInMillis) {
+        // TODO: move this into the method query, for the case diary,
+        // similar to diary_stats, we can modify selection and selection args there
+        // or maybe better, invent a new URI like "diary/number" where number is the dateInMillis
+        // Alternative: move all this directly into HistoryActivity.onCreateLoader
+
+        String querySelection = " ", id;
+        long searchedValue = dateInMillis;
+        long searchedValuePlusDay = searchedValue + 86400000; // TODO: replace magic numbers by the formula to calculate them...
+        long searchSpecialCase = searchedValue + 86399999;  //used for searching for still running activity
+
+        try {
+// TODO: -> this query should not be executed outside of the method ActivityDiaryContentProvider.query
+            Cursor allRowsStart = mOpenHelper.getReadableDatabase().rawQuery(
+                "SELECT " + ActivityDiaryContract.Diary._ID
+                    + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME
+                        + " WHERE " + "(" + searchedValue + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValue + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchedValuePlusDay + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchedValue + " < " + ActivityDiaryContract.Diary.START + " AND " + searchedValuePlusDay + " > " + ActivityDiaryContract.Diary.END + ")" + " OR " +
+                                      "(" + searchSpecialCase + " >= " + ActivityDiaryContract.Diary.START + " AND " + ActivityDiaryContract.Diary.END + " IS NULL" + ")", null);
+
+            if (allRowsStart.moveToFirst()) {
+                do {
+                    for (String name : allRowsStart.getColumnNames()) {
+                           id =  (allRowsStart.getString(allRowsStart.getColumnIndex(name)));
+                           querySelection += querySelection.equals(" ") ?  ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id : " OR " + ActivityDiaryContract.Diary.TABLE_NAME + "." +  ActivityDiaryContract.Diary._ID + " =" + id ;
+                    }
+                } while (allRowsStart.moveToNext());
+            }
+        } catch (Exception e) {
+            // TODO: add proper exception handling. Also "Exception" seems quite generic -> catch all exceptions that can occur directly
+        }
+
+        // if there is no matching dates it returns query which links to find nothings
+        // otherwise it will return query with IDs of matching dates
+        return querySelection.equals(" ") ?  " start=null" : querySelection;
     }
 }

@@ -19,17 +19,17 @@
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 <resources>
-  <string-array name="pref_location_setting_list" translatable="true">
-    <item>KI</item>
-    <item>Hálózat</item>
-    <item>GPS (és hálózati)</item>
-  </string-array>
-  <string-array name="statistic_dropdown" translatable="true">
-    <item>Minden</item>
-    <item>Az elmúlt 7 nap</item>
-    <item>Az elmúlt 30 nap</item>
-    <item>Hét</item>
-    <item>Hónap</item>
-    <item>Év</item>
-  </string-array>
+    <string-array name="pref_location_setting_list" translatable="true">
+        <item>KI</item>
+        <item>Hálózat</item>
+        <item>GPS (és hálózati)</item>
+    </string-array>
+    <string-array name="statistic_dropdown" translatable="true">
+        <item>Minden</item>
+        <item>Az elmúlt 7 nap</item>
+        <item>Az elmúlt 30 nap</item>
+        <item>Hét</item>
+        <item>Hónap</item>
+        <item>Év</item>
+    </string-array>
 </resources>
