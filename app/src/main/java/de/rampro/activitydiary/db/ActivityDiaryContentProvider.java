@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017-2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,6 +78,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public static final String SEARCH_NOTE = "de.rampro.activitydiary.action.SEARCH_NOTE";
     public static final String SEARCH_GLOBAL = "de.rampro.activitydiary.action.SEARCH_GLOBAL";
     public static final Uri SEARCH_URI = Uri.parse("content://" + ActivityDiaryContract.AUTHORITY);
+    public static final String SEARCH_DATE = "de.rampro.activitydiary.action.SEARCH_DATE";
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -274,6 +275,21 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                             /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
                             /* rewrite query */ query
                     });
+
+                    // Date
+                    result.addRow(new Object[]{id++,
+                            getContext().getResources().getString(R.string.search_date, query),
+                            /* icon */ R.drawable.ic_calendar,
+                            /* intent action */ SEARCH_DATE,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
+                    });
+
+                    // has Pictures
+                    // TODO: add picture search
+
+                    // Location (GPS)
+                    // TODO: add location search
 
                 }
                 return result;
