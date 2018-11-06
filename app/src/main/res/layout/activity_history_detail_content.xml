@@ -131,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/desc_note_hint"
-            android:inputType="text|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine"
+            android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
             android:minLines="4"
             android:singleLine="false" />
 
