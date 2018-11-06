@@ -1,7 +1,8 @@
 <!--
   ~ ActivityDiary
   ~
-  ~ Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2018 Bc. Ondrej Janitor
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -39,6 +40,7 @@
         <p><a href="https://web.facebook.com/profile.php?id=100011025332183">Murtala Umar</a> (Indonesian translation)</p>
         <p><a href="https://t.me/LinuxWorldIt">Tommaso</a> (Italian translation)</p>
         <p><a href="https://github.com/Tobaloidee">JC Abuyot</a> (Graphics)</p>
+        <p><a href="https://github.com/ondri124">Bc. Ondrej Janitor</a></p>
         ]]>
     </string>
     <string name="libraries" translatable="false"><![CDATA[
