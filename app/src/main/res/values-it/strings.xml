@@ -102,7 +102,7 @@
     <string name="setting_cond_predecessor_not_used_summary">La sequenza di attività nel diario non viene utilizzata per suggerire attività successive</string>
     <string name="setting_cond_paused">Interruzioni di attività</string>
     <string name="setting_cond_paused_summary">Le attività appena interrotte hanno un peso pari a %1$s nelle attività successive suggerite</string>
-    <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
+    <string name="setting_cond_paused_not_used_summary">Le attività appena interrotte non vengono utilizzate per suggerire attività successive</string>
     <string name="setting_cond_occurrence">Occorrenza di attività</string>
     <string name="setting_cond_occurrence_summary">La frequenza dell\'attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
     <string name="setting_cond_occurrence_not_used_summary">La frequenza delle attività nel diario non viene utilizzata per suggerire attività successive</string>
@@ -111,8 +111,8 @@
     <string name="setting_cond_daytime_not_used_summary">Il giorno delle attività nel diario non viene utilizzato per suggerire attività successive</string>
     <string name="pref_location_age">Richiedi un aggiornamento della posizione ogni %1$s minuti</string>
     <string name="setting_location_age">Periodo di aggiornamento</string>
-    <string name="pref_location_dist">Request a location update every %1$s meters</string>
-    <string name="setting_location_dist">Update distance</string>
+    <string name="pref_location_dist">Richiedi un aggiornamento della posizione ogni %1$s metri</string>
+    <string name="setting_location_dist">Aggiorna la distanza</string>
     <string name="setting_expert">Impostazioni per esperti</string>
     <string name="setting_export">Esporta database</string>
     <string name="setting_import">Importa database</string>
@@ -133,7 +133,7 @@
     <string name="activity_title_history_detail">Voce del diario</string>
     <string name="activity_subtitle_main">Cosa fai?</string>
     <string name="activity_title_about">Circa</string>
-    <string name="activity_title_stats">Statistics</string>
+    <string name="activity_title_stats">Statistiche</string>
     <string name="activity_title_map">Mappa</string>
     <string name="activity_title_settings">Impostazioni</string>
     <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
@@ -146,7 +146,7 @@
     <string name="action_filter">Filtro</string>
     <string name="action_undo">ANNULLA</string>
     <string name="search_hint">Cerca attività&#8230;</string>
-    <string name="search_description">Attivitàdeldiario</string>
+    <string name="search_description">Voci nel ActivityDiary</string>
     <!-- dialog -->
     <string name="dlg_ok">Ok</string>
     <string name="dlg_cancel">Annulla</string>
