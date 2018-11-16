@@ -77,14 +77,14 @@
     <string name="setting_show_cur_activitiy_notification_summary_inactive">Non viene mostrata alcuna notifica per l\'attività corrente</string>
     <string name="setting_disable_on_click">Termina l\'attività facendo clic</string>
     <string name="setting_disable_on_click_summary_active">L\'attività corrente può essere terminata facendo clic sull\'etichetta dell\'attività</string>
-    <string name="setting_disable_on_click_summary_inactive">Current activity can only be terminated by selecting a new one</string>
+    <string name="setting_disable_on_click_summary_inactive">L\'attività corrente può essere terminata solo se ne viene selezionata una nuova</string>
     <string name="setting_enable_acra">Crash report</string>
     <string name="setting_acra_enabled">Inviare rapporti su crash</string>
     <string name="setting_acra_disabled">Non inviare report su crash</string>
-    <string name="setting_use_location">Location Service</string>
-    <string name="setting_use_location_summary">%1$s used to track device location</string>
+    <string name="setting_use_location">Servizio di Localizzazione</string>
+    <string name="setting_use_location_summary">%1$s usato per tracciare la posizione del dispositivo</string>
     <string name="setting_use_location_off_summary">User location not tracked at all</string>
-    <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
+    <string name="perm_location_xplain">L\'opzione configurata per tracciare la tua posizione richiede il permesso di accedere alla posizione del tuo dispositivo &#8230;</string>
     <string name="setting_storage_folder">Cartella di archiviazione immagini</string>
     <string name="setting_storage_folder_summary">Memorizza le foto dell\'attività nella directory %1$s</string>
     <string name="setting_storage_folder_description">Directory per memorizzare le foto dell\'attività</string>
@@ -100,8 +100,8 @@
     <string name="setting_cond_predecessor">Sequenza di attività</string>
     <string name="setting_cond_predecessor_summary">La sequenza di attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
     <string name="setting_cond_predecessor_not_used_summary">La sequenza di attività nel diario non viene utilizzata per suggerire attività successive</string>
-    <string name="setting_cond_paused">Activity interruptions</string>
-    <string name="setting_cond_paused_summary">Just stopped activities have a weight of %1$s on suggested next activities</string>
+    <string name="setting_cond_paused">Interruzioni di attività</string>
+    <string name="setting_cond_paused_summary">Le attività appena interrotte hanno un peso pari a %1$s nelle attività successive suggerite</string>
     <string name="setting_cond_paused_not_used_summary">Just stopped activities are not used for suggesting next activities</string>
     <string name="setting_cond_occurrence">Occorrenza di attività</string>
     <string name="setting_cond_occurrence_summary">La frequenza dell\'attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
@@ -109,8 +109,8 @@
     <string name="setting_cond_daytime">Giorno</string>
     <string name="setting_cond_daytime_summary">Il giorno delle attività nel diario ha un peso pari a %1$s nelle attività successive suggerite</string>
     <string name="setting_cond_daytime_not_used_summary">Il giorno delle attività nel diario non viene utilizzato per suggerire attività successive</string>
-    <string name="pref_location_age">Request a location update every %1$s minutes</string>
-    <string name="setting_location_age">Update period</string>
+    <string name="pref_location_age">Richiedi un aggiornamento della posizione ogni %1$s minuti</string>
+    <string name="setting_location_age">Periodo di aggiornamento</string>
     <string name="pref_location_dist">Request a location update every %1$s meters</string>
     <string name="setting_location_dist">Update distance</string>
     <string name="setting_expert">Impostazioni per esperti</string>
@@ -134,11 +134,11 @@
     <string name="activity_subtitle_main">Cosa fai?</string>
     <string name="activity_title_about">Circa</string>
     <string name="activity_title_stats">Statistics</string>
-    <string name="activity_title_map">Map</string>
+    <string name="activity_title_map">Mappa</string>
     <string name="activity_title_settings">Impostazioni</string>
     <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
     <string name="dialog_title_note">Nota</string>
-    <string name="activities">Activities</string>
+    <string name="activities">Attività</string>
     <!-- actions -->
     <string name="action_delete">Elimina un\'attività</string>
     <string name="action_diary_entry_delete">Elimina la voce</string>
@@ -154,7 +154,7 @@
     <string name="dlg_delete_image_text">Sei sicuro di voler rimuovere questa immagine dalla voce di attività corrente?</string>
     <string name="dlg_undelete_activity_title">Recupera attività</string>
     <string name="dlg_undelete_activity_text">L\'attività %1$s essere recuperata e diventare nuovamente disponibile?</string>
-    <string name="statistics_others">Others</string>
+    <string name="statistics_others">Altri</string>
     <!-- main view -->
     <string name="duration_description">Dal %1$s</string>
     <string name="just_now">proprio adesso</string>
@@ -198,16 +198,16 @@
     <string name="desc_end_time">Fine del tempo</string>
     <string name="adjust_adjacent_times">Regola le voci del diario adiacenti</string>
     <string name="constraint_positive_duration">L\'attività inizia sempre prima che finisca.</string>
-    <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
-    <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
-    <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
-    <string name="wrongFormat">Please enter date in correct format!</string>
+    <string name="search_notes">Cerca \'%1$s\' nelle note&#x2026;</string>
+    <string name="search_diary">Cerca \'%1$s\' globalmente&#x2026;</string>
+    <string name="search_date">Cerca \'%1$s\' nelle note&#x2026;</string>
+    <string name="wrongFormat">Si prega di inserire la data nel formato corretto!</string>
     <!-- Map -->
-    <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+    <string name="no_map_data_message">Nessun dato da mostrare. Abilita i servizi di localizzazione nelle impostazioni.</string>
     <!-- statistics -->
-    <string name="earlier">earlier</string>
-    <string name="later">later</string>
-    <string name="week_format">yyyy \'Week\' ww</string>
+    <string name="earlier">prima</string>
+    <string name="later">dopo</string>
+    <string name="week_format">yyyy \'Settimana\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
