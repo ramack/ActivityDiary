@@ -83,7 +83,7 @@
     <string name="setting_acra_disabled">Non inviare report su crash</string>
     <string name="setting_use_location">Servizio di Localizzazione</string>
     <string name="setting_use_location_summary">%1$s usato per tracciare la posizione del dispositivo</string>
-    <string name="setting_use_location_off_summary">User location not tracked at all</string>
+    <string name="setting_use_location_off_summary">Posizione dell\'utente non tracciata per niente</string>
     <string name="perm_location_xplain">L\'opzione configurata per tracciare la tua posizione richiede il permesso di accedere alla posizione del tuo dispositivo &#8230;</string>
     <string name="setting_storage_folder">Cartella di archiviazione immagini</string>
     <string name="setting_storage_folder_summary">Memorizza le foto dell\'attività nella directory %1$s</string>
