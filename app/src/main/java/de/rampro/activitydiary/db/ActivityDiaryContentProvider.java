@@ -24,6 +24,7 @@ import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
@@ -233,21 +234,27 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     do {
                         Object icon = null;
                         String action = c.getString(1);
+                        String q = c.getString(0); // what do we want to display
 
                         if(action.equals(SEARCH_ACTIVITY)) {
                             /* icon stays null */
+                            int i = Integer.parseInt(q);
+                            q = ActivityHelper.helper.activityWithId(i).getName();
                         }else if(action.equals(SEARCH_NOTE)){
+                            q = getContext().getResources().getString(R.string.search_notes, q);
                             icon = R.drawable.ic_search;
-                        }else if(action.equals(SEARCH_GLOBAL)){
+                        }else if(action.equals(SEARCH_GLOBAL) || action.equals(Intent.ACTION_SEARCH)){
+                            q = getContext().getResources().getString(R.string.search_diary, q);
                             icon = R.drawable.ic_search;
                         }else if(action.equals(SEARCH_DATE)){
+                            q = getContext().getResources().getString(R.string.search_date, q);
                             icon = R.drawable.ic_calendar;
                         }
 
                         result.addRow(new Object[]{id++,
-                                c.getString(0),
+                                q,
                                 /* icon */ icon,
-                                /* intent action */ SEARCH_GLOBAL,
+                                /* intent action */ action,
                                 /* intent data */ Uri.withAppendedPath(SEARCH_URI, c.getString(0)),
                                 /* rewrite query */c.getString(0)
                         });
@@ -258,7 +265,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
 
             case search_suggestion:
-                String query = uri.getLastPathSegment().toLowerCase();
+                String query = uri.getLastPathSegment(); //.toLowerCase();
 
                 if (query != null && query.length() > 0) {
                     // activities matching the current search

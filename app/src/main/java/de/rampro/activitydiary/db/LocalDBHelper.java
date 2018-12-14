@@ -85,7 +85,15 @@ public class LocalDBHelper extends SQLiteOpenHelper {
     }
 
     public static final int CURRENT_VERSION = 5;
+/*
+    For debugging sometimes it is handy to drop a table again. This can easily be achieved in onDowngrade,
+    after CURRENT_VERSION is decremented again
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE diary_search_suggestions");
+    }
+*/
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         /**
@@ -161,7 +169,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 "(" +
                 "_id INTEGER PRIMARY KEY ASC, " +
                 "_deleted INTEGER DEFAULT 0, " +
-                "action_ TEXT NOT NULL, " +
+                "action TEXT NOT NULL, " +
                 "suggestion TEXT NOT NULL " +
                 ");");
     }

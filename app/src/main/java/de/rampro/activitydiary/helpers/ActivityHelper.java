@@ -196,24 +196,21 @@ public class ActivityHelper extends AsyncQueryHandler{
     }
 
     public ArrayList<DiaryActivity> sortedActivities(String query) {
-        ArrayList<DiaryActivity> activities = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
         ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
+        ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
         for(DiaryActivity a : ActivityHelper.helper.getActivities()){
-            if (a.getName().toLowerCase().contains(query.toLowerCase())) {
-                activities.add(a);
-            }
-        }
-
-        int counter = 0;
-        while (activities.size() != filtered.size()) {
-            for (DiaryActivity a : activities) {
-                if (counter <= a.getName().length()) {
-                    if (a.getName().toLowerCase().indexOf(query.toLowerCase()) == counter) {
-                        filtered.add(a);
-                    }
+            int dist = ActivityHelper.searchDistance(query, a.getName());
+            int pos = 0;
+            // search where to enter it
+            for(Integer i : filteredDist){
+                if(dist > i.intValue()){
+                    pos++;
+                }else{
+                    break;
                 }
             }
-            counter++;
+            filteredDist.add(pos, Integer.valueOf(dist));
+            filtered.add(pos, a);
         }
         return filtered;
     }

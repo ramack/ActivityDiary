@@ -443,7 +443,7 @@ public class ActivityDiaryContract {
          * shall be one of the ActivityDiaryContentProvider.SEARCH_* values
          * <P>Type: TEXT</P>
          */
-        public static final String ACTION = "action_";
+        public static final String ACTION = "action";
 
         /**
          * Deleted state (0 is alive, 1 is deleted)

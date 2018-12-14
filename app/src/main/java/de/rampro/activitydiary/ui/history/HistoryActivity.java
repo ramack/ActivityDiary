@@ -34,6 +34,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -126,6 +127,7 @@ public class HistoryActivity extends BaseActivity implements
         return false;
     }
 
+
     @Override
     public void onBackPressed() {
         if (!searchView.isIconified()) {
@@ -198,10 +200,12 @@ public class HistoryActivity extends BaseActivity implements
 
     private void handleIntent(Intent intent) {
         String query = null;
+        String action = intent.getAction();
         if (ActivityDiaryContentProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
             query = intent.getStringExtra(SearchManager.QUERY);
             Uri data = intent.getData();
             if (data != null) {
+                query = data.getLastPathSegment();
                 long id = Long.decode(data.getLastPathSegment());
                 filterHistoryView(id);
             }
@@ -218,36 +222,40 @@ public class HistoryActivity extends BaseActivity implements
                 query = data.getLastPathSegment();
                 filterHistoryView(query);
             }
-        } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-            filterHistoryView(query);
         } else if (ActivityDiaryContentProvider.SEARCH_DATE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
                 query = data.getLastPathSegment();
                 filterHistoryDates(query);
             }
+        } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            action = ActivityDiaryContentProvider.SEARCH_GLOBAL;
+            filterHistoryView(query);
         }
         /*
             if query was searched, then insert query into suggestion table
          */
         if (query != null) {
-
             Uri uri = ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI;
 
             ContentValues values = new ContentValues();
 
-            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE '" + query + "' AND "
-                    + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE '" + intent.getAction() + "'", null);
+            getContentResolver().delete(uri,
+                    ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE ? AND "
+                    + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE ?",
+                    new String[]{query, intent.getAction()});
 
             values.put(ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION, query);
-            values.put(ActivityDiaryContract.DiarySearchSuggestion.ACTION, intent.getAction());
+            values.put(ActivityDiaryContract.DiarySearchSuggestion.ACTION, action);
             getContentResolver().insert(uri, values);
 
-            getContentResolver().delete(uri, ActivityDiaryContract.DiarySearchSuggestion._ID +
+            getContentResolver().delete(uri,
+                    ActivityDiaryContract.DiarySearchSuggestion._ID +
                     " IN (SELECT " + ActivityDiaryContract.DiarySearchSuggestion._ID +
                     " FROM " + ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
-                    " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)", null);
+                    " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)",
+                    null);
         }
     }
 
@@ -265,6 +273,23 @@ public class HistoryActivity extends BaseActivity implements
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnCloseListener(this);
         searchView.setOnQueryTextListener(this);
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return false;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                CursorAdapter selectedView = searchView.getSuggestionsAdapter();
+                Cursor cursor = (Cursor) selectedView.getItem(position);
+                int index = cursor.getColumnIndexOrThrow(SearchManager.SUGGEST_COLUMN_QUERY);
+                String q = cursor.getString(index);
+                searchView.setQuery(q, false);
+                return false; // let super handle all the real search stuff
+            }
+        });
+
         searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
 //TODO to make it look nice
 //        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
@@ -456,6 +481,7 @@ public class HistoryActivity extends BaseActivity implements
      * @return millis of parsed input
      */
     private Long checkDateFormatAndParse(String date){
+        // TODO: generalize data format for search
         String[] formats = {
                 getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
                 ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(getApplicationContext())).toLocalizedPattern() //locale format
