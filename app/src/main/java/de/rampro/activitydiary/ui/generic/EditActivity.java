@@ -40,6 +40,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
@@ -49,6 +50,7 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.helpers.JaroWinkler;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -63,6 +65,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private final int QUERY_NAMES = 1;
     private final int RENAME_DELETED_ACTIVITY = 2;
     private final int TEST_DELETED_NAME = 3;
+    private final int SIMILAR_ACTIVITY = 4;
 
     private final String[] NAME_TEST_PROJ = new String[]{ActivityDiaryContract.DiaryActivity.NAME};
 
@@ -99,7 +102,23 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         protected void onQueryComplete(int token, Object cookie,
                                        Cursor cursor) {
             if ((cursor != null)) {
-                if(token == QUERY_NAMES){
+                if(token == SIMILAR_ACTIVITY) {
+                    if (cursor.moveToFirst()) {
+                        String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                        JaroWinkler jw = new JaroWinkler(.7);
+                        while (cursor.moveToNext()) {
+                            double metric = jw.similarity(mActivityName.getText().toString(), name);
+                            if (metric == 1.0) {
+                                checkConstraints();
+                            }
+                            if (metric > .8 && metric < 1.0) {
+                                mActivityNameTIL.setError("new activity name similar to " + name);
+                            }
+                            name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                        }
+                    }
+                }
+                else if(token == QUERY_NAMES){
                     if(cursor.moveToFirst()) {
                         mQuickFixBtn1.setVisibility(View.VISIBLE);
                         boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
@@ -177,7 +196,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                     }
                     setCheckOngoing(false);
 
-                }else if(token == TEST_DELETED_NAME){
+                }
+                else if(token == TEST_DELETED_NAME){
                     ContentValues values = (ContentValues)cookie;
                     if(cursor.moveToFirst()){
                         // name already exists, choose another one
@@ -201,7 +221,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                 null
                         );
 
-                    }else {
+                    }
+
+                    else {
                         // name not found, use it for the deleted one
                         Long actId = (Long)values.get(ActivityDiaryContract.Diary._ID);
                         values.remove(ActivityDiaryContract.Diary._ID);
@@ -211,6 +233,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                     }
                 }
                 cursor.close();
+            }
+            else {
+                System.out.println("cursor was null");
             }
         }
 
@@ -275,21 +300,19 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         mActivityName.addTextChangedListener(new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 checkConstraints();
+                checkSimilarNames();
             }
         });
         mActivityNameTIL = (TextInputLayout) findViewById(R.id.edit_activity_name_til);
-
         mQuickFixBtn1 = (ImageButton)findViewById(R.id.quickFixButton1);
         mBtnRenameDeleted = (ImageButton)findViewById(R.id.quickFixButtonRename);
 
@@ -391,27 +414,36 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         return super.onOptionsItemSelected(item);
     }
 
-    private void checkConstraints(){
+    private void checkConstraints() {
         setCheckOngoing(true);
 
-        if(currentActivity == null) {
+        if (currentActivity == null) {
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                     new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=?",
                     new String[]{mActivityName.getText().toString()}, null);
-        }else{
-            /* activity already there */
+        } else {
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                     new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=? AND " +
-                    ActivityDiaryContract.DiaryActivity._ID + " != ?",
+                            ActivityDiaryContract.DiaryActivity._ID + " != ?",
                     new String[]{mActivityName.getText().toString(), Long.toString(currentActivity.getId())},
                     null);
         }
+    }
+
+    private void checkSimilarNames() {
+        setCheckOngoing(true);
+
+        mQHandler.startQuery(SIMILAR_ACTIVITY,
+                null,
+                ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
+                null, null,null);
     }
 
     /**
