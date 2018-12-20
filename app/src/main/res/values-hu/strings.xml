@@ -207,6 +207,7 @@
     <!-- statistics -->
     <string name="earlier">korábban</string>
     <string name="later">a későbbiekben</string>
+    <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \"Hét\" ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">nn</string>
