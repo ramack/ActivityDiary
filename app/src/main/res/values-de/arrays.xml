@@ -29,8 +29,8 @@
         <item>Die Letzten 7 Tage</item>
         <item>Die Letzten 30 Tage</item>
         <item>Woche</item>
+        <item>Woche</item>
         <item>Monat</item>
         <item>Jahr</item>
-        <item>Year</item>
     </string-array>
 </resources>
