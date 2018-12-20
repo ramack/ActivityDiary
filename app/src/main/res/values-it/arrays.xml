@@ -31,5 +31,6 @@
         <item>Settimana</item>
         <item>Mese</item>
         <item>Anno</item>
+        <item>Year</item>
     </string-array>
 </resources>
