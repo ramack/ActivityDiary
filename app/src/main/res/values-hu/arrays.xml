@@ -31,5 +31,6 @@
         <item>Hét</item>
         <item>Hónap</item>
         <item>Év</item>
+        <item>Year</item>
     </string-array>
 </resources>
