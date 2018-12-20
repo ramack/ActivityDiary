@@ -31,5 +31,6 @@
         <item>Woche</item>
         <item>Monat</item>
         <item>Jahr</item>
+        <item>Year</item>
     </string-array>
 </resources>
