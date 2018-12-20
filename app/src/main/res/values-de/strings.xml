@@ -154,7 +154,7 @@
     <string name="dlg_delete_image_text">Dieses Bild wirklich aus dem aktuellen Aktivitätseintrag entfernen?</string>
     <string name="dlg_undelete_activity_title">Aktivität wiederherstellen</string>
     <string name="dlg_undelete_activity_text">Soll die Aktivität %1$s wiederhergestellt werden und wieder auswählbar sein?</string>
-    <string name="statistics_others">Others</string>
+    <string name="statistics_others">Andere</string>
     <!-- main view -->
     <string name="duration_description">Seit %1$s</string>
     <string name="just_now">gerade eben</string>
@@ -200,14 +200,14 @@
     <string name="constraint_positive_duration">Die Aktivität muss gestartet werden bevor sie beendet wird.</string>
     <string name="search_notes">In den Notizen nach \'%1$s\' suchen&#x2026;</string>
     <string name="search_diary">Überall nach \'%1$s\' suchen&#x2026;</string>
-    <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
-    <string name="wrongFormat">Please enter date in correct format!</string>
+    <string name="search_date">Suche \'%1$s\' im Kalender&#x2026;</string>
+    <string name="wrongFormat">Bitte geben Sie das Datum im richtigen Format ein!</string>
     <!-- Map -->
     <string name="no_map_data_message">Keine Daten verfügbar. Bitte Standortdienste in den Einstellungen aktivieren.</string>
     <!-- statistics -->
     <string name="earlier">früher</string>
     <string name="later">später</string>
-    <string name="day_format">E, M.dd.yy</string>
+    <string name="day_format">E, dd.M.yy</string>
     <string name="week_format">yyyy \'KW\'ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
