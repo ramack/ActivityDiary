@@ -207,6 +207,7 @@
     <!-- statistics -->
     <string name="earlier">prima</string>
     <string name="later">dopo</string>
+    <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Settimana\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
