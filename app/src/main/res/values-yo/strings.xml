@@ -203,6 +203,7 @@
     <!-- statistics -->
     <string name="earlier">earlier</string>
     <string name="later">later</string>
+    <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Week\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
