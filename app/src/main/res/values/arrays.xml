@@ -58,6 +58,7 @@
         <item>All</item>
         <item>Last 7 Days</item>
         <item>Last 30 Days</item>
+        <item>Day</item>
         <item>Week</item>
         <item>Month</item>
         <item>Year</item>

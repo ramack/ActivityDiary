@@ -349,7 +349,11 @@ public class ActivityDiaryContract {
         String _DELETED = "_deleted";
     }
 
-    /* DiaryStats - readonly */
+    /* DiaryStats - readonly, to query in a range,
+     * add two more path segments for start and end time in millis since epoch
+     *
+     * example: <CONTENT_URI>/1545174000000/1545260400000
+     * */
     public final static class DiaryStats {
         /**
          * This utility class cannot be instantiated

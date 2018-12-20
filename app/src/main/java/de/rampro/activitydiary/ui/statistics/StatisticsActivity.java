@@ -19,18 +19,21 @@
 
 package de.rampro.activitydiary.ui.statistics;
 
+import android.app.DatePickerDialog;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -55,6 +58,7 @@ import java.util.List;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
+import de.rampro.activitydiary.ui.history.HistoryDetailActivity;
 
 public class StatisticsActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemSelectedListener {
     private static final int LOADER_ID_TIME = 0;
@@ -139,20 +143,17 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         }else if(id == LOADER_ID_RANGE) {
             long start = args.getLong("start");
             long end = args.getLong("end");
-            String sel = "(" + ActivityDiaryContract.Diary.START + " >= ? AND " + ActivityDiaryContract.Diary.START + " < ?)"
-                    + " OR (" + ActivityDiaryContract.Diary.END + " > ? AND " + ActivityDiaryContract.Diary.END + " <= ?)"
-                    + " OR (" + ActivityDiaryContract.Diary.START + " < ? AND " + ActivityDiaryContract.Diary.END + " > ?)";
+
+            Uri u = ActivityDiaryContract.DiaryStats.CONTENT_URI;
+            u = Uri.withAppendedPath(u, Long.toString(start));
+            u = Uri.withAppendedPath(u, Long.toString(end));
+
             return new CursorLoader(this,
-                    ActivityDiaryContract.DiaryStats.CONTENT_URI,
+                    u,
                     PROJECTION,
-                    sel,
-                    new String[] {Long.toString(start),
-                            Long.toString(end),
-                            Long.toString(start),
-                            Long.toString(end),
-                            Long.toString(start),
-                            Long.toString(end)},
-                    ActivityDiaryContract.DiaryStats.SORT_ORDER_DEFAULT);
+                    null,
+                    null,
+                    ActivityDiaryContract.DiaryStats.PORTION + " DESC");
         }else{
             return null;
         }
@@ -261,17 +262,22 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
                 bnd.putLong("start", currentDateTime - (1000 * 60 * 60 * 24 * 7 * 30));
                 bnd.putLong("end", currentDateTime);
                 break;
-            case 3: // week
+            case 3: // Day
+                currentOffset = 0;
+                currentRange = Calendar.DAY_OF_YEAR;
+                loadRange(currentRange, currentOffset);
+                break;
+            case 4: // week
                 currentOffset = 0;
                 currentRange = Calendar.WEEK_OF_YEAR;
                 loadRange(currentRange, currentOffset);
                 break;
-            case 4: // month
+            case 5: // month
                 currentOffset = 0;
                 currentRange = Calendar.MONTH;
                 loadRange(currentRange, currentOffset);
                 break;
-            case 5: // year
+            case 6: // year
                 currentOffset = 0;
                 currentRange = Calendar.YEAR;
                 loadRange(currentRange, currentOffset);
@@ -299,11 +305,15 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         Bundle bnd = new Bundle();
 
         Calendar calStart = Calendar.getInstance();
+        calStart.setTimeInMillis(currentDateTime);
         calStart.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
         calStart.clear(Calendar.MINUTE);
         calStart.clear(Calendar.SECOND);
         calStart.clear(Calendar.MILLISECOND);
         switch(field){
+            case Calendar.DAY_OF_YEAR:
+                /* nothing to do, as HOUR_OF_DAY is already 0 */
+                break;
             case Calendar.WEEK_OF_YEAR:
                 calStart.set(Calendar.DAY_OF_WEEK, calStart.getFirstDayOfWeek());
                 break;
@@ -324,6 +334,9 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
 
         SimpleDateFormat sdf;
         switch(field){
+            case Calendar.DAY_OF_YEAR:
+                sdf = new SimpleDateFormat(getResources().getString(R.string.day_format));
+                break;
             case Calendar.WEEK_OF_YEAR:
                 sdf = new SimpleDateFormat(getResources().getString(R.string.week_format));
                 break;
@@ -347,5 +360,24 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void showDatePickerDialog(View v) {
+        HistoryDetailActivity.DatePickerFragment newFragment = new HistoryDetailActivity.DatePickerFragment();
+        Calendar date = Calendar.getInstance();
+        date.setTimeInMillis(currentDateTime);
+        newFragment.setData(new DatePickerDialog.OnDateSetListener (){
+                                @Override
+                                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                    date.set(Calendar.YEAR, year);
+                                    date.set(Calendar.MONTH, month);
+                                    date.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                    currentDateTime = date.getTimeInMillis();
+                                    currentOffset = 0;
+                                    loadRange(currentRange, currentOffset);
+                                }
+                            }
+                , date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH));
+        newFragment.show(getSupportFragmentManager(), "startDatePicker");
     }
 }

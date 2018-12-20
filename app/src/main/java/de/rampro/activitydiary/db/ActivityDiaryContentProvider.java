@@ -39,6 +39,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.helpers.ActivityHelper;
@@ -98,6 +99,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_image_ID);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryStats.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_stats);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryStats.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#/#", diary_stats);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
@@ -193,25 +195,42 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case diary_stats:
                 useRawQuery = true;
+                List<String> l = uri.getPathSegments();
+                String start;
+                String end;
 
-                String subselect = "SELECT SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
-                if (selectionArgs != null) {
-                    /* we duplicate the where condition, so we have to do the same with the arguments */
-                    String[] selArgs = new String[2 * selectionArgs.length];
-                    System.arraycopy(selectionArgs, 0, selArgs, 0, selectionArgs.length);
-                    System.arraycopy(selectionArgs, 0, selArgs, selectionArgs.length, selectionArgs.length);
-                    selectionArgs = selArgs;
+                if(l.size() == 3){
+                    // we have a range query with start and end timestamps here
+                    start = l.get(1);
+                    end = l.get(2);
+                }else{
+                    start = "0";
+                    end = "6156000000000"; // this is roughly 200 year since epoch, congratulations if this lasted so long...
                 }
+
+
+                String sel = "(" + ActivityDiaryContract.Diary.START + " >= " + start + " AND " + ActivityDiaryContract.Diary.START + " < " + end + ")"
+                        + " OR (" + ActivityDiaryContract.Diary.END + " > " + start + " AND " + ActivityDiaryContract.Diary.END + " <= " + end + ")"
+                        + " OR (" + ActivityDiaryContract.Diary.START + " < " + start + " AND " + ActivityDiaryContract.Diary.END + " > " + end + ")";
+
+                String subselect = "SELECT SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - "
+                        + "MAX(" + ActivityDiaryContract.Diary.START + ", " + start + ")) from " + ActivityDiaryContract.Diary.TABLE_NAME
+                        + " WHERE (start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + ")";
+
                 if (selection != null && selection.length() > 0) {
                     subselect += " WHERE " + selection;
                 }
 
                 sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
                         + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR + " as " + ActivityDiaryContract.DiaryStats.COLOR
-                        + ", SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") as " + ActivityDiaryContract.DiaryStats.DURATION
-                        + ", (SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
+
+                         + ", SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) as " + ActivityDiaryContract.DiaryStats.DURATION
+
+                        + ", (SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) * 100.0 " +
+                        "/ (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
-                        + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                        + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " AND"
+                        + " ((start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + "))"
                 ;
                 if(selection != null && selection.length() > 0) {
                     sql += " AND (" + selection + ")";

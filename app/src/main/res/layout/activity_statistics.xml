@@ -65,7 +65,8 @@
                 android:text="?"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                android:onClick="showDatePickerDialog"/>
 
             <ImageView
                 android:id="@+id/img_later"
