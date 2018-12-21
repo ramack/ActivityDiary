@@ -69,6 +69,12 @@
     <string name="setting_datetime_format">Format daty</string>
     <string name="setting_datetime_format_summary">\@ string / default_datetime_format</string>
     <string name="setting_datetime_format_description">Wyświetl format daty i godziny rozpoczęcia działania. Typowe formaty to rrrr-MM-dd GG: mm lub dd.MM. hh: mm</string>
+    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
+    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
+    <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
+    <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
+    <string name="setting_duration_format_description">Display format of the time durations.</string>
     <string name="setting_auto_select_new">Wybierz nowe aktywności</string>
     <string name="setting_auto_select_new_summary_active">Nowo utworzona aktywność jest bezpośrednio wybierana jako nowa aktywna</string>
     <string name="setting_auto_select_new_summary_inactive">Tworzenie nowych aktivivies nie ma wpływu na aktualnie aktywną działalność</string>
