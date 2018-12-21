@@ -109,6 +109,11 @@ public class BaseActivity extends AppCompatActivity {
                         Intent intentabout = new Intent(BaseActivity.this, AboutActivity.class);
                         startActivity(intentabout);
                         break;
+                    case R.id.nav_privacy:
+                        Intent intentpriv = new Intent(BaseActivity.this, PrivacyPolicyActivity.class);
+                        startActivity(intentpriv);
+                        break;
+
                     case R.id.nav_settings:
                         Intent intentsettings = new Intent(BaseActivity.this, SettingsActivity.class);
                         startActivity(intentsettings);
