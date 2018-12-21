@@ -458,7 +458,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public void updateNotification(){
         String duration = ActivityDiaryApplication.getAppContext().getResources().
-                getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
+                getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
 
         if(notificationBuilder != null) {
             // if this comes faster than building the first notification we just ignore the update.

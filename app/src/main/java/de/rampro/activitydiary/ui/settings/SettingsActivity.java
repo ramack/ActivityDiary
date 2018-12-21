@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,11 +75,13 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_LOCATION_AGE = "pref_location_age";
     public static final String KEY_PREF_LOCATION_DIST = "pref_location_dist";
     public static final String KEY_PREF_PAUSED = "pref_cond_paused";
+    public static final String KEY_PREF_DURATION_FORMAT = "pref_duration_format";
 
     public static final int ACTIVITIY_RESULT_EXPORT = 17;
     public static final int ACTIVITIY_RESULT_IMPORT = 18;
 
     private Preference dateformatPref;
+    private ListPreference durationFormatPref;
     private Preference autoSelectPref;
     private Preference storageFolderPref;
     private Preference tagImagesPref;
@@ -131,6 +133,25 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateLocationDist();
         }else if(key.equals(KEY_PREF_PAUSED)){
             updateCondPaused();
+        }else if(key.equals(KEY_PREF_DURATION_FORMAT)){
+            updateDurationFormat();
+        }
+    }
+
+    private void updateDurationFormat() {
+
+        String value = PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getString(KEY_PREF_DURATION_FORMAT, "dynamic");
+
+        if(value.equals("dynamic")){
+            durationFormatPref.setSummary(getResources().getString(R.string.setting_duration_format_summary_dynamic));
+        }else if(value.equals("nodays")){
+            durationFormatPref.setSummary(getResources().getString(R.string.setting_duration_format_summary_nodays));
+        }else if(value.equals("precise")){
+            durationFormatPref.setSummary(getResources().getString(R.string.setting_duration_format_summary_precise));
+        }else if(value.equals("hour_min")){
+            durationFormatPref.setSummary(getResources().getString(R.string.setting_duration_format_summary_hour_min));
         }
     }
 
@@ -204,6 +225,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
 
         locationDistPref.setSummary(getResources().getString(R.string.pref_location_dist, value));
     }
+
     private void updateLocationAge() {
         String def = getResources().getString(R.string.pref_location_age_default);
         String value = PreferenceManager
@@ -365,6 +387,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
                         .getString(KEY_PREF_DATETIME_FORMAT, def)
                 , new Date()));
 
+        durationFormatPref = (ListPreference)mPreferenceManager.findPreference(KEY_PREF_DURATION_FORMAT);
         autoSelectPref = mPreferenceManager.findPreference(KEY_PREF_AUTO_SELECT);
         disableOnClickPref = mPreferenceManager.findPreference(KEY_PREF_DISABLE_CURRENT);
         storageFolderPref = mPreferenceManager.findPreference(KEY_PREF_STORAGE_FOLDER);
@@ -429,6 +452,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateUseLocation();
         updateLocationAge();
         updateLocationDist();
+        updateDurationFormat();
 
         mDrawerToggle.setDrawerIndicatorEnabled(false);
     }

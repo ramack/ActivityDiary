@@ -19,13 +19,10 @@
 
 package de.rampro.activitydiary.ui.history;
 
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -33,7 +30,6 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +40,7 @@ import java.util.List;
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
-import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
+import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
@@ -184,25 +180,11 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
         String duration;
         if(end == null){
             duration = ActivityDiaryApplication.getAppContext().getResources().
-                    getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(start, new Date()));
+                    getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(start, new Date()));
         }else {
             duration = ActivityDiaryApplication.getAppContext().getResources().
                     getString(R.string.headline_end) + ": " + DateFormat.format(formatString, end) + " (";
-            long s = start.getTime();
-            long e = end.getTime();
-            Resources res = ActivityDiaryApplication.getAppContext().getResources();
-            if ((e - s) < 1000 * 90) {
-                int d = (int) ((e - s) / 1000);
-                duration += res.getQuantityString(R.plurals.seconds_short, d, d);
-            } else if ((e - s) < 1000 * 90 * 60) {
-                int d = (int) ((e - s) / 1000 / 60);
-                duration += res.getQuantityString(R.plurals.minutes_short, d, d);
-            } else {
-                int d = (int) ((e - s) / 1000 / 60);
-                int h = d / 60;
-                int m = d - h * 60;
-                duration += Integer.toString(h) + "h" +  String.format("%02d", m);
-            }
+            duration += TimeSpanFormatter.format(end.getTime() - start.getTime());
             duration += ")";
         }
 

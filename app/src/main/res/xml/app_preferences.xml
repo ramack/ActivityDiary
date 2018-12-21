@@ -27,8 +27,16 @@
             android:key="pref_datetimeFormat"
             android:title="@string/setting_datetime_format"
             android:summary="@string/setting_datetime_format_summary"
-            android:dialogMessage="@string/setting_datetime_format_description"
             android:defaultValue="@string/default_datetime_format" />
+
+        <ListPreference
+            android:key="pref_duration_format"
+            android:title="@string/setting_duration_format"
+            android:dialogTitle="@string/setting_duration_format"
+            android:entries="@array/pref_duration_format_setting_list"
+            android:entryValues="@array/pref_duration_format_setting_list_values"
+            android:defaultValue="dynamic" />
+
     </android.support.v7.preference.PreferenceCategory>
     <android.support.v7.preference.PreferenceCategory
         android:title="@string/setting_behavior_category"

@@ -57,6 +57,7 @@ import java.util.List;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.history.HistoryDetailActivity;
 
@@ -203,28 +204,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 PieEntry e = (PieEntry)entry;
-                long dur = (long)e.getValue() / 1000;
-                int d = (int)(dur / 60 / 60 / 24);
-                int h = (int)((dur - d * (60 * 60 * 24)) / 60 / 60);
-                int m = (int)((dur - d * (60 * 60 * 24) - h * (60 * 60)) / 60);
-                int s = (int)((dur - d * (60 * 60 * 24) - h * (60 * 60) - m * 60));
-                String result;
-                if(d > 0){
-                    result = d + "d";
-                }else{
-                    result = "";
-                }
-
-                if(d > 0 || h > 0){
-                    result += h + "h";
-                }
-                if(d > 0 || h > 0 || m > 0){
-                    result += m + "m";
-                }
-                if(d > 0 || h > 0 || m > 0 || s > 0){
-                    result += s + "s";
-                }
-                return result;
+                return TimeSpanFormatter.format((long)e.getValue());
             }
         });
         chart.setData(dat);

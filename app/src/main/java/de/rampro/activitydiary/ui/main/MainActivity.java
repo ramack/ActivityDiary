@@ -77,7 +77,7 @@ import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
-import de.rampro.activitydiary.helpers.FuzzyTimeSpanFormatter;
+import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
@@ -552,7 +552,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void updateDurationTextView() {
-        String duration = getResources().getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
+        String duration = getResources().getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
         durationLabel.setText(duration);
         mNoteTextView.setText(ActivityHelper.helper.getCurrentNote());
     }
