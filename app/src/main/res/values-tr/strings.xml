@@ -69,6 +69,12 @@
     <string name="setting_datetime_format">Tarih biçimi</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin gösterim biçimi. dd-MM-yyyy HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
+    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
+    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
+    <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
+    <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
+    <string name="setting_duration_format_description">Display format of the time durations.</string>
     <string name="setting_auto_select_new">Yeni etkinlikleri seç</string>
     <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan etkin olan olarak seçilir</string>
     <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez</string>
