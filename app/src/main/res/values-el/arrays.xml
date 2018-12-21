@@ -24,6 +24,12 @@
         <item>Network</item>
         <item>GPS (and network)</item>
     </string-array>
+    <string-array name="pref_duration_format_setting_list" translatable="true">
+        <item>Dynamic</item>
+        <item>Precise</item>
+        <item>No days</item>
+        <item>Hours + min</item>
+    </string-array>
     <string-array name="statistic_dropdown" translatable="true">
         <item>All</item>
         <item>Last 7 Days</item>
