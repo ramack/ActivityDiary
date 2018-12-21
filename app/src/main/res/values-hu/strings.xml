@@ -69,6 +69,12 @@
     <string name="setting_datetime_format">Dátum formátum</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">A tevékenység megkezdésének dátumának és időpontjának megjelenítési formátuma. A szokásos formátumok: yyyy-MM-dd HH: mm vagy dd.MM hh: mm</string>
+    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
+    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
+    <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
+    <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
+    <string name="setting_duration_format_description">Display format of the time durations.</string>
     <string name="setting_auto_select_new">Válasszon új tevékenységeket</string>
     <string name="setting_auto_select_new_summary_active">A frissen létrehozott tevékenységet közvetlenül kiválasztják az új aktívaként</string>
     <string name="setting_auto_select_new_summary_inactive">Az új aktivitások létrehozása nem befolyásolja az aktuális tevékenységet</string>
