@@ -25,10 +25,10 @@
         <item>GPS (und Netzwerk)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
-        <item>Dynamic</item>
-        <item>Precise</item>
-        <item>No days</item>
-        <item>Hours + min</item>
+        <item>Dynamisch</item>
+        <item>Präzise</item>
+        <item>Keine Tage</item>
+        <item>Stunden + Minuten</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
         <item>Alle</item>
