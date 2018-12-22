@@ -26,7 +26,7 @@
     <string name="about_text_licence_h">Lizenz</string>
     <string name="about_text_licence"><![CDATA[Das Programm %1$s ist freie Software: Du darst es weitergeben und verändern unter den Bedingungen der <a href="https://www.gnu.org/licenses/gpl.html">GNU General Public License</a>, wie von der Free Software Foundation veröffentlicht, entweder gemäß Version 3 der Lizenz oder jeder späteren Version.]]></string>
     <string name="about_text_license_2">Dieses Programm wird in der Hoffnung verbreitet, dass es nützlich ist, aber OHNE IRGENDEINE GARANTIE, insbesondere ohne eine implizite Garantie der Marktreife oder der Eignung für einen bestimmten Zweck. Lies die GNU General Public License für weitere Details.</string>
-    <string name="about_text_privacy_h">Privacy Policy</string>
+    <string name="about_text_privacy_h">Datenschutzerklärung</string>
     <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">Kontakt</string>
     <string name="about_text_contact"><![CDATA[Verwenden Sie für Fehlerberichte und Verbesserungsvorschläge das <a href="https://github.com/ramack/ActivityDiary/issues">Ticketsystem</a>, vorzugsweise in englischer Sprache.]]></string>
@@ -71,7 +71,7 @@
     <string name="setting_datetime_format">Datumsformat</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Anzeigeformat für Datum und Zeit der Aktivitätsstarts. Häufige Formate sind dd.MM. hh:mm oder yyyy-MM-dd HH:mm</string>
-    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format">Zeitspannenformat</string>
     <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
@@ -230,24 +230,24 @@
     <!-- Privacy Policy -->
     <string name="privacy_text">ActivityDiary is a free, libre and open source application to track your activities. This privacy policy applies to this Android application and describes what data is stored and processed by the ActivityDiary.</string>
     <string name="privacy_last_update">Last updated December 22, 2018</string>
-    <string name="privacy_intro_title">Introduction</string>
+    <string name="privacy_intro_title">Allgemeines</string>
     <string name="privacy_intro_text1">Developers of ActivityDiary, we (or “us” or “our”) respect the privacy of our users (“user” or “you”). As the aim of this application is to keep a record of your activites a lot of sensitive personal information is collected and stored. Nevertheless this is your data and you have full control over it. This Privacy Policy explains how the ActivityDiary application (the “Application”) collects, uses, discloses, and safeguards your information. Our names can be extracted from the meta data in the git repositories and within the Application.</string>
     <string name="privacy_intro_text2">Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Application and remove it from your device.</string>
     <string name="privacy_intro_text3">We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the “Last updated” date of this Privacy Policy.</string>
     <string name="privacy_intro_text4">You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Application after the date such revised Privacy Policy is posted.</string>
     <string name="privacy_intro_text5">This Privacy Policy does not apply to the third-party online/mobile store from which you install the Applications or make payments, which may also collect and use data about you. We are not responsible for any of the data collected by any such third party.</string>
-    <string name="privacy_what_title">What data is processed and stored?</string>
-    <string name="privacy_what_subTitle1">Activity Data</string>
+    <string name="privacy_what_title">Welche Daten werden verarbeitet und gespeichert?</string>
+    <string name="privacy_what_subTitle1">Akitivitätsdaten</string>
     <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
     <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
     <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
     <string name="privacy_what_subTitle3">Device storage (WRITE_EXTERNAL_STORAGE)</string>
     <string name="privacy_what_subText3a">Storage and retreival of backups, photos and other files you attach to your activity diary need access to Androids \"external storage\" / SD card.</string>
-    <string name="privacy_what_subTitle4">Camera</string>
+    <string name="privacy_what_subTitle4">Kamera</string>
     <string name="privacy_what_subText4a">The application enables you to take photos with your devices\' camera and attach them to your activity diary. This is the only usage of the camera permission.</string>
     <string name="privacy_what_subTitle5">Network state (ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE)</string>
     <string name="privacy_what_subText5a">Network and WIFI state is stored to correlate activities to those data and to propose and set next activites based on the current state.</string>
-    <string name="privacy_what_subTitle6">Crash Reporting</string>
+    <string name="privacy_what_subTitle6">Absturzbericht</string>
     <string name="privacy_what_subText6a">In case of a program fault (crash) the application prepares a report that helps us to improve the behavior of the application. This report contains a lot of technical data about your device and operating system, the complete preferences of the application and the trace of program steps that was exectued right before the crash. The hardware of your device including but not limited to screen size and resolution, the manufacturer, the language setting and versions of the operating system and application are identifiable. The repared report is not transmitted automatically, but shared to your email application in a newly composed email that you - at your own will - can send to us or whomever you want. Protecting the data during transmission by using encrypted email transfer is under responsibility of you and your mail service provider. We highly recommend to thoroughfully review the report and remove all data you don\'t want to share or understand.</string>
     <string name="privacy_what_subText6b">As the used media is email you will disclose your name, email address, and several other technical data like IP address and email service provider by transmitting a crash report. We will not use this information for anything else than contacting you about the crash.</string>
     <string name="privacy_what_subText6c">Anonymous extracts of the report that do not allow your indentification might be used in the public issue tracker for documenting the crash and tracking the rework.</string>
