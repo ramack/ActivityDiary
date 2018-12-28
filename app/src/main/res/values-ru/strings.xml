@@ -29,16 +29,16 @@
     <string name="about_text_privacy_h">Политика конфиденциальности</string>
     <string name="about_text_privacy"><![CDATA[%1$s и его авторы глубоко заинтересованы в уважении вашей конфиденциальности. Суть этого приложения заключается в том, чтобы вы могли отслеживать и записывать, чем вы занимаетесь, как, где и когда. Ваши данные хранятся локально на устройстве, они не передаются ни на один внешний сервер или третьим лицам без вашего явного запроса. Вы можете посмотреть полную версию <a href=\"de.rampro.activitydiary.privacy_policy://show\">политики конфиденциальности</a>.]]></string>
     <string name="about_text_contact_h">Контактная информация</string>
-    <string name="about_text_contact"><![CDATA[Для ошибок и предложений используйте <a href="https://github.com/ramack/ActivityDiary/issues">вопросник</a>, желательно на английском языке.]]></string>
-    <string name="about_text_contact_2"><![CDATA[Исходный код можно найти на <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
-    <string name="about_text_support_h">Поддержка</string>
-    <string name="about_text_support"><![CDATA[Если вы хотите поддержать развитие %1$s обсудите <a href="https://github.com/ramack/ActivityDiary/issues">по github</a>, переведя на <a href="https://crowdin.com/project/activitydiary">crowin</a> или пожертвование на <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
+    <string name="about_text_contact"><![CDATA[Чтобы сообщать об ошибках и предлагать улучшения, пишите в <a href="https://github.com/ramack/ActivityDiary/issues">багтрекер</a>, желательно на английском языке.]]></string>
+    <string name="about_text_contact_2"><![CDATA[Исходный код доступен на <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
+    <string name="about_text_support_h">Поддержать</string>
+    <string name="about_text_support"><![CDATA[Если вы хотите принять участие в развитии приложения %1$s, зайдите в обсуждения на <a href="https://github.com/ramack/ActivityDiary/issues">github</a>, займитесь переводами приложения на другие языки через <a href="https://crowdin.com/project/activitydiary">crowdin</a> или сделайте пожертвование на <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
     <string name="about_text_cont_h">Авторы</string>
     <string name="about_text_cont_2">Мы также надеемся упомянуть ваше имя в этом списке.</string>
     <string name="about_text_lib_h">Библиотеки</string>
     <string name="about_text_lib">Следующие библиотеки используются этим приложением и лицензируются по названным лицензиям:</string>
-    <string name="perm_write_external_storage_xplain">Для хранения фотографий требуется разрешение на это &#8230;</string>
-    <string name="unsupported_on_api_level">Эта функция не поддерживается в Android-версии. Минимальный уровень API %1$d обязательный.</string>
+    <string name="perm_write_external_storage_xplain">Для сохранения фотографий требуется разрешение &#8230;</string>
+    <string name="unsupported_on_api_level">Эта функция не поддерживается в данной версии ОС Android. Требуется API версии как минимум %1$d.</string>
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Выберите действие</string>
     <string name="nav_diary">Дневник</string>
@@ -52,7 +52,7 @@
     <string name="nav_about">Информация</string>
     <string name="desc_activity_color">Цвет занятия</string>
     <string name="desc_activity_hint">Название мероприятия</string>
-    <string name="desc_activity_select">Выберите текущую активность&#8230;</string>
+    <string name="desc_activity_select">Выберите текущее занятие&#8230;</string>
     <!-- -->
     <string name="activity_image_description">Изображение для деятельности</string>
     <string name="contentDesc_logo">Логотип мероприятия</string>
@@ -268,7 +268,7 @@
     <string name="privacy_how_text1">The Application store unencrypted data locally on the device it is executed on. You are responsible to protect the stored data from unauthorized access. We highly recommend to protect your device with a strong password and even encrypt your devices\' storage. Backups created by the application itself or any device backup mechanism also need to be protected by you in a similar fashion.</string>
     <string name="privacy_security_title">Security of your information</string>
     <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
-    <string name="privacy_rights_title">Your rights</string>
+    <string name="privacy_rights_title">Ваши права</string>
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
     <string name="privacy_contact_title">Связаться с нами</string>
     <string name="privacy_contact_text">Если у вас есть вопросы или комментарии по поводу этой Политики конфиденциальности, свяжитесь с нами по адресу:</string>
