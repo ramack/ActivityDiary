@@ -121,30 +121,30 @@
     <string name="setting_location_age">Период обновления</string>
     <string name="pref_location_dist">Обновлять геопозицию каждые %1$s метров</string>
     <string name="setting_location_dist">Обновление расстояния</string>
-    <string name="setting_expert">Настройки эксперта</string>
+    <string name="setting_expert">Продвинутые настройки</string>
     <string name="setting_export">Экспорт базы данных</string>
     <string name="setting_import">Импорт базы данных</string>
-    <string name="setting_export_summary">Храните копию текущей базы данных в файле для резервного копирования.</string>
-    <string name="setting_import_summary">Восстановить файл резервной копии в текущей базе данных</string>
+    <string name="setting_export_summary">Сохранить копию текущей базы данных в файле для резервного копирования</string>
+    <string name="setting_import_summary">Восстановить текущую базу данных из файла резервной копии</string>
     <string name="db_export_error">Не удалось экспортировать базу данных в %1$s</string>
-    <string name="db_export_success">Экспортированная база данных до %1$s</string>
+    <string name="db_export_success">База данных экспортирована в %1$s</string>
     <string name="db_export_name_suggestion">ActivityDiary_Export</string>
     <string name="db_export_selection">Выбрать файл для экспорта</string>
     <string name="db_import_error">Не удалось импортировать %1$s</string>
     <string name="db_import_success">%1$s успешно импортировано</string>
     <string name="db_import_selection">Выбрать файл для импорта</string>
     <!-- titles -->
-    <string name="activity_title_edit">редактировать</string>
-    <string name="activity_title_edit_new">Новая деятельность</string>
-    <string name="activity_title_manage_activities">Управление мероприятиями</string>
+    <string name="activity_title_edit">Редактировать</string>
+    <string name="activity_title_edit_new">Новый вид деятельности</string>
+    <string name="activity_title_manage_activities">Управление занятиями</string>
     <string name="activity_title_history">Дневник</string>
     <string name="activity_title_history_detail">Запись в дневнике</string>
-    <string name="activity_subtitle_main">Что делаешь?</string>
-    <string name="activity_title_about">Около</string>
+    <string name="activity_subtitle_main">Чем занимаешься?</string>
+    <string name="activity_title_about">О программе</string>
     <string name="activity_title_stats">Статистика</string>
     <string name="activity_title_map">Карта</string>
-    <string name="activity_title_settings">настройки</string>
-    <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
+    <string name="activity_title_settings">Настройки</string>
+    <string name="activity_title_no_selected_act">&lt;Занятий сейчас нет&gt;</string>
     <string name="dialog_title_note">Заметка</string>
     <string name="activities">Действия</string>
     <!-- actions -->
@@ -153,18 +153,18 @@
     <string name="action_store">Сохранить</string>
     <string name="action_filter">Фильтр</string>
     <string name="action_undo">ОТМЕНИТЬ</string>
-    <string name="search_hint">Поиск деятельности&#8230;</string>
-    <string name="search_description">Diaryactivities</string>
+    <string name="search_hint">Поиск видов деятельности&#8230;</string>
+    <string name="search_description">Записи в ActivityDiary</string>
     <!-- dialog -->
     <string name="dlg_ok">ОК</string>
     <string name="dlg_cancel">Отмена</string>
     <string name="dlg_delete_image_title">Подтвердить удаление</string>
-    <string name="dlg_delete_image_text">Вы действительно хотите удалить это изображение из текущей записи активности?</string>
+    <string name="dlg_delete_image_text">Вы действительно хотите удалить это изображение из текущей записи?</string>
     <string name="dlg_undelete_activity_title">Восстановить активность</string>
-    <string name="dlg_undelete_activity_text">Будет ли операция %1$s восстановлена ​​и снова станет доступной?</string>
+    <string name="dlg_undelete_activity_text">Должно ли действие %1$s быть восстановлено и снова стать доступным?</string>
     <string name="statistics_others">Прочее</string>
     <!-- main view -->
-    <string name="duration_description">Поскольку %1$s</string>
+    <string name="duration_description">Продолжается %1$s</string>
     <string name="just_now">прямо сейчас</string>
     <string name="few_seconds">несколько секунд</string>
     <plurals name="seconds_short">
