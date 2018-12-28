@@ -119,7 +119,7 @@
     <string name="setting_cond_daytime_not_used_summary">Дневное время мероприятий в дневнике не используется для предложения следующих мероприятий</string>
     <string name="pref_location_age">Request a location update every %1$s minutes</string>
     <string name="setting_location_age">Update period</string>
-    <string name="pref_location_dist">Request a location update every %1$s meters</string>
+    <string name="pref_location_dist">Обновлять геопозицию каждые %1$s метров</string>
     <string name="setting_location_dist">Update distance</string>
     <string name="setting_expert">Настройки эксперта</string>
     <string name="setting_export">Экспорт базы данных</string>
@@ -146,7 +146,7 @@
     <string name="activity_title_settings">настройки</string>
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">Заметка</string>
-    <string name="activities">Activities</string>
+    <string name="activities">Действия</string>
     <!-- actions -->
     <string name="action_delete">Удалить активность</string>
     <string name="action_diary_entry_delete">Удалить запись</string>
@@ -162,7 +162,7 @@
     <string name="dlg_delete_image_text">Вы действительно хотите удалить это изображение из текущей записи активности?</string>
     <string name="dlg_undelete_activity_title">Восстановить активность</string>
     <string name="dlg_undelete_activity_text">Будет ли операция %1$s восстановлена ​​и снова станет доступной?</string>
-    <string name="statistics_others">Others</string>
+    <string name="statistics_others">Прочее</string>
     <!-- main view -->
     <string name="duration_description">Поскольку %1$s</string>
     <string name="just_now">прямо сейчас</string>
@@ -214,15 +214,15 @@
     <string name="desc_end_time">Время окончания</string>
     <string name="adjust_adjacent_times">Отрегулируйте смежные записи в дневнике</string>
     <string name="constraint_positive_duration">Деятельность всегда начинается до ее окончания.</string>
-    <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
-    <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
-    <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
+    <string name="search_notes">Поиск \'%1$s\' в заметках&#x2026;</string>
+    <string name="search_diary">Искать \'%1$s\' глобально&#x2026;</string>
+    <string name="search_date">Поиск \'%1$s\' в датах&#x2026;</string>
     <string name="wrongFormat">Пожалуйста, введите дату в правильном формате!</string>
     <!-- Map -->
-    <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+    <string name="no_map_data_message">Нет данных для отображения. Включите доступ к местоположению в настройках.</string>
     <!-- statistics -->
-    <string name="earlier">earlier</string>
-    <string name="later">later</string>
+    <string name="earlier">ранее</string>
+    <string name="later">позднее</string>
     <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">гггг \'неделя\' нн</string>
     <string name="month_format">ММММ гггг</string>
