@@ -147,6 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">Huomautus</string>
     <string name="activities">Activities</string>
+    <string name="fragment_detail_stats_title">Statistics</string>
+    <string name="fragment_detail_note_title">Note</string>
+    <string name="fragment_detail_pictures_title">Pictures</string>
     <!-- actions -->
     <string name="action_delete">Poista aktiviteetti</string>
     <string name="action_diary_entry_delete">Poista merkintä</string>
@@ -183,6 +186,7 @@
         <item quantity="one">%d päivä</item>
         <item quantity="other">%d päivää</item>
     </plurals>
+    <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="camera_error">Jotain meni vikaan täällä. Kuvan tallentamista ei voitu tallentaa.</string>
     <string name="no_active_activity_error">Tämän toiminnon suorittamiseksi on ensin valittava toiminto</string>
     <!-- edit view -->
@@ -264,5 +268,4 @@
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
     <string name="privacy_contact_title">Contact us</string>
     <string name="privacy_contact_text">If you have questions or comments about this Privacy Policy, please contact us at:</string>
-    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
 </resources>
