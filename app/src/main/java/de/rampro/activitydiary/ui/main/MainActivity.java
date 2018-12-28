@@ -20,30 +20,31 @@ package de.rampro.activitydiary.ui.main;
 
 import android.Manifest;
 import android.app.SearchManager;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.AsyncQueryHandler;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.media.ExifInterface;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.LoaderManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
-import android.support.v4.content.Loader;
+import android.support.v4.view.ViewPager;
 import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -54,15 +55,12 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,16 +69,17 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
-import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
+import de.rampro.activitydiary.helpers.TimeSpanFormatter;
+import de.rampro.activitydiary.model.DetailViewModel;
 import de.rampro.activitydiary.model.DiaryActivity;
-import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.EditActivity;
 import de.rampro.activitydiary.ui.history.HistoryDetailActivity;
@@ -91,7 +90,6 @@ import de.rampro.activitydiary.ui.settings.SettingsActivity;
  *
  * */
 public class MainActivity extends BaseActivity implements
-        LoaderManager.LoaderCallbacks<Cursor>,
         SelectRecyclerViewAdapter.SelectListener,
         ActivityHelper.DataChangedListener,
         NoteEditDialog.NoteEditDialogListener,
@@ -102,32 +100,25 @@ public class MainActivity extends BaseActivity implements
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
 
-    private static final String[] PROJECTION_IMG = new String[] {
-            ActivityDiaryContract.DiaryImage.URI,
-            ActivityDiaryContract.DiaryImage._ID
-    };
+    private static final int QUERY_CURRENT_ACTIVITY_STATS = 1;
 
-    private TextView durationLabel;
-    private TextView mNoteTextView;
+    private DetailViewModel viewModel;
+
     private String mCurrentPhotoPath;
 
     private RecyclerView selectRecyclerView;
     private StaggeredGridLayoutManager selectorLayoutManager;
     private SelectRecyclerViewAdapter selectAdapter;
 
-    private RecyclerView detailRecyclerView;
-    private DetailRecyclerViewAdapter detailAdapter;
-
-    private DiaryActivity mCurrentActivity;
-    private Uri mCurrentDiaryUri;
     private String filter = "";
-    private View headerView;
     private int searchRowCount, normalRowCount;
     private FloatingActionButton fabNoteEdit;
     private FloatingActionButton fabAttachPicture;
     private SearchView searchView;
     private MenuItem searchMenuItem;
-    private View.OnClickListener headerClickHandler;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private View headerView;
 
     private void setSearchMode(boolean searchMode){
         if(searchMode){
@@ -148,13 +139,7 @@ public class MainActivity extends BaseActivity implements
 
     }
 
-    private class QHandler extends AsyncQueryHandler{
-        private QHandler(){
-            super(ActivityDiaryApplication.getAppContext().getContentResolver());
-        }
-    }
-
-    private QHandler mQHandler = new QHandler();
+    private MainAsyncQueryHandler mQHandler = new MainAsyncQueryHandler(ActivityDiaryApplication.getAppContext().getContentResolver());
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -168,6 +153,8 @@ public class MainActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
+
         // recovering the instance state
         if (savedInstanceState != null) {
             mCurrentPhotoPath = savedInstanceState.getString("currentPhotoPath");
@@ -178,34 +165,28 @@ public class MainActivity extends BaseActivity implements
         View contentView = inflater.inflate(R.layout.activity_main_content, null, false);
 
         setContent(contentView);
-// TODO: check whether there is some way to use instead of inflating with root null...
-//        setContentView(R.layout.activity_main_content);
+
         headerView = findViewById(R.id.header_area);
-        headerClickHandler = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mCurrentActivity != null) {
-                    Intent i = new Intent(MainActivity.this, HistoryDetailActivity.class);
-                    // no diaryEntryID will edit the last one
-                    startActivity(i);
-                }
-            }
-        };
-        headerView.setOnClickListener(headerClickHandler);
-        selectRecyclerView = (RecyclerView)findViewById(R.id.select_recycler);
+        tabLayout = findViewById(R.id.tablayout);
+
+        viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
+        selectRecyclerView = findViewById(R.id.select_recycler);
 
         View selector = findViewById(R.id.activity_background);
         selector.setOnLongClickListener(this);
-        selector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(PreferenceManager
-                        .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
-                        .getBoolean(SettingsActivity.KEY_PREF_DISABLE_CURRENT, true)){
-                    ActivityHelper.helper.setCurrentActivity(null);
-                }else{
-                    headerClickHandler.onClick(null);
-                }
+        selector.setOnClickListener(v -> {
+            // TODO: get rid of this setting?
+            if(PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                    .getBoolean(SettingsActivity.KEY_PREF_DISABLE_CURRENT, true)){
+                ActivityHelper.helper.setCurrentActivity(null);
+            }else{
+                Intent i = new Intent(MainActivity.this, HistoryDetailActivity.class);
+                // no diaryEntryID will edit the last one
+                startActivity(i);
             }
         });
 
@@ -224,62 +205,51 @@ public class MainActivity extends BaseActivity implements
 
         likelyhoodSort();
 
-        durationLabel = findViewById(R.id.duration_label);
-        durationLabel.setOnClickListener(headerClickHandler);
-        mNoteTextView = findViewById(R.id.note);
-        mNoteTextView.setOnClickListener(headerClickHandler);
-
         fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
         fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
 
-        fabNoteEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the click on the FAB
-                if(mCurrentActivity != null) {
-                    NoteEditDialog dialog = new NoteEditDialog();
-                    dialog.setText(mNoteTextView.getText().toString());
-                    dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
-                }else{
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
-                }
+        fabNoteEdit.setOnClickListener(v -> {
+            // Handle the click on the FAB
+            if(viewModel.currentActivity().getValue() != null) {
+                NoteEditDialog dialog = new NoteEditDialog();
+                dialog.setText(viewModel.mNote.getValue());
+                dialog.show(getSupportFragmentManager(), "NoteEditDialogFragment");
+            }else{
+                Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
             }
         });
 
-        fabAttachPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the click on the FAB
-                if(mCurrentActivity != null) {
-                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        fabAttachPicture.setOnClickListener(v -> {
+            // Handle the click on the FAB
+            if(viewModel.currentActivity() != null) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                        File photoFile = null;
-                        try {
-                            photoFile = createImageFile();
-                            Log.i(TAG, "create file for image capture " + (photoFile == null ? "" : photoFile.getAbsolutePath()));
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    File photoFile = null;
+                    try {
+                        photoFile = createImageFile();
+                        Log.i(TAG, "create file for image capture " + (photoFile == null ? "" : photoFile.getAbsolutePath()));
 
-                        } catch (IOException ex) {
-                            // Error occurred while creating the File
-                            Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
-                        }
-                        // Continue only if the File was successfully created
-                        if (photoFile != null) {
-                            // Save a file: path for use with ACTION_VIEW intents
-                            mCurrentPhotoPath = photoFile.getAbsolutePath();
-
-                            Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
-                                    BuildConfig.APPLICATION_ID + ".fileprovider",
-                                    photoFile);
-                            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                            takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                        }
-
+                    } catch (IOException ex) {
+                        // Error occurred while creating the File
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.camera_error), Toast.LENGTH_LONG).show();
                     }
-                }else{
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
+                    // Continue only if the File was successfully created
+                    if (photoFile != null) {
+                        // Save a file: path for use with ACTION_VIEW intents
+                        mCurrentPhotoPath = photoFile.getAbsolutePath();
+
+                        Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
+                                BuildConfig.APPLICATION_ID + ".fileprovider",
+                                photoFile);
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                        takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                    }
+
                 }
+            }else{
+                Toast.makeText(MainActivity.this, getResources().getString(R.string.no_active_activity_error), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -291,91 +261,6 @@ public class MainActivity extends BaseActivity implements
         }else{
             fabAttachPicture.hide();
         }
-
-        detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
-        LinearLayoutManager detailLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
-
-            @Override
-            public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state,
-                                  int widthSpec, int heightSpec) {
-                final int widthMode = View.MeasureSpec.getMode(widthSpec);
-                final int heightMode = View.MeasureSpec.getMode(heightSpec);
-                final int widthSize = View.MeasureSpec.getSize(widthSpec);
-                final int heightSize = View.MeasureSpec.getSize(heightSpec);
-                int width = 0;
-                int height = 0;
-                int[] mMeasuredDimension = new int[2];
-                for (int i = 0; i < getItemCount(); i++) {
-                    if(i < state.getItemCount()) {
-                        if (getOrientation() == HORIZONTAL) {
-
-                            measureScrapChild(recycler, i,
-                                    View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
-                                    heightSpec,
-                                    mMeasuredDimension);
-
-                            width = width + mMeasuredDimension[0];
-                            if (i == 0) {
-                                height = mMeasuredDimension[1];
-                            }
-                        } else {
-                            measureScrapChild(recycler, i,
-                                    widthSpec,
-                                    View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
-                                    mMeasuredDimension);
-                            height = height + mMeasuredDimension[1];
-                            if (i == 0) {
-                                width = mMeasuredDimension[0];
-                            }
-                        }
-                    }
-                }
-
-                if (height < heightSize || width < widthSize) {
-
-                    switch (widthMode) {
-                        case View.MeasureSpec.EXACTLY:
-                            width = widthSize;
-                        case View.MeasureSpec.AT_MOST:
-                        case View.MeasureSpec.UNSPECIFIED:
-                    }
-
-                    switch (heightMode) {
-                        case View.MeasureSpec.EXACTLY:
-                            height = heightSize;
-                        case View.MeasureSpec.AT_MOST:
-                        case View.MeasureSpec.UNSPECIFIED:
-                    }
-
-                    setMeasuredDimension(width, height);
-                } else {
-                    setMeasuredDimension((width > widthSize)?width:widthSize, (height > heightSize)?height:heightSize);
-                }
-            }
-
-            private void measureScrapChild(RecyclerView.Recycler recycler, int position, int widthSpec,
-                                           int heightSpec, int[] measuredDimension) {
-                View view = recycler.getViewForPosition(position);
-                recycler.bindViewToPosition(view, position);
-                if (view != null) {
-                    RecyclerView.LayoutParams p = (RecyclerView.LayoutParams) view.getLayoutParams();
-                    int childWidthSpec = ViewGroup.getChildMeasureSpec(widthSpec,
-                            getPaddingLeft() + getPaddingRight(), p.width);
-                    int childHeightSpec = ViewGroup.getChildMeasureSpec(heightSpec,
-                            getPaddingTop() + getPaddingBottom(), p.height);
-                    view.measure(childWidthSpec, childHeightSpec);
-                    measuredDimension[0] = view.getMeasuredWidth() + p.leftMargin + p.rightMargin;
-                    measuredDimension[1] = view.getMeasuredHeight() + p.bottomMargin + p.topMargin;
-                    recycler.recycleView(view);
-                }
-            }
-        };
-        detailLayoutManager.setAutoMeasureEnabled(false);
-        detailRecyclerView.setLayoutManager(detailLayoutManager);
-//        detailRecyclerView.setNestedScrollingEnabled(true);
-        detailAdapter = new DetailRecyclerViewAdapter(MainActivity.this,
-                null);
-        detailRecyclerView.setAdapter(detailAdapter);
 
         // Get the intent, verify the action and get the search query
         Intent intent = getIntent();
@@ -391,8 +276,8 @@ public class MainActivity extends BaseActivity implements
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "IMG_";
-        if(mCurrentActivity != null){
-            imageFileName += mCurrentActivity.getName();
+        if(viewModel.currentActivity().getValue() != null){
+            imageFileName += viewModel.currentActivity().getValue().getName();
             imageFileName += "_";
         }
 
@@ -435,8 +320,6 @@ public class MainActivity extends BaseActivity implements
         ActivityHelper.helper.registerDataChangeListener(this);
         onActivityChanged(); /* refresh the current activity data */
         super.onResume();
-        updateDurationTextView();
-        updateDurationHandler.postDelayed(updateDurationRunnable, 10 * 1000);
 
         selectAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
         ActivityHelper.helper.evaluateAllConditions(); // this is quite heavy and I am not so sure whether it is a good idea to do it unconditionally here...
@@ -444,7 +327,6 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPause() {
-        updateDurationHandler.removeCallbacks(updateDurationRunnable);
         ActivityHelper.helper.unregisterDataChangeListener(this);
 
         super.onPause();
@@ -453,8 +335,8 @@ public class MainActivity extends BaseActivity implements
     @Override
     public boolean onLongClick(View view) {
         Intent i = new Intent(MainActivity.this, EditActivity.class);
-        if(mCurrentActivity != null) {
-            i.putExtra("activityID", mCurrentActivity.getId());
+        if(viewModel.currentActivity().getValue() != null) {
+            i.putExtra("activityID", viewModel.currentActivity().getValue().getId());
         }
         startActivity(i);
         return true;
@@ -508,32 +390,38 @@ public class MainActivity extends BaseActivity implements
         }
     }
 
-    private Handler updateDurationHandler = new Handler();
-    private Runnable updateDurationRunnable = new Runnable() {
-        @Override
-        public void run() {
-            updateDurationTextView();
-            updateDurationHandler.postDelayed(this, 10 * 1000);
-        }
-    };
-
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
-        boolean onlyRefresh = false;
-        if(mCurrentActivity == newAct){
-            onlyRefresh = true;
+
+        if(newAct != null) {
+            mQHandler.startQuery(QUERY_CURRENT_ACTIVITY_STATS, null,
+                    ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                    new String[] {
+                            ActivityDiaryContract.DiaryActivity._ID,
+                            ActivityDiaryContract.DiaryActivity.NAME,
+                            ActivityDiaryContract.DiaryActivity.X_AVG_DURATION
+                    },
+                    ActivityDiaryContract.DiaryActivity._DELETED + " = 0 AND "
+                    + ActivityDiaryContract.DiaryActivity._ID + " = ?",
+                    new String[] {
+                            Integer.toString(newAct.getId())
+                    },
+                    null);
         }
-        mCurrentActivity = newAct;
-        TextView aName = (TextView) findViewById(R.id.activity_name);
-        if(mCurrentActivity != null) {
-            mCurrentDiaryUri = ActivityHelper.helper.getCurrentDiaryUri();
-            aName.setText(mCurrentActivity.getName());
-            findViewById(R.id.activity_background).setBackgroundColor(mCurrentActivity.getColor());
-            aName.setTextColor(GraphicsHelper.textColorOnBackground(mCurrentActivity.getColor()));
 
-            /* TODO: move note and starttime from ActivityHelper to here, or even use directly the ContentProvider
-             * register a listener to get updates directly from the ContentProvider */
+        viewModel.mCurrentActivity.setValue(newAct);
+        viewModel.setCurrentDiaryUri(ActivityHelper.helper.getCurrentDiaryUri());
+        TextView aName = findViewById(R.id.activity_name);
+        // TODO: move this logic into the DetailViewModel??
 
+        viewModel.mAvgDuration.setValue("-");
+        /* stats are updated after query finishes in mQHelper */
+
+        if(viewModel.currentActivity().getValue() != null) {
+            aName.setText(viewModel.currentActivity().getValue().getName());
+            findViewById(R.id.activity_background).setBackgroundColor(viewModel.currentActivity().getValue().getColor());
+            aName.setTextColor(GraphicsHelper.textColorOnBackground(viewModel.currentActivity().getValue().getColor()));
+            viewModel.mNote.setValue(ActivityHelper.helper.getCurrentNote());
         }else{
             int col;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -544,17 +432,10 @@ public class MainActivity extends BaseActivity implements
             aName.setText(getResources().getString(R.string.activity_title_no_selected_act));
             findViewById(R.id.activity_background).setBackgroundColor(col);
             aName.setTextColor(GraphicsHelper.textColorOnBackground(col));
-            mCurrentDiaryUri = null;
+            viewModel.mDuration.setValue("-");
+            viewModel.mNote.setValue("");
         }
-        updateDurationTextView();
-        getSupportLoaderManager().restartLoader(0, null, this);
         selectorLayoutManager.scrollToPosition(0);
-    }
-
-    private void updateDurationTextView() {
-        String duration = getResources().getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
-        durationLabel.setText(duration);
-        mNoteTextView.setText(ActivityHelper.helper.getCurrentNote());
     }
 
     /**
@@ -617,12 +498,7 @@ public class MainActivity extends BaseActivity implements
         searchView.setOnQueryTextListener(this);
         // setOnSuggestionListener -> for selection of a suggestion
         // setSuggestionsAdapter
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setSearchMode(true);
-            }
-        });
+        searchView.setOnSearchClickListener(v -> setSearchMode(true));
         return true;
     }
 
@@ -695,25 +571,24 @@ public class MainActivity extends BaseActivity implements
 
         mQHandler.startUpdate(0,
                 null,
-                mCurrentDiaryUri,
+                viewModel.getCurrentDiaryUri(),
                 values,
                 null, null);
-        mNoteTextView.setText(str);
-        resizeNote();
 
+        viewModel.mNote.postValue(str);
         ActivityHelper.helper.setCurrentNote(str);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            if(mCurrentPhotoPath != null && mCurrentDiaryUri != null) {
+            if(mCurrentPhotoPath != null && viewModel.getCurrentDiaryUri() != null) {
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this,
                         BuildConfig.APPLICATION_ID + ".fileprovider",
                         new File(mCurrentPhotoPath));
                 ContentValues values = new ContentValues();
                 values.put(ActivityDiaryContract.DiaryImage.URI, photoURI.toString());
-                values.put(ActivityDiaryContract.DiaryImage.DIARY_ID, mCurrentDiaryUri.getLastPathSegment());
+                values.put(ActivityDiaryContract.DiaryImage.DIARY_ID, viewModel.getCurrentDiaryUri().getLastPathSegment());
 
                 mQHandler.startInsert(0,
                         null,
@@ -725,14 +600,14 @@ public class MainActivity extends BaseActivity implements
                         .getBoolean(SettingsActivity.KEY_PREF_TAG_IMAGES, true)) {
                     try {
                         ExifInterface exifInterface = new ExifInterface(mCurrentPhotoPath);
-                        if (mCurrentActivity != null) {
+                        if (viewModel.currentActivity().getValue() != null) {
                             /* TODO: #24: when using hierarchical activities tag them all here, seperated with comma */
                             /* would be great to use IPTC keywords instead of EXIF UserComment, but
                              * at time of writing (2017-11-24) it is hard to find a library able to write IPTC
                              * to JPEG for android.
                              * pixymeta-android or apache/commons-imaging could be interesting for this.
                              * */
-                            exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, mCurrentActivity.getName());
+                            exifInterface.setAttribute(ExifInterface.TAG_USER_COMMENT, viewModel.currentActivity().getValue().getName());
                             exifInterface.saveAttributes();
                         }
                     } catch (IOException e) {
@@ -743,55 +618,64 @@ public class MainActivity extends BaseActivity implements
         }
     }
 
-    // Called when a new Loader needs to be created
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Now create and return a CursorLoader that will take care of
-        // creating a Cursor for the data being displayed.
-        return new CursorLoader(this, ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                PROJECTION_IMG,
-                ActivityDiaryContract.DiaryImage.TABLE_NAME + "." + ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
-                 + ActivityDiaryContract.DiaryImage._DELETED + "=0",
-                mCurrentDiaryUri == null ? new String[]{"0"}:new String[]{mCurrentDiaryUri.getLastPathSegment()},
-                ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT);
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new DetailStatFragement(), getResources().getString(R.string.fragment_detail_stats_title));
+        adapter.addFragment(new DetailNoteFragment(), getResources().getString(R.string.fragment_detail_note_title));
+        adapter.addFragment(new DetailPictureFragement(), getResources().getString(R.string.fragment_detail_pictures_title));
+        viewPager.setAdapter(adapter);
     }
 
-    // Called when a previously created loader has finished loading
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Swap the new cursor in
-        detailAdapter.swapCursor(data);
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        resizeNote();
-    }
-
-    private void resizeNote() {
-        if(detailAdapter.getItemCount() == 0){
-            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
-            p.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-            mNoteTextView.setLayoutParams(p);
-        } else {
-            LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)mNoteTextView.getLayoutParams();
-            Display display = getWindowManager().getDefaultDisplay();
-            Point size = new Point();
-            display.getSize(size);
-
-            if(mNoteTextView.getText().length() == 0){
-                p.width = 0;
-            }else if(mNoteTextView.getText().length() < 30) {
-                p.width = size.x * 40 / 100;
-            }else{
-                p.width = size.x * 67 / 100;
-            }
-            mNoteTextView.setLayoutParams(p);
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
-    // Called when a previously created loader is reset, making the data unavailable
-    public void onLoaderReset(Loader<Cursor> loader) {
-        // This is called when the last Cursor provided to onLoadFinished()
-        // above is about to be closed.  We need to make sure we are no
-        // longer using it.
-        detailAdapter.swapCursor(null);
+    private class MainAsyncQueryHandler extends AsyncQueryHandler{
+        public MainAsyncQueryHandler(ContentResolver cr) {
+            super(cr);
+        }
+
+        @Override
+        public void startQuery(int token, Object cookie, Uri uri, String[] projection, String selection, String[] selectionArgs, String orderBy) {
+            super.startQuery(token, cookie, uri, projection, selection, selectionArgs, orderBy);
+        }
+
+        @Override
+        protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+            super.onQueryComplete(token, cookie, cursor);
+            if ((cursor != null) && cursor.moveToFirst()) {
+                if (token == QUERY_CURRENT_ACTIVITY_STATS) {
+                    long avg = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION));
+                    viewModel.mAvgDuration.setValue(getResources().
+                            getString(R.string.avg_duration_description, TimeSpanFormatter.format(avg)));
+                }
+            }
+        }
     }
 }

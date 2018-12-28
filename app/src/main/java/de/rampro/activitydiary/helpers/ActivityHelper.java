@@ -57,6 +57,7 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.DetailViewModel;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
@@ -117,6 +118,9 @@ public class ActivityHelper extends AsyncQueryHandler{
     private @Nullable Uri mCurrentDiaryUri;
     private /* @NonNull */ String mCurrentNote;
     private Condition[] conditions;
+
+    private DetailViewModel viewModel;
+
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
          * handleMessage() defines the operations to perform when

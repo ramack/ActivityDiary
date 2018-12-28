@@ -95,6 +95,12 @@ public class ActivityDiaryContract {
          */
         String PARENT = "parent";
 
+        /**
+         * The average duration for the Activity
+         * <P>Type: INT</P>
+         */
+        String X_AVG_DURATION = "avg_duration";
+
         /* TODO #25: add image, required and activation conditions */
     }
 

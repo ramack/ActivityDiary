@@ -51,7 +51,7 @@
         <p><a href="https://github.com/Pes8/android-material-color-picker-dialog">Android Material Color Picker Dialog</a> by Simone Pessotto, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="https://github.com/ACRA/acra">ACRA - Application Crash Reports for Android</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
-        <p>appcompat, cardview, constraint-layout, recyclerview, design, preference, exifinterface, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p>appcompat, cardview, constraint-layout, recyclerview, design, preference, exifinterface, android.arch.lifecycle license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         ]]></string>
     <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
 
@@ -194,6 +194,10 @@
     <string name="dialog_title_note">Note</string>
     <string name="activities">Activities</string>
 
+    <string name="fragment_detail_stats_title">Statistics</string>
+    <string name="fragment_detail_note_title">Note</string>
+    <string name="fragment_detail_pictures_title">Pictures</string>
+
     <!-- actions -->
     <string name="action_delete">Delete activity</string>
     <string name="action_diary_entry_delete">Delete entry</string>
@@ -237,6 +241,7 @@
         <item quantity="one">%d Day</item>
         <item quantity="other">%d Days</item>
     </plurals>
+    <string name="avg_duration_description">Average duration: %1$s</string>
 
     <string name="camera_error">Something went wrong here. Could not store image.</string>
     <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
@@ -326,7 +331,7 @@
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
     <string name="privacy_contact_title">Contact us</string>
     <string name="privacy_contact_text">If you have questions or comments about this Privacy Policy, please contact us at:</string>
-    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
+    <string name="privacy_contact_address" translatable="false">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
     <string name="privacy_contact_email" translatable="false">activity-diary@rampro.de</string>
 
 </resources>

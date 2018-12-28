@@ -130,9 +130,13 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
         boolean useRawQuery = false;
+        String grouping = null;
         String sql = "";
         Cursor c;
         int id = 0;
+        if(selection == null){
+            selection = "";
+        }
 
         MatrixCursor result = new MatrixCursor(new String[]{
                 BaseColumns._ID,
@@ -166,10 +170,44 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         switch (sUriMatcher.match(uri)) {
             case activities_ID: /* intended fall through */
             case activities:
-                qBuilder.setTables(ActivityDiaryContract.DiaryActivity.TABLE_NAME);
-                if (TextUtils.isEmpty(sortOrder))
+                int n;
+                boolean hasDiaryJoin = false;
+                String tables = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
+                if (TextUtils.isEmpty(sortOrder)) {
                     sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                }
+                n = 0;
+                while(n < projection.length){
+                    if(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION.equals(projection[n])){
+                        projection[n] = "AVG(" + ActivityDiaryContract.Diary.END + " - "
+                                + ActivityDiaryContract.Diary.START + ") AS "
+                                + ActivityDiaryContract.DiaryActivity.X_AVG_DURATION;
+                        hasDiaryJoin = true;
+                    }
+                    n++;
+                }
+                if(hasDiaryJoin){
+                    n = 0;
+                    while(n < projection.length) {
+                        if(ActivityDiaryContract.DiaryActivity._ID.equals(projection[n])){
+                            projection[n] = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "."
+                                    + ActivityDiaryContract.DiaryActivity._ID;
+                        }
+                        n++;
+                    }
+                    selection = selection.replaceAll(" " + ActivityDiaryContract.DiaryActivity._ID, " " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID);
+                    selection = selection.replaceAll(ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._DELETED);
+
+                    tables = tables + ", " + ActivityDiaryContract.Diary.TABLE_NAME;
+
+                    selection = selection + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = "
+                            + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID;
+
+                    grouping = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
+                }
+                qBuilder.setTables(tables);
                 break;
+
             case diary_image_ID: /* intended fall through */
             case diary_image:
                 qBuilder.setTables(ActivityDiaryContract.DiaryImage.TABLE_NAME);
@@ -354,7 +392,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     projection,
                     selection,
                     selectionArgs,
-                    null,
+                    grouping,
                     null,
                     sortOrder);
         }
