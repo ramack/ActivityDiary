@@ -28,15 +28,15 @@
         <item>Динамически</item>
         <item>Точно</item>
         <item>Нет дней</item>
-        <item>Hours + min</item>
+        <item>Часы + минуты</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
-        <item>All</item>
-        <item>Last 7 Days</item>
-        <item>Last 30 Days</item>
-        <item>Day</item>
-        <item>Week</item>
-        <item>Month</item>
-        <item>Year</item>
+        <item>Все записи</item>
+        <item>За последние 7 дней</item>
+        <item>За последние 30 дней</item>
+        <item>День</item>
+        <item>Неделя</item>
+        <item>Месяц</item>
+        <item>Год</item>
     </string-array>
 </resources>
