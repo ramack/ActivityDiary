@@ -26,8 +26,8 @@
     <string name="about_text_licence_h">Лицензия</string>
     <string name="about_text_licence"><![CDATA[%1$s - бесплатное программное обеспечение: вы можете перераспределить его и / или изменить его в соответствии с условиями <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
     <string name="about_text_license_2">Эта программа распространяется в надежде, что она будет полезна, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без подразумеваемой гарантии КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. Дополнительную информацию см. В GNU General Public License.</string>
-    <string name="about_text_privacy_h">Privacy Policy</string>
-    <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
+    <string name="about_text_privacy_h">Политика конфиденциальности</string>
+    <string name="about_text_privacy"><![CDATA[%1$s и его авторы глубоко заинтересованы в уважении вашей конфиденциальности. Суть этого приложения заключается в том, чтобы вы могли отслеживать и записывать, чем вы занимаетесь, как, где и когда. Ваши данные хранятся локально на устройстве, они не передаются ни на один внешний сервер или третьим лицам без вашего явного запроса. Вы можете посмотреть полную версию <a href=\"de.rampro.activitydiary.privacy_policy://show\">политики конфиденциальности</a>.]]></string>
     <string name="about_text_contact_h">контакт</string>
     <string name="about_text_contact"><![CDATA[Для ошибок и предложений используйте <a href="https://github.com/ramack/ActivityDiary/issues">вопросник</a>, желательно на английском языке.]]></string>
     <string name="about_text_contact_2"><![CDATA[Исходный код можно найти на <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
