@@ -147,6 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;Занятий сейчас нет&gt;</string>
     <string name="dialog_title_note">Заметка</string>
     <string name="activities">Действия</string>
+    <string name="fragment_detail_stats_title">Statistics</string>
+    <string name="fragment_detail_note_title">Note</string>
+    <string name="fragment_detail_pictures_title">Pictures</string>
     <!-- actions -->
     <string name="action_delete">Удалить активность</string>
     <string name="action_diary_entry_delete">Удалить запись</string>
@@ -191,6 +194,7 @@
         <item quantity="many">%d дней</item>
         <item quantity="other">%d дней</item>
     </plurals>
+    <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
     <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать вид деятельности</string>
     <!-- edit view -->
@@ -272,5 +276,4 @@
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
     <string name="privacy_contact_title">Связаться с нами</string>
     <string name="privacy_contact_text">Если у вас есть вопросы или комментарии по поводу этой Политики конфиденциальности, свяжитесь с нами по адресу:</string>
-    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Битигхайм-Биссинген (Германия)</string>
 </resources>
