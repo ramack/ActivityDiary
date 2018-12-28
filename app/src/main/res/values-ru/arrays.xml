@@ -20,14 +20,14 @@
   -->
 <resources>
     <string-array name="pref_location_setting_list" translatable="true">
-        <item>OFF</item>
-        <item>Network</item>
-        <item>GPS (and network)</item>
+        <item>ВЫКЛ</item>
+        <item>По сети</item>
+        <item>GPS (и сеть)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
-        <item>Dynamic</item>
-        <item>Precise</item>
-        <item>No days</item>
+        <item>Динамически</item>
+        <item>Точно</item>
+        <item>Нет дней</item>
         <item>Hours + min</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
