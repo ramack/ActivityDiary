@@ -22,13 +22,13 @@
 <resources>
     <string name="app_name">Дневник активности</string>
     <string name="about_text_version">версия <b>%1$s</b></string>
-    <string name="about_text_intro">Дневник для любых видов деятельности - организуйте свои задачи гибким способом и получите напомнить, что что-то должно повториться.</string>
+    <string name="about_text_intro">Дневник для любых видов деятельности - организуйте свои занятия гибким способом и получайте напоминания, если что-то должно будет повториться.</string>
     <string name="about_text_licence_h">Лицензия</string>
-    <string name="about_text_licence"><![CDATA[%1$s - бесплатное программное обеспечение: вы можете перераспределить его и / или изменить его в соответствии с условиями <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
+    <string name="about_text_licence"><![CDATA[%1$s является свободным программным обеспечением: вы можете распространять и/или изменять его в соответствии с условиями <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
     <string name="about_text_license_2">Эта программа распространяется в надежде, что она будет полезна, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без подразумеваемой гарантии КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. Дополнительную информацию см. В GNU General Public License.</string>
     <string name="about_text_privacy_h">Политика конфиденциальности</string>
     <string name="about_text_privacy"><![CDATA[%1$s и его авторы глубоко заинтересованы в уважении вашей конфиденциальности. Суть этого приложения заключается в том, чтобы вы могли отслеживать и записывать, чем вы занимаетесь, как, где и когда. Ваши данные хранятся локально на устройстве, они не передаются ни на один внешний сервер или третьим лицам без вашего явного запроса. Вы можете посмотреть полную версию <a href=\"de.rampro.activitydiary.privacy_policy://show\">политики конфиденциальности</a>.]]></string>
-    <string name="about_text_contact_h">контакт</string>
+    <string name="about_text_contact_h">Контактная информация</string>
     <string name="about_text_contact"><![CDATA[Для ошибок и предложений используйте <a href="https://github.com/ramack/ActivityDiary/issues">вопросник</a>, желательно на английском языке.]]></string>
     <string name="about_text_contact_2"><![CDATA[Исходный код можно найти на <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
     <string name="about_text_support_h">Поддержка</string>
@@ -45,12 +45,12 @@
     <string name="nav_stats">Статистика</string>
     <string name="nav_map">Карта</string>
     <string name="nav_add_activity">Добавить деятельность</string>
-    <string name="nav_show_deleted">Показать удалено</string>
-    <string name="nav_hide_deleted">Скрыть удаленные</string>
+    <string name="nav_show_deleted">Показать удалённые</string>
+    <string name="nav_hide_deleted">Скрыть удалённые</string>
     <string name="nav_activity_manager">Изменить действия</string>
-    <string name="nav_settings">настройки</string>
-    <string name="nav_about">Около</string>
-    <string name="desc_activity_color">Цвет активности</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="nav_about">Информация</string>
+    <string name="desc_activity_color">Цвет занятия</string>
     <string name="desc_activity_hint">Название мероприятия</string>
     <string name="desc_activity_select">Выберите текущую активность&#8230;</string>
     <!-- -->
@@ -82,16 +82,16 @@
     <string name="setting_auto_select_new_summary_inactive">Создание новых активов не влияет на текущую активную деятельность</string>
     <string name="setting_show_cur_activitiy_notification">Уведомление о текущей деятельности</string>
     <string name="setting_show_cur_activitiy_notification_summary_active">Текущая активность отображается как уведомление</string>
-    <string name="setting_show_cur_activitiy_notification_summary_inactive">Не отображается уведомление о текущей деятельности</string>
+    <string name="setting_show_cur_activitiy_notification_summary_inactive">Уведомление о текущем занятии не отображается</string>
     <string name="setting_disable_on_click">Прервать деятельность по нажатию</string>
     <string name="setting_disable_on_click_summary_active">Текущее занятие может быть завершено по нажатию на плашку с названием</string>
-    <string name="setting_disable_on_click_summary_inactive">Текущее занятие может быть завершено только путём выбора нового</string>
+    <string name="setting_disable_on_click_summary_inactive">Текущее занятие завершается только путём выбора нового</string>
     <string name="setting_enable_acra">Отчеты о сбоях</string>
-    <string name="setting_acra_enabled">Отправить отчеты о сбоях</string>
+    <string name="setting_acra_enabled">Отправлять отчеты о сбоях</string>
     <string name="setting_acra_disabled">Не отправлять отчеты о сбоях</string>
     <string name="setting_use_location">Службы геолокации</string>
-    <string name="setting_use_location_summary">Для отслеживания местоположения устройства используется %1$s</string>
-    <string name="setting_use_location_off_summary">Местоположение пользователя вообще не отслеживается</string>
+    <string name="setting_use_location_summary">Для отслеживания геопозиции используется %1$s</string>
+    <string name="setting_use_location_off_summary">Местоположение не отслеживается</string>
     <string name="perm_location_xplain">Предоставьте разрешение на доступ к местоположению устройства &#8230;</string>
     <string name="setting_storage_folder">Папка для хранения изображений</string>
     <string name="setting_storage_folder_summary">Хранить фотографии деятельности в каталоге %1$s</string>
@@ -245,7 +245,7 @@
     <string name="privacy_intro_text4">Вам рекомендуется периодически просматривать эту Политику конфиденциальности, чтобы быть в курсе обновлений. Считается, что вы были проинформированы об этом, будете подчинены и будете считать, что вы приняли изменения в любой пересмотренной Политике конфиденциальности при продолжении использования вами Приложения после даты публикации такой пересмотренной Политики конфиденциальности.</string>
     <string name="privacy_intro_text5">Настоящая Политика конфиденциальности не распространяется на сторонние онлайн/мобильные магазины приложений, в которых вы устанавливаете Приложения или производите платежи, которые также могут собирать и использовать данные о вас. Мы не несем ответственности за любые данные, собранные любой такой третьей стороной.</string>
     <string name="privacy_what_title">Какие данные обрабатываются и хранятся?</string>
-    <string name="privacy_what_subTitle1">Activity Data</string>
+    <string name="privacy_what_subTitle1">Данные об активности</string>
     <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
     <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
     <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
@@ -270,7 +270,7 @@
     <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
     <string name="privacy_rights_title">Your rights</string>
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
-    <string name="privacy_contact_title">Contact us</string>
-    <string name="privacy_contact_text">If you have questions or comments about this Privacy Policy, please contact us at:</string>
-    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
+    <string name="privacy_contact_title">Связаться с нами</string>
+    <string name="privacy_contact_text">Если у вас есть вопросы или комментарии по поводу этой Политики конфиденциальности, свяжитесь с нами по адресу:</string>
+    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Битигхайм-Биссинген (Германия)</string>
 </resources>
