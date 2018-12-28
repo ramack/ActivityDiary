@@ -226,7 +226,7 @@
     <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">гггг \'неделя\' нн</string>
     <string name="month_format">ММММ гггг</string>
-    <string name="year_format">гггг</string>
+    <string name="year_format">yyyy</string>
     <!-- relative dates -->
     <string name="today">Cегодня</string>
     <string name="yesterday">Вчера</string>
