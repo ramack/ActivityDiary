@@ -186,22 +186,22 @@
         <item quantity="other">%d ч</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d День</item>
+        <item quantity="one">%d день</item>
         <item quantity="few">%d дней</item>
         <item quantity="many">%d дней</item>
         <item quantity="other">%d дней</item>
     </plurals>
     <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
-    <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать действие</string>
+    <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать вид деятельности</string>
     <!-- edit view -->
-    <string name="error_name_already_used">Активность с именем %1$s уже существует</string>
-    <string name="tooltip_quickfix_btn_edit_existing">Отменить текущее редактирование и открыть существующую активность с тем же именем</string>
+    <string name="error_name_already_used">Вид деятельности с именем %1$s уже существует</string>
+    <string name="tooltip_quickfix_btn_edit_existing">Отменить текущую правку и открыть существующий вид деятельности с тем же именем</string>
     <string name="error_name_already_used_in_deleted">Удаленная активность с именем %1$s уже существует</string>
-    <string name="tooltip_quickfix_btn_rename_deleted">Переименовать удаленную операцию с тем же именем для разрешения конфликта</string>
-    <string name="tooltip_quickfix_btn_undelete_existing">Отменить действие с тем же именем</string>
-    <string name="recover_activity_toast">Восстановленная активность %1$s. Теперь он снова выбирается.</string>
-    <string name="renamed_deleted_activity_toast">Переименовал уже удаленную активность %1$s.</string>
-    <string name="edit_existing_activity_toast">Теперь редактируем существующую активность с именем %1$s.</string>
+    <string name="tooltip_quickfix_btn_rename_deleted">Переименовать удаленный вид деятельности с тем же именем для разрешения конфликта</string>
+    <string name="tooltip_quickfix_btn_undelete_existing">Отменить активность с тем же именем</string>
+    <string name="recover_activity_toast">Вид деятельности %1$s восстановлен. Теперь его снова можно выбрать.</string>
+    <string name="renamed_deleted_activity_toast">Переименована уже удаленная активность %1$s.</string>
+    <string name="edit_existing_activity_toast">Теперь правим уже существующее занятие с именем %1$s.</string>
     <!-- history -->
     <string name="default_datetime_format">dd.MM.yyyy HH:мм</string>
     <string name="date_format">dd.MM.yyyy</string>
@@ -232,9 +232,9 @@
     <string name="yesterday">Вчера</string>
     <string name="lastWeek">На прошлой неделе</string>
     <!-- ACRA crash reporting -->
-    <string name="crash_dialog_text">Произошла непредвиденная ошибка, вынуждающая приложение остановиться. Пожалуйста, помогите нам исправить это, отправив нам данные об ошибках, все, что вам нужно сделать, это нажать «ОК».</string>
-    <string name="crash_dialog_comment_prompt">Вы можете добавить свои комментарии к проблеме ниже:</string>
-    <string name="crash_dialog_ok_toast">Спасибо. Отправьте подготовленное электронное письмо после ознакомления с его содержанием.</string>
+    <string name="crash_dialog_text">Непредвиденная ошибка привела к остановке приложения. Чтобы помочь исправить её, отправьте нам данные о произошедшем. Вам надо только нажать \‘OK\’.</string>
+    <string name="crash_dialog_comment_prompt">Вы можете добавить свои комментарии об этой проблеме ниже:</string>
+    <string name="crash_dialog_ok_toast">Спасибо. Отправьте подготовленное письмо после ознакомления с его содержанием.</string>
     <!-- Privacy Policy -->
     <string name="privacy_text">ActivityDiary - бесплатное и свободное приложение с открытым исходным кодом для отслеживания вашей деятельности. Эта политика конфиденциальности применяется к данному Android-приложению и описывает, какие данные хранятся и обрабатываются ActivityDiary.</string>
     <string name="privacy_last_update">Последнее обновление 22 декабря 2018 года</string>
