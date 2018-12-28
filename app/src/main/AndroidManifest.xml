@@ -96,7 +96,7 @@
         <provider
             android:name=".db.ActivityDiaryContentProvider"
             android:authorities="${applicationId}.provider"
-            android:multiprocess="true"
+            android:multiprocess="false"
             android:exported="false"
             android:grantUriPermissions="true"
             android:label="ActivityDiaryProvider"
