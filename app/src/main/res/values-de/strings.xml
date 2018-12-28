@@ -147,6 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
     <string name="dialog_title_note">Notiz</string>
     <string name="activities">Aktivititäten</string>
+    <string name="fragment_detail_stats_title">Statistics</string>
+    <string name="fragment_detail_note_title">Note</string>
+    <string name="fragment_detail_pictures_title">Pictures</string>
     <!-- actions -->
     <string name="action_delete">Aktivität löschen</string>
     <string name="action_diary_entry_delete">Eintrag löschen</string>
@@ -183,6 +186,7 @@
         <item quantity="one">%d Tag</item>
         <item quantity="other">%d Tage</item>
     </plurals>
+    <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
     <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
     <!-- edit view -->
@@ -264,5 +268,4 @@
     <string name="privacy_rights_text">Sie haben jederzeit das Recht, uns zu fragen, welche Daten wir über Sie speichern. Sie können jederzeit die Berichtigung oder Entfernung personenbezogener Daten verlangen oder die Verwendung Ihrer Daten einschränken.</string>
     <string name="privacy_contact_title">Kontakt</string>
     <string name="privacy_contact_text">Bei Fragen oder Anmerkungen zu dieser Datenschutzerklärung kontaktieren Sie uns bitte über:</string>
-    <string name="privacy_contact_address">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
 </resources>
