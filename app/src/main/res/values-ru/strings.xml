@@ -54,10 +54,10 @@
     <string name="desc_activity_hint">Название мероприятия</string>
     <string name="desc_activity_select">Выберите текущее занятие&#8230;</string>
     <!-- -->
-    <string name="activity_image_description">Изображение для деятельности</string>
-    <string name="contentDesc_logo">Логотип мероприятия</string>
-    <string name="drawer_open">Открытая навигация</string>
-    <string name="drawer_close">Закрыть навигацию</string>
+    <string name="activity_image_description">Изображение для вида деятельности</string>
+    <string name="contentDesc_logo">Логотип приложения</string>
+    <string name="drawer_open">Открыть панель навигации</string>
+    <string name="drawer_close">Закрыть панель навигации</string>
     <!-- Notification Channels -->
     <string name="notif_channel_current_activity_name">Текущая активность</string>
     <string name="notif_channel_current_activity_desc">Показывать уведомление о текущей деятельности</string>
@@ -65,12 +65,12 @@
     <string name="setting_view_category">Посмотреть</string>
     <string name="setting_behavior_category">Поведение</string>
     <string name="setting_location_category">Местоположение</string>
-    <string name="setting_images_category">Изображений</string>
+    <string name="setting_images_category">Изображения</string>
     <string name="setting_backup_category">Резервное копирование</string>
-    <string name="setting_condition_category">условия</string>
+    <string name="setting_condition_category">Условия</string>
     <string name="setting_datetime_format">Формат даты</string>
     <string name="setting_datetime_format_summary">\@ Строка / default_datetime_format</string>
-    <string name="setting_datetime_format_description">Отобразить формат даты и времени начала действия. Обычными форматами являются yyyy-MM-dd HH: mm или dd.MM. чч: мм</string>
+    <string name="setting_datetime_format_description">Формат отображения даты и времени начала действия. Обычными форматами являются гггг-MM-дд чч:мм или дд.MM. чч:мм</string>
     <string name="setting_duration_format">Формат промежутков времени</string>
     <string name="setting_duration_format_summary_dynamic">Динамически подстраивать формат в зависимости от продолжительности.</string>
     <string name="setting_duration_format_summary_precise">Показывать все временные промежутки с точностью до секунд.</string>
@@ -78,10 +78,10 @@
     <string name="setting_duration_format_summary_hour_min">Показывать все промежутки времени как часы и минуты.</string>
     <string name="setting_duration_format_description">Формат отображения промежутков времени.</string>
     <string name="setting_auto_select_new">Выберите новые виды деятельности</string>
-    <string name="setting_auto_select_new_summary_active">Только что созданная деятельность непосредственно выбирается как новый активный</string>
-    <string name="setting_auto_select_new_summary_inactive">Создание новых активов не влияет на текущую активную деятельность</string>
+    <string name="setting_auto_select_new_summary_active">Только что созданный вид деятельности сразу выбирается как активный</string>
+    <string name="setting_auto_select_new_summary_inactive">Добавление новых занятий не влияет на текущую активную деятельность</string>
     <string name="setting_show_cur_activitiy_notification">Уведомление о текущей деятельности</string>
-    <string name="setting_show_cur_activitiy_notification_summary_active">Текущая активность отображается как уведомление</string>
+    <string name="setting_show_cur_activitiy_notification_summary_active">Текущее занятие отображается как уведомление</string>
     <string name="setting_show_cur_activitiy_notification_summary_inactive">Уведомление о текущем занятии не отображается</string>
     <string name="setting_disable_on_click">Прервать деятельность по нажатию</string>
     <string name="setting_disable_on_click_summary_active">Текущее занятие может быть завершено по нажатию на плашку с названием</string>
@@ -98,23 +98,23 @@
     <string name="setting_storage_folder_description">Каталог для хранения фотографий</string>
     <string name="default_storage_folder">ActivityDiary</string>
     <string name="setting_tag_images">Метаданные</string>
-    <string name="setting_tag_yes">Запись текущей активности в тег EXIF. UserComment новых изображений</string>
-    <string name="setting_tag_no">Не трогайте теги EXIF ​​новых изображений</string>
+    <string name="setting_tag_yes">Отмечать текущий вид деятельности в EXIF-теге UserComment для новых изображений</string>
+    <string name="setting_tag_no">Не трогать EXIF-теги для ​​новых изображений</string>
     <!-- Conditions -->
-    <string name="pref_cond_off">OFF</string>
-    <string name="setting_cond_alpha">Алфавитный сорт</string>
-    <string name="setting_cond_alpha_summary">Алфавитная сортировка имеет вес %1$s по предлагаемым следующим действиям</string>
-    <string name="setting_cond_alpha_not_used_summary">Алфавитная сортировка не используется для указания следующих действий</string>
+    <string name="pref_cond_off">ВЫКЛ</string>
+    <string name="setting_cond_alpha">Сортировка по алфавиту</string>
+    <string name="setting_cond_alpha_summary">Алфавитная сортировка имеет вес %1$s на следующие предлагаемые занятия</string>
+    <string name="setting_cond_alpha_not_used_summary">Алфавитная сортировка не используется, чтобы предлагать следующие занятия</string>
     <string name="setting_cond_predecessor">Последовательность действий</string>
-    <string name="setting_cond_predecessor_summary">Последовательность действий в дневнике имеет вес %1$s по предлагаемым следующим действиям</string>
-    <string name="setting_cond_predecessor_not_used_summary">Последовательность действий в дневнике не используется для указания следующих действий</string>
+    <string name="setting_cond_predecessor_summary">Последовательность видов деятельности в дневнике имеет вес %1$s, чтобы предлагать следующие занятия</string>
+    <string name="setting_cond_predecessor_not_used_summary">Последовательность видов деятельности в дневнике не используется, чтобы предлагать следующие занятия</string>
     <string name="setting_cond_paused">Прерывания деятельности</string>
     <string name="setting_cond_paused_summary">Только что прекращённые действия имеют вес %1$s на следующие предлагаемые действия</string>
     <string name="setting_cond_paused_not_used_summary">Не использовать только что прекращённые действия, чтобы предлагать, чем заняться дальше</string>
     <string name="setting_cond_occurrence">Мероприятие</string>
     <string name="setting_cond_occurrence_summary">Частота активности в дневнике имеет вес %1$s по предлагаемым следующим действиям</string>
     <string name="setting_cond_occurrence_not_used_summary">Частота активности в дневнике не используется для указания следующих действий</string>
-    <string name="setting_cond_daytime">дневное время</string>
+    <string name="setting_cond_daytime">Дневное время</string>
     <string name="setting_cond_daytime_summary">Дневное время мероприятий в дневнике имеет вес %1$s по предлагаемым следующим действиям</string>
     <string name="setting_cond_daytime_not_used_summary">Дневное время мероприятий в дневнике не используется для предложения следующих мероприятий</string>
     <string name="pref_location_age">Обновлять геопозицию каждые %1$s минут</string>
