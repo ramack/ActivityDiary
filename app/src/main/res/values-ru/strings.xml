@@ -42,8 +42,8 @@
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Выберите действие</string>
     <string name="nav_diary">Дневник</string>
-    <string name="nav_stats">Statistics</string>
-    <string name="nav_map">Map</string>
+    <string name="nav_stats">Статистика</string>
+    <string name="nav_map">Карта</string>
     <string name="nav_add_activity">Добавить деятельность</string>
     <string name="nav_show_deleted">Показать удалено</string>
     <string name="nav_hide_deleted">Скрыть удаленные</string>
@@ -64,7 +64,7 @@
     <!-- settings -->
     <string name="setting_view_category">Посмотреть</string>
     <string name="setting_behavior_category">Поведение</string>
-    <string name="setting_location_category">Location</string>
+    <string name="setting_location_category">Местоположение</string>
     <string name="setting_images_category">Изображений</string>
     <string name="setting_backup_category">Резервное копирование</string>
     <string name="setting_condition_category">условия</string>
@@ -141,8 +141,8 @@
     <string name="activity_title_history_detail">Запись в дневнике</string>
     <string name="activity_subtitle_main">Что делаешь?</string>
     <string name="activity_title_about">Около</string>
-    <string name="activity_title_stats">Statistics</string>
-    <string name="activity_title_map">Map</string>
+    <string name="activity_title_stats">Статистика</string>
+    <string name="activity_title_map">Карта</string>
     <string name="activity_title_settings">настройки</string>
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">Заметка</string>
@@ -217,16 +217,16 @@
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
     <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
     <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
-    <string name="wrongFormat">Please enter date in correct format!</string>
+    <string name="wrongFormat">Пожалуйста, введите дату в правильном формате!</string>
     <!-- Map -->
     <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
     <!-- statistics -->
     <string name="earlier">earlier</string>
     <string name="later">later</string>
     <string name="day_format">E, M.dd.yy</string>
-    <string name="week_format">yyyy \'Week\' ww</string>
-    <string name="month_format">MMMM yyyy</string>
-    <string name="year_format">yyyy</string>
+    <string name="week_format">гггг \'неделя\' нн</string>
+    <string name="month_format">ММММ гггг</string>
+    <string name="year_format">гггг</string>
     <!-- relative dates -->
     <string name="today">Cегодня</string>
     <string name="yesterday">Вчера</string>
@@ -236,15 +236,15 @@
     <string name="crash_dialog_comment_prompt">Вы можете добавить свои комментарии к проблеме ниже:</string>
     <string name="crash_dialog_ok_toast">Спасибо. Отправьте подготовленное электронное письмо после ознакомления с его содержанием.</string>
     <!-- Privacy Policy -->
-    <string name="privacy_text">ActivityDiary is a free, libre and open source application to track your activities. This privacy policy applies to this Android application and describes what data is stored and processed by the ActivityDiary.</string>
-    <string name="privacy_last_update">Last updated December 22, 2018</string>
-    <string name="privacy_intro_title">Introduction</string>
-    <string name="privacy_intro_text1">Developers of ActivityDiary, we (or “us” or “our”) respect the privacy of our users (“user” or “you”). As the aim of this application is to keep a record of your activites a lot of sensitive personal information is collected and stored. Nevertheless this is your data and you have full control over it. This Privacy Policy explains how the ActivityDiary application (the “Application”) collects, uses, discloses, and safeguards your information. Our names can be extracted from the meta data in the git repositories and within the Application.</string>
-    <string name="privacy_intro_text2">Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Application and remove it from your device.</string>
-    <string name="privacy_intro_text3">We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the “Last updated” date of this Privacy Policy.</string>
-    <string name="privacy_intro_text4">You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Application after the date such revised Privacy Policy is posted.</string>
-    <string name="privacy_intro_text5">This Privacy Policy does not apply to the third-party online/mobile store from which you install the Applications or make payments, which may also collect and use data about you. We are not responsible for any of the data collected by any such third party.</string>
-    <string name="privacy_what_title">What data is processed and stored?</string>
+    <string name="privacy_text">ActivityDiary - бесплатное и свободное приложение с открытым исходным кодом для отслеживания вашей деятельности. Эта политика конфиденциальности применяется к данному Android-приложению и описывает, какие данные хранятся и обрабатываются ActivityDiary.</string>
+    <string name="privacy_last_update">Последнее обновление 22 декабря 2018 года</string>
+    <string name="privacy_intro_title">Введение</string>
+    <string name="privacy_intro_text1">Разработчики ActivityDiary, мы (или «мы» или «наши») уважаем конфиденциальность наших пользователей («пользователь» или «вы»). Поскольку цель этого приложения - вести учет ваших действий, оно хранит и собирает много конфиденциальной и личной информации. Тем не менее, это ваши данные, и вы имеете полный контроль над ними. В настоящей Политике конфиденциальности объясняется, как приложение ActivityDiary («Приложение») собирает, использует, раскрывает и защищает вашу информацию. Наши имена могут быть извлечены из метаданных в репозиториях git и в Приложении.</string>
+    <string name="privacy_intro_text2">Пожалуйста, внимательно прочитайте эту Политику конфиденциальности. Если вы не согласны с условиями настоящей Политики конфиденциальности, не открывайте Приложение и удалите его со своего устройства.</string>
+    <string name="privacy_intro_text3">Мы оставляем за собой право вносить изменения в настоящую Политику конфиденциальности в любое время и по любой причине. Мы будем предупреждать вас о любых изменениях, обновляя дату «Последнее обновление» настоящей Политики конфиденциальности.</string>
+    <string name="privacy_intro_text4">Вам рекомендуется периодически просматривать эту Политику конфиденциальности, чтобы быть в курсе обновлений. Считается, что вы были проинформированы об этом, будете подчинены и будете считать, что вы приняли изменения в любой пересмотренной Политике конфиденциальности при продолжении использования вами Приложения после даты публикации такой пересмотренной Политики конфиденциальности.</string>
+    <string name="privacy_intro_text5">Настоящая Политика конфиденциальности не распространяется на сторонние онлайн/мобильные магазины приложений, в которых вы устанавливаете Приложения или производите платежи, которые также могут собирать и использовать данные о вас. Мы не несем ответственности за любые данные, собранные любой такой третьей стороной.</string>
+    <string name="privacy_what_title">Какие данные обрабатываются и хранятся?</string>
     <string name="privacy_what_subTitle1">Activity Data</string>
     <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
     <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
