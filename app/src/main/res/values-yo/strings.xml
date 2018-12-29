@@ -183,6 +183,7 @@
         <item quantity="other">%d Ọjọ</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Nkankan kan ti ko tọ si ibi. Ko le tọju aworan.</string>
     <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
     <!-- edit view -->
