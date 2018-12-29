@@ -183,6 +183,7 @@
         <item quantity="other">%d 일</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">여기 뭔가 잘못되었습니다. 이미지를 저장할 수 없습니다.</string>
     <string name="no_active_activity_error">이 작업을 수행하려면 먼저 작업을 선택해야합니다.</string>
     <!-- edit view -->
