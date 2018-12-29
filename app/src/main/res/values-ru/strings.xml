@@ -207,9 +207,9 @@
     <string name="renamed_deleted_activity_toast">Переименована уже удаленная активность %1$s.</string>
     <string name="edit_existing_activity_toast">Теперь правим уже существующее занятие с именем %1$s.</string>
     <!-- history -->
-    <string name="default_datetime_format">dd.MM.yyyy HH:мм</string>
+    <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
     <string name="date_format">dd.MM.yyyy</string>
-    <string name="time_format">ЧЧ:мм</string>
+    <string name="time_format">HH:mm</string>
     <string name="headline_start">Начало</string>
     <string name="headline_end">Конец</string>
     <string name="desc_start_date">Дата начала</string>
