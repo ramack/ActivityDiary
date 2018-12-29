@@ -209,7 +209,7 @@
     <!-- history -->
     <string name="default_datetime_format">dd.MM.yyyy HH:мм</string>
     <string name="date_format">dd.MM.yyyy</string>
-    <string name="time_format">HH: мм</string>
+    <string name="time_format">ЧЧ:мм</string>
     <string name="headline_start">Начало</string>
     <string name="headline_end">Конец</string>
     <string name="desc_start_date">Дата начала</string>
