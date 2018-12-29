@@ -187,6 +187,7 @@
         <item quantity="other">%d nap</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Valami baj van itt. Kép nem tárolható.</string>
     <string name="no_active_activity_error">A művelet végrehajtásához először aktiválni kell a tevékenységet</string>
     <!-- edit view -->
