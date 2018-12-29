@@ -273,7 +273,7 @@
     <string name="privacy_security_title">Безопасность ваших данных</string>
     <string name="privacy_security_text">Мы используем механизмы, предоставляемые платформой Android, для защиты вашей личной информации от других приложений на вашем устройстве. Несмотря на то, что мы предприняли разумные меры для защиты личной информации, которую вы предоставляете нам, имейте в виду, что, несмотря на наши усилия, никакие меры безопасности не являются абсолютно надёжными, и ни один метод защиты данных не может быть неуязвим от взлома или другого вида неправомерного использования. Поэтому мы не можем гарантировать полную безопасность предоставленной вами личной информации.</string>
     <string name="privacy_rights_title">Ваши права</string>
-    <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
+    <string name="privacy_rights_text">В любое время и безвозмездно вы имеете право выяснить у нас о том, какие данные мы храним о вас. Вы всегда можете запросить изменение или удаление личных данных или ограничить использование ваших данных.</string>
     <string name="privacy_contact_title">Связаться с нами</string>
     <string name="privacy_contact_text">Если у вас есть вопросы или комментарии по поводу этой Политики конфиденциальности, свяжитесь с нами по адресу:</string>
 </resources>
