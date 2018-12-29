@@ -184,6 +184,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                                 + ActivityDiaryContract.DiaryActivity.X_AVG_DURATION;
                         hasDiaryJoin = true;
                     }
+                    if(ActivityDiaryContract.DiaryActivity.X_START_OF_LAST.equals(projection[n])){
+                        projection[n] = "xx_start AS "
+                                + ActivityDiaryContract.DiaryActivity.X_START_OF_LAST;
+                        hasDiaryJoin = true;
+                    }
                     n++;
                 }
                 if(hasDiaryJoin){
@@ -199,11 +204,50 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     selection = selection.replaceAll(ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._DELETED);
 
                     tables = tables + ", " + ActivityDiaryContract.Diary.TABLE_NAME;
+                    tables = tables + ", (SELECT xx_ref, " + ActivityDiaryContract.Diary.START + " as xx_start FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ","
+                                    +     "(SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " AS xx_ref,"
+                                                 + " MAX(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.END + ") AS xx_ref_end"
+                                    +     " FROM " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + ", " + ActivityDiaryContract.Diary.TABLE_NAME
+                                    +     " WHERE " +  ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID
+                                    +           " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                                    +     " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                                    +     ")"
+                                    +    " WHERE " +  ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.END + " = xx_ref_end"
+                                    +  ")"
+                                        ;
 
-                    selection = selection + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = "
-                            + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID;
+                    selection = selection + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID
+                                          + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = xx_ref";
 
                     grouping = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
+
+
+                                        /*
+                                        SELECT activity._id, name, AVG(end - start) AS avg_duration, xx_start AS start_of_last
+                                        FROM
+                                            activity, diary,
+                                            (SELECT xx_ref, start as xx_start FROM  diary,
+
+                                            (SELECT activity._id AS xx_ref, MAX(diary.end) as xx_ref_end
+                                               FROM activity, diary
+                                               WHERE diary.act_id = activity._id
+                                               GROUP BY activity._id)
+                                             WHERE diary.end = xx_ref_end)
+
+                                        WHERE (activity._deleted = 0 AND activity._id = diary.act_id AND activity._id = xx_ref)
+                                        GROUP BY activity._id
+                                        ORDER BY name ASC
+
+                                        SELECT activity._id, name, AVG(end - start) AS avg_duration, start AS start_of_last
+                                        FROM
+                                            activity, diary,
+                                            (SELECT activity._id AS xx_ref, MAX(diary.end)
+                                               FROM diary,activity WHERE diary.act_id = activity._id group by activity._id)
+
+                                        WHERE (activity._deleted = 0 AND activity._id = diary.act_id AND activity._id = xx_ref)
+                                        GROUP by activity._id
+                                        ORDER BY name ASC
+                                         */
                 }
                 qBuilder.setTables(tables);
                 break;
@@ -261,9 +305,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
                 sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
                         + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR + " as " + ActivityDiaryContract.DiaryStats.COLOR
-
-                         + ", SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) as " + ActivityDiaryContract.DiaryStats.DURATION
-
+                        + ", SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) as " + ActivityDiaryContract.DiaryStats.DURATION
                         + ", (SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) * 100.0 " +
                         "/ (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME

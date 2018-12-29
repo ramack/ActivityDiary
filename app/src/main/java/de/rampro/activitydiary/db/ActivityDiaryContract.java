@@ -96,10 +96,16 @@ public class ActivityDiaryContract {
         String PARENT = "parent";
 
         /**
-         * The average duration for the Activity
+         * The average duration for the Activity in millis (read-only)
          * <P>Type: INT</P>
          */
         String X_AVG_DURATION = "avg_duration";
+
+        /**
+         * The start time of the last finished entry of this activity in the diary in millis since epoch. (read-only)
+         * <P>Type: INT</P>
+         */
+        String X_START_OF_LAST = "start_of_last";
 
         /* TODO #25: add image, required and activation conditions */
     }

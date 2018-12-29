@@ -26,6 +26,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -50,6 +51,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.format.DateFormat;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
@@ -399,7 +401,8 @@ public class MainActivity extends BaseActivity implements
                     new String[] {
                             ActivityDiaryContract.DiaryActivity._ID,
                             ActivityDiaryContract.DiaryActivity.NAME,
-                            ActivityDiaryContract.DiaryActivity.X_AVG_DURATION
+                            ActivityDiaryContract.DiaryActivity.X_AVG_DURATION,
+                            ActivityDiaryContract.DiaryActivity.X_START_OF_LAST
                     },
                     ActivityDiaryContract.DiaryActivity._DELETED + " = 0 AND "
                     + ActivityDiaryContract.DiaryActivity._ID + " = ?",
@@ -415,6 +418,7 @@ public class MainActivity extends BaseActivity implements
         // TODO: move this logic into the DetailViewModel??
 
         viewModel.mAvgDuration.setValue("-");
+        viewModel.mStartOfLast.setValue("-");
         /* stats are updated after query finishes in mQHelper */
 
         if(viewModel.currentActivity().getValue() != null) {
@@ -674,6 +678,16 @@ public class MainActivity extends BaseActivity implements
                     long avg = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION));
                     viewModel.mAvgDuration.setValue(getResources().
                             getString(R.string.avg_duration_description, TimeSpanFormatter.format(avg)));
+
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext());
+                    String formatString = sharedPref.getString(SettingsActivity.KEY_PREF_DATETIME_FORMAT,
+                            getResources().getString(R.string.default_datetime_format));
+
+                    long start = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.X_START_OF_LAST));
+
+                    viewModel.mStartOfLast.setValue(getResources().
+                            getString(R.string.last_done_description, DateFormat.format(formatString, start)));
+
                 }
             }
         }

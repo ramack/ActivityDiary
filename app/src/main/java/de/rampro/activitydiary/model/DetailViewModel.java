@@ -31,6 +31,7 @@ public class DetailViewModel extends ViewModel {
     public MutableLiveData<String> mNote;
     public MutableLiveData<String> mDuration;
     public MutableLiveData<String> mAvgDuration;
+    public MutableLiveData<String> mStartOfLast;
 
     public MutableLiveData<DiaryActivity> mCurrentActivity;
     /* TODO: note and starttime from ActivityHelper to here, or even use directly the ContentProvider
@@ -45,6 +46,7 @@ public class DetailViewModel extends ViewModel {
         mNote = new MutableLiveData<>();
         mDuration = new MutableLiveData<>();
         mAvgDuration = new MutableLiveData<>();
+        mStartOfLast = new MutableLiveData<>();
         mCurrentActivity = new MutableLiveData<>();
         mDiaryEntryId = new MutableLiveData<>();
     }
