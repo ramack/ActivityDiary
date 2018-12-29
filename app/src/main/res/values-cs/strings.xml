@@ -195,6 +195,7 @@
         <item quantity="other">%d dní</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Něco se pokazilo. Nelze uložit obraz.</string>
     <string name="no_active_activity_error">Chcete-li provést tuto akci, je nutné aktivitu nejprve vybrat</string>
     <!-- edit view -->
