@@ -187,6 +187,7 @@
         <item quantity="other">%d dage</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Noget gik galt her. Kunne ikke gemme billede.</string>
     <string name="no_active_activity_error">For at udføre denne handling er det nødvendigt at vælge en aktivitet først</string>
     <!-- edit view -->
