@@ -147,9 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;Занятий сейчас нет&gt;</string>
     <string name="dialog_title_note">Заметка</string>
     <string name="activities">Действия</string>
-    <string name="fragment_detail_stats_title">Statistics</string>
-    <string name="fragment_detail_note_title">Note</string>
-    <string name="fragment_detail_pictures_title">Pictures</string>
+    <string name="fragment_detail_stats_title">Статистика</string>
+    <string name="fragment_detail_note_title">Заметка</string>
+    <string name="fragment_detail_pictures_title">Изображения</string>
     <!-- actions -->
     <string name="action_delete">Удалить активность</string>
     <string name="action_diary_entry_delete">Удалить запись</string>
@@ -194,7 +194,7 @@
         <item quantity="many">%d дней</item>
         <item quantity="other">%d дней</item>
     </plurals>
-    <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="avg_duration_description">Средняя продолжительность: %1$s</string>
     <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
     <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать вид деятельности</string>
     <!-- edit view -->
@@ -229,7 +229,7 @@
     <string name="later">позднее</string>
     <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Нед.\' ww</string>
-    <string name="month_format">ММММ гггг</string>
+    <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
     <string name="today">Cегодня</string>
