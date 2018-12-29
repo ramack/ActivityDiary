@@ -183,6 +183,7 @@
         <item quantity="other">%d Hari</item>
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
     <string name="no_active_activity_error">Pilih sebuah aktivitas untuk menjalankan tindakan ini</string>
     <!-- edit view -->
