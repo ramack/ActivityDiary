@@ -167,7 +167,7 @@
     <string name="dlg_undelete_activity_text">Должно ли действие %1$s быть восстановлено и снова стать доступным?</string>
     <string name="statistics_others">Прочее</string>
     <!-- main view -->
-    <string name="duration_description">Продолжается %1$s</string>
+    <string name="duration_description">Длится: %1$s</string>
     <string name="just_now">прямо сейчас</string>
     <string name="few_seconds">несколько секунд</string>
     <plurals name="seconds_short">
