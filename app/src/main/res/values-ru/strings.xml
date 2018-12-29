@@ -228,7 +228,7 @@
     <string name="earlier">ранее</string>
     <string name="later">позднее</string>
     <string name="day_format">E, M.dd.yy</string>
-    <string name="week_format">гггг \'неделя\' нн</string>
+    <string name="week_format">yyyy \'Нед.\' ww</string>
     <string name="month_format">ММММ гггг</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
