@@ -168,7 +168,7 @@
     <string name="statistics_others">Прочее</string>
     <!-- main view -->
     <string name="duration_description">Длится: %1$s</string>
-    <string name="just_now">прямо сейчас</string>
+    <string name="just_now">только началось</string>
     <string name="few_seconds">несколько секунд</string>
     <plurals name="seconds_short">
         <item quantity="one">%d сек.</item>
