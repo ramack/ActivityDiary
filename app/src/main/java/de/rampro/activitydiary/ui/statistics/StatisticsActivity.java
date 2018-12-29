@@ -57,6 +57,7 @@ import java.util.List;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.helpers.DateHelper;
 import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.history.HistoryDetailActivity;
@@ -284,51 +285,15 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
     private void loadRange(int field, int offset){
         Bundle bnd = new Bundle();
 
-        Calendar calStart = Calendar.getInstance();
-        calStart.setTimeInMillis(currentDateTime);
-        calStart.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
-        calStart.clear(Calendar.MINUTE);
-        calStart.clear(Calendar.SECOND);
-        calStart.clear(Calendar.MILLISECOND);
-        switch(field){
-            case Calendar.DAY_OF_YEAR:
-                /* nothing to do, as HOUR_OF_DAY is already 0 */
-                break;
-            case Calendar.WEEK_OF_YEAR:
-                calStart.set(Calendar.DAY_OF_WEEK, calStart.getFirstDayOfWeek());
-                break;
-            case Calendar.MONTH:
-                calStart.set(Calendar.DAY_OF_MONTH, 1);
-                break;
-            case Calendar.YEAR:
-                calStart.set(Calendar.DAY_OF_YEAR, 1);
-                break;
-            default:
-                throw new RuntimeException("date field not supported: " + field);
-        }
+        Calendar calStart = DateHelper.startOf(field, currentDateTime);
 
         calStart.add(field, offset);
 
         Calendar calEnd = (Calendar) calStart.clone();
         calEnd.add(field, 1);
 
-        SimpleDateFormat sdf;
-        switch(field){
-            case Calendar.DAY_OF_YEAR:
-                sdf = new SimpleDateFormat(getResources().getString(R.string.day_format));
-                break;
-            case Calendar.WEEK_OF_YEAR:
-                sdf = new SimpleDateFormat(getResources().getString(R.string.week_format));
-                break;
-            case Calendar.MONTH:
-                sdf = new SimpleDateFormat(getResources().getString(R.string.month_format));
-                break;
-            case Calendar.YEAR:
-                sdf = new SimpleDateFormat(getResources().getString(R.string.year_format));
-                break;
-            default:
-                throw new RuntimeException("date field not supported: " + field);
-        }
+        SimpleDateFormat sdf = DateHelper.dateFormat(field);
+
         String tt = sdf.format(calStart.getTime());
         rangeTextView.setText(tt);
         bnd.putLong("start", calStart.getTimeInMillis());

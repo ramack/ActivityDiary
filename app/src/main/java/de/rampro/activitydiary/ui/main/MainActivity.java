@@ -20,6 +20,7 @@ package de.rampro.activitydiary.ui.main;
 
 import android.Manifest;
 import android.app.SearchManager;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -70,6 +71,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -78,6 +80,7 @@ import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.helpers.DateHelper;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.model.DetailViewModel;
@@ -103,6 +106,7 @@ public class MainActivity extends BaseActivity implements
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4711;
 
     private static final int QUERY_CURRENT_ACTIVITY_STATS = 1;
+    private static final int QUERY_CURRENT_ACTIVITY_TOTAL = 2;
 
     private DetailViewModel viewModel;
 
@@ -270,7 +274,7 @@ public class MainActivity extends BaseActivity implements
             String query = intent.getStringExtra(SearchManager.QUERY);
             filterActivityView(query);
         }
-
+// TODO: this is crazy to call onActivityChagned here, as it reloads the statistics and refills the viewModel... Completely against the idea of the viewmodel :-(
         onActivityChanged(); /* do this at the very end to ensure that no Loader finishes its data loading before */
     }
 
@@ -410,6 +414,11 @@ public class MainActivity extends BaseActivity implements
                             Integer.toString(newAct.getId())
                     },
                     null);
+
+            long end = System.currentTimeMillis();
+            queryTotal(Calendar.DAY_OF_YEAR, end, newAct.getId());
+            queryTotal(Calendar.WEEK_OF_YEAR, end, newAct.getId());
+            queryTotal(Calendar.MONTH, end, newAct.getId());
         }
 
         viewModel.mCurrentActivity.setValue(newAct);
@@ -419,6 +428,7 @@ public class MainActivity extends BaseActivity implements
 
         viewModel.mAvgDuration.setValue("-");
         viewModel.mStartOfLast.setValue("-");
+        viewModel.mTotalToday.setValue("-");
         /* stats are updated after query finishes in mQHelper */
 
         if(viewModel.currentActivity().getValue() != null) {
@@ -440,6 +450,26 @@ public class MainActivity extends BaseActivity implements
             viewModel.mNote.setValue("");
         }
         selectorLayoutManager.scrollToPosition(0);
+    }
+
+    private void queryTotal(int field, long end, int actID) {
+        Calendar calStart = DateHelper.startOf(field, end);
+        long start = calStart.getTimeInMillis();
+        Uri u = ActivityDiaryContract.DiaryStats.CONTENT_URI;
+        u = Uri.withAppendedPath(u, Long.toString(start));
+        u = Uri.withAppendedPath(u, Long.toString(end));
+
+        mQHandler.startQuery(QUERY_CURRENT_ACTIVITY_TOTAL, new StatParam(field, end),
+                u,
+                new String[] {
+                        ActivityDiaryContract.DiaryStats.DURATION
+                },
+                ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                        + " = ?",
+                new String[] {
+                        Integer.toString(actID)
+                },
+                null);
     }
 
     /**
@@ -660,6 +690,7 @@ public class MainActivity extends BaseActivity implements
         }
     }
 
+
     private class MainAsyncQueryHandler extends AsyncQueryHandler{
         public MainAsyncQueryHandler(ContentResolver cr) {
             super(cr);
@@ -675,7 +706,7 @@ public class MainActivity extends BaseActivity implements
             super.onQueryComplete(token, cookie, cursor);
             if ((cursor != null) && cursor.moveToFirst()) {
                 if (token == QUERY_CURRENT_ACTIVITY_STATS) {
-                    long avg = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION));
+                    long avg = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION));
                     viewModel.mAvgDuration.setValue(getResources().
                             getString(R.string.avg_duration_description, TimeSpanFormatter.format(avg)));
 
@@ -688,8 +719,37 @@ public class MainActivity extends BaseActivity implements
                     viewModel.mStartOfLast.setValue(getResources().
                             getString(R.string.last_done_description, DateFormat.format(formatString, start)));
 
+                }else if(token == QUERY_CURRENT_ACTIVITY_TOTAL) {
+                    // TODO: reevaluate on every update of duration
+                    StatParam p = (StatParam)cookie;
+                    long total = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryStats.DURATION));
+
+                    String x = DateHelper.dateFormat(p.field).format(p.end);
+                    x = x + ": " + TimeSpanFormatter.format(total);
+                    switch(p.field){
+                        case Calendar.DAY_OF_YEAR:
+                            viewModel.mTotalToday.setValue(x);
+                            break;
+                        case Calendar.WEEK_OF_YEAR:
+                            viewModel.mTotalWeek.setValue(x);
+                            break;
+                        case Calendar.MONTH:
+                            viewModel.mTotalMonth.setValue(x);
+                            break;
+                    }
+//                    viewModel.mTotalToday.setValue(getResources().
+//                            getString(R.string.acc_duration_since_description, spanText, TimeSpanFormatter.format(total)));
                 }
             }
+        }
+    }
+
+    private class StatParam {
+        public int field;
+        public long end;
+        public StatParam(int field, long end) {
+            this.field = field;
+            this.end = end;
         }
     }
 }

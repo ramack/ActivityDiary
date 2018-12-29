@@ -74,6 +74,31 @@
                     android:textSize="16sp"
                     android:text='@{viewModel.mStartOfLast}'
                     />
+
+                <TextView
+                    android:id="@+id/total_today_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.mTotalToday}'
+                    />
+                <TextView
+                    android:id="@+id/total_week_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.mTotalWeek}'
+                    />
+                <TextView
+                    android:id="@+id/total_month_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true"
+                    android:textSize="16sp"
+                    android:text='@{viewModel.mTotalMonth}'
+                    />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

@@ -39,6 +39,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.rampro.activitydiary.R;
@@ -221,33 +222,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
                     grouping = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
 
-
-                                        /*
-                                        SELECT activity._id, name, AVG(end - start) AS avg_duration, xx_start AS start_of_last
-                                        FROM
-                                            activity, diary,
-                                            (SELECT xx_ref, start as xx_start FROM  diary,
-
-                                            (SELECT activity._id AS xx_ref, MAX(diary.end) as xx_ref_end
-                                               FROM activity, diary
-                                               WHERE diary.act_id = activity._id
-                                               GROUP BY activity._id)
-                                             WHERE diary.end = xx_ref_end)
-
-                                        WHERE (activity._deleted = 0 AND activity._id = diary.act_id AND activity._id = xx_ref)
-                                        GROUP BY activity._id
-                                        ORDER BY name ASC
-
-                                        SELECT activity._id, name, AVG(end - start) AS avg_duration, start AS start_of_last
-                                        FROM
-                                            activity, diary,
-                                            (SELECT activity._id AS xx_ref, MAX(diary.end)
-                                               FROM diary,activity WHERE diary.act_id = activity._id group by activity._id)
-
-                                        WHERE (activity._deleted = 0 AND activity._id = diary.act_id AND activity._id = xx_ref)
-                                        GROUP by activity._id
-                                        ORDER BY name ASC
-                                         */
                 }
                 qBuilder.setTables(tables);
                 break;
@@ -290,17 +264,12 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     end = "6156000000000"; // this is roughly 200 year since epoch, congratulations if this lasted so long...
                 }
 
-
-                String sel = "(" + ActivityDiaryContract.Diary.START + " >= " + start + " AND " + ActivityDiaryContract.Diary.START + " < " + end + ")"
-                        + " OR (" + ActivityDiaryContract.Diary.END + " > " + start + " AND " + ActivityDiaryContract.Diary.END + " <= " + end + ")"
-                        + " OR (" + ActivityDiaryContract.Diary.START + " < " + start + " AND " + ActivityDiaryContract.Diary.END + " > " + end + ")";
-
                 String subselect = "SELECT SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - "
                         + "MAX(" + ActivityDiaryContract.Diary.START + ", " + start + ")) from " + ActivityDiaryContract.Diary.TABLE_NAME
-                        + " WHERE (start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + ")";
+                        + " WHERE ((start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + "))";
 
                 if (selection != null && selection.length() > 0) {
-                    subselect += " WHERE " + selection;
+                    subselect += " AND (" + selection + ")";
                 }
 
                 sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
@@ -314,6 +283,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 ;
                 if(selection != null && selection.length() > 0) {
                     sql += " AND (" + selection + ")";
+                    String[] newArgs = Arrays.copyOf(selectionArgs, selectionArgs.length * 2);
+                    System.arraycopy(selectionArgs, 0, newArgs, selectionArgs.length, selectionArgs.length);
+                    selectionArgs = newArgs;
                 }
                 sql += " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
                 if (sortOrder != null && sortOrder.length() > 0) {
