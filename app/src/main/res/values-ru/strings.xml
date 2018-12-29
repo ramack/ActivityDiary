@@ -195,6 +195,7 @@
         <item quantity="other">%d дней</item>
     </plurals>
     <string name="avg_duration_description">Средняя продолжительность: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
     <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать вид деятельности</string>
     <!-- edit view -->
