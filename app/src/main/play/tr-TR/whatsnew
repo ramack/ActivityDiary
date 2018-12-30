@@ -1,5 +1,5 @@
-- Tracking of position added (needs activation in settings and is not yet used for proposing next activities)
-- Added pie chart for statistics in selectable granularity
-- Simplified pausing: last finished activities get a higher priority
-- Improved searching
+- Added privacy policy, please read!
+- Detect similar activity names on creation
+- Added statistics for current activity
+- Improved statistics view: add Day granularity and selectable format
 - Several bugfixes
