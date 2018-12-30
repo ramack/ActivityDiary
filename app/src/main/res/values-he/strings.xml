@@ -205,6 +205,7 @@
     <string name="error_name_already_used_in_deleted">פעילות שנמחקה עם השם %1$s כבר קיימת</string>
     <string name="tooltip_quickfix_btn_rename_deleted">שנה שם לפעולה שנמחקה באותו שם כדי לפתור את הסכסוך</string>
     <string name="tooltip_quickfix_btn_undelete_existing">מחיקת פעילות עם שם זהה</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">פעילות משוחזרת %1$s. כעת ניתן לבחור אותה.</string>
     <string name="renamed_deleted_activity_toast">שינו את שם הפעילות שכבר נמחקה %1$s.</string>
     <string name="edit_existing_activity_toast">עכשיו עורך את הפעילות הקיימת עם שם %1$s.</string>
