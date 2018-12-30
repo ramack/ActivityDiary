@@ -106,13 +106,13 @@
     <string name="setting_cond_alpha_summary">Az alfabetikus rendezés súlya %1$s a javasolt következő tevékenységeknél</string>
     <string name="setting_cond_alpha_not_used_summary">Az alfabetikus szortírozást nem használják a következő tevékenységek javasolására</string>
     <string name="setting_cond_predecessor">A tevékenység sorrendje</string>
-    <string name="setting_cond_predecessor_summary">A napló tevékenységi sorrendje súlya %1$s a következő következő tevékenységekről</string>
+    <string name="setting_cond_predecessor_summary">A napló tevékenységi sorrendje súlya %1$s a következő tevékenységekről</string>
     <string name="setting_cond_predecessor_not_used_summary">A napló tevékenységi sorrendje nem a következő tevékenységekre utal</string>
     <string name="setting_cond_paused">A tevékenység megszakadása</string>
     <string name="setting_cond_paused_summary">Csak megállt a tevékenységek súlya %1$s ajánlott következő tevékenységek</string>
     <string name="setting_cond_paused_not_used_summary">Csak leállította a tevékenységeket, és nem használja fel a következő tevékenységeket</string>
     <string name="setting_cond_occurrence">A tevékenység előfordulása</string>
-    <string name="setting_cond_occurrence_summary">A napló tevékenységi gyakorisága súlya %1$s a következő következő tevékenységekről</string>
+    <string name="setting_cond_occurrence_summary">A napló tevékenységi gyakorisága súlya %1$s a következő tevékenységekről</string>
     <string name="setting_cond_occurrence_not_used_summary">A naplófunkció gyakorisága a naptárban nem használható a következő tevékenységekre</string>
     <string name="setting_cond_daytime">Nappal</string>
     <string name="setting_cond_daytime_summary">A napló tevékenységeinek nappali súlya %1$s a javasolt következő tevékenységeknél</string>
