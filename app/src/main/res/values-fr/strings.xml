@@ -206,7 +206,7 @@
     <string name="date_format">dd/MM/yyyy</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Start: %1$s</string>
-    <string name="history_end">End: %1$s</string>
+    <string name="history_end">End: %1$s (%2$s)</string>
     <string name="desc_start_date">Date de début</string>
     <string name="desc_start_time">Heure de début</string>
     <string name="desc_end_date">Date de fin</string>
