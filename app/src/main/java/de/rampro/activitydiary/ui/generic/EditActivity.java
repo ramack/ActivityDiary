@@ -2,6 +2,7 @@
  * ActivityDiary
  *
  * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Sam Partee
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,10 +46,13 @@ import android.widget.Toast;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
 
+import java.util.LinkedList;
+
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.helpers.JaroWinkler;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 
@@ -63,6 +67,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private final int QUERY_NAMES = 1;
     private final int RENAME_DELETED_ACTIVITY = 2;
     private final int TEST_DELETED_NAME = 3;
+    private final int SIMILAR_ACTIVITY = 4;
 
     private final String[] NAME_TEST_PROJ = new String[]{ActivityDiaryContract.DiaryActivity.NAME};
 
@@ -77,15 +82,22 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private int linkCol; /* accent color -> to be sued for links */
     private ImageButton mQuickFixBtn1;
     private ImageButton mBtnRenameDeleted;
-    private boolean checkOngoing;
 
-    private boolean isCheckOngoing() {
-        return checkOngoing;
+    private int checkState = CHECK_STATE_CHECKING;
+    private static final int CHECK_STATE_CHECKING = 0;
+    private static final int CHECK_STATE_OK = 1;
+    private static final int CHECK_STATE_WARNING = 2;
+    private static final int CHECK_STATE_ERROR = 3;
+
+    JaroWinkler mJaroWinkler = new JaroWinkler(0.8);
+
+    private int getCheckState() {
+        return checkState;
     }
 
-    private void setCheckOngoing(boolean checkOngoing) {
-        this.checkOngoing = checkOngoing;
-        if(checkOngoing && mActivityNameTIL != null){
+    private void setCheckState(int checkState) {
+        this.checkState = checkState;
+        if(checkState == CHECK_STATE_CHECKING && mActivityNameTIL != null){
             mActivityNameTIL.setError("...");
         }
     }
@@ -99,12 +111,32 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         protected void onQueryComplete(int token, Object cookie,
                                        Cursor cursor) {
             if ((cursor != null)) {
-                if(token == QUERY_NAMES){
+                if(token == SIMILAR_ACTIVITY) {
+                    if (cursor.moveToFirst()) {
+                        LinkedList<String> similarNames = new LinkedList<>();
+                        do {
+                            String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                            double metric = mJaroWinkler.similarity(mActivityName.getText().toString(), name);
+                            if (metric >= 1.0) {
+                                checkConstraints();
+                            }else if (metric > .85) {
+                                similarNames.add(name);
+                            }
+                        }while (cursor.moveToNext());
+                        if(!similarNames.isEmpty()) {
+                            String sims = android.text.TextUtils.join(", ", similarNames);
+                            mActivityNameTIL.setError(getResources().getString(R.string.error_name_similar, sims));
+                            setCheckState(CHECK_STATE_WARNING);
+                        }
+                    }
+                }
+                else if(token == QUERY_NAMES){
                     if(cursor.moveToFirst()) {
                         mQuickFixBtn1.setVisibility(View.VISIBLE);
                         boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
                         int actId = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID));
                         String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                        setCheckState(CHECK_STATE_ERROR);
 
                         if(deleted) {
                             CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
@@ -124,12 +156,13 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             Toast.LENGTH_LONG).show();
 
                                     refreshElements();
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
                             mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v) {
-                                    setCheckOngoing(true);
+                                    setCheckState(CHECK_STATE_CHECKING);
                                     Toast.makeText(EditActivity.this,
                                             getResources().getString(R.string.renamed_deleted_activity_toast, name),
                                             Toast.LENGTH_LONG).show();
@@ -147,6 +180,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             new String[]{newName},
                                             null
                                             );
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
 
@@ -165,6 +199,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             Toast.LENGTH_LONG).show();
 
                                     refreshElements();
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
                         }
@@ -174,10 +209,10 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         mQuickFixBtn1.setOnClickListener(null);
                         mBtnRenameDeleted.setVisibility(View.GONE);
                         mBtnRenameDeleted.setOnClickListener(null);
+                        setCheckState(CHECK_STATE_OK);
                     }
-                    setCheckOngoing(false);
-
-                }else if(token == TEST_DELETED_NAME){
+                }
+                else if(token == TEST_DELETED_NAME){
                     ContentValues values = (ContentValues)cookie;
                     if(cursor.moveToFirst()){
                         // name already exists, choose another one
@@ -201,7 +236,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                 null
                         );
 
-                    }else {
+                    }
+
+                    else {
                         // name not found, use it for the deleted one
                         Long actId = (Long)values.get(ActivityDiaryContract.Diary._ID);
                         values.remove(ActivityDiaryContract.Diary._ID);
@@ -212,6 +249,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                 }
                 cursor.close();
             }
+            else {
+                System.out.println("cursor was null");
+            }
         }
 
         @Override
@@ -220,7 +260,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
             if (token == RENAME_DELETED_ACTIVITY) {
                 checkConstraints();
             } else {
-                setCheckOngoing(false);
+                setCheckState(CHECK_STATE_OK);
             }
         }
     }
@@ -258,7 +298,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         }else{
             linkCol = getResources().getColor(R.color.colorAccent);
         }
-        setCheckOngoing(true);
+        setCheckState(CHECK_STATE_CHECKING);
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         int actId = i.getIntExtra("activityID", -1);
@@ -275,21 +316,19 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         mActivityName.addTextChangedListener(new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 checkConstraints();
+                checkSimilarNames();
             }
         });
         mActivityNameTIL = (TextInputLayout) findViewById(R.id.edit_activity_name_til);
-
         mQuickFixBtn1 = (ImageButton)findViewById(R.id.quickFixButton1);
         mBtnRenameDeleted = (ImageButton)findViewById(R.id.quickFixButtonRename);
 
@@ -365,9 +404,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                 finish();
                 break;
             case R.id.action_edit_done:
-                if(!isCheckOngoing()) {
+                if(getCheckState() != CHECK_STATE_CHECKING) {
                     CharSequence error = mActivityNameTIL.getError();
-                    if (error != null && error.length() > 0) {
+                    if (getCheckState() == CHECK_STATE_ERROR) {
                         Toast.makeText(EditActivity.this,
                                 error,
                                 Toast.LENGTH_LONG
@@ -391,27 +430,36 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         return super.onOptionsItemSelected(item);
     }
 
-    private void checkConstraints(){
-        setCheckOngoing(true);
+    private void checkConstraints() {
+        setCheckState(CHECK_STATE_CHECKING);
 
-        if(currentActivity == null) {
+        if (currentActivity == null) {
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                     new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=?",
                     new String[]{mActivityName.getText().toString()}, null);
-        }else{
-            /* activity already there */
+        } else {
             mQHandler.startQuery(QUERY_NAMES,
                     null,
                     ActivityDiaryContract.DiaryActivity.CONTENT_URI,
                     new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
                     ActivityDiaryContract.DiaryActivity.NAME + "=? AND " +
-                    ActivityDiaryContract.DiaryActivity._ID + " != ?",
+                            ActivityDiaryContract.DiaryActivity._ID + " != ?",
                     new String[]{mActivityName.getText().toString(), Long.toString(currentActivity.getId())},
                     null);
         }
+    }
+
+    private void checkSimilarNames() {
+        setCheckState(CHECK_STATE_CHECKING);
+
+        mQHandler.startQuery(SIMILAR_ACTIVITY,
+                null,
+                ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                new String[]{ActivityDiaryContract.DiaryActivity.NAME, ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity._ID},
+                null, null,null);
     }
 
     /**
