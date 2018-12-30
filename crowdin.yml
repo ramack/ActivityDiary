@@ -3,25 +3,25 @@ files:
     translation: /app/src/main/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
       language:
-        de: de
-    translate_attributes: '0'
+        id: in
+    translate_attributes: 0
     update_option: update_as_unapproved
   - source: /app/src/main/play/en-US/*/*
     translation: /app/src/main/play/%locale%/listing/%original_file_name%
     languages_mapping:
       locale:
-        id: id
+        id: in
     update_option: update_as_unapproved
   - source: /app/src/main/play/en-US/*
     translation: /app/src/main/play/%locale%/%original_file_name%
     languages_mapping:
       locale:
-        id: id
+        id: in
     update_option: update_as_unapproved
   - source: /app/src/main/res/values/arrays.xml
     translation: /app/src/main/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
       language:
-        de: de
-    translate_attributes: '0'
+        id: in
+    translate_attributes: 0
     update_option: update_as_unapproved
