@@ -19,6 +19,7 @@
 
 package de.rampro.activitydiary.ui.main;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -34,6 +35,7 @@ import java.util.Date;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.databinding.FragmentDetailStatsBinding;
+import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.model.DetailViewModel;
@@ -83,6 +85,10 @@ public class DetailStatFragement extends Fragment {
     private void updateDurationTextView() {
         String duration = getResources().getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
         viewModel.mDuration.setValue(duration);
+        Activity a = getActivity();
+        if(a instanceof MainActivity){
+            ((MainActivity)a).queryAllTotals();
+        }
     }
 
     @Override

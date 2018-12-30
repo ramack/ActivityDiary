@@ -398,6 +398,7 @@ public class MainActivity extends BaseActivity implements
 
     public void onActivityChanged(){
         DiaryActivity newAct = ActivityHelper.helper.getCurrentActivity();
+        viewModel.mCurrentActivity.setValue(newAct);
 
         if(newAct != null) {
             mQHandler.startQuery(QUERY_CURRENT_ACTIVITY_STATS, null,
@@ -415,13 +416,9 @@ public class MainActivity extends BaseActivity implements
                     },
                     null);
 
-            long end = System.currentTimeMillis();
-            queryTotal(Calendar.DAY_OF_YEAR, end, newAct.getId());
-            queryTotal(Calendar.WEEK_OF_YEAR, end, newAct.getId());
-            queryTotal(Calendar.MONTH, end, newAct.getId());
+            queryAllTotals();
         }
 
-        viewModel.mCurrentActivity.setValue(newAct);
         viewModel.setCurrentDiaryUri(ActivityHelper.helper.getCurrentDiaryUri());
         TextView aName = findViewById(R.id.activity_name);
         // TODO: move this logic into the DetailViewModel??
@@ -450,6 +447,19 @@ public class MainActivity extends BaseActivity implements
             viewModel.mNote.setValue("");
         }
         selectorLayoutManager.scrollToPosition(0);
+    }
+
+    public void queryAllTotals() {
+        // TODO: move this into the DetailStatFragement
+        DiaryActivity a = viewModel.mCurrentActivity.getValue();
+        if(a != null) {
+            int id = a.getId();
+
+            long end = System.currentTimeMillis();
+            queryTotal(Calendar.DAY_OF_YEAR, end, id);
+            queryTotal(Calendar.WEEK_OF_YEAR, end, id);
+            queryTotal(Calendar.MONTH, end, id);
+        }
     }
 
     private void queryTotal(int field, long end, int actID) {
@@ -720,7 +730,6 @@ public class MainActivity extends BaseActivity implements
                             getString(R.string.last_done_description, DateFormat.format(formatString, start)));
 
                 }else if(token == QUERY_CURRENT_ACTIVITY_TOTAL) {
-                    // TODO: reevaluate on every update of duration
                     StatParam p = (StatParam)cookie;
                     long total = cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryStats.DURATION));
 
@@ -737,8 +746,6 @@ public class MainActivity extends BaseActivity implements
                             viewModel.mTotalMonth.setValue(x);
                             break;
                     }
-//                    viewModel.mTotalToday.setValue(getResources().
-//                            getString(R.string.acc_duration_since_description, spanText, TimeSpanFormatter.format(total)));
                 }
             }
         }
