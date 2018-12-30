@@ -52,6 +52,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -682,8 +683,8 @@ public class ActivityHelper extends AsyncQueryHandler{
      * Code based on Levensthein distance from https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Java
      */
     public static int searchDistance(CharSequence inSearch, CharSequence inModel) {
-        String search = inSearch.toString().toLowerCase(); // s0
-        String model = inModel.toString().toLowerCase();   // s1
+        String search = inSearch.toString().toLowerCase(Locale.getDefault()); // s0
+        String model = inModel.toString().toLowerCase(Locale.getDefault());   // s1
         int result;
         int len0 = search.length() + 1;
         int len1 = model.length() + 1;
