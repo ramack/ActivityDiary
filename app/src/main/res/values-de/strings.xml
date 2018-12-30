@@ -27,7 +27,7 @@
     <string name="about_text_licence"><![CDATA[Das Programm %1$s ist freie Software: Du darst es weitergeben und verändern unter den Bedingungen der <a href="https://www.gnu.org/licenses/gpl.html">GNU General Public License</a>, wie von der Free Software Foundation veröffentlicht, entweder gemäß Version 3 der Lizenz oder jeder späteren Version.]]></string>
     <string name="about_text_license_2">Dieses Programm wird in der Hoffnung verbreitet, dass es nützlich ist, aber OHNE IRGENDEINE GARANTIE, insbesondere ohne eine implizite Garantie der Marktreife oder der Eignung für einen bestimmten Zweck. Lies die GNU General Public License für weitere Details.</string>
     <string name="about_text_privacy_h">Datenschutzerklärung</string>
-    <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
+    <string name="about_text_privacy"><![CDATA[%1$s und seine Autoren haben ein großes Interesse daran, Ihre Privatsphäre zu respektieren. Der Zweck dieser App ist das Verfolgen und Speichern Ihrer Aktivitäten und wo und wie Sie diese ausführen. Dennoch liegen Ihre Daten in Ihrer Hand und werden von der App ohne Ihren ausdrücklichen Wunsch nicht an einen Server oder eine externe Partei übermittelt. Lesen Sie die vollständige <a href=\"de.rampro.activitydiary.privacy_policy://show\">Datenschutzerklärung</a>.]]></string>
     <string name="about_text_contact_h">Kontakt</string>
     <string name="about_text_contact"><![CDATA[Verwenden Sie für Fehlerberichte und Verbesserungsvorschläge das <a href="https://github.com/ramack/ActivityDiary/issues">Ticketsystem</a>, vorzugsweise in englischer Sprache.]]></string>
     <string name="about_text_contact_2"><![CDATA[Der Quellcode ist auf <a href="https://github.com/ramack/ActivityDiary">Github</a> zu finden.]]></string>
@@ -147,9 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;Keine Aktivität&gt;</string>
     <string name="dialog_title_note">Notiz</string>
     <string name="activities">Aktivititäten</string>
-    <string name="fragment_detail_stats_title">Statistics</string>
-    <string name="fragment_detail_note_title">Note</string>
-    <string name="fragment_detail_pictures_title">Pictures</string>
+    <string name="fragment_detail_stats_title">Statistik</string>
+    <string name="fragment_detail_note_title">Notiz</string>
+    <string name="fragment_detail_pictures_title">Bilder</string>
     <!-- actions -->
     <string name="action_delete">Aktivität löschen</string>
     <string name="action_diary_entry_delete">Eintrag löschen</string>
@@ -186,19 +186,18 @@
         <item quantity="one">%d Tag</item>
         <item quantity="other">%d Tage</item>
     </plurals>
-    <string name="avg_duration_description">Average duration: %1$s</string>
-    <string name="last_done_description">Last start: %1$s</string>
-    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
+    <string name="avg_duration_description">Durchschnittliche Dauer: %1$s</string>
+    <string name="last_done_description">Zuletzt begonnen: %1$s</string>
     <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
     <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
-    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
+    <string name="contentDesc_pictureEntry">Bilder für diesen Tagebucheintrag</string>
     <!-- edit view -->
     <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
     <string name="tooltip_quickfix_btn_edit_existing">Aktuelle Bearbeitung abbrechen und stattdessen die bestehende Aktivität mit selbem Namen öffnen</string>
     <string name="error_name_already_used_in_deleted">Es gibt bereits eine gelöschte Aktivität mit Namen %1$s</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Gelösche Aktivität mit selbem Namen umbenennen um den Konflikt zu beheben</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Aktivität mit selbem Namen wiederherstellen</string>
-    <string name="error_name_similar">New activity name similar to %1$s</string>
+    <string name="error_name_similar">Neuer Aktivitätsname ähnlich wie %1$s</string>
     <string name="recover_activity_toast">Aktivität %1$s wiederhergestellt. Sie ist und jetzt wieder auswählbar.</string>
     <string name="renamed_deleted_activity_toast">Die bereits gelöschte Aktivität %1$s wurde umbenannt.</string>
     <string name="edit_existing_activity_toast">Nun wird die bereits bestehende Aktivität %1$s bearbeitet.</string>
@@ -207,7 +206,7 @@
     <string name="date_format">dd.MM.yyyy</string>
     <string name="time_format">HH:mm</string>
     <string name="history_start">Start: %1$s</string>
-    <string name="history_end">End: %1$s</string>
+    <string name="history_end">Ende: %1$s</string>
     <string name="desc_start_date">Startdatum</string>
     <string name="desc_start_time">Startzeit</string>
     <string name="desc_end_date">Enddatum</string>
