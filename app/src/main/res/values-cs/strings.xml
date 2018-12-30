@@ -205,6 +205,7 @@
     <string name="error_name_already_used_in_deleted">Vymazaná aktivita s jménem %1$s již existuje</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Přejmenujte smazanou aktivitu se stejným jménem, ​​abyste vyřešili konflikt</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Zrušení aktivity se stejným názvem</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Obnovená aktivita %1$s. Nyní je opět volitelné.</string>
     <string name="renamed_deleted_activity_toast">Přejmenování již smazané aktivity %1$s.</string>
     <string name="edit_existing_activity_toast">Nyní upravíte existující aktivitu s názvem %1$s.</string>

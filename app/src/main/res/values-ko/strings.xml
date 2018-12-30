@@ -193,6 +193,7 @@
     <string name="error_name_already_used_in_deleted">이름이 %1$s 삭제 된 활동이 이미 있습니다.</string>
     <string name="tooltip_quickfix_btn_rename_deleted">충돌을 해결하기 위해 삭제 된 활동의 이름을 같은 이름으로 변경하십시오</string>
     <string name="tooltip_quickfix_btn_undelete_existing">같은 이름의 활동 삭제 취소</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">복구 된 활동 %1$s. 이제 다시 선택할 수 있습니다.</string>
     <string name="renamed_deleted_activity_toast">이미 삭제 된 활동의 이름을 %1$s변경했습니다.</string>
     <string name="edit_existing_activity_toast">이제 이름이 %1$s기존 활동을 편집 중입니다.</string>

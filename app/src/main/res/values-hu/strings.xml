@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">A %1$s névvel rendelkező törölt tevékenység már létezik</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Törölje a törölt tevékenység azonos nevű nevét a konfliktus megoldásához</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Törölje a név azonosítóját</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Visszanyert tevékenység %1$s. Mostantól újból választható.</string>
     <string name="renamed_deleted_activity_toast">Átnevezte a már törölt %1$stevékenységet.</string>
     <string name="edit_existing_activity_toast">Most módosítja a meglévő tevékenységet %1$snévvel.</string>
