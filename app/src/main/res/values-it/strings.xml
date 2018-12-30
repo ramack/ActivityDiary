@@ -188,6 +188,7 @@
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
+    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Qualcosa è andato storto qui. Non può memorizzare le immagini.</string>
     <string name="no_active_activity_error">Per eseguire questa azione bisogna selezionare prima un\'attività</string>
     <!-- edit view -->
