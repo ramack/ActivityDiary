@@ -30,9 +30,9 @@
     <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">İletişim</string>
     <string name="about_text_contact"><![CDATA[Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.]]></string>
-    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>\'da bulunabilir.]]></string>
+    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>'da bulunabilir.]]></string>
     <string name="about_text_support_h">Destek</string>
-    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>\'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>\'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>\'de bağış yapmayı düşünebilirsiniz.]]></string>
+    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>'de bağış yapmayı düşünebilirsiniz.]]></string>
     <string name="about_text_cont_h">Katkıda Bulunanlar</string>
     <string name="about_text_cont_2">Bu listede sizin de adınızın geçmesini bekliyoruz.</string>
     <string name="about_text_lib_h">Kitaplıklar</string>
@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
     <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">%1$s adlı etkinlik zaten var</string>
     <string name="tooltip_quickfix_btn_edit_existing">Şu anki düzenlemeyi reddet ve aynı adlı var olan etkinliği aç</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
     <string name="date_format">dd.MM.yyyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">başla</string>
-    <string name="history_end">Son</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Başlangıç ​​tarihi</string>
     <string name="desc_start_time">Başlama zamanı</string>
     <string name="desc_end_date">Bitiş tarihi</string>
