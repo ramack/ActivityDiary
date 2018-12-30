@@ -41,7 +41,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class)
 public class ActivityDiaryContentProviderTest {
     ContentResolver contentResolver;
 

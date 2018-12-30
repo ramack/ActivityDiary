@@ -30,6 +30,7 @@ import org.robolectric.shadows.ShadowSystemClock;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
@@ -45,7 +46,9 @@ public class PredecessorConditionUnitTest {
     ActivityHelper helper;
 
     private void cleanActivities(){
-        for (DiaryActivity d: helper.getActivities()) {
+        List<DiaryActivity> l = new LinkedList<>(helper.getActivities());
+
+        for (DiaryActivity d: l) {
             helper.deleteActivity(d);
         }
     }
@@ -67,15 +70,15 @@ public class PredecessorConditionUnitTest {
         helper.insertActivity(a2);
         helper.insertActivity(a3);
         long now = System.currentTimeMillis();
-        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 5);
+//        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 5);
         helper.setCurrentActivity(a1);
-        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 4);
+//        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 4);
         helper.setCurrentActivity(a2);
-        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 3);
+//        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 3);
         helper.setCurrentActivity(a1);
-        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 2);
+//        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 2);
         helper.setCurrentActivity(a3);
-        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 1);
+//        ShadowSystemClock.setCurrentTimeMillis(now - 1000 * 60 * 1);
         helper.setCurrentActivity(a2);
         Thread.sleep(4000);
         ShadowLooper.runUiThreadTasks();

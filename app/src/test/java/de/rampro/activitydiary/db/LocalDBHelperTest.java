@@ -39,7 +39,6 @@ import static org.junit.Assert.assertNotNull;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class)
 public class LocalDBHelperTest {
     LocalDBHelper dbHelper;
 

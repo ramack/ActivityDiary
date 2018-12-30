@@ -50,7 +50,7 @@ import static org.junit.Assert.assertNull;
 /**
  * UI unit testing with robolectric
  */
-@Config(constants = BuildConfig.class)
+@Config(sdk=27) // TODO: remove this workaround after robolectric is able to inflate the fragment in 28
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
     private MainActivity activity;
@@ -89,12 +89,12 @@ public class MainActivityTest {
         fabNoteEdit.performClick();
 
         ShadowLooper.idleMainLooper(100, TimeUnit.MILLISECONDS);
-        assertEquals(ShadowToast.getTextOfLatestToast().toString(), "To perform this action it is necessary to select an activity first.");
+        assertEquals(ShadowToast.getTextOfLatestToast().toString(), "To perform this action it is necessary to select an activity first");
 
         fabAttachPicture.performClick();
 
         ShadowLooper.idleMainLooper(100, TimeUnit.MILLISECONDS);
-        assertEquals(ShadowToast.getTextOfLatestToast().toString(), "To perform this action it is necessary to select an activity first.");
+        assertEquals(ShadowToast.getTextOfLatestToast().toString(), "To perform this action it is necessary to select an activity first");
 
     }
 

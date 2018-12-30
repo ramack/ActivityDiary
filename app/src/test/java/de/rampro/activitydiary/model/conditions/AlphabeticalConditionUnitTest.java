@@ -27,6 +27,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import de.rampro.activitydiary.helpers.ActivityHelper;
@@ -39,16 +40,19 @@ public class AlphabeticalConditionUnitTest {
     ActivityHelper helper;
 
     private void cleanActivities(){
-        for (DiaryActivity d: helper.getActivities()) {
+        List<DiaryActivity> l = new LinkedList<>(helper.getActivities());
+
+        for (DiaryActivity d: l) {
             helper.deleteActivity(d);
         }
     }
 
     @Test
     public void sorting() throws Exception {
-        AlphabeticalCondition ac = new AlphabeticalCondition(helper);
+        AlphabeticalCondition ac;
 
         cleanActivities();
+        ac = new AlphabeticalCondition(helper);
 
         List<Condition.Likelihood> list = ac.likelihoods();
         assertTrue("Empty List if not activity", list.isEmpty());
