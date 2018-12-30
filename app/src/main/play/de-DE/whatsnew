@@ -1,5 +1,5 @@
 - Datenschutzerklärung hinzugefügt, bitte lesen!
-- Detect similar activity names on creation
-- Added statistics for current activity
-- Improved statistics view: add Day granularity and selectable format
+- Erkennung von ähnlichen Aktivitätsnamen
+- Statisitsche Daten für die aktuell laufende Aktivität hinzugefügt
+- Statistikanzeige: Tages-Auswahl und einstellbares Datumsformat hinzugefügt
 - Verschiedene Fehler wurden behoben
