@@ -205,6 +205,7 @@
     <string name="error_name_already_used_in_deleted">Удаленная активность с именем %1$s уже существует</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Переименовать удаленный вид деятельности с тем же именем для разрешения конфликта</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Отменить активность с тем же именем</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Вид деятельности %1$s восстановлен. Теперь его снова можно выбрать.</string>
     <string name="renamed_deleted_activity_toast">Переименована уже удаленная активность %1$s.</string>
     <string name="edit_existing_activity_toast">Теперь правим уже существующее занятие с именем %1$s.</string>
