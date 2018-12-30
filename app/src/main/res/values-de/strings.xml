@@ -235,7 +235,7 @@
     <string name="crash_dialog_comment_prompt">Hier kannst du einen weiteren Kommentar zu diesem Fehler eingeben:</string>
     <string name="crash_dialog_ok_toast">Vielen Dank. Bitte überprüfe den Inhalt der vorbereiteten E-Mail und schicke sie dann ab.</string>
     <!-- Privacy Policy -->
-    <string name="privacy_text">ActivityDiary ist ein kostenloses, freies, Open Source Programm (App) um Ihre Aktivitäten aufzuzeichnen. Diese Datenschutzerklärung gilt für diese Android-Anwendung und beschreibt welche Daten von ActivitiyDiary aufgezeichnet und verabeitet werden.</string>
+    <string name="privacy_text">ActivityDiary ist ein kostenloses, freies, Open Source Programm (App) um Ihre Aktivitäten aufzuzeichnen. Diese Datenschutzerklärung gilt für diese Android-Anwendung und beschreibt welche Daten von ActivitiyDiary aufgezeichnet und verarbeitet werden.</string>
     <string name="privacy_last_update">Letzte Aktualisierung: 22. Dezember 2018</string>
     <string name="privacy_intro_title">Allgemeines</string>
     <string name="privacy_intro_text1">Die Entwickler von Aktivitätstagebuch (\"wir\", \"uns\") respektieren die Privatsphäre unserer Nutzer (\"Nutzer\", \"Sie\"). Da der Zweck dieser App darin besteht über Ihrer Aktivitäten Buch zu führen werden viele sensible, persönliche Daten gesammelt und gespeichert. Nichtsdestotrotz sind dies Ihre Daten und Sie haben die volle Kontrolle über sie. Diese Datenschutzerklärung erläutert wie die Aktivitätstagebuch (die \"App\") Informationen über Sie erhebt, verarbeitet, überträgt und schützt. Unsere Namen können aus den Metadaten in den Git-Repositories und in den Abschnitten über Mitwirkende in der App entnommen werden.</string>
