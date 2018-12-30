@@ -165,7 +165,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
 /* TODO: #36 register listener on preference change to redraw the date time formatting */
 
         holder.mStartLabel.setText(ActivityDiaryApplication.getAppContext().getResources().
-                getString(R.string.history_start) + ": " + DateFormat.format(formatString, start));
+                getString(R.string.history_start, DateFormat.format(formatString, start)));
 
         String noteStr = "";
         if(!mCursor.isNull(noteRowIdx)){
