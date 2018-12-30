@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">Een verwijderde activiteit met naam %1$s bestaat al</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Hernoem verwijderde activiteit met dezelfde naam om het conflict op te lossen</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Undelete activiteit met dezelfde naam</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Herstelde activiteit %1$s. Het is nu opnieuw selecteerbaar.</string>
     <string name="renamed_deleted_activity_toast">Hernoem de reeds verwijderde activiteit %1$s.</string>
     <string name="edit_existing_activity_toast">Bewerk nu de bestaande activiteit met naam %1$s.</string>

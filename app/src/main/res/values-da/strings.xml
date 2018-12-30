@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">En slettet aktivitet med navn %1$s eksisterer allerede</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Omdøb slettet aktivitet med samme navn for at løse konflikten</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Undelete aktivitet med samme navn</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Gendannet aktivitet %1$s. Det kan nu vælges igen.</string>
     <string name="renamed_deleted_activity_toast">Omdøbt den allerede slettede aktivitet %1$s.</string>
     <string name="edit_existing_activity_toast">Nu redigerer den eksisterende aktivitet med navn %1$s.</string>

@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">Uma atividade excluída com o nome %1$s já existe</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Renomeie a atividade excluída com o mesmo nome para resolver o conflito</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Anula a atividade com o mesmo nome</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Atividade recuperada %1$s. Agora é selecionável novamente.</string>
     <string name="renamed_deleted_activity_toast">Renomeado a atividade já excluída %1$s.</string>
     <string name="edit_existing_activity_toast">Agora editando a atividade existente com o nome %1$s.</string>

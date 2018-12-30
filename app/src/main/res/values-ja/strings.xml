@@ -193,6 +193,7 @@
     <string name="error_name_already_used_in_deleted">名前が %1$s 削除済みアクティビティは既に存在します</string>
     <string name="tooltip_quickfix_btn_rename_deleted">競合を解決するために、削除されたアクティビティを同じ名前でリネームする</string>
     <string name="tooltip_quickfix_btn_undelete_existing">同じ名前のアクティビティの元に戻す</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">回復されたアクティビティ %1$s。今度は再び選択可能です。</string>
     <string name="renamed_deleted_activity_toast">すでに削除アクティビティ改名 %1$s。</string>
     <string name="edit_existing_activity_toast">これで、既存のアクティビティを名前 %1$s編集し%1$s 。</string>

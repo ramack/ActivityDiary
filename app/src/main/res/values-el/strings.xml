@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">Μια διαγραμμένη δραστηριότητα με το όνομα %1$s υπάρχει ήδη</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Μετονομάστε τη διαγραμμένη δραστηριότητα με το ίδιο όνομα για να επιλύσετε τη σύγκρουση</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Επαναίρεση της δραστηριότητας με το ίδιο όνομα</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Ανακτημένη δραστηριότητα %1$s. Είναι πλέον επιλέξιμη πάλι.</string>
     <string name="renamed_deleted_activity_toast">Μετονομάσατε την ήδη διαγραμμένη δραστηριότητα %1$s.</string>
     <string name="edit_existing_activity_toast">Τώρα, επεξεργάζεστε την υπάρχουσα δραστηριότητα με το όνομα %1$s.</string>
