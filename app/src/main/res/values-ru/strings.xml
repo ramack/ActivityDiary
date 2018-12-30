@@ -199,6 +199,7 @@
     <string name="acc_duration_since_description">Общее время %1$s: %2$s</string>
     <string name="camera_error">Здесь что-то пошло не так. Не удалось сохранить изображение.</string>
     <string name="no_active_activity_error">Для выполнения этого действия необходимо сначала выбрать вид деятельности</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Вид деятельности с именем %1$s уже существует</string>
     <string name="tooltip_quickfix_btn_edit_existing">Отменить текущую правку и открыть существующий вид деятельности с тем же именем</string>
@@ -213,8 +214,8 @@
     <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
     <string name="date_format">dd.MM.yyyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">Начало</string>
-    <string name="history_end">Конец</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Дата начала</string>
     <string name="desc_start_time">Время начала</string>
     <string name="desc_end_date">Дата окончания</string>
