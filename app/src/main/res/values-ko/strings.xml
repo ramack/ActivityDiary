@@ -202,7 +202,7 @@
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH : mm</string>
     <string name="history_start">Start: %1$s</string>
-    <string name="history_end">End: %1$s</string>
+    <string name="history_end">End: %1$s (%2$s)</string>
     <string name="desc_start_date">시작일</string>
     <string name="desc_start_time">시작 시간</string>
     <string name="desc_end_date">종료일</string>
