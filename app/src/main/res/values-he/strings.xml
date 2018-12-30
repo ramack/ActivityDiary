@@ -213,8 +213,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH: מ\"מ</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: מ\"מ</string>
-    <string name="headline_start">הַתחָלָה</string>
-    <string name="headline_end">סוֹף</string>
+    <string name="history_start">הַתחָלָה</string>
+    <string name="history_end">סוֹף</string>
     <string name="desc_start_date">תאריך התחלה</string>
     <string name="desc_start_time">שעת התחלה</string>
     <string name="desc_end_date">תאריך סיום</string>

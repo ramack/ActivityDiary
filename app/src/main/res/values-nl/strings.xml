@@ -205,8 +205,8 @@
     <string name="default_datetime_format">yyyy.MM.dd UU: mm</string>
     <string name="date_format">jjjj.mm.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="headline_start">Begin</string>
-    <string name="headline_end">Einde</string>
+    <string name="history_start">Begin</string>
+    <string name="history_end">Einde</string>
     <string name="desc_start_date">Begin datum</string>
     <string name="desc_start_time">Starttijd</string>
     <string name="desc_end_date">Einddatum</string>

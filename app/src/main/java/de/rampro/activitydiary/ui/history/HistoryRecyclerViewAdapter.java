@@ -20,7 +20,6 @@
 package de.rampro.activitydiary.ui.history;
 
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.support.v7.preference.PreferenceManager;
@@ -166,7 +165,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
 /* TODO: #36 register listener on preference change to redraw the date time formatting */
 
         holder.mStartLabel.setText(ActivityDiaryApplication.getAppContext().getResources().
-                getString(R.string.headline_start) + ": " + DateFormat.format(formatString, start));
+                getString(R.string.history_start) + ": " + DateFormat.format(formatString, start));
 
         String noteStr = "";
         if(!mCursor.isNull(noteRowIdx)){
@@ -183,7 +182,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                     getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(start, new Date()));
         }else {
             duration = ActivityDiaryApplication.getAppContext().getResources().
-                    getString(R.string.headline_end) + ": " + DateFormat.format(formatString, end) + " (";
+                    getString(R.string.history_end) + ": " + DateFormat.format(formatString, end) + " (";
             duration += TimeSpanFormatter.format(end.getTime() - start.getTime());
             duration += ")";
         }

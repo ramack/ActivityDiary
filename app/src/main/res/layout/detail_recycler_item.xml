@@ -37,6 +37,7 @@
         android:minHeight="400dp"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/contentDesc_pictureEntry"
         />
 
     <!-- this detailText is currently unused... feel free to propose a good usage -->

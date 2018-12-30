@@ -248,13 +248,18 @@
 
     <string name="camera_error">Something went wrong here. Could not store image.</string>
     <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
+
 
     <!-- edit view -->
     <string name="error_name_already_used">Activity with name %1$s already exists</string>
     <string name="tooltip_quickfix_btn_edit_existing">Reject current edit and open existing activity with same name instead</string>
+    <string name="contentDesc_rejectAndOpenActivity" translatable="false">@string/tooltip_quickfix_btn_edit_existing</string>
     <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
+    <string name="contentDesc_renameDeletedActivity" translatable="false">@string/tooltip_quickfix_btn_rename_deleted</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
+    <string name="contentDesc_undeleteActivity" translatable="false">@string/tooltip_quickfix_btn_undelete_existing</string>
     <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
     <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
@@ -264,8 +269,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH:mm</string>
-    <string name="headline_start">Start</string>
-    <string name="headline_end">End</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Start date</string>
     <string name="desc_start_time">Start time</string>
     <string name="desc_end_date">End date</string>

@@ -205,8 +205,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">VVVV.KK.PP</string>
     <string name="time_format">HH: mm</string>
-    <string name="headline_start">alkaa</string>
-    <string name="headline_end">pää</string>
+    <string name="history_start">alkaa</string>
+    <string name="history_end">pää</string>
     <string name="desc_start_date">Aloituspäivämäärä</string>
     <string name="desc_start_time">Aloitusaika</string>
     <string name="desc_end_date">Päättymispäivä</string>

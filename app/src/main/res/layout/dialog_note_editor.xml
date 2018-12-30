@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
-        android:lines="4" />
+        android:lines="4"
+        android:importantForAutofill="no" />
 
 </ScrollView>

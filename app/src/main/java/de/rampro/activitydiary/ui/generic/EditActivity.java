@@ -142,10 +142,13 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                             CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
                             mBtnRenameDeleted.setVisibility(View.VISIBLE);
                             setBtnTooltip(mBtnRenameDeleted, getResources().getString(R.string.tooltip_quickfix_btn_rename_deleted));
+                            mBtnRenameDeleted.setContentDescription(getResources().getString(R.string.contentDesc_renameDeletedActivity));
 
                             mActivityNameTIL.setError(str);
                             mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_undelete));
                             setBtnTooltip(mQuickFixBtn1, getResources().getString(R.string.tooltip_quickfix_btn_undelete_existing));
+                            mQuickFixBtn1.setContentDescription(getResources().getString(R.string.contentDesc_undeleteActivity));
+
 
                             mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -190,6 +193,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                             mBtnRenameDeleted.setOnClickListener(null);
                             mQuickFixBtn1.setImageDrawable(getDrawable(R.drawable.ic_edit));
                             setBtnTooltip(mQuickFixBtn1, getResources().getString(R.string.tooltip_quickfix_btn_edit_existing));
+                            mQuickFixBtn1.setContentDescription(getResources().getString(R.string.contentDesc_rejectAndOpenActivity));
                             mQuickFixBtn1.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {

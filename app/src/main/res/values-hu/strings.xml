@@ -205,8 +205,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.mm.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="headline_start">Rajt</string>
-    <string name="headline_end">vég</string>
+    <string name="history_start">Rajt</string>
+    <string name="history_end">vég</string>
     <string name="desc_start_date">Kezdő dátum</string>
     <string name="desc_start_time">Kezdési idő</string>
     <string name="desc_end_date">Befejezés dátuma</string>

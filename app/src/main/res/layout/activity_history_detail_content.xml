@@ -45,7 +45,7 @@
         android:id="@+id/start_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/headline_start"
+        android:text="@string/history_start"
         style="@style/Base.TextAppearance.AppCompat.Small"
         />
 
@@ -77,7 +77,7 @@
         android:id="@+id/end_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/headline_end"
+        android:text="@string/history_end"
         style="@style/Base.TextAppearance.AppCompat.Small"
         />
     <LinearLayout

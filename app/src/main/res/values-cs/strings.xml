@@ -213,8 +213,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="headline_start">Start</string>
-    <string name="headline_end">Konec</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">Konec</string>
     <string name="desc_start_date">Datum zahájení</string>
     <string name="desc_start_time">Doba spuštění</string>
     <string name="desc_end_date">Datum ukončení</string>

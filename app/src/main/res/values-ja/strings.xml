@@ -201,8 +201,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH:mm</string>
-    <string name="headline_start">開始</string>
-    <string name="headline_end">終わり</string>
+    <string name="history_start">開始</string>
+    <string name="history_end">終わり</string>
     <string name="desc_start_date">開始日</string>
     <string name="desc_start_time">始まる時間</string>
     <string name="desc_end_date">終了日</string>
