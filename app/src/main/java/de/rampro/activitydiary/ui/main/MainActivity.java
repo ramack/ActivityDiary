@@ -129,8 +129,8 @@ public class MainActivity extends BaseActivity implements
     private void setSearchMode(boolean searchMode){
         if(searchMode){
             headerView.setVisibility(View.GONE);
-            fabNoteEdit.setVisibility(View.GONE);
-            fabAttachPicture.setVisibility(View.GONE);
+            fabNoteEdit.hide();
+            fabAttachPicture.hide();
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
             ((StaggeredGridLayoutManager)selectRecyclerView.getLayoutManager()).setSpanCount(searchRowCount);
 
@@ -139,8 +139,8 @@ public class MainActivity extends BaseActivity implements
 
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             headerView.setVisibility(View.VISIBLE);
-            fabNoteEdit.setVisibility(View.VISIBLE);
-            fabAttachPicture.setVisibility(View.VISIBLE);
+            fabNoteEdit.show();
+            fabAttachPicture.show();
         }
 
     }

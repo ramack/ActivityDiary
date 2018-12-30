@@ -217,7 +217,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             SharedPreferences.Editor editor = PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext()).edit();
             editor.putString(KEY_PREF_LOCATION_DIST, nvalue);
-            editor.commit();
+            editor.apply();
             value = PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                     .getString(KEY_PREF_LOCATION_DIST, def);
@@ -242,7 +242,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             SharedPreferences.Editor editor = PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext()).edit();
             editor.putString(KEY_PREF_LOCATION_AGE, nvalue);
-            editor.commit();
+            editor.apply();
             value = PreferenceManager
                     .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                     .getString(KEY_PREF_LOCATION_AGE, def);
