@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Valami baj van itt. Kép nem tárolható.</string>
     <string name="no_active_activity_error">A művelet végrehajtásához először aktiválni kell a tevékenységet</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">A %1$s már létezik</string>
     <string name="tooltip_quickfix_btn_edit_existing">Az aktuális szerkesztés elutasítása és a meglévő tevékenység megnyitásához ugyanazt a nevet használja</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.mm.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">Rajt</string>
-    <string name="history_end">vég</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Kezdő dátum</string>
     <string name="desc_start_time">Kezdési idő</string>
     <string name="desc_end_date">Befejezés dátuma</string>
