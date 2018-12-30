@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">En raderad aktivitet med namn %1$s redan</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Byt namn på borttagen aktivitet med samma namn för att lösa konflikten</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Återställ aktivitet med samma namn</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Återställd aktivitet %1$s. Det kan nu väljas igen.</string>
     <string name="renamed_deleted_activity_toast">Bytt namn på den redan raderade aktiviteten %1$s.</string>
     <string name="edit_existing_activity_toast">Nu redigerar den befintliga aktiviteten med namn %1$s.</string>
