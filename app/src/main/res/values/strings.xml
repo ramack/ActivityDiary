@@ -245,7 +245,6 @@
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
-    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
 
     <string name="camera_error">Something went wrong here. Could not store image.</string>
     <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
