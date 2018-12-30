@@ -1,5 +1,5 @@
-- Verfolgung der Position hinzugefügt (erfordert Aktivierung in den Einstellungen und wird noch nicht für die Vorschläge der nächsten Aktivitäten verwendet)
-- Kuchendiagramm für die Statistik über einen auswählbaren Zeitraum hinzugefügt
-- Erleichterung beim Pausieren: zuletzt beendete Aktivitäten bekommen mehr Gewicht
-- Verbesserte Suche
+- Datenschutzerklärung hinzugefügt, bitte lesen!
+- Detect similar activity names on creation
+- Added statistics for current activity
+- Improved statistics view: add Day granularity and selectable format
 - Verschiedene Fehler wurden behoben
