@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">%1$s adlı silinmiş bir etkinlik zaten var</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Çakışmayı çözmek için aynı adlı silinmiş etkinliği yeniden adlandır</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Aynı adlı etkinliği geri getir</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">%1$s etkinliği kurtarıldı. Şimdi tekrar seçilebilir.</string>
     <string name="renamed_deleted_activity_toast">Silinmiş bulunan %1$s etkinliği yeniden adlandırıldı.</string>
     <string name="edit_existing_activity_toast">Şimdi var olan %1$s adlı etkinlik düzenleniyor.</string>
