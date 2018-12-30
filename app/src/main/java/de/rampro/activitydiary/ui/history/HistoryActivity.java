@@ -225,7 +225,9 @@ public class HistoryActivity extends BaseActivity implements
         } else if (ActivityDiaryContentProvider.SEARCH_DATE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
-                query = data.getLastPathSegment();
+
+                query = data.getPath();
+                query = query.replaceFirst("/","");
                 filterHistoryDates(query);
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {

@@ -674,10 +674,11 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         long searchedValue = dateInMillis;
         long searchedValuePlusDay = searchedValue + 86400000; // TODO: replace magic numbers by the formula to calculate them...
         long searchSpecialCase = searchedValue + 86399999;  //used for searching for still running activity
+        Cursor allRowsStart = null;
 
         try {
 // TODO: -> this query should not be executed outside of the method ActivityDiaryContentProvider.query
-            Cursor allRowsStart = mOpenHelper.getReadableDatabase().rawQuery(
+            allRowsStart = mOpenHelper.getReadableDatabase().rawQuery(
                 "SELECT " + ActivityDiaryContract.Diary._ID
                     + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME
                         + " WHERE " + "(" + searchedValue + " >= " + ActivityDiaryContract.Diary.START + " AND " + searchedValue + " <= " + ActivityDiaryContract.Diary.END + ")" + " OR " +
@@ -695,6 +696,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             }
         } catch (Exception e) {
             // TODO: add proper exception handling. Also "Exception" seems quite generic -> catch all exceptions that can occur directly
+        }finally{
+            if(allRowsStart != null){
+                allRowsStart.close();
+            }
         }
 
         // if there is no matching dates it returns query which links to find nothings
