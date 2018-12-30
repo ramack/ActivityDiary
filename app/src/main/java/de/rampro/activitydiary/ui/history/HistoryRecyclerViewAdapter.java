@@ -185,8 +185,8 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryView
                     getString(R.string.history_start, DateFormat.format(formatString, start)));
 
             duration = ActivityDiaryApplication.getAppContext().getResources().
-                    getString(R.string.history_end), DateFormat.format(formatString, end),
-                    TimeSpanFormatter.format(end.getTime() - start.getTime());
+                    getString(R.string.history_end, DateFormat.format(formatString, end),
+                    TimeSpanFormatter.format(end.getTime() - start.getTime()));
         }
 
         holder.mDurationLabel.setText(duration);
