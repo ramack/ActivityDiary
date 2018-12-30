@@ -188,7 +188,6 @@
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
-    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Jotain meni vikaan täällä. Kuvan tallentamista ei voitu tallentaa.</string>
     <string name="no_active_activity_error">Tämän toiminnon suorittamiseksi on ensin valittava toiminto</string>
     <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
