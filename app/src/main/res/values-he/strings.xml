@@ -196,7 +196,6 @@
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
-    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">משהו השתבש כאן. לא ניתן לאחסן את התמונה.</string>
     <string name="no_active_activity_error">כדי לבצע פעולה זו יש לבחור תחילה פעילות</string>
     <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
