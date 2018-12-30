@@ -1,7 +1,8 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017-2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Bc. Ondrej Janitor
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,8 +84,16 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " ('Sleeping', '" + Color.parseColor("#303f9f") + "');");
     }
 
-    public static final int CURRENT_VERSION = 4;
+    public static final int CURRENT_VERSION = 5;
+/*
+    For debugging sometimes it is handy to drop a table again. This can easily be achieved in onDowngrade,
+    after CURRENT_VERSION is decremented again
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE diary_search_suggestions");
+    }
+*/
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         /**
@@ -94,7 +103,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
          * you can use ALTER TABLE to rename the old table, then create the new table and then
          * populate the new table with the contents of the old table.
          */
-        if(oldVersion == 1){
+        if (oldVersion == 1) {
             /* upgrade from 1 to current */
             /* still alpha, so just delete and restart */
             /* do not use synmbolic names here, because in case of later rename the old names shall be dropped */
@@ -106,20 +115,26 @@ public class LocalDBHelper extends SQLiteOpenHelper {
             onCreate(db);
             oldVersion = CURRENT_VERSION;
         }
-        if(oldVersion < 3){
+        if (oldVersion < 3) {
             /* upgrade from 2 to 3 */
             createDiaryImageTable(db);
         }
-        if(oldVersion < 4){
+        if (oldVersion < 4) {
             /* upgrade from 3 to 4 */
             createDiaryLocationTable(db);
         }
-        if(newVersion > 4){
+
+        if (oldVersion < 5) {
+            /* upgrade from 4 to 5 */
+            createRecentSuggestionsTable(db);
+        }
+
+        if (newVersion > 5) {
             throw new RuntimeException("Database upgrade to version " + newVersion + " nyi.");
         }
     }
 
-    private void createDiaryLocationTable(SQLiteDatabase db){
+    private void createDiaryLocationTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " +
                 ActivityDiaryContract.DiaryLocation.TABLE_NAME + " " +
                 "(" +
@@ -136,7 +151,7 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
     }
 
-    private void createDiaryImageTable(SQLiteDatabase db){
+    private void createDiaryImageTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " +
                 "diary_image " +
                 "(" +
@@ -148,7 +163,18 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 ");");
     }
 
-    private void createTablesForVersion(SQLiteDatabase db, int version){
+    private void createRecentSuggestionsTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " +
+                "diary_search_suggestions" +
+                "(" +
+                "_id INTEGER PRIMARY KEY ASC, " +
+                "_deleted INTEGER DEFAULT 0, " +
+                "action TEXT NOT NULL, " +
+                "suggestion TEXT NOT NULL " +
+                ");");
+    }
+
+    private void createTablesForVersion(SQLiteDatabase db, int version) {
         db.execSQL("CREATE TABLE " +
                 "activity " +
                 "(" +
@@ -171,12 +197,16 @@ public class LocalDBHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY(act_id) REFERENCES activity(_id) " +
                 ");");
 
-        if (version >= 3){
+        if (version >= 3) {
             createDiaryImageTable(db);
         }
 
-        if (version >= 4){
+        if (version >= 4) {
             createDiaryLocationTable(db);
+        }
+
+        if (version >= 5) {
+            createRecentSuggestionsTable(db);
         }
 
     }

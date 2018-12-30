@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ActivityDiary
+  ~
+  ~ Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
 <resources>
     <color name="colorPrimary">#ff6600</color>
     <color name="colorPrimaryDark">#c53d00</color>
@@ -6,7 +25,10 @@
     <color name="colorAccent">#ffa000</color>
     <color name="colorGreyBackground">#e0e0e0</color>
     <color name="colorGreyCorner">#808080</color>
-    <color name="activityTextColorDark">#202020</color>
+    <color name="colorGreySelected">#808080</color>
+    <color name="colorGreyText">#BDBDBD</color>
+    <color name="colorGreyTextSelected">#424242</color>
+    <color name="activityTextColorDark">@color/colorGreyTextSelected</color>
     <color name="activityTextColorLight">#fefeee</color>
     <string-array name="activityColorPalette" translatable="false">
         <item>#d32f2f</item>

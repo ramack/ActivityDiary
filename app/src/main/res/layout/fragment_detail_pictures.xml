@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ ActivityDiary
   ~
-  ~ Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -16,8 +17,14 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
-<resources>
-    <string name="app_name">Activity Diary Debug</string>
-    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.debug.provider</string>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</resources>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/picture_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+    />
+
+</layout>

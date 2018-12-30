@@ -131,13 +131,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/desc_note_hint"
-            android:inputType="text|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine"
+            android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
             android:minLines="4"
             android:singleLine="false" />
 
     </android.support.design.widget.TextInputLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/detail_recycler"
+        android:id="@+id/picture_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />

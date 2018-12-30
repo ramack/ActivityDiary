@@ -59,7 +59,6 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
-import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 
@@ -303,7 +302,7 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
         end = Calendar.getInstance();
         mTimeError = (TextView) contentView.findViewById(R.id.time_error);
 
-        detailRecyclerView = (RecyclerView)findViewById(R.id.detail_recycler);
+        detailRecyclerView = (RecyclerView)findViewById(R.id.picture_recycler);
         RecyclerView.LayoutManager layoutMan = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         detailRecyclerView.setLayoutManager(layoutMan);
         detailAdapter = new DetailRecyclerViewAdapter(this,null);

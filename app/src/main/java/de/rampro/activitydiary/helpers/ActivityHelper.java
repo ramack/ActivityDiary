@@ -1,7 +1,8 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Bc. Ondrej Janitor
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,15 +52,15 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
+import de.rampro.activitydiary.model.DetailViewModel;
+import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
 import de.rampro.activitydiary.model.conditions.Condition;
-import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.model.conditions.DayTimeCondition;
 import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
 import de.rampro.activitydiary.model.conditions.PausedCondition;
@@ -117,6 +118,9 @@ public class ActivityHelper extends AsyncQueryHandler{
     private @Nullable Uri mCurrentDiaryUri;
     private /* @NonNull */ String mCurrentNote;
     private Condition[] conditions;
+
+    private DetailViewModel viewModel;
+
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
          * handleMessage() defines the operations to perform when
@@ -198,7 +202,6 @@ public class ActivityHelper extends AsyncQueryHandler{
     public ArrayList<DiaryActivity> sortedActivities(String query) {
         ArrayList<DiaryActivity> filtered = new ArrayList<DiaryActivity>(ActivityHelper.helper.getActivities().size());
         ArrayList<Integer> filteredDist = new ArrayList<Integer>(ActivityHelper.helper.getActivities().size());
-
         for(DiaryActivity a : ActivityHelper.helper.getActivities()){
             int dist = ActivityHelper.searchDistance(query, a.getName());
             int pos = 0;
@@ -210,7 +213,6 @@ public class ActivityHelper extends AsyncQueryHandler{
                     break;
                 }
             }
-
             filteredDist.add(pos, Integer.valueOf(dist));
             filtered.add(pos, a);
         }
@@ -460,7 +462,7 @@ public class ActivityHelper extends AsyncQueryHandler{
 
     public void updateNotification(){
         String duration = ActivityDiaryApplication.getAppContext().getResources().
-                getString(R.string.duration_description, FuzzyTimeSpanFormatter.format(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
+                getString(R.string.duration_description, TimeSpanFormatter.fuzzyFormat(ActivityHelper.helper.getCurrentActivityStartTime(), new Date()));
 
         if(notificationBuilder != null) {
             // if this comes faster than building the first notification we just ignore the update.

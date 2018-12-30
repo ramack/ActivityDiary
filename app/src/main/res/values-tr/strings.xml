@@ -30,9 +30,9 @@
     <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">İletişim</string>
     <string name="about_text_contact"><![CDATA[Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.]]></string>
-    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>'da bulunabilir.]]></string>
+    <string name="about_text_contact_2"><![CDATA[Kaynak Kodu <a href="https://github.com/ramack/ActivityDiary">Github</a>\'da bulunabilir.]]></string>
     <string name="about_text_support_h">Destek</string>
-    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>'de bağış yapmayı düşünebilirsiniz.]]></string>
+    <string name="about_text_support"><![CDATA[%1$s uygulamasının geliştirilmesini desteklemek isterseniz, <a href="https://github.com/ramack/ActivityDiary/issues">sorunları github</a>\'da tartışmayı, <a href="https://crowdin.com/project/activitydiary">crowdin</a>\'de çevirmeyi veya <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>\'de bağış yapmayı düşünebilirsiniz.]]></string>
     <string name="about_text_cont_h">Katkıda Bulunanlar</string>
     <string name="about_text_cont_2">Bu listede sizin de adınızın geçmesini bekliyoruz.</string>
     <string name="about_text_lib_h">Kitaplıklar</string>

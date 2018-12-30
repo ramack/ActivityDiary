@@ -1,7 +1,8 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017-2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Bc. Ondrej Janitor
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,19 +20,37 @@
 
 package de.rampro.activitydiary.db;
 
+import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.helpers.ActivityHelper;
+import de.rampro.activitydiary.model.DiaryActivity;
+
+import static android.app.SearchManager.SUGGEST_COLUMN_ICON_1;
+import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
+import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_DATA;
+import static android.app.SearchManager.SUGGEST_COLUMN_QUERY;
+import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
 
 /*
  * Why a new Content Provider for Diary Activites?
@@ -39,6 +58,7 @@ import android.util.Log;
  * According https://developer.android.com/guide/topics/providers/content-provider-creating.html
  * we need it to do searching, synching or widget use of the data -> which in the long we all want to do.
  *
+ * Additionally it is used as SearchProvider these days.
  * */
 public class ActivityDiaryContentProvider extends ContentProvider {
 
@@ -53,7 +73,19 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     private static final int diary_location = 9;
     private static final int diary_location_ID = 10;
     private static final int diary_stats = 11;
+    private static final int search_recent_suggestion = 12;
+    private static final int search_suggestion = 13;
+    private static final int diary_suggestion = 14;
+
     private static final String TAG = ActivityDiaryContentProvider.class.getName();
+
+    public static final String SEARCH_ACTIVITY = "de.rampro.activitydiary.action.SEARCH_ACTIVITY";
+    public static final String SEARCH_NOTE = "de.rampro.activitydiary.action.SEARCH_NOTE";
+    public static final String SEARCH_GLOBAL = "de.rampro.activitydiary.action.SEARCH_GLOBAL";
+    public static final String SEARCH_DATE = "de.rampro.activitydiary.action.SEARCH_DATE";
+
+    // TODO: isn't this already somewhere else?
+    public static final Uri SEARCH_URI = Uri.parse("content://" + ActivityDiaryContract.AUTHORITY);
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -68,12 +100,17 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryImage.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_image_ID);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryStats.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_stats);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryStats.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#/#", diary_stats);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
 
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_location);
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiaryLocation.CONTENT_URI.getPath().replaceAll("^/+", "") + "/#", diary_location_ID);
+// TODO:
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "history/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/", search_recent_suggestion);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "history/" + SearchManager.SUGGEST_URI_PATH_QUERY + "/*", search_suggestion);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_suggestion);
 
         /* TODO #18 */
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
@@ -94,11 +131,24 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
         boolean useRawQuery = false;
+        String grouping = null;
         String sql = "";
         Cursor c;
+        int id = 0;
+        if(selection == null){
+            selection = "";
+        }
 
-        if(sUriMatcher.match(uri) < 1)
-        {
+        MatrixCursor result = new MatrixCursor(new String[]{
+                BaseColumns._ID,
+                SUGGEST_COLUMN_TEXT_1,
+                SUGGEST_COLUMN_ICON_1,
+                SUGGEST_COLUMN_INTENT_ACTION,
+                SUGGEST_COLUMN_INTENT_DATA,
+                SUGGEST_COLUMN_QUERY
+        });
+
+        if (sUriMatcher.match(uri) < 1) {
             /* URI is not recognized, return an empty Cursor */
             return null;
         }
@@ -108,9 +158,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_ID:
             case diary_image_ID:
             case diary_location_ID:
-                if(selection != null) {
+                if (selection != null) {
                     selection = selection + " AND ";
-                }else{
+                } else {
                     selection = "";
                 }
                 selection = selection + "_id=" + uri.getLastPathSegment();
@@ -121,18 +171,72 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         switch (sUriMatcher.match(uri)) {
             case activities_ID: /* intended fall through */
             case activities:
-                qBuilder.setTables(ActivityDiaryContract.DiaryActivity.TABLE_NAME);
-                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                int n;
+                boolean hasDiaryJoin = false;
+                String tables = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
+                if (TextUtils.isEmpty(sortOrder)) {
+                    sortOrder = ActivityDiaryContract.DiaryActivity.SORT_ORDER_DEFAULT;
+                }
+                n = 0;
+                while(n < projection.length){
+                    if(ActivityDiaryContract.DiaryActivity.X_AVG_DURATION.equals(projection[n])){
+                        projection[n] = "AVG(" + ActivityDiaryContract.Diary.END + " - "
+                                + ActivityDiaryContract.Diary.START + ") AS "
+                                + ActivityDiaryContract.DiaryActivity.X_AVG_DURATION;
+                        hasDiaryJoin = true;
+                    }
+                    if(ActivityDiaryContract.DiaryActivity.X_START_OF_LAST.equals(projection[n])){
+                        projection[n] = "xx_start AS "
+                                + ActivityDiaryContract.DiaryActivity.X_START_OF_LAST;
+                        hasDiaryJoin = true;
+                    }
+                    n++;
+                }
+                if(hasDiaryJoin){
+                    n = 0;
+                    while(n < projection.length) {
+                        if(ActivityDiaryContract.DiaryActivity._ID.equals(projection[n])){
+                            projection[n] = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "."
+                                    + ActivityDiaryContract.DiaryActivity._ID;
+                        }
+                        n++;
+                    }
+                    selection = selection.replaceAll(" " + ActivityDiaryContract.DiaryActivity._ID, " " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID);
+                    selection = selection.replaceAll(ActivityDiaryContract.DiaryActivity._DELETED, ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._DELETED);
+
+                    tables = tables + ", " + ActivityDiaryContract.Diary.TABLE_NAME;
+                    tables = tables + ", (SELECT xx_ref, " + ActivityDiaryContract.Diary.START + " as xx_start FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ","
+                                    +     "(SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " AS xx_ref,"
+                                                 + " MAX(" + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.END + ") AS xx_ref_end"
+                                    +     " FROM " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + ", " + ActivityDiaryContract.Diary.TABLE_NAME
+                                    +     " WHERE " +  ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID
+                                    +           " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                                    +     " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                                    +     ")"
+                                    +    " WHERE " +  ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.END + " = xx_ref_end"
+                                    +  ")"
+                                        ;
+
+                    selection = selection + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID
+                                          + " AND " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " = xx_ref";
+
+                    grouping = ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
+
+                }
+                qBuilder.setTables(tables);
                 break;
+
             case diary_image_ID: /* intended fall through */
             case diary_image:
                 qBuilder.setTables(ActivityDiaryContract.DiaryImage.TABLE_NAME);
-                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT;
+                if (TextUtils.isEmpty(sortOrder))
+                    sortOrder = ActivityDiaryContract.DiaryImage.SORT_ORDER_DEFAULT;
                 break;
             case diary_location_ID: /* intended fall through */
             case diary_location:
                 qBuilder.setTables(ActivityDiaryContract.DiaryLocation.TABLE_NAME);
-                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.DiaryLocation.SORT_ORDER_DEFAULT;
+                if (TextUtils.isEmpty(sortOrder))
+                    sortOrder = ActivityDiaryContract.DiaryLocation.SORT_ORDER_DEFAULT;
                 break;
             case diary_ID: /* intended fall through */
             case diary:
@@ -142,38 +246,150 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " +
                         ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
                 );
-                if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
+                if (TextUtils.isEmpty(sortOrder))
+                    sortOrder = ActivityDiaryContract.Diary.SORT_ORDER_DEFAULT;
                 break;
             case diary_stats:
                 useRawQuery = true;
+                List<String> l = uri.getPathSegments();
+                String start;
+                String end;
 
-                String subselect = "SELECT SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") from " + ActivityDiaryContract.Diary.TABLE_NAME;
-                if(selectionArgs != null) {
-                    /* we duplicate the where condition, so we have to do the same with the arguments */
-                    String[] selArgs = new String[2 * selectionArgs.length];
-                    System.arraycopy(selectionArgs, 0, selArgs, 0, selectionArgs.length);
-                    System.arraycopy(selectionArgs, 0, selArgs, selectionArgs.length, selectionArgs.length);
-                    selectionArgs = selArgs;
+                if(l.size() == 3){
+                    // we have a range query with start and end timestamps here
+                    start = l.get(1);
+                    end = l.get(2);
+                }else{
+                    start = "0";
+                    end = "6156000000000"; // this is roughly 200 year since epoch, congratulations if this lasted so long...
                 }
-                if(selection != null && selection.length() > 0) {
-                    subselect += " WHERE " + selection;
+
+                String subselect = "SELECT SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - "
+                        + "MAX(" + ActivityDiaryContract.Diary.START + ", " + start + ")) from " + ActivityDiaryContract.Diary.TABLE_NAME
+                        + " WHERE ((start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + "))";
+
+                if (selection != null && selection.length() > 0) {
+                    subselect += " AND (" + selection + ")";
                 }
 
                 sql = "SELECT " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.NAME + " as " + ActivityDiaryContract.DiaryStats.NAME
                         + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity.COLOR + " as " + ActivityDiaryContract.DiaryStats.COLOR
-                        + ", SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") as " + ActivityDiaryContract.DiaryStats.DURATION
-                        + ", (SUM(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000) - " + ActivityDiaryContract.Diary.START + ") * 100.0 / (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
+                        + ", SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) as " + ActivityDiaryContract.DiaryStats.DURATION
+                        + ", (SUM(MIN(IFNULL(" + ActivityDiaryContract.Diary.END + ",strftime('%s','now') * 1000), " + end + ") - MAX(" + start + ", " + ActivityDiaryContract.Diary.START + ")) * 100.0 " +
+                        "/ (" + subselect + ")) as " + ActivityDiaryContract.DiaryStats.PORTION
                         + " FROM " + ActivityDiaryContract.Diary.TABLE_NAME + ", " + ActivityDiaryContract.DiaryActivity.TABLE_NAME
-                        + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID
+                        + " WHERE " + ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary.ACT_ID + " = " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID + " AND"
+                        + " ((start >= " + start + " AND start < " + end + ") OR (end > " + start + " AND end <= " + end + ") OR (start < " + start + " AND end > " + end + "))"
                 ;
                 if(selection != null && selection.length() > 0) {
                     sql += " AND (" + selection + ")";
+                    String[] newArgs = Arrays.copyOf(selectionArgs, selectionArgs.length * 2);
+                    System.arraycopy(selectionArgs, 0, newArgs, selectionArgs.length, selectionArgs.length);
+                    selectionArgs = newArgs;
                 }
                 sql += " GROUP BY " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + "." + ActivityDiaryContract.DiaryActivity._ID;
-                if(sortOrder != null && sortOrder.length() > 0) {
+                if (sortOrder != null && sortOrder.length() > 0) {
                     sql += " ORDER by " + sortOrder;
                 }
                 break;
+
+            case search_recent_suggestion:
+
+                sql = "SELECT " + ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + ", " +
+                        ActivityDiaryContract.DiarySearchSuggestion.ACTION + " FROM " +
+                        ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
+                        " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC";
+
+                c = mOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
+                if (c != null && c.moveToFirst()) {
+                    do {
+                        Object icon = null;
+                        String action = c.getString(1);
+                        String q = c.getString(0); // what do we want to display
+
+                        if(action.equals(SEARCH_ACTIVITY)) {
+                            /* icon stays null */
+                            int i = Integer.parseInt(q);
+                            q = ActivityHelper.helper.activityWithId(i).getName();
+                        }else if(action.equals(SEARCH_NOTE)){
+                            q = getContext().getResources().getString(R.string.search_notes, q);
+                            icon = R.drawable.ic_search;
+                        }else if(action.equals(SEARCH_GLOBAL) || action.equals(Intent.ACTION_SEARCH)){
+                            q = getContext().getResources().getString(R.string.search_diary, q);
+                            icon = R.drawable.ic_search;
+                        }else if(action.equals(SEARCH_DATE)){
+                            q = getContext().getResources().getString(R.string.search_date, q);
+                            icon = R.drawable.ic_calendar;
+                        }
+
+                        result.addRow(new Object[]{id++,
+                                q,
+                                /* icon */ icon,
+                                /* intent action */ action,
+                                /* intent data */ Uri.withAppendedPath(SEARCH_URI, c.getString(0)),
+                                /* rewrite query */c.getString(0)
+                        });
+                    } while (c.moveToNext());
+                }
+
+                return result;
+
+
+            case search_suggestion:
+                String query = uri.getLastPathSegment(); //.toLowerCase();
+
+                if (query != null && query.length() > 0) {
+                    // activities matching the current search
+                    ArrayList<DiaryActivity> filtered = ActivityHelper.helper.sortedActivities(query);
+
+                    // TODO: make the amount of activities shown configurable
+                    for (int i = 0; i < 3; i++) {
+                        if (i < filtered.size()) {
+                            result.addRow(new Object[]{id++,
+                                    filtered.get(i).getName(),
+                                    /* icon */ null,
+                                    /* intent action */ SEARCH_ACTIVITY,
+                                    /* intent data */ Uri.withAppendedPath(SEARCH_URI, Integer.toString(filtered.get(i).getId())),
+                                    /* rewrite query */filtered.get(i).getName()
+                            });
+                        }
+                    }
+                    // Notes
+                    result.addRow(new Object[]{id++,
+                            getContext().getResources().getString(R.string.search_notes, query),
+                            /* icon */ R.drawable.ic_search,
+                            /* intent action */ SEARCH_NOTE,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
+                    });
+
+                    // Global search
+                    result.addRow(new Object[]{id++,
+                            getContext().getResources().getString(R.string.search_diary, query),
+                            /* icon */ R.drawable.ic_search,
+                            /* intent action */ SEARCH_GLOBAL,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
+                    });
+
+                    // Date
+                    result.addRow(new Object[]{id++,
+                            getContext().getResources().getString(R.string.search_date, query),
+                            /* icon */ R.drawable.ic_calendar,
+                            /* intent action */ SEARCH_DATE,
+                            /* intent data */ Uri.withAppendedPath(SEARCH_URI, query),
+                            /* rewrite query */ query
+                    });
+
+                    // has Pictures
+                    // TODO: add picture search
+
+                    // Location (GPS)
+                    // TODO: add location search
+
+                }
+                return result;
+
             case conditions_ID:
                 /* intended fall through */
             case conditions:
@@ -183,14 +399,14 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* empty */
         }
 
-        if(useRawQuery){
+        if (useRawQuery) {
             c = mOpenHelper.getReadableDatabase().rawQuery(sql, selectionArgs);
-        }else {
+        } else {
             c = qBuilder.query(mOpenHelper.getReadableDatabase(),
                     projection,
                     selection,
                     selectionArgs,
-                    null,
+                    grouping,
                     null,
                     sortOrder);
         }
@@ -229,7 +445,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         String table;
         Uri resultUri;
 
-        switch(sUriMatcher.match(uri)) {
+        switch (sUriMatcher.match(uri)) {
             case activities:
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiaryActivity.CONTENT_URI;
@@ -245,6 +461,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_location:
                 table = ActivityDiaryContract.DiaryLocation.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiaryLocation.CONTENT_URI;
+                break;
+            case diary_suggestion:
+                table = ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME;
+                resultUri = ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI;
                 break;
             case conditions:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
@@ -267,7 +487,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                     notifyChange(resultUri, null);
 
             return resultUri;
-        }else {
+        } else {
             throw new SQLException(
                     "Problem while inserting into uri: " + uri + " values " + values.toString());
         }
@@ -299,7 +519,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         boolean isGlobalDelete = false;
         String table;
         ContentValues values = new ContentValues();
-        switch(sUriMatcher.match(uri)) {
+        switch (sUriMatcher.match(uri)) {
             case activities_ID:
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 break;
@@ -321,6 +541,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             case diary_location_ID:
                 table = ActivityDiaryContract.DiaryLocation.TABLE_NAME;
                 break;
+            case diary_suggestion:
+                table = ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME;
+                SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+                return db.delete(table, selection, selectionArgs);
             case conditions_ID:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
 //                break;
@@ -330,10 +554,10 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         "Unsupported URI for deletion: " + uri);
         }
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        if(!isGlobalDelete) {
-            if(selection != null) {
+        if (!isGlobalDelete) {
+            if (selection != null) {
                 selection = selection + " AND ";
-            }else{
+            } else {
                 selection = "";
             }
             selection = selection + "_id=" + uri.getLastPathSegment();
@@ -344,13 +568,13 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 values,
                 selection,
                 selectionArgs);
-        if(upds > 0) {
+        if (upds > 0) {
             getContext().
                     getContentResolver().
                     notifyChange(uri, null);
 
-        }else {
-            Log.i(TAG,"Could not delete anything for uri: " + uri + " with selection '" + selection + "'");
+        } else {
+            Log.i(TAG, "Could not delete anything for uri: " + uri + " with selection '" + selection + "'");
         }
         return upds;
     }
@@ -377,7 +601,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @NonNull ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         String table;
         boolean isID = false;
-        switch(sUriMatcher.match(uri)) {
+        switch (sUriMatcher.match(uri)) {
             case activities_ID:
                 isID = true;
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
@@ -405,7 +629,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                         "Unsupported URI for update: " + uri);
         }
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        if(isID) {
+        if (isID) {
             if (selection != null) {
                 selection = selection + " AND ";
             } else {
@@ -418,12 +642,12 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 values,
                 selection,
                 selectionArgs);
-        if(upds > 0) {
+        if (upds > 0) {
             getContext().
                     getContentResolver().
                     notifyChange(uri, null);
 
-        }else if(isID) {
+        } else if (isID) {
             throw new SQLException(
                     "Problem while updating uri: " + uri + " with selection '" + selection + "'");
         }

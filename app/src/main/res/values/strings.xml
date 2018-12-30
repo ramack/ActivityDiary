@@ -1,3 +1,23 @@
+<!--
+  ~ ActivityDiary
+  ~
+  ~ Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2018 Bc. Ondrej Janitor
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
 <resources>
     <string name="app_name">Activity Diary</string>
     <string name="about_text_version">version <b>%1$s</b></string>
@@ -5,6 +25,8 @@
     <string name="about_text_licence_h">License</string>
     <string name="about_text_licence"><![CDATA[%1$s is free software: you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
     <string name="about_text_license_2">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</string>
+    <string name="about_text_privacy_h">Privacy Policy</string>
+    <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">Contact</string>
     <string name="about_text_contact"><![CDATA[For bugs and suggestions use the <a href="https://github.com/ramack/ActivityDiary/issues">issue tacker</a>, preferably in English language.]]></string>
     <string name="about_text_contact_2"><![CDATA[Source code can be found on <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
@@ -16,10 +38,12 @@
     <string name="about_text_lib">The following libraries are used by this application and licensed under the named licenses:</string>
 
     <string name="contributors" translatable="false"><![CDATA[
-        <p>Raphael Mack (<a href="https://www.raphael-mack.de">www.raphael-mack.de</a>)</p>
+        <p><a href="https://www.raphael-mack.de">Raphael Mack</a> (developer)</p>
         <p><a href="https://web.facebook.com/profile.php?id=100011025332183">Murtala Umar</a> (Indonesian translation)</p>
         <p><a href="https://t.me/LinuxWorldIt">Tommaso</a> (Italian translation)</p>
         <p><a href="https://github.com/Tobaloidee">JC Abuyot</a> (Graphics)</p>
+        <p><a href="https://github.com/ondri124">Bc. Ondrej Janitor</a></p>
+        <p><a href="https://github.com/vit1-irk">Viktor Fedenyov</a></p> (Russian translation)
         ]]>
     </string>
     <string name="libraries" translatable="false"><![CDATA[
@@ -28,7 +52,7 @@
         <p><a href="https://github.com/Pes8/android-material-color-picker-dialog">Android Material Color Picker Dialog</a> by Simone Pessotto, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="https://github.com/ACRA/acra">ACRA - Application Crash Reports for Android</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
-        <p>appcompat, cardview, constraint-layout, recyclerview, design, preference, exifinterface, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p>appcompat, cardview, constraint-layout, recyclerview, design, preference, exifinterface, android.arch.lifecycle license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         ]]></string>
     <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
 
@@ -45,6 +69,7 @@
 
     <string name="nav_settings">Settings</string>
     <string name="nav_about">About</string>
+    <string name="nav_privacy" translatable="false">@string/about_text_privacy_h</string>
 
     <string name="desc_activity_color">Activity color</string>
     <string name="desc_activity_hint">Activity title</string>
@@ -72,6 +97,14 @@
     <string name="setting_datetime_format">Date format</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Display format of the date and time for the start of an activity. Usual formats are yyyy-MM-dd HH:mm or dd.MM. hh:mm</string>
+
+    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
+    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
+    <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
+    <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
+    <string name="setting_duration_format_description">Display format of the time durations.</string>
+
     <string name="setting_auto_select_new">Select new activities</string>
     <string name="setting_auto_select_new_summary_active">A freshly created activity is directly selected as the new active one</string>
     <string name="setting_auto_select_new_summary_inactive">Creation of new actitivies does not influence the currently active activity</string>
@@ -154,12 +187,17 @@
     <string name="activity_title_history_detail">Diary entry</string>
     <string name="activity_subtitle_main">What are you doing?</string>
     <string name="activity_title_about">About</string>
+    <string name="activity_title_privacy_policy" translatable="false">@string/about_text_privacy_h</string>
     <string name="activity_title_stats">Statistics</string>
     <string name="activity_title_map">Map</string>
     <string name="activity_title_settings">Settings</string>
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">Note</string>
     <string name="activities">Activities</string>
+
+    <string name="fragment_detail_stats_title">Statistics</string>
+    <string name="fragment_detail_note_title">Note</string>
+    <string name="fragment_detail_pictures_title">Pictures</string>
 
     <!-- actions -->
     <string name="action_delete">Delete activity</string>
@@ -169,7 +207,7 @@
     <string name="action_undo">UNDO</string>
     <string name="search_hint">Search activity&#8230;</string>
     <string name="search_description">Entries in the ActivityDiary</string>
-    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.search.ActivityDiarySuggestionProvider</string>
+    <string name="search_provider_authority" translatable="false">de.rampro.activitydiary.provider</string>
 
     <!-- dialog -->
     <string name="dlg_ok">OK</string>
@@ -204,6 +242,9 @@
         <item quantity="one">%d Day</item>
         <item quantity="other">%d Days</item>
     </plurals>
+    <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="last_done_description">Last start: %1$s</string>
+    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
 
     <string name="camera_error">Something went wrong here. Could not store image.</string>
     <string name="no_active_activity_error">To perform this action it is necessary to select an activity first</string>
@@ -214,6 +255,7 @@
     <string name="error_name_already_used_in_deleted">A deleted activity with name %1$s already exists</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Rename deleted activity with same name to resolve the conflict</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Undelete activity with same name</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Recovered activity %1$s. It is now selectable again.</string>
     <string name="renamed_deleted_activity_toast">Renamed the already deleted activity %1$s.</string>
     <string name="edit_existing_activity_toast">Now editing the existing activity with name %1$s.</string>
@@ -240,6 +282,7 @@
     <!-- statistics -->
     <string name="earlier">earlier</string>
     <string name="later">later</string>
+    <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Week\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
@@ -253,5 +296,46 @@
     <string name="crash_dialog_text">An unexpected error occurred forcing the application to stop. Please help us fix this by sending us error data, all you have to do is click OK.</string>
     <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
     <string name="crash_dialog_ok_toast">Thank you. Please send the prepared email after reviewing its content.</string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_text">ActivityDiary is a free, libre and open source application to track your activities. This privacy policy applies to this Android application and describes what data is stored and processed by the ActivityDiary.</string>
+    <string name="privacy_last_update">Last updated December 22, 2018</string>d
+    <string name="privacy_intro_title">Introduction</string>
+    <string name="privacy_intro_text1">Developers of ActivityDiary, we (or “us” or “our”) respect the privacy of our users (“user” or “you”). As the aim of this application is to keep a record of your activites a lot of sensitive personal information is collected and stored. Nevertheless this is your data and you have full control over it. This Privacy Policy explains how the ActivityDiary application (the “Application”) collects, uses, discloses, and safeguards your information. Our names can be extracted from the meta data in the git repositories and within the Application.</string>
+    <string name="privacy_intro_text2">Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Application and remove it from your device.</string>
+    <string name="privacy_intro_text3">We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the “Last updated” date of this Privacy Policy.</string>
+    <string name="privacy_intro_text4">You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Application after the date such revised Privacy Policy is posted.</string>
+    <string name="privacy_intro_text5">This Privacy Policy does not apply to the third-party online/mobile store from which you install the Applications or make payments, which may also collect and use data about you. We are not responsible for any of the data collected by any such third party.</string>
+    <string name="privacy_what_title">What data is processed and stored?</string>
+    <string name="privacy_what_subTitle1">Activity Data</string>
+    <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
+    <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
+    <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
+    <string name="privacy_what_subTitle3">Device storage (WRITE_EXTERNAL_STORAGE)</string>
+    <string name="privacy_what_subText3a">Storage and retreival of backups, photos and other files you attach to your activity diary need access to Androids "external storage" / SD card.</string>
+    <string name="privacy_what_subTitle4">Camera</string>
+    <string name="privacy_what_subText4a">The application enables you to take photos with your devices\' camera and attach them to your activity diary. This is the only usage of the camera permission.</string>
+    <string name="privacy_what_subTitle5">Network state (ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE)</string>
+    <string name="privacy_what_subText5a">Network and WIFI state is stored to correlate activities to those data and to propose and set next activites based on the current state.</string>
+    <string name="privacy_what_subTitle6">Crash Reporting</string>
+    <string name="privacy_what_subText6a">In case of a program fault (crash) the application prepares a report that helps us to improve the behavior of the application. This report contains a lot of technical data about your device and operating system, the complete preferences of the application and the trace of program steps that was exectued right before the crash. The hardware of your device including but not limited to screen size and resolution, the manufacturer, the language setting and versions of the operating system and application are identifiable. The repared report is not transmitted automatically, but shared to your email application in a newly composed email that you - at your own will - can send to us or whomever you want. Protecting the data during transmission by using encrypted email transfer is under responsibility of you and your mail service provider. We highly recommend to thoroughfully review the report and remove all data you don\'t want to share or understand.</string>
+    <string name="privacy_what_subText6b">As the used media is email you will disclose your name, email address, and several other technical data like IP address and email service provider by transmitting a crash report. We will not use this information for anything else than contacting you about the crash.</string>
+    <string name="privacy_what_subText6c">Anonymous extracts of the report that do not allow your indentification might be used in the public issue tracker for documenting the crash and tracking the rework.</string>
+    <string name="privacy_what_subText6d">Additional to this report prepared by the application your operating system or services on you device might transmit crash or usage reports, but those are not part of ActivityDiary, not covered by this privacy policy and under your own responsibility.</string>
+
+    <string name="privacy_why_title">Why does the application store data?</string>
+    <string name="privacy_why_text1">The Applications is designed to create a record of your activites. This is achieved by selecting the current activities manually or automatically, based on evaluation of data collected by you or your device. The data you enter into the application is stored for later retreival by the user. The application stores and evaluates data of different sensors of your device to suggest or even automatically select the next activities. No data is collected, transmitted or stored that is not required for its intended functionality.</string>
+    <string name="privacy_why_text2">When you access the Application, your personal information is stored and evaluated locally on your device and not transmitted to any organization or company without your explicity request.</string>
+    <string name="privacy_why_text3">The stored data can be deleted by removing the application and deleting the backups created by you and backup mechanisms of your device.</string>
+    <string name="privacy_how_title">How is the data protected?</string>
+    <string name="privacy_how_text1">The Application store unencrypted data locally on the device it is executed on. You are responsible to protect the stored data from unauthorized access. We highly recommend to protect your device with a strong password and even encrypt your devices\' storage. Backups created by the application itself or any device backup mechanism also need to be protected by you in a similar fashion.</string>
+    <string name="privacy_security_title">Security of your information</string>
+    <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
+    <string name="privacy_rights_title">Your rights</string>
+    <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
+    <string name="privacy_contact_title">Contact us</string>
+    <string name="privacy_contact_text">If you have questions or comments about this Privacy Policy, please contact us at:</string>
+    <string name="privacy_contact_address" translatable="false">Raphael Mack, Joh.-Seb.-Bach-Str. 3, 74321 Bietigheim-Bissingen (Germany)</string>
+    <string name="privacy_contact_email" translatable="false">activity-diary@rampro.de</string>
 
 </resources>

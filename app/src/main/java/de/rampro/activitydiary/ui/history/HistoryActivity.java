@@ -1,7 +1,8 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2017 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Bc. Ondrej Janitor
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,14 +26,15 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentProviderClient;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.CursorLoader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -52,7 +54,6 @@ import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
-import de.rampro.activitydiary.search.ActivityDiarySuggestionProvider;
 import de.rampro.activitydiary.ui.generic.BaseActivity;
 import de.rampro.activitydiary.ui.generic.DetailRecyclerViewAdapter;
 import de.rampro.activitydiary.ui.generic.EditActivity;
@@ -76,6 +77,7 @@ public class HistoryActivity extends BaseActivity implements
             ActivityDiaryContract.DiaryActivity.COLOR
     };
     private static final String SELECTION = ActivityDiaryContract.Diary.TABLE_NAME + "." + ActivityDiaryContract.Diary._DELETED + "=0";
+    private static final int SEARCH_SUGGESTION_DISPLAY_COUNT = 5;
 
     private static final int LOADER_ID_HISTORY = -1;
     private static final int SEARCH_TYPE_ACTIVITYID = 1;
@@ -124,6 +126,7 @@ public class HistoryActivity extends BaseActivity implements
         // handled via Intent
         return false;
     }
+
 
     @Override
     public void onBackPressed() {
@@ -187,7 +190,6 @@ public class HistoryActivity extends BaseActivity implements
 
         // Get the intent, verify the action and get the query
         handleIntent(getIntent());
-
     }
 
     @Override
@@ -197,42 +199,64 @@ public class HistoryActivity extends BaseActivity implements
     }
 
     private void handleIntent(Intent intent) {
-        if (ActivityDiarySuggestionProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-
+        String query = null;
+        String action = intent.getAction();
+        if (ActivityDiaryContentProvider.SEARCH_ACTIVITY.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
             Uri data = intent.getData();
             if (data != null) {
+                query = data.getLastPathSegment();
                 long id = Long.decode(data.getLastPathSegment());
                 filterHistoryView(id);
             }
-        } else if (ActivityDiarySuggestionProvider.SEARCH_NOTE.equals(intent.getAction())) {
+        } else if (ActivityDiaryContentProvider.SEARCH_NOTE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
-                String query = data.getLastPathSegment();
+                query = data.getLastPathSegment();
                 filterHistoryNotes(query);
             }
 
-        } else if (ActivityDiarySuggestionProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
+        } else if (ActivityDiaryContentProvider.SEARCH_GLOBAL.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
-                String query = data.getLastPathSegment();
+                query = data.getLastPathSegment();
                 filterHistoryView(query);
             }
-        } else if (ActivityDiarySuggestionProvider.SEARCH_DATE.equals(intent.getAction())) {
+        } else if (ActivityDiaryContentProvider.SEARCH_DATE.equals(intent.getAction())) {
             Uri data = intent.getData();
             if (data != null) {
-                String query = data.getLastPathSegment();
+                query = data.getLastPathSegment();
                 filterHistoryDates(query);
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            query = intent.getStringExtra(SearchManager.QUERY);
+            action = ActivityDiaryContentProvider.SEARCH_GLOBAL;
             filterHistoryView(query);
         }
-            /* TODO: save recent query
-            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
-                    MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE);
-            suggestions.saveRecentQuery(query, null);
-*/
+        /*
+            if query was searched, then insert query into suggestion table
+         */
+        if (query != null) {
+            Uri uri = ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI;
+
+            ContentValues values = new ContentValues();
+
+            getContentResolver().delete(uri,
+                    ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE ? AND "
+                    + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE ?",
+                    new String[]{query, intent.getAction()});
+
+            values.put(ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION, query);
+            values.put(ActivityDiaryContract.DiarySearchSuggestion.ACTION, action);
+            getContentResolver().insert(uri, values);
+
+            getContentResolver().delete(uri,
+                    ActivityDiaryContract.DiarySearchSuggestion._ID +
+                    " IN (SELECT " + ActivityDiaryContract.DiarySearchSuggestion._ID +
+                    " FROM " + ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
+                    " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)",
+                    null);
+        }
     }
 
     @Override
@@ -245,11 +269,27 @@ public class HistoryActivity extends BaseActivity implements
         searchMenuItem = menu.findItem(R.id.action_filter);
         searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setIconifiedByDefault(true);
-
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnCloseListener(this);
         searchView.setOnQueryTextListener(this);
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                return false;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                CursorAdapter selectedView = searchView.getSuggestionsAdapter();
+                Cursor cursor = (Cursor) selectedView.getItem(position);
+                int index = cursor.getColumnIndexOrThrow(SearchManager.SUGGEST_COLUMN_QUERY);
+                String q = cursor.getString(index);
+                searchView.setQuery(q, false);
+                return false; // let super handle all the real search stuff
+            }
+        });
+
         searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
 //TODO to make it look nice
 //        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
@@ -350,13 +390,12 @@ public class HistoryActivity extends BaseActivity implements
                         break;
                 }
             }
-
             return new CursorLoader(this, ActivityDiaryContract.Diary.CONTENT_URI,
                     PROJECTION, sel, sel_args, null);
         } else {
             return new CursorLoader(HistoryActivity.this,
                     ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                    new String[]{ActivityDiaryContract.DiaryImage._ID,
+                    new String[] {ActivityDiaryContract.DiaryImage._ID,
                             ActivityDiaryContract.DiaryImage.URI},
                     ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
                             + ActivityDiaryContract.DiaryImage._DELETED + "=0",
@@ -442,6 +481,7 @@ public class HistoryActivity extends BaseActivity implements
      * @return millis of parsed input
      */
     private Long checkDateFormatAndParse(String date){
+        // TODO: generalize data format for search
         String[] formats = {
                 getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
                 ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(getApplicationContext())).toLocalizedPattern() //locale format
