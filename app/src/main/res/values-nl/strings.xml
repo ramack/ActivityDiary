@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Er is hier iets misgegaan. Kan afbeelding niet opslaan.</string>
     <string name="no_active_activity_error">Om deze actie uit te voeren, moet u eerst een activiteit selecteren</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Activiteit met naam %1$s bestaat al</string>
     <string name="tooltip_quickfix_btn_edit_existing">Weiger de huidige bewerking en open in plaats daarvan de bestaande activiteit met dezelfde naam</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">yyyy.MM.dd UU: mm</string>
     <string name="date_format">jjjj.mm.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">Begin</string>
-    <string name="history_end">Einde</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Begin datum</string>
     <string name="desc_start_time">Starttijd</string>
     <string name="desc_end_date">Einddatum</string>
