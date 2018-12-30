@@ -206,7 +206,7 @@
     <string name="date_format">yyyy-MM-dd</string>
     <string name="time_format">TT: MM</string>
     <string name="history_start">Start: %1$s</string>
-    <string name="history_end">End: %1$s</string>
+    <string name="history_end">End: %1$s (%2$s)</string>
     <string name="desc_start_date">Start datum</string>
     <string name="desc_start_time">Starttid</string>
     <string name="desc_end_date">Slutdatum</string>
