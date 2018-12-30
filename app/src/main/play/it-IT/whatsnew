@@ -1,5 +1,5 @@
-- Tracciamento della posizione aggiunta (richiede l'attivazione nelle impostazioni e non è ancora stata utilizzata per proporre attività successive)
-- Aggiunto il grafico a torta per le statistiche in granularità selezionabile
-- Pausa semplificata: le ultime attività finite hanno una priorità più alta
-- Ricerca migliorata
+- Added privacy policy, please read!
+- Detect similar activity names on creation
+- Added statistics for current activity
+- Improved statistics view: add Day granularity and selectable format
 - Diverse correzioni di bug
