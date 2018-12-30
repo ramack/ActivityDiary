@@ -187,6 +187,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Nkankan kan ti ko tọ si ibi. Ko le tọju aworan.</string>
     <string name="no_active_activity_error">Lati ṣe iṣe yii o jẹ dandan lati yan aṣayan iṣẹ akọkọ</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Iṣẹ ṣiṣe pẹlu orukọ %1$s tẹlẹ wa</string>
     <string name="tooltip_quickfix_btn_edit_existing">Kọ satunkọ lọwọlọwọ ati ṣiṣi ṣiṣe ṣiṣe tẹlẹ pẹlu orukọ kanna dipo</string>
@@ -201,8 +202,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">Bẹrẹ</string>
-    <string name="history_end">Ipari</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Ọjọ ibẹrẹ</string>
     <string name="desc_start_time">Akoko akoko</string>
     <string name="desc_end_date">Ọjọ ipari</string>
