@@ -205,8 +205,8 @@
     <string name="default_datetime_format">yyy.MM.dd HH:mm</string>
     <string name="date_format">dd/MM/yyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="headline_start">Inizio</string>
-    <string name="headline_end">Fine</string>
+    <string name="history_start">Inizio</string>
+    <string name="history_end">Fine</string>
     <string name="desc_start_date">Data d\'inizio</string>
     <string name="desc_start_time">Ora di inizio</string>
     <string name="desc_end_date">Data di fine</string>

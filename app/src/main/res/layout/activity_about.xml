@@ -36,6 +36,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
             android:scaleType="centerInside"
+            android:contentDescription="@string/contentDesc_logo"
             android:src="@drawable/feature_graphic" />
 
         <TextView

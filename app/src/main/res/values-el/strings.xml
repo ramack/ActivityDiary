@@ -205,8 +205,8 @@
     <string name="default_datetime_format">dd/MM/yyy HH:mm</string>
     <string name="date_format">dd/MM/yyyy</string>
     <string name="time_format">HH: mm</string>
-    <string name="headline_start">Αρχή</string>
-    <string name="headline_end">Τέλος</string>
+    <string name="history_start">Αρχή</string>
+    <string name="history_end">Τέλος</string>
     <string name="desc_start_date">Ημερομηνία έναρξης</string>
     <string name="desc_start_time">Ωρα έναρξης</string>
     <string name="desc_end_date">Ημερομηνία λήξης</string>

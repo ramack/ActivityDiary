@@ -205,8 +205,8 @@
     <string name="default_datetime_format">yyyy-MM-dd HH:mm</string>
     <string name="date_format">yyyy-MM-dd</string>
     <string name="time_format">TT: MM</string>
-    <string name="headline_start">Start</string>
-    <string name="headline_end">Slutet</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">Slutet</string>
     <string name="desc_start_date">Start datum</string>
     <string name="desc_start_time">Starttid</string>
     <string name="desc_end_date">Slutdatum</string>
