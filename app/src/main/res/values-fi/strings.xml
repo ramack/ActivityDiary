@@ -197,6 +197,7 @@
     <string name="error_name_already_used_in_deleted">Poistunut toiminta nimeltä %1$s jo olemassa</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Nimeä uudelleen poistettu toiminta samalla nimellä konfliktin ratkaisemiseksi</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Poista käytöstä sama nimi</string>
+    <string name="error_name_similar">New activity name similar to %1$s</string>
     <string name="recover_activity_toast">Palautettu toiminta %1$s. Nyt se on valittavissa uudelleen.</string>
     <string name="renamed_deleted_activity_toast">Nimeä uudelleen jo poistettu toiminta %1$s.</string>
     <string name="edit_existing_activity_toast">Nyt muokataan nykyistä toimintaa nimillä %1$s.</string>
