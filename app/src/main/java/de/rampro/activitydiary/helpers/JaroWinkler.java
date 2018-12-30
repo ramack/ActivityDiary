@@ -2,6 +2,8 @@
  * ActivityDiary
  *
  * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Sam Partee
+ * Copyright (C) 2015 Thibault Debatty
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,9 +17,35 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This file is mainly based on source code from Thibault Debatty,
+ * https://github.com/tdebatty/java-string-similarity which is licensed under
+ * MIT license:
+ *
+ * Copyright 2015 Thibault Debatty.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
 package de.rampro.activitydiary.helpers;
+
+import android.support.annotation.NonNull;
 
 import java.util.Arrays;
 
@@ -31,7 +59,6 @@ import java.util.Arrays;
  * detection) (Winkler, 1990). It returns a value in the interval [0.0, 1.0].
  * The distance is computed as 1 - Jaro-Winkler similarity.
  *
- * Code adapted from https://github.com/tdebatty/java-string-similarity#jaro-winkler
  */
 public class JaroWinkler {
 
@@ -73,9 +100,8 @@ public class JaroWinkler {
      * @param s1 The first string to compare.
      * @param s2 The second string to compare.
      * @return The Jaro-Winkler similarity in the range [0, 1]
-     * @throws NullPointerException if s1 or s2 is null.
      */
-    public final double similarity(final String s1, final String s2) {
+    public final double similarity(@NonNull final String s1, @NonNull final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
         }
@@ -109,13 +135,12 @@ public class JaroWinkler {
      * @param s1 The first string to compare.
      * @param s2 The second string to compare.
      * @return 1 - similarity.
-     * @throws NullPointerException if s1 or s2 is null.
      */
-    public final double distance(final String s1, final String s2) {
+    public final double distance(@NonNull final String s1, @NonNull final String s2) {
         return 1.0 - similarity(s1, s2);
     }
 
-    private int[] matches(final String s1, final String s2) {
+    private int[] matches(@NonNull final String s1, @NonNull final String s2) {
         String max, min;
         if (s1.length() > s2.length()) {
             max = s1;
@@ -174,4 +199,3 @@ public class JaroWinkler {
         return new int[]{matches, transpositions / 2, prefix, max.length()};
     }
 }
-

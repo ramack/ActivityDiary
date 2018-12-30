@@ -2,6 +2,7 @@
  * ActivityDiary
  *
  * Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Sam Partee
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,11 +41,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 import com.pes.androidmaterialcolorpickerdialog.ColorPickerCallback;
+
+import java.util.LinkedList;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
@@ -80,15 +82,22 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private int linkCol; /* accent color -> to be sued for links */
     private ImageButton mQuickFixBtn1;
     private ImageButton mBtnRenameDeleted;
-    private boolean checkOngoing;
 
-    private boolean isCheckOngoing() {
-        return checkOngoing;
+    private int checkState = CHECK_STATE_CHECKING;
+    private static final int CHECK_STATE_CHECKING = 0;
+    private static final int CHECK_STATE_OK = 1;
+    private static final int CHECK_STATE_WARNING = 2;
+    private static final int CHECK_STATE_ERROR = 3;
+
+    JaroWinkler mJaroWinkler = new JaroWinkler(0.8);
+
+    private int getCheckState() {
+        return checkState;
     }
 
-    private void setCheckOngoing(boolean checkOngoing) {
-        this.checkOngoing = checkOngoing;
-        if(checkOngoing && mActivityNameTIL != null){
+    private void setCheckState(int checkState) {
+        this.checkState = checkState;
+        if(checkState == CHECK_STATE_CHECKING && mActivityNameTIL != null){
             mActivityNameTIL.setError("...");
         }
     }
@@ -104,17 +113,20 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
             if ((cursor != null)) {
                 if(token == SIMILAR_ACTIVITY) {
                     if (cursor.moveToFirst()) {
-                        String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
-                        JaroWinkler jw = new JaroWinkler(.7);
-                        while (cursor.moveToNext()) {
-                            double metric = jw.similarity(mActivityName.getText().toString(), name);
-                            if (metric == 1.0) {
+                        LinkedList<String> similarNames = new LinkedList<>();
+                        do {
+                            String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                            double metric = mJaroWinkler.similarity(mActivityName.getText().toString(), name);
+                            if (metric >= 1.0) {
                                 checkConstraints();
+                            }else if (metric > .85) {
+                                similarNames.add(name);
                             }
-                            if (metric > .8 && metric < 1.0) {
-                                mActivityNameTIL.setError("new activity name similar to " + name);
-                            }
-                            name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                        }while (cursor.moveToNext());
+                        if(!similarNames.isEmpty()) {
+                            String sims = android.text.TextUtils.join(", ", similarNames);
+                            mActivityNameTIL.setError(getResources().getString(R.string.error_name_similar, sims));
+                            setCheckState(CHECK_STATE_WARNING);
                         }
                     }
                 }
@@ -124,6 +136,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         boolean deleted = (cursor.getLong(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._DELETED)) != 0);
                         int actId = cursor.getInt(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity._ID));
                         String name = cursor.getString(cursor.getColumnIndex(ActivityDiaryContract.DiaryActivity.NAME));
+                        setCheckState(CHECK_STATE_ERROR);
 
                         if(deleted) {
                             CharSequence str = getResources().getString(R.string.error_name_already_used_in_deleted, cursor.getString(0));
@@ -143,12 +156,13 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             Toast.LENGTH_LONG).show();
 
                                     refreshElements();
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
                             mBtnRenameDeleted.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v) {
-                                    setCheckOngoing(true);
+                                    setCheckState(CHECK_STATE_CHECKING);
                                     Toast.makeText(EditActivity.this,
                                             getResources().getString(R.string.renamed_deleted_activity_toast, name),
                                             Toast.LENGTH_LONG).show();
@@ -166,6 +180,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             new String[]{newName},
                                             null
                                             );
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
 
@@ -184,6 +199,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                                             Toast.LENGTH_LONG).show();
 
                                     refreshElements();
+                                    setCheckState(CHECK_STATE_OK);
                                 }
                             });
                         }
@@ -193,9 +209,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         mQuickFixBtn1.setOnClickListener(null);
                         mBtnRenameDeleted.setVisibility(View.GONE);
                         mBtnRenameDeleted.setOnClickListener(null);
+                        setCheckState(CHECK_STATE_OK);
                     }
-                    setCheckOngoing(false);
-
                 }
                 else if(token == TEST_DELETED_NAME){
                     ContentValues values = (ContentValues)cookie;
@@ -245,7 +260,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
             if (token == RENAME_DELETED_ACTIVITY) {
                 checkConstraints();
             } else {
-                setCheckOngoing(false);
+                setCheckState(CHECK_STATE_OK);
             }
         }
     }
@@ -283,7 +298,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
         }else{
             linkCol = getResources().getColor(R.color.colorAccent);
         }
-        setCheckOngoing(true);
+        setCheckState(CHECK_STATE_CHECKING);
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Intent i = getIntent();
         int actId = i.getIntExtra("activityID", -1);
@@ -388,9 +404,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                 finish();
                 break;
             case R.id.action_edit_done:
-                if(!isCheckOngoing()) {
+                if(getCheckState() != CHECK_STATE_CHECKING) {
                     CharSequence error = mActivityNameTIL.getError();
-                    if (error != null && error.length() > 0) {
+                    if (getCheckState() == CHECK_STATE_ERROR) {
                         Toast.makeText(EditActivity.this,
                                 error,
                                 Toast.LENGTH_LONG
@@ -415,7 +431,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     }
 
     private void checkConstraints() {
-        setCheckOngoing(true);
+        setCheckState(CHECK_STATE_CHECKING);
 
         if (currentActivity == null) {
             mQHandler.startQuery(QUERY_NAMES,
@@ -437,7 +453,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     }
 
     private void checkSimilarNames() {
-        setCheckOngoing(true);
+        setCheckState(CHECK_STATE_CHECKING);
 
         mQHandler.startQuery(SIMILAR_ACTIVITY,
                 null,

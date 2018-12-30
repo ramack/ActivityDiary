@@ -2,6 +2,7 @@
  * ActivityDiary
  *
  * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2018 Sam Partee
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +20,6 @@
 
 package de.rampro.activitydiary.helpers;
 
-import org.apache.tools.ant.taskdefs.Jar;
 import org.junit.Test;
 
 import de.rampro.activitydiary.helpers.JaroWinkler;
