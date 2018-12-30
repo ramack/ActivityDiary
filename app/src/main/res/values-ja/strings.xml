@@ -184,6 +184,7 @@
     </plurals>
     <string name="avg_duration_description">Average duration: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
+    <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">ここで何かが間違っていた。画像を保存できませんでした。</string>
     <string name="no_active_activity_error">このアクションを実行するには、最初にアクティビティを選択する必要があります</string>
     <!-- edit view -->
