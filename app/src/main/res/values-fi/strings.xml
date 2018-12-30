@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Jotain meni vikaan täällä. Kuvan tallentamista ei voitu tallentaa.</string>
     <string name="no_active_activity_error">Tämän toiminnon suorittamiseksi on ensin valittava toiminto</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Toiminto, jonka nimi on %1$s jo olemassa</string>
     <string name="tooltip_quickfix_btn_edit_existing">Hylkää nykyinen muokkaus ja avaa olemassa oleva toiminta samalla nimellä</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">VVVV.KK.PP</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">alkaa</string>
-    <string name="history_end">pää</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Aloituspäivämäärä</string>
     <string name="desc_start_time">Aloitusaika</string>
     <string name="desc_end_date">Päättymispäivä</string>

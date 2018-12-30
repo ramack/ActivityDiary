@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Något gick fel här. Det gick inte att lagra bilden.</string>
     <string name="no_active_activity_error">För att utföra denna åtgärd är det nödvändigt att välja en aktivitet först</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Aktivitet med namn %1$s redan</string>
     <string name="tooltip_quickfix_btn_edit_existing">Avvisa aktuell redigering och öppna befintlig aktivitet med samma namn istället</string>
@@ -206,7 +207,7 @@
     <string name="date_format">yyyy-MM-dd</string>
     <string name="time_format">TT: MM</string>
     <string name="history_start">Start</string>
-    <string name="history_end">Slutet</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Start datum</string>
     <string name="desc_start_time">Starttid</string>
     <string name="desc_end_date">Slutdatum</string>

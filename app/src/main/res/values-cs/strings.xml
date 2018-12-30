@@ -199,6 +199,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Něco se pokazilo. Nelze uložit obraz.</string>
     <string name="no_active_activity_error">Chcete-li provést tuto akci, je nutné aktivitu nejprve vybrat</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Aktivita s názvem %1$s již existuje</string>
     <string name="tooltip_quickfix_btn_edit_existing">Odmítnout aktuální úpravu a otevřít existující aktivitu se stejným názvem</string>
@@ -214,7 +215,7 @@
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Start</string>
-    <string name="history_end">Konec</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Datum zahájení</string>
     <string name="desc_start_time">Doba spuštění</string>
     <string name="desc_end_date">Datum ukončení</string>

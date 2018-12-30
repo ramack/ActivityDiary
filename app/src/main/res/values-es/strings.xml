@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Algo salió mal aquí. No se pudo almacenar la imagen.</string>
     <string name="no_active_activity_error">Para realizar esta acción, es necesario seleccionar una actividad primero</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">La actividad con el nombre %1$s ya existe</string>
     <string name="tooltip_quickfix_btn_edit_existing">Rechazar edición actual y abrir actividad existente con el mismo nombre en su lugar</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">aaaa.MM.dd HH: mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">comienzo</string>
-    <string name="history_end">Fin</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Fecha de inicio</string>
     <string name="desc_start_time">Hora de inicio</string>
     <string name="desc_end_date">Fecha final</string>

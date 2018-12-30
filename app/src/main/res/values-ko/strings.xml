@@ -187,6 +187,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">여기 뭔가 잘못되었습니다. 이미지를 저장할 수 없습니다.</string>
     <string name="no_active_activity_error">이 작업을 수행하려면 먼저 작업을 선택해야합니다.</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">이름이 %1$s 활동이 이미 있습니다.</string>
     <string name="tooltip_quickfix_btn_edit_existing">현재 편집을 거부하고 기존 활동을 같은 이름으로 엽니 다.</string>
@@ -201,8 +202,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH : mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH : mm</string>
-    <string name="history_start">스타트</string>
-    <string name="history_end">종료</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">시작일</string>
     <string name="desc_start_time">시작 시간</string>
     <string name="desc_end_date">종료일</string>

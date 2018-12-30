@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Κάτι πήγε στραβά εδώ. Δεν ήταν δυνατή η αποθήκευση εικόνας.</string>
     <string name="no_active_activity_error">Για να εκτελέσετε αυτήν την ενέργεια, πρέπει πρώτα να επιλέξετε μια δραστηριότητα</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Η δραστηριότητα με το όνομα %1$s υπάρχει ήδη</string>
     <string name="tooltip_quickfix_btn_edit_existing">Απορρίψτε την τρέχουσα επεξεργασία και ανοίξτε την υπάρχουσα δραστηριότητα με το ίδιο όνομα</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">dd/MM/yyy HH:mm</string>
     <string name="date_format">dd/MM/yyyy</string>
     <string name="time_format">HH: mm</string>
-    <string name="history_start">Αρχή</string>
-    <string name="history_end">Τέλος</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Ημερομηνία έναρξης</string>
     <string name="desc_start_time">Ωρα έναρξης</string>
     <string name="desc_end_date">Ημερομηνία λήξης</string>

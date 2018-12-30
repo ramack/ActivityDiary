@@ -187,6 +187,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">ここで何かが間違っていた。画像を保存できませんでした。</string>
     <string name="no_active_activity_error">このアクションを実行するには、最初にアクティビティを選択する必要があります</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">名前が %1$s アクティビティは既に存在します</string>
     <string name="tooltip_quickfix_btn_edit_existing">現在の編集を拒否し、既存のアクティビティを同じ名前で開きます</string>
@@ -201,8 +202,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">開始</string>
-    <string name="history_end">終わり</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">開始日</string>
     <string name="desc_start_time">始まる時間</string>
     <string name="desc_end_date">終了日</string>

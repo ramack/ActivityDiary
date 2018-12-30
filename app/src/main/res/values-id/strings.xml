@@ -187,6 +187,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Ada sesuatu yang salah di sini. Gambar tidak bisa disimpan.</string>
     <string name="no_active_activity_error">Pilih sebuah aktivitas untuk menjalankan tindakan ini</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Aktivitas dengan nama %1$s sudah ada</string>
     <string name="tooltip_quickfix_btn_edit_existing">Tolak edit saat ini dan buka aktivitas yang ada dengan nama yang sama</string>
@@ -201,8 +202,8 @@
     <string name="default_datetime_format">yyyy.MM.dd HH:mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">Mulai</string>
-    <string name="history_end">Selesai</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Tanggal mulai</string>
     <string name="desc_start_time">Waktu mulai</string>
     <string name="desc_end_date">Tanggal selesai</string>

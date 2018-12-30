@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Qualcosa è andato storto qui. Non può memorizzare le immagini.</string>
     <string name="no_active_activity_error">Per eseguire questa azione bisogna selezionare prima un\'attività</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Esiste già un\'attività con il nome %1$s</string>
     <string name="tooltip_quickfix_btn_edit_existing">Rifiuta la modifica corrente e apri invece l\'attività esistente con lo stesso nome</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">yyy.MM.dd HH:mm</string>
     <string name="date_format">dd/MM/yyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">Inizio</string>
-    <string name="history_end">Fine</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Data d\'inizio</string>
     <string name="desc_start_time">Ora di inizio</string>
     <string name="desc_end_date">Data di fine</string>

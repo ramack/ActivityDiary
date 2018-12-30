@@ -191,6 +191,7 @@
     <string name="acc_duration_since_description">Total time %1$s: %2$s</string>
     <string name="camera_error">Oops, hier ist was schiefgegangen. Konnte Bild nicht ablegen.</string>
     <string name="no_active_activity_error">Um diese Aktion auszuführen muss erst eine Aktivität ausgewählt werden</string>
+    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
     <!-- edit view -->
     <string name="error_name_already_used">Es existiert bereits eine Aktivität mit Namen %1$s</string>
     <string name="tooltip_quickfix_btn_edit_existing">Aktuelle Bearbeitung abbrechen und stattdessen die bestehende Aktivität mit selbem Namen öffnen</string>
@@ -205,8 +206,8 @@
     <string name="default_datetime_format">dd.MM.yyyy HH:mm</string>
     <string name="date_format">dd.MM.yyyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">Beginn</string>
-    <string name="history_end">Ende</string>
+    <string name="history_start">Start</string>
+    <string name="history_end">End</string>
     <string name="desc_start_date">Startdatum</string>
     <string name="desc_start_time">Startzeit</string>
     <string name="desc_end_date">Enddatum</string>
