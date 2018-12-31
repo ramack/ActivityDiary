@@ -1,5 +1,5 @@
 - Добавлена политика конфиденциальности, пожалуйста, прочитайте!
-- Detect similar activity names on creation
-- Added statistics for current activity
+- Обнаружение похожих названий для видов деятельности при их создании
+- Добавлена статистика для текущей деятельности
 - Improved statistics view: add Day granularity and selectable format
 - Другие исправления
