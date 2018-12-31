@@ -1,5 +1,6 @@
 - Добавлена политика конфиденциальности, пожалуйста, прочитайте!
 - Обнаружение похожих названий для видов деятельности при их создании
 - Добавлена статистика для текущей деятельности
-- Improved statistics view: add Day granularity and selectable format
+- Improved statistics view: add 'day' option and selectable format
+- Completed Russian translation
 - Другие исправления
