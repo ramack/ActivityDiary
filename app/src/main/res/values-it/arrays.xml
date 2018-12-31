@@ -25,10 +25,10 @@
         <item>GPS (e rete)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
-        <item>Dynamic</item>
-        <item>Precise</item>
-        <item>No days</item>
-        <item>Hours + min</item>
+        <item>Dinamico</item>
+        <item>Preciso</item>
+        <item>Nessun giorno</item>
+        <item>Ore + min</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
         <item>Tutti</item>
@@ -37,6 +37,6 @@
         <item>Settimana</item>
         <item>Mese</item>
         <item>Anno</item>
-        <item>Year</item>
+        <item>Anno</item>
     </string-array>
 </resources>
