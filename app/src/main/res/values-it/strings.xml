@@ -26,7 +26,7 @@
     <string name="about_text_licence_h">Licenza</string>
     <string name="about_text_licence"><![CDATA[%1$s è un software libero: è possibile ridistribuirlo o modificarlo secondo i termini della <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License</a>]]></string>
     <string name="about_text_license_2">Questo programma è distribuito nella speranza che sia utile, ma SENZA ALCUNA GARANZIA; senza nemmeno la garanzia implicita di COMMERCIABILITÀ o IDONEITÀ PER UN PARTICOLARE SCOPO. Per maggiori dettagli consulta la GNU General Public License.</string>
-    <string name="about_text_privacy_h">Privacy Policy</string>
+    <string name="about_text_privacy_h">Informativa sulla privacy</string>
     <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">Contattami</string>
     <string name="about_text_contact"><![CDATA[Per bug e/o suggerimenti utilizzare <a href="https://github.com/ramack/ActivityDiary/issues">tacker</a>, preferibilmente in lingua inglese.]]></string>
@@ -71,7 +71,7 @@
     <string name="setting_datetime_format">Formato della data</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Visualizza il formato della data e dell\'ora per l\'inizio di un\'attività. I formati usuali sono aaaa-MM-gg HH: mm oppure gg.MM. hh: mm</string>
-    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format">Formato durata</string>
     <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
@@ -147,9 +147,9 @@
     <string name="activity_title_no_selected_act">&lt;Nessuna attività&gt;</string>
     <string name="dialog_title_note">Nota</string>
     <string name="activities">Attività</string>
-    <string name="fragment_detail_stats_title">Statistics</string>
-    <string name="fragment_detail_note_title">Note</string>
-    <string name="fragment_detail_pictures_title">Pictures</string>
+    <string name="fragment_detail_stats_title">Statistiche</string>
+    <string name="fragment_detail_note_title">Nota</string>
+    <string name="fragment_detail_pictures_title">Immagini</string>
     <!-- actions -->
     <string name="action_delete">Elimina un\'attività</string>
     <string name="action_diary_entry_delete">Elimina la voce</string>
