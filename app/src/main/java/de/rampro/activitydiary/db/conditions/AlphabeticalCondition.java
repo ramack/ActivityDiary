@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2019 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.model.conditions;
+package de.rampro.activitydiary.db.conditions;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +32,8 @@ import de.rampro.activitydiary.ui.settings.SettingsActivity;
  */
 public class AlphabeticalCondition extends Condition implements ActivityHelper.DataChangedListener {
 
-    public AlphabeticalCondition(ActivityHelper helper){
-        helper.registerDataChangeListener(this);
+    public AlphabeticalCondition(/* TODO ActivityHelper helper */){
+//        helper.registerDataChangeListener(this);
     }
 
     protected void doEvaluation(){

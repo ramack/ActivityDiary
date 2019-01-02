@@ -26,7 +26,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLooper;
-import org.robolectric.shadows.ShadowSystemClock;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,6 +33,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
+import de.rampro.activitydiary.db.conditions.Condition;
+import de.rampro.activitydiary.db.conditions.PredecessorCondition;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 

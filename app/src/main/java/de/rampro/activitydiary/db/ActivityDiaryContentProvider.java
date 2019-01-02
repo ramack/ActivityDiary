@@ -43,8 +43,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.rampro.activitydiary.R;
+import de.rampro.activitydiary.db.conditions.AlphabeticalCondition;
+import de.rampro.activitydiary.db.conditions.Condition;
+import de.rampro.activitydiary.db.conditions.DayTimeCondition;
+import de.rampro.activitydiary.db.conditions.GlobalOccurrenceCondition;
+import de.rampro.activitydiary.db.conditions.PausedCondition;
+import de.rampro.activitydiary.db.conditions.PredecessorCondition;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+
 
 import static android.app.SearchManager.SUGGEST_COLUMN_ICON_1;
 import static android.app.SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
@@ -62,9 +69,10 @@ import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
  * */
 public class ActivityDiaryContentProvider extends ContentProvider {
 
+    // TODO: refactor to have all uppercase letters and URI prefix
     private static final int activities = 1;
     private static final int activities_ID = 2;
-    private static final int conditions = 3;
+    private static final int uri_conditions = 3;
     private static final int conditions_ID = 4;
     private static final int diary = 5;
     private static final int diary_ID = 6;
@@ -113,16 +121,35 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI.getPath().replaceAll("^/+", ""), diary_suggestion);
 
         /* TODO #18 */
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions", conditions);
-        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "conditions/#", conditions_ID);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "uri_conditions", uri_conditions);
+        sUriMatcher.addURI(ActivityDiaryContract.AUTHORITY, "uri_conditions/#", conditions_ID);
 
     }
 
     private LocalDBHelper mOpenHelper;
 
+    private Condition[] conditions;
+
+    /* reevaluate ALL conditions, very heavy operation, do not trigger without need */
+    public void evaluateAllConditions() {
+        // TODO: this shall be removed and the conditions refreshed in the ContentProvider where necessary
+        for (Condition c : conditions) {
+            c.refresh();
+        }
+    }
+
     @Override
     public boolean onCreate() {
         mOpenHelper = new LocalDBHelper(getContext());
+
+        // TODO: callbacks when conditions need to be reevaluated (like inserting a new activity etc)
+        conditions = new Condition[]{new PredecessorCondition(),
+                new AlphabeticalCondition(),
+                new GlobalOccurrenceCondition(),
+                new DayTimeCondition(),
+                new PausedCondition()
+        };
+
         return true; /* successfully loaded */
     }
 
@@ -392,7 +419,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
 
             case conditions_ID:
                 /* intended fall through */
-            case conditions:
+            case uri_conditions:
 //                qBuilder.setTables(ActivityDiaryContract.Condition.TABLE_NAME);
                 /* TODO #18               if (TextUtils.isEmpty(sortOrder)) sortOrder = ActivityDiaryContract.Conditions.SORT_ORDER_DEFAULT; */
             default:
@@ -466,7 +493,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 table = ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME;
                 resultUri = ActivityDiaryContract.DiarySearchSuggestion.CONTENT_URI;
                 break;
-            case conditions:
+            case uri_conditions:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
 // TODO #18               resultUri = ActivityDiaryContract.Condition.CONTENT_URI;
 //                break;
@@ -662,7 +689,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     /**
      * Search for all dates in database which match start/end date or are in range (between start and end date)
      * @param dateInMillis - date is searched
-     * @return query (string) with ids that fulfills defined conditions
+     * @return query (string) with ids that fulfills defined uri_conditions
      */
     public String searchDate(Long dateInMillis) {
         // TODO: move this into the method query, for the case diary,

@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2019 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.model.conditions;
+package de.rampro.activitydiary.db.conditions;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,8 +37,8 @@ public class DayTimeCondition extends Condition implements ActivityHelper.DataCh
     HashMap<DiaryActivity, Float> activityStartTimeVar = new HashMap<>(127);
     private static float DAY = 24*60*60;
 
-    public DayTimeCondition(ActivityHelper helper){
-        helper.registerDataChangeListener(this);
+    public DayTimeCondition(/* TODO ActivityHelper helper */){
+//        helper.registerDataChangeListener(this);
     }
 
     private void updateStartTimes(){

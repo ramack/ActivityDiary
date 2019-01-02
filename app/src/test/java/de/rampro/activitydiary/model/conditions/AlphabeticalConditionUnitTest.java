@@ -30,6 +30,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.rampro.activitydiary.db.conditions.AlphabeticalCondition;
+import de.rampro.activitydiary.db.conditions.Condition;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 

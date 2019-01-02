@@ -1,7 +1,7 @@
 /*
  * ActivityDiary
  *
- * Copyright (C) 2018 Raphael Mack http://www.raphael-mack.de
+ * Copyright (C) 2019 Raphael Mack http://www.raphael-mack.de
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,70 +17,66 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package de.rampro.activitydiary.model.conditions;
+package de.rampro.activitydiary.db.conditions;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
-import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
-public class PausedCondition extends Condition implements ActivityHelper.DataChangedListener {
-    HashMap<DiaryActivity, Float> activityStartTimeMean = new HashMap<>(127);
-    HashMap<DiaryActivity, Float> activityStartTimeVar = new HashMap<>(127);
-    private static final long TIMEFRAME = 1000 * 60 * 60 * 24 * 10; // let's consider 10 days
+/**
+ * Model the likelihood of the activities based on its predecessors in the diary
+ */
 
-    public PausedCondition(ActivityHelper helper){
-        helper.registerDataChangeListener(this);
+public class PredecessorCondition extends Condition implements ActivityHelper.DataChangedListener {
+    public PredecessorCondition(/* TODO ActivityHelper helper*/){
+// TODO        helper.registerDataChangeListener(this);
     }
 
     @Override
     protected void doEvaluation() {
-        double weight = 10;
-        weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_PAUSED, "10"));
+        double weight = Double.parseDouble(sharedPreferences.getString(SettingsActivity.KEY_PREF_COND_PREDECESSOR, "20"));
+        DiaryActivity current = ActivityHelper.helper.getCurrentActivity();
         ArrayList<Likelihood> result = new ArrayList<>(ActivityHelper.helper.getUnsortedActivities().size());
-        HashMap<DiaryActivity,Double> m = new HashMap<>(result.size());
 
-        if(weight > 0.0000001) {
+        if(weight > 0.0000001 && current != null) {
+
             SQLiteQueryBuilder qBuilder = new SQLiteQueryBuilder();
             SQLiteDatabase db = mOpenHelper.getReadableDatabase();
 
-            qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " D, " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + " A");
+            qBuilder.setTables(ActivityDiaryContract.Diary.TABLE_NAME + " A, " + ActivityDiaryContract.Diary.TABLE_NAME + " B, " +
+                    ActivityDiaryContract.DiaryActivity.TABLE_NAME + " C, " + ActivityDiaryContract.DiaryActivity.TABLE_NAME + " D");
             Cursor c = qBuilder.query(db,
-                    new String[]{"D." + ActivityDiaryContract.Diary.ACT_ID},
-                    "D." + ActivityDiaryContract.Diary._DELETED + " = 0 " +
-                            "AND D." + ActivityDiaryContract.Diary.ACT_ID + " = A." + ActivityDiaryContract.DiaryActivity._ID + " AND A." + ActivityDiaryContract.DiaryActivity._DELETED + " = 0 " +
-                            "AND D." + ActivityDiaryContract.Diary.END + " > " + (System.currentTimeMillis() - TIMEFRAME),
+                    new String[]{"A." + ActivityDiaryContract.Diary.ACT_ID, "COUNT(A." + ActivityDiaryContract.Diary.ACT_ID + ")"},
+                    " B." + ActivityDiaryContract.Diary.ACT_ID + " = ? AND (A." +
+                            ActivityDiaryContract.Diary.START + " >= B." + ActivityDiaryContract.Diary.END + " - 500) AND (A." +
+                            ActivityDiaryContract.Diary.START + " < B." + ActivityDiaryContract.Diary.END + " + 50)" +
+                            "AND A." + ActivityDiaryContract.Diary._DELETED + " = 0 AND B." + ActivityDiaryContract.Diary._DELETED + " = 0 " +
+                            "AND A." + ActivityDiaryContract.Diary.ACT_ID + " = C." + ActivityDiaryContract.DiaryActivity._ID + " AND C. " + ActivityDiaryContract.DiaryActivity._DELETED + " = 0 " +
+                            "AND B." + ActivityDiaryContract.Diary.ACT_ID + " = D." + ActivityDiaryContract.DiaryActivity._ID + " AND D. " + ActivityDiaryContract.DiaryActivity._DELETED + " = 0"
+                    ,
+                    new String[]{Long.toString(current.getId())},
+                    "A." + ActivityDiaryContract.Diary.ACT_ID,
                     null,
-                    null,
-                    null,
-                    "D." + ActivityDiaryContract.Diary.END + " DESC");
+                    null);
             c.moveToFirst();
-            long cnt = 1;
+            long total = 0;
             while (!c.isAfterLast()) {
                 DiaryActivity a = ActivityHelper.helper.activityWithId(c.getInt(0));
-                double w = weight * Math.exp((1 - cnt) / 3.0);
-                if(m.containsKey(a)){
-                    w = w + m.get(a);
-                }
-                m.put(a, w);
+                total = total + c.getInt(1);
+                result.add(new Likelihood(a, c.getInt(1)));
                 c.moveToNext();
-                cnt++;
             }
 
-            for(DiaryActivity da:m.keySet()) {
-                result.add(new Likelihood(da, m.get(da)));
+            for (Likelihood l : result) {
+                l.likelihood = l.likelihood / total * weight;
             }
-
-            c.close();
-
         }
         setResult(result);
     }
@@ -91,13 +87,7 @@ public class PausedCondition extends Condition implements ActivityHelper.DataCha
      */
     @Override
     public void onActivityDataChanged() {
-        refresh();
-    }
 
-    /**
-     * update the last 10 Days
-     */
-    private void updateHistory() {
     }
 
     /**
@@ -121,7 +111,7 @@ public class PausedCondition extends Condition implements ActivityHelper.DataCha
     }
 
     /**
-     * Called on removal of an activity.
+     * Called on removale of an activity.
      *
      * @param activity
      */
@@ -137,5 +127,4 @@ public class PausedCondition extends Condition implements ActivityHelper.DataCha
     public void onActivityChanged() {
         refresh();
     }
-
 }

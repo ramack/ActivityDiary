@@ -328,7 +328,7 @@ public class MainActivity extends BaseActivity implements
         super.onResume();
 
         selectAdapter.notifyDataSetChanged(); // redraw the complete recyclerview
-        ActivityHelper.helper.evaluateAllConditions(); // this is quite heavy and I am not so sure whether it is a good idea to do it unconditionally here...
+// TODO        ActivityHelper.helper.evaluateAllConditions(); // this is quite heavy and I am not so sure whether it is a good idea to do it unconditionally here...
     }
 
     @Override

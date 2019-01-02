@@ -60,12 +60,6 @@ import de.rampro.activitydiary.db.ActivityDiaryContentProvider;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.model.DetailViewModel;
 import de.rampro.activitydiary.model.DiaryActivity;
-import de.rampro.activitydiary.model.conditions.AlphabeticalCondition;
-import de.rampro.activitydiary.model.conditions.Condition;
-import de.rampro.activitydiary.model.conditions.DayTimeCondition;
-import de.rampro.activitydiary.model.conditions.GlobalOccurrenceCondition;
-import de.rampro.activitydiary.model.conditions.PausedCondition;
-import de.rampro.activitydiary.model.conditions.PredecessorCondition;
 import de.rampro.activitydiary.ui.main.MainActivity;
 import de.rampro.activitydiary.ui.settings.SettingsActivity;
 
@@ -118,9 +112,6 @@ public class ActivityHelper extends AsyncQueryHandler{
     private Date mCurrentActivityStartTime;
     private @Nullable Uri mCurrentDiaryUri;
     private /* @NonNull */ String mCurrentNote;
-    private Condition[] conditions;
-
-    private DetailViewModel viewModel;
 
     private Handler mHandler = new Handler(Looper.getMainLooper()) {
         /*
@@ -270,12 +261,6 @@ public class ActivityHelper extends AsyncQueryHandler{
         activities = new ArrayList<DiaryActivity>();
         unsortedActivities = new ArrayList<DiaryActivity>();
 
-        conditions = new Condition[]{new PredecessorCondition(this),
-                new AlphabeticalCondition(this),
-                new GlobalOccurrenceCondition(this),
-                new DayTimeCondition(this),
-                new PausedCondition(this)
-        };
         reloadAll();
 
         LocationHelper.helper.updateLocation();
@@ -741,14 +726,6 @@ public class ActivityHelper extends AsyncQueryHandler{
         return result;
     }
 
-    /* reevaluate ALL conditions, very heavy operation, do not trigger without need */
-    public void evaluateAllConditions() {
-        for (Condition c : conditions) {
-            c.refresh();
-        }
-    }
-    /* is one of the conditions currently evaluating? */
-    private boolean reorderingInProgress;
     private HashMap<DiaryActivity, Double> likeliActivites = new HashMap<>(1);
     public double likelihoodFor(DiaryActivity a){
         if(likeliActivites.containsKey(a)){
@@ -792,7 +769,6 @@ public class ActivityHelper extends AsyncQueryHandler{
             }));
             activities = list;
 
-            reorderingInProgress = false;
         }
         for(DataChangedListener listener : mDataChangeListeners) {
             listener.onActivityOrderChanged();
