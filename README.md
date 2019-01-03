@@ -15,7 +15,8 @@ ActivityDiary is a diary for any kind of activities - track and organize your ta
 In the long term many functions shall be implemented, see https://github.com/ramack/ActivityDiary/wiki for the ideas and design decisions.
 
 Currently you can select the your current activity, attach notes and pictures and browse your history:
-![Alt text](/app/src/main/play/en-US/listing/phoneScreenshots/Screenshot_SelectActivity.png?raw=true "Select Activity")
+<img src="./app/src/main/play/en-US/listings/phoneScreenshots/00_Screenshot_main.jpg" width="238" />
+
 
 # Getting Started
 ActivityDiary is designed to be intuitive, but if you have trouble, check out the [Frequently Asked Questions](/FAQ.md) and try the [User Guide](https://github.com/ramack/ActivityDiary/wiki/How-to-help). In case of further trouble do not hesitate to [create a ticket](https://github.com/ramack/ActivityDiary/issues/new) and we will try to help you and improve the documentation.
