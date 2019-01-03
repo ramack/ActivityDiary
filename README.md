@@ -110,7 +110,12 @@ For latest test status on master see [Travis-CI](https://travis-ci.org/ramack/Ac
 
 [Picasso](http://square.github.io/picasso/),
 
-appcompat, cardview, constraint-layout, recyclerview, design, preference and exifinterface are
+[Osmdroid-android](https://github.com/osmdroid/osmdroid)
+
+[MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)
+
+appcompat, cardview, constraint-layout, recyclerview, design, preference,
+exifinterface, arch-lifecycle, are
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
 > You may obtain a copy of the License at
