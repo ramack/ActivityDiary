@@ -222,8 +222,8 @@
     <!-- statistics -->
     <string name="earlier">früher</string>
     <string name="later">später</string>
-    <string name="day_format">E, dd.M.yy</string>
-    <string name="week_format">yyyy \'KW\'ww</string>
+    <string name="day_format">E, dd.MM.yy</string>
+    <string name="week_format">yyyy \'KW\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
