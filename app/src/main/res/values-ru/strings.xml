@@ -232,8 +232,8 @@
     <!-- statistics -->
     <string name="earlier">ранее</string>
     <string name="later">позднее</string>
-    <string name="day_format">E, dd.MM.yy</string>
-    <string name="week_format">yyyy \'Нед.\' ww</string>
+    <string name="day_format">dd.MM.yyyy, E</string>
+    <string name="week_format">ww \'нед.\' yyyy</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
