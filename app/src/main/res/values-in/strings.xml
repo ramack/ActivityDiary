@@ -207,6 +207,8 @@
     <string name="desc_start_time">Waktu mulai</string>
     <string name="desc_end_date">Tanggal selesai</string>
     <string name="desc_end_time">Waktu selesai</string>
+    <string name="history_detail_start">Start</string>
+    <string name="history_detail_end">End</string>
     <string name="adjust_adjacent_times">Sesuaikan entri buku harian yang berdekatan</string>
     <string name="constraint_positive_duration">Aktivitas harus selalu dimulai sebelum berakhir.</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
