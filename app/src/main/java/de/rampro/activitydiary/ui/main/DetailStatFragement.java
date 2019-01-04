@@ -26,7 +26,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +34,6 @@ import java.util.Date;
 
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.databinding.FragmentDetailStatsBinding;
-import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.TimeSpanFormatter;
 import de.rampro.activitydiary.model.DetailViewModel;
@@ -64,6 +62,8 @@ public class DetailStatFragement extends Fragment {
             }
         };
         view.setOnClickListener(headerClickHandler);
+
+        view.findViewById(R.id.detail_content).setOnClickListener(headerClickHandler);
 
         viewModel = ViewModelProviders.of(getActivity()/*, viewModelFactory TODO */).get(DetailViewModel.class);
 
@@ -103,4 +103,5 @@ public class DetailStatFragement extends Fragment {
         updateDurationHandler.removeCallbacks(updateDurationRunnable);
         super.onPause();
     }
+
 }
