@@ -183,7 +183,7 @@
         <item quantity="other">%d h</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d Giorni</item>
+        <item quantity="one">%d Giorno</item>
         <item quantity="other">%d Giorni</item>
     </plurals>
     <string name="avg_duration_description">Durata media: %1$s</string>
@@ -205,7 +205,7 @@
     <string name="default_datetime_format">yyy.MM.dd HH:mm</string>
     <string name="date_format">dd/MM/yyy</string>
     <string name="time_format">HH:mm</string>
-    <string name="history_start">Start: %1$s</string>
+    <string name="history_start">Inizio: %1$s</string>
     <string name="history_end">Fine: %1$s (%2$s)</string>
     <string name="desc_start_date">Data d\'inizio</string>
     <string name="desc_start_time">Ora di inizio</string>
