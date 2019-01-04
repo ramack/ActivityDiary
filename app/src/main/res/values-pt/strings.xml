@@ -211,6 +211,8 @@
     <string name="desc_start_time">Hora de início</string>
     <string name="desc_end_date">Data final</string>
     <string name="desc_end_time">Fim do tempo</string>
+    <string name="history_detail_start">Start</string>
+    <string name="history_detail_end">End</string>
     <string name="adjust_adjacent_times">Ajustar entradas de diário adjacentes</string>
     <string name="constraint_positive_duration">A atividade deve começar sempre antes de terminar.</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
