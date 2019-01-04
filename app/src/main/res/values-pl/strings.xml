@@ -219,6 +219,8 @@
     <string name="desc_start_time">Czas rozpoczęcia</string>
     <string name="desc_end_date">Data końcowa</string>
     <string name="desc_end_time">Koniec czasu</string>
+    <string name="history_detail_start">Start</string>
+    <string name="history_detail_end">End</string>
     <string name="adjust_adjacent_times">Dostosuj sąsiednie wpisy do dziennika</string>
     <string name="constraint_positive_duration">Czynność powinna zawsze rozpocząć się przed jej zakończeniem.</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
