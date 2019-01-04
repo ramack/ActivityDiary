@@ -61,7 +61,7 @@ android {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 133
+        versionCode 134
         versionName "1.4.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
