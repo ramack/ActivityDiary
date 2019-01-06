@@ -447,6 +447,10 @@ public class ActivityHelper extends AsyncQueryHandler{
                             .setShowWhen(false);
             // TODO: add icon on implementing #33
 
+            notificationBuilder.setOnlyAlertOnce(PreferenceManager
+                    .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                    .getBoolean(SettingsActivity.KEY_PREF_SILENT_RENOTIFICATIONS, true));
+
             notificationManager = NotificationManagerCompat.from(ActivityDiaryApplication.getAppContext());
 
             Intent intent = new Intent(ActivityDiaryApplication.getAppContext(), MainActivity.class);

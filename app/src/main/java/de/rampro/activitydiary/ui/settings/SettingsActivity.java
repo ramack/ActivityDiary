@@ -69,6 +69,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     public static final String KEY_PREF_COND_PREDECESSOR = "pref_cond_predecessor";
     public static final String KEY_PREF_COND_OCCURRENCE = "pref_cond_occurrence";
     public static final String KEY_PREF_NOTIF_SHOW_CUR_ACT = "pref_show_cur_activity_notification";
+    public static final String KEY_PREF_SILENT_RENOTIFICATIONS = "pref_silent_renotification";
     public static final String KEY_PREF_DISABLE_CURRENT = "pref_disable_current_on_click";
     public static final String KEY_PREF_COND_DAYTIME = "pref_cond_daytime";
     public static final String KEY_PREF_USE_LOCATION = "pref_use_location";
@@ -91,6 +92,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
     private Preference condOccurrencePref;
     private Preference condDayTimePref;
     private Preference nofifShowCurActPref;
+    private Preference silentRenotifPref;
     private Preference exportPref;
     private Preference importPref;
     private Preference disableOnClickPref;
@@ -121,6 +123,8 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
             updateCondOccurenceSummary();
         }else if(key.equals(KEY_PREF_NOTIF_SHOW_CUR_ACT)) {
             updateNotifShowCurActivity();
+        }else if(key.equals(KEY_PREF_SILENT_RENOTIFICATIONS)){
+            updateSilentNotifications();
         }else if(key.equals(KEY_PREF_COND_DAYTIME)){
             updateCondDayTimeSummary();
         }else if(key.equals(KEY_PREF_DISABLE_CURRENT)){
@@ -365,6 +369,18 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         ActivityHelper.helper.showCurrentActivityNotification();
     }
 
+    private void updateSilentNotifications() {
+        if(PreferenceManager
+                .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
+                .getBoolean(KEY_PREF_SILENT_RENOTIFICATIONS, true)){
+            silentRenotifPref.setSummary(getResources().getString(R.string.setting_silent_reconfication_summary_active));
+        }else{
+            silentRenotifPref.setSummary(getResources().getString(R.string.setting_silent_reconfication_summary_inactive));
+        }
+        ActivityHelper.helper.showCurrentActivityNotification();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -397,6 +413,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
 
         tagImagesPref = mPreferenceManager.findPreference(KEY_PREF_TAG_IMAGES);
         nofifShowCurActPref = mPreferenceManager.findPreference(KEY_PREF_NOTIF_SHOW_CUR_ACT);
+        silentRenotifPref = mPreferenceManager.findPreference(KEY_PREF_SILENT_RENOTIFICATIONS);
 
         exportPref =  mPreferenceManager.findPreference(KEY_PREF_DB_EXPORT);
         exportPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -448,6 +465,7 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         updateCondOccurenceSummary();
         updateCondDayTimeSummary();
         updateNotifShowCurActivity();
+        updateSilentNotifications();
         updateDisableCurrent();
         updateUseLocation();
         updateLocationAge();
