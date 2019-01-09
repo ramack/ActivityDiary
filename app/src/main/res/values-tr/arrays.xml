@@ -20,23 +20,23 @@
   -->
 <resources>
     <string-array name="pref_location_setting_list" translatable="true">
-        <item>OFF</item>
+        <item>Kapalı</item>
         <item>Ağ</item>
         <item>GPS (ve ağ)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
         <item>Devingen</item>
         <item>Kesin</item>
-        <item>No days</item>
-        <item>Hours + min</item>
+        <item>Gün yok</item>
+        <item>Saat + dakika</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
-        <item>All</item>
-        <item>Last 7 Days</item>
-        <item>Last 30 Days</item>
-        <item>Day</item>
-        <item>Week</item>
-        <item>Month</item>
-        <item>Year</item>
+        <item>Tümü</item>
+        <item>Son 7 Gün</item>
+        <item>Son 30 Gün</item>
+        <item>Gün</item>
+        <item>Hafta</item>
+        <item>Ay</item>
+        <item>Yıl</item>
     </string-array>
 </resources>
