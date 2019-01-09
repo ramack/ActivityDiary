@@ -222,8 +222,8 @@
     <!-- Map -->
     <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
     <!-- statistics -->
-    <string name="earlier">earlier</string>
-    <string name="later">later</string>
+    <string name="earlier">Daha önce</string>
+    <string name="later">Daha sonra</string>
     <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Week\' ww</string>
     <string name="month_format">MMMM yyyy</string>
@@ -238,8 +238,8 @@
     <string name="crash_dialog_ok_toast">Teşekkürler. Lütfen hazırlanan e-postayı içeriğini inceledikten sonra gönderin.</string>
     <!-- Privacy Policy -->
     <string name="privacy_text">ActivityDiary is a free, libre and open source application to track your activities. This privacy policy applies to this Android application and describes what data is stored and processed by the ActivityDiary.</string>
-    <string name="privacy_last_update">Last updated December 22, 2018</string>
-    <string name="privacy_intro_title">Introduction</string>
+    <string name="privacy_last_update">En son 22 Aralık 2018 tarihinde güncellendi</string>
+    <string name="privacy_intro_title">Giriş</string>
     <string name="privacy_intro_text1">Developers of ActivityDiary, we (or “us” or “our”) respect the privacy of our users (“user” or “you”). As the aim of this application is to keep a record of your activites a lot of sensitive personal information is collected and stored. Nevertheless is this your data and you have full control over it. This Privacy Policy explains how the ActivityDiary application (the “Application”) collects, uses, discloses, and safeguards your information. Our names can be extracted from the meta data in the git repositories and within the Application.</string>
     <string name="privacy_intro_text2">Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Application and remove it from your device.</string>
     <string name="privacy_intro_text3">We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the “Last updated” date of this Privacy Policy.</string>
