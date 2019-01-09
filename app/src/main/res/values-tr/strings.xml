@@ -26,7 +26,7 @@
     <string name="about_text_licence_h">Lisans</string>
     <string name="about_text_licence"><![CDATA[%1$s özgür bir yazılımdır: Onu, <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU Genel Kamu Lisansı</a> şartları altında dağıtabilir ve/veya değiştirebilirsiniz]]></string>
     <string name="about_text_license_2">Bu program, yararlı olacağı umuduyla dağıtılır ancak HERHANGİ BİR GARANTİ olmadan; hatta BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA zımni garanti olmaksızın. Daha çok ayrıntı için GNU Genel Kamu Lisansına bakın.</string>
-    <string name="about_text_privacy_h">Privacy Policy</string>
+    <string name="about_text_privacy_h">Gizlilik Politikası</string>
     <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
     <string name="about_text_contact_h">İletişim</string>
     <string name="about_text_contact"><![CDATA[Hatalar ve öneriler için <a href="https://github.com/ramack/ActivityDiary/issues">sorun izleyiciyi</a>, tercihen İngilizce dilinde, kullanın.]]></string>
@@ -42,8 +42,8 @@
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Etkinlik Seç</string>
     <string name="nav_diary">Günlük</string>
-    <string name="nav_stats">Statistics</string>
-    <string name="nav_map">Map</string>
+    <string name="nav_stats">İstatistikler</string>
+    <string name="nav_map">Harita</string>
     <string name="nav_add_activity">Etkinlik Ekle</string>
     <string name="nav_show_deleted">Silinenleri Göster</string>
     <string name="nav_hide_deleted">Silinenleri Gizle</string>
@@ -64,14 +64,14 @@
     <!-- settings -->
     <string name="setting_view_category">Görünüm</string>
     <string name="setting_behavior_category">Davranış</string>
-    <string name="setting_location_category">Location</string>
+    <string name="setting_location_category">Konum</string>
     <string name="setting_images_category">Görseller</string>
     <string name="setting_backup_category">Yedekleme</string>
     <string name="setting_condition_category">Koşullar</string>
     <string name="setting_datetime_format">Tarih biçimi</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin gösterim biçimi. dd-MM-yyyy HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
-    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format">Süre biçimi</string>
     <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
@@ -89,7 +89,7 @@
     <string name="setting_enable_acra">Çökme Raporu</string>
     <string name="setting_acra_enabled">Çökmelerde raporları gönder</string>
     <string name="setting_acra_disabled">Çökmelerde raporları gönderme</string>
-    <string name="setting_use_location">Location Service</string>
+    <string name="setting_use_location">Konum Hizmeti</string>
     <string name="setting_use_location_summary">%1$s used to track device location</string>
     <string name="setting_use_location_off_summary">User location not tracked at all</string>
     <string name="perm_location_xplain">The configured option to track your location requires permission to do access the location of your device &#8230;</string>
@@ -141,15 +141,15 @@
     <string name="activity_title_history_detail">Günlük girişi</string>
     <string name="activity_subtitle_main">Ne yapıyorsun?</string>
     <string name="activity_title_about">Hakkında</string>
-    <string name="activity_title_stats">Statistics</string>
-    <string name="activity_title_map">Map</string>
+    <string name="activity_title_stats">İstatistikler</string>
+    <string name="activity_title_map">Harita</string>
     <string name="activity_title_settings">Ayarlar</string>
     <string name="activity_title_no_selected_act">&lt;Etkinlik Yok&gt;</string>
     <string name="dialog_title_note">Not</string>
-    <string name="activities">Activities</string>
-    <string name="fragment_detail_stats_title">Statistics</string>
-    <string name="fragment_detail_note_title">Note</string>
-    <string name="fragment_detail_pictures_title">Pictures</string>
+    <string name="activities">Etkinlikler</string>
+    <string name="fragment_detail_stats_title">İstatistikler</string>
+    <string name="fragment_detail_note_title">Not</string>
+    <string name="fragment_detail_pictures_title">Resimler</string>
     <!-- actions -->
     <string name="action_delete">Etkinliği sil</string>
     <string name="action_diary_entry_delete">Girişi sil</string>
@@ -165,7 +165,7 @@
     <string name="dlg_delete_image_text">Bu görseli şu anki etkinlik girdisinden kaldırılmak istediğinize emin misiniz?</string>
     <string name="dlg_undelete_activity_title">Etkinliği Kurtar</string>
     <string name="dlg_undelete_activity_text">%1$s etkinliği kurtarılsın ve tekrar kullanılabilir olsun mu?</string>
-    <string name="statistics_others">Others</string>
+    <string name="statistics_others">Diğerleri</string>
     <!-- main view -->
     <string name="duration_description">%1$s tarihinden beri</string>
     <string name="just_now">şimdi</string>
@@ -252,11 +252,11 @@
     <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
     <string name="privacy_what_subTitle3">Device storage (WRITE_EXTERNAL_STORAGE)</string>
     <string name="privacy_what_subText3a">Storage and retreival of backups, photos and other files you attach to your activity diary need access to Androids \"external storage\" / SD card.</string>
-    <string name="privacy_what_subTitle4">Camera</string>
+    <string name="privacy_what_subTitle4">Kamera</string>
     <string name="privacy_what_subText4a">The application enables you to take photos with your devices\' camera and attach them to your activity diary. This is the only usage of the camera permission.</string>
     <string name="privacy_what_subTitle5">Network state (ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE)</string>
     <string name="privacy_what_subText5a">Network and WIFI state is stored to correlate activities to those data and to propose and set next activites based on the current state.</string>
-    <string name="privacy_what_subTitle6">Crash Reporting</string>
+    <string name="privacy_what_subTitle6">Çökme Raporu</string>
     <string name="privacy_what_subText6a">In case of a program fault (crash) the application prepares a report that helps us to improve the behavior of the application. This report contains a lot of technical data about your device and operating system, the complete preferences of the application and the trace of program steps that was exectued right before the crash. The hardware of your device including but not limited to screen size and resolution, the manufacturer, the language setting and versions of the operating system and application are identifiable. The prepared report is not transmitted automatically, but shared to your email application in a newly composed email that you - at your own will - can send to us or whomever you want. Protecting the data during transmission by using encrypted email transfer is under responsibility of you and your mail service provider. We highly recommend to thoroughfully review the report and remove all data you don\'t understand and/or don\'t want to share.</string>
     <string name="privacy_what_subText6b">As the used media is email you will disclose your name, email address, and several other technical data like IP address and email service provider by transmitting a crash report. We will not use this information for anything else than contacting you about the crash.</string>
     <string name="privacy_what_subText6c">Anonymous extracts of the report that do not allow your indentification might be used in the public issue tracker for documenting the crash and tracking the rework.</string>
@@ -267,10 +267,10 @@
     <string name="privacy_why_text3">The stored data can be deleted by removing the application and deleting the backups created by you and backup mechanisms of your device.</string>
     <string name="privacy_how_title">How is the data protected?</string>
     <string name="privacy_how_text1">The Application store unencrypted data locally on the device it is executed on. You are responsible to protect the stored data from unauthorized access. We highly recommend to protect your device with a strong password and even encrypt your devices\' storage. Backups created by the application itself or any device backup mechanism also need to be protected by you in a similar fashion.</string>
-    <string name="privacy_security_title">Security of your information</string>
+    <string name="privacy_security_title">Bilgilerinizin güvenliği</string>
     <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
-    <string name="privacy_rights_title">Your rights</string>
+    <string name="privacy_rights_title">Haklarınız</string>
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
-    <string name="privacy_contact_title">Contact us</string>
+    <string name="privacy_contact_title">Bizimle İletişime geçin</string>
     <string name="privacy_contact_text">If you have questions or comments about this Privacy Policy, please contact us at:</string>
 </resources>
