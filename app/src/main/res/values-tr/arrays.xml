@@ -21,12 +21,12 @@
 <resources>
     <string-array name="pref_location_setting_list" translatable="true">
         <item>OFF</item>
-        <item>Network</item>
-        <item>GPS (and network)</item>
+        <item>Ağ</item>
+        <item>GPS (ve ağ)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
-        <item>Dynamic</item>
-        <item>Precise</item>
+        <item>Devingen</item>
+        <item>Kesin</item>
         <item>No days</item>
         <item>Hours + min</item>
     </string-array>
