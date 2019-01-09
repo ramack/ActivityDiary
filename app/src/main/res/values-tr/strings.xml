@@ -72,7 +72,7 @@
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin gösterim biçimi. dd-MM-yyyy HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
     <string name="setting_duration_format">Süre biçimi</string>
-    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
+    <string name="setting_duration_format_summary_dynamic">Süreye bağlı olarak biçimi devingen olarak ayarlayın.</string>
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
     <string name="setting_duration_format_summary_hour_min">Süreleri her zaman saat ve dakika olarak göster.</string>
@@ -246,11 +246,11 @@
     <string name="privacy_intro_text4">You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Application after the date such revised Privacy Policy is posted.</string>
     <string name="privacy_intro_text5">This Privacy Policy does not apply to the third-party online/mobile store from which you install the Applications or make payments, which may also collect and use data about you. We are not responsible for any of the data collected by any such third party.</string>
     <string name="privacy_what_title">What data is processed and stored?</string>
-    <string name="privacy_what_subTitle1">Activity Data</string>
+    <string name="privacy_what_subTitle1">Etkinlik verisi</string>
     <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
-    <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
+    <string name="privacy_what_subTitle2">Coğrafi Konum Bilgisi (ACCESS_FINE_LOCATION, GPS)</string>
     <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
-    <string name="privacy_what_subTitle3">Device storage (WRITE_EXTERNAL_STORAGE)</string>
+    <string name="privacy_what_subTitle3">Aygıt Belleği (WRITE_EXTERNAL_STORAGE)</string>
     <string name="privacy_what_subText3a">Storage and retreival of backups, photos and other files you attach to your activity diary need access to Androids \"external storage\" / SD card.</string>
     <string name="privacy_what_subTitle4">Kamera</string>
     <string name="privacy_what_subText4a">The application enables you to take photos with your devices\' camera and attach them to your activity diary. This is the only usage of the camera permission.</string>
