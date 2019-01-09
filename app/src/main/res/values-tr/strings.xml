@@ -76,7 +76,7 @@
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
     <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
-    <string name="setting_duration_format_description">Display format of the time durations.</string>
+    <string name="setting_duration_format_description">Süre biçimlerini görüntüle</string>
     <string name="setting_auto_select_new">Yeni etkinlikleri seç</string>
     <string name="setting_auto_select_new_summary_active">Yeni oluşturulan bir etkinlik, doğrudan etkin olan olarak seçilir</string>
     <string name="setting_auto_select_new_summary_inactive">Yeni etkinliklerin oluşturulması, o anda etkin olan etkinliği etkilemez</string>
@@ -117,7 +117,7 @@
     <string name="setting_cond_daytime">Gün süresi</string>
     <string name="setting_cond_daytime_summary">Günlükteki etkinliklerin gün süresi, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
     <string name="setting_cond_daytime_not_used_summary">Günlükteki etkinliklerin gün süresi, sonraki etkinlikleri önermek için kullanılmaz</string>
-    <string name="pref_location_age">Request a location update every %1$s minutes</string>
+    <string name="pref_location_age">Her %1$s dakikada konum güncellemesi iste</string>
     <string name="setting_location_age">Güncelleme sıklığı</string>
     <string name="pref_location_dist">Her %1$s metrede konum güncellemesi iste</string>
     <string name="setting_location_dist">Güncelleme aralığı</string>
@@ -218,9 +218,9 @@
     <string name="search_notes">&#x2026;notlarında %1$s\'i ara</string>
     <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
     <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
-    <string name="wrongFormat">Please enter date in correct format!</string>
+    <string name="wrongFormat">Lütfen tarihi doğru biçimde girin!</string>
     <!-- Map -->
-    <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+    <string name="no_map_data_message">Gösterilecek veri yok. Ayarlardan konum hizmetlerini etkinleştirin.</string>
     <!-- statistics -->
     <string name="earlier">Daha önce</string>
     <string name="later">Daha sonra</string>
