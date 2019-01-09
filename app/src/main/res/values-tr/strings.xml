@@ -118,9 +118,9 @@
     <string name="setting_cond_daytime_summary">Günlükteki etkinliklerin gün süresi, önerilen sonraki etkinliklerde %1$s ağırlığı vardır</string>
     <string name="setting_cond_daytime_not_used_summary">Günlükteki etkinliklerin gün süresi, sonraki etkinlikleri önermek için kullanılmaz</string>
     <string name="pref_location_age">Request a location update every %1$s minutes</string>
-    <string name="setting_location_age">Update period</string>
-    <string name="pref_location_dist">Request a location update every %1$s meters</string>
-    <string name="setting_location_dist">Update distance</string>
+    <string name="setting_location_age">Güncelleme sıklığı</string>
+    <string name="pref_location_dist">Her %1$s metrede konum güncellemesi iste</string>
+    <string name="setting_location_dist">Güncelleme aralığı</string>
     <string name="setting_expert">Uzman ayarları</string>
     <string name="setting_export">Veritabanını dışa aktar</string>
     <string name="setting_import">Veritabanını içe aktar</string>
@@ -186,7 +186,7 @@
         <item quantity="one">%d Gün</item>
         <item quantity="other">%d Gün</item>
     </plurals>
-    <string name="avg_duration_description">Average duration: %1$s</string>
+    <string name="avg_duration_description">Ortalama süre: %1$s</string>
     <string name="last_done_description">Last start: %1$s</string>
     <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
     <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
@@ -211,11 +211,11 @@
     <string name="desc_start_time">Başlama zamanı</string>
     <string name="desc_end_date">Bitiş tarihi</string>
     <string name="desc_end_time">Bitiş zamanı</string>
-    <string name="history_detail_start">Start</string>
-    <string name="history_detail_end">End</string>
+    <string name="history_detail_start">Başla</string>
+    <string name="history_detail_end">Bitir</string>
     <string name="adjust_adjacent_times">Bitişik günlük girişlerini ayarlama</string>
     <string name="constraint_positive_duration">Etkinlik her zaman bitmeden başlayacaktır.</string>
-    <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
+    <string name="search_notes">&#x2026;notlarında %1$s\'i ara</string>
     <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
     <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
     <string name="wrongFormat">Please enter date in correct format!</string>
