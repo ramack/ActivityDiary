@@ -73,7 +73,7 @@
     <string name="setting_datetime_format_description">Bir etkinliğin başlangıcı için tarihin ve saatin gösterim biçimi. dd-MM-yyyy HH:mm veya dd.MM. hh:mm genel biçimlerdir</string>
     <string name="setting_duration_format">Süre biçimi</string>
     <string name="setting_duration_format_summary_dynamic">Süreye bağlı olarak biçimi devingen olarak ayarlayın.</string>
-    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
+    <string name="setting_duration_format_summary_precise">Süreleri her zaman saniye inceliğinde göster</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
     <string name="setting_duration_format_summary_hour_min">Süreleri her zaman saat ve dakika olarak göster.</string>
     <string name="setting_duration_format_description">Süre biçimlerini görüntüle</string>
@@ -187,7 +187,7 @@
         <item quantity="other">%d Gün</item>
     </plurals>
     <string name="avg_duration_description">Ortalama süre: %1$s</string>
-    <string name="last_done_description">Last start: %1$s</string>
+    <string name="last_done_description">Son başlama: %1$s</string>
     <string name="camera_error">Burada bir şeyler ters gitti. Görsel saklanamadı.</string>
     <string name="no_active_activity_error">Bu eylemin uygulanması için önce bir etkinlik seçilmesi gerekli</string>
     <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
