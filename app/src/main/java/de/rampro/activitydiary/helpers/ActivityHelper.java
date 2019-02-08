@@ -86,8 +86,10 @@ public class ActivityHelper extends AsyncQueryHandler{
     private static final int UPDATE_DELETE_ACTIVITY = 5;
     private static final int QUERY_CURRENT_ACTIVITY = 6;
     private static final int DELETE_LAST_DIARY_ENTRY = 7;
-    private static final int REOPEN_LAST_DIARY_ENTRY = 8;
-    private static final int UNDELETE_ACTIVITY = 9;
+    private static final int DELETE_ACTIVITY = 8;
+    private static final int DELETE_DIARY = 9;
+    private static final int REOPEN_LAST_DIARY_ENTRY = 10;
+    private static final int UNDELETE_ACTIVITY = 11;
 
     private static final String[] DIARY_PROJ = new String[] {
             ActivityDiaryContract.Diary.ACT_ID,
@@ -115,6 +117,7 @@ public class ActivityHelper extends AsyncQueryHandler{
     private List<DiaryActivity> unsortedActivities;
 
     private DiaryActivity mCurrentActivity = null;
+
     private Date mCurrentActivityStartTime;
     private @Nullable Uri mCurrentDiaryUri;
     private /* @NonNull */ String mCurrentNote;
@@ -626,19 +629,24 @@ public class ActivityHelper extends AsyncQueryHandler{
                 contentFor(act));
     }
 
+    public void deleteDiary(long diaryEntryID){
+        startDelete(DELETE_DIARY, null,
+                ActivityDiaryContract.Diary.CONTENT_URI,
+                ActivityDiaryContract.Diary._ID ,
+                new String[]{String.valueOf(diaryEntryID)});
+    }
+
+
     public void deleteActivity(DiaryActivity act) {
         if(act == mCurrentActivity){
             setCurrentActivity(null);
         }
-        ContentValues values = new ContentValues();
-        values.put(ActivityDiaryContract.DiaryActivity._DELETED, "1");
 
-        startUpdate(UPDATE_DELETE_ACTIVITY,
-                act,
-                ContentUris.withAppendedId(ActivityDiaryContract.DiaryActivity.CONTENT_URI, act.getId()),
-                values,
-                null, /* entry selected via URI */
-                null);
+        startDelete(DELETE_ACTIVITY, null,
+                ActivityDiaryContract.DiaryActivity.CONTENT_URI,
+                ActivityDiaryContract.DiaryActivity._ID,
+                new String[]{String.valueOf(act.getId())});
+
         synchronized (this) {
             if (activities.remove(act)) {
                 unsortedActivities.remove(act);
@@ -650,6 +658,9 @@ public class ActivityHelper extends AsyncQueryHandler{
             listener.onActivityRemoved(act);
         }
     }
+
+
+
 
     public DiaryActivity activityWithId(int id){
         /* TODO improve performance by storing the DiaryActivities in a map or Hashtable instead of a list */
