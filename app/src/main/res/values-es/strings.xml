@@ -237,9 +237,9 @@
     <string name="crash_dialog_comment_prompt">Puede agregar sus comentarios sobre el problema a continuación:</string>
     <string name="crash_dialog_ok_toast">Gracias. Por favor, envíe el correo electrónico preparado después de revisar su contenido.</string>
     <!-- Privacy Policy -->
-    <string name="privacy_text">ActivityDiary is a free, libre and open source application to track your activities. This privacy policy applies to this Android application and describes what data is stored and processed by the ActivityDiary.</string>
-    <string name="privacy_last_update">Last updated December 22, 2018</string>
-    <string name="privacy_intro_title">Introduction</string>
+    <string name="privacy_text">ActivityDiary es una aplicación Libre y de Código Abierto para llevar registros diarios de actividades. Esta política de privacidad se aplica a esta aplicación de Android y describe qué datos se almacenan y procesan por el ActivityDiary.</string>
+    <string name="privacy_last_update">Ultima actualización: 22 de diciembre de 2018</string>
+    <string name="privacy_intro_title">Introducción</string>
     <string name="privacy_intro_text1">Developers of ActivityDiary, we (or “us” or “our”) respect the privacy of our users (“user” or “you”). As the aim of this application is to keep a record of your activites a lot of sensitive personal information is collected and stored. Nevertheless is this your data and you have full control over it. This Privacy Policy explains how the ActivityDiary application (the “Application”) collects, uses, discloses, and safeguards your information. Our names can be extracted from the meta data in the git repositories and within the Application.</string>
     <string name="privacy_intro_text2">Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Application and remove it from your device.</string>
     <string name="privacy_intro_text3">We reserve the right to make changes to this Privacy Policy at any time and for any reason. We will alert you about any changes by updating the “Last updated” date of this Privacy Policy.</string>
