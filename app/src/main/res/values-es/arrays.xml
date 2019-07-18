@@ -22,21 +22,21 @@
     <string-array name="pref_location_setting_list" translatable="true">
         <item>Salir</item>
         <item>Red</item>
-        <item>GPS (and network)</item>
+        <item>GPS (y red)</item>
     </string-array>
     <string-array name="pref_duration_format_setting_list" translatable="true">
-        <item>Dynamic</item>
-        <item>Precise</item>
-        <item>No days</item>
-        <item>Hours + min</item>
+        <item>Dinámico</item>
+        <item>Preciso</item>
+        <item>Continuo</item>
+        <item>Horas + min</item>
     </string-array>
     <string-array name="statistic_dropdown" translatable="true">
-        <item>All</item>
-        <item>Last 7 Days</item>
-        <item>Last 30 Days</item>
-        <item>Day</item>
-        <item>Week</item>
-        <item>Month</item>
-        <item>Year</item>
+        <item>Todo</item>
+        <item>Últimos 7 días</item>
+        <item>Últimos 30 días</item>
+        <item>Día</item>
+        <item>Semana</item>
+        <item>Mes</item>
+        <item>Año</item>
     </string-array>
 </resources>
