@@ -26,8 +26,8 @@
     <string name="about_text_licence_h">Licencia</string>
     <string name="about_text_licence"><![CDATA[%1$s es software libre: puede redistribuirlo y / o modificarlo bajo los términos de la <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">Licencia Pública General GNU</a>]]></string>
     <string name="about_text_license_2">Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA; sin siquiera la garantía implícita de COMERCIABILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Ver la Licencia Pública General de GNU para más detalles.</string>
-    <string name="about_text_privacy_h">Privacy Policy</string>
-    <string name="about_text_privacy"><![CDATA[%1$s and its authors have a deep interest to respect your privacy. The nature of this app is to track and store your activites and where and how you do them. Nevertheless it is your data in your hands and is not transmitted to any server or external party by the app without your explicit request. Read the full <a href=\"de.rampro.activitydiary.privacy_policy://show\">privacy policy</a>.]]></string>
+    <string name="about_text_privacy_h">Política de privacidad</string>
+    <string name="about_text_privacy"><![CDATA[%1$s y sus autores tienen un profundo interés por respetar su privacidad. La naturaleza de esta aplicación es rastrear y almacenar sus actividades y dónde y cómo las hace. Sin embargo, sus datos están en sus manos y no se transmiten a ningún servidor o a ningún partido externo por la aplicación sin su petición explícita. Leer la política de privacidad <a href=\"de.rampro.activitydiary.privacy_policy://show\">completa</a>.]]></string>
     <string name="about_text_contact_h">Contacto</string>
     <string name="about_text_contact"><![CDATA[Para errores y sugerencias utilizar el <a href="https://github.com/ramack/ActivityDiary/issues">tema tacker</a>, preferentemente en idioma Inglés.]]></string>
     <string name="about_text_contact_2"><![CDATA[El código fuente se puede encontrar en <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
@@ -42,8 +42,8 @@
     <!-- Navigation Drawer Menu -->
     <string name="nav_main">Seleccione la actividad</string>
     <string name="nav_diary">Diario</string>
-    <string name="nav_stats">Statistics</string>
-    <string name="nav_map">Map</string>
+    <string name="nav_stats">Estatísticas</string>
+    <string name="nav_map">Mapa</string>
     <string name="nav_add_activity">Agregar actividad</string>
     <string name="nav_show_deleted">Mostrar eliminado</string>
     <string name="nav_hide_deleted">Ocultar eliminado</string>
@@ -64,14 +64,14 @@
     <!-- settings -->
     <string name="setting_view_category">Ver</string>
     <string name="setting_behavior_category">Comportamiento</string>
-    <string name="setting_location_category">Location</string>
+    <string name="setting_location_category">Ubicación</string>
     <string name="setting_images_category">Imágenes</string>
     <string name="setting_backup_category">Apoyo</string>
     <string name="setting_condition_category">Condiciones</string>
     <string name="setting_datetime_format">Formato de fecha</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">Muestra el formato de la fecha y la hora para el inicio de una actividad. Los formatos habituales son aaaa-MM-dd HH: mm o dd.MM. hh: mm</string>
-    <string name="setting_duration_format">Duration format</string>
+    <string name="setting_duration_format">Formato de duración</string>
     <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
     <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
     <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
