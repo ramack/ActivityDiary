@@ -187,17 +187,17 @@
         <item quantity="other">%d días</item>
     </plurals>
     <string name="avg_duration_description">Duración media: %1$s</string>
-    <string name="last_done_description">Last start: %1$s</string>
+    <string name="last_done_description">Última Actividad: %1$s</string>
     <string name="camera_error">Algo salió mal aquí. No se pudo almacenar la imagen.</string>
     <string name="no_active_activity_error">Para realizar esta acción, es necesario seleccionar una actividad primero</string>
-    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
+    <string name="contentDesc_pictureEntry">Imagen asignada a la entrada del diario</string>
     <!-- edit view -->
     <string name="error_name_already_used">La actividad con el nombre %1$s ya existe</string>
     <string name="tooltip_quickfix_btn_edit_existing">Rechazar edición actual y abrir actividad existente con el mismo nombre en su lugar</string>
     <string name="error_name_already_used_in_deleted">Ya existe una actividad eliminada con el nombre %1$s</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Cambiar el nombre de la actividad eliminada con el mismo nombre para resolver el conflicto</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Recuperar actividad con el mismo nombre</string>
-    <string name="error_name_similar">New activity name similar to %1$s</string>
+    <string name="error_name_similar">Nuevo nombre de actividad similar a %1$s</string>
     <string name="recover_activity_toast">Actividad recuperada %1$s. Ahora es seleccionable de nuevo.</string>
     <string name="renamed_deleted_activity_toast">Renombrado la actividad ya eliminada %1$s.</string>
     <string name="edit_existing_activity_toast">Ahora editando la actividad existente con el nombre %1$s.</string>
@@ -206,21 +206,21 @@
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Inicio: %1$s</string>
-    <string name="history_end">End: %1$s (%2$s)</string>
+    <string name="history_end">Fin: %1$s (%2$s)</string>
     <string name="desc_start_date">Fecha de inicio</string>
     <string name="desc_start_time">Hora de inicio</string>
     <string name="desc_end_date">Fecha final</string>
     <string name="desc_end_time">Hora de finalización</string>
-    <string name="history_detail_start">Start</string>
-    <string name="history_detail_end">End</string>
+    <string name="history_detail_start">Inicio</string>
+    <string name="history_detail_end">Finalizar</string>
     <string name="adjust_adjacent_times">Ajustar las entradas del diario adyacente</string>
     <string name="constraint_positive_duration">La actividad siempre comenzará antes de que termine.</string>
-    <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
-    <string name="search_diary">Search \'%1$s\' globally&#x2026;</string>
-    <string name="search_date">Search \'%1$s\' in dates&#x2026;</string>
-    <string name="wrongFormat">Please enter date in correct format!</string>
+    <string name="search_notes">Buscar \'%1$s\' en notas&#x2026;</string>
+    <string name="search_diary">Buscar \'%1$s\' en notas&#x2026;</string>
+    <string name="search_date">Buscar \'%1$s\' en fechas&#x2026;</string>
+    <string name="wrongFormat">Por favor introduzca el valor en un formato correcto!</string>
     <!-- Map -->
-    <string name="no_map_data_message">No data to show. Enable location services in the settings.</string>
+    <string name="no_map_data_message">No hay datos para mostrar. Habilitar servicios de ubicación en la configuración.</string>
     <!-- statistics -->
     <string name="earlier">earlier</string>
     <string name="later">later</string>
