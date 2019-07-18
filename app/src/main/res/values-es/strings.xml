@@ -32,7 +32,7 @@
     <string name="about_text_contact"><![CDATA[Para errores y sugerencias utilizar el <a href="https://github.com/ramack/ActivityDiary/issues">tema tacker</a>, preferentemente en idioma Inglés.]]></string>
     <string name="about_text_contact_2"><![CDATA[El código fuente se puede encontrar en <a href="https://github.com/ramack/ActivityDiary">Github</a>.]]></string>
     <string name="about_text_support_h">Apoyo</string>
-    <string name="about_text_support"><![CDATA[En caso de que quiera apoyar el desarrollo de %1$s considere discutir <a href="https://github.com/ramack/ActivityDiary/issues">temas en github</a>, traduciendo en <a href="https://crowdin.com/project/activitydiary">crowdin</a> o donación en <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
+    <string name="about_text_support"><![CDATA[En caso de que quiera apoyar el desarrollo de %1$s visite <a href="https://github.com/ramack/ActivityDiary/issues">temas en github</a>, traduciendo en <a href="https://crowdin.com/project/activitydiary">crowdin</a> o donación en <a href="https://liberapay.com/ActivityDiary/">Liberapay</a>.]]></string>
     <string name="about_text_cont_h">Colaboradores</string>
     <string name="about_text_cont_2">También esperamos mencionar su nombre en esta lista.</string>
     <string name="about_text_lib_h">Bibliotecas</string>
@@ -222,12 +222,12 @@
     <!-- Map -->
     <string name="no_map_data_message">No hay datos para mostrar. Habilitar servicios de ubicación en la configuración.</string>
     <!-- statistics -->
-    <string name="earlier">earlier</string>
-    <string name="later">later</string>
+    <string name="earlier">Más temprano</string>
+    <string name="later">Más tarde</string>
     <string name="day_format">E, M.dd.yy</string>
     <string name="week_format">yyyy \'Week\' ww</string>
-    <string name="month_format">MMMM yyyy</string>
-    <string name="year_format">yyyy</string>
+    <string name="month_format">MMMM AAAA</string>
+    <string name="year_format">AAAA</string>
     <!-- relative dates -->
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
