@@ -372,10 +372,11 @@ public class HistoryDetailActivity extends BaseActivity implements LoaderManager
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-//            case R.id.action_edit_delete:
-                /* TODO: DELETE diary entry */
-//                finish();
-//                break;
+            case R.id.action_edit_delete:
+                //todo add popup before delete to confirm deletion
+                ActivityHelper.helper.deleteDiary(diaryEntryID);
+               finish();
+                break;
             case android.R.id.home:
                 /* cancel edit */
                 finish();

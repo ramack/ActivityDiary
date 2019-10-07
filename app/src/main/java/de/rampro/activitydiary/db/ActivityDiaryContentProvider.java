@@ -518,8 +518,19 @@ public class ActivityDiaryContentProvider extends ContentProvider {
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         boolean isGlobalDelete = false;
         String table;
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        int delets =0;
         ContentValues values = new ContentValues();
         switch (sUriMatcher.match(uri)) {
+            case activities:
+                isGlobalDelete = true;
+                delets = db.delete(ActivityDiaryContract.Diary.TABLE_NAME ,
+                        ActivityDiaryContract.Diary.ACT_ID + "=?" ,
+                        selectionArgs);
+                delets += db.delete(ActivityDiaryContract.DiaryActivity.TABLE_NAME,
+                        ActivityDiaryContract.DiaryActivity._ID + "=?",
+                        selectionArgs);
+                break;
             case activities_ID:
                 table = ActivityDiaryContract.DiaryActivity.TABLE_NAME;
                 break;
@@ -528,6 +539,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 /* fall though */
             case diary_ID:
                 table = ActivityDiaryContract.Diary.TABLE_NAME;
+                delets = db.delete(table,
+                        ActivityDiaryContract.Diary._ID + "=?" ,
+                        selectionArgs);
                 break;
             case diary_image:
                 isGlobalDelete = true;
@@ -543,7 +557,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 break;
             case diary_suggestion:
                 table = ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME;
-                SQLiteDatabase db = mOpenHelper.getWritableDatabase();
                 return db.delete(table, selection, selectionArgs);
             case conditions_ID:
 //                table = ActivityDiaryContract.Condition.TABLE_NAME;
@@ -553,7 +566,6 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 throw new IllegalArgumentException(
                         "Unsupported URI for deletion: " + uri);
         }
-        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         if (!isGlobalDelete) {
             if (selection != null) {
                 selection = selection + " AND ";
@@ -562,13 +574,9 @@ public class ActivityDiaryContentProvider extends ContentProvider {
             }
             selection = selection + "_id=" + uri.getLastPathSegment();
         }
-        values.put(ActivityDiaryContract.DiaryActivity._DELETED, "1");
 
-        int upds = db.update(table,
-                values,
-                selection,
-                selectionArgs);
-        if (upds > 0) {
+
+        if (delets > 0) {
             getContext().
                     getContentResolver().
                     notifyChange(uri, null);
@@ -576,7 +584,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
         } else {
             Log.i(TAG, "Could not delete anything for uri: " + uri + " with selection '" + selection + "'");
         }
-        return upds;
+        return delets;
     }
 
     /**

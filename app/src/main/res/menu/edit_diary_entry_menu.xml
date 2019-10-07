@@ -20,11 +20,11 @@
 
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<item
+    <item
         android:id="@+id/action_edit_delete"
         android:icon="@drawable/ic_delete"
         android:title="@string/action_diary_entry_delete"
-        app:showAsAction="ifRoom" />-->
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_edit_done"
         android:icon="@drawable/ic_done"

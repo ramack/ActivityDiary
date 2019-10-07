@@ -402,6 +402,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_edit_delete:
+                //todo add popup before delete to confirm deletion
                 if(currentActivity != null){
                     ActivityHelper.helper.deleteActivity(currentActivity);
                 }
