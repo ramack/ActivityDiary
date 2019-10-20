@@ -207,6 +207,8 @@
     <string name="desc_start_time">始まる時間</string>
     <string name="desc_end_date">終了日</string>
     <string name="desc_end_time">終了時間</string>
+    <string name="history_detail_start">Start</string>
+    <string name="history_detail_end">End</string>
     <string name="adjust_adjacent_times">隣接する日記項目を調整する</string>
     <string name="constraint_positive_duration">アクティビティは、終了する前に常に開始されます。</string>
     <string name="search_notes">Search \'%1$s\' in notes&#x2026;</string>
