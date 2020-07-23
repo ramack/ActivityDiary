@@ -107,6 +107,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
         chart = (PieChart) findViewById(R.id.piechart);
         chart.getLegend().setEnabled(false);
         chart.setDescription(null);
+        chart.setEntryLabelTextSize(18.0f);
         chart.setHoleRadius(30.0f);
         chart.setTransparentCircleRadius(40.0f);
 
@@ -208,6 +209,7 @@ public class StatisticsActivity extends BaseActivity implements LoaderManager.Lo
                 return TimeSpanFormatter.format((long)e.getValue());
             }
         });
+        set.setValueTextSize(18.0f);
         chart.setData(dat);
         chart.setUsePercentValues(true);
         chart.setRotationAngle(180.0f);
