@@ -45,7 +45,7 @@
 
 package de.rampro.activitydiary.helpers;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Arrays;
 

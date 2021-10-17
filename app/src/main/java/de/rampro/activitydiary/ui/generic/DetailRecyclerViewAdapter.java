@@ -27,24 +27,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.PicassoProvider;
-
-import java.io.IOException;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.db.ActivityDiaryContract;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
-import de.rampro.activitydiary.ui.main.MainActivity;
 
 public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailViewHolders> implements DetailViewHolders.SelectListener {
     private static final String TAG = DetailRecyclerViewAdapter.class.getName();

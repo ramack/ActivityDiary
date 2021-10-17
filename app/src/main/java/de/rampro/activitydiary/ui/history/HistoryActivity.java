@@ -32,12 +32,12 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.cursoradapter.widget.CursorAdapter;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -511,7 +511,7 @@ public class HistoryActivity extends BaseActivity implements
      * Sets searched text to default color (white) in case it is set to red
      */
     private void setDefaultColorSearchText(){
-        TextView textView =  searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        TextView textView =  searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         if (textView.getCurrentTextColor() == getResources().getColor(R.color.colorWrongText))
             textView.setTextColor(getResources().getColor(R.color.activityTextColorLight));
     }
@@ -520,7 +520,7 @@ public class HistoryActivity extends BaseActivity implements
      * Sets searched text to color which indicates wrong searching (red)
      */
     private void setWrongColorSearchText(){
-        TextView textView =  searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        TextView textView =  searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         textView.setTextColor(getResources().getColor(R.color.colorWrongText));
     }
 

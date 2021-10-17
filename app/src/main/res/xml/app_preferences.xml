@@ -17,13 +17,13 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
-<android.support.v7.preference.PreferenceScreen
+<androidx.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_view_category">
 
-        <android.support.v7.preference.EditTextPreference
+        <androidx.preference.EditTextPreference
             android:key="pref_datetimeFormat"
             android:title="@string/setting_datetime_format"
             android:summary="@string/setting_datetime_format_summary"
@@ -37,43 +37,43 @@
             android:entryValues="@array/pref_duration_format_setting_list_values"
             android:defaultValue="dynamic" />
 
-    </android.support.v7.preference.PreferenceCategory>
-    <android.support.v7.preference.PreferenceCategory
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_behavior_category"
         >
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="pref_auto_select_new"
             android:title="@string/setting_auto_select_new"
             android:summary="@string/setting_auto_select_new_summary_active"
             android:defaultValue="true"/>
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="pref_disable_current_on_click"
             android:title="@string/setting_disable_on_click"
             android:summary="@string/setting_disable_on_click_summary_inactive"
             android:defaultValue="true"/>
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="pref_show_cur_activity_notification"
             android:title="@string/setting_show_cur_activitiy_notification"
             android:summary="@string/setting_show_cur_activitiy_notification_summary_active"
             android:defaultValue="true"/>
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="pref_silent_renotification"
             android:title="@string/setting_silent_renotification"
             android:summary="@string/setting_silent_reconfication_summary_active"
             android:defaultValue="true"/>
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="acra.enable"
             android:title="@string/setting_enable_acra"
             android:summaryOn="@string/setting_acra_enabled"
             android:summaryOff="@string/setting_acra_disabled"
             android:defaultValue="true"/>
-    </android.support.v7.preference.PreferenceCategory>
-    <android.support.v7.preference.PreferenceCategory
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_location_category"
         >
         <ListPreference
@@ -99,26 +99,26 @@
             android:inputType="number"
             android:title="@string/setting_location_dist" />
 
-    </android.support.v7.preference.PreferenceCategory>
-    <android.support.v7.preference.PreferenceCategory
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_images_category"
         >
 
-        <android.support.v7.preference.EditTextPreference
+        <androidx.preference.EditTextPreference
             android:key="pref_storageFolder"
             android:title="@string/setting_storage_folder"
             android:summary="@string/setting_storage_folder_summary"
             android:dialogMessage="@string/setting_storage_folder_description"
             android:defaultValue="@string/default_storage_folder" />
 
-        <android.support.v7.preference.SwitchPreferenceCompat
+        <androidx.preference.SwitchPreferenceCompat
             android:key="pref_tag_images"
             android:title="@string/setting_tag_images"
             android:summary="@string/setting_tag_yes"
             android:defaultValue="true" />
-    </android.support.v7.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <android.support.v7.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_condition_category"
         >
         <ListPreference
@@ -159,8 +159,8 @@
 
 
 
-    </android.support.v7.preference.PreferenceCategory>
-    <android.support.v7.preference.PreferenceCategory
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
         android:title="@string/setting_backup_category"
         >
         <Preference
@@ -174,5 +174,5 @@
             android:title="@string/setting_import"
             android:summary="@string/setting_import_summary" >
         </Preference>
-    </android.support.v7.preference.PreferenceCategory>
-</android.support.v7.preference.PreferenceScreen>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

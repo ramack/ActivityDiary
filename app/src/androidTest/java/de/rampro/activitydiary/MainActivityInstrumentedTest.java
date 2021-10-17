@@ -2,14 +2,10 @@ package de.rampro.activitydiary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
-import android.view.Menu;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import de.rampro.activitydiary.ui.main.MainActivity;
 
 import static org.junit.Assert.assertEquals;
 

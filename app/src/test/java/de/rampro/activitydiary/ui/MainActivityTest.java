@@ -21,8 +21,8 @@ package de.rampro.activitydiary.ui;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.fragment.app.DialogFragment;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,7 +37,6 @@ import org.robolectric.shadows.ShadowToast;
 
 import java.util.concurrent.TimeUnit;
 
-import de.rampro.activitydiary.BuildConfig;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
