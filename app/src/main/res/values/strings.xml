@@ -53,7 +53,7 @@
         <p><a href="https://github.com/Pes8/android-material-color-picker-dialog">Android Material Color Picker Dialog</a> by Simone Pessotto, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="https://github.com/ACRA/acra">ACRA - Application Crash Reports for Android</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         <p><a href="http://square.github.io/picasso/">Picasso</a>, license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
-        <p>appcompat, cardview, constraint-layout, recyclerview, design, preference, exifinterface, android.arch.lifecycle license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
+        <p>appcompat, cardview, constraint-layout, recyclerview, material, preference, exifinterface, lifecycle license <a href="http://www.apache.org/licenses/LICENSE-2.0">APACHE-2.0</a></p>
         ]]></string>
     <string name="perm_write_external_storage_xplain">Storing photos requires permission to do so &#8230;</string>
 
