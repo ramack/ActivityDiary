@@ -137,7 +137,7 @@ dependencies {
     implementation "ch.acra:acra-toast:$acraVersion"
 
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'org.osmdroid:osmdroid-android:6.0.1'
+    implementation 'org.osmdroid:osmdroid-android:6.1.11'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
@@ -148,6 +148,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.robolectric:robolectric:4.3"
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }
 
