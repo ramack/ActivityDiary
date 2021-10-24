@@ -18,7 +18,7 @@
  */
 plugins {
     id("com.android.application")
-//    id("com.github.triplet.play")
+    id("com.github.triplet.play")
 }
 
 if (project.file('../ActivityDiarySigning.properties').exists()) {
@@ -62,8 +62,8 @@ android {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 134
-        versionName "1.4.0"
+        versionCode 135
+        versionName "1.4.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         if (project.file('../ActivityDiarySigning.properties').exists()) {
@@ -109,7 +109,10 @@ android {
     dataBinding {
         enabled = true
     }
+}
 
+play {
+    serviceAccountCredentials.set(file("../api-5226730847504381805-103625-85f8cc97d608.json"))
 }
 
 dependencies {

@@ -34,7 +34,6 @@ buildscript {
         // in the individual module build.gradle files
         if (project.file('ActivityDiarySigning.properties').exists()) {
             classpath("com.github.triplet.gradle:play-publisher:3.6.0")
-            //            classpath 'com.github.triplet.gradle:play-publisher:1.2.2'
         }
     }
 }
