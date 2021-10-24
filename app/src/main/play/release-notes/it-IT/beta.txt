@@ -1,0 +1,6 @@
+- Aggiunta la politica sulla privacy, si prega di leggere!
+- Rileva i nomi di attività simili sulla creazione
+- Aggiunte statistiche per l'attività corrente
+- Vista statistica migliorata: aggiunta l'opzione "giorno" e il formato selezionabile
+-Completata la traduzione in Russo
+- Diverse correzioni di bug
