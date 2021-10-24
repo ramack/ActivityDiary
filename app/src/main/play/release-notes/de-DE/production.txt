@@ -1,0 +1,6 @@
+- Datenschutzerklärung hinzugefügt, bitte lesen!
+- Erkennung von ähnlichen Aktivitätsnamen
+- Statisitsche Daten für die aktuell laufende Aktivität hinzugefügt
+- Statistikanzeige verbessert: Option 'Tag' hinzugefügt und benutzerdefinierte Formate
+- Russische Übersetzung vervollständigt
+- Verschiedene Fehler wurden behoben
