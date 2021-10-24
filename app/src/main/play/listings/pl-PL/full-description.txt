@@ -1,0 +1,8 @@
+Dziennik aktywności pozwala rejestrować dziennik dla twoich działań. Do załączników można dołączać notatki i zdjęcia, a także szczegóły rekordów, takie jak rodzaj warzyw, które zasiałeś podczas ogrodnictwa. The diary and statistics views provide an overview of what you did and when.
+Zaplanowano funkcje kategoryzacji działań i otrzymania przypomnienia o powtarzających się działaniach.
+
+Dziennik aktywności jest wolnym oprogramowaniem: możesz go redystrybuować i / lub modyfikować zgodnie z warunkami Powszechnej Licencji Publicznej GNU opublikowanej przez Free Software Foundation, albo wersję 3 Licencji, albo (według twojego wyboru) jakąkolwiek późniejszą wersją.
+
+Ten program jest rozpowszechniany z nadzieją, że będzie przydatny, ale BEZ JAKIEJKOLWIEK GWARANCJI; nawet domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ lub PRZYDATNOŚCI DO OKREŚLONYCH CELÓW.  Więcej informacji można znaleźć w Powszechnej Licencji Publicznej GNU.
+
+Informacje prawne znajdują się na stronie https://www.gnu.org/licenses/.
