@@ -21,7 +21,7 @@ package de.rampro.activitydiary.helpers;
 
 
 import android.content.res.Resources;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import java.text.DecimalFormat;
 import java.util.Date;

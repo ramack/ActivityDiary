@@ -22,18 +22,19 @@
 buildscript {
     repositories {
         google()
+        mavenCentral()
         jcenter()
         if (project.file('ActivityDiarySigning.properties').exists()) {
             mavenCentral()
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:7.0.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         if (project.file('ActivityDiarySigning.properties').exists()) {
-            classpath 'com.github.triplet.gradle:play-publisher:1.2.2'
+            classpath("com.github.triplet.gradle:play-publisher:3.6.0")
         }
     }
 }
@@ -41,14 +42,10 @@ buildscript {
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
         maven { url "https://jitpack.io" }
     }
-}
-
-ext {
-    supportLibVersion = '28.0.0'
-    architectureVersion = '1.1.1'
 }
 
 task clean(type: Delete) {

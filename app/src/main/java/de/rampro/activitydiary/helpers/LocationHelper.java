@@ -31,10 +31,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.preference.PreferenceManager;
-
-import java.util.List;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import de.rampro.activitydiary.ActivityDiaryApplication;
 import de.rampro.activitydiary.db.ActivityDiaryContract;

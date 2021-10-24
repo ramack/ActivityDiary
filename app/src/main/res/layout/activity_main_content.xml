@@ -17,7 +17,7 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,20 +31,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_area"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/colorGreyBackground"
             >
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/inner_const"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -64,17 +64,17 @@
                         android:layout_height="?android:attr/listPreferredItemHeightSmall"
                         android:transitionName="@string/current_activity_transition" />
 
-                </android.support.v7.widget.CardView>
-            </android.support.constraint.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.design.widget.AppBarLayout
+            <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/inner_const"
                 app:elevation="0dp"
                 >
-                <android.support.design.widget.TabLayout
+                <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
                     android:layout_height="22dp"
@@ -84,10 +84,10 @@
                     app:tabPaddingTop="0dp"
                     >
 
-                </android.support.design.widget.TabLayout>
-            </android.support.design.widget.AppBarLayout>
+                </com.google.android.material.tabs.TabLayout>
+            </com.google.android.material.appbar.AppBarLayout>
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -100,7 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
                 app:layout_constraintBottom_toBottomOf="parent"
             />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 <!--
             <HorizontalScrollView
                 android:id="@+id/detail_area"
@@ -154,7 +154,7 @@
             </HorizontalScrollView>
 -->
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/select_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -163,7 +163,7 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_edit_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
         app:layout_anchorGravity="bottom|right|end"
         app:pressedTranslationZ="12dp"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_attach_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -200,4 +200,4 @@
                - go back to previous activity (in list of possible next acts)
                -->
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

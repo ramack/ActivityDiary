@@ -24,7 +24,7 @@
         android:id="@+id/action_filter"
         android:title="@string/action_filter"
         app:showAsAction="always"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:searchIcon="@drawable/ic_filter"
         app:searchIcon="@drawable/ic_filter"
         />

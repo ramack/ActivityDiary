@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         >
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +44,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
+                android:id="@+id/detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -100,7 +101,6 @@
                     android:text='@{viewModel.mTotalMonth}'
                     />
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </layout>

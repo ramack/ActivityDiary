@@ -26,10 +26,9 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import org.osmdroid.api.IMapController;

@@ -19,7 +19,7 @@
 
 package de.rampro.activitydiary.ui.main;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +29,6 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import de.rampro.activitydiary.R;
-import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
 

@@ -16,57 +16,58 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-apply plugin: 'com.android.application'
+plugins {
+    id("com.android.application")
+    id("com.github.triplet.play")
+}
 
 if (project.file('../ActivityDiarySigning.properties').exists()) {
-    apply plugin: 'com.github.triplet.play'
+//    apply plugin: 'com.github.triplet.play'
 
-    Properties props = new Properties()
-    props.load(new FileInputStream(file('../ActivityDiarySigning.properties')))
+    //   Properties props = new Properties()
+    //   props.load(new FileInputStream(file('../ActivityDiarySigning.properties')))
 
-    android {
-        signingConfigs {
-            gplayRelease {
-                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore")
-                storePassword props['keystore.password']
-                keyAlias 'key0'
-                keyPassword  props['key.password']
-            }
-            release {
-                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore_default")
-                storePassword props['keystore_default.password']
-                keyAlias 'defaultRelease'
-                keyPassword  props['key_default.password']
-            }
-        }
-        playAccountConfigs {
-            defaultAccountConfig {
-                serviceAccountEmail = 'gplay-ramack@api-5226730847504381805-103625.iam.gserviceaccount.com'
-                pk12File = file('../gplay-developer-9607db552238.p12')
-            }
-        }        
-    }
-    play {
-        uploadImages = true
-        untrackOld = true
-        track = 'beta'
-    }
+//    android {
+//        signingConfigs {
+//            gplayRelease {
+//                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore")
+//                storePassword props['keystore.password']
+//                keyAlias 'key0'
+//                keyPassword  props['key.password']
+//            }
+//            release {
+//                storeFile file("${System.properties['user.home']}${File.separator}/.android_keystore_default")
+//                storePassword props['keystore_default.password']
+//                keyAlias 'defaultRelease'
+//                keyPassword  props['key_default.password']
+//            }
+//        }
+//        playAccountConfigs {
+//            defaultAccountConfig {
+//                serviceAccountEmail = 'gplay-ramack@api-5226730847504381805-103625.iam.gserviceaccount.com'
+//                pk12File = file('../gplay-developer-9607db552238.p12')
+//            }
+//        }
+//    }
+//    play {
+//        uploadImages = true
+//        untrackOld = true
+//        track = 'beta'
+//    }
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 30
     defaultConfig {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 133
-        versionName "1.4.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 30
+        versionCode 135
+        versionName "1.4.1"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         if (project.file('../ActivityDiarySigning.properties').exists()) {
-            playAccountConfig = playAccountConfigs.defaultAccountConfig
+//            playAccountConfig = playAccountConfigs.defaultAccountConfig
         }
     }
     buildTypes {
@@ -91,7 +92,7 @@ android {
 //            shrinkResources true
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             if (project.file('../ActivityDiarySigning.properties').exists()) {
-                signingConfig signingConfigs.gplayRelease
+//                signingConfig signingConfigs.gplayRelease
             }
         }
     }
@@ -108,41 +109,45 @@ android {
     dataBinding {
         enabled = true
     }
+}
 
+play {
+    serviceAccountCredentials.set(file("../api-5226730847504381805-103625-85f8cc97d608.json"))
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-    implementation "com.android.support:cardview-v7:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
-    implementation "com.android.support:design:${supportLibVersion}"
-    implementation "com.android.support:preference-v7:${supportLibVersion}"
-    implementation "com.android.support:preference-v14:${supportLibVersion}"
-    implementation "com.android.support:exifinterface:${supportLibVersion}"
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
+    implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'com.pes.materialcolorpicker:library:1.2.2'
 
-    implementation "android.arch.lifecycle:extensions:${architectureVersion}"
-    annotationProcessor "android.arch.lifecycle:compiler:${architectureVersion}"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.3.1'
 
-    def acraVersion = '5.1.3';
+    def acraVersion = '5.8.4'
     implementation "ch.acra:acra-mail:$acraVersion"
     implementation "ch.acra:acra-core:$acraVersion"
     implementation "ch.acra:acra-dialog:$acraVersion"
     implementation "ch.acra:acra-toast:$acraVersion"
 
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'org.osmdroid:osmdroid-android:6.0.1'
+    implementation 'org.osmdroid:osmdroid-android:6.1.11'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here
 
     androidTestImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
     testImplementation 'junit:junit:4.12'
-    testImplementation "org.robolectric:robolectric:4.1"
+    testImplementation "org.robolectric:robolectric:4.3"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }
 

@@ -1,8 +1,8 @@
-Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary and statistics views provide an overview of what you did and when.
-The functions to categorize activites and get a reminder for recurrent actions are planned.
+Το ημερολόγιο δραστηριοτήτων επιτρέπει την καταχώρηση ημερολογίου για τις δραστηριότητές σας. Μπορείτε να επισυνάψετε σημειώσεις και εικόνες στις δραστηριότητες και από εκείνες τις λεπτομέρειες ρεκόρ, όπως το είδος των λαχανικών που έχετε σπορά κατά την κηπουρική. The diary and statistics views provide an overview of what you did and when.
+Είναι προγραμματισμένες οι λειτουργίες για την κατηγοριοποίηση δραστηριοτήτων και την υπενθύμιση για επαναλαμβανόμενες ενέργειες.
 
-Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Το ημερολόγιο δραστηριοτήτων είναι ελεύθερο λογισμικό: μπορείτε να το αναδιανείμετε και / ή να το τροποποιήσετε σύμφωνα με τους όρους της Γενικής Δημόσιας Άδειας GNU όπως δημοσιεύεται από το Ίδρυμα Ελεύθερου Λογισμικού, είτε την έκδοση 3 της Άδειας, είτε (οποιαδήποτε επιλογή σας) σε οποιαδήποτε μεταγενέστερη έκδοση.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+Το πρόγραμμα αυτό διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ. χωρίς ακόμη και την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.  Για περισσότερες λεπτομέρειες, ανατρέξτε στην άδεια GNU General Public License.
 
-For legal details see https://www.gnu.org/licenses/.
+Για νομικές λεπτομέρειες, ανατρέξτε στη διεύθυνση https://www.gnu.org/licenses/.

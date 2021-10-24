@@ -1,0 +1,3 @@
+- upgrade of several dependencies
+- correct map view
+- minor bugfixes
