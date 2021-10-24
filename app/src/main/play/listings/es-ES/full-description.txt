@@ -1,0 +1,8 @@
+Activity Diary le permite grabar un diario para sus actividades. Puede adjuntar notas e imágenes a las actividades y, mediante ese registro, detalles como el tipo de verduras que sembradas durante la jardinería. The diary and statistics views provide an overview of what you did and when.
+Se planean las funciones para categorizar actividades y obtener un recordatorio de acciones recurrentes.
+
+Activity Diary es software libre: puede redistribuirlo y / o modificarlo bajo los términos de la Licencia Pública General de GNU publicada por la Free Software Foundation, ya sea la versión 3 de la Licencia, o (a su elección) cualquier versión posterior.
+
+Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA; sin siquiera la garantía implícita de COMERCIABILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR.  Ver la Licencia Pública General de GNU para más detalles.
+
+Para obtener detalles legales, consulte https://www.gnu.org/licenses/.
