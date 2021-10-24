@@ -1,0 +1,8 @@
+活動日記はあなたの活動の日記を記録することができます。 メモや写真をアクティビティに添付することができます。また、ガーデニング中に播種した野菜のような記録の詳細情報を添付することもできます。 The diary and statistics views provide an overview of what you did and when. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary and statistics views provide an overview of what you did and when.
+アクティビティを分類し、反復アクションのリマインダーを取得する機能が計画されています。
+
+Activity Diaryはフリーソフトウェアです。フリーソフトウェア財団が発行したGNU一般公衆利用許諾契約書（バージョン3のライセンス）またはそれ以降のバージョンのいずれかを使用して、再配布および/または改変することができます。
+
+このプログラムは有用であることを期待して配布されていますが、いかなる保証もありません。商品性または特定目的への適合性の暗黙の保証さえも含みません。  詳細については、GNU General Public Licenseを参照してください。  法的な詳細については、https://www.gnu.org/licenses/を参照してください。
+
+For legal details see https://www.gnu.org/licenses/.
