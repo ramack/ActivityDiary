@@ -1,0 +1,8 @@
+Etkinlik Günlüğü, etkinlikleriniz için bir günlük tutmanıza olanak tanır. Etkinliklere notlar ve resimler ekleyebilir, ve bahçenizde çalışırken ektiğiniz sebze türü gibi ayrıntıları kaydedebilirsiniz. The diary and statistics views provide an overview of what you did and when.
+Etkinlikleri sınıflandırma ve tekrar eden eylemler için bir hatırlatma alma işlevleri planlanmaktadır.
+
+Etkinlik Günlüğü ücretsiz bir yazılımdır: GNU Genel Kamu Lisansı uyarınca, Lisansın sürüm 3'ünü veya (isteğe bağlı olarak) sonraki herhangi bir sürümünü Free Software Foundation tarafından yayınlanan şartlara göre yeniden dağıtabilir ve / veya değiştirebilirsiniz.
+
+Bu program, yararlı olacağı umuduyla dağıtılır ancak HERHANGİ BİR GARANTİ olmadan; hatta BELİRLİ BİR AMACA UYGUNLUK VEYA SATILABİLİRLİK HAKKINDA zımni garanti olmaksızın.  Daha çok ayrıntı için GNU Genel Kamu Lisansı'na bakın.
+
+Yasal ayrıntılar için https://www.gnu.org/licenses/ adresine bakın.
