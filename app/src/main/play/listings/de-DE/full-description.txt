@@ -1,0 +1,8 @@
+Das Aktivitätstagebuch ermöglicht deine Tätigkeiten aufzuzeichnen. Du kannst Notizen und Bilder an die Tagebucheinträge heften und dadurch allerlei Details hinterlegen wie z. Die Ansichten Tagebuch und Statistik bieten einen Überblick darüber, was du zu welchem Zeitpunkt getan hast.
+Funktionalität um die Aktivitäten in Kategorien einzuteilen und an wiederkehrende Aktivitäten erinnert zu werden sind geplant.
+
+html">GNU General Public License</a> in Version 3 oder einer späteren Version, welche durch die Free Software Foundation veröffentlicht wird, eingehalten werden.
+
+Dieses Programm wurde in der Hoffnung nützlich zu sein veröffentlicht, die Autoren und Bereitsteller übernehmen jedoch KEINERLEI GEWÄHRLEISTUNG oder GARANTIE dafür für einen bestimmten Zweck verwendet werden zu können.  Für Details sei auf die GNU General Public License auf https://www.
+
+Rechtliche Informationen sind unter https://www.gnu.org/licenses/ zu finden.
