@@ -82,8 +82,8 @@
     <string name="setting_show_cur_activitiy_notification">Notificación de actividad actual</string>
     <string name="setting_show_cur_activitiy_notification_summary_active">La actividad actual se muestra como notificación</string>
     <string name="setting_show_cur_activitiy_notification_summary_inactive">No se muestra ninguna notificación para la actividad actual</string>
-    <string name="setting_silent_renotification">Silent notifications</string>
-    <string name="setting_silent_reconfication_summary_active">No alert on change of notification text</string>
+    <string name="setting_silent_renotification">Notificaciones silenciosas</string>
+    <string name="setting_silent_reconfication_summary_active">No alertar al cambiar el texto de las notificaciones</string>
     <string name="setting_silent_reconfication_summary_inactive">Agressive alerts (with sound and vibration as configured) on each change of notification text</string>
     <string name="setting_disable_on_click">Terminar actividad por clic</string>
     <string name="setting_disable_on_click_summary_active">La actividad actual puede terminar haciendo clic en la etiqueta de actividad</string>
