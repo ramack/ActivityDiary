@@ -49,11 +49,12 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
 //            }
         }
     }
-//    play {
+    play {
+        serviceAccountCredentials.set(file("../api-5226730847504381805-103625-85f8cc97d608.json"))
 //        uploadImages = true
 //        untrackOld = true
 //        track = 'beta'
-//    }
+    }
 }
 
 android {
@@ -110,10 +111,6 @@ android {
     dataBinding {
         enabled = true
     }
-}
-
-play {
-    serviceAccountCredentials.set(file("../api-5226730847504381805-103625-85f8cc97d608.json"))
 }
 
 dependencies {
