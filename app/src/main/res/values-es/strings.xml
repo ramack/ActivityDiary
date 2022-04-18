@@ -204,7 +204,7 @@
     <string name="renamed_deleted_activity_toast">Renombrado la actividad ya eliminada %1$s.</string>
     <string name="edit_existing_activity_toast">Ahora editando la actividad existente con el nombre %1$s.</string>
     <!-- history -->
-    <string name="default_datetime_format">aaaa.MM.dd HH: mm</string>
+    <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Inicio: %1$s</string>
@@ -228,8 +228,8 @@
     <string name="later">Más tarde</string>
     <string name="day_format">Mes.dia.año</string>
     <string name="week_format">yyyyy \'Semana\' ww</string>
-    <string name="month_format">MMMM AAAA</string>
-    <string name="year_format">AAAA</string>
+    <string name="month_format">MMMM yyyy</string>
+    <string name="year_format">yyyy</string>
     <!-- relative dates -->
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
@@ -269,7 +269,7 @@
     <string name="privacy_why_text3">The stored data can be deleted by removing the application and deleting the backups created by you and backup mechanisms of your device.</string>
     <string name="privacy_how_title">How is the data protected?</string>
     <string name="privacy_how_text1">The Application store unencrypted data locally on the device it is executed on. You are responsible to protect the stored data from unauthorized access. We highly recommend to protect your device with a strong password and even encrypt your devices\' storage. Backups created by the application itself or any device backup mechanism also need to be protected by you in a similar fashion.</string>
-    <string name="privacy_security_title">Security of your information</string>
+    <string name="privacy_security_title">Seguridad de su información</string>
     <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
     <string name="privacy_rights_title">Your rights</string>
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>
