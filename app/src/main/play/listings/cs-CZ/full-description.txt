@@ -1,8 +1,8 @@
-Deník aktivit umožňuje zaznamenávat deník pro své aktivity. Můžete přidat poznámky a obrázky k aktivitám a tím, že zaznamenáte detaily, jako je druh zeleniny, kterou jste nasadili během zahrádkářství. The diary and statistics views provide an overview of what you did and when.
-Jsou naplánovány funkce pro kategorizaci aktivit a připomenutí opakovaných akcí.
+Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary and statistics views provide an overview of what you did and when.
+The functions to categorize activites and get a reminder for recurrent actions are planned.
 
-Deník aktivit je svobodný software: jej můžete přerozdělovat a / nebo jej upravovat za podmínek GNU General Public License, které zveřejňuje Free Software Foundation, buď verze 3 licence, nebo (dle vaší volby) jakoukoli pozdější verzi.
+Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Tento program je distribuován v naději, že to bude užitečné, ale BEZ JAKÉKOLI ZÁRUKY; bez předpokládané záruky OBCHODOVATELNOSTI nebo VHODNOSTI PRO URČITÝ ÚČEL.  Další informace naleznete v GNU General Public License.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-Právní podrobnosti naleznete na adrese https://www.gnu.org/licenses/.
+For legal details see https://www.gnu.org/licenses/.

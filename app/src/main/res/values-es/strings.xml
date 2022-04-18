@@ -82,9 +82,9 @@
     <string name="setting_show_cur_activitiy_notification">Notificación de actividad actual</string>
     <string name="setting_show_cur_activitiy_notification_summary_active">La actividad actual se muestra como notificación</string>
     <string name="setting_show_cur_activitiy_notification_summary_inactive">No se muestra ninguna notificación para la actividad actual</string>
-    <string name="setting_silent_renotification">Silent notifications</string>
-    <string name="setting_silent_reconfication_summary_active">No alert on change of notification text</string>
-    <string name="setting_silent_reconfication_summary_inactive">Agressive alerts (with sound and vibration as configured) on each change of notification text</string>
+    <string name="setting_silent_renotification">Notificaciones silenciosas</string>
+    <string name="setting_silent_reconfication_summary_active">No alertar al cambiar el texto de las notificaciones</string>
+    <string name="setting_silent_reconfication_summary_inactive">Alertas agresivas (con sonido y vibración configuradas) en cada cambio de texto de notificación</string>
     <string name="setting_disable_on_click">Terminar actividad por clic</string>
     <string name="setting_disable_on_click_summary_active">La actividad actual puede terminar haciendo clic en la etiqueta de actividad</string>
     <string name="setting_disable_on_click_summary_inactive">La actividad actual sólo puede ser terminada seleccionando una nueva</string>
@@ -204,7 +204,7 @@
     <string name="renamed_deleted_activity_toast">Renombrado la actividad ya eliminada %1$s.</string>
     <string name="edit_existing_activity_toast">Ahora editando la actividad existente con el nombre %1$s.</string>
     <!-- history -->
-    <string name="default_datetime_format">aaaa.MM.dd HH: mm</string>
+    <string name="default_datetime_format">yyyy.MM.dd HH: mm</string>
     <string name="date_format">yyyy.MM.dd</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Inicio: %1$s</string>
@@ -226,10 +226,10 @@
     <!-- statistics -->
     <string name="earlier">Más temprano</string>
     <string name="later">Más tarde</string>
-    <string name="day_format">E, M.dd.yy</string>
-    <string name="week_format">yyyy \'Week\' ww</string>
-    <string name="month_format">MMMM AAAA</string>
-    <string name="year_format">AAAA</string>
+    <string name="day_format">Mes.dia.año</string>
+    <string name="week_format">yyyyy \'Semana\' ww</string>
+    <string name="month_format">MMMM yyyy</string>
+    <string name="year_format">yyyy</string>
     <!-- relative dates -->
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
@@ -245,23 +245,23 @@
     <string name="privacy_intro_text1">Los Desarrolladores de ActivityDiary, nosotros (o “nosotros” o “nuestro”) respetamos la privacidad de nuestros usuarios (“usuario” o “usted”). Como el objetivo de esta aplicación es mantener un registro de sus actividades, una gran cantidad de información personal sensible se recopila y almacena. Sin embargo, son sus datos y usted tiene pleno control sobre ellos. Esta Política de Privacidad explica como la aplicación (la ¨Aplicación) colecta, usa, divulga y protege su información. Nuestros nombres pueden ser extraídos de los meta datos en los repositorios de git y dentro de la Aplicación.</string>
     <string name="privacy_intro_text2">Por favor lea atentamente esta Política de Privacidad. Si no está de acuerdo con los términos de esta Política de Privacidad, por favor no acceda a la Aplicación y eliminela de su dispositivo.</string>
     <string name="privacy_intro_text3">Nos reservamos el derecho de realizar cambios en esta Política de Privacidad en cualquier momento y por cualquier razón. Le avisaremos sobre cualquier cambio actualizando la fecha de “Última actualización” de esta Política de Privacidad.</string>
-    <string name="privacy_intro_text4">You are encouraged to periodically review this Privacy Policy to stay informed of updates. You will be deemed to have been made aware of, will be subject to, and will be deemed to have accepted the changes in any revised Privacy Policy by your continued use of the Application after the date such revised Privacy Policy is posted.</string>
-    <string name="privacy_intro_text5">This Privacy Policy does not apply to the third-party online/mobile store from which you install the Applications or make payments, which may also collect and use data about you. We are not responsible for any of the data collected by any such third party.</string>
-    <string name="privacy_what_title">What data is processed and stored?</string>
-    <string name="privacy_what_subTitle1">Activity Data</string>
-    <string name="privacy_what_subText1a">The data you enter to record your activities, including the date and time of start and end of the activity, combined with formatting, notes, pictures and relationships between different activites you attach to those activites is stored. Deleting entries like activities or pictures doesn\'t completely remove them from the database but only hides them.</string>
-    <string name="privacy_what_subTitle2">Geo-Location Information (ACCESS_FINE_LOCATION, GPS)</string>
-    <string name="privacy_what_subText2a">If configured the application accesses location-based information from your mobile device to relate acitivites to location and provide activity suggestions based on location information. If you wish to change ActivityDiarys access or permissions, you may do so in your device’s settings or disable the use of location services in the applications settings. Note that this does not influence or remove the already collected location data.</string>
-    <string name="privacy_what_subTitle3">Device storage (WRITE_EXTERNAL_STORAGE)</string>
-    <string name="privacy_what_subText3a">Storage and retreival of backups, photos and other files you attach to your activity diary need access to Androids \"external storage\" / SD card.</string>
-    <string name="privacy_what_subTitle4">Camera</string>
-    <string name="privacy_what_subText4a">The application enables you to take photos with your devices\' camera and attach them to your activity diary. This is the only usage of the camera permission.</string>
-    <string name="privacy_what_subTitle5">Network state (ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE)</string>
-    <string name="privacy_what_subText5a">Network and WIFI state is stored to correlate activities to those data and to propose and set next activites based on the current state.</string>
-    <string name="privacy_what_subTitle6">Crash Reporting</string>
-    <string name="privacy_what_subText6a">In case of a program fault (crash) the application prepares a report that helps us to improve the behavior of the application. This report contains a lot of technical data about your device and operating system, the complete preferences of the application and the trace of program steps that was exectued right before the crash. The hardware of your device including but not limited to screen size and resolution, the manufacturer, the language setting and versions of the operating system and application are identifiable. The prepared report is not transmitted automatically, but shared to your email application in a newly composed email that you - at your own will - can send to us or whomever you want. Protecting the data during transmission by using encrypted email transfer is under responsibility of you and your mail service provider. We highly recommend to thoroughfully review the report and remove all data you don\'t understand and/or don\'t want to share.</string>
-    <string name="privacy_what_subText6b">As the used media is email you will disclose your name, email address, and several other technical data like IP address and email service provider by transmitting a crash report. We will not use this information for anything else than contacting you about the crash.</string>
-    <string name="privacy_what_subText6c">Anonymous extracts of the report that do not allow your indentification might be used in the public issue tracker for documenting the crash and tracking the rework.</string>
+    <string name="privacy_intro_text4">Se le recomienda revisar periódicamente esta Política de Privacidad para mantenerse informado de las actualizaciones. Se considerará que usted ha sido informado, estará sujeto a y se considerará que ha aceptado los cambios en cualquier Política de Privacidad revisada por el uso continuado de la Aplicación después de la fecha en que se publique dicha Política de Privacidad revisada.</string>
+    <string name="privacy_intro_text5">Esta política de privacidad no se aplica a terceros en línea/tienda móvil desde la que instala las aplicaciones o realiza pagos, que también pueden recopilar y utilizar datos sobre usted. No nos hacemos responsables de ninguno de los datos recogidos por ningún tercero de este tipo.</string>
+    <string name="privacy_what_title">¿Qué datos se procesan y almacenan?</string>
+    <string name="privacy_what_subTitle1">Actividad de datos</string>
+    <string name="privacy_what_subText1a">Los datos que ingresas para registrar tus actividades, incluyendo la fecha y la hora de inicio y fin de la actividad, combinado con el formato, las notas, las imágenes y las relaciones entre las diferentes actividades que se adjuntan a esas actividades se almacenan. Eliminar entradas como actividades o imágenes no las elimina por completo de la base de datos, pero sólo las oculta de forma automática.</string>
+    <string name="privacy_what_subTitle2">Información de Geo-Ubicación (ACCESS_FINE_LOCATION, GPS)</string>
+    <string name="privacy_what_subText2a">Si se configura, la aplicación accede a la información basada en la ubicación desde su dispositivo móvil para relacionar acitividades con la ubicación y proporcionar sugerencias de actividad basadas en la información de ubicación. Si desea cambiar el acceso a ActivityDiarys o los permisos, puede hacerlo en la configuración de su dispositivo o desactivar el uso de los servicios de ubicación en la configuración de las aplicaciones. Tenga en cuenta que esto no influye o elimina los datos de ubicación ya recolectados.</string>
+    <string name="privacy_what_subTitle3">Almacenamiento del dispositivo (WRITE_EXTERNAL_STORAGE)</string>
+    <string name="privacy_what_subText3a">Almacenamiento y recuperación de copias de seguridad, fotos y otros archivos que se adjunten a su diario de actividad necesitan acceso a la tarjeta SD \"almacenamiento externo\" / tarjeta SD de Android.</string>
+    <string name="privacy_what_subTitle4">Cámara</string>
+    <string name="privacy_what_subText4a">La aplicación te permite tomar fotos con la cámara de tus dispositivos y adjuntarlas a tu agenda de actividades. Este es el único uso del permiso de la cámara.</string>
+    <string name="privacy_what_subTitle5">Estado de red (ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE)</string>
+    <string name="privacy_what_subText5a">La red y el estado WIFI se almacenan para correlacionar las actividades con esos datos y proponer y establecer las siguientes actividades basadas en el estado actual.</string>
+    <string name="privacy_what_subTitle6">Informes de fallas</string>
+    <string name="privacy_what_subText6a">En caso de fallo del programa la aplicación prepara un informe que nos ayude a mejorar el comportamiento de la aplicación. Este informe contiene muchos datos técnicos sobre su dispositivo y sistema operativo, las preferencias completas de la aplicación y el seguimiento de los pasos del programa efectuados justo antes del cierre. El hardware de su dispositivo, incluyendo pero no limitado al tamaño y resolución de la pantalla, el fabricante, la configuración de idioma y las versiones del sistema operativo y la aplicación son identificables. El informe preparado no se transmite automáticamente, pero compartido con su aplicación de correo electrónico en un nuevo correo electrónico que usted - a su propia voluntad - puede enviarnos o a quien quiera. La protección de los datos durante la transmisión mediante la transferencia de correo electrónico cifrada es responsabilidad de usted y de su proveedor de servicios de correo. Le recomendamos encarecidamente revisar a fondo el informe y eliminar todos los datos que no entiende y/o no desea compartir.</string>
+    <string name="privacy_what_subText6b">Como el medio utilizado es el correo electrónico, usted revelará su nombre, dirección de correo electrónico, y otros datos técnicos como la dirección IP y el proveedor de servicios de correo electrónico transmitiendo un informe de error. No usaremos esta información para nada más que contactar con usted sobre el accidente.</string>
+    <string name="privacy_what_subText6c">Los extractos anónimos del informe que no permiten su indentificación podrían ser usados en el gestor de incidencias público para documentar el fallo y rastrear el rediseño.</string>
     <string name="privacy_what_subText6d">Additional to this report prepared by the application your operating system or services on you device might transmit crash or usage reports, but those are not part of ActivityDiary, not covered by this privacy policy and under your own responsibility.</string>
     <string name="privacy_why_title">Why does the application store data?</string>
     <string name="privacy_why_text1">The Applications is designed to create a record of your activites. This is achieved by selecting the current activities manually or automatically, based on evaluation of data entered by you or collected by your device. The data you enter into the application is stored for later retreival by the user. The application stores and evaluates data of different sensors of your device to suggest or even automatically select the next activities. No data is collected, transmitted or stored that is not required for its intended functionality.</string>
@@ -269,7 +269,7 @@
     <string name="privacy_why_text3">The stored data can be deleted by removing the application and deleting the backups created by you and backup mechanisms of your device.</string>
     <string name="privacy_how_title">How is the data protected?</string>
     <string name="privacy_how_text1">The Application store unencrypted data locally on the device it is executed on. You are responsible to protect the stored data from unauthorized access. We highly recommend to protect your device with a strong password and even encrypt your devices\' storage. Backups created by the application itself or any device backup mechanism also need to be protected by you in a similar fashion.</string>
-    <string name="privacy_security_title">Security of your information</string>
+    <string name="privacy_security_title">Seguridad de su información</string>
     <string name="privacy_security_text">We use the mechanisms provided by the Android framework to protect your personal information from other applications on your device. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data protection can be guaranteed against any interception or other type of misuse. Therefore, we cannot guarantee complete security of you provide personal information.</string>
     <string name="privacy_rights_title">Your rights</string>
     <string name="privacy_rights_text">At any time and free of cost you have the right to ask us about which data we store about you. You can always request for correction or removal of personal data or restrict the use of your data.</string>

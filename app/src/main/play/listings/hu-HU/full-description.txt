@@ -1,8 +1,8 @@
-A tevékenységi napló lehetővé teszi naplójának rögzítését tevékenységéhez. Tudod csatolni jegyzeteket és képeket az aktivitások és a rekord részleteit, mint a fajta zöldségeket magot, miközben a kertészet. A napló- és statisztikai nézetek áttekintést nyújtanak arról, hogy mit tettél és mikor.
-Tervezik az aktivitások kategorizálására és a visszatérő tevékenységekre vonatkozó emlékeztető funkciókat.
+Activity Diary allows to record a diary for your activities. You can attach notes and pictures to the activies and by that record details like the kind of vegetables you seeded while gardening. The diary and statistics views provide an overview of what you did and when.
+The functions to categorize activites and get a reminder for recurrent actions are planned.
 
-A Tevékenység Napló ingyenes szoftver: a Free Software Foundation által kiadott GNU Általános Nyilvános Licenc (a továbbiakban: Free Software Foundation, vagy a Licenc 3-as verziója), vagy (tetszés szerint) bármely későbbi verziója alapján újraeloszthatja és / vagy módosíthatja.
+Activity Diary is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Ezt a programot reméljük, hogy hasznos lesz, de MINDEN GARANCIA NÉLKÜL; anélkül, hogy a VENDÉGHATÁROZÁSRA VAGY EGY ADÁSI CÉLRA VALÓ ALKALMASSÁGRA VONATKOZNAK.  További részletekért olvassa el a GNU általános nyilvános licencet.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-A jogi részletekért lásd: https://www.gnu.org/licenses/.
+For legal details see https://www.gnu.org/licenses/.

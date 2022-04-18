@@ -70,19 +70,19 @@
     <string name="setting_datetime_format">Dátum formátum</string>
     <string name="setting_datetime_format_summary">@string/default_datetime_format</string>
     <string name="setting_datetime_format_description">A tevékenység megkezdésének dátumának és időpontjának megjelenítési formátuma. A szokásos formátumok: yyyy-MM-dd HH: mm vagy dd.MM hh: mm</string>
-    <string name="setting_duration_format">Duration format</string>
-    <string name="setting_duration_format_summary_dynamic">Dynamically adjust the format depending on the duration.</string>
-    <string name="setting_duration_format_summary_precise">Always show durations with seconds resolution.</string>
-    <string name="setting_duration_format_summary_nodays">Show durations with seconds resolution but don\'t replace 24h by 1 day.</string>
-    <string name="setting_duration_format_summary_hour_min">Always show durations with hours and minutes.</string>
-    <string name="setting_duration_format_description">Display format of the time durations.</string>
+    <string name="setting_duration_format">Időtartam formátuma</string>
+    <string name="setting_duration_format_summary_dynamic">A formátum az időtartam hosszának függvényében változik.</string>
+    <string name="setting_duration_format_summary_precise">Az időtartamokat mindig másodpercekben írja ki.</string>
+    <string name="setting_duration_format_summary_nodays">Az időtartamok másodperc alapú kijelzése, de a 24 óra ne legyen 1 napra cserélve.</string>
+    <string name="setting_duration_format_summary_hour_min">Az időtartamok mindig óra, perc alapon kerüljenek kijelzére.</string>
+    <string name="setting_duration_format_description">Az időtartamok formátuma.</string>
     <string name="setting_auto_select_new">Válasszon új tevékenységeket</string>
     <string name="setting_auto_select_new_summary_active">A frissen létrehozott tevékenységet közvetlenül kiválasztják az új aktívaként</string>
     <string name="setting_auto_select_new_summary_inactive">Az új aktivitások létrehozása nem befolyásolja az aktuális tevékenységet</string>
     <string name="setting_show_cur_activitiy_notification">Értesítés az aktuális tevékenységről</string>
     <string name="setting_show_cur_activitiy_notification_summary_active">Az aktuális tevékenység értesítésként jelenik meg</string>
     <string name="setting_show_cur_activitiy_notification_summary_inactive">Az aktuális tevékenységhez nincs értesítés</string>
-    <string name="setting_silent_renotification">Silent notifications</string>
+    <string name="setting_silent_renotification">Néma értesítések</string>
     <string name="setting_silent_reconfication_summary_active">No alert on change of notification text</string>
     <string name="setting_silent_reconfication_summary_inactive">Agressive alerts (with sound and vibration as configured) on each change of notification text</string>
     <string name="setting_disable_on_click">Kattintással végezze el a tevékenységet</string>
@@ -149,9 +149,9 @@
     <string name="activity_title_no_selected_act">&lt;No Activity&gt;</string>
     <string name="dialog_title_note">jegyzet</string>
     <string name="activities">Tevékenységek</string>
-    <string name="fragment_detail_stats_title">Statistics</string>
-    <string name="fragment_detail_note_title">Note</string>
-    <string name="fragment_detail_pictures_title">Pictures</string>
+    <string name="fragment_detail_stats_title">Statisztika</string>
+    <string name="fragment_detail_note_title">Megjegyzés</string>
+    <string name="fragment_detail_pictures_title">Képek</string>
     <!-- actions -->
     <string name="action_delete">A tevékenység törlése</string>
     <string name="action_diary_entry_delete">A bejegyzés törlése</string>
@@ -167,7 +167,7 @@
     <string name="dlg_delete_image_text">Biztosan eltávolítja ezt a képet az aktuális tevékenységbejegyzésből?</string>
     <string name="dlg_undelete_activity_title">Tevékenység visszaállítása</string>
     <string name="dlg_undelete_activity_text">A %1$s tevékenység lesz-e helyreállítva, és újra elérhetővé válik?</string>
-    <string name="statistics_others">Others</string>
+    <string name="statistics_others">Egyéb</string>
     <!-- main view -->
     <string name="duration_description">%1$sóta</string>
     <string name="just_now">pont most</string>
@@ -188,18 +188,18 @@
         <item quantity="one">%d nap</item>
         <item quantity="other">%d nap</item>
     </plurals>
-    <string name="avg_duration_description">Average duration: %1$s</string>
-    <string name="last_done_description">Last start: %1$s</string>
+    <string name="avg_duration_description">Átlagos időtartam: %1$s</string>
+    <string name="last_done_description">Utolsó kezdet: %1$s</string>
     <string name="camera_error">Valami baj van itt. Kép nem tárolható.</string>
     <string name="no_active_activity_error">A művelet végrehajtásához először aktiválni kell a tevékenységet</string>
-    <string name="contentDesc_pictureEntry">Picture assigned to the diary entry</string>
+    <string name="contentDesc_pictureEntry">Ehhez a bejegyzéshez tartozó képek</string>
     <!-- edit view -->
     <string name="error_name_already_used">A %1$s már létezik</string>
     <string name="tooltip_quickfix_btn_edit_existing">Az aktuális szerkesztés elutasítása és a meglévő tevékenység megnyitásához ugyanazt a nevet használja</string>
     <string name="error_name_already_used_in_deleted">A %1$s névvel rendelkező törölt tevékenység már létezik</string>
     <string name="tooltip_quickfix_btn_rename_deleted">Törölje a törölt tevékenység azonos nevű nevét a konfliktus megoldásához</string>
     <string name="tooltip_quickfix_btn_undelete_existing">Törölje a név azonosítóját</string>
-    <string name="error_name_similar">New activity name similar to %1$s</string>
+    <string name="error_name_similar">Új aktivitás elnevezése hasonlóan ehhez: %1$s</string>
     <string name="recover_activity_toast">Visszanyert tevékenység %1$s. Mostantól újból választható.</string>
     <string name="renamed_deleted_activity_toast">Átnevezte a már törölt %1$stevékenységet.</string>
     <string name="edit_existing_activity_toast">Most módosítja a meglévő tevékenységet %1$snévvel.</string>
@@ -208,13 +208,13 @@
     <string name="date_format">yyyy.mm.dd</string>
     <string name="time_format">HH: mm</string>
     <string name="history_start">Start: %1$s</string>
-    <string name="history_end">End: %1$s (%2$s)</string>
+    <string name="history_end">Vég: %1$s (%2$s)</string>
     <string name="desc_start_date">Kezdő dátum</string>
     <string name="desc_start_time">Kezdési idő</string>
     <string name="desc_end_date">Befejezés dátuma</string>
     <string name="desc_end_time">Idő vége</string>
-    <string name="history_detail_start">Start</string>
-    <string name="history_detail_end">End</string>
+    <string name="history_detail_start">Kezdő időpont</string>
+    <string name="history_detail_end">Záró időpont</string>
     <string name="adjust_adjacent_times">Állítsa be a szomszédos naplóbejegyzéseket</string>
     <string name="constraint_positive_duration">A tevékenységnek mindig a befejezés előtt meg kell kezdődnie.</string>
     <string name="search_notes">Keresd meg a \"%1$s\" szót a&#x2026;megjegyzésben</string>
