@@ -58,13 +58,13 @@ if (project.file('../ActivityDiarySigning.properties').exists()) {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     defaultConfig {
         applicationId "de.rampro.activitydiary"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 136
-        versionName "1.4.2"
+        targetSdkVersion 32
+        versionCode 137
+        versionName "1.4.3"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         setProperty("archivesBaseName", "ActivityDiary-" + defaultConfig.versionName)
         if (project.file('../ActivityDiarySigning.properties').exists()) {
@@ -115,18 +115,18 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.preference:preference:1.2.0'
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'com.pes.materialcolorpicker:library:1.2.2'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.3.1'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.4.1'
 
     def acraVersion = '5.8.4'
     implementation "ch.acra:acra-mail:$acraVersion"
@@ -134,7 +134,7 @@ dependencies {
     implementation "ch.acra:acra-dialog:$acraVersion"
     implementation "ch.acra:acra-toast:$acraVersion"
 
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'org.osmdroid:osmdroid-android:6.1.11'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Don't forget to add attribution in strings.xml/libraries and README.md if you add something here

@@ -2,7 +2,7 @@
 <!--
   ~ ActivityDiary
   ~
-  ~ Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+  ~ Copyright (C) 2017-2022 Raphael Mack http://www.raphael-mack.de
   ~ Copyright (C) 2018 Bc. Ondrej Janitor
   ~
   ~ This program is free software: you can redistribute it and/or modify
@@ -55,6 +55,7 @@
         <activity android:name=".ui.main.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTop"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,10 +71,12 @@
         <activity android:name=".ui.history.HistoryDetailActivity"
             android:label="@string/activity_title_history_detail"
             android:windowSoftInputMode="adjustPan"
+            android:exported="false"
             />
         <activity android:name=".ui.history.HistoryActivity"
             android:label="@string/activity_title_history"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name=".action.SEARCH_ACTIVITY" />
