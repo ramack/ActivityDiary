@@ -288,11 +288,13 @@ public class MainActivity extends BaseActivity implements
         }
 
         imageFileName += timeStamp;
-        File storageDir = GraphicsHelper.imageStorageDirectory();
+        File storageDir = null;
         int permissionCheck = ContextCompat.checkSelfPermission(ActivityDiaryApplication.getAppContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
-        if(permissionCheck != PackageManager.PERMISSION_GRANTED) {
+        if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            storageDir = GraphicsHelper.imageStorageDirectory();
+        }else{
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
