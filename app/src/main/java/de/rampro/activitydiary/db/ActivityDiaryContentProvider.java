@@ -53,10 +53,10 @@ import static android.app.SearchManager.SUGGEST_COLUMN_QUERY;
 import static android.app.SearchManager.SUGGEST_COLUMN_TEXT_1;
 
 /*
- * Why a new Content Provider for Diary Activites?
+ * Why a new Content Provider for Diary Activities?
  *
  * According https://developer.android.com/guide/topics/providers/content-provider-creating.html
- * we need it to do searching, synching or widget use of the data -> which in the long we all want to do.
+ * we need it to do searching, syncing or widget use of the data -> which in the long we all want to do.
  *
  * Additionally it is used as SearchProvider these days.
  * */
@@ -434,7 +434,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
                 return ActivityDiaryContract.DiaryStats.CONTENT_TYPE;
             // TODO #18: add other types
             default:
-                Log.e(TAG, "MIME type for " + uri.toString() + " not defined.");
+                Log.e(TAG, "MIME type for " + uri + " not defined.");
                 return "";
         }
     }
@@ -497,7 +497,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      * Implement this to handle requests to delete one or more rows.
      * The implementation should apply the selection clause when performing
      * deletion, allowing the operation to affect multiple rows in a directory.
-     * As a courtesy, call {@link ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
+     * As a courtesy, call ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()
      * after deleting.
      * This method can be called from multiple threads, as described in
      * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes
@@ -583,7 +583,7 @@ public class ActivityDiaryContentProvider extends ContentProvider {
      * Implement this to handle requests to update one or more rows.
      * The implementation should update all rows matching the selection
      * to set the columns according to the provided values map.
-     * As a courtesy, call {@link ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()}
+     * As a courtesy, call ContentResolver#notifyChange(Uri, ContentObserver) notifyChange()
      * after updating.
      * This method can be called from multiple threads, as described in
      * <a href="{@docRoot}guide/topics/fundamentals/processes-and-threads.html#Threads">Processes
