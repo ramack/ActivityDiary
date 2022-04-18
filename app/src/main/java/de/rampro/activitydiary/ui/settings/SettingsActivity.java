@@ -211,11 +211,12 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         String value = PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getString(KEY_PREF_LOCATION_DIST, def);
+        if(value.length() == 0){
+            value = "0";
+        }
 
         int v = Integer.parseInt(value.replaceAll("\\D",""));
-        if(v < 5){
-            v = 5;
-        }
+
         String nvalue = Integer.toString(v);
         if(!value.equals(nvalue)){
             SharedPreferences.Editor editor = PreferenceManager
@@ -235,6 +236,9 @@ public class SettingsActivity extends BaseActivity implements SharedPreferences.
         String value = PreferenceManager
                 .getDefaultSharedPreferences(ActivityDiaryApplication.getAppContext())
                 .getString(KEY_PREF_LOCATION_AGE, def);
+        if(value.length() == 0){
+            value = "5";
+        }
         int v = Integer.parseInt(value.replaceAll("\\D",""));
         if(v < 2){
             v = 2;
