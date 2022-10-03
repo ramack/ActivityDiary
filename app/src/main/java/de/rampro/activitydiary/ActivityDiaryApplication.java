@@ -23,33 +23,13 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.Color;
 
-import org.acra.*;
-import org.acra.annotation.*;
+import org.acra.ACRA;
+import org.acra.ReportField;
+import org.acra.config.*;
 import org.acra.data.StringFormat;
 
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 
-@AcraCore(reportContent = { ReportField.APP_VERSION_CODE,
-                ReportField.APP_VERSION_NAME,
-                ReportField.USER_COMMENT,
-                ReportField.SHARED_PREFERENCES,
-                ReportField.ANDROID_VERSION,
-                ReportField.BRAND,
-                ReportField.PHONE_MODEL,
-                ReportField.CUSTOM_DATA,
-                ReportField.STACK_TRACE,
-                ReportField.BUILD,
-                ReportField.BUILD_CONFIG,
-                ReportField.CRASH_CONFIGURATION,
-                ReportField.DISPLAY
-        },
-        buildConfigClass = de.rampro.activitydiary.BuildConfig.class,
-        alsoReportToAndroidFramework = true,
-        reportFormat = StringFormat.KEY_VALUE_LIST
-)
-@AcraMailSender(mailTo = "activity-diary@rampro.de")
-@AcraDialog(resCommentPrompt = R.string.crash_dialog_comment_prompt, // optional. When defined, adds a user text field input with this text resource as a label
-        resText = R.string.crash_dialog_text)
 public class ActivityDiaryApplication extends Application {
 
     private static Context context;
@@ -70,7 +50,37 @@ public class ActivityDiaryApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
 
-        ACRA.init(this);
+        ACRA.init(this, new CoreConfigurationBuilder()
+                .withBuildConfigClass(BuildConfig.class)
+                .withReportFormat(StringFormat.JSON)
+                .withReportContent(ReportField.APP_VERSION_CODE,
+                        ReportField.APP_VERSION_NAME,
+                        ReportField.USER_COMMENT,
+                        ReportField.SHARED_PREFERENCES,
+                        ReportField.ANDROID_VERSION,
+                        ReportField.BRAND,
+                        ReportField.PHONE_MODEL,
+                        ReportField.CUSTOM_DATA,
+                        ReportField.STACK_TRACE,
+                        ReportField.BUILD,
+                        ReportField.BUILD_CONFIG,
+                        ReportField.CRASH_CONFIGURATION,
+                        ReportField.DISPLAY)
+                .withReportFormat(StringFormat.KEY_VALUE_LIST)
+                .withAlsoReportToAndroidFramework(true)
+                .withBuildConfigClass(de.rampro.activitydiary.BuildConfig.class)
+                .withPluginConfigurations(
+                        new DialogConfigurationBuilder()
+                                .withCommentPrompt(getString(R.string.crash_dialog_comment_prompt))
+                                .withText(getString(R.string.crash_dialog_text))
+                                .build(),
+                        new MailSenderConfigurationBuilder()
+                                .withMailTo("activity-diary@rampro.de")
+                                .withReportAsFile(true)
+                                .withReportFileName("Crash.txt")
+                                .build()
+                )
+        );
     }
 
     public static Context getAppContext() {
