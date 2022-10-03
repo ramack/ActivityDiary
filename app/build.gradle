@@ -111,6 +111,7 @@ android {
     dataBinding {
         enabled = true
     }
+    namespace 'de.rampro.activitydiary'
 }
 
 dependencies {
