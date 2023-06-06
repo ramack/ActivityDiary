@@ -227,7 +227,7 @@
     <string name="earlier">Más temprano</string>
     <string name="later">Más tarde</string>
     <string name="day_format">E, M.dd.yy</string>
-    <string name="week_format">yyyyy \'Semana\' ww</string>
+    <string name="week_format">yyyy \'Semana\' ww</string>
     <string name="month_format">MMMM yyyy</string>
     <string name="year_format">yyyy</string>
     <!-- relative dates -->
