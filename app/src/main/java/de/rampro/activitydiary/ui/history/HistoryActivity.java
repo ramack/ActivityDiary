@@ -32,12 +32,16 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.cursoradapter.widget.CursorAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -84,12 +88,18 @@ public class HistoryActivity extends BaseActivity implements
     private static final int SEARCH_TYPE_NOTE = 2;
     private static final int SEARCH_TYPE_TEXT_ALL = 3;
     private static final int SEARCH_TYPE_DATE = 4;
+    private static final String SHOULD_TEXT_BE_PAINTED_IN_RED_KEY = "SHOULD_TEXT_BE_PAINTED_IN_RED";
 
 
     private HistoryRecyclerViewAdapter historyAdapter;
     private DetailRecyclerViewAdapter detailAdapters[];
     private MenuItem searchMenuItem;
     private SearchView searchView;
+
+    // The flag will be set to "true" to paint the text
+    // after the rotate, when the UI will be definitely initialized, because onCreateOptionsMenu()
+    // is invoked only after onResume() is invoked
+    private boolean shouldTextBePaintedInRed = false;
 
     ContentProviderClient client = ActivityDiaryApplication.getAppContext().getContentResolver().acquireContentProviderClient(ActivityDiaryContract.AUTHORITY);
     ActivityDiaryContentProvider provider = (ActivityDiaryContentProvider) client.getLocalContentProvider();
@@ -148,6 +158,7 @@ public class HistoryActivity extends BaseActivity implements
     public boolean onQueryTextChange(String newText) {
         // no dynamic change before starting the search...
         setDefaultColorSearchText();
+        shouldTextBePaintedInRed = false;
         return true;
     }
 
@@ -163,6 +174,10 @@ public class HistoryActivity extends BaseActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            shouldTextBePaintedInRed = savedInstanceState.getBoolean(SHOULD_TEXT_BE_PAINTED_IN_RED_KEY);
+        }
 
         detailAdapters = new DetailRecyclerViewAdapter[5];
 
@@ -193,9 +208,63 @@ public class HistoryActivity extends BaseActivity implements
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SHOULD_TEXT_BE_PAINTED_IN_RED_KEY, shouldTextBePaintedInRed);
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         setIntent(intent);
+        // If the intent has wrong type of date, flag will be set to "true" to paint the text
+        // after the rotate, when the UI will be definitely initialized, because onCreateOptionsMenu()
+        // is invoked only after onResume() is invoked
+        // Otherwise, set the variable to "false"
+        boolean isWrongDate = checkIfIntentHasWrongDate(intent);
+        if (isWrongDate) {
+            shouldTextBePaintedInRed = true;
+            setWrongColorSearchText();
+        } else {
+            shouldTextBePaintedInRed = false;
+        }
         handleIntent(intent);
+    }
+
+    private boolean checkIfIntentHasWrongDate(Intent intent) {
+        String query;
+        String action = intent.getAction();
+        if (ActivityDiaryContentProvider.SEARCH_DATE.equals(action)) {
+            Uri data = intent.getData();
+            if (data != null) {
+                query = data.getPath();
+                query = query.replaceFirst("/", "");
+                return isDateWrong(query);
+            }
+        }
+        return false;
+    }
+
+    private boolean isDateWrong(String date) {
+        String[] formats = {
+                getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
+                ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(getApplicationContext())).toLocalizedPattern() //locale format
+        };
+
+        SimpleDateFormat simpleDateFormat;
+
+        for (String format : formats) {
+            simpleDateFormat = new SimpleDateFormat(format);
+            simpleDateFormat.setLenient(false);
+            try {
+                simpleDateFormat.parse(date).getTime();
+                return false;
+            } catch (ParseException e) {
+                /* intentionally no further handling. We try the next date format and onyl if we cannot parse the date with any
+                 * supported format we return null afterwards. */
+            }
+        }
+        return true;
     }
 
     private void handleIntent(Intent intent) {
@@ -227,7 +296,7 @@ public class HistoryActivity extends BaseActivity implements
             if (data != null) {
 
                 query = data.getPath();
-                query = query.replaceFirst("/","");
+                query = query.replaceFirst("/", "");
                 filterHistoryDates(query);
             }
         } else if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -245,7 +314,7 @@ public class HistoryActivity extends BaseActivity implements
 
             getContentResolver().delete(uri,
                     ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION + " LIKE ? AND "
-                    + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE ?",
+                            + ActivityDiaryContract.DiarySearchSuggestion.ACTION + " LIKE ?",
                     new String[]{query, intent.getAction()});
 
             values.put(ActivityDiaryContract.DiarySearchSuggestion.SUGGESTION, query);
@@ -254,9 +323,9 @@ public class HistoryActivity extends BaseActivity implements
 
             getContentResolver().delete(uri,
                     ActivityDiaryContract.DiarySearchSuggestion._ID +
-                    " IN (SELECT " + ActivityDiaryContract.DiarySearchSuggestion._ID +
-                    " FROM " + ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
-                    " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)",
+                            " IN (SELECT " + ActivityDiaryContract.DiarySearchSuggestion._ID +
+                            " FROM " + ActivityDiaryContract.DiarySearchSuggestion.TABLE_NAME +
+                            " ORDER BY " + ActivityDiaryContract.DiarySearchSuggestion._ID + " DESC LIMIT " + SEARCH_SUGGESTION_DISPLAY_COUNT + ",1)",
                     null);
         }
     }
@@ -293,8 +362,12 @@ public class HistoryActivity extends BaseActivity implements
         });
 
         searchView.setImeOptions(searchView.getImeOptions() | EditorInfo.IME_ACTION_SEARCH);
-//TODO to make it look nice
-//        searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
+
+        if (shouldTextBePaintedInRed) {
+            setWrongColorSearchText();
+        }
+        // TODO to make it look nice
+        // searchView.setSuggestionsAdapter(new ExampleAdapter(this, cursor, items));
 
         return true;
     }
@@ -397,7 +470,7 @@ public class HistoryActivity extends BaseActivity implements
         } else {
             return new CursorLoader(HistoryActivity.this,
                     ActivityDiaryContract.DiaryImage.CONTENT_URI,
-                    new String[] {ActivityDiaryContract.DiaryImage._ID,
+                    new String[]{ActivityDiaryContract.DiaryImage._ID,
                             ActivityDiaryContract.DiaryImage.URI},
                     ActivityDiaryContract.DiaryImage.DIARY_ID + "=? AND "
                             + ActivityDiaryContract.DiaryImage._DELETED + "=0",
@@ -477,12 +550,14 @@ public class HistoryActivity extends BaseActivity implements
 
     }
 
-    /** Checks date format and also checks date can be parsed (used for not existing dates like 35.13.2000)
+    /**
+     * Checks date format and also checks date can be parsed (used for not existing dates like 35.13.2000)
      * (in case format not exists or date is incorrect Toast about wrong format is displayed)
+     *
      * @param date input that is checked
      * @return millis of parsed input
      */
-    private Long checkDateFormatAndParse(String date){
+    private Long checkDateFormatAndParse(String date) {
         // TODO: generalize data format for search
         String[] formats = {
                 getResources().getString(R.string.date_format),                                                                 //get default format from strings.xml
@@ -491,18 +566,17 @@ public class HistoryActivity extends BaseActivity implements
 
         SimpleDateFormat simpleDateFormat;
 
-        for (String format: formats){
+        for (String format : formats) {
             simpleDateFormat = new SimpleDateFormat(format);
             simpleDateFormat.setLenient(false);
             try {
                 return simpleDateFormat.parse(date).getTime();
-            } catch (ParseException e){
+            } catch (ParseException e) {
                 /* intentionally no further handling. We try the next date format and onyl if we cannot parse the date with any
                  * supported format we return null afterwards. */
             }
         }
 
-        setWrongColorSearchText();
         Toast.makeText(getApplication().getBaseContext(), getResources().getString(R.string.wrongFormat), Toast.LENGTH_LONG).show();
         return null;
     }
@@ -510,8 +584,8 @@ public class HistoryActivity extends BaseActivity implements
     /**
      * Sets searched text to default color (white) in case it is set to red
      */
-    private void setDefaultColorSearchText(){
-        TextView textView =  searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+    private void setDefaultColorSearchText() {
+        TextView textView = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         if (textView.getCurrentTextColor() == getResources().getColor(R.color.colorWrongText))
             textView.setTextColor(getResources().getColor(R.color.activityTextColorLight));
     }
@@ -519,8 +593,8 @@ public class HistoryActivity extends BaseActivity implements
     /**
      * Sets searched text to color which indicates wrong searching (red)
      */
-    private void setWrongColorSearchText(){
-        TextView textView =  searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+    private void setWrongColorSearchText() {
+        TextView textView = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         textView.setTextColor(getResources().getColor(R.color.colorWrongText));
     }
 
