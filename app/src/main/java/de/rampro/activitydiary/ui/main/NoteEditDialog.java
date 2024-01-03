@@ -25,6 +25,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
+
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -89,22 +91,15 @@ public class NoteEditDialog extends DialogFragment {
         editText = (WMEditText) dlgView.findViewById(R.id.WMEditText);
         toolContainer = (WMToolContainer) dlgView.findViewById(R.id.WMToolContainer);
 
-        // input = (EditText) dlgView.findViewById(R.id.noteText);
-        // if(savedInstanceState != null){
-        //     input.setText(savedInstanceState.getString("Note"));
-        // }else{
-        //     input.setText(note);
-        // }
-
-        // input.setSelection(input.getText().length());
-
         builder.setView(dlgView)
                 // Add action buttons
 
                 .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onNoteEditPositiveClock("succ", NoteEditDialog.this);
+                        note = editText.getHtml();
+                        System.out.println(note);
+                        mListener.onNoteEditPositiveClock(note, NoteEditDialog.this);
                     }
                 })
                 .setNegativeButton(R.string.dlg_cancel, new DialogInterface.OnClickListener() {
@@ -131,9 +126,10 @@ public class NoteEditDialog extends DialogFragment {
         }
     }
 
-    public void setText(String text){
-        if(input != null){
-            input.setText(text);
+    public void setText(String text) {
+        System.out.println("setText, text: " + text);
+        if(input != null) {
+            input.setText(Html.fromHtml(text));
         }
         note = text;
     }
