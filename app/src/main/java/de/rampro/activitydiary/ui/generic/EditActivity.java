@@ -55,6 +55,7 @@ import de.rampro.activitydiary.helpers.ActivityHelper;
 import de.rampro.activitydiary.helpers.JaroWinkler;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.conditions.SPUtils;
 
 /*
  * EditActivity to add and modify activities
@@ -73,8 +74,9 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
 
     private final String COLOR_KEY = "COLOR";
     private final String NAME_KEY = "NAME";
+    private final String TAG_KEY = "TAG";
 
-    private EditText mActivityName;
+    private EditText mActivityName,mActivityTag;
     private TextInputLayout mActivityNameTIL;
     private ImageView mActivityColorImg;
     private int mActivityColor;
@@ -281,6 +283,8 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     private void refreshElements() {
         if (currentActivity != null) {
             mActivityName.setText(currentActivity.getName());
+            mActivityTag.setText(currentActivity.getmTag());
+
             getSupportActionBar().setTitle(currentActivity.getName());
             mActivityColor = currentActivity.getColor();
         } else {
@@ -317,6 +321,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
 
         setContent(contentView);
         mActivityName = (EditText) contentView.findViewById(R.id.edit_activity_name);
+        mActivityTag = (EditText) contentView.findViewById(R.id.edit_activity_tag);
         mActivityName.addTextChangedListener(new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -387,6 +392,7 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
     public void onSaveInstanceState(Bundle outState) {
         outState.putString(NAME_KEY, mActivityName.getText().toString());
         outState.putInt(COLOR_KEY, mActivityColor);
+        outState.putString(TAG_KEY, mActivityTag.getText().toString());
         // call superclass to save any view hierarchy
         super.onSaveInstanceState(outState);
     }
@@ -417,9 +423,13 @@ public class EditActivity extends BaseActivity implements ActivityHelper.DataCha
                         ).show();
                     } else {
                         if (currentActivity == null) {
-                            ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor));
+                            ActivityHelper.helper.insertActivity(new DiaryActivity(-1, mActivityName.getText().toString(), mActivityColor,mActivityTag.getText().toString()));
+                            SPUtils.putString(mActivityName.getText().toString()+mActivityColor,mActivityTag.getText().toString());
                         } else {
                             currentActivity.setName(mActivityName.getText().toString());
+                            currentActivity.setmTag(mActivityTag.getText().toString());
+                            SPUtils.putString(mActivityName.getText().toString()+mActivityColor,mActivityTag.getText().toString());
+
                             currentActivity.setColor(mActivityColor);
                             ActivityHelper.helper.updateActivity(currentActivity);
                         }

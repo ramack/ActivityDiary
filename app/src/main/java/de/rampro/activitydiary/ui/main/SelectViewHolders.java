@@ -28,7 +28,7 @@ import de.rampro.activitydiary.R;
 
 class SelectViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-    public TextView mName;
+    public TextView mName,mTag;
     public ImageView mSymbol;
     public View mBackground;
     private SelectRecyclerViewAdapter.SelectListener mListener;
@@ -37,6 +37,7 @@ class SelectViewHolders extends RecyclerView.ViewHolder implements View.OnClickL
         super(itemView);
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
+        mTag= (TextView) itemView.findViewById(R.id.tv_tag);
         mName = (TextView) itemView.findViewById(R.id.activity_name);
         mSymbol = (ImageView) itemView.findViewById(R.id.activity_image);
         mBackground = (View) itemView.findViewById(R.id.activity_background);

@@ -29,6 +29,7 @@ import org.acra.config.*;
 import org.acra.data.StringFormat;
 
 import de.rampro.activitydiary.helpers.GraphicsHelper;
+import de.rampro.activitydiary.model.conditions.SPUtils;
 
 public class ActivityDiaryApplication extends Application {
 
@@ -37,7 +38,7 @@ public class ActivityDiaryApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ActivityDiaryApplication.context = getApplicationContext();
-
+        SPUtils.init(this);
         /* now do some init stuff */
         String colors[] = context.getResources().getStringArray(R.array.activityColorPalette);
 

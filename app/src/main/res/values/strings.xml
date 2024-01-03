@@ -74,6 +74,8 @@
 
     <string name="desc_activity_color">Activity color</string>
     <string name="desc_activity_hint">Activity title</string>
+    <string name="desc_activity_tag" translatable="false">Activity tag</string>
+
     <string name="desc_activity_select">Choose current activity&#8230;</string>
     <string name="desc_note_hint" translatable="false">@string/dialog_title_note</string>
 
