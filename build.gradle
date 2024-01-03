@@ -23,6 +23,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         if (project.file('ActivityDiarySigning.properties').exists()) {
             mavenCentral()
         }
@@ -46,6 +47,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         jcenter()
         maven { url "https://jitpack.io" }
     }

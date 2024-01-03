@@ -125,6 +125,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'com.pes.materialcolorpicker:library:1.2.2'
+    implementation 'com.github.widemouth-dz:wmrichtexteditor:2.0.4'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
