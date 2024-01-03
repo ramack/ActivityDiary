@@ -31,6 +31,7 @@ import java.util.List;
 import de.rampro.activitydiary.R;
 import de.rampro.activitydiary.helpers.GraphicsHelper;
 import de.rampro.activitydiary.model.DiaryActivity;
+import de.rampro.activitydiary.model.conditions.SPUtils;
 
 public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHolders>{
     private List<DiaryActivity> mActivityList;
@@ -55,11 +56,13 @@ public class SelectRecyclerViewAdapter extends RecyclerView.Adapter<SelectViewHo
     public void onBindViewHolder(SelectViewHolders holder, int position) {
         DiaryActivity act = mActivityList.get(position);
         NumberFormat formatter = new DecimalFormat("#0.00");
+        holder.mTag.setText("Tag:"+ SPUtils.getString(act.getName()+act.getColor()));
         holder.mName.setText(act.getName());
 // show likelyhood in activity name
 //     holder.mName.setText(act.getName() + " (" + formatter.format(ActivityHelper.helper.likelihoodFor(act)) + ")");
 // TODO #33:        holder.mSymbol.setImageResource(act.getPhoto());
         holder.mBackground.setBackgroundColor(act.getColor());
+
         holder.mName.setTextColor(GraphicsHelper.textColorOnBackground(act.getColor()));
 
         // TODO #31: set the width based on the likelyhood

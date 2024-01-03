@@ -23,11 +23,18 @@ public class DiaryActivity{
     private String mName;
     private int mId;
     private int mColor;
-
+    private String mTag;
     public DiaryActivity(int id, String name, int color){
         mId = id;
         mName = name;
         mColor = color;
+
+    }
+    public DiaryActivity(int id, String name, int color,String tag){
+        mId = id;
+        mName = name;
+        mColor = color;
+        mTag=tag;
     }
 
     public String getName(){
@@ -55,5 +62,13 @@ public class DiaryActivity{
     @Override
     public int hashCode(){
         return mId;
+    }
+
+    public String getmTag() {
+        return mTag;
+    }
+
+    public void setmTag(String mTag) {
+        this.mTag = mTag;
     }
 }

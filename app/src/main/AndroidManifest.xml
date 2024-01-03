@@ -61,6 +61,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.main.RedPacketActivity"
+            android:exported="true"/>
         <activity android:name=".ui.generic.EditActivity"
             android:label="@string/activity_title_edit_new"
             android:windowSoftInputMode="stateVisible"
