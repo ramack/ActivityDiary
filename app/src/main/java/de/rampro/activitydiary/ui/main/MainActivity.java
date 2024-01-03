@@ -66,6 +66,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -122,6 +124,9 @@ public class MainActivity extends BaseActivity implements
     private int searchRowCount, normalRowCount;
     private FloatingActionButton fabNoteEdit;
     private FloatingActionButton fabAttachPicture;
+    private FloatingActionButton fabRedPacket;
+    private ImageButton imageRedPacket;
+    private Button closeRedPacket;
     private SearchView searchView;
     private MenuItem searchMenuItem;
     private ViewPager viewPager;
@@ -215,6 +220,28 @@ public class MainActivity extends BaseActivity implements
 
         fabNoteEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note);
         fabAttachPicture = (FloatingActionButton) findViewById(R.id.fab_attach_picture);
+        fabRedPacket = (FloatingActionButton) findViewById(R.id.fab_red_packet);
+
+        imageRedPacket = (ImageButton)findViewById(R.id.image_red_packet);
+        closeRedPacket = (Button) findViewById(R.id.close_red_packet);
+
+        closeRedPacket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageRedPacket.setVisibility(View.INVISIBLE);
+                fabRedPacket.setVisibility(View.INVISIBLE);
+                closeRedPacket.setVisibility(View.INVISIBLE);
+            }
+        });
+        imageRedPacket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RedPacketActivity.class);
+                // 启动目标Activity
+                startActivity(intent);
+
+            }
+        });
 
         fabNoteEdit.setOnClickListener(v -> {
             // Handle the click on the FAB
@@ -414,7 +441,7 @@ public class MainActivity extends BaseActivity implements
                             ActivityDiaryContract.DiaryActivity.X_START_OF_LAST
                     },
                     ActivityDiaryContract.DiaryActivity._DELETED + " = 0 AND "
-                    + ActivityDiaryContract.DiaryActivity._ID + " = ?",
+                            + ActivityDiaryContract.DiaryActivity._ID + " = ?",
                     new String[] {
                             Integer.toString(newAct.getId())
                     },

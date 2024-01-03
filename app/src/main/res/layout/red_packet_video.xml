@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ActivityDiary
+  ~
+  ~ Copyright (C) 2017-2018 Raphael Mack http://www.raphael-mack.de
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main_layout"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_area"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGreyBackground">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/root_ll"
+                tools:context=".ui.main.RedPacketActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    style="@style/DetailTabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed"
+                    app:tabPaddingTop="0dp">
+
+                </com.google.android.material.tabs.TabLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_bar_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <SurfaceView
+        android:id="@+id/controll_surfaceView"
+        android:layout_width="315dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="180dp"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="top|center" />
+
+    <TextView
+        android:id="@+id/text_on_video"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:background="#CF1051"
+        android:text="$ 看视频领红包，学生宝妈轻松赚Q"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_anchor="@+id/controll_surfaceView"
+        app:layout_anchorGravity="top|center" />
+
+    <Button
+        android:id="@+id/close_text_on_video"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/close_text_on_video"
+        app:layout_anchor="@+id/text_on_video"
+        app:layout_anchorGravity="end|top" />
+
+    <TextView
+        android:id="@+id/text_under_video"
+        android:layout_width="333dp"
+        android:layout_height="97dp"
+        android:layout_marginBottom="170dp"
+        android:text="Only 0.01 dollars left! Get $100 dollars!"
+        android:textAllCaps="false"
+        android:textColor="#F44336"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="bottom|center" />
+
+    <Button
+        android:id="@+id/button_under_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="#FF9800"
+        android:text="   Watch another video for $0.01!   "
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="bottom|center" />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
